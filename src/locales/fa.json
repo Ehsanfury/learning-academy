@@ -1,0 +1,113 @@
+{
+  "app": {
+    "name": "آکادمی آلمانی",
+    "tagline": "آلمانی رو هوشمندانه یاد بگیر",
+    "loading": "در حال بارگذاری...",
+    "error": "خطایی رخ داده است",
+    "retry": "تلاش مجدد"
+  },
+  "nav": {
+    "home": "خانه",
+    "learn": "یادگیری",
+    "practice": "تمرین",
+    "aiTutor": "معلم هوش مصنوعی",
+    "profile": "پروفایل",
+    "settings": "تنظیمات",
+    "logout": "خروج"
+  },
+  "auth": {
+    "login": "ورود",
+    "register": "ثبت‌نام",
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "confirmPassword": "تکرار رمز عبور",
+    "name": "نام",
+    "forgotPassword": "فراموشی رمز عبور",
+    "noAccount": "حساب کاربری ندارید؟",
+    "hasAccount": "قبلاً ثبت‌نام کرده‌اید؟",
+    "loginButton": "ورود به حساب",
+    "registerButton": "ایجاد حساب",
+    "logoutConfirm": "آیا مطمئن هستید که می‌خواهید خارج شوید؟"
+  },
+  "dashboard": {
+    "title": "داشبورد",
+    "streak": "روز متوالی",
+    "xp": "امتیاز",
+    "level": "سطح",
+    "continueLearning": "ادامه یادگیری",
+    "todayProgress": "پیشرفت امروز",
+    "weeklyStats": "آمار هفتگی",
+    "recentAchievements": "دستاوردهای اخیر"
+  },
+  "learn": {
+    "title": "مسیر یادگیری",
+    "levelA1": "مقدماتی A1",
+    "levelA2": "مقدماتی A2",
+    "levelB1": "متوسط B1",
+    "levelB2": "متوسط B2",
+    "levelC1": "پیشرفته C1",
+    "levelC2": "تسلط C2",
+    "completed": "تکمیل شده",
+    "inProgress": "در حال انجام",
+    "locked": "قفل",
+    "lessons": "درس",
+    "startLesson": "شروع درس",
+    "continueLesson": "ادامه درس"
+  },
+  "lesson": {
+    "vocabulary": "واژگان",
+    "grammar": "گرامر",
+    "listening": "شنیداری",
+    "speaking": "گفتاری",
+    "reading": "خواندن",
+    "writing": "نوشتن",
+    "quiz": "آزمون",
+    "complete": "اتمام درس",
+    "next": "بعدی",
+    "previous": "قبلی",
+    "check": "بررسی",
+    "correct": "درست!",
+    "incorrect": "دوباره تلاش کن",
+    "xpEarned": "امتیاز کسب شده"
+  },
+  "practice": {
+    "title": "تمرین",
+    "flashcards": "فلش‌کارت",
+    "quiz": "آزمون",
+    "review": "مرور",
+    "listening": "تمرین شنیداری",
+    "speaking": "تمرین گفتاری"
+  },
+  "aiTutor": {
+    "title": "معلم هوش مصنوعی",
+    "placeholder": "پیام خود را بنویسید...",
+    "send": "ارسال",
+    "thinking": "در حال فکر کردن...",
+    "newConversation": "مکالمه جدید",
+    "suggestions": "موضوعات پیشنهادی",
+    "grammarMode": "حالت تصحیح گرامر",
+    "chatMode": "حالت مکالمه آزاد",
+    "scenarioMode": "حالت شبیه‌سازی"
+  },
+  "achievements": {
+    "title": "دستاوردها",
+    "unlocked": "باز شده",
+    "locked": "قفل",
+    "progress": "پیشرفت"
+  },
+  "common": {
+    "save": "ذخیره",
+    "cancel": "انصراف",
+    "delete": "حذف",
+    "edit": "ویرایش",
+    "back": "بازگشت",
+    "search": "جستجو",
+    "filter": "فیلتر",
+    "sort": "مرتب‌سازی",
+    "noResults": "نتیجه‌ای یافت نشد",
+    "emptyState": "هنوز چیزی اینجا نیست",
+    "confirm": "تأیید",
+    "yes": "بله",
+    "no": "خیر"
+  }
+}

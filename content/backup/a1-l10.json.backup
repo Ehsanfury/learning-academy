@@ -1,0 +1,445 @@
+{
+  "id": "a1-l10",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 10,
+  "title": {
+    "de": "Was hast du gemacht?",
+    "fa": "چه کار کردی؟",
+    "en": "What did you do?"
+  },
+  "shortTitle": {
+    "de": "Was hast du gemacht?",
+    "fa": "چه کار کردی؟",
+    "en": "What did you do?"
+  },
+  "description": {
+    "fa": "در این درس با زمان گذشته (Perfekt) برای صحبت درباره اتفاقات گذشته آشنا می‌شوید.",
+    "en": "In this lesson you will learn the past tense (Perfekt) to talk about past events.",
+    "de": "In dieser Lektion lernen Sie die Vergangenheitsform (Perfekt) um über vergangene Ereignisse zu sprechen."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ ساختار زمان گذشته (Perfekt)",
+      "✅ فعل کمکی haben/sein",
+      "✅ Partizip II (شکل سوم فعل)",
+      "✅ گفتن اینکه چه کارهایی انجام داده‌اید"
+    ]
+  },
+  "xpReward": 60,
+  "perfectBonusXP": 35,
+  "estimatedMinutes": 55,
+  "difficulty": 2,
+  "prerequisites": [
+    "a1-l09"
+  ],
+  "nextLessonId": "a1-l11",
+  "previousLessonId": "a1-l09",
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس دهم خوش آمدید! ⏳\n\nدر این درس با زمان گذشته (Perfekt) آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• ساختار زمان گذشته در آلمانی\n• استفاده از فعل کمکی haben/sein\n• ساختن Partizip II (شکل سوم فعل)\n• چگونه بگویید چه کارهایی انجام داده‌اید",
+        "en": "Welcome to lesson 10! ⏳\n\nIn this lesson you will learn the past tense (Perfekt).\n\nYou will learn:\n• Structure of the past tense in German\n• Using auxiliary verbs haben/sein\n• Forming Partizip II (past participle)\n• How to say what you have done",
+        "de": "Willkommen zur zehnten Lektion! ⏳\n\nIn dieser Lektion lernen Sie die Vergangenheitsform (Perfekt).\n\nSie lernen:\n• Struktur der Vergangenheitsform im Deutschen\n• Verwendung der Hilfsverben haben/sein\n• Bildung des Partizip II\n• Wie man sagt, was Sie getan haben"
+      }
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "machen",
+          "fa": "انجام دادن",
+          "en": "to do/make",
+          "partizip": "gemacht",
+          "icon": "🛠️",
+          "example": {
+            "de": "Ich habe die Hausaufgaben gemacht.",
+            "fa": "من تکالیف را انجام دادم.",
+            "en": "I did the homework."
+          }
+        },
+        {
+          "de": "lernen",
+          "fa": "یاد گرفتن",
+          "en": "to learn",
+          "partizip": "gelernt",
+          "icon": "📚",
+          "example": {
+            "de": "Ich habe Deutsch gelernt.",
+            "fa": "من آلمانی یاد گرفتم.",
+            "en": "I learned German."
+          }
+        },
+        {
+          "de": "kochen",
+          "fa": "آشپزی کردن",
+          "en": "to cook",
+          "partizip": "gekocht",
+          "icon": "🍳",
+          "example": {
+            "de": "Ich habe Pizza gekocht.",
+            "fa": "من پیتزا پختم.",
+            "en": "I cooked pizza."
+          }
+        },
+        {
+          "de": "besuchen",
+          "fa": "ملاقات کردن / دیدن",
+          "en": "to visit",
+          "partizip": "besucht",
+          "icon": "👋",
+          "example": {
+            "de": "Ich habe meine Oma besucht.",
+            "fa": "من مادربزرگم را ملاقات کردم.",
+            "en": "I visited my grandma."
+          }
+        },
+        {
+          "de": "spielen",
+          "fa": "بازی کردن",
+          "en": "to play",
+          "partizip": "gespielt",
+          "icon": "🎮",
+          "example": {
+            "de": "Ich habe Fußball gespielt.",
+            "fa": "من فوتبال بازی کردم.",
+            "en": "I played football."
+          }
+        },
+        {
+          "de": "lesen",
+          "fa": "خواندن",
+          "en": "to read",
+          "partizip": "gelesen",
+          "icon": "📖",
+          "example": {
+            "de": "Ich habe ein Buch gelesen.",
+            "fa": "من یک کتاب خواندم.",
+            "en": "I read a book."
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "زمان گذشته (Perfekt)",
+        "en": "Past Tense (Perfekt)",
+        "de": "Vergangenheit (Perfekt)"
+      },
+      "explanation": {
+        "fa": "📌 **ساختار زمان گذشته (Perfekt):**\n\nدر آلمانی، برای صحبت در مکالمه از Perfekt استفاده می‌کنیم:\n\n**فعل کمکی (haben/sein) + Partizip II**\n\n• بخش اول: فعل کمکی haben (یا sein) در جایگاه دوم جمله صرف می‌شود.\n• بخش دوم: Partizip II به آخرین کلمه جمله می‌رود.\n\n📌 **قوانین ساختن Partizip II:**\n\n• افعال با قاعده: ge- + ریشه فعل + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• افعال بی‌قاعده: ge- + ریشه تغییر یافته + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **چه زمانی از sein استفاده می‌کنیم؟**\n\nاگر فعل مربوط به جابجایی از نقطه A به B باشد (مثل gehen, fahren, kommen)، از sein استفاده می‌کنیم:\n\n• Ich bin nach Hause gegangen.",
+        "en": "📌 **Structure of Perfekt:**\n\nIn German, Perfekt is used in spoken language:\n\n**Auxiliary verb (haben/sein) + Partizip II**\n\n• First part: The auxiliary verb is conjugated in second position.\n• Second part: Partizip II goes to the end of the sentence.\n\n📌 **Rules for forming Partizip II:**\n\n• Regular verbs: ge- + verb stem + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• Irregular verbs: ge- + changed stem + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **When to use sein?**\n\nIf the verb involves movement from point A to B (e.g., gehen, fahren, kommen), use sein:\n\n• Ich bin nach Hause gegangen.",
+        "de": "📌 **Struktur des Perfekt:**\n\nIm Deutschen wird Perfekt in der gesprochenen Sprache verwendet:\n\n**Hilfsverb (haben/sein) + Partizip II**\n\n• Erster Teil: Das Hilfsverb wird an zweiter Stelle konjugiert.\n• Zweiter Teil: Das Partizip II kommt ans Ende des Satzes.\n\n📌 **Regeln für die Bildung des Partizip II:**\n\n• Regelmäßige Verben: ge- + Verbstamm + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• Unregelmäßige Verben: ge- + veränderter Stamm + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **Wann verwendet man sein?**\n\nWenn das Verb eine Bewegung von A nach B beschreibt (z.B. gehen, fahren, kommen), verwendet man sein:\n\n• Ich bin nach Hause gegangen."
+      },
+      "examples": [
+        {
+          "de": "Ich habe Deutsch gelernt.",
+          "fa": "من آلمانی یاد گرفتم.",
+          "en": "I learned German."
+        },
+        {
+          "de": "Ich habe Pizza gekocht.",
+          "fa": "من پیتزا پختم.",
+          "en": "I cooked pizza."
+        },
+        {
+          "de": "Ich bin nach Hause gegangen.",
+          "fa": "من به خانه رفتم.",
+          "en": "I went home."
+        },
+        {
+          "de": "Ich habe ein Buch gelesen.",
+          "fa": "من یک کتاب خواندم.",
+          "en": "I read a book."
+        },
+        {
+          "de": "Was hast du gemacht?",
+          "fa": "چه کار کردی؟",
+          "en": "What did you do?"
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: آخر هفته",
+        "en": "📖 Story: The Weekend",
+        "de": "📖 Geschichte: Das Wochenende"
+      },
+      "text": {
+        "de": "Am Wochenende habe ich viel gemacht. Ich habe Deutsch gelernt. Ich habe Pizza gekocht. Ich habe ein Buch gelesen. Ich habe meinen Freund besucht. Wir haben Fußball gespielt. Am Abend bin ich nach Hause gegangen. Es war ein schöner Tag.",
+        "fa": "آخر هفته کارهای زیادی انجام دادم. من آلمانی یاد گرفتم. من پیتزا پختم. من یک کتاب خواندم. من دوستم را ملاقات کردم. ما فوتبال بازی کردیم. عصر به خانه رفتم. روز قشنگی بود.",
+        "en": "On the weekend I did a lot. I learned German. I cooked pizza. I read a book. I visited my friend. We played football. In the evening I went home. It was a beautiful day."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "چه چیزی یاد گرفتم؟",
+            "en": "What did I learn?",
+            "de": "Was habe ich gelernt?"
+          },
+          "answer": {
+            "fa": "آلمانی",
+            "en": "German",
+            "de": "Deutsch"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "با دوستم چه کار کردیم؟",
+            "en": "What did I do with my friend?",
+            "de": "Was habe ich mit meinem Freund gemacht?"
+          },
+          "answer": {
+            "fa": "فوتبال بازی کردیم",
+            "en": "Played football",
+            "de": "Fußball gespielt"
+          }
+        }
+      ]
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "sentence_building",
+          "question": {
+            "fa": "کلمات را به زمان گذشته تبدیل کنید: 'ich / Fußball / spielen / haben'",
+            "en": "Convert to past tense: 'ich / Fußball / spielen / haben'",
+            "de": "Ins Perfekt umwandeln: 'ich / Fußball / spielen / haben'"
+          },
+          "answer": "Ich habe Fußball gespielt.",
+          "hint": {
+            "fa": "haben + Partizip II",
+            "en": "haben + Partizip II",
+            "de": "haben + Partizip II"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "fill_in",
+          "question": {
+            "fa": "جای خالی: Was ________ du gemacht? (فعل کمکی)",
+            "en": "Fill in: Was ________ du gemacht? (auxiliary verb)",
+            "de": "Füllen Sie: Was ________ du gemacht? (Hilfsverb)"
+          },
+          "answer": "hast",
+          "hint": {
+            "fa": "du → hast",
+            "en": "du → hast",
+            "de": "du → hast"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'من یک کتاب خواندم.'",
+            "en": "Translate: 'I read a book.'",
+            "de": "Übersetzen: 'Ich habe ein Buch gelesen.'"
+          },
+          "answer": "Ich habe ein Buch gelesen.",
+          "hint": {
+            "fa": "lesen → gelesen",
+            "en": "lesen → gelesen",
+            "de": "lesen → gelesen"
+          }
+        }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "gemacht",
+          "fa": "انجام داده",
+          "en": "done",
+          "icon": "✅"
+        },
+        {
+          "de": "gelernt",
+          "fa": "یاد گرفته",
+          "en": "learned",
+          "icon": "📚"
+        },
+        {
+          "de": "gekocht",
+          "fa": "پخته",
+          "en": "cooked",
+          "icon": "🍳"
+        },
+        {
+          "de": "besucht",
+          "fa": "ملاقات کرده",
+          "en": "visited",
+          "icon": "👋"
+        },
+        {
+          "de": "gespielt",
+          "fa": "بازی کرده",
+          "en": "played",
+          "icon": "🎮"
+        },
+        {
+          "de": "gelesen",
+          "fa": "خوانده",
+          "en": "read",
+          "icon": "📖"
+        },
+        {
+          "de": "gegangen",
+          "fa": "رفته",
+          "en": "gone",
+          "icon": "🚶"
+        }
+      ]
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "gemacht",
+          "phonetic": "/ɡəˈmaxt/"
+        },
+        {
+          "word": "gelernt",
+          "phonetic": "/ɡəˈlɛʁnt/"
+        },
+        {
+          "word": "gekocht",
+          "phonetic": "/ɡəˈkɔxt/"
+        },
+        {
+          "word": "gelesen",
+          "phonetic": "/ɡəˈleːzn̩/"
+        },
+        {
+          "word": "gegangen",
+          "phonetic": "/ɡəˈɡaŋən/"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich habe Deutsch ________.' (lernen)",
+            "en": "Complete: 'Ich habe Deutsch ________.' (lernen)",
+            "de": "Vervollständigen: 'Ich habe Deutsch ________.' (lernen)"
+          },
+          "answer": "gelernt",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک Partizip II فعل 'lesen' است؟",
+            "en": "Which is the Partizip II of 'lesen'?",
+            "de": "Welches ist das Partizip II von 'lesen'?"
+          },
+          "options": [
+            "lesen",
+            "las",
+            "gelesen",
+            "liest"
+          ],
+          "correctIndex": 2,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "برای فعل 'gehen' از کدام فعل کمکی استفاده می‌شود؟",
+            "en": "Which auxiliary verb is used for 'gehen'?",
+            "de": "Welches Hilfsverb wird für 'gehen' verwendet?"
+          },
+          "options": [
+            "haben",
+            "sein"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ ساختار زمان گذشته (Perfekt)",
+          "✅ فعل کمکی haben/sein",
+          "✅ ساختن Partizip II",
+          "✅ گفتن اینکه چه کارهایی انجام داده‌اید"
+        ],
+        "en": [
+          "✅ Structure of Perfekt",
+          "✅ Auxiliary verbs haben/sein",
+          "✅ Forming Partizip II",
+          "✅ Saying what you have done"
+        ],
+        "de": [
+          "✅ Struktur des Perfekt",
+          "✅ Hilfsverben haben/sein",
+          "✅ Bildung des Partizip II",
+          "✅ Sagen, was Sie getan haben"
+        ]
+      },
+      "nextSteps": {
+        "fa": "📚 در درس بعدی (Was kannst du?) با افعال مودال آشنا می‌شوید.",
+        "en": "📚 In the next lesson (Was kannst du?) you will learn modal verbs.",
+        "de": "📚 In der nächsten Lektion (Was kannst du?) lernen Sie Modalverben."
+      }
+    }
+  ]
+}

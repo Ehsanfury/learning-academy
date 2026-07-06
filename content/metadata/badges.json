@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "badges": [
+    {
+      "id": "bronze_learner",
+      "tier": "bronze",
+      "name": {
+        "fa": "یادگیرنده برنزی",
+        "en": "Bronze Learner",
+        "de": "Bronze-Lerner"
+      },
+      "icon": "🥉",
+      "color": "#cd7f32",
+      "requiredAchievements": 5,
+      "xpBonus": 100
+    },
+    {
+      "id": "silver_learner",
+      "tier": "silver",
+      "name": {
+        "fa": "یادگیرنده نقره‌ای",
+        "en": "Silver Learner",
+        "de": "Silber-Lerner"
+      },
+      "icon": "🥈",
+      "color": "#c0c0c0",
+      "requiredAchievements": 15,
+      "xpBonus": 250,
+      "requires": ["bronze_learner"]
+    },
+    {
+      "id": "gold_learner",
+      "tier": "gold",
+      "name": {
+        "fa": "یادگیرنده طلایی",
+        "en": "Gold Learner",
+        "de": "Gold-Lerner"
+      },
+      "icon": "🥇",
+      "color": "#ffd700",
+      "requiredAchievements": 30,
+      "xpBonus": 500,
+      "requires": ["silver_learner"]
+    },
+    {
+      "id": "diamond_learner",
+      "tier": "diamond",
+      "name": {
+        "fa": "یادگیرنده الماسی",
+        "en": "Diamond Learner",
+        "de": "Diamant-Lerner"
+      },
+      "icon": "💎",
+      "color": "#b9f2ff",
+      "requiredAchievements": 50,
+      "xpBonus": 1000,
+      "requires": ["gold_learner"]
+    },
+    {
+      "id": "streak_champion",
+      "tier": "gold",
+      "name": {
+        "fa": "قهرمان استمرار",
+        "en": "Streak Champion",
+        "de": "Serien-Champion"
+      },
+      "icon": "👑",
+      "color": "#ffd700",
+      "requiredAchievements": ["streak_7", "streak_30", "streak_100"],
+      "xpBonus": 1000
+    },
+    {
+      "id": "vocabulary_master",
+      "tier": "gold",
+      "name": {
+        "fa": "استاد واژگان",
+        "en": "Vocabulary Master",
+        "de": "Wortschatzmeister"
+      },
+      "icon": "📚",
+      "color": "#ffd700",
+      "requiredAchievements": ["words_100", "words_500", "words_1000"],
+      "xpBonus": 1500
+    },
+    {
+      "id": "completionist",
+      "tier": "diamond",
+      "name": { "fa": "تکمیل‌کننده", "en": "Completionist", "de": "Vollender" },
+      "icon": "🏆",
+      "color": "#b9f2ff",
+      "requiredAchievements": ["level_a1_complete", "level_a2_complete"],
+      "xpBonus": 2500
+    },
+    {
+      "id": "language_lover",
+      "tier": "silver",
+      "name": {
+        "fa": "عاشق زبان",
+        "en": "Language Lover",
+        "de": "Sprachenliebhaber"
+      },
+      "icon": "💖",
+      "color": "#c0c0c0",
+      "requiredAchievements": ["first_lesson", "lessons_10", "words_50"],
+      "xpBonus": 200
+    }
+  ]
+}

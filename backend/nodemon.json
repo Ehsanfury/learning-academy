@@ -1,0 +1,13 @@
+{
+  "watch": ["."],
+  "ignore": ["node_modules", "logs", "coverage"],
+  "ext": "js,json",
+  "exec": "node server.js",
+  "delay": 1000,
+  "events": {
+    "restart": "echo '🔄 Restarting server...'"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

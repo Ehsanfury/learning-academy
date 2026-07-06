@@ -1,0 +1,469 @@
+{
+  "id": "a1-l08",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 8,
+  "title": {
+    "de": "Unterwegs",
+    "fa": "در راه / در سفر",
+    "en": "On the Way"
+  },
+  "shortTitle": {
+    "de": "Unterwegs",
+    "fa": "در راه",
+    "en": "On the Way"
+  },
+  "description": {
+    "fa": "در این درس با وسایل نقلیه، حرکت در شهر و کاربرد mit + Dativ آشنا می‌شوید.",
+    "en": "In this lesson you will learn means of transport, moving in the city and using mit + Dative.",
+    "de": "In dieser Lektion lernen Sie Verkehrsmittel, Bewegung in der Stadt und die Verwendung von mit + Dativ."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ یادگیری نام وسایل نقلیه به آلمانی",
+      "✅ استفاده از mit + Dativ",
+      "✅ گفتن اینکه با چه وسیله‌ای می‌روید"
+    ]
+  },
+  "xpReward": 60,
+  "perfectBonusXP": 35,
+  "estimatedMinutes": 50,
+  "difficulty": 2,
+  "prerequisites": [
+    "a1-l07"
+  ],
+  "nextLessonId": "a1-l09",
+  "previousLessonId": "a1-l07",
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس هشتم خوش آمدید! 🚗\n\nدر این درس با وسایل نقلیه و حرکت در شهر آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• نام وسایل نقلیه به آلمانی\n• چگونه بگویید با چه وسیله‌ای می‌روید\n• استفاده از mit + Dativ",
+        "en": "Welcome to lesson 8! 🚗\n\nIn this lesson you will learn means of transport and moving in the city.\n\nYou will learn:\n• Means of transport in German\n• How to say how you travel\n• Using mit + Dative",
+        "de": "Willkommen zur achten Lektion! 🚗\n\nIn dieser Lektion lernen Sie Verkehrsmittel und Bewegung in der Stadt.\n\nSie lernen:\n• Verkehrsmittel auf Deutsch\n• Wie man sagt, wie Sie reisen\n• Verwendung von mit + Dativ"
+      }
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "das Auto",
+          "fa": "ماشین",
+          "en": "car",
+          "gender": "das",
+          "plural": "die Autos",
+          "icon": "🚗",
+          "example": {
+            "de": "Das Auto ist neu.",
+            "fa": "ماشین جدید است.",
+            "en": "The car is new."
+          }
+        },
+        {
+          "de": "der Bus",
+          "fa": "اتوبوس",
+          "en": "bus",
+          "gender": "der",
+          "plural": "die Busse",
+          "icon": "🚌",
+          "example": {
+            "de": "Der Bus kommt um 8 Uhr.",
+            "fa": "اتوبوس ساعت ۸ می‌آید.",
+            "en": "The bus comes at 8 o'clock."
+          }
+        },
+        {
+          "de": "die Bahn",
+          "fa": "قطار / مترو",
+          "en": "train / tram",
+          "gender": "die",
+          "plural": "die Bahnen",
+          "icon": "🚆",
+          "example": {
+            "de": "Die Bahn fährt nach Berlin.",
+            "fa": "قطار به برلین می‌رود.",
+            "en": "The train goes to Berlin."
+          }
+        },
+        {
+          "de": "das Fahrrad",
+          "fa": "دوچرخه",
+          "en": "bicycle",
+          "gender": "das",
+          "plural": "die Fahrräder",
+          "icon": "🚲",
+          "example": {
+            "de": "Das Fahrrad ist grün.",
+            "fa": "دوچرخه سبز است.",
+            "en": "The bicycle is green."
+          }
+        },
+        {
+          "de": "mit",
+          "fa": "با / توسط",
+          "en": "with / by",
+          "icon": "🔹",
+          "example": {
+            "de": "Ich fahre mit dem Bus.",
+            "fa": "من با اتوبوس می‌روم.",
+            "en": "I go by bus."
+          }
+        },
+        {
+          "de": "fahren",
+          "fa": "رانندگی کردن / با وسیله رفتن",
+          "en": "to drive / to go",
+          "icon": "🚗",
+          "example": {
+            "de": "Ich fahre nach Hause.",
+            "fa": "من به خانه می‌روم.",
+            "en": "I go home."
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "کاربرد mit + Dativ برای وسایل نقلیه",
+        "en": "Using mit + Dative for means of transport",
+        "de": "Verwendung von mit + Dativ für Verkehrsmittel"
+      },
+      "explanation": {
+        "fa": "📌 **mit + Dativ برای وسایل نقلیه:**\n\nهر زمان بخواهید بگویید 'با [وسیله‌ای] می‌روم'، از mit استفاده می‌کنید و کلمه بعد از آن باید به حالت Dativ تغییر کند:\n\n• مذکر (der): mit dem (مثال: mit dem Bus)\n• خنثی (das): mit dem (مثال: mit dem Auto)\n• مونث (die): mit der (مثال: mit der Bahn)\n\n📌 **نکته:**\n\n• mit dem → برای کلمات مذکر و خنثی\n• mit der → برای کلمات مونث",
+        "en": "📌 **mit + Dative for means of transport:**\n\nTo say 'I go by [means of transport]', use mit and the following word must be in Dative:\n\n• masculine (der): mit dem (Example: mit dem Bus)\n• neuter (das): mit dem (Example: mit dem Auto)\n• feminine (die): mit der (Example: mit der Bahn)\n\n📌 **Note:**\n\n• mit dem → for masculine and neuter words\n• mit der → for feminine words",
+        "de": "📌 **mit + Dativ für Verkehrsmittel:**\n\nUm zu sagen 'ich fahre mit [Verkehrsmittel]', verwendet man mit und das folgende Wort muss im Dativ stehen:\n\n• maskulin (der): mit dem (Beispiel: mit dem Bus)\n• neutrum (das): mit dem (Beispiel: mit dem Auto)\n• feminin (die): mit der (Beispiel: mit der Bahn)\n\n📌 **Hinweis:**\n\n• mit dem → für maskuline und neutrale Wörter\n• mit der → für feminine Wörter"
+      },
+      "examples": [
+        {
+          "de": "Ich fahre mit dem Bus zur Arbeit.",
+          "fa": "من با اتوبوس به سر کار می‌روم.",
+          "en": "I go to work by bus."
+        },
+        {
+          "de": "Sie fährt mit dem Auto nach Berlin.",
+          "fa": "او با ماشین به برلین می‌رود.",
+          "en": "She goes to Berlin by car."
+        },
+        {
+          "de": "Wir fahren mit der Bahn nach Hause.",
+          "fa": "ما با قطار به خانه می‌رویم.",
+          "en": "We go home by train."
+        },
+        {
+          "de": "Ich fahre mit dem Fahrrad zur Schule.",
+          "fa": "من با دوچرخه به مدرسه می‌روم.",
+          "en": "I go to school by bicycle."
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: سفر به برلین",
+        "en": "📖 Story: Trip to Berlin",
+        "de": "📖 Geschichte: Reise nach Berlin"
+      },
+      "text": {
+        "de": "Ich fahre nach Berlin. Ich fahre mit dem Zug. Der Zug ist schnell. Ich habe ein Ticket. Ich sitze am Fenster. Ich sehe die Landschaft. Nach 3 Stunden bin ich in Berlin. Ich nehme die U-Bahn. Ich fahre mit der U-Bahn zum Hotel. Das Hotel ist schön. Ich bin glücklich.",
+        "fa": "من به برلین می‌روم. من با قطار می‌روم. قطار سریع است. من یک بلیط دارم. کنار پنجره می‌نشینم. من منظره را می‌بینم. بعد از ۳ ساعت در برلین هستم. من مترو می‌گیرم. من با مترو به هتل می‌روم. هتل زیباست. من خوشحالم.",
+        "en": "I am going to Berlin. I go by train. The train is fast. I have a ticket. I sit by the window. I see the landscape. After 3 hours I am in Berlin. I take the subway. I go to the hotel by subway. The hotel is beautiful. I am happy."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "با چه وسیله‌ای به برلین می‌روم؟",
+            "en": "How do I go to Berlin?",
+            "de": "Wie fahre ich nach Berlin?"
+          },
+          "answer": {
+            "fa": "با قطار",
+            "en": "By train",
+            "de": "Mit dem Zug"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "با چه وسیله‌ای به هتل می‌روم؟",
+            "en": "How do I go to the hotel?",
+            "de": "Wie fahre ich zum Hotel?"
+          },
+          "answer": {
+            "fa": "با مترو",
+            "en": "By subway",
+            "de": "Mit der U-Bahn"
+          }
+        }
+      ]
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "انتخاب درست: ____ Auto (mit dem / mit der)",
+            "en": "Choose correct: ____ Auto",
+            "de": "Richtig wählen: ____ Auto"
+          },
+          "options": [
+            "mit dem",
+            "mit der"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "fa": "Auto خنثی است → mit dem",
+            "en": "Auto is neuter → mit dem",
+            "de": "Auto ist neutrum → mit dem"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "انتخاب درست: ____ Bus (mit dem / mit der)",
+            "en": "Choose correct: ____ Bus",
+            "de": "Richtig wählen: ____ Bus"
+          },
+          "options": [
+            "mit dem",
+            "mit der"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "fa": "Bus مذکر است → mit dem",
+            "en": "Bus is masculine → mit dem",
+            "de": "Bus ist maskulin → mit dem"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "fill_in",
+          "question": {
+            "fa": "جای خالی: Ich fahre ____ Fahrrad. (با دوچرخه)",
+            "en": "Fill in: Ich fahre ____ Fahrrad. (by bicycle)",
+            "de": "Füllen Sie: Ich fahre ____ Fahrrad. (mit dem Fahrrad)"
+          },
+          "answer": "mit dem",
+          "hint": {
+            "fa": "Fahrrad خنثی است",
+            "en": "Fahrrad is neuter",
+            "de": "Fahrrad ist neutrum"
+          }
+        },
+        {
+          "id": "ex4",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'من با اتوبوس می‌روم.'",
+            "en": "Translate: 'I go by bus.'",
+            "de": "Übersetzen: 'Ich fahre mit dem Bus.'"
+          },
+          "answer": "Ich fahre mit dem Bus.",
+          "hint": {
+            "fa": "Bus مذکر است",
+            "en": "Bus is masculine",
+            "de": "Bus ist maskulin"
+          }
+        }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "das Auto",
+          "fa": "ماشین",
+          "en": "car",
+          "icon": "🚗"
+        },
+        {
+          "de": "der Bus",
+          "fa": "اتوبوس",
+          "en": "bus",
+          "icon": "🚌"
+        },
+        {
+          "de": "die Bahn",
+          "fa": "قطار",
+          "en": "train",
+          "icon": "🚆"
+        },
+        {
+          "de": "das Fahrrad",
+          "fa": "دوچرخه",
+          "en": "bicycle",
+          "icon": "🚲"
+        },
+        {
+          "de": "mit dem Bus",
+          "fa": "با اتوبوس",
+          "en": "by bus",
+          "icon": "🚌"
+        },
+        {
+          "de": "mit dem Auto",
+          "fa": "با ماشین",
+          "en": "by car",
+          "icon": "🚗"
+        },
+        {
+          "de": "mit der Bahn",
+          "fa": "با قطار",
+          "en": "by train",
+          "icon": "🚆"
+        },
+        {
+          "de": "fahren",
+          "fa": "رفتن / رانندگی کردن",
+          "en": "to drive/go",
+          "icon": "🚗"
+        }
+      ]
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "das Auto",
+          "phonetic": "/das ˈaʊ̯to/"
+        },
+        {
+          "word": "der Bus",
+          "phonetic": "/deːɐ̯ bʊs/"
+        },
+        {
+          "word": "die Bahn",
+          "phonetic": "/diː baːn/"
+        },
+        {
+          "word": "das Fahrrad",
+          "phonetic": "/das ˈfaːʁaːt/"
+        },
+        {
+          "word": "fahren",
+          "phonetic": "/ˈfaːʁən/"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک به معنای 'با ماشین' است؟",
+            "en": "Which one means 'by car'?",
+            "de": "Welches bedeutet 'mit dem Auto'?"
+          },
+          "options": [
+            "mit dem Auto",
+            "mit der Auto",
+            "mit das Auto",
+            "mit die Auto"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich fahre ____ Bahn.' (با قطار)",
+            "en": "Complete: 'Ich fahre ____ Bahn.' (by train)",
+            "de": "Vervollständigen: 'Ich fahre ____ Bahn.' (mit der Bahn)"
+          },
+          "answer": "mit der",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "برای وسایل نقلیه مذکر و خنثی از کدام حرف اضافه استفاده می‌شود؟",
+            "en": "Which preposition is used for masculine and neuter means of transport?",
+            "de": "Welche Präposition wird für maskuline und neutrale Verkehrsmittel verwendet?"
+          },
+          "options": [
+            "mit der",
+            "mit dem",
+            "mit das",
+            "mit die"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ وسایل نقلیه به آلمانی",
+          "✅ استفاده از mit + Dativ",
+          "✅ گفتن با چه وسیله‌ای می‌روید"
+        ],
+        "en": [
+          "✅ Means of transport in German",
+          "✅ Using mit + Dative",
+          "✅ Saying how you travel"
+        ],
+        "de": [
+          "✅ Verkehrsmittel auf Deutsch",
+          "✅ Verwendung von mit + Dativ",
+          "✅ Sagen, wie Sie reisen"
+        ]
+      },
+      "nextSteps": {
+        "fa": "📚 در درس بعدی (Unter Freunden) با Dativ برای اشخاص و ضمایر شخصی در حالت Dativ آشنا می‌شوید.",
+        "en": "📚 In the next lesson (Unter Freunden) you will learn Dative for people and personal pronouns in Dative.",
+        "de": "📚 In der nächsten Lektion (Unter Freunden) lernen Sie Dativ für Personen und Personalpronomen im Dativ."
+      }
+    }
+  ]
+}

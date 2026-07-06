@@ -1,0 +1,446 @@
+{
+  "version": "1.0.0",
+  "achievements": [
+    {
+      "id": "first_lesson",
+      "category": "learning",
+      "name": { "fa": "اولین قدم", "en": "First Step", "de": "Erster Schritt" },
+      "description": {
+        "fa": "اولین درس را کامل کن",
+        "en": "Complete your first lesson",
+        "de": "Schließe deine erste Lektion ab"
+      },
+      "icon": "🎯",
+      "badgeColor": "bronze",
+      "xpReward": 100,
+      "requirement": { "type": "lessons_completed", "value": 1 },
+      "secret": false
+    },
+    {
+      "id": "streak_7",
+      "category": "streak",
+      "name": {
+        "fa": "استریک ۷ روزه",
+        "en": "7-Day Streak",
+        "de": "7-Tage-Serie"
+      },
+      "description": {
+        "fa": "۷ روز متوالی تمرین کن",
+        "en": "Practice for 7 days straight",
+        "de": "Übe 7 Tage hintereinander"
+      },
+      "icon": "🔥",
+      "badgeColor": "bronze",
+      "xpReward": 150,
+      "requirement": { "type": "streak_days", "value": 7 },
+      "secret": false
+    },
+    {
+      "id": "streak_30",
+      "category": "streak",
+      "name": {
+        "fa": "استریک ۳۰ روزه",
+        "en": "30-Day Streak",
+        "de": "30-Tage-Serie"
+      },
+      "description": {
+        "fa": "۳۰ روز متوالی تمرین کن",
+        "en": "Practice for 30 days straight",
+        "de": "Übe 30 Tage hintereinander"
+      },
+      "icon": "🔥",
+      "badgeColor": "silver",
+      "xpReward": 500,
+      "requirement": { "type": "streak_days", "value": 30 },
+      "secret": false
+    },
+    {
+      "id": "streak_100",
+      "category": "streak",
+      "name": {
+        "fa": "استاد استمرار",
+        "en": "Streak Master",
+        "de": "Serienmeister"
+      },
+      "description": {
+        "fa": "۱۰۰ روز متوالی تمرین کن",
+        "en": "Practice for 100 days straight",
+        "de": "Übe 100 Tage hintereinander"
+      },
+      "icon": "💪",
+      "badgeColor": "gold",
+      "xpReward": 2000,
+      "requirement": { "type": "streak_days", "value": 100 },
+      "secret": false
+    },
+    {
+      "id": "words_50",
+      "category": "vocabulary",
+      "name": { "fa": "واژه‌آموز", "en": "Word Learner", "de": "Wortlerner" },
+      "description": {
+        "fa": "۵۰ کلمه یاد بگیر",
+        "en": "Learn 50 words",
+        "de": "Lerne 50 Wörter"
+      },
+      "icon": "📝",
+      "badgeColor": "bronze",
+      "xpReward": 100,
+      "requirement": { "type": "words_learned", "value": 50 },
+      "secret": false
+    },
+    {
+      "id": "words_100",
+      "category": "vocabulary",
+      "name": { "fa": "واژه‌ساز", "en": "Word Builder", "de": "Wortbauer" },
+      "description": {
+        "fa": "۱۰۰ کلمه یاد بگیر",
+        "en": "Learn 100 words",
+        "de": "Lerne 100 Wörter"
+      },
+      "icon": "📚",
+      "badgeColor": "silver",
+      "xpReward": 200,
+      "requirement": { "type": "words_learned", "value": 100 },
+      "secret": false
+    },
+    {
+      "id": "words_500",
+      "category": "vocabulary",
+      "name": {
+        "fa": "گنجینه لغات",
+        "en": "Vocabulary Vault",
+        "de": "Wortschatz"
+      },
+      "description": {
+        "fa": "۵۰۰ کلمه یاد بگیر",
+        "en": "Learn 500 words",
+        "de": "Lerne 500 Wörter"
+      },
+      "icon": "🏆",
+      "badgeColor": "gold",
+      "xpReward": 1000,
+      "requirement": { "type": "words_learned", "value": 500 },
+      "secret": false
+    },
+    {
+      "id": "words_1000",
+      "category": "vocabulary",
+      "name": {
+        "fa": "دایرةالمعارف",
+        "en": "Walking Dictionary",
+        "de": "Wörterbuch"
+      },
+      "description": {
+        "fa": "۱۰۰۰ کلمه یاد بگیر",
+        "en": "Learn 1000 words",
+        "de": "Lerne 1000 Wörter"
+      },
+      "icon": "🎓",
+      "badgeColor": "diamond",
+      "xpReward": 2500,
+      "requirement": { "type": "words_learned", "value": 1000 },
+      "secret": false
+    },
+    {
+      "id": "lessons_10",
+      "category": "learning",
+      "name": { "fa": "یادگیرنده", "en": "Learner", "de": "Lerner" },
+      "description": {
+        "fa": "۱۰ درس را کامل کن",
+        "en": "Complete 10 lessons",
+        "de": "Schließe 10 Lektionen ab"
+      },
+      "icon": "📖",
+      "badgeColor": "bronze",
+      "xpReward": 200,
+      "requirement": { "type": "lessons_completed", "value": 10 },
+      "secret": false
+    },
+    {
+      "id": "lessons_50",
+      "category": "learning",
+      "name": { "fa": "دانشجو", "en": "Student", "de": "Student" },
+      "description": {
+        "fa": "۵۰ درس را کامل کن",
+        "en": "Complete 50 lessons",
+        "de": "Schließe 50 Lektionen ab"
+      },
+      "icon": "🎒",
+      "badgeColor": "silver",
+      "xpReward": 500,
+      "requirement": { "type": "lessons_completed", "value": 50 },
+      "secret": false
+    },
+    {
+      "id": "lessons_100",
+      "category": "learning",
+      "name": { "fa": "محقق", "en": "Scholar", "de": "Gelehrter" },
+      "description": {
+        "fa": "۱۰۰ درس را کامل کن",
+        "en": "Complete 100 lessons",
+        "de": "Schließe 100 Lektionen ab"
+      },
+      "icon": "🔬",
+      "badgeColor": "gold",
+      "xpReward": 1000,
+      "requirement": { "type": "lessons_completed", "value": 100 },
+      "secret": false
+    },
+    {
+      "id": "perfect_lesson",
+      "category": "learning",
+      "name": { "fa": "بی‌نقص", "en": "Perfect Score", "de": "Perfekt" },
+      "description": {
+        "fa": "یک درس را بدون هیچ خطایی کامل کن",
+        "en": "Complete a lesson with zero mistakes",
+        "de": "Schließe eine Lektion ohne Fehler ab"
+      },
+      "icon": "⭐",
+      "badgeColor": "gold",
+      "xpReward": 150,
+      "requirement": { "type": "perfect_lessons", "value": 1 },
+      "secret": false
+    },
+    {
+      "id": "perfect_week",
+      "category": "learning",
+      "name": {
+        "fa": "هفته طلایی",
+        "en": "Golden Week",
+        "de": "Goldene Woche"
+      },
+      "description": {
+        "fa": "تمام درس‌های یک هفته را بی‌نقص کامل کن",
+        "en": "Complete all lessons in a week perfectly",
+        "de": "Schließe alle Lektionen einer Woche perfekt ab"
+      },
+      "icon": "👑",
+      "badgeColor": "diamond",
+      "xpReward": 500,
+      "requirement": { "type": "perfect_week", "value": 1 },
+      "secret": true
+    },
+    {
+      "id": "stories_5",
+      "category": "stories",
+      "name": {
+        "fa": "داستان‌خوان",
+        "en": "Storyteller",
+        "de": "Geschichtenerzähler"
+      },
+      "description": {
+        "fa": "۵ داستان بخوان",
+        "en": "Read 5 stories",
+        "de": "Lies 5 Geschichten"
+      },
+      "icon": "📕",
+      "badgeColor": "bronze",
+      "xpReward": 200,
+      "requirement": { "type": "stories_read", "value": 5 },
+      "secret": false
+    },
+    {
+      "id": "scenarios_5",
+      "category": "scenarios",
+      "name": {
+        "fa": "سناریوکار",
+        "en": "Scenario Player",
+        "de": "Szenariospieler"
+      },
+      "description": {
+        "fa": "۵ سناریو را کامل کن",
+        "en": "Complete 5 scenarios",
+        "de": "Schließe 5 Szenarien ab"
+      },
+      "icon": "🎭",
+      "badgeColor": "silver",
+      "xpReward": 200,
+      "requirement": { "type": "scenarios_completed", "value": 5 },
+      "secret": false
+    },
+    {
+      "id": "ai_chat_10",
+      "category": "ai",
+      "name": {
+        "fa": "همصحبت هوش مصنوعی",
+        "en": "AI Conversationalist",
+        "de": "KI-Gesprächspartner"
+      },
+      "description": {
+        "fa": "۱۰ مکالمه با معلم هوش مصنوعی داشته باش",
+        "en": "Have 10 conversations with AI tutor",
+        "de": "Führe 10 Gespräche mit dem KI-Tutor"
+      },
+      "icon": "🤖",
+      "badgeColor": "silver",
+      "xpReward": 300,
+      "requirement": { "type": "ai_conversations", "value": 10 },
+      "secret": false
+    },
+    {
+      "id": "level_5",
+      "category": "level",
+      "name": { "fa": "سطح ۵", "en": "Level 5", "de": "Level 5" },
+      "description": {
+        "fa": "به سطح ۵ برس",
+        "en": "Reach level 5",
+        "de": "Erreiche Level 5"
+      },
+      "icon": "⬆️",
+      "badgeColor": "silver",
+      "xpReward": 500,
+      "requirement": { "type": "user_level", "value": 5 },
+      "secret": false
+    },
+    {
+      "id": "level_10",
+      "category": "level",
+      "name": { "fa": "سطح ۱۰", "en": "Level 10", "de": "Level 10" },
+      "description": {
+        "fa": "به سطح ۱۰ برس",
+        "en": "Reach level 10",
+        "de": "Erreiche Level 10"
+      },
+      "icon": "🚀",
+      "badgeColor": "gold",
+      "xpReward": 1000,
+      "requirement": { "type": "user_level", "value": 10 },
+      "secret": false
+    },
+    {
+      "id": "quiz_master",
+      "category": "quiz",
+      "name": { "fa": "استاد آزمون", "en": "Quiz Master", "de": "Quizmeister" },
+      "description": {
+        "fa": "در ۱۰ آزمون نمره کامل بگیر",
+        "en": "Score 100% on 10 quizzes",
+        "de": "Erreiche 100% in 10 Tests"
+      },
+      "icon": "🏅",
+      "badgeColor": "gold",
+      "xpReward": 500,
+      "requirement": { "type": "perfect_quizzes", "value": 10 },
+      "secret": false
+    },
+    {
+      "id": "early_bird",
+      "category": "special",
+      "name": { "fa": "سحرخیز", "en": "Early Bird", "de": "Frühaufsteher" },
+      "description": {
+        "fa": "۱۰ درس را قبل از ساعت ۹ صبح انجام بده",
+        "en": "Complete 10 lessons before 9 AM",
+        "de": "Schließe 10 Lektionen vor 9 Uhr morgens ab"
+      },
+      "icon": "🌅",
+      "badgeColor": "gold",
+      "xpReward": 300,
+      "requirement": { "type": "early_lessons", "value": 10 },
+      "secret": true
+    },
+    {
+      "id": "level_a1_complete",
+      "category": "level_completion",
+      "name": { "fa": "فاتح A1", "en": "A1 Conqueror", "de": "A1 Eroberer" },
+      "description": {
+        "fa": "تمامی درس‌های سطح A1 را کامل کن",
+        "en": "Complete all A1 lessons",
+        "de": "Schließe alle A1-Lektionen ab"
+      },
+      "icon": "🏆",
+      "badgeColor": "gold",
+      "xpReward": 1000,
+      "requirement": {
+        "type": "level_completion",
+        "level": "A1",
+        "value": 100
+      },
+      "secret": false
+    },
+    {
+      "id": "level_a2_complete",
+      "category": "level_completion",
+      "name": { "fa": "فاتح A2", "en": "A2 Conqueror", "de": "A2 Eroberer" },
+      "description": {
+        "fa": "تمامی درس‌های سطح A2 را کامل کن",
+        "en": "Complete all A2 lessons",
+        "de": "Schließe alle A2-Lektionen ab"
+      },
+      "icon": "🏆",
+      "badgeColor": "diamond",
+      "xpReward": 2000,
+      "requirement": {
+        "type": "level_completion",
+        "level": "A2",
+        "value": 100
+      },
+      "secret": false,
+      "requires": ["level_a1_complete"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "learning",
+      "name": { "fa": "یادگیری", "en": "Learning", "de": "Lernen" },
+      "icon": "📚",
+      "order": 1
+    },
+    {
+      "id": "streak",
+      "name": { "fa": "استمرار", "en": "Streak", "de": "Serie" },
+      "icon": "🔥",
+      "order": 2
+    },
+    {
+      "id": "vocabulary",
+      "name": { "fa": "واژگان", "en": "Vocabulary", "de": "Wortschatz" },
+      "icon": "📝",
+      "order": 3
+    },
+    {
+      "id": "stories",
+      "name": { "fa": "داستان‌ها", "en": "Stories", "de": "Geschichten" },
+      "icon": "📖",
+      "order": 4
+    },
+    {
+      "id": "scenarios",
+      "name": { "fa": "سناریوها", "en": "Scenarios", "de": "Szenarien" },
+      "icon": "🎭",
+      "order": 5
+    },
+    {
+      "id": "ai",
+      "name": { "fa": "هوش مصنوعی", "en": "AI", "de": "KI" },
+      "icon": "🤖",
+      "order": 6
+    },
+    {
+      "id": "level",
+      "name": { "fa": "سطح", "en": "Level", "de": "Level" },
+      "icon": "⬆️",
+      "order": 7
+    },
+    {
+      "id": "quiz",
+      "name": { "fa": "آزمون", "en": "Quiz", "de": "Quiz" },
+      "icon": "📋",
+      "order": 8
+    },
+    {
+      "id": "level_completion",
+      "name": {
+        "fa": "تکمیل سطح",
+        "en": "Level Completion",
+        "de": "Levelabschluss"
+      },
+      "icon": "🏆",
+      "order": 9
+    },
+    {
+      "id": "special",
+      "name": { "fa": "ویژه", "en": "Special", "de": "Spezial" },
+      "icon": "✨",
+      "order": 10
+    }
+  ]
+}

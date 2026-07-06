@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "streakSystem": {
+    "dailyGoal": {
+      "type": "or",
+      "requirements": [
+        { "type": "lessons_completed", "value": 1 },
+        { "type": "practice_minutes", "value": 15 }
+      ]
+    },
+    "streakFreeze": {
+      "earnRate": 1,
+      "earnInterval": "days",
+      "earnIntervalValue": 7,
+      "maxFreezes": 2,
+      "freezeCost": 50,
+      "freezeCostCurrency": "xp"
+    },
+    "bonusMultipliers": [
+      { "streakDays": 7, "multiplier": 1.1, "bonusXP": 20 },
+      { "streakDays": 14, "multiplier": 1.15, "bonusXP": 30 },
+      { "streakDays": 30, "multiplier": 1.2, "bonusXP": 50 },
+      { "streakDays": 60, "multiplier": 1.25, "bonusXP": 75 },
+      { "streakDays": 100, "multiplier": 1.3, "bonusXP": 100 },
+      { "streakDays": 365, "multiplier": 1.5, "bonusXP": 500 }
+    ],
+    "streakMilestones": [
+      {
+        "days": 1,
+        "message": {
+          "fa": "تبریک! اولین روز!",
+          "en": "Congratulations! First day!"
+        }
+      },
+      {
+        "days": 7,
+        "message": {
+          "fa": "۷ روز متوالی! آفرین!",
+          "en": "7 days in a row! Great!"
+        }
+      },
+      {
+        "days": 30,
+        "message": {
+          "fa": "۳۰ روز! شما یک قهرمانید!",
+          "en": "30 days! You're a champion!"
+        }
+      },
+      {
+        "days": 100,
+        "message": { "fa": "۱۰۰ روز باورنکردنی!", "en": "100 incredible days!" }
+      },
+      {
+        "days": 365,
+        "message": {
+          "fa": "یک سال تمام! افسانه‌اید!",
+          "en": "A whole year! You're legendary!"
+        }
+      }
+    ],
+    "streakReset": {
+      "graceHours": 24,
+      "comebackBonus": {
+        "afterBreakDays": 1,
+        "bonusXP": 50,
+        "message": { "fa": "بهترین برگشتی!", "en": "Best comeback!" }
+      }
+    }
+  }
+}

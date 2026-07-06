@@ -1,0 +1,166 @@
+{
+  "level": "A1",
+  "version": "2.0.0",
+  "lastUpdated": "2024-06-26",
+  "totalLessons": 60,
+  "totalUnits": 12,
+  "totalVocabulary": 500,
+  "totalGrammarTopics": 24,
+  "cefr": "A1.1 - A1.4",
+  "units": [
+    {
+      "id": "U1",
+      "title": {
+        "fa": "سلام و معرفی",
+        "en": "Greetings and Introductions",
+        "de": "Begrüßungen und Vorstellung"
+      },
+      "description": {
+        "fa": "آشنایی با سلام و احوالپرسی، معرفی خود و دیگران",
+        "en": "Learn greetings, introducing yourself and others",
+        "de": "Lernen Sie Begrüßungen, sich und andere vorzustellen"
+      },
+      "lessons": ["L1", "L2", "L3", "L4", "L5"]
+    },
+    {
+      "id": "U2",
+      "title": {
+        "fa": "خانواده و دوستان",
+        "en": "Family and Friends",
+        "de": "Familie und Freunde"
+      },
+      "description": {
+        "fa": "معرفی اعضای خانواده، دوستان و روابط",
+        "en": "Introduce family members, friends and relationships",
+        "de": "Familienmitglieder, Freunde und Beziehungen vorstellen"
+      },
+      "lessons": ["L6", "L7", "L8", "L9", "L10"]
+    },
+    {
+      "id": "U3",
+      "title": {
+        "fa": "غذا و نوشیدنی",
+        "en": "Food and Drink",
+        "de": "Essen und Trinken"
+      },
+      "description": {
+        "fa": "نام غذاها، میوه‌ها و سفارش در رستوران",
+        "en": "Food names, fruits and ordering in a restaurant",
+        "de": "Lebensmittelnamen, Obst und Bestellen im Restaurant"
+      },
+      "lessons": ["L11", "L12", "L13", "L14", "L15"]
+    },
+    {
+      "id": "U4",
+      "title": {
+        "fa": "زندگی روزمره",
+        "en": "Daily Life",
+        "de": "Alltagsleben"
+      },
+      "description": {
+        "fa": "برنامه روزانه، ساعت و فعالیت‌های روزمره",
+        "en": "Daily routine, time and everyday activities",
+        "de": "Tagesablauf, Uhrzeit und Alltagsaktivitäten"
+      },
+      "lessons": ["L16", "L17", "L18", "L19", "L20"]
+    },
+    {
+      "id": "U5",
+      "title": {
+        "fa": "شهر و مسیریابی",
+        "en": "City and Navigation",
+        "de": "Stadt und Navigation"
+      },
+      "lessons": ["L21", "L22", "L23", "L24", "L25"]
+    },
+    {
+      "id": "U6",
+      "title": {
+        "fa": "سرگرمی و اوقات فراغت",
+        "en": "Hobbies and Free Time",
+        "de": "Hobbys und Freizeit"
+      },
+      "lessons": ["L26", "L27", "L28", "L29", "L30"]
+    },
+    {
+      "id": "U7",
+      "title": {
+        "fa": "خرید و پوشاک",
+        "en": "Shopping and Clothes",
+        "de": "Einkaufen und Kleidung"
+      },
+      "lessons": ["L31", "L32", "L33", "L34", "L35"]
+    },
+    {
+      "id": "U8",
+      "title": {
+        "fa": "سفر و گردشگری",
+        "en": "Travel and Tourism",
+        "de": "Reisen und Tourismus"
+      },
+      "lessons": ["L36", "L37", "L38", "L39", "L40"]
+    },
+    {
+      "id": "U9",
+      "title": {
+        "fa": "سلامتی و پزشکی",
+        "en": "Health and Medicine",
+        "de": "Gesundheit und Medizin"
+      },
+      "lessons": ["L41", "L42", "L43", "L44", "L45"]
+    },
+    {
+      "id": "U10",
+      "title": {
+        "fa": "کار و حرفه",
+        "en": "Work and Profession",
+        "de": "Arbeit und Beruf"
+      },
+      "lessons": ["L46", "L47", "L48", "L49", "L50"]
+    },
+    {
+      "id": "U11",
+      "title": {
+        "fa": "فرهنگ و آداب",
+        "en": "Culture and Customs",
+        "de": "Kultur und Bräuche"
+      },
+      "lessons": ["L51", "L52", "L53", "L54", "L55"]
+    },
+    {
+      "id": "U12",
+      "title": {
+        "fa": "مرور و آزمون نهایی",
+        "en": "Review and Final Exam",
+        "de": "Wiederholung und Abschlussprüfung"
+      },
+      "lessons": ["L56", "L57", "L58", "L59", "L60"]
+    }
+  ],
+  "contentIds": {
+    "vocabulary": [
+      "L1-VOC-001",
+      "L2-VOC-001",
+      "L3-VOC-001",
+      "L4-VOC-001",
+      "L5-VOC-001",
+      "L6-VOC-001"
+    ],
+    "grammar": [
+      "L1-GRAM-001",
+      "L2-GRAM-001",
+      "L3-GRAM-001",
+      "L4-GRAM-001",
+      "L5-GRAM-001",
+      "L6-GRAM-001"
+    ],
+    "dialogues": ["L1-DIAL-001", "L2-DIAL-001", "L3-DIAL-001"],
+    "exercises": ["L1-EXER-001", "L2-EXER-001", "L3-EXER-001"],
+    "quizzes": ["L1-QUIZ-001", "L2-QUIZ-001", "L3-QUIZ-001"]
+  },
+  "exportable": true,
+  "searchIndex": {
+    "enabled": true,
+    "fields": ["title", "description", "vocabulary", "grammar"]
+  }
+}

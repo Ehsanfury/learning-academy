@@ -1,0 +1,1207 @@
+{
+  "id": "A1-L02",
+  "order": 2,
+  "level": "A1",
+  "unit": 1,
+  "version": "2.0.0",
+  "status": "published",
+  "title": {
+    "fa": "Menschen - مردم، خانواده و دوستان",
+    "en": "Menschen - People, Family and Friends",
+    "de": "Menschen - Leute, Familie und Freunde"
+  },
+  "subtitle": {
+    "fa": "احوال‌پرسی کامل، خداحافظی، خانواده، دوستان و اعداد ۱۱ تا ۱۰۰",
+    "en": "Full greetings, farewells, family, friends and numbers 11-100",
+    "de": "Begrüßungen, Verabschiedung, Familie, Freunde und Zahlen 11-100"
+  },
+  "description": {
+    "fa": "در این درس شما با پرسیدن حال، انواع خداحافظی، اعضای خانواده، ضمایر ملکی (mein/dein/sein/ihr)، اعداد ۱۱ تا ۱۰۰ و تفاوت ein/kein آشنا می‌شوید.",
+    "en": "In this lesson you will learn how to ask how someone is, types of farewells, family members, possessive articles (mein/dein/sein/ihr), numbers 11-100, and the difference between ein/kein.",
+    "de": "In dieser Lektion lernen Sie, nach dem Befinden zu fragen, Abschiedsarten, Familienmitglieder, Possessivartikel (mein/dein/sein/ihr), Zahlen 11-100 und den Unterschied zwischen ein/kein."
+  },
+  "estimatedMinutes": 90,
+  "xpReward": 75,
+  "perfectBonusXP": 30,
+  "difficulty": 1,
+  "cefr": "A1.1",
+
+  "learningObjectives": {
+    "fa": [
+      "پرسیدن حال دوستان و افراد رسمی (Wie geht's? / Wie geht es Ihnen?)",
+      "پاسخ به احوال‌پرسی با درجات مختلف (sehr gut, gut, es geht, so lala)",
+      "انواع خداحافظی (Tschüss, Auf Wiedersehen, Bis bald, Bis später)",
+      "تشخیص ein و kein و استفاده درست آن‌ها",
+      "معرفی اعضای خانواده (Vater, Mutter, Bruder, Schwester, Großeltern)",
+      "استفاده از ضمایر ملکی mein/dein/sein/ihr",
+      "شمارش از ۱۱ تا ۱۰۰ به آلمانی",
+      "گفتن سن خود و دیگران (Wie alt bist du? - Ich bin ... Jahre alt.)"
+    ],
+    "en": [
+      "Ask how someone is (informal: Wie geht's? / formal: Wie geht es Ihnen?)",
+      "Respond with different degrees (sehr gut, gut, es geht, so lala)",
+      "Use various farewell forms (Tschüss, Auf Wiedersehen, Bis bald, Bis später)",
+      "Distinguish ein (a/an) and kein (no/not a)",
+      "Introduce family members (Vater, Mutter, Bruder, Schwester, Großeltern)",
+      "Use possessive articles mein/dein/sein/ihr (my/your/his/her)",
+      "Count from 11 to 100 in German",
+      "Ask and state age (Wie alt bist du? - Ich bin ... Jahre alt.)"
+    ],
+    "de": [
+      "Nach dem Befinden fragen (informell: Wie geht's? / formell: Wie geht es Ihnen?)",
+      "Mit verschiedenen Graden antworten (sehr gut, gut, es geht, so lala)",
+      "Verschiedene Abschiedsformen verwenden (Tschüss, Auf Wiedersehen, Bis bald, Bis später)",
+      "ein und kein unterscheiden",
+      "Familienmitglieder vorstellen (Vater, Mutter, Bruder, Schwester, Großeltern)",
+      "Possessivartikel mein/dein/sein/ihr verwenden",
+      "Von 11 bis 100 auf Deutsch zählen",
+      "Nach dem Alter fragen und es angeben (Wie alt bist du? - Ich bin ... Jahre alt.)"
+    ]
+  },
+
+  "requiredPreviousKnowledge": {
+    "fa": "درس ۱ (Super!) - آشنایی با احوال‌پرسی‌های اصلی، معرفی خود با ich heiße، ضمایر شخصی و فعل heißen.",
+    "en": "Lesson 1 (Super!) - Familiarity with main greetings, self-introduction with ich heiße, personal pronouns and the verb heißen.",
+    "de": "Lektion 1 (Super!) - Vertrautheit mit den wichtigsten Begrüßungen, sich mit ich heiße vorstellen, Personalpronomen und das Verb heißen."
+  },
+
+  "lessonIntroduction": {
+    "title": {
+      "fa": "مردم در اطراف ما",
+      "en": "People Around Us",
+      "de": "Menschen um uns herum"
+    },
+    "content": {
+      "fa": "تصور کنید در کلاس زبان آلمانی هستید و می‌خواهید از استادتان بپرسید حالش چطور است. یا در محل کار با همکارتان احوال‌پرسی کنید. این درس به شما کمک می‌کند تا گفتگو را عمیق‌تر کنید.\n\nدر این درس، شما با پرسیدن حال، انواع خداحافظی، معرفی خانواده و دوستان، ضمایر ملکی (mein/dein/sein/ihr) و اعداد ۱۱ تا ۱۰۰ آشنا می‌شوید.",
+      "en": "Imagine you're in a German class and want to ask your teacher how they are. Or greet a colleague at work. This lesson helps you deepen the conversation.\n\nIn this lesson, you will learn how to ask how someone is, types of farewells, introduce family and friends, possessive articles (mein/dein/sein/ihr) and numbers 11-100.",
+      "de": "Stell dir vor, du bist im Deutschkurs und möchtest deinen Lehrer fragen, wie es ihm geht. Oder einen Kollegen bei der Arbeit begrüßen. Diese Lektion hilft dir, das Gespräch zu vertiefen.\n\nIn dieser Lektion lernst du, nach dem Befinden zu fragen, Abschiedsarten, Familie und Freunde vorzustellen, Possessivartikel (mein/dein/sein/ihr) und Zahlen 11-100."
+    },
+    "imagePrompt": "People greeting each other in a German office setting, friendly atmosphere, modern Berlin office"
+  },
+
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - تمرکز بر اعداد و ترکیب‌ها",
+      "en": "Pronunciation Guide - Focus on Numbers and Combinations",
+      "de": "Ausspracheführer - Fokus auf Zahlen und Kombinationen"
+    },
+    "layers": {
+      "fa": "تمرکز این بخش بر تلفظ اعداد مرکب (مثل einundzwanzig) و ترکیب‌های رایج است.",
+      "en": "This section focuses on pronouncing compound numbers (like einundzwanzig) and common combinations.",
+      "de": "Dieser Abschnitt konzentriert sich auf die Aussprache zusammengesetzter Zahlen (wie einundzwanzig) und häufiger Kombinationen."
+    },
+    "sounds": [
+      {
+        "id": "sound-z-zig",
+        "letter": "-zig (در اعداد ده‌گانه)",
+        "description": {
+          "fa": "پسوند اعداد ۲۰، ۳۰، ۴۰ و ... - 'تسیخ' با t سخت",
+          "en": "Suffix for 20, 30, 40 etc. - pronounced 'tsig' with hard t",
+          "de": "Suffix für 20, 30, 40 usw. - 'tsig' mit hartem t"
+        },
+        "ipa": "[tsɪç]",
+        "persianEquivalent": "≈ تسیخ",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'زیگ' انگلیسی - باید 'تسیخ' با 'تس' و 'خ' باشد",
+          "en": "Pronouncing like English 'zig' - should be 'tsig' with 'ts' and 'ch'",
+          "de": "Aussprache wie englisch 'zig' - sollte 'tsig' mit 'ts' und 'ch' sein"
+        },
+        "examples": [
+          {
+            "word": "zwanzig (20)",
+            "persian": "تسوان-تسیخ",
+            "meaning": "بیست"
+          },
+          { "word": "dreißig (30)", "persian": "درای-تسیخ", "meaning": "سی" },
+          { "word": "vierzig (40)", "persian": "فیر-تسیخ", "meaning": "چهل" }
+        ]
+      },
+      {
+        "id": "sound-eu",
+        "letter": "eu (in Freund, Freunde, neun)",
+        "description": {
+          "fa": "ترکیب 'اوی' - مثل 'اوی' در 'boy' انگلیسی",
+          "en": "'oy' sound - like 'oy' in 'boy'",
+          "de": "'eu' - wie 'eu' in 'Europa'"
+        },
+        "ipa": "[ɔɪ̯]",
+        "persianEquivalent": "≈ 'اوی'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'او' - باید 'اوی' باشد",
+          "en": "Pronouncing like 'oo' - should be 'oy'",
+          "de": "Aussprache wie 'u' - sollte 'eu' sein"
+        },
+        "examples": [
+          { "word": "Freund", "persian": "فروی-نت", "meaning": "دوست" },
+          { "word": "Freunde", "persian": "فروی-ن-دِه", "meaning": "دوستان" },
+          { "word": "neun", "persian": "نوی-ن", "meaning": "نه" }
+        ]
+      },
+      {
+        "id": "sound-v",
+        "letter": "v (در Vater, viel)",
+        "description": {
+          "fa": "'v' در آلمانی معمولاً مثل 'ف' تلفظ می‌شود",
+          "en": "'v' in German is usually pronounced like 'f'",
+          "de": "'v' wird auf Deutsch meistens wie 'f' ausgesprochen"
+        },
+        "ipa": "[f]",
+        "persianEquivalent": "≈ 'ف'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'و' انگلیسی - باید 'ف' باشد",
+          "en": "Pronouncing like English 'v' - should be 'f'",
+          "de": "Aussprache wie englisch 'v' - sollte 'f' sein"
+        },
+        "examples": [
+          { "word": "Vater", "persian": "فا-تر", "meaning": "پدر" },
+          { "word": "viel", "persian": "فیل", "meaning": "زیاد" }
+        ]
+      }
+    ]
+  },
+
+  "greetings": {
+    "items": [
+      {
+        "id": "greet-wie-gehts",
+        "german": "Wie geht's?",
+        "persian": "وی گیتس؟",
+        "ipa": "[viː ɡeːts]",
+        "meaning": "چطوری؟ (دوستانه)",
+        "time": "همه وقت",
+        "formality": "دوستانه",
+        "usage": {
+          "fa": "کوتاه‌شده Wie geht es dir? - با دوستان، خانواده و همکاران نزدیک",
+          "en": "Short for Wie geht es dir? - with friends, family and close colleagues",
+          "de": "Kurz für Wie geht es dir? - mit Freunden, Familie und engen Kollegen"
+        },
+        "commonMistake": {
+          "fa": "بعد از پاسخ، باید 'Und dir?' (و تو؟) را هم بپرسید",
+          "en": "After the answer, you should also ask 'Und dir?' (And you?)",
+          "de": "Nach der Antwort solltest du auch 'Und dir?' fragen"
+        }
+      },
+      {
+        "id": "greet-wie-geht-es-ihnen",
+        "german": "Wie geht es Ihnen?",
+        "persian": "وی گیت اس اینن؟",
+        "ipa": "[viː ɡeːt ɛs ˈiːnən]",
+        "meaning": "حال شما چطور است؟ (رسمی)",
+        "time": "همه وقت",
+        "formality": "رسمی",
+        "usage": {
+          "fa": "برای افراد بزرگ‌تر، غریبه‌ها و در موقعیت‌های رسمی",
+          "en": "For older people, strangers and in formal situations",
+          "de": "Für ältere Menschen, Fremde und in formellen Situationen"
+        },
+        "commonMistake": {
+          "fa": "بعد از پاسخ، 'Und Ihnen?' (و شما؟) را بپرسید",
+          "en": "After the answer, ask 'Und Ihnen?' (And you?)",
+          "de": "Nach der Antwort fragen Sie 'Und Ihnen?'"
+        }
+      },
+      {
+        "id": "greet-danke-gut",
+        "german": "Danke, gut.",
+        "persian": "دان-کِه، گوت",
+        "ipa": "[ˈdaŋkə ɡuːt]",
+        "meaning": "ممنون، خوبم.",
+        "time": "همه وقت",
+        "formality": "هردو",
+        "usage": {
+          "fa": "پاسخ استاندارد و مودبانه",
+          "en": "Standard polite response",
+          "de": "Standard höfliche Antwort"
+        },
+        "commonMistake": {
+          "fa": "بعد باید بپرسید 'Und dir?' یا 'Und Ihnen?'",
+          "en": "Then ask 'Und dir?' or 'Und Ihnen?'",
+          "de": "Dann fragen Sie 'Und dir?' oder 'Und Ihnen?'"
+        }
+      },
+      {
+        "id": "greet-sehr-gut",
+        "german": "Sehr gut.",
+        "persian": "زِر گوت",
+        "ipa": "[zeːɐ̯ ɡuːt]",
+        "meaning": "خیلی خوب.",
+        "time": "همه وقت",
+        "formality": "هردو",
+        "usage": {
+          "fa": "وقتی واقعاً حالتان خوب است",
+          "en": "When you feel really good",
+          "de": "Wenn es dir wirklich gut geht"
+        },
+        "commonMistake": {
+          "fa": "'Sehr' یعنی 'خیلی' - تلفظ 'r' غُرّی",
+          "en": "'Sehr' means 'very' - pronounce 'r' uvular",
+          "de": "'Sehr' heißt 'sehr' - 'r' uvular aussprechen"
+        }
+      },
+      {
+        "id": "greet-es-geht",
+        "german": "Es geht.",
+        "persian": "اِس گیت",
+        "ipa": "[ɛs ɡeːt]",
+        "meaning": "بد نیست.",
+        "time": "همه وقت",
+        "formality": "هردو",
+        "usage": {
+          "fa": "وقتی حالتان متوسط است - نه خیلی خوب نه بد",
+          "en": "When you're so-so - neither good nor bad",
+          "de": "Wenn es mittelmäßig geht - weder gut noch schlecht"
+        },
+        "commonMistake": {
+          "fa": "مودبانه‌تر از 'so lala' است",
+          "en": "More polite than 'so lala'",
+          "de": "Höflicher als 'so lala'"
+        }
+      },
+      {
+        "id": "greet-tschuess",
+        "german": "Tschüss!",
+        "persian": "چوس!",
+        "ipa": "[tʃʏs]",
+        "meaning": "خداحافظ!",
+        "time": "همه وقت",
+        "formality": "دوستانه",
+        "usage": {
+          "fa": "رایج‌ترین خداحافظی غیررسمی",
+          "en": "Most common informal farewell",
+          "de": "Häufigste informelle Verabschiedung"
+        },
+        "commonMistake": {
+          "fa": "'ü' بین 'ای' و 'او' تلفظ شود",
+          "en": "'ü' pronounced between 'ee' and 'oo'",
+          "de": "'ü' zwischen 'i' und 'u' aussprechen"
+        }
+      },
+      {
+        "id": "greet-auf-wiedersehen",
+        "german": "Auf Wiedersehen.",
+        "persian": "آوف وی-دِر-زِ-اِن",
+        "ipa": "[aʊf ˈviːdɐˌzeːən]",
+        "meaning": "خدانگهدار.",
+        "time": "همه وقت",
+        "formality": "رسمی",
+        "usage": {
+          "fa": "خداحافظی رسمی - در موقعیت‌های رسمی",
+          "en": "Formal farewell - in formal situations",
+          "de": "Formelle Verabschiedung - in formellen Situationen"
+        },
+        "commonMistake": {
+          "fa": "کلمه طولانی است - به قسمت‌ها تقسیم کنید",
+          "en": "Long word - break it down",
+          "de": "Langes Wort - teilen Sie es auf"
+        }
+      },
+      {
+        "id": "greet-bis-bald",
+        "german": "Bis bald!",
+        "persian": "بیس بالت!",
+        "ipa": "[bɪs balt]",
+        "meaning": "به زودی!",
+        "time": "همه وقت",
+        "formality": "هردو",
+        "usage": {
+          "fa": "وقتی می‌خواهید به زودی دوباره ببینید",
+          "en": "When you want to see them again soon",
+          "de": "Wenn Sie jemanden bald wiedersehen wollen"
+        },
+        "commonMistake": {
+          "fa": "'bald' یعنی 'به زودی' - با 'bald' انگلیسی فرق دارد",
+          "en": "'bald' means 'soon' - different from English 'bald'",
+          "de": "'bald' heißt 'bald' - anders als englisch 'bald'"
+        }
+      },
+      {
+        "id": "greet-bis-spaeter",
+        "german": "Bis später!",
+        "persian": "بیس شپِ-تِر",
+        "ipa": "[bɪs ˈʃpɛːtɐ]",
+        "meaning": "تا بعد!",
+        "time": "همه وقت",
+        "formality": "هردو",
+        "usage": {
+          "fa": "وقتی همان روز دوباره می‌بینید",
+          "en": "When you'll see them later that day",
+          "de": "Wenn Sie jemanden später am selben Tag sehen"
+        },
+        "commonMistake": {
+          "fa": "'sp' در ابتدای کلمه 'شپ' تلفظ می‌شود",
+          "en": "'sp' at the start is pronounced 'shp'",
+          "de": "'sp' am Anfang wird 'schp' ausgesprochen"
+        }
+      }
+    ]
+  },
+
+  "vocabulary": [
+    {
+      "id": "voc-vater",
+      "de": "Vater",
+      "article": "der",
+      "plural": "Väter",
+      "ipa": "[ˈfaːtɐ]",
+      "fa": "پدر",
+      "en": "father",
+      "example": {
+        "de": "Mein Vater heißt Ben.",
+        "fa": "نام پدرم بن است.",
+        "en": "My father's name is Ben."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر - با der می‌آید. 'V' مثل 'ف' تلفظ می‌شود.",
+        "en": "Masculine noun - takes der. 'V' is pronounced like 'f'.",
+        "de": "Maskulines Nomen - mit der. 'V' wird wie 'f' ausgesprochen."
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'V' مثل 'و' انگلیسی - باید 'ف' باشد",
+        "en": "Pronouncing 'V' like English 'v' - should be 'f'",
+        "de": "Aussprache von 'V' wie englisch 'v' - sollte 'f' sein"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-mutter",
+      "de": "Mutter",
+      "article": "die",
+      "plural": "Mütter",
+      "ipa": "[ˈmʊtɐ]",
+      "fa": "مادر",
+      "en": "mother",
+      "example": {
+        "de": "Meine Mutter heißt Eva.",
+        "fa": "نام مادرم اوا است.",
+        "en": "My mother's name is Eva."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث - با die می‌آید. 'ü' بین 'ای' و 'او' تلفظ شود.",
+        "en": "Feminine noun - takes die. 'ü' between 'ee' and 'oo'.",
+        "de": "Feminines Nomen - mit die. 'ü' zwischen 'i' und 'u'."
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'u' مثل 'او' - باید 'ü' باشد",
+        "en": "Pronouncing 'u' like 'oo' - should be 'ü'",
+        "de": "Aussprache von 'u' wie 'u' - sollte 'ü' sein"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-bruder",
+      "de": "Bruder",
+      "article": "der",
+      "plural": "Brüder",
+      "ipa": "[ˈbʁuːdɐ]",
+      "fa": "برادر",
+      "en": "brother",
+      "example": {
+        "de": "Mein Bruder heißt Tim.",
+        "fa": "نام برادرم تیم است.",
+        "en": "My brother's name is Tim."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر - با der می‌آید.",
+        "en": "Masculine noun - takes der.",
+        "de": "Maskulines Nomen - mit der."
+      },
+      "commonMistakes": {
+        "fa": "جمع آن Brüder با umlaut است",
+        "en": "Plural is Brüder with umlaut",
+        "de": "Plural ist Brüder mit Umlaut"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-schwester",
+      "de": "Schwester",
+      "article": "die",
+      "plural": "Schwestern",
+      "ipa": "[ˈʃvɛstɐ]",
+      "fa": "خواهر",
+      "en": "sister",
+      "example": {
+        "de": "Meine Schwester heißt Karla.",
+        "fa": "نام خواهرم کارلا است.",
+        "en": "My sister's name is Karla."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث - 'schw' در ابتدا 'شو' تلفظ می‌شود",
+        "en": "Feminine noun - 'schw' at start sounds like 'shv'",
+        "de": "Feminines Nomen - 'schw' am Anfang klingt wie 'schv'"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'schw' مثل 'سو' - باید 'شو' باشد",
+        "en": "Pronouncing 'schw' like 'sw' - should be 'shv'",
+        "de": "Aussprache 'schw' wie 'sw' - sollte 'schv' sein"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-grosseltern",
+      "de": "Großeltern",
+      "article": "die",
+      "plural": "—",
+      "ipa": "[ˈɡʁoːsˌɛltɐn]",
+      "fa": "پدربزرگ و مادربزرگ",
+      "en": "grandparents",
+      "example": {
+        "de": "Meine Großeltern wohnen in Berlin.",
+        "fa": "پدربزرگ و مادربزرگم در برلین زندگی می‌کنند.",
+        "en": "My grandparents live in Berlin."
+      },
+      "usageNotes": {
+        "fa": "همیشه جمع به کار می‌رود - شامل Großvater و Großmutter",
+        "en": "Always plural - includes Großvater and Großmutter",
+        "de": "Immer Plural - umfasst Großvater und Großmutter"
+      },
+      "commonMistakes": {
+        "fa": "'ß' بعد از مصوت بلند مثل 'س' کشیده",
+        "en": "'ß' after long vowel sounds like long 's'",
+        "de": "'ß' nach langem Vokal klingt wie langes 's'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-familie",
+      "de": "Familie",
+      "article": "die",
+      "plural": "Familien",
+      "ipa": "[faˈmiːli̯ə]",
+      "fa": "خانواده",
+      "en": "family",
+      "example": {
+        "de": "Das ist meine Familie.",
+        "fa": "این خانواده من است.",
+        "en": "This is my family."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث - با die می‌آید",
+        "en": "Feminine noun - takes die",
+        "de": "Feminines Nomen - mit die"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ie' مانند 'ای' کشیده",
+        "en": "Pronounce 'ie' like long 'ee'",
+        "de": "Aussprache 'ie' wie langes 'ie'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-freund",
+      "de": "Freund",
+      "article": "der",
+      "plural": "Freunde",
+      "ipa": "[fʁɔʏ̯nt]",
+      "fa": "دوست (پسر) / دوست‌پسر",
+      "en": "friend (male) / boyfriend",
+      "example": {
+        "de": "Das ist mein Freund Fabio.",
+        "fa": "این دوست من فابیو است.",
+        "en": "This is my friend Fabio."
+      },
+      "usageNotes": {
+        "fa": "بسته به بافتار - 'دوست پسر' یا فقط 'دوست'. 'eu' مثل 'اوی' تلفظ شود.",
+        "en": "Context-dependent - 'boyfriend' or just 'friend'. 'eu' sounds like 'oy'.",
+        "de": "Kontextabhängig - 'Fester Freund' oder nur 'Freund'. 'eu' klingt wie 'eu'."
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'eu' مثل 'او' - باید 'اوی' باشد",
+        "en": "Pronouncing 'eu' like 'oo' - should be 'oy'",
+        "de": "Aussprache 'eu' wie 'u' - sollte 'eu' sein"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-freundin",
+      "de": "Freundin",
+      "article": "die",
+      "plural": "Freundinnen",
+      "ipa": "[ˈfʁɔʏ̯ndɪn]",
+      "fa": "دوست (دختر) / دوست‌دختر",
+      "en": "friend (female) / girlfriend",
+      "example": {
+        "de": "Das ist meine Freundin Martha.",
+        "fa": "این دوستم مارتا است.",
+        "en": "This is my friend Martha."
+      },
+      "usageNotes": {
+        "fa": "برای مؤنث - پسوند -in به Freund اضافه می‌شود",
+        "en": "For females - suffix -in added to Freund",
+        "de": "Für Frauen - Suffix -in wird an Freund angehängt"
+      },
+      "commonMistakes": {
+        "fa": "باید به جای Freund برای دختران استفاده شود",
+        "en": "Should be used instead of Freund for women",
+        "de": "Sollte statt Freund für Frauen verwendet werden"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    }
+  ],
+
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-ein-kein",
+        "title": {
+          "fa": "أداة نکره و منفی: ein و kein",
+          "en": "Indefinite and negative articles: ein and kein",
+          "de": "Unbestimmter und Negativartikel: ein und kein"
+        },
+        "concept": {
+          "fa": "ein مانند 'یک' در فارسی است و kein به معنای 'هیچ/نه' می‌باشد. هر دو بر اساس جنسیت اسم تغییر می‌کنند.",
+          "en": "ein is like 'a/an' in English and kein means 'no/not a'. Both change based on the noun's gender.",
+          "de": "ein ist wie 'ein' und kein bedeutet 'kein'. Beide ändern sich nach dem Genus des Nomens."
+        },
+        "conjugationTable": {
+          "headers": ["جنسیت", "ein (یک)", "kein (هیچ/نه)", "مثال"],
+          "rows": [
+            ["مذکر (der)", "ein", "kein", "ein Mann / kein Mann"],
+            ["خنثی (das)", "ein", "kein", "ein Mädchen / kein Mädchen"],
+            ["مؤنث (die)", "eine", "keine", "eine Katze / keine Katze"],
+            ["جمع (die)", "—", "keine", "keine Kinder"]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Das ist ein Laptop.",
+            "persian": "داس ایست آین لاپ-تاپ.",
+            "meaning": "این یک لپ‌تاپ است."
+          },
+          {
+            "sentence": "Das ist kein Laptop. Das ist ein MacBook!",
+            "persian": "داس ایست کاین لاپ-تاپ. داس ایست آین مک-بوک!",
+            "meaning": "این لپ‌تاپ نیست. این مک‌بوک است!"
+          }
+        ],
+        "note": {
+          "fa": "ein در جمع form ندارد، ولی keine در جمع هم به کار می‌رود.",
+          "en": "ein has no plural form, but keine is used in plural.",
+          "de": "ein hat keine Pluralform, aber keine wird im Plural verwendet."
+        }
+      },
+      {
+        "id": "gram-possessivartikel",
+        "title": {
+          "fa": "ضمایر ملکی mein/dein/sein/ihr",
+          "en": "Possessive articles mein/dein/sein/ihr",
+          "de": "Possessivartikel mein/dein/sein/ihr"
+        },
+        "concept": {
+          "fa": "برای گفتن 'مال من' از mein، 'مال تو' از dein، 'مال او (مرد)' از sein و 'مال او (زن)' از ihr استفاده می‌کنیم.",
+          "en": "To say 'my' use mein, 'your' use dein, 'his' use sein and 'her' use ihr.",
+          "de": "Für 'mein' verwenden Sie mein, 'dein' dein, 'sein' sein und 'ihr' ihr."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "mein (مال من)",
+            "dein (مال تو)",
+            "sein (مال او - مرد)",
+            "ihr (مال او - زن)",
+            "مثال"
+          ],
+          "rows": [
+            ["مذکر (der)", "mein", "dein", "sein", "ihr", "mein Vater"],
+            ["خنثی (das)", "mein", "dein", "sein", "ihr", "mein Kind"],
+            ["مؤنث (die)", "meine", "deine", "seine", "ihre", "meine Mutter"],
+            ["جمع (die)", "meine", "deine", "seine", "ihre", "meine Eltern"]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Das ist mein Vater.",
+            "persian": "داس ایست ماین فا-تر.",
+            "meaning": "این پدرم است."
+          },
+          {
+            "sentence": "Das ist meine Mutter.",
+            "persian": "داس ایست مای-نِه مو-تِر.",
+            "meaning": "این مادرم است."
+          },
+          {
+            "sentence": "Wie heißt dein Bruder?",
+            "persian": "وی هایست داین برو-دِر؟",
+            "meaning": "نام برادرت چیست؟"
+          }
+        ],
+        "note": {
+          "fa": "sein هم فعل 'بودن' است و هم ضمیر 'مال او - مرد'. بافتار را ببینید.",
+          "en": "sein is both the verb 'to be' and the pronoun 'his'.",
+          "de": "sein ist sowohl das Verb 'sein' als auch das Pronomen 'sein'."
+        }
+      },
+      {
+        "id": "gram-numbers-11-100",
+        "title": {
+          "fa": "اعداد ۱۱ تا ۱۰۰",
+          "en": "Numbers 11 to 100",
+          "de": "Zahlen 11 bis 100"
+        },
+        "concept": {
+          "fa": "اعداد آلمانی از ۲۰ به بعد به صورت «یک و بیست» (unit-then-tens) خوانده می‌شوند.",
+          "en": "German numbers from 20 onwards are read as 'one-and-twenty'.",
+          "de": "Deutsche Zahlen ab 20 werden als 'einundzwanzig' gelesen."
+        },
+        "conjugationTable": {
+          "headers": ["عدد", "آلمانی", "تلفظ فارسی", "یادداشت"],
+          "rows": [
+            ["11", "elf", "اِلف", "استثنا"],
+            ["12", "zwölf", "تسوُلف", "استثنا"],
+            ["13", "dreizehn", "درای-تسِن", "drei + zehn"],
+            ["20", "zwanzig", "تسوان-تسیخ", "—"],
+            [
+              "21",
+              "einundzwanzig",
+              "آین-اوند-تسوان-تسیخ",
+              "ein + und + zwanzig"
+            ],
+            ["30", "dreißig", "درای-تسیخ", "—"],
+            ["100", "(ein)hundert", "(آین) هون-دِرت", "—"]
+          ]
+        },
+        "pattern": {
+          "fa": "[یکها] + und + [ده‌گانه] (مثلاً: einundzwanzig = 21)",
+          "en": "[units] + und + [tens] (e.g., einundzwanzig = 21)",
+          "de": "[Einer] + und + [Zehner] (z.B. einundzwanzig = 21)"
+        }
+      }
+    ]
+  },
+
+  "dialogues": {
+    "items": [
+      {
+        "id": "dialog-wie-gehts",
+        "title": {
+          "fa": "احوال‌پرسی دوستانه - در باشگاه ورزشی",
+          "en": "Informal Greeting - At the Gym",
+          "de": "Informelle Begrüßung - Im Fitnessstudio"
+        },
+        "characters": [
+          { "name": "Trainer", "role": "مربی" },
+          { "name": "Sofie", "role": "هنرجو" }
+        ],
+        "lines": [
+          {
+            "speaker": "Trainer",
+            "german": "Hallo Sofie! Wie geht's?",
+            "persian": "ها-لو زو-فی! وی گیتس؟",
+            "meaning": {
+              "fa": "سلام سوفی! چطوری؟",
+              "en": "Hello Sofie! How are you?",
+              "de": "Hallo Sofie! Wie geht's?"
+            }
+          },
+          {
+            "speaker": "Sofie",
+            "german": "Danke, gut. Und dir?",
+            "persian": "دان-کِه، گوت. اوند دیر؟",
+            "meaning": {
+              "fa": "ممنون، خوبم. و تو؟",
+              "en": "Thanks, good. And you?",
+              "de": "Danke, gut. Und dir?"
+            }
+          },
+          {
+            "speaker": "Trainer",
+            "german": "Sehr gut.",
+            "persian": "زِر گوت.",
+            "meaning": {
+              "fa": "خیلی خوب.",
+              "en": "Very good.",
+              "de": "Sehr gut."
+            }
+          }
+        ]
+      },
+      {
+        "id": "dialog-wie-gehts-formal",
+        "title": {
+          "fa": "احوال‌پرسی رسمی - در محل کار",
+          "en": "Formal Greeting - At Work",
+          "de": "Formelle Begrüßung - Am Arbeitsplatz"
+        },
+        "characters": [
+          { "name": "Kollegin", "role": "همکار" },
+          { "name": "Herr Rau", "role": "مدیر" }
+        ],
+        "lines": [
+          {
+            "speaker": "Kollegin",
+            "german": "Guten Morgen, Herr Rau. Wie geht es Ihnen?",
+            "persian": "گو-تِن مور-گِن، هِر راو. وی گیت اِس این-نِن؟",
+            "meaning": {
+              "fa": "صبح بخیر آقای راو. حال شما چطور است؟",
+              "en": "Good morning Mr. Rau. How are you?",
+              "de": "Guten Morgen, Herr Rau. Wie geht es Ihnen?"
+            }
+          },
+          {
+            "speaker": "Herr Rau",
+            "german": "Sehr gut. Und Ihnen?",
+            "persian": "زِر گوت. اوند این-نِن؟",
+            "meaning": {
+              "fa": "خیلی خوب. و شما؟",
+              "en": "Very good. And you?",
+              "de": "Sehr gut. Und Ihnen?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dialog-familie",
+        "title": {
+          "fa": "معرفی خانواده",
+          "en": "Introducing Family",
+          "de": "Familie vorstellen"
+        },
+        "characters": [
+          { "name": "Maria", "role": "هنرجو" },
+          { "name": "Liliana", "role": "همکلاسی" }
+        ],
+        "lines": [
+          {
+            "speaker": "Maria",
+            "german": "Das bin ich. Ich heiße Maria. Und das ist meine Familie.",
+            "persian": "داس بین ایخ. ایخ هایسِه ما-ری-آ. اوند داس ایست مای-نِه فا-می-لی-ه.",
+            "meaning": {
+              "fa": "این منم. نامم ماریا است. و این خانواده من است.",
+              "en": "That's me. My name is Maria. And this is my family.",
+              "de": "Das bin ich. Ich heiße Maria. Und das ist meine Familie."
+            }
+          },
+          {
+            "speaker": "Maria",
+            "german": "Meine Mutter, Kerstin, und mein Vater. Er heißt Swen.",
+            "persian": "مای-نِه مو-تِر، کِر-شتین، اوند ماین فا-تِر. اِر هایست سون.",
+            "meaning": {
+              "fa": "مادرم، کرشتین، و پدرم. نامش سون است.",
+              "en": "My mother, Kerstin, and my father. His name is Swen.",
+              "de": "Meine Mutter, Kerstin, und mein Vater. Er heißt Swen."
+            }
+          },
+          {
+            "speaker": "Maria",
+            "german": "Und das sind meine Schwester Karla und mein Bruder Tim.",
+            "persian": "اوند داس زیند مای-نِه شوِس-تِر کار-لا اوند ماین برو-دِر تیم.",
+            "meaning": {
+              "fa": "و این‌ها خواهرم کارلا و برادرم تیم هستند.",
+              "en": "And these are my sister Karla and my brother Tim.",
+              "de": "Und das sind meine Schwester Karla und mein Bruder Tim."
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  "cultureNotes": {
+    "fa": "در فرهنگ آلمانی، احوال‌پرسی کامل مهم است. وقتی از کسی 'Wie geht's?' می‌پرسید، منتظر پاسخ واقعی هستید و باید 'Und dir?' را هم بپرسید.\n\nدر محیط‌های کاری، همیشه از 'Sie' استفاده کنید تا زمانی که طرف مقابل پیشنهاد 'du' بدهد.\n\nمعرفی خانواده در فرهنگ آلمانی بسیار معمول است. خانواده‌ها معمولاً کوچک‌اند (۱-۲ فرزند) و افراد افتخار می‌کنند که از خانواده‌شان صحبت کنند.\n\nتفاوت 'ein' و 'kein' بسیار مهم است: 'ein' یعنی 'یک' (چیز مشخصی نیست) و 'kein' یعنی 'هیچ' یا 'نه'. این تفاوت در مکالمات روزمره بسیار کاربرد دارد.",
+    "en": "In German culture, full greetings are important. When you ask 'Wie geht's?', you're expected to wait for an actual answer and to also ask 'Und dir?'.\n\nIn work environments, always use 'Sie' until the other person offers 'du'.\n\nIntroducing family is very common in German culture. Families are usually small (1-2 children) and people are proud to talk about their families.\n\nThe difference between 'ein' and 'kein' is very important: 'ein' means 'a/an' (not specific) and 'kein' means 'no' or 'not'. This distinction is very useful in everyday conversations.",
+    "de": "In der deutschen Kultur ist eine vollständige Begrüßung wichtig. Wenn Sie 'Wie geht's?' fragen, warten Sie auf eine echte Antwort und fragen auch 'Und dir?'.\n\nIn Arbeitsumgebungen verwenden Sie immer 'Sie', bis die andere Person 'du' anbietet.\n\nFamilie vorzustellen ist in der deutschen Kultur sehr üblich. Familien sind meist klein (1-2 Kinder) und Menschen sprechen gerne über ihre Familie.\n\nDer Unterschied zwischen 'ein' und 'kein' ist sehr wichtig: 'ein' bedeutet 'ein/eine' (nicht spezifisch) und 'kein' bedeutet 'kein/keine'. Diese Unterscheidung ist im Alltag sehr nützlich."
+  },
+
+  "exercises": {
+    "vocabulary": [
+      {
+        "id": "ex-voc-1",
+        "type": "match",
+        "difficulty": 1,
+        "title": {
+          "fa": "لغات خانواده را با معنی تطبیق دهید",
+          "en": "Match family vocabulary with their meanings",
+          "de": "Ordnen Sie die Familienwörter den Bedeutungen zu"
+        },
+        "items": [
+          { "left": "Vater", "right": "پدر" },
+          { "left": "Mutter", "right": "مادر" },
+          { "left": "Bruder", "right": "برادر" },
+          { "left": "Schwester", "right": "خواهر" },
+          { "left": "Großeltern", "right": "پدربزرگ و مادربزرگ" },
+          { "left": "Familie", "right": "خانواده" }
+        ],
+        "feedback": {
+          "correct": "عالی!",
+          "incorrect": "دوباره تلاش کنید."
+        }
+      }
+    ],
+    "grammar": [
+      {
+        "id": "ex-g1",
+        "type": "fill_in",
+        "difficulty": 1,
+        "title": {
+          "fa": "حرف تعریف صحیح (ein/kein) را انتخاب کنید",
+          "en": "Choose the correct article (ein/kein)",
+          "de": "Wählen Sie den richtigen Artikel (ein/kein)"
+        },
+        "questions": [
+          {
+            "id": "g1-q1",
+            "prompt": "Das ist ___ Mann.",
+            "options": ["ein", "eine", "kein", "keine"],
+            "correct": "ein",
+            "feedback": "Mann مذکر است، بنابراین 'ein' درست است."
+          },
+          {
+            "id": "g1-q2",
+            "prompt": "Das ist ___ Katze.",
+            "options": ["ein", "eine", "kein", "keine"],
+            "correct": "eine",
+            "feedback": "Katze مؤنث است، بنابراین 'eine' درست است."
+          },
+          {
+            "id": "g1-q3",
+            "prompt": "Das ist ___ Laptop. Das ist ein MacBook!",
+            "options": ["ein", "eine", "kein", "keine"],
+            "correct": "kein",
+            "feedback": "برای نفی از 'kein' استفاده می‌شود."
+          }
+        ]
+      },
+      {
+        "id": "ex-g2",
+        "type": "fill_in",
+        "difficulty": 2,
+        "title": {
+          "fa": "ضمیر ملکی صحیح را انتخاب کنید",
+          "en": "Choose the correct possessive article",
+          "de": "Wählen Sie den richtigen Possessivartikel"
+        },
+        "questions": [
+          {
+            "id": "g2-q1",
+            "prompt": "Das ist ___ Vater. (پدرِ من)",
+            "options": ["mein", "meine", "dein", "sein"],
+            "correct": "mein",
+            "feedback": "Vater مذکر است + 'من' = mein Vater."
+          },
+          {
+            "id": "g2-q2",
+            "prompt": "Das ist ___ Mutter. (مادرِ من)",
+            "options": ["mein", "meine", "dein", "sein"],
+            "correct": "meine",
+            "feedback": "Mutter مؤنث است + 'من' = meine Mutter."
+          },
+          {
+            "id": "g2-q3",
+            "prompt": "Das ist ___ Bruder. (برادرِ تو)",
+            "options": ["mein", "meine", "dein", "deine"],
+            "correct": "dein",
+            "feedback": "Bruder مذکر است + 'تو' = dein Bruder."
+          },
+          {
+            "id": "g2-q4",
+            "prompt": "Das ist ___ Familie. (خانواده‌اش - فابیو مرد است)",
+            "options": ["sein", "seine", "ihr", "ihre"],
+            "correct": "seine",
+            "feedback": "Familie مؤنث است + 'او - مرد' = seine Familie."
+          }
+        ]
+      }
+    ],
+    "reading": [
+      {
+        "id": "ex-r1",
+        "type": "true_false",
+        "difficulty": 1,
+        "title": {
+          "fa": "متن خانواده ماریا را بخوانید و پاسخ دهید",
+          "en": "Read Maria's family text and answer",
+          "de": "Lesen Sie Marias Familientext und antworten Sie"
+        },
+        "passage": {
+          "fa": "ماریا ۲۲ ساله است. او در برلین زندگی می‌کند. پدرش سون و مادرش کرشتین است. او یک خواهر به نام کارلا و یک برادر به نام تیم دارد. خانواده‌اش در کلن زندگی می‌کنند.",
+          "en": "Maria is 22 years old. She lives in Berlin. Her father is Swen and her mother is Kerstin. She has a sister named Karla and a brother named Tim. Her family lives in Cologne.",
+          "de": "Maria ist 22 Jahre alt. Sie wohnt in Berlin. Ihr Vater ist Swen und ihre Mutter ist Kerstin. Sie hat eine Schwester namens Karla und einen Bruder namens Tim. Ihre Familie wohnt in Köln."
+        },
+        "questions": [
+          {
+            "id": "r1-q1",
+            "statement": {
+              "fa": "ماریا در کلن زندگی می‌کند.",
+              "en": "Maria lives in Cologne.",
+              "de": "Maria wohnt in Köln."
+            },
+            "answer": false,
+            "explanation": {
+              "fa": "ماریا در برلین زندگی می‌کند، نه کلن.",
+              "en": "Maria lives in Berlin, not Cologne.",
+              "de": "Maria wohnt in Berlin, nicht in Köln."
+            }
+          },
+          {
+            "id": "r1-q2",
+            "statement": {
+              "fa": "ماریا یک برادر به نام تیم دارد.",
+              "en": "Maria has a brother named Tim.",
+              "de": "Maria hat einen Bruder namens Tim."
+            },
+            "answer": true,
+            "explanation": {
+              "fa": "بله، متن می‌گوید 'یک برادر به نام تیم' دارد.",
+              "en": "Yes, the text says she has a brother named Tim.",
+              "de": "Ja, der Text sagt, sie hat einen Bruder namens Tim."
+            }
+          }
+        ]
+      }
+    ],
+    "listening": [
+      {
+        "id": "ex-l1",
+        "type": "multiple_choice",
+        "difficulty": 1,
+        "title": {
+          "fa": "به مکالمه گوش دهید و پاسخ دهید",
+          "en": "Listen to the conversation and answer",
+          "de": "Hören Sie den Dialog und antworten Sie"
+        },
+        "questions": [
+          {
+            "id": "l1-q1",
+            "question": {
+              "fa": "سوفی چه پاسخی داد؟",
+              "en": "What did Sofie answer?",
+              "de": "Was hat Sofie geantwortet?"
+            },
+            "options": ["Danke, gut.", "Sehr gut.", "Es geht.", "So lala."],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "سوفی گفت: 'Danke, gut.'",
+              "en": "Sofie said: 'Danke, gut.'",
+              "de": "Sofie sagte: 'Danke, gut.'"
+            }
+          }
+        ]
+      }
+    ],
+    "writing": [
+      {
+        "id": "ex-w1",
+        "type": "guided_writing",
+        "difficulty": 1,
+        "title": {
+          "fa": "خانواده خود را معرفی کنید",
+          "en": "Introduce your family",
+          "de": "Stellen Sie Ihre Familie vor"
+        },
+        "prompts": {
+          "fa": "یک پاراگراف کوتاه درباره خانواده خود بنویسید. شامل: نام شما، سن، اعضای خانواده (پدر، مادر، خواهر/برادر) و جایی که زندگی می‌کنید.",
+          "en": "Write a short paragraph about your family. Include: your name, age, family members (father, mother, sister/brother) and where you live.",
+          "de": "Schreiben Sie einen kurzen Absatz über Ihre Familie. Geben Sie: Ihren Namen, Ihr Alter, Familienmitglieder (Vater, Mutter, Schwester/Bruder) und Ihren Wohnort an."
+        }
+      }
+    ]
+  },
+
+  "review": {
+    "title": {
+      "fa": "مرور درس ۲",
+      "en": "Lesson 2 Review",
+      "de": "Lektion 2 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام عبارت برای پرسیدن حال به صورت رسمی است؟",
+          "en": "Which phrase asks how someone is formally?",
+          "de": "Welche Phrase fragt formell nach dem Befinden?"
+        },
+        "options": [
+          "Wie heißt du?",
+          "Wie geht's?",
+          "Wie geht es Ihnen?",
+          "Wie alt bist du?"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "rev-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "پس از پاسخ به 'Wie geht's?'، باید چه بپرسید؟",
+          "en": "After answering 'Wie geht's?', what should you ask?",
+          "de": "Nach der Antwort auf 'Wie geht's?', was sollten Sie fragen?"
+        },
+        "options": ["Und dir?", "Wie heißt du?", "Tschüss!", "Wo wohnst du?"],
+        "correctIndex": 0
+      },
+      {
+        "id": "rev-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام گزینه صحیح است؟ Das ist ___ Mutter.",
+          "en": "Which is correct? Das ist ___ Mutter.",
+          "de": "Was ist richtig? Das ist ___ Mutter."
+        },
+        "options": ["mein", "meine", "dein", "sein"],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "عدد ۲۱ به آلمانی چیست؟",
+          "en": "What is 21 in German?",
+          "de": "Was ist 21 auf Deutsch?"
+        },
+        "options": [
+          "zwanzig",
+          "einundzwanzig",
+          "zweihundert",
+          "zweiundzwanzig"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-q5",
+        "type": "true_false",
+        "question": {
+          "fa": "'ein' در جمع هم استفاده می‌شود.",
+          "en": "'ein' is also used in plural.",
+          "de": "'ein' wird auch im Plural verwendet."
+        },
+        "answer": false,
+        "explanation": {
+          "fa": "ein در جمع form ندارد. برای جمع از keine استفاده می‌شود.",
+          "en": "ein has no plural form. For plural, keine is used.",
+          "de": "ein hat keine Pluralform. Für Plural wird keine verwendet."
+        }
+      },
+      {
+        "id": "rev-q6",
+        "type": "true_false",
+        "question": {
+          "fa": "'keine Katze' یعنی 'گربه نیست'.",
+          "en": "'keine Katze' means 'no cat / not a cat'.",
+          "de": "'keine Katze' heißt 'keine Katze'."
+        },
+        "answer": true
+      }
+    ]
+  },
+
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۲",
+      "en": "Lesson 2 Final Assessment",
+      "de": "Lektion 2 Abschlussbewertung"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": { "count": 3, "questions": [] },
+      "family_vocabulary": { "count": 4, "questions": [] },
+      "grammar_possessiv": { "count": 4, "questions": [] },
+      "ein_kein": { "count": 2, "questions": [] },
+      "numbers": { "count": 2, "questions": [] }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید به صورت دوستانه و رسمی حال بپرسید؟",
+        "آیا پاسخ‌های مختلف (sehr gut, gut, es geht, so lala) را بلدید؟",
+        "آیا انواع خداحافظی (Tschüss, Auf Wiedersehen, Bis bald) را بلدید؟",
+        "آیا تفاوت ein و kein را می‌دانید؟",
+        "آیا اعضای خانواده را به آلمانی می‌گویید؟",
+        "آیا ضمایر mein/dein/sein/ihr را درست استفاده می‌کنید؟",
+        "آیا اعداد ۱۱ تا ۱۰۰ را می‌شمارید؟",
+        "آیا می‌توانید سن خود را به آلمانی بگویید؟"
+      ],
+      "en": [
+        "Can you ask how someone is informally and formally?",
+        "Do you know different responses (sehr gut, gut, es geht, so lala)?",
+        "Do you know farewell types (Tschüss, Auf Wiedersehen, Bis bald)?",
+        "Do you know the difference between ein and kein?",
+        "Can you name family members in German?",
+        "Can you correctly use mein/dein/sein/ihr?",
+        "Can you count from 11 to 100?",
+        "Can you state your age in German?"
+      ],
+      "de": [
+        "Können Sie formell und informell nach dem Befinden fragen?",
+        "Kennen Sie verschiedene Antworten (sehr gut, gut, es geht, so lala)?",
+        "Kennen Sie Abschiedsarten (Tschüss, Auf Wiedersehen, Bis bald)?",
+        "Kennen Sie den Unterschied zwischen ein und kein?",
+        "Können Sie Familienmitglieder auf Deutsch nennen?",
+        "Verwenden Sie mein/dein/sein/ihr richtig?",
+        "Können Sie von 11 bis 100 zählen?",
+        "Können Sie Ihr Alter auf Deutsch angeben?"
+      ]
+    }
+  },
+
+  "cheatSheet": {
+    "greetings": [
+      { "de": "Wie geht's?", "fa": "چطوری؟ (دوستانه)" },
+      { "de": "Wie geht es Ihnen?", "fa": "حال شما چطور است؟ (رسمی)" },
+      { "de": "Danke, gut.", "fa": "ممنون، خوبم." },
+      { "de": "Sehr gut.", "fa": "خیلی خوب." },
+      { "de": "Es geht.", "fa": "بد نیست." },
+      { "de": "Tschüss!", "fa": "خداحافظ! (دوستانه)" },
+      { "de": "Auf Wiedersehen.", "fa": "خدانگهدار. (رسمی)" },
+      { "de": "Bis bald!", "fa": "به زودی!" }
+    ],
+    "pronouns": [
+      { "de": "mein/meine", "fa": "مال من" },
+      { "de": "dein/deine", "fa": "مال تو" },
+      { "de": "sein/seine", "fa": "مال او (مرد)" },
+      { "de": "ihr/ihre", "fa": "مال او (زن)" }
+    ],
+    "key_phrases": [
+      { "de": "Wie alt bist du?", "fa": "چند سالته؟ (دوستانه)" },
+      { "de": "Wie alt sind Sie?", "fa": "چند ساله‌اید؟ (رسمی)" },
+      { "de": "Ich bin ... Jahre alt.", "fa": "من ... ساله‌ام." },
+      { "de": "Wer ist das?", "fa": "این کیست؟" },
+      { "de": "Das ist mein Vater.", "fa": "این پدرم است." }
+    ],
+    "grammar": [
+      {
+        "title": "ein/kein",
+        "summary": "ein (یک) و kein (هیچ) - بر اساس جنسیت تغییر می‌کنند"
+      },
+      { "title": "mein/dein", "summary": "ضمیر ملکی مذکر=mein، مؤنث=meine" },
+      { "title": "sein/ihr", "summary": "مال او مرد=sein، زن=ihr" },
+      { "title": "اعداد مرکب", "summary": "21 = einundzwanzig (یک و بیست)" }
+    ],
+    "du_vs_sie": [
+      { "situation": "با دوستان و خانواده", "use": "du (Wie geht's?)" },
+      {
+        "situation": "با افراد غریبه بزرگسال",
+        "use": "Sie (Wie geht es Ihnen?)"
+      },
+      { "situation": "در محیط کاری رسمی", "use": "Sie" }
+    ]
+  },
+
+  "metadata": {
+    "createdAt": "2026-07-05",
+    "updatedAt": "2026-07-06",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "greetings",
+      "farewells",
+      "family",
+      "possessive-articles",
+      "numbers-11-100",
+      "ein-kein",
+      "A1"
+    ],
+    "difficulty": 1,
+    "prerequisites": ["A1-L01"]
+  }
+}

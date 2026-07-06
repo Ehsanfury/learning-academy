@@ -1,0 +1,458 @@
+{
+  "id": "a1-l05",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 5,
+  "title": {
+    "de": "Was machen Sie?",
+    "fa": "شما چه کار می‌کنید؟",
+    "en": "What do you do?"
+  },
+  "shortTitle": {
+    "de": "Was machen Sie?",
+    "fa": "چه کار می‌کنید؟",
+    "en": "What do you do?"
+  },
+  "description": {
+    "fa": "در این درس با افعال فعالیت‌های روزمره، بیان علایق و استفاده از قیدهای زمان ساده آشنا می‌شوید.",
+    "en": "In this lesson you will learn daily activity verbs, expressing interests and using simple adverbs of time.",
+    "de": "In dieser Lektion lernen Sie Verben für Alltagsaktivitäten, Interessen ausdrücken und einfache Zeitadverbien."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ یادگیری افعال فعالیت‌های روزمره",
+      "✅ بیان علایق و سرگرمی‌ها",
+      "✅ استفاده از قیدهای زمان ساده (heute, jetzt)",
+      "✅ ساختار جمله با افعال"
+    ]
+  },
+  "xpReward": 55,
+  "perfectBonusXP": 30,
+  "estimatedMinutes": 50,
+  "difficulty": 1,
+  "prerequisites": [
+    "a1-l04"
+  ],
+  "nextLessonId": "a1-l06",
+  "previousLessonId": "a1-l04",
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس پنجم خوش آمدید! ⚽\n\nدر این درس با افعال فعالیت‌های روزمره، بیان علایق و استفاده از قیدهای زمان آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• افعال فعالیت‌های روزمره به آلمانی\n• چگونه بگویید چه کارهایی دوست دارید\n• استفاده از قیدهای زمان ساده",
+        "en": "Welcome to lesson 5! ⚽\n\nIn this lesson you will learn daily activity verbs, expressing interests and using simple adverbs of time.\n\nYou will learn:\n• Daily activity verbs in German\n• How to say what you like to do\n• Using simple adverbs of time",
+        "de": "Willkommen zur fünften Lektion! ⚽\n\nIn dieser Lektion lernen Sie Verben für Alltagsaktivitäten, Interessen ausdrücken und einfache Zeitadverbien.\n\nSie lernen:\n• Verben für Alltagsaktivitäten auf Deutsch\n• Wie man sagt, was man gerne macht\n• Verwendung von einfachen Zeitadverbien"
+      }
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "arbeiten",
+          "fa": "کار کردن",
+          "en": "to work",
+          "icon": "💼",
+          "example": {
+            "de": "Ich arbeite im Büro.",
+            "fa": "من در دفتر کار می‌کنم.",
+            "en": "I work in the office."
+          }
+        },
+        {
+          "de": "lernen",
+          "fa": "یاد گرفتن / مطالعه کردن",
+          "en": "to learn/study",
+          "icon": "📚",
+          "example": {
+            "de": "Ich lerne Deutsch.",
+            "fa": "من آلمانی یاد می‌گیرم.",
+            "en": "I am learning German."
+          }
+        },
+        {
+          "de": "spielen",
+          "fa": "بازی کردن",
+          "en": "to play",
+          "icon": "🎮",
+          "example": {
+            "de": "Ich spiele Fußball.",
+            "fa": "من فوتبال بازی می‌کنم.",
+            "en": "I play football."
+          }
+        },
+        {
+          "de": "hören",
+          "fa": "شنیدن / گوش دادن",
+          "en": "to listen",
+          "icon": "🎧",
+          "example": {
+            "de": "Ich höre Musik.",
+            "fa": "من به موسیقی گوش می‌دهم.",
+            "en": "I listen to music."
+          }
+        },
+        {
+          "de": "lesen",
+          "fa": "خواندن",
+          "en": "to read",
+          "icon": "📖",
+          "example": {
+            "de": "Ich lese ein Buch.",
+            "fa": "من یک کتاب می‌خوانم.",
+            "en": "I read a book."
+          }
+        },
+        {
+          "de": "schreiben",
+          "fa": "نوشتن",
+          "en": "to write",
+          "icon": "✍️",
+          "example": {
+            "de": "Ich schreibe einen Brief.",
+            "fa": "من یک نامه می‌نویسم.",
+            "en": "I write a letter."
+          }
+        },
+        {
+          "de": "die Musik",
+          "fa": "موسیقی",
+          "en": "music",
+          "gender": "die",
+          "icon": "🎵"
+        },
+        {
+          "de": "der Fußball",
+          "fa": "فوتبال",
+          "en": "football",
+          "gender": "der",
+          "icon": "⚽"
+        },
+        {
+          "de": "jetzt",
+          "fa": "اکنون",
+          "en": "now",
+          "icon": "⏰"
+        },
+        {
+          "de": "heute",
+          "fa": "امروز",
+          "en": "today",
+          "icon": "📅"
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "ساختار جمله با افعال و قیدهای زمان",
+        "en": "Sentence Structure with Verbs and Adverbs of Time",
+        "de": "Satzstruktur mit Verben und Zeitadverbien"
+      },
+      "explanation": {
+        "fa": "📌 **ساختار جمله با افعال:**\n\nدر جملات خبری، فعل همیشه جایگاه دوم را اشغال می‌کند.\n\n• Ich lerne Deutsch. (من آلمانی یاد می‌گیرم)\n• Heute spiele ich Fußball. (امروز من فوتبال بازی می‌کنم)\n\n📌 **سوالات با کلمه پرسشی (W-Fragen):**\n\n• Was machen Sie? (شما چه کار می‌کنید؟)\n• Was lernst du? (تو چه چیزی یاد می‌گیری؟)",
+        "en": "📌 **Sentence Structure with Verbs:**\n\nIn statements, the verb always occupies the second position.\n\n• Ich lerne Deutsch.\n• Heute spiele ich Fußball.\n\n📌 **Questions with W-Fragen:**\n\n• Was machen Sie? (What do you do?)\n• Was lernst du? (What are you learning?)",
+        "de": "📌 **Satzstruktur mit Verben:**\n\nIn Aussagesätzen steht das Verb immer an zweiter Stelle.\n\n• Ich lerne Deutsch.\n• Heute spiele ich Fußball.\n\n📌 **Fragen mit W-Fragen:**\n\n• Was machen Sie?\n• Was lernst du?"
+      },
+      "examples": [
+        {
+          "de": "Ich lerne Deutsch.",
+          "fa": "من آلمانی یاد می‌گیرم.",
+          "en": "I learn German."
+        },
+        {
+          "de": "Heute spiele ich Fußball.",
+          "fa": "امروز فوتبال بازی می‌کنم.",
+          "en": "Today I play football."
+        },
+        {
+          "de": "Was machen Sie?",
+          "fa": "شما چه کار می‌کنید؟",
+          "en": "What do you do?"
+        },
+        {
+          "de": "Ich höre Musik.",
+          "fa": "من به موسیقی گوش می‌دهم.",
+          "en": "I listen to music."
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: یک روز معمولی",
+        "en": "📖 Story: A Normal Day",
+        "de": "📖 Geschichte: Ein normaler Tag"
+      },
+      "text": {
+        "de": "Heute ist ein normaler Tag. Ich arbeite im Büro. Ich lerne Deutsch. Ich höre Musik. Ich spiele Fußball. Das ist mein Hobby. Was machst du?",
+        "fa": "امروز یک روز عادی است. من در دفتر کار می‌کنم. من آلمانی یاد می‌گیرم. من به موسیقی گوش می‌دهم. من فوتبال بازی می‌کنم. این سرگرمی من است. تو چه کار می‌کنی؟",
+        "en": "Today is a normal day. I work in the office. I learn German. I listen to music. I play football. This is my hobby. What do you do?"
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "سرگرمی من چیست؟",
+            "en": "What is my hobby?",
+            "de": "Was ist mein Hobby?"
+          },
+          "answer": {
+            "fa": "فوتبال بازی کردن",
+            "en": "Playing football",
+            "de": "Fußball spielen"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "چه چیزی یاد می‌گیرم؟",
+            "en": "What am I learning?",
+            "de": "Was lerne ich?"
+          },
+          "answer": {
+            "fa": "آلمانی",
+            "en": "German",
+            "de": "Deutsch"
+          }
+        }
+      ]
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "fill_in",
+          "question": {
+            "fa": "فعل lernen را برای du صرف کنید: Du ________.",
+            "en": "Conjugate lernen for du: Du ________.",
+            "de": "Konjugieren Sie lernen für du: Du ________."
+          },
+          "answer": "lernst",
+          "hint": {
+            "fa": "du → -st",
+            "en": "du → -st",
+            "de": "du → -st"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "sentence_building",
+          "question": {
+            "fa": "کلمات را مرتب کنید: 'Musik / ich / höre'",
+            "en": "Arrange: 'Musik / ich / höre'",
+            "de": "Ordnen: 'Musik / ich / höre'"
+          },
+          "answer": "Ich höre Musik.",
+          "hint": {
+            "fa": "فعل در جایگاه دوم",
+            "en": "Verb in second position",
+            "de": "Verb an zweiter Stelle"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'او (مذکر) کار می‌کند.'",
+            "en": "Translate: 'He works.'",
+            "de": "Übersetzen: 'Er arbeitet.'"
+          },
+          "answer": "Er arbeitet.",
+          "hint": {
+            "fa": "arbeiten = کار کردن",
+            "en": "arbeiten = to work",
+            "de": "arbeiten = arbeiten"
+          }
+        }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "arbeiten",
+          "fa": "کار کردن",
+          "en": "to work",
+          "icon": "💼"
+        },
+        {
+          "de": "lernen",
+          "fa": "یاد گرفتن",
+          "en": "to learn",
+          "icon": "📚"
+        },
+        {
+          "de": "spielen",
+          "fa": "بازی کردن",
+          "en": "to play",
+          "icon": "🎮"
+        },
+        {
+          "de": "hören",
+          "fa": "گوش دادن",
+          "en": "to listen",
+          "icon": "🎧"
+        },
+        {
+          "de": "lesen",
+          "fa": "خواندن",
+          "en": "to read",
+          "icon": "📖"
+        },
+        {
+          "de": "schreiben",
+          "fa": "نوشتن",
+          "en": "to write",
+          "icon": "✍️"
+        },
+        {
+          "de": "die Musik",
+          "fa": "موسیقی",
+          "en": "music",
+          "icon": "🎵"
+        },
+        {
+          "de": "der Fußball",
+          "fa": "فوتبال",
+          "en": "football",
+          "icon": "⚽"
+        },
+        {
+          "de": "jetzt",
+          "fa": "اکنون",
+          "en": "now",
+          "icon": "⏰"
+        },
+        {
+          "de": "heute",
+          "fa": "امروز",
+          "en": "today",
+          "icon": "📅"
+        }
+      ]
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "arbeiten",
+          "phonetic": "/ˈaʁbaɪ̯tn̩/"
+        },
+        {
+          "word": "lernen",
+          "phonetic": "/ˈlɛʁnən/"
+        },
+        {
+          "word": "spielen",
+          "phonetic": "/ˈʃpiːlən/"
+        },
+        {
+          "word": "hören",
+          "phonetic": "/ˈhøːʁən/"
+        },
+        {
+          "word": "Fußball",
+          "phonetic": "/ˈfuːsbal/"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich ________ Deutsch.' (lernen)",
+            "en": "Complete: 'Ich ________ Deutsch.' (lernen)",
+            "de": "Vervollständigen: 'Ich ________ Deutsch.' (lernen)"
+          },
+          "answer": "lerne",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "'من فوتبال بازی می‌کنم' به آلمانی چیست؟",
+            "en": "What is 'I play football' in German?",
+            "de": "Was ist 'Ich spiele Fußball' auf Deutsch?"
+          },
+          "options": [
+            "Ich spiele Fußball.",
+            "Ich spielen Fußball.",
+            "Ich spielst Fußball.",
+            "Ich spielt Fußball."
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ افعال فعالیت‌های روزمره",
+          "✅ بیان علایق و سرگرمی‌ها",
+          "✅ استفاده از قیدهای زمان (heute, jetzt)",
+          "✅ ساختار جمله با افعال"
+        ],
+        "en": [
+          "✅ Daily activity verbs",
+          "✅ Expressing interests and hobbies",
+          "✅ Using adverbs of time (heute, jetzt)",
+          "✅ Sentence structure with verbs"
+        ],
+        "de": [
+          "✅ Verben für Alltagsaktivitäten",
+          "✅ Interessen und Hobbys ausdrücken",
+          "✅ Verwendung von Zeitadverbien (heute, jetzt)",
+          "✅ Satzstruktur mit Verben"
+        ]
+      }
+    }
+  ]
+}

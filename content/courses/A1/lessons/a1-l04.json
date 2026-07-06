@@ -1,0 +1,582 @@
+{
+  "id": "a1-l04",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 4,
+  "version": "2.0.0",
+  "status": "published",
+  "lastUpdated": "2026-06-26",
+  "estimatedTime": 50,
+  "difficulty": 1,
+  "prerequisites": [
+    "a1-l03"
+  ],
+  "nextLessonId": "a1-l05",
+  "previousLessonId": "a1-l03",
+  "title": {
+    "de": "Was ist das?",
+    "fa": "این چیست؟",
+    "en": "What is this?"
+  },
+  "shortTitle": {
+    "de": "Was ist das?",
+    "fa": "این چیست؟",
+    "en": "What is this?"
+  },
+  "description": {
+    "fa": "در این درس با نام اشیاء (مدرسه، دفتر کار)، رنگ‌ها و معرفی اشیاء با استفاده از ابزار تعریف آشنا می‌شوید.",
+    "en": "In this lesson you will learn school and office objects, colors and introducing objects using articles.",
+    "de": "In dieser Lektion lernen Sie Schul- und Bürogegenstände, Farben und das Vorstellen von Gegenständen mit Artikeln."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ یادگیری نام اشیاء مدرسه و دفتر کار به آلمانی",
+      "✅ شناخت رنگ‌ها به آلمانی",
+      "✅ استفاده از ابزار تعریف نامعین (ein/eine)",
+      "✅ منفی کردن با kein/keine"
+    ]
+  },
+  "xpReward": 55,
+  "perfectBonusXP": 25,
+  "completionBonusXP": 75,
+  "cefr": "A1.1",
+  "goetheChapter": "Kapitel 1",
+  "tags": [],
+  "skills": [
+    "listening",
+    "speaking",
+    "reading",
+    "writing"
+  ],
+  "examRelevance": [
+    "Goethe-A1",
+    "TELC-A1",
+    "ÖSD-A1"
+  ],
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس چهارم خوش آمدید! 📚\n\nدر این درس با نام اشیاء مدرسه و دفتر کار، رنگ‌ها و معرفی اشیاء آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• نام اشیاء مدرسه و دفتر کار به آلمانی\n• رنگ‌های اصلی به آلمانی\n• استفاده از ein/eine برای اشیاء نامشخص\n• منفی کردن با kein/keine",
+        "en": "Welcome to lesson 4! 📚\n\nIn this lesson you will learn school and office objects, colors and introducing objects.\n\nYou will learn:\n• School and office object names in German\n• Main colors in German\n• Using ein/eine for indefinite objects\n• Negation with kein/keine",
+        "de": "Willkommen zur vierten Lektion! 📚\n\nIn dieser Lektion lernen Sie Schul- und Bürogegenstände, Farben und das Vorstellen von Gegenständen.\n\nSie lernen:\n• Schul- und Bürogegenstände auf Deutsch\n• Hauptfarben auf Deutsch\n• Verwendung von ein/eine für unbestimmte Gegenstände\n• Verneinung mit kein/keine"
+      },
+      "id": "a1-l04-INTRO-001",
+      "order": 0
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "der Tisch",
+          "fa": "میز",
+          "en": "table",
+          "gender": "der",
+          "plural": "die Tische",
+          "icon": "🪑",
+          "example": {
+            "de": "Der Tisch ist groß.",
+            "fa": "میز بزرگ است.",
+            "en": "The table is big."
+          }
+        },
+        {
+          "de": "der Stuhl",
+          "fa": "صندلی",
+          "en": "chair",
+          "gender": "der",
+          "plural": "die Stühle",
+          "icon": "🪑",
+          "example": {
+            "de": "Der Stuhl ist klein.",
+            "fa": "صندلی کوچک است.",
+            "en": "The chair is small."
+          }
+        },
+        {
+          "de": "die Lampe",
+          "fa": "لامپ",
+          "en": "lamp",
+          "gender": "die",
+          "plural": "die Lampen",
+          "icon": "💡",
+          "example": {
+            "de": "Die Lampe ist an.",
+            "fa": "لامپ روشن است.",
+            "en": "The lamp is on."
+          }
+        },
+        {
+          "de": "das Buch",
+          "fa": "کتاب",
+          "en": "book",
+          "gender": "das",
+          "plural": "die Bücher",
+          "icon": "📖",
+          "example": {
+            "de": "Das Buch ist interessant.",
+            "fa": "کتاب جالب است.",
+            "en": "The book is interesting."
+          }
+        },
+        {
+          "de": "das Heft",
+          "fa": "دفتر",
+          "en": "notebook",
+          "gender": "das",
+          "plural": "die Hefte",
+          "icon": "📓",
+          "example": {
+            "de": "Das Heft ist neu.",
+            "fa": "دفتر جدید است.",
+            "en": "The notebook is new."
+          }
+        },
+        {
+          "de": "der Bleistift",
+          "fa": "مداد",
+          "en": "pencil",
+          "gender": "der",
+          "plural": "die Bleistifte",
+          "icon": "✏️",
+          "example": {
+            "de": "Der Bleistift ist lang.",
+            "fa": "مداد بلند است.",
+            "en": "The pencil is long."
+          }
+        },
+        {
+          "de": "der Kuli",
+          "fa": "خودکار",
+          "en": "pen",
+          "gender": "der",
+          "plural": "die Kulis",
+          "icon": "🖊️",
+          "example": {
+            "de": "Der Kuli schreibt gut.",
+            "fa": "خودکار خوب می‌نویسد.",
+            "en": "The pen writes well."
+          }
+        },
+        {
+          "de": "rot",
+          "fa": "قرمز",
+          "en": "red",
+          "icon": "🔴"
+        },
+        {
+          "de": "blau",
+          "fa": "آبی",
+          "en": "blue",
+          "icon": "🔵"
+        },
+        {
+          "de": "grün",
+          "fa": "سبز",
+          "en": "green",
+          "icon": "🟢"
+        },
+        {
+          "de": "gelb",
+          "fa": "زرد",
+          "en": "yellow",
+          "icon": "🟡"
+        },
+        {
+          "de": "schwarz",
+          "fa": "سیاه",
+          "en": "black",
+          "icon": "⚫"
+        },
+        {
+          "de": "weiß",
+          "fa": "سفید",
+          "en": "white",
+          "icon": "⚪"
+        }
+      ],
+      "id": "a1-l04-VOC-002",
+      "order": 1
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "ابزار تعریف نامعین (ein/eine) و منفی کردن",
+        "en": "Indefinite Articles (ein/eine) and Negation",
+        "de": "Unbestimmte Artikel (ein/eine) und Verneinung"
+      },
+      "explanation": {
+        "fa": "📌 **ابزار تعریف نامعین (Unbestimmter Artikel):**\n\nوقتی درباره یک شیء 'نامشخص' صحبت می‌کنیم (یک میز، یک کتاب)، از ein یا eine استفاده می‌کنیم:\n\n• مذکر (der) → ein: Das ist ein Tisch.\n• خنثی (das) → ein: Das ist ein Buch.\n• مونث (die) → eine: Das ist eine Lampe.\n\n📌 **حالت منفی با 'kein/keine':**\n\nبرای اینکه بگوییم 'این یک [شیء] نیست'، از kein استفاده می‌کنیم:\n\n• Das ist kein Tisch. (این یک میز نیست)\n• Das ist keine Lampe. (این یک لامپ نیست)",
+        "en": "📌 **Indefinite Articles:**\n\nWhen talking about an 'unspecified' object (a table, a book), use ein or eine:\n\n• masculine (der) → ein: Das ist ein Tisch.\n• neuter (das) → ein: Das ist ein Buch.\n• feminine (die) → eine: Das ist eine Lampe.\n\n📌 **Negation with 'kein/keine':**\n\nTo say 'this is not a [object]', use kein:\n\n• Das ist kein Tisch. (This is not a table)\n• Das ist keine Lampe. (This is not a lamp)",
+        "de": "📌 **Unbestimmte Artikel:**\n\nWenn man über einen 'unbestimmten' Gegenstand spricht (ein Tisch, ein Buch), verwendet man ein oder eine:\n\n• maskulin (der) → ein: Das ist ein Tisch.\n• neutrum (das) → ein: Das ist ein Buch.\n• feminin (die) → eine: Das ist eine Lampe.\n\n📌 **Verneinung mit 'kein/keine':**\n\nUm zu sagen 'das ist kein [Gegenstand]', verwendet man kein:\n\n• Das ist kein Tisch.\n• Das ist keine Lampe."
+      },
+      "examples": [
+        {
+          "de": "Das ist ein Tisch.",
+          "fa": "این یک میز است.",
+          "en": "This is a table."
+        },
+        {
+          "de": "Das ist kein Tisch.",
+          "fa": "این یک میز نیست.",
+          "en": "This is not a table."
+        },
+        {
+          "de": "Das ist eine Lampe.",
+          "fa": "این یک لامپ است.",
+          "en": "This is a lamp."
+        },
+        {
+          "de": "Das ist keine Lampe.",
+          "fa": "این یک لامپ نیست.",
+          "en": "This is not a lamp."
+        },
+        {
+          "de": "Das ist ein rotes Buch.",
+          "fa": "این یک کتاب قرمز است.",
+          "en": "This is a red book."
+        }
+      ],
+      "id": "a1-l04-GRAM-003",
+      "order": 2
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: کلاس درس",
+        "en": "📖 Story: The Classroom",
+        "de": "📖 Geschichte: Das Klassenzimmer"
+      },
+      "text": {
+        "de": "Das ist ein Klassenzimmer. Da ist ein Tisch. Der Tisch ist braun. Da ist ein Stuhl. Der Stuhl ist schwarz. Da ist eine Lampe. Die Lampe ist neu. Da ist ein Buch. Das Buch ist rot. Da ist ein Heft. Das Heft ist grün. Da ist ein Bleistift. Der Bleistift ist lang.",
+        "fa": "این یک کلاس درس است. یک میز وجود دارد. میز قهوه‌ای است. یک صندلی وجود دارد. صندلی سیاه است. یک لامپ وجود دارد. لامپ جدید است. یک کتاب وجود دارد. کتاب قرمز است. یک دفتر وجود دارد. دفتر سبز است. یک مداد وجود دارد. مداد بلند است.",
+        "en": "This is a classroom. There is a table. The table is brown. There is a chair. The chair is black. There is a lamp. The lamp is new. There is a book. The book is red. There is a notebook. The notebook is green. There is a pencil. The pencil is long."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "رنگ میز چیست؟",
+            "en": "What color is the table?",
+            "de": "Welche Farbe hat der Tisch?"
+          },
+          "answer": {
+            "fa": "قهوه‌ای",
+            "en": "Brown",
+            "de": "Braun"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "رنگ کتاب چیست؟",
+            "en": "What color is the book?",
+            "de": "Welche Farbe hat das Buch?"
+          },
+          "answer": {
+            "fa": "قرمز",
+            "en": "Red",
+            "de": "Rot"
+          }
+        }
+      ],
+      "id": "a1-l04-STORY-004",
+      "order": 3
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "انتخاب صحیح: Das ist ____ Buch.",
+            "en": "Choose correct: Das ist ____ Buch.",
+            "de": "Richtig wählen: Das ist ____ Buch."
+          },
+          "options": [
+            "ein",
+            "eine"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "fa": "Buch خنثی است → ein",
+            "en": "Buch is neuter → ein",
+            "de": "Buch ist neutrum → ein"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "انتخاب صحیح: Das ist ____ Lampe.",
+            "en": "Choose correct: Das ist ____ Lampe.",
+            "de": "Richtig wählen: Das ist ____ Lampe."
+          },
+          "options": [
+            "ein",
+            "eine"
+          ],
+          "correctIndex": 1,
+          "explanation": {
+            "fa": "Lampe مونث است → eine",
+            "en": "Lampe is feminine → eine",
+            "de": "Lampe ist feminin → eine"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "fill_in",
+          "question": {
+            "fa": "جمله را منفی کنید: 'Das ist ein Bleistift.'",
+            "en": "Negate: 'Das ist ein Bleistift.'",
+            "de": "Verneinen: 'Das ist ein Bleistift.'"
+          },
+          "answer": "Das ist kein Bleistift.",
+          "hint": {
+            "fa": "ein → kein",
+            "en": "ein → kein",
+            "de": "ein → kein"
+          }
+        },
+        {
+          "id": "ex4",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'یک کتاب قرمز'",
+            "en": "Translate: 'a red book'",
+            "de": "Übersetzen: 'ein rotes Buch'"
+          },
+          "answer": "ein rotes Buch",
+          "hint": {
+            "fa": "Buch خنثی است",
+            "en": "Buch is neuter",
+            "de": "Buch ist neutrum"
+          }
+        }
+      ],
+      "id": "a1-l04-EXER-005",
+      "order": 4
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "der Tisch",
+          "fa": "میز",
+          "en": "table",
+          "icon": "🪑"
+        },
+        {
+          "de": "der Stuhl",
+          "fa": "صندلی",
+          "en": "chair",
+          "icon": "🪑"
+        },
+        {
+          "de": "die Lampe",
+          "fa": "لامپ",
+          "en": "lamp",
+          "icon": "💡"
+        },
+        {
+          "de": "das Buch",
+          "fa": "کتاب",
+          "en": "book",
+          "icon": "📖"
+        },
+        {
+          "de": "das Heft",
+          "fa": "دفتر",
+          "en": "notebook",
+          "icon": "📓"
+        },
+        {
+          "de": "der Bleistift",
+          "fa": "مداد",
+          "en": "pencil",
+          "icon": "✏️"
+        },
+        {
+          "de": "rot",
+          "fa": "قرمز",
+          "en": "red",
+          "icon": "🔴"
+        },
+        {
+          "de": "blau",
+          "fa": "آبی",
+          "en": "blue",
+          "icon": "🔵"
+        },
+        {
+          "de": "grün",
+          "fa": "سبز",
+          "en": "green",
+          "icon": "🟢"
+        },
+        {
+          "de": "gelb",
+          "fa": "زرد",
+          "en": "yellow",
+          "icon": "🟡"
+        }
+      ],
+      "id": "a1-l04-FLASH-006",
+      "order": 5
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "der Tisch",
+          "phonetic": "/deːɐ̯ tɪʃ/"
+        },
+        {
+          "word": "das Buch",
+          "phonetic": "/das buːx/"
+        },
+        {
+          "word": "der Bleistift",
+          "phonetic": "/deːɐ̯ ˈblaɪ̯ʃtɪft/"
+        },
+        {
+          "word": "rot",
+          "phonetic": "/ʁoːt/"
+        },
+        {
+          "word": "grün",
+          "phonetic": "/ɡʁyːn/"
+        }
+      ],
+      "id": "a1-l04-PRON-007",
+      "order": 6
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "انتخاب صحیح: Das ist ____ Tisch.",
+            "en": "Choose correct: Das ist ____ Tisch.",
+            "de": "Richtig wählen: Das ist ____ Tisch."
+          },
+          "options": [
+            "ein",
+            "eine"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Das ist ____ Lampe.' (یک)",
+            "en": "Complete: 'Das ist ____ Lampe.' (a)",
+            "de": "Vervollständigen: 'Das ist ____ Lampe.' (eine)"
+          },
+          "answer": "eine",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "'یک کتاب قرمز' به آلمانی چیست؟",
+            "en": "What is 'a red book' in German?",
+            "de": "Was ist 'ein rotes Buch' auf Deutsch?"
+          },
+          "options": [
+            "ein roter Buch",
+            "ein rotes Buch",
+            "eine rote Buch",
+            "einen roten Buch"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10
+        }
+      ],
+      "id": "a1-l04-QUIZ-008",
+      "order": 7
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ نام اشیاء مدرسه و دفتر کار به آلمانی",
+          "✅ رنگ‌های اصلی به آلمانی",
+          "✅ استفاده از ein/eine",
+          "✅ منفی کردن با kein/keine"
+        ],
+        "en": [
+          "✅ School and office object names in German",
+          "✅ Main colors in German",
+          "✅ Using ein/eine",
+          "✅ Negation with kein/keine"
+        ],
+        "de": [
+          "✅ Schul- und Bürogegenstände auf Deutsch",
+          "✅ Hauptfarben auf Deutsch",
+          "✅ Verwendung von ein/eine",
+          "✅ Verneinung mit kein/keine"
+        ]
+      },
+      "nextSteps": {
+        "fa": "📚 در درس بعدی (Was machen Sie?) با افعال فعالیت‌های روزمره و بیان علایق آشنا می‌شوید.",
+        "en": "📚 In the next lesson (Was machen Sie?) you will learn daily activities and expressing interests.",
+        "de": "📚 In der nächsten Lektion (Was machen Sie?) lernen Sie Alltagsaktivitäten und Interessen ausdrücken."
+      },
+      "id": "a1-l04-SUMM-009",
+      "order": 8
+    }
+  ],
+  "totalSections": 9,
+  "totalQuestions": 0,
+  "totalVocabulary": 0,
+  "isActive": true,
+  "exportable": true
+}

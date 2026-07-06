@@ -1,0 +1,113 @@
+{
+  "app": {
+    "name": "German Academy",
+    "tagline": "Learn German Smartly",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  },
+  "nav": {
+    "home": "Home",
+    "learn": "Learn",
+    "practice": "Practice",
+    "aiTutor": "AI Tutor",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Name",
+    "forgotPassword": "Forgot Password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginButton": "Sign In",
+    "registerButton": "Create Account",
+    "logoutConfirm": "Are you sure you want to logout?"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "streak": "Day Streak",
+    "xp": "XP",
+    "level": "Level",
+    "continueLearning": "Continue Learning",
+    "todayProgress": "Today's Progress",
+    "weeklyStats": "Weekly Stats",
+    "recentAchievements": "Recent Achievements"
+  },
+  "learn": {
+    "title": "Learning Path",
+    "levelA1": "Beginner A1",
+    "levelA2": "Elementary A2",
+    "levelB1": "Intermediate B1",
+    "levelB2": "Upper Intermediate B2",
+    "levelC1": "Advanced C1",
+    "levelC2": "Mastery C2",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "locked": "Locked",
+    "lessons": "Lessons",
+    "startLesson": "Start Lesson",
+    "continueLesson": "Continue Lesson"
+  },
+  "lesson": {
+    "vocabulary": "Vocabulary",
+    "grammar": "Grammar",
+    "listening": "Listening",
+    "speaking": "Speaking",
+    "reading": "Reading",
+    "writing": "Writing",
+    "quiz": "Quiz",
+    "complete": "Complete Lesson",
+    "next": "Next",
+    "previous": "Previous",
+    "check": "Check",
+    "correct": "Correct!",
+    "incorrect": "Try Again",
+    "xpEarned": "XP Earned"
+  },
+  "practice": {
+    "title": "Practice",
+    "flashcards": "Flashcards",
+    "quiz": "Quiz",
+    "review": "Review",
+    "listening": "Listening Practice",
+    "speaking": "Speaking Practice"
+  },
+  "aiTutor": {
+    "title": "AI Tutor",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "newConversation": "New Conversation",
+    "suggestions": "Suggested Topics",
+    "grammarMode": "Grammar Check Mode",
+    "chatMode": "Free Chat Mode",
+    "scenarioMode": "Scenario Mode"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "progress": "Progress"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "noResults": "No results found",
+    "emptyState": "Nothing here yet",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  }
+}

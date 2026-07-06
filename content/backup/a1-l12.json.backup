@@ -1,0 +1,451 @@
+{
+  "id": "a1-l12",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 12,
+  "title": {
+    "de": "Reise und Urlaub",
+    "fa": "سفر و تعطیلات",
+    "en": "Travel and Holidays"
+  },
+  "shortTitle": {
+    "de": "Reise und Urlaub",
+    "fa": "سفر و تعطیلات",
+    "en": "Travel and Holidays"
+  },
+  "description": {
+    "fa": "در این درس تمام آموخته‌ها را برای صحبت درباره سفر و تعطیلات ترکیب می‌کنید.",
+    "en": "In this lesson you will combine everything you have learned to talk about travel and holidays.",
+    "de": "In dieser Lektion kombinieren Sie alles Gelernte, um über Reisen und Urlaub zu sprechen."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ ترکیب زمان گذشته با افعال مودال",
+      "✅ صحبت درباره برنامه‌های سفر",
+      "✅ توصیف تجربیات گذشته",
+      "✅ گفتن خواسته‌ها و توانایی‌ها"
+    ]
+  },
+  "xpReward": 70,
+  "perfectBonusXP": 40,
+  "estimatedMinutes": 60,
+  "difficulty": 2,
+  "prerequisites": [
+    "a1-l11"
+  ],
+  "nextLessonId": null,
+  "previousLessonId": "a1-l11",
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس دوازدهم و آخرین درس سطح A1 خوش آمدید! 🌍\n\nدر این درس تمام آموخته‌ها را برای صحبت درباره سفر و تعطیلات ترکیب می‌کنید.\n\nدر این درس یاد می‌گیرید:\n• ترکیب زمان گذشته با افعال مودال\n• صحبت درباره برنامه‌های سفر\n• توصیف تجربیات گذشته\n• گفتن خواسته‌ها و توانایی‌ها",
+        "en": "Welcome to lesson 12, the final lesson of A1 level! 🌍\n\nIn this lesson you will combine everything you have learned to talk about travel and holidays.\n\nYou will learn:\n• Combining past tense with modal verbs\n• Talking about travel plans\n• Describing past experiences\n• Expressing wishes and abilities",
+        "de": "Willkommen zur zwölften und letzten Lektion des A1-Niveaus! 🌍\n\nIn dieser Lektion kombinieren Sie alles Gelernte, um über Reisen und Urlaub zu sprechen.\n\nSie lernen:\n• Kombination von Vergangenheitsform mit Modalverben\n• Über Reisepläne sprechen\n• Vergangene Erfahrungen beschreiben\n• Wünsche und Fähigkeiten ausdrücken"
+      }
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "die Reise",
+          "fa": "سفر",
+          "en": "trip/journey",
+          "gender": "die",
+          "plural": "die Reisen",
+          "icon": "✈️",
+          "example": {
+            "de": "Die Reise war schön.",
+            "fa": "سفر قشنگ بود.",
+            "en": "The trip was nice."
+          }
+        },
+        {
+          "de": "der Urlaub",
+          "fa": "تعطیلات",
+          "en": "holiday/vacation",
+          "gender": "der",
+          "plural": "die Urlaube",
+          "icon": "🏖️",
+          "example": {
+            "de": "Mein Urlaub war super.",
+            "fa": "تعطیلات من عالی بود.",
+            "en": "My vacation was great."
+          }
+        },
+        {
+          "de": "das Hotel",
+          "fa": "هتل",
+          "en": "hotel",
+          "gender": "das",
+          "plural": "die Hotels",
+          "icon": "🏨",
+          "example": {
+            "de": "Das Hotel ist sehr gut.",
+            "fa": "هتل خیلی خوب است.",
+            "en": "The hotel is very good."
+          }
+        },
+        {
+          "de": "das Meer",
+          "fa": "دریا",
+          "en": "sea",
+          "gender": "das",
+          "plural": "die Meere",
+          "icon": "🌊",
+          "example": {
+            "de": "Das Meer ist blau.",
+            "fa": "دریا آبی است.",
+            "en": "The sea is blue."
+          }
+        },
+        {
+          "de": "der Strand",
+          "fa": "ساحل",
+          "en": "beach",
+          "gender": "der",
+          "plural": "die Strände",
+          "icon": "🏖️",
+          "example": {
+            "de": "Der Strand ist sehr schön.",
+            "fa": "ساحل خیلی زیباست.",
+            "en": "The beach is very beautiful."
+          }
+        },
+        {
+          "de": "schön",
+          "fa": "زیبا",
+          "en": "beautiful",
+          "icon": "✨",
+          "example": {
+            "de": "Das Wetter ist schön.",
+            "fa": "هوا زیباست.",
+            "en": "The weather is nice."
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "ترکیب زمان گذشته با افعال مودال",
+        "en": "Combining Past Tense with Modal Verbs",
+        "de": "Kombination von Vergangenheit mit Modalverben"
+      },
+      "explanation": {
+        "fa": "📌 **ترکیب زمان گذشته با افعال مودال:**\n\nدر این درس یاد می‌گیرید که ترکیب کنید. هم از زمان گذشته برای گفتن اینکه کجا بوده‌اید استفاده کنید، و هم از افعال مودال برای گفتن اینکه چه کارهایی می‌خواهید انجام دهید.\n\n**مثال ترکیبی:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **نکته مهم:**\n\nبرای صحبت درباره برنامه‌های آینده از فعل möchten (می‌خواهم) استفاده می‌کنیم:\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **مرور زمان گذشته با sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen.",
+        "en": "📌 **Combining Past Tense with Modal Verbs:**\n\nIn this lesson you will learn to combine. Use the past tense to say where you have been, and modal verbs to say what you want to do.\n\n**Combined Example:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **Important Note:**\n\nTo talk about future plans, use möchten (would like to):\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **Review of Past Tense with sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen.",
+        "de": "📌 **Kombination von Vergangenheit mit Modalverben:**\n\nIn dieser Lektion lernen Sie zu kombinieren. Verwenden Sie die Vergangenheit, um zu sagen, wo Sie waren, und Modalverben, um zu sagen, was Sie tun möchten.\n\n**Kombiniertes Beispiel:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **Wichtiger Hinweis:**\n\nUm über Zukunftspläne zu sprechen, verwendet man möchten:\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **Wiederholung der Vergangenheit mit sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen."
+      },
+      "examples": [
+        {
+          "de": "Im Urlaub bin ich nach Italien gefahren.",
+          "fa": "در تعطیلات به ایتالیا رفتم.",
+          "en": "On holiday I went to Italy."
+        },
+        {
+          "de": "Ich möchte das Meer sehen.",
+          "fa": "من می‌خواهم دریا را ببینم.",
+          "en": "I would like to see the sea."
+        },
+        {
+          "de": "Im Sommer möchte ich nach Deutschland reisen.",
+          "fa": "در تابستان می‌خواهم به آلمان سفر کنم.",
+          "en": "In summer I would like to travel to Germany."
+        },
+        {
+          "de": "Mein Urlaub war sehr schön.",
+          "fa": "تعطیلات من خیلی زیبا بود.",
+          "en": "My holiday was very nice."
+        },
+        {
+          "de": "Ich kann gut schwimmen.",
+          "fa": "من می‌توانم خوب شنا کنم.",
+          "en": "I can swim well."
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: سفر به ایتالیا",
+        "en": "📖 Story: Trip to Italy",
+        "de": "📖 Geschichte: Reise nach Italien"
+      },
+      "text": {
+        "de": "Letztes Jahr war ich im Urlaub. Ich bin nach Italien gefahren. Ich war mit meiner Familie. Wir waren im Hotel. Das Hotel war sehr schön. Ich habe das Meer gesehen. Ich habe im Meer geschwommen. Ich habe italienisches Essen gegessen. Die Reise war wunderbar. Nächstes Jahr möchte ich nach Deutschland reisen.",
+        "fa": "سال گذشته در تعطیلات بودم. من به ایتالیا رفتم. با خانواده‌ام بودم. ما در هتل بودیم. هتل خیلی زیبا بود. من دریا را دیدم. در دریا شنا کردم. غذای ایتالیایی خوردم. سفر فوق‌العاده بود. سال آینده می‌خواهم به آلمان سفر کنم.",
+        "en": "Last year I was on holiday. I went to Italy. I was with my family. We were in a hotel. The hotel was very beautiful. I saw the sea. I swam in the sea. I ate Italian food. The trip was wonderful. Next year I would like to travel to Germany."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "سال گذشته کجا رفتم؟",
+            "en": "Where did I go last year?",
+            "de": "Wohin bin ich letztes Jahr gefahren?"
+          },
+          "answer": {
+            "fa": "ایتالیا",
+            "en": "Italy",
+            "de": "Italien"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "سال آینده می‌خواهم کجا بروم؟",
+            "en": "Where do I want to go next year?",
+            "de": "Wohin möchte ich nächstes Jahr reisen?"
+          },
+          "answer": {
+            "fa": "آلمان",
+            "en": "Germany",
+            "de": "Deutschland"
+          }
+        }
+      ]
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "sentence_building",
+          "question": {
+            "fa": "کلمات را مرتب کنید: 'bin / nach / Italien / ich / gefahren / im / Urlaub'",
+            "en": "Arrange: 'bin / nach / Italien / ich / gefahren / im / Urlaub'",
+            "de": "Ordnen: 'bin / nach / Italien / ich / gefahren / im / Urlaub'"
+          },
+          "answer": "Im Urlaub bin ich nach Italien gefahren.",
+          "hint": {
+            "fa": "فعل کمکی در جایگاه دوم",
+            "en": "Auxiliary verb in second position",
+            "de": "Hilfsverb an zweiter Stelle"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'من می‌خواهم دریا را ببینم.'",
+            "en": "Translate: 'I would like to see the sea.'",
+            "de": "Übersetzen: 'Ich möchte das Meer sehen.'"
+          },
+          "answer": "Ich möchte das Meer sehen.",
+          "hint": {
+            "fa": "möchten + مصدر در آخر",
+            "en": "möchten + Infinitive at the end",
+            "de": "möchten + Infinitiv am Ende"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "fill_in",
+          "question": {
+            "fa": "جمله را کامل کن: 'Mein Urlaub ____ sehr schön.' (بودن - گذشته)",
+            "en": "Complete: 'Mein Urlaub ____ sehr schön.' (was)",
+            "de": "Vervollständigen: 'Mein Urlaub ____ sehr schön.' (war)"
+          },
+          "answer": "war",
+          "hint": {
+            "fa": "sein در گذشته → war",
+            "en": "sein in past → war",
+            "de": "sein in der Vergangenheit → war"
+          }
+        }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "die Reise",
+          "fa": "سفر",
+          "en": "trip",
+          "icon": "✈️"
+        },
+        {
+          "de": "der Urlaub",
+          "fa": "تعطیلات",
+          "en": "holiday",
+          "icon": "🏖️"
+        },
+        {
+          "de": "das Hotel",
+          "fa": "هتل",
+          "en": "hotel",
+          "icon": "🏨"
+        },
+        {
+          "de": "das Meer",
+          "fa": "دریا",
+          "en": "sea",
+          "icon": "🌊"
+        },
+        {
+          "de": "der Strand",
+          "fa": "ساحل",
+          "en": "beach",
+          "icon": "🏖️"
+        },
+        {
+          "de": "schön",
+          "fa": "زیبا",
+          "en": "beautiful",
+          "icon": "✨"
+        },
+        {
+          "de": "Ich bin gefahren",
+          "fa": "من رفتم",
+          "en": "I went",
+          "icon": "🚗"
+        },
+        {
+          "de": "Ich möchte",
+          "fa": "من می‌خواهم",
+          "en": "I would like",
+          "icon": "💭"
+        }
+      ]
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "die Reise",
+          "phonetic": "/diː ˈʁaɪ̯zə/"
+        },
+        {
+          "word": "der Urlaub",
+          "phonetic": "/deːɐ̯ ˈuːɐ̯laʊ̯p/"
+        },
+        {
+          "word": "das Hotel",
+          "phonetic": "/das hoˈtɛl/"
+        },
+        {
+          "word": "das Meer",
+          "phonetic": "/das meːɐ̯/"
+        },
+        {
+          "word": "schön",
+          "phonetic": "/ʃøːn/"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich ____ nach Italien gefahren.' (گذشته با sein)",
+            "en": "Complete: 'Ich ____ nach Italien gefahren.' (past with sein)",
+            "de": "Vervollständigen: 'Ich ____ nach Italien gefahren.' (Vergangenheit mit sein)"
+          },
+          "answer": "bin",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich ____ das Meer sehen.' (می‌خواهم)",
+            "en": "Complete: 'Ich ____ das Meer sehen.' (would like)",
+            "de": "Vervollständigen: 'Ich ____ das Meer sehen.' (möchte)"
+          },
+          "answer": "möchte",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک به معنای 'تعطیلات' است؟",
+            "en": "Which means 'holiday'?",
+            "de": "Welches bedeutet 'Urlaub'?"
+          },
+          "options": [
+            "die Reise",
+            "der Urlaub",
+            "das Hotel",
+            "das Meer"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ ترکیب زمان گذشته با افعال مودال",
+          "✅ صحبت درباره برنامه‌های سفر",
+          "✅ توصیف تجربیات گذشته",
+          "✅ گفتن خواسته‌ها و توانایی‌ها"
+        ],
+        "en": [
+          "✅ Combining past tense with modal verbs",
+          "✅ Talking about travel plans",
+          "✅ Describing past experiences",
+          "✅ Expressing wishes and abilities"
+        ],
+        "de": [
+          "✅ Kombination von Vergangenheit mit Modalverben",
+          "✅ Über Reisepläne sprechen",
+          "✅ Vergangene Erfahrungen beschreiben",
+          "✅ Wünsche und Fähigkeiten ausdrücken"
+        ]
+      },
+      "nextSteps": {
+        "fa": "🎉 تبریک! شما سطح A1 را با موفقیت کامل کردید!\n\n📚 مرحله بعد: شروع سطح A2\n\n💪 به تمرین ادامه دهید و مهارت‌های خود را تقویت کنید!",
+        "en": "🎉 Congratulations! You have successfully completed A1 level!\n\n📚 Next step: Start A2 level\n\n💪 Keep practicing and strengthen your skills!",
+        "de": "🎉 Herzlichen Glückwunsch! Sie haben das A1-Niveau erfolgreich abgeschlossen!\n\n📚 Nächster Schritt: Start A2-Niveau\n\n💪 Üben Sie weiter und stärken Sie Ihre Fähigkeiten!"
+      }
+    }
+  ]
+}

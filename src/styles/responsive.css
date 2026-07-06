@@ -1,0 +1,96 @@
+/* ========== MOBILE FIRST (Default: 375px+) ========== */
+
+/* ========== TABLETS (768px+) ========== */
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .show-md {
+    display: block !important;
+  }
+
+  .hide-md {
+    display: none !important;
+  }
+
+  .grid-md-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-md-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .flex-md-row {
+    flex-direction: row;
+  }
+
+  .sidebar-desktop {
+    display: flex !important;
+  }
+
+  .bottom-nav-mobile {
+    display: none !important;
+  }
+
+  /* محدودیت عرض محتوا در دسکتاپ */
+  .container-app {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ========== LAPTOPS (1024px+) ========== */
+
+@media (min-width: 1024px) {
+  .show-lg {
+    display: block !important;
+  }
+
+  .hide-lg {
+    display: none !important;
+  }
+
+  .grid-lg-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-lg-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .container-app {
+    max-width: 960px;
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* ========== DESKTOPS (1280px+) ========== */
+
+@media (min-width: 1280px) {
+  .show-xl {
+    display: block !important;
+  }
+
+  .hide-xl {
+    display: none !important;
+  }
+
+  .container-app {
+    max-width: 1100px;
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+  }
+}
+
+/* ========== LARGE SCREENS (1536px+) ========== */
+
+@media (min-width: 1536px) {
+  .container-app {
+    max-width: 1300px;
+  }
+}

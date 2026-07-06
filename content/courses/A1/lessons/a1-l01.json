@@ -1,0 +1,1811 @@
+{
+  "id": "A1-L01",
+  "order": 1,
+  "level": "A1",
+  "unit": 1,
+  "version": "2.0.0",
+  "status": "published",
+  "title": {
+    "fa": "Super! - سلام و احوالپرسی",
+    "en": "Super! - Greetings and Introductions",
+    "de": "Super! - Begrüßung und Vorstellung"
+  },
+  "subtitle": {
+    "fa": "احوال‌پرسی، نام‌ها و معرفی خود",
+    "en": "Greetings, Names and Introductions",
+    "de": "Begrüßungen, Namen und Vorstellung"
+  },
+  "description": {
+    "fa": "در این درس شما با احوال‌پرسی‌های اصلی آلمانی، معرفی خود و دیگران، تفاوت du و Sie، و ساختار جملات خبری و پرسشی آشنا می‌شوید.",
+    "en": "In this lesson you will learn main German greetings, introducing yourself and others, the difference between du and Sie, and sentence structures.",
+    "de": "In dieser Lektion lernen Sie die wichtigsten deutschen Begrüßungen, sich und andere vorzustellen, den Unterschied zwischen du und Sie, und Satzstrukturen."
+  },
+  "estimatedMinutes": 90,
+  "xpReward": 75,
+  "perfectBonusXP": 30,
+  "difficulty": 1,
+  "cefr": "A1.1",
+
+  "learningObjectives": {
+    "fa": [
+      "احوال‌پرسی کردن در زمان‌های مختلف روز",
+      "معرفی خود با استفاده از 'ich heiße' و 'mein Name ist'",
+      "پرسیدن اسم دیگران به صورت رسمی و دوستانه",
+      "تشخیص تفاوت 'du' و 'Sie'",
+      "هجی کردن نام با الفبای آلمانی",
+      "گفتن کشور و زبان خود",
+      "ساختار جمله خبری (Aussagesatz)",
+      "ساختار سوال با W-Fragen و Ja-/Nein-Fragen"
+    ],
+    "en": [
+      "Greet at different times of day",
+      "Introduce yourself using 'ich heiße' and 'mein Name ist'",
+      "Ask others' names formally and informally",
+      "Recognize the difference between 'du' and 'Sie'",
+      "Spell your name with the German alphabet",
+      "Say your country and languages",
+      "Aussagesatz sentence structure",
+      "W-Fragen and Ja-/Nein-Fragen question structures"
+    ],
+    "de": [
+      "Begrüßung zu verschiedenen Tageszeiten",
+      "Sich vorstellen mit 'ich heiße' und 'mein Name ist'",
+      "Nach Namen fragen (formell und informell)",
+      "Unterschied zwischen 'du' und 'Sie' erkennen",
+      "Namen mit dem deutschen Alphabet buchstabieren",
+      "Land und Sprachen nennen",
+      "Aussagesatz-Struktur",
+      "W-Fragen und Ja-/Nein-Fragen Struktur"
+    ]
+  },
+
+  "requiredPreviousKnowledge": {
+    "fa": "هیچ دانش قبلی لازم نیست. این اولین درس دوره A1 است.",
+    "en": "No previous knowledge required. This is the first lesson of A1.",
+    "de": "Keine Vorkenntnisse erforderlich. Dies ist die erste Lektion von A1."
+  },
+
+  "storyMode": {
+    "title": {
+      "fa": "صحنه داستان (Story Mode)",
+      "en": "Story Mode",
+      "de": "Story Mode"
+    },
+    "description": {
+      "fa": "ما در یک کلاس زبان آلمانی در یک مدرسه زبان در برلین هستیم. معلم کلاس، Frau Schwarz (فراو شوارتس)، است. او زنی حدود ۴۰ ساله است، با مهربانی و صبوری.",
+      "en": "We are in a German language class at a language school in Berlin. The teacher is Frau Schwarz, a woman around 40 years old, kind and patient.",
+      "de": "Wir sind in einem Deutschkurs an einer Sprachschule in Berlin. Die Lehrerin ist Frau Schwarz, eine Frau um die 40, freundlich und geduldig."
+    },
+    "characters": [
+      {
+        "name": "Nina",
+        "persian": "نی-نا",
+        "country": "ایران",
+        "age": 25,
+        "job": "مهندس کامپیوتر"
+      },
+      {
+        "name": "Fabio",
+        "persian": "فا-بی-و",
+        "country": "ایتالیا",
+        "age": 28,
+        "job": "آشپز"
+      },
+      {
+        "name": "Martha",
+        "persian": "مار-تا",
+        "country": "آمریکا",
+        "age": 30,
+        "job": "معلم"
+      },
+      {
+        "name": "Emilia",
+        "persian": "اِمی-لی-ا",
+        "country": "اسپانیا",
+        "age": 22,
+        "job": "دانشجو"
+      },
+      {
+        "name": "Paul",
+        "persian": "پاول",
+        "country": "برزیل",
+        "age": 26,
+        "job": "طراح"
+      },
+      {
+        "name": "Feng",
+        "persian": "فِنگ",
+        "country": "چین",
+        "age": 24,
+        "job": "دانشجوی دکتری"
+      }
+    ]
+  },
+
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به اولین درس آلمانی خوش آمدید!",
+      "en": "Welcome to your first German lesson!",
+      "de": "Willkommen zu deiner ersten Deutschstunde!"
+    },
+    "content": {
+      "fa": "تصور کنید وارد یک کافه در برلین می‌شوید. می‌خواهید یک قهوه سفارش دهید، اما نمی‌دانید چگونه سلام کنید یا سفارش دهید. این درس به شما کمک می‌کند تا اولین قدم‌های خود را در زبان آلمانی بردارید.\n\nدر این درس، شما با احوال‌پرسی‌های اصلی آلمانی، نحوه معرفی خود و دیگران، تفاوت بین du و Sie، و ساختار جملات خبری و پرسشی آشنا می‌شوید.",
+      "en": "Imagine walking into a café in Berlin. You want to order a coffee, but you don't know how to greet or order. This lesson will help you take your first steps in German.\n\nIn this lesson, you will learn the main German greetings, how to introduce yourself and others, the difference between du and Sie, and sentence structures.",
+      "de": "Stell dir vor, du betrittst ein Café in Berlin. Du möchtest einen Kaffee bestellen, aber du weißt nicht, wie man grüßt oder bestellt. Diese Lektion hilft dir, deine ersten Schritte in der deutschen Sprache zu machen.\n\nIn dieser Lektion lernst du die wichtigsten deutschen Begrüßungen, wie man sich und andere vorstellt, den Unterschied zwischen du und Sie, und Satzstrukturen."
+    },
+    "imagePrompt": "A person entering a cozy German café, warm atmosphere, Berlin street view through window"
+  },
+
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
+    },
+    "layers": {
+      "fa": "سه لایه تلفظ: ۱. تلفظ فارسی ۲. IPA ۳. توصیف فیزیکی",
+      "en": "Three layers of pronunciation: 1. Persian pronunciation 2. IPA 3. Physical description",
+      "de": "Drei Ausspracheschichten: 1. Persische Aussprache 2. IPA 3. Physische Beschreibung"
+    },
+    "sounds": [
+      {
+        "id": "sound-r",
+        "letter": "r",
+        "description": {
+          "fa": "صدای غُرّی از حلق - مانند 'r' فرانسوی",
+          "en": "Uvular sound - like French 'r'",
+          "de": "Uvularer Laut - wie französisches 'r'"
+        },
+        "ipa": "[ʁ] oder [ɐ]",
+        "persianEquivalent": "≈ غُرّ کردن گربه",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ر' فارسی با نوک زبان",
+          "en": "Pronouncing like Persian 'r' with tongue tip",
+          "de": "Aussprache wie persisches 'r' mit der Zungenspitze"
+        },
+        "examples": [
+          { "word": "Morgen", "persian": "مور-گِن", "meaning": "صبح" },
+          { "word": "Frau", "persian": "فراو", "meaning": "خانم" },
+          { "word": "Herr", "persian": "هِر", "meaning": "آقا" },
+          { "word": "Rot", "persian": "روت", "meaning": "قرمز" }
+        ]
+      },
+      {
+        "id": "sound-ch-soft",
+        "letter": "ch (بعد از e, i, ä, ö, ü)",
+        "description": {
+          "fa": "'ه' فشرده - چیزی بین 'ه' و 'خ'",
+          "en": "Compressed 'h' - between 'h' and 'kh'",
+          "de": "Komprimiertes 'h' - zwischen 'h' und 'ch'"
+        },
+        "ipa": "[ç]",
+        "persianEquivalent": "≈ 'ه' فشرده",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ه' ساده یا 'خ'",
+          "en": "Pronouncing like simple 'h' or 'kh'",
+          "de": "Aussprache wie einfaches 'h' oder 'ch'"
+        },
+        "examples": [
+          { "word": "ich", "persian": "ایخ", "meaning": "من" },
+          { "word": "nicht", "persian": "نیخت", "meaning": "نه" },
+          { "word": "ich heiße", "persian": "ایخ های-سِه", "meaning": "نام من است" }
+        ]
+      },
+      {
+        "id": "sound-ch-hard",
+        "letter": "ch (بعد از a, o, u, au)",
+        "description": {
+          "fa": "'خ' ساده مثل 'خ' فارسی",
+          "en": "Simple 'kh' like Persian 'خ'",
+          "de": "Einfaches 'ch' wie persisches 'خ'"
+        },
+        "ipa": "[x]",
+        "persianEquivalent": "≈ 'خ' در 'خوب'",
+        "commonMistake": {
+          "fa": "تلفظ بیش از حد سخت",
+          "en": "Pronouncing too hard",
+          "de": "Zu hart ausgesprochen"
+        },
+        "examples": [
+          { "word": "Buch", "persian": "بوخ", "meaning": "کتاب" },
+          { "word": "machen", "persian": "ما-خِن", "meaning": "کردن" },
+          { "word": "Nacht", "persian": "ناخت", "meaning": "شب" }
+        ]
+      },
+      {
+        "id": "sound-ue",
+        "letter": "ü",
+        "description": {
+          "fa": "بین 'ای' و 'او' - لب‌ها گرد، زبان جلو",
+          "en": "Between 'ee' and 'oo' - rounded lips, front tongue",
+          "de": "Zwischen 'i' und 'u' - gerundete Lippen, vordere Zunge"
+        },
+        "ipa": "[yː]",
+        "persianEquivalent": "≈ بین 'ای' و 'او'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'و' یا 'او'",
+          "en": "Pronouncing like 'oo' or 'ou'",
+          "de": "Aussprache wie 'u' oder 'ou'"
+        },
+        "examples": [
+          { "word": "über", "persian": "ای-بِر", "meaning": "بالا/درباره" },
+          { "word": "Tschüss", "persian": "چوس", "meaning": "خداحافظ" }
+        ]
+      },
+      {
+        "id": "sound-oe",
+        "letter": "ö",
+        "description": {
+          "fa": "بین 'اُ' و 'اِ' - لب‌ها گرد، زبان جلو",
+          "en": "Between 'o' and 'e' - rounded lips, front tongue",
+          "de": "Zwischen 'o' und 'e' - gerundete Lippen, vordere Zunge"
+        },
+        "ipa": "[øː]",
+        "persianEquivalent": "≈ بین 'اُ' و 'اِ'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'و'",
+          "en": "Pronouncing like 'oo'",
+          "de": "Aussprache wie 'u'"
+        },
+        "examples": [
+          { "word": "schön", "persian": "شون", "meaning": "زیبا" },
+          { "word": "König", "persian": "کو-نیخ", "meaning": "پادشاه" }
+        ]
+      },
+      {
+        "id": "sound-ei",
+        "letter": "ei / ai",
+        "description": {
+          "fa": "مثل 'ای' کشیده",
+          "en": "Long 'ay' sound",
+          "de": "Langer 'ei'-Laut"
+        },
+        "ipa": "[aɪ̯]",
+        "persianEquivalent": "≈ 'ای' کشیده",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ای' ساده",
+          "en": "Pronouncing like simple 'ay'",
+          "de": "Aussprache wie einfaches 'ei'"
+        },
+        "examples": [
+          { "word": "heißen", "persian": "های-سِن", "meaning": "نام داشتن" },
+          { "word": "Mein", "persian": "ماین", "meaning": "مال من" },
+          { "word": "Mai", "persian": "مای", "meaning": "مه (ماه)" }
+        ]
+      },
+      {
+        "id": "sound-eu",
+        "letter": "eu / äu",
+        "description": {
+          "fa": "مثل 'او-ی'",
+          "en": "Like 'oi' in 'oil'",
+          "de": "Wie 'oi' in 'Öl'"
+        },
+        "ipa": "[ɔɪ̯]",
+        "persianEquivalent": "≈ 'او-ی'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'او' ساده",
+          "en": "Pronouncing like simple 'ow'",
+          "de": "Aussprache wie einfaches 'au'"
+        },
+        "examples": [
+          { "word": "Deutsch", "persian": "دوی-تچ", "meaning": "آلمانی" },
+          { "word": "neu", "persian": "نوی", "meaning": "جدید" },
+          { "word": "Frau", "persian": "فراو", "meaning": "خانم" }
+        ]
+      },
+      {
+        "id": "sound-sch",
+        "letter": "sch",
+        "description": {
+          "fa": "مثل 'ش' فارسی",
+          "en": "Like 'sh' in English",
+          "de": "Wie 'sch' im Deutschen"
+        },
+        "ipa": "[ʃ]",
+        "persianEquivalent": "≈ 'ش'",
+        "commonMistake": {
+          "fa": "این صدا برای فارسی‌زبانان آسان است",
+          "en": "This sound is easy for Persian speakers",
+          "de": "Dieser Laut ist für Persisch-Sprecher einfach"
+        },
+        "examples": [
+          { "word": "Schwarz", "persian": "شوارتس", "meaning": "سیاه / شوارتس (نام)" },
+          { "word": "Schule", "persian": "شو-لِه", "meaning": "مدرسه" },
+          { "word": "Tschüss", "persian": "چوس", "meaning": "خداحافظ" }
+        ]
+      },
+      {
+        "id": "sound-ss",
+        "letter": "ß",
+        "description": {
+          "fa": "مثل 'س' سخت",
+          "en": "Sharp 's' sound",
+          "de": "Scharfes 's'"
+        },
+        "ipa": "[s]",
+        "persianEquivalent": "≈ 'س' سخت",
+        "commonMistake": {
+          "fa": "تلفظ آن دقیقاً مثل 'ss' است",
+          "en": "It's pronounced exactly like 'ss'",
+          "de": "Es wird genau wie 'ss' ausgesprochen"
+        },
+        "examples": [
+          { "word": "Straße", "persian": "شترا-سِه", "meaning": "خیابان" },
+          { "word": "groß", "persian": "گرو-س", "meaning": "بزرگ" },
+          { "word": "heißen", "persian": "های-سِن", "meaning": "نام داشتن" }
+        ]
+      }
+    ]
+  },
+
+  "greetings": {
+    "items": [
+      {
+        "id": "greet-hallo",
+        "german": "Hallo",
+        "persian": "ها-لو",
+        "ipa": "[haˈloː]",
+        "meaning": "سلام",
+        "time": "همه وقت",
+        "formality": "دوستانه",
+        "usage": {
+          "fa": "با دوستان، خانواده، همکاران نزدیک",
+          "en": "With friends, family, close colleagues",
+          "de": "Mit Freunden, Familie, engen Kollegen"
+        },
+        "commonMistake": {
+          "fa": "تلفظ 'h' مانند فارسی - باید کاملاً شنیده شود",
+          "en": "Pronouncing 'h' like Persian - must be fully heard",
+          "de": "Aussprache von 'h' wie Persisch - muss vollständig gehört werden"
+        },
+        "root": {
+          "fa": "از انگلیسی 'Hello' وارد آلمانی شده است",
+          "en": "Came from English 'Hello'",
+          "de": "Kommt aus dem Englischen 'Hello'"
+        }
+      },
+      {
+        "id": "greet-morgen",
+        "german": "Guten Morgen",
+        "persian": "گو-تِن مور-گِن",
+        "ipa": "[ˈɡuˀtn̩ ˈmɔʁɡn̩]",
+        "meaning": "صبح بخیر",
+        "time": "۶-۱۱ صبح",
+        "formality": "نیمه‌رسمی",
+        "usage": {
+          "fa": "تا حدود ساعت ۱۱ صبح",
+          "en": "Until about 11 AM",
+          "de": "Bis etwa 11 Uhr"
+        },
+        "commonMistake": {
+          "fa": "'r' را مثل فارسی تلفظ نکنید - باید غُرّی باشد",
+          "en": "Don't pronounce 'r' like Persian - should be uvular",
+          "de": "'r' nicht wie Persisch aussprechen - sollte uvular sein"
+        },
+        "breakdown": {
+          "fa": "Guten = صفت 'gut' (خوب) در حالت Akkusativ • Morgen = صبح",
+          "en": "Guten = adjective 'gut' (good) in Akkusativ • Morgen = morning",
+          "de": "Guten = Adjektiv 'gut' im Akkusativ • Morgen = Morgen"
+        }
+      },
+      {
+        "id": "greet-tag",
+        "german": "Guten Tag",
+        "persian": "گو-تِن تاخ",
+        "ipa": "[ˈɡuːtn̩ ˈtaːk]",
+        "meaning": "روز بخیر",
+        "time": "۱۱-۱۸",
+        "formality": "رسمی",
+        "usage": {
+          "fa": "در فروشگاه‌ها، اداره‌ها، با افراد غریبه",
+          "en": "In shops, offices, with strangers",
+          "de": "In Geschäften, Ämtern, mit Fremden"
+        },
+        "commonMistake": {
+          "fa": "'g' آخر را مانند 'گ' تلفظ نکنید - 'خ' است",
+          "en": "Don't pronounce final 'g' like 'g' - it's 'kh'",
+          "de": "Finales 'g' nicht wie 'g' aussprechen - es ist 'ch'"
+        }
+      },
+      {
+        "id": "greet-abend",
+        "german": "Guten Abend",
+        "persian": "گو-تِن آ-بِنت",
+        "ipa": "[ˈɡuːtn̩ ˈaːbn̩t]",
+        "meaning": "عصر بخیر",
+        "time": "۱۸-۲۲",
+        "formality": "رسمی",
+        "usage": {
+          "fa": "از حدود ۶ عصر به بعد",
+          "en": "From about 6 PM onwards",
+          "de": "Ab etwa 18 Uhr"
+        },
+        "commonMistake": {
+          "fa": "'د' آخر تلفظ نمی‌شود - بگویید 'بِنت' نه 'بِند'",
+          "en": "Final 'd' is not pronounced - say 'bent' not 'bend'",
+          "de": "Finales 'd' wird nicht ausgesprochen - sagen Sie 'bent' nicht 'bend'"
+        }
+      },
+      {
+        "id": "greet-nacht",
+        "german": "Gute Nacht",
+        "persian": "گو-تِه ناخ-ت",
+        "ipa": "[ˈɡuːtə ˈnaxt]",
+        "meaning": "شب بخیر",
+        "time": "قبل از خواب",
+        "formality": "نیمه‌رسمی",
+        "usage": {
+          "fa": "قبل از خوابیدن",
+          "en": "Before sleeping",
+          "de": "Vor dem Schlafengehen"
+        },
+        "commonMistake": {
+          "fa": "'Gute' (گو-تِه) نه 'Guten' (گو-تِن)",
+          "en": "'Gute' not 'Guten'",
+          "de": "'Gute' nicht 'Guten'"
+        },
+        "grammarNote": {
+          "fa": "'Nacht' مؤنث است (die Nacht) پس 'Gute' می‌گیرد",
+          "en": "'Nacht' is feminine (die Nacht) so it takes 'Gute'",
+          "de": "'Nacht' ist feminin (die Nacht) also nimmt es 'Gute'"
+        }
+      },
+      {
+        "id": "greet-tschüss",
+        "german": "Tschüss",
+        "persian": "چوس",
+        "ipa": "[tʃʏs]",
+        "meaning": "خداحافظ",
+        "time": "همه وقت",
+        "formality": "دوستانه",
+        "usage": {
+          "fa": "با دوستان و خانواده",
+          "en": "With friends and family",
+          "de": "Mit Freunden und Familie"
+        },
+        "commonMistake": {
+          "fa": "'ü' را مانند 'و' تلفظ نکنید - بین 'ای' و 'او' است",
+          "en": "Don't pronounce 'ü' like 'oo' - it's between 'ee' and 'oo'",
+          "de": "'ü' nicht wie 'u' aussprechen - es ist zwischen 'i' und 'u'"
+        },
+        "root": {
+          "fa": "از عبارت فرانسوی 'adieu' (خداحافظ) وارد شده است",
+          "en": "Came from French 'adieu' (goodbye)",
+          "de": "Kommt vom französischen 'adieu' (auf Wiedersehen)"
+        }
+      },
+      {
+        "id": "greet-wiedersehen",
+        "german": "Auf Wiedersehen",
+        "persian": "آوف وی-دِر-زِ-اِن",
+        "ipa": "[aʊf ˈviːdɐˌzeːən]",
+        "meaning": "خدانگهدار",
+        "time": "همه وقت",
+        "formality": "رسمی",
+        "usage": {
+          "fa": "در موقعیت‌های رسمی",
+          "en": "In formal situations",
+          "de": "In formellen Situationen"
+        },
+        "commonMistake": {
+          "fa": "کلمه طولانی است - به قسمت‌ها تقسیم کنید: آوف / وی-دِر / زِ-اِن",
+          "en": "Long word - break it down: auf / wie-der / se-hen",
+          "de": "Langes Wort - teilen Sie es auf: auf / wie-der / se-hen"
+        },
+        "breakdown": {
+          "fa": "Auf = بر • Wieder = دوباره • sehen = دیدن → 'تا دیدار دوباره'",
+          "en": "Auf = on • Wieder = again • sehen = to see → 'until we see each other again'",
+          "de": "Auf = auf • Wieder = wieder • sehen = sehen → 'auf Wiedersehen'"
+        }
+      }
+    ]
+  },
+
+  "greetingsTable": {
+    "headers": ["آلمانی", "تلفظ فارسی", "IPA", "معنی", "زمان", "رسمیت"],
+    "rows": [
+      ["Hallo", "ها-لو", "[haˈloː]", "سلام", "همه وقت", "دوستانه"],
+      ["Guten Morgen", "گو-تِن مور-گِن", "[ˈɡuˀtn̩ ˈmɔʁɡn̩]", "صبح بخیر", "۶-۱۱ صبح", "نیمه‌رسمی"],
+      ["Guten Tag", "گو-تِن تاخ", "[ˈɡuːtn̩ ˈtaːk]", "روز بخیر", "۱۱-۱۸", "رسمی"],
+      ["Guten Abend", "گو-تِن آ-بِنت", "[ˈɡuːtn̩ ˈaːbn̩t]", "عصر بخیر", "۱۸-۲۲", "رسمی"],
+      ["Gute Nacht", "گو-تِه ناخ-ت", "[ˈɡuːtə ˈnaxt]", "شب بخیر", "قبل از خواب", "نیمه‌رسمی"],
+      ["Tschüss", "چوس", "[tʃʏs]", "خداحافظ", "همه وقت", "دوستانه"],
+      ["Auf Wiedersehen", "آوف وی-دِر-زِ-اِن", "[aʊf ˈviːdɐˌzeːən]", "خدانگهدار", "همه وقت", "رسمی"]
+    ]
+  },
+
+  "vocabulary": [
+    {
+      "id": "voc-hallo",
+      "de": "Hallo",
+      "article": "",
+      "plural": "",
+      "ipa": "[haˈloː]",
+      "fa": "سلام",
+      "en": "Hello",
+      "example": {
+        "de": "Hallo, wie geht es dir?",
+        "fa": "سلام، حالت چطور است؟",
+        "en": "Hello, how are you?"
+      },
+      "usageNotes": {
+        "fa": "رایج‌ترین روش سلام کردن. غیررسمی.",
+        "en": "Most common greeting. Informal.",
+        "de": "Häufigste Begrüßung. Informell."
+      },
+      "commonMistakes": {
+        "fa": "'h' در ابتدا باید شنیده شود",
+        "en": "'h' at the beginning must be heard",
+        "de": "'h' am Anfang muss gehört werden"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-tschüss",
+      "de": "Tschüss",
+      "article": "",
+      "plural": "",
+      "ipa": "[tʃʏs]",
+      "fa": "خداحافظ",
+      "en": "Goodbye",
+      "example": {
+        "de": "Tschüss, bis morgen!",
+        "fa": "خداحافظ، تا فردا!",
+        "en": "Goodbye, see you tomorrow!"
+      },
+      "usageNotes": {
+        "fa": "رایج‌ترین خداحافظی غیررسمی",
+        "en": "Most common informal goodbye",
+        "de": "Häufigste informelle Verabschiedung"
+      },
+      "commonMistakes": {
+        "fa": "'ü' بین 'ای' و 'او' تلفظ شود",
+        "en": "'ü' pronounced between 'ee' and 'oo'",
+        "de": "'ü' zwischen 'i' und 'u' aussprechen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-heissen",
+      "de": "heißen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈhaɪ̯sn̩]",
+      "fa": "نام داشتن",
+      "en": "to be called",
+      "example": {
+        "de": "Ich heiße Nina.",
+        "fa": "نام من نینا است.",
+        "en": "My name is Nina."
+      },
+      "usageNotes": {
+        "fa": "فعل اصلی برای معرفی خود",
+        "en": "Main verb for introducing yourself",
+        "de": "Hauptverb für die Vorstellung"
+      },
+      "commonMistakes": {
+        "fa": "'ei' مانند 'ای' کشیده تلفظ شود",
+        "en": "'ei' pronounced like long 'ay'",
+        "de": "'ei' wird wie langes 'ei' ausgesprochen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-name",
+      "de": "Name",
+      "article": "der",
+      "plural": "Namen",
+      "ipa": "[ˈnaːmə]",
+      "fa": "نام",
+      "en": "name",
+      "example": {
+        "de": "Mein Name ist Nina.",
+        "fa": "نام من نینا است.",
+        "en": "My name is Nina."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر - با 'der' می‌آید",
+        "en": "Masculine noun - comes with 'der'",
+        "de": "Maskulines Substantiv - kommt mit 'der'"
+      },
+      "commonMistakes": {
+        "fa": "'e' انتهایی تلفظ می‌شود - 'نا-مِه' نه 'نام'",
+        "en": "Final 'e' is pronounced - 'na-me' not 'nam'",
+        "de": "Finales 'e' wird ausgesprochen - 'na-me' nicht 'nam'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-frau",
+      "de": "Frau",
+      "article": "die",
+      "plural": "Frauen",
+      "ipa": "[fraʊ̯]",
+      "fa": "خانم",
+      "en": "Mrs./woman",
+      "example": {
+        "de": "Frau Schwarz",
+        "fa": "خانم شوارتس",
+        "en": "Mrs. Schwarz"
+      },
+      "usageNotes": {
+        "fa": "برای خطاب به زنان - همیشه با نام خانوادگی",
+        "en": "For addressing women - always with last name",
+        "de": "Für die Anrede von Frauen - immer mit Nachname"
+      },
+      "commonMistakes": {
+        "fa": "'au' مانند 'آو' کشیده تلفظ شود",
+        "en": "'au' pronounced like long 'ow'",
+        "de": "'au' wird wie langes 'au' ausgesprochen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-herr",
+      "de": "Herr",
+      "article": "der",
+      "plural": "Herren",
+      "ipa": "[hɛʁ]",
+      "fa": "آقا",
+      "en": "Mr.",
+      "example": {
+        "de": "Herr Schmidt",
+        "fa": "آقای اشمیت",
+        "en": "Mr. Schmidt"
+      },
+      "usageNotes": {
+        "fa": "برای خطاب به مردان - همیشه با نام خانوادگی",
+        "en": "For addressing men - always with last name",
+        "de": "Für die Anrede von Männern - immer mit Nachname"
+      },
+      "commonMistakes": {
+        "fa": "'r' غُرّی از حلق تلفظ شود",
+        "en": "'r' pronounced uvular from the throat",
+        "de": "'r' wird uvular aus dem Rachen ausgesprochen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-wie",
+      "de": "wie",
+      "article": "",
+      "plural": "",
+      "ipa": "[viː]",
+      "fa": "چطور، چه",
+      "en": "how",
+      "example": {
+        "de": "Wie heißt du?",
+        "fa": "اسمت چیست؟",
+        "en": "What's your name?"
+      },
+      "usageNotes": {
+        "fa": "کلمه پرسشی - برای پرسیدن چگونگی",
+        "en": "Question word - for asking how",
+        "de": "Fragewort - für die Frage nach der Art und Weise"
+      },
+      "commonMistakes": {
+        "fa": "'ie' مانند 'ای' کشیده تلفظ شود",
+        "en": "'ie' pronounced like long 'ee'",
+        "de": "'ie' wird wie langes 'ie' ausgesprochen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-ich",
+      "de": "ich",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɪç]",
+      "fa": "من",
+      "en": "I",
+      "example": {
+        "de": "Ich heiße Nina.",
+        "fa": "نام من نینا است.",
+        "en": "My name is Nina."
+      },
+      "usageNotes": {
+        "fa": "ضمیر اول شخص مفرد",
+        "en": "First person singular pronoun",
+        "de": "Personalpronomen erste Person Singular"
+      },
+      "commonMistakes": {
+        "fa": "'ch' مانند 'ه' فشرده تلفظ شود - نه 'ایچ'",
+        "en": "'ch' pronounced like compressed 'h' - not 'eech'",
+        "de": "'ch' wird wie komprimiertes 'h' ausgesprochen - nicht 'ich'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-du",
+      "de": "du",
+      "article": "",
+      "plural": "",
+      "ipa": "[duː]",
+      "fa": "تو (دوستانه)",
+      "en": "you (informal)",
+      "example": {
+        "de": "Wie heißt du?",
+        "fa": "اسمت چیست؟",
+        "en": "What's your name?"
+      },
+      "usageNotes": {
+        "fa": "دوم شخص مفرد دوستانه",
+        "en": "Second person singular informal",
+        "de": "Zweite Person Singular informell"
+      },
+      "commonMistakes": {
+        "fa": "'u' کشیده تلفظ شود",
+        "en": "'u' pronounced long",
+        "de": "'u' wird lang ausgesprochen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-sie",
+      "de": "Sie",
+      "article": "",
+      "plural": "",
+      "ipa": "[ziː]",
+      "fa": "شما (رسمی)",
+      "en": "you (formal)",
+      "example": {
+        "de": "Wie heißen Sie?",
+        "fa": "اسم شما چیست؟",
+        "en": "What's your name?"
+      },
+      "usageNotes": {
+        "fa": "دوم شخص رسمی - همیشه با S بزرگ",
+        "en": "Second person formal - always with capital S",
+        "de": "Zweite Person formell - immer mit großem S"
+      },
+      "commonMistakes": {
+        "fa": "با 'sie' (او) اشتباه نشود",
+        "en": "Don't confuse with 'sie' (she)",
+        "de": "Nicht mit 'sie' (sie) verwechseln"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    }
+  ],
+
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-heissen-conjugation",
+        "title": {
+          "fa": "صرف فعل heißen (نام داشتن)",
+          "en": "Conjugation of heißen (to be called)",
+          "de": "Konjugation von heißen"
+        },
+        "concept": {
+          "fa": "فعل heißen یک فعل منظم است و الگوی استاندارد صرف را دنبال می‌کند.",
+          "en": "heißen is a regular verb and follows the standard conjugation pattern.",
+          "de": "heißen ist ein regelmäßiges Verb und folgt dem Standard-Konjugationsmuster."
+        },
+        "conjugationTable": {
+          "headers": ["ضمیر", "آلمانی", "تلفظ فارسی", "IPA", "معنی"],
+          "rows": [
+            ["ich", "ich heiße", "ایخ های-سِه", "[ɪç ˈhaɪ̯sə]", "نام من است"],
+            ["du", "du heißt", "دو هایست", "[duː haɪ̯st]", "نام تو است"],
+            ["er/sie/es", "er/sie/es heißt", "اِر/زی/اِس هایست", "[eːɐ̯/ziː/ɛs haɪ̯st]", "نام او است"],
+            ["wir", "wir heißen", "ویر های-سِن", "[viːɐ̯ ˈhaɪ̯sn̩]", "نام ما است"],
+            ["ihr", "ihr heißt", "ایر هایست", "[iːɐ̯ haɪ̯st]", "نام شما است"],
+            ["sie", "sie heißen", "زی های-سِن", "[ziː ˈhaɪ̯sn̩]", "نام آن‌ها است"],
+            ["Sie", "Sie heißen", "زی های-سِن", "[ziː ˈhaɪ̯sn̩]", "نام شما است (رسمی)"]
+          ]
+        },
+        "pattern": {
+          "fa": "ich → -e • du → -st • er/sie/es → -t • plural → -en",
+          "en": "ich → -e • du → -st • er/sie/es → -t • plural → -en",
+          "de": "ich → -e • du → -st • er/sie/es → -t • plural → -en"
+        }
+      },
+      {
+        "id": "gram-personal-pronouns",
+        "title": {
+          "fa": "ضمیرهای شخصی",
+          "en": "Personal Pronouns",
+          "de": "Personalpronomen"
+        },
+        "concept": {
+          "fa": "ضمیرهای شخصی نشان‌دهنده فاعل جمله هستند.",
+          "en": "Personal pronouns indicate the subject of the sentence.",
+          "de": "Personalpronomen zeigen das Subjekt des Satzes an."
+        },
+        "pronounTable": {
+          "headers": ["آلمانی", "تلفظ فارسی", "فارسی", "انگلیسی", "استفاده"],
+          "rows": [
+            ["ich", "ایخ", "من", "I", "اول شخص مفرد"],
+            ["du", "دو", "تو (دوستانه)", "you (informal)", "دوم شخص مفرد، دوستانه"],
+            ["er", "اِر", "او (مرد)", "he", "سوم شخص مفرد مذکر"],
+            ["sie", "زی", "او (زن)", "she", "سوم شخص مفرد مؤنث"],
+            ["es", "اِس", "آن (بی‌جنس)", "it", "سوم شخص مفرد خنثی"],
+            ["wir", "ویر", "ما", "we", "اول شخص جمع"],
+            ["ihr", "ایر", "شما (جمع دوستانه)", "you (plural)", "دوم شخص جمع دوستانه"],
+            ["sie", "زی", "آن‌ها", "they", "سوم شخص جمع"],
+            ["Sie", "زی", "شما (رسمی)", "you (formal)", "دوم شخص رسمی"]
+          ]
+        },
+        "note": {
+          "fa": "• sie (با s کوچک) می‌تواند به معنی 'او (زن)' یا 'آن‌ها' باشد • Sie (با S بزرگ) همیشه 'شما رسمی' است",
+          "en": "• sie (small s) can mean 'she' or 'they' • Sie (capital S) always means 'you formal'",
+          "de": "• sie (kleines s) kann 'sie' oder 'sie' bedeuten • Sie (großes S) bedeutet immer 'Sie formell'"
+        }
+      },
+      {
+        "id": "gram-du-vs-sie",
+        "title": {
+          "fa": "تفاوت du و Sie - مهم‌ترین درس امروز!",
+          "en": "Difference between du and Sie - Most important lesson!",
+          "de": "Unterschied zwischen du und Sie - Wichtigste Lektion!"
+        },
+        "concept": {
+          "fa": "انتخاب بین du و Sie یکی از مهم‌ترین نکات فرهنگی-زبانی آلمانی است.",
+          "en": "Choosing between du and Sie is one of the most important cultural-linguistic points in German.",
+          "de": "Die Wahl zwischen du und Sie ist einer der wichtigsten kulturell-sprachlichen Punkte im Deutschen."
+        },
+        "rules": {
+          "fa": "• کودکان (زیر ۱۴ سال) → du • افراد غریبه بزرگسال → Sie • همکاران → معمولاً Sie • خانواده → du • پلیس، مقامات → Sie",
+          "en": "• Children (under 14) → du • Unfamiliar adults → Sie • Colleagues → usually Sie • Family → du • Police, authorities → Sie",
+          "de": "• Kinder (unter 14) → du • Erwachsene Fremde → Sie • Kollegen → normalerweise Sie • Familie → du • Polizei, Behörden → Sie"
+        },
+        "rulesTable": {
+          "headers": ["شخص", "du", "Sie"],
+          "rows": [
+            ["کودکان (زیر ۱۴ سال)", "✅", "❌"],
+            ["همکلاسی‌ها", "✅ (معمولاً بعد از پیشنهاد)", "اول Sie"],
+            ["همکاران", "بستگی به فرهنگ شرکت", "معمولاً اول Sie"],
+            ["افراد غریبه بزرگسال", "❌", "✅"],
+            ["پلیس، مقامات، پزشک", "❌", "✅"],
+            ["خانواده", "✅", "❌"],
+            ["معلم", "❌ (مگر در مواقع خاص)", "✅"],
+            ["فروشنده مغازه", "❌", "✅"]
+          ]
+        },
+        "duzen": {
+          "fa": "مرحله پیشنهاد du: فرد مسن‌تر یا بالاتر مقام پیشنهاد می‌دهد. مثال: 'Wir können du zueinander sagen.' (ما می‌توانیم به هم تو بگوییم.)",
+          "en": "The du proposal stage: older or higher-ranking person offers. Example: 'Wir können du zueinander sagen.' (We can say 'du' to each other.)",
+          "de": "Die du-Angebotsphase: ältere oder höhergestellte Person bietet an. Beispiel: 'Wir können du zueinander sagen.'"
+        },
+        "story": {
+          "fa": "یک ایرانی در سوپرمارکت آلمان به صندوق‌دار (۵۰ ساله) گفت: 'Hallo, wie heißt du?' صندوق‌دار با خشم پاسخ داد: 'Ich heiße Frau Müller, und Sie?' این یک اشتباه کلاسیک است. در ایران گفتن 'اسم شما چیه؟' به غریبه عادی است، اما در آلمان بسیار بی‌ادبانه است.",
+          "en": "An Iranian in a German supermarket said to the cashier (50 years old): 'Hallo, wie heißt du?' The cashier angrily replied: 'Ich heiße Frau Müller, und Sie?' This is a classic mistake. In Iran, asking 'What's your name?' to a stranger is normal, but in Germany it's very rude.",
+          "de": "Ein Iraner sagte im deutschen Supermarkt zur Kassiererin (50 Jahre alt): 'Hallo, wie heißt du?' Die Kassiererin antwortete wütend: 'Ich heiße Frau Müller, und Sie?' Das ist ein klassischer Fehler. Im Iran ist es normal, einen Fremden nach dem Namen zu fragen, aber in Deutschland ist es sehr unhöflich."
+        }
+      },
+      {
+        "id": "gram-verb-position",
+        "title": {
+          "fa": "ساختار جمله خبری (Aussagesatz)",
+          "en": "Statement Sentence Structure (Aussagesatz)",
+          "de": "Aussagesatz-Struktur"
+        },
+        "concept": {
+          "fa": "در جمله خبری آلمانی، فعل همیشه در جایگاه دوم قرار دارد.",
+          "en": "In German statements, the verb is always in the second position.",
+          "de": "Im deutschen Aussagesatz steht das Verb immer an zweiter Stelle."
+        },
+        "rule": {
+          "fa": "[فاعل] + [فعل صرف‌شده] + [بقیه جمله]",
+          "en": "[Subject] + [conjugated verb] + [rest of sentence]",
+          "de": "[Subjekt] + [konjugiertes Verb] + [Rest des Satzes]"
+        },
+        "examples": [
+          {
+            "sentence": "Ich heiße Nina.",
+            "persian": "ایخ های-سِه نی-نا",
+            "analysis": "Ich (فاعل) + heiße (فعل) + Nina (بقیه)"
+          },
+          {
+            "sentence": "Heute lerne ich Deutsch.",
+            "persian": "هوی-تِه لِر-نِه ایخ دوی-تچ",
+            "analysis": "Heute (قید زمان) + lerne (فعل) + ich (فاعل) + Deutsch (بقیه)"
+          }
+        ],
+        "note": {
+          "fa": "اگر چیزی غیر از فاعل در جایگاه اول قرار گیرد، فاعل به بعد از فعل منتقل می‌شود.",
+          "en": "If something other than the subject is in position 1, the subject moves after the verb.",
+          "de": "Wenn etwas anderes als das Subjekt an Position 1 steht, wechselt das Subjekt hinter das Verb."
+        },
+        "comparison": {
+          "fa": "در فارسی، فعل همیشه در انتهاست: 'من نینا هستم' • در آلمانی: 'Ich heiße Nina'",
+          "en": "In Persian, the verb is always at the end: 'من نینا هستم' • In German: 'Ich heiße Nina'",
+          "de": "Im Persischen steht das Verb immer am Ende: 'من نینا هستم' • Im Deutschen: 'Ich heiße Nina'"
+        }
+      },
+      {
+        "id": "gram-w-fragen",
+        "title": {
+          "fa": "سوالات با کلمات پرسشی (W-Fragen)",
+          "en": "Questions with Question Words (W-Fragen)",
+          "de": "Fragen mit Fragewörtern (W-Fragen)"
+        },
+        "concept": {
+          "fa": "سوالات با کلمات پرسشی مانند Wie شروع می‌شوند.",
+          "en": "Questions start with question words like Wie.",
+          "de": "Fragen beginnen mit Fragewörtern wie Wie."
+        },
+        "structure": {
+          "fa": "[کلمه پرسشی] + [فعل صرف‌شده] + [فاعل] + [بقیه]",
+          "en": "[Question word] + [conjugated verb] + [subject] + [rest]",
+          "de": "[Fragewort] + [konjugiertes Verb] + [Subjekt] + [Rest]"
+        },
+        "examples": [
+          {
+            "sentence": "Wie heißt du?",
+            "persian": "وای هایست دو؟",
+            "meaning": "اسمت چیست؟"
+          },
+          {
+            "sentence": "Wie heißen Sie?",
+            "persian": "وای های-سِن زی؟",
+            "meaning": "اسم شما چیست؟"
+          }
+        ],
+        "comparisonTable": {
+          "headers": ["نوع", "جایگاه ۱", "جایگاه ۲", "جایگاه ۳"],
+          "rows": [
+            ["خبری", "Ich (فاعل)", "heiße (فعل)", "Nina"],
+            ["پرسشی", "Wie (W-Wort)", "heißt (فعل)", "du (فاعل)"]
+          ]
+        }
+      },
+      {
+        "id": "gram-ja-nein-fragen",
+        "title": {
+          "fa": "سوالات بلی/خیر (Ja-/Nein-Fragen)",
+          "en": "Yes/No Questions (Ja-/Nein-Fragen)",
+          "de": "Ja-/Nein-Fragen"
+        },
+        "concept": {
+          "fa": "در سوالات بلی/خیر، فعل به جایگاه اول می‌رود.",
+          "en": "In yes/no questions, the verb moves to first position.",
+          "de": "Bei Ja-/Nein-Fragen wechselt das Verb an erste Stelle."
+        },
+        "structure": {
+          "fa": "[فعل صرف‌شده] + [فاعل] + [بقیه]",
+          "en": "[Conjugated verb] + [subject] + [rest]",
+          "de": "[Konjugiertes Verb] + [Subjekt] + [Rest]"
+        },
+        "examples": [
+          {
+            "sentence": "Heißt du Nina?",
+            "persian": "هایست دو نی-نا؟",
+            "meaning": "آیا تو نینا هستی؟",
+            "positive": "Ja, ich heiße Nina.",
+            "negative": "Nein, ich heiße nicht Nina."
+          },
+          {
+            "sentence": "Heißen Sie Frau Schwarz?",
+            "persian": "های-سِن زی فراو شوارتس؟",
+            "meaning": "آیا شما خانم شوارتس هستید؟",
+            "positive": "Ja, ich heiße Frau Schwarz.",
+            "negative": "Nein, ich heiße nicht Frau Schwarz."
+          }
+        ]
+      },
+      {
+        "id": "gram-verb-sein",
+        "title": {
+          "fa": "فعل sein (بودن)",
+          "en": "Verb sein (to be)",
+          "de": "Verb sein"
+        },
+        "concept": {
+          "fa": "فعل sein یک فعل نامنظم است. در این درس با سه صرف آن آشنا می‌شویم.",
+          "en": "sein is an irregular verb. In this lesson we learn three conjugations.",
+          "de": "sein ist ein unregelmäßiges Verb. In dieser Lektion lernen wir drei Konjugationen."
+        },
+        "conjugation": {
+          "headers": ["ضمیر", "آلمانی", "تلفظ فارسی", "معنی"],
+          "rows": [
+            ["ich", "bin", "بین", "هستم"],
+            ["du", "bist", "بیست", "هستی"],
+            ["er/sie/es", "ist", "ایست", "است"]
+          ]
+        },
+        "example": {
+          "sentence": "Mein Name ist Nina.",
+          "persian": "ماین نا-مِه ایست نی-نا.",
+          "meaning": "نام من نینا است."
+        },
+        "meinNameIst": {
+          "fa": "روش دیگر برای معرفی خود: 'Mein Name ist ...' • تفاوت: 'Ich heiße' طبیعی‌تر و رایج‌تر است، 'Mein Name ist' کمی رسمی‌تر است.",
+          "en": "Another way to introduce yourself: 'Mein Name ist ...' • Difference: 'Ich heiße' is more natural and common, 'Mein Name ist' is slightly more formal.",
+          "de": "Eine andere Art, sich vorzustellen: 'Mein Name ist ...' • Unterschied: 'Ich heiße' ist natürlicher und häufiger, 'Mein Name ist' ist etwas formeller."
+        }
+      }
+    ]
+  },
+
+  "dialogues": [
+    {
+      "id": "dialog-classroom-1",
+      "title": {
+        "fa": "دیالوگ کلاس - روز اول",
+        "en": "Classroom Dialogue - First Day",
+        "de": "Klassendialog - Erster Tag"
+      },
+      "characters": [
+        { "name": "Frau Schwarz", "role": "معلم" },
+        { "name": "Nina", "role": "دانش‌آموز" }
+      ],
+      "lines": [
+        {
+          "speaker": "Frau Schwarz",
+          "german": "Guten Morgen, zusammen! Willkommen zum Deutschkurs.",
+          "persian": "گو-تِن مور-گِن، تسو-زا-مِن! وی-ل-کو-مِن تسوم دوی-تچ-کورس.",
+          "meaning": {
+            "fa": "صبح بخیر همگی! به دوره آلمانی خوش آمدید.",
+            "en": "Good morning everyone! Welcome to the German course.",
+            "de": "Guten Morgen zusammen! Willkommen zum Deutschkurs."
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Guten Morgen, Frau Schwarz!",
+          "persian": "گو-تِن مور-گِن، فراو شوارتس!",
+          "meaning": {
+            "fa": "صبح بخیر، خانم شوارتس!",
+            "en": "Good morning, Mrs. Schwarz!",
+            "de": "Guten Morgen, Frau Schwarz!"
+          }
+        },
+        {
+          "speaker": "Frau Schwarz",
+          "german": "Hallo, Nina! Wie heißt du?",
+          "persian": "ها-لو، نی-نا! وای هایست دو؟",
+          "meaning": {
+            "fa": "سلام، نینا! اسمت چیست؟",
+            "en": "Hello, Nina! What's your name?",
+            "de": "Hallo, Nina! Wie heißt du?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich heiße Nina. Nina Sadeghi.",
+          "persian": "ایخ های-سِه نی-نا. نی-نا صادقی.",
+          "meaning": {
+            "fa": "نام من نینا است. نینا صادقی.",
+            "en": "My name is Nina. Nina Sadeghi.",
+            "de": "Ich heiße Nina. Nina Sadeghi."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Guten Morgen, zusammen!",
+          "persian": "گو-تِن مور-گِن، تسو-زا-مِن!",
+          "meaning": "صبح بخیر همگی!"
+        },
+        {
+          "phrase": "Willkommen zum Deutschkurs.",
+          "persian": "وی-ل-کو-مِن تسوم دوی-تچ-کورس.",
+          "meaning": "به دوره آلمانی خوش آمدید."
+        },
+        {
+          "phrase": "Hallo, Nina! Wie heißt du?",
+          "persian": "ها-لو، نی-نا! وای هایست دو؟",
+          "meaning": "سلام، نینا! اسمت چیست؟"
+        },
+        {
+          "phrase": "Ich heiße Nina. Nina Sadeghi.",
+          "persian": "ایخ های-سِه نی-نا. نی-نا صادقی.",
+          "meaning": "نام من نینا است. نینا صادقی."
+        }
+      ]
+    },
+    {
+      "id": "dialog-formal-intro",
+      "title": {
+        "fa": "معرفی رسمی",
+        "en": "Formal Introduction",
+        "de": "Formelle Vorstellung"
+      },
+      "characters": [
+        { "name": "Student", "role": "دانش‌آموز" },
+        { "name": "Herr Schmidt", "role": "معلم" }
+      ],
+      "lines": [
+        {
+          "speaker": "Herr Schmidt",
+          "german": "Guten Tag! Wie heißen Sie?",
+          "persian": "گو-تِن تاخ! وای های-سِن زی؟",
+          "meaning": {
+            "fa": "روز بخیر! اسم شما چیست؟",
+            "en": "Good day! What's your name?",
+            "de": "Guten Tag! Wie heißen Sie?"
+          }
+        },
+        {
+          "speaker": "Student",
+          "german": "Guten Tag! Ich heiße Paul Schmidt.",
+          "persian": "گو-تِن تاخ! ایخ های-سِه پاول اشمیت.",
+          "meaning": {
+            "fa": "روز بخیر! نام من پاول اشمیت است.",
+            "en": "Good day! My name is Paul Schmidt.",
+            "de": "Guten Tag! Ich heiße Paul Schmidt."
+          }
+        },
+        {
+          "speaker": "Herr Schmidt",
+          "german": "Willkommen, Herr Schmidt!",
+          "persian": "وی-ل-کو-مِن، هِر اشمیت!",
+          "meaning": {
+            "fa": "خوش آمدید، آقای اشمیت!",
+            "en": "Welcome, Mr. Schmidt!",
+            "de": "Willkommen, Herr Schmidt!"
+          }
+        }
+      ]
+    }
+  ],
+
+  "cultureNotes": {
+    "fa": "در فرهنگ آلمانی، سلام کردن با دست دادن (در موقعیت‌های رسمی) و تماس چشمی مستقیم بسیار مهم است.\n\nقانون کلی: اگر مطمئن نیستید، Guten Tag در روز یا Guten Abend در عصر بگویید. این‌ها در همه موقعیت‌ها امن هستند.\n\nتفاوت با ایران: در ایران با همه با 'سلام' احوال‌پرسی می‌کنیم. اما در آلمان:\n• Hallo = 'من با تو صمیمی‌ام'\n• Guten Tag = 'من به تو احترام می‌گذارم'\n\nاز پرسیدن سوالات شخصی مانند شغل، درآمد یا سن در اولین ملاقات خودداری کنید.\n\n'Du' (تو) برای دوستان و خانواده استفاده می‌شود، در حالی که 'Sie' (شما) برای افراد بزرگتر، مافوق و افراد ناآشنا استفاده می‌شود.",
+    "en": "In German culture, greeting with a handshake (in formal situations) and direct eye contact is very important.\n\nGeneral rule: If unsure, use Guten Tag during the day or Guten Abend in the evening. These are safe in all situations.\n\nDifference from Iran: In Iran we greet everyone with 'Salam'. But in Germany:\n• Hallo = 'I'm close with you'\n• Guten Tag = 'I respect you'\n\nAvoid asking personal questions like occupation, income, or age on first meeting.\n\n'Du' (you informal) is used for friends and family, while 'Sie' (you formal) is used for older people, superiors, and unfamiliar people.",
+    "de": "In der deutschen Kultur ist die Begrüßung mit Handschlag (in formellen Situationen) und direkter Augenkontakt sehr wichtig.\n\nAllgemeine Regel: Im Zweifelsfall verwenden Sie tagsüber Guten Tag oder abends Guten Abend. Diese sind in allen Situationen sicher.\n\nUnterschied zum Iran: Im Iran begrüßen wir alle mit 'Salam'. Aber in Deutschland:\n• Hallo = 'Ich bin nah mit dir'\n• Guten Tag = 'Ich respektiere dich'\n\nVermeiden Sie persönliche Fragen wie Beruf, Einkommen oder Alter beim ersten Treffen.\n\n'Du' wird für Freunde und Familie verwendet, während 'Sie' für ältere Menschen, Vorgesetzte und unbekannte Personen verwendet wird."
+  },
+
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-greet-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: احوال‌پرسی در موقعیت‌های مختلف",
+          "en": "Exercise 1: Greetings in Different Situations",
+          "de": "Übung 1: Begrüßungen in verschiedenen Situationen"
+        },
+        "instructions": {
+          "fa": "برای هر موقعیت، احوال‌پرسی مناسب را انتخاب کنید.",
+          "en": "Choose the appropriate greeting for each situation.",
+          "de": "Wählen Sie die passende Begrüßung für jede Situation."
+        },
+        "questions": [
+          {
+            "id": "g1-q1",
+            "situation": {
+              "fa": "ساعت ۸ صبح به همکلاسی خود می‌گویید:",
+              "en": "At 8 AM you say to your classmate:",
+              "de": "Um 8 Uhr morgens sagen Sie zu Ihrem Klassenkameraden:"
+            },
+            "options": ["Guten Morgen", "Guten Tag", "Guten Abend", "Gute Nacht"],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "صبح زود است، پس 'Guten Morgen' مناسب است.",
+              "en": "It's early morning, so 'Guten Morgen' is appropriate.",
+              "de": "Es ist früher Morgen, also ist 'Guten Morgen' passend."
+            }
+          },
+          {
+            "id": "g1-q2",
+            "situation": {
+              "fa": "ساعت ۱۴ وارد فروشگاه می‌شوید و به فروشنده می‌گویید:",
+              "en": "At 2 PM you enter a store and say to the shopkeeper:",
+              "de": "Um 14 Uhr betreten Sie ein Geschäft und sagen zum Verkäufer:"
+            },
+            "options": ["Guten Morgen", "Guten Tag", "Guten Abend", "Hallo"],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "ظهر است و با یک فرد غریبه، پس 'Guten Tag' مناسب است.",
+              "en": "It's afternoon and with a stranger, so 'Guten Tag' is appropriate.",
+              "de": "Es ist Nachmittag und mit einem Fremden, also ist 'Guten Tag' passend."
+            }
+          },
+          {
+            "id": "g1-q3",
+            "situation": {
+              "fa": "ساعت ۲۱ شب به هم‌اتاقی خود قبل از خواب می‌گویید:",
+              "en": "At 9 PM you say to your roommate before sleeping:",
+              "de": "Um 21 Uhr sagen Sie zu Ihrem Mitbewohner vor dem Schlafen:"
+            },
+            "options": ["Guten Morgen", "Guten Tag", "Guten Abend", "Gute Nacht"],
+            "correctIndex": 3,
+            "explanation": {
+              "fa": "قبل از خواب است، پس 'Gute Nacht' مناسب است.",
+              "en": "It's before sleeping, so 'Gute Nacht' is appropriate.",
+              "de": "Es ist vor dem Schlafen, also ist 'Gute Nacht' passend."
+            }
+          },
+          {
+            "id": "g1-q4",
+            "situation": {
+              "fa": "ساعت ۱۹ شب دوستتان را در کافه می‌بینید و می‌گویید:",
+              "en": "At 7 PM you see your friend at a café and say:",
+              "de": "Um 19 Uhr sehen Sie Ihren Freund im Café und sagen:"
+            },
+            "options": ["Guten Morgen", "Guten Tag", "Guten Abend", "Gute Nacht"],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "عصر است، پس 'Guten Abend' مناسب است.",
+              "en": "It's evening, so 'Guten Abend' is appropriate.",
+              "de": "Es ist Abend, also ist 'Guten Abend' passend."
+            }
+          },
+          {
+            "id": "g1-q5",
+            "situation": {
+              "fa": "از کلاس بیرون می‌روید و با معلم خداحافظی می‌کنید (رسمی):",
+              "en": "You leave the class and say goodbye to the teacher (formal):",
+              "de": "Sie verlassen den Kurs und verabschieden sich vom Lehrer (formell):"
+            },
+            "options": ["Tschüss", "Hallo", "Auf Wiedersehen", "Gute Nacht"],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "با معلم باید رسمی خداحافظی کنید، پس 'Auf Wiedersehen' مناسب است.",
+              "en": "You should say goodbye formally to the teacher, so 'Auf Wiedersehen' is appropriate.",
+              "de": "Sie sollten sich formell vom Lehrer verabschieden, also ist 'Auf Wiedersehen' passend."
+            }
+          },
+          {
+            "id": "g1-q6",
+            "situation": {
+              "fa": "با دوست صمیمی تلفنی خداحافظی می‌کنید:",
+              "en": "You say goodbye to a close friend on the phone:",
+              "de": "Sie verabschieden sich von einem engen Freund am Telefon:"
+            },
+            "options": ["Tschüss", "Auf Wiedersehen", "Guten Tag", "Hallo"],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "با دوست صمیمی باید دوستانه خداحافظی کنید، پس 'Tschüss' مناسب است.",
+              "en": "You should say goodbye informally to a close friend, so 'Tschüss' is appropriate.",
+              "de": "Sie sollten sich informell von einem engen Freund verabschieden, also ist 'Tschüss' passend."
+            }
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-roleplay-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۲: نقش‌پردازی",
+          "en": "Exercise 2: Role Play",
+          "de": "Übung 2: Rollenspiel"
+        },
+        "scenarios": [
+          {
+            "id": "rp1",
+            "title": {
+              "fa": "سناریو ۱: شما Nina هستید و با Fabio صحبت می‌کنید",
+              "en": "Scenario 1: You are Nina and talking with Fabio",
+              "de": "Szenario 1: Sie sind Nina und sprechen mit Fabio"
+            },
+            "lines": [
+              {
+                "speaker": "Fabio",
+                "german": "Hallo! Wie heißt du?",
+                "persian": "ها-لو! وای هایست دو؟",
+                "meaning": {
+                  "fa": "سلام! اسمت چی؟",
+                  "en": "Hello! What's your name?",
+                  "de": "Hallo! Wie heißt du?"
+                }
+              },
+              {
+                "speaker": "Du (Nina)",
+                "german": "Hallo! Ich heiße Nina. Und du?",
+                "persian": "ها-لو! ایخ های-سِه نی-نا. اوند دو؟",
+                "meaning": {
+                  "fa": "سلام! نام من نینا است. تو چی؟",
+                  "en": "Hello! My name is Nina. And you?",
+                  "de": "Hallo! Ich heiße Nina. Und du?"
+                }
+              },
+              {
+                "speaker": "Fabio",
+                "german": "Ich heiße Fabio.",
+                "persian": "ایخ های-سِه فا-بی-و.",
+                "meaning": {
+                  "fa": "نام من فابیو است.",
+                  "en": "My name is Fabio.",
+                  "de": "Ich heiße Fabio."
+                }
+              }
+            ]
+          },
+          {
+            "id": "rp2",
+            "title": {
+              "fa": "سناریو ۲: شما با Frau Schwarz (معلم) صحبت می‌کنید",
+              "en": "Scenario 2: You are talking with Frau Schwarz (teacher)",
+              "de": "Szenario 2: Sie sprechen mit Frau Schwarz (Lehrerin)"
+            },
+            "lines": [
+              {
+                "speaker": "Frau Schwarz",
+                "german": "Guten Morgen! Wie heißen Sie?",
+                "persian": "گو-تِن مور-گِن! وای های-سِن زی؟",
+                "meaning": {
+                  "fa": "صبح بخیر! اسم شما چیست؟",
+                  "en": "Good morning! What's your name?",
+                  "de": "Guten Morgen! Wie heißen Sie?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Guten Morgen! Ich heiße [Ihr Name]. [Ihr Nachname].",
+                "persian": "گو-تِن مور-گِن! ایخ های-سِه [نام شما]. [نام خانوادگی شما].",
+                "meaning": {
+                  "fa": "صبح بخیر! نام من [نام شما] است.",
+                  "en": "Good morning! My name is [Your Name].",
+                  "de": "Guten Morgen! Ich heiße [Ihr Name]."
+                }
+              },
+              {
+                "speaker": "Frau Schwarz",
+                "german": "Willkommen, [Ihr Name]!",
+                "persian": "وی-ل-کو-مِن، [نام شما]!",
+                "meaning": {
+                  "fa": "خوش آمدید، [نام شما]!",
+                  "en": "Welcome, [Your Name]!",
+                  "de": "Willkommen, [Ihr Name]!"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rp3",
+            "title": {
+              "fa": "سناریو ۳: شما معلم هستید و به دانشجوی جدید سلام می‌کنید",
+              "en": "Scenario 3: You are the teacher and greeting a new student",
+              "de": "Szenario 3: Sie sind der Lehrer und begrüßen einen neuen Studenten"
+            },
+            "lines": [
+              {
+                "speaker": "Du",
+                "german": "Guten Tag! Wie heißen Sie?",
+                "persian": "گو-تِن تاخ! وای های-سِن زی؟",
+                "meaning": {
+                  "fa": "روز بخیر! اسم شما چیست؟",
+                  "en": "Good day! What's your name?",
+                  "de": "Guten Tag! Wie heißen Sie?"
+                }
+              },
+              {
+                "speaker": "Student",
+                "german": "Guten Tag! Ich heiße Paul Schmidt.",
+                "persian": "گو-تِن تاخ! ایخ های-سِه پاول اشمیت.",
+                "meaning": {
+                  "fa": "روز بخیر! نام من پاول اشمیت است.",
+                  "en": "Good day! My name is Paul Schmidt.",
+                  "de": "Guten Tag! Ich heiße Paul Schmidt."
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Willkommen, Herr Schmidt!",
+                "persian": "وی-ل-کو-مِن، هِر اشمیت!",
+                "meaning": {
+                  "fa": "خوش آمدید، آقای اشمیت!",
+                  "en": "Welcome, Mr. Schmidt!",
+                  "de": "Willkommen, Herr Schmidt!"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-fill-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۳: جایگزینی",
+          "en": "Exercise 3: Substitution",
+          "de": "Übung 3: Ersetzung"
+        },
+        "instructions": {
+          "fa": "جملات زیر را با اطلاعات خودتان کامل کنید.",
+          "en": "Complete the following sentences with your own information.",
+          "de": "Vervollständigen Sie die folgenden Sätze mit Ihren eigenen Informationen."
+        },
+        "questions": [
+          {
+            "id": "fi1",
+            "prompt": "Ich heiße ________.",
+            "placeholder": "نام شما"
+          },
+          {
+            "id": "fi2",
+            "prompt": "Mein Name ist ________.",
+            "placeholder": "نام شما"
+          },
+          {
+            "id": "fi3",
+            "prompt": "Guten Morgen, ich heiße ________. Und wie heißt ________?",
+            "placeholder": "نام شما / du"
+          },
+          {
+            "id": "fi4",
+            "prompt": "Hallo! Wie heißen ________? (به یک معلم)",
+            "placeholder": "Sie"
+          },
+          {
+            "id": "fi5",
+            "prompt": "Guten Tag! Ich ________ Martha.",
+            "placeholder": "heiße"
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-du-sie-1",
+        "type": "choice",
+        "title": {
+          "fa": "تمرین ۴: رسمی یا دوستانه؟",
+          "en": "Exercise 4: Formal or Informal?",
+          "de": "Übung 4: Formell oder Informell?"
+        },
+        "instructions": {
+          "fa": "برای هر موقعیت، du یا Sie را انتخاب کنید.",
+          "en": "Choose du or Sie for each situation.",
+          "de": "Wählen Sie du oder Sie für jede Situation."
+        },
+        "questions": [
+          {
+            "id": "ds1-q1",
+            "situation": {
+              "fa": "با دوست ۸ ساله‌تان",
+              "en": "With your 8-year-old friend",
+              "de": "Mit Ihrem 8-jährigen Freund"
+            },
+            "options": ["du", "Sie"],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "کودکان زیر ۱۴ سال با 'du' خطاب می‌شوند.",
+              "en": "Children under 14 are addressed with 'du'.",
+              "de": "Kinder unter 14 werden mit 'du' angesprochen."
+            }
+          },
+          {
+            "id": "ds1-q2",
+            "situation": {
+              "fa": "با دکتر (۵۰ ساله)",
+              "en": "With your doctor (50 years old)",
+              "de": "Mit Ihrem Arzt (50 Jahre alt)"
+            },
+            "options": ["du", "Sie"],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "با پزشک باید رسمی برخورد کنید، پس 'Sie' مناسب است.",
+              "en": "You should be formal with a doctor, so 'Sie' is appropriate.",
+              "de": "Sie sollten formell mit einem Arzt umgehen, also ist 'Sie' passend."
+            }
+          },
+          {
+            "id": "ds1-q3",
+            "situation": {
+              "fa": "با همکلاسی جدید (در کلاس بزرگسالان)",
+              "en": "With a new classmate (in an adult class)",
+              "de": "Mit einem neuen Klassenkameraden (in einem Erwachsenenkurs)"
+            },
+            "options": ["du", "Sie"],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "در اولین ملاقات با یک فرد بزرگسال ناآشنا، از 'Sie' استفاده کنید.",
+              "en": "On first meeting an unfamiliar adult, use 'Sie'.",
+              "de": "Bei der ersten Begegnung mit einem unbekannten Erwachsenen verwenden Sie 'Sie'."
+            }
+          },
+          {
+            "id": "ds1-q4",
+            "situation": {
+              "fa": "با مادر دوستتان",
+              "en": "With your friend's mother",
+              "de": "Mit der Mutter Ihres Freundes"
+            },
+            "options": ["du", "Sie"],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "با والدین دوستان باید رسمی برخورد کنید، پس 'Sie' مناسب است.",
+              "en": "You should be formal with friends' parents, so 'Sie' is appropriate.",
+              "de": "Sie sollten formell mit den Eltern von Freunden umgehen, also ist 'Sie' passend."
+            }
+          },
+          {
+            "id": "ds1-q5",
+            "situation": {
+              "fa": "با برادر کوچک‌تر",
+              "en": "With your younger brother",
+              "de": "Mit Ihrem jüngeren Bruder"
+            },
+            "options": ["du", "Sie"],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "با اعضای خانواده از 'du' استفاده می‌شود.",
+              "en": "Family members are addressed with 'du'.",
+              "de": "Familienmitglieder werden mit 'du' angesprochen."
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "repeat",
+        "title": {
+          "fa": "تمرین ۵: تلفظ",
+          "en": "Exercise 5: Pronunciation",
+          "de": "Übung 5: Aussprache"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید. سپس صدای خود را ضبط کنید و مقایسه کنید.",
+          "en": "Say these words aloud with Persian pronunciation. Then record your voice and compare.",
+          "de": "Sprechen Sie diese Wörter mit persischer Aussprache laut aus. Nehmen Sie dann Ihre Stimme auf und vergleichen Sie."
+        },
+        "words": [
+          { "word": "Hallo", "persian": "ها-لو" },
+          { "word": "Guten Morgen", "persian": "گو-تِن مور-گِن" },
+          { "word": "Guten Tag", "persian": "گو-تِن تاخ" },
+          { "word": "Guten Abend", "persian": "گو-تِن آ-بِنت" },
+          { "word": "Gute Nacht", "persian": "گو-تِه ناخ-ت" },
+          { "word": "Tschüss", "persian": "چوس" },
+          { "word": "Auf Wiedersehen", "persian": "آوف وی-دِر-زِ-اِن" },
+          { "word": "ich heiße", "persian": "ایخ های-سِه" },
+          { "word": "Wie heißt du?", "persian": "وای هایست دو؟" },
+          { "word": "Wie heißen Sie?", "persian": "وای های-سِن زی؟" },
+          { "word": "Mein Name ist", "persian": "ماین نا-مِه ایست" },
+          { "word": "Frau", "persian": "فراو" },
+          { "word": "Herr", "persian": "هِر" },
+          { "word": "Willkommen", "persian": "وی-ل-کو-مِن" }
+        ],
+        "focus": {
+          "fa": "به‌خصوص به این موارد دقت کنید: 'ر' غُرّی • 'ch' فشرده • 'ü' بین 'ای' و 'او' • 'ei' کشیده • 'گ' آخر بی‌صدا",
+          "en": "Pay special attention to: uvular 'r' • compressed 'ch' • 'ü' between 'ee' and 'oo' • long 'ei' • silent final 'g'",
+          "de": "Achten Sie besonders auf: uvulares 'r' • komprimiertes 'ch' • 'ü' zwischen 'i' und 'u' • langes 'ei' • stummes finales 'g'"
+        }
+      }
+    ]
+  },
+
+  "review": {
+    "title": {
+      "fa": "مرور درس",
+      "en": "Lesson Review",
+      "de": "Lektionsüberprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Tschüss' به چه معنی است؟",
+          "en": "What does 'Tschüss' mean?",
+          "de": "Was bedeutet 'Tschüss'?"
+        },
+        "options": ["سلام", "خداحافظ", "متشکرم", "خواهش می‌کنم"],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'Tschüss' به معنی خداحافظ (دوستانه) است.",
+          "en": "'Tschüss' means goodbye (informal).",
+          "de": "'Tschüss' bedeutet auf Wiedersehen (informell)."
+        }
+      },
+      {
+        "id": "rev-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام یک برای پرسیدن اسم رسمی استفاده می‌شود؟",
+          "en": "Which is used for asking name formally?",
+          "de": "Welches wird für die formelle Namensfrage verwendet?"
+        },
+        "options": ["Wie heißt du?", "Wie heißen Sie?", "Hallo!", "Tschüss!"],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'Wie heißen Sie?' برای پرسیدن اسم به صورت رسمی استفاده می‌شود.",
+          "en": "'Wie heißen Sie?' is used for asking name formally.",
+          "de": "'Wie heißen Sie?' wird für die formelle Namensfrage verwendet."
+        }
+      },
+      {
+        "id": "rev-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'heißen' در 'ich' چگونه صرف می‌شود؟",
+          "en": "How is 'heißen' conjugated for 'ich'?",
+          "de": "Wie wird 'heißen' für 'ich' konjugiert?"
+        },
+        "options": ["heiße", "heißt", "heißen", "heiß"],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "برای 'ich'، فعل 'heißen' به 'heiße' تبدیل می‌شود.",
+          "en": "For 'ich', the verb 'heißen' becomes 'heiße'.",
+          "de": "Für 'ich' wird das Verb 'heißen' zu 'heiße'."
+        }
+      },
+      {
+        "id": "rev-q4",
+        "type": "true_false",
+        "question": {
+          "fa": "'Gute Nacht' برای عصر بخیر استفاده می‌شود.",
+          "en": "'Gute Nacht' is used for good evening.",
+          "de": "'Gute Nacht' wird für guten Abend verwendet."
+        },
+        "answer": false,
+        "explanation": {
+          "fa": "'Gute Nacht' شب بخیر است، نه عصر بخیر. عصر بخیر 'Guten Abend' است.",
+          "en": "'Gute Nacht' is good night, not good evening. Good evening is 'Guten Abend'.",
+          "de": "'Gute Nacht' ist gute Nacht, nicht guten Abend. Guten Abend ist 'Guten Abend'."
+        }
+      },
+      {
+        "id": "rev-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "حرف تعریف مناسب برای 'Mann' چیست؟",
+          "en": "What is the correct article for 'Mann'?",
+          "de": "Welcher Artikel ist richtig für 'Mann'?"
+        },
+        "options": ["der", "die", "das", "den"],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "'Mann' مذکر است و 'der' می‌گیرد.",
+          "en": "'Mann' is masculine and takes 'der'.",
+          "de": "'Mann' ist maskulin und nimmt 'der'."
+        }
+      },
+      {
+        "id": "rev-q6",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Du' برای چه کسانی استفاده می‌شود؟",
+          "en": "Who is 'du' used for?",
+          "de": "Für wen wird 'du' verwendet?"
+        },
+        "options": ["افراد غریبه", "دوستان و خانواده", "پلیس", "معلم"],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'Du' برای دوستان و خانواده استفاده می‌شود.",
+          "en": "'du' is used for friends and family.",
+          "de": "'du' wird für Freunde und Familie verwendet."
+        }
+      }
+    ]
+  },
+
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس",
+      "en": "Lesson Final Assessment",
+      "de": "Lektionsabschlussbewertung"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید به درستی در زمان‌های مختلف روز سلام کنید؟",
+        "آیا می‌توانید خود را با 'ich heiße' معرفی کنید؟",
+        "آیا می‌توانید اسم دیگران را به صورت رسمی و دوستانه بپرسید؟",
+        "آیا تفاوت 'du' و 'Sie' را می‌دانید؟",
+        "آیا ساختار جمله خبری و پرسشی را می‌شناسید؟"
+      ],
+      "en": [
+        "Can you greet correctly at different times of day?",
+        "Can you introduce yourself with 'ich heiße'?",
+        "Can you ask others' names formally and informally?",
+        "Do you know the difference between 'du' and 'Sie'?",
+        "Do you know the statement and question sentence structures?"
+      ],
+      "de": [
+        "Können Sie zu verschiedenen Tageszeiten richtig grüßen?",
+        "Können Sie sich mit 'ich heiße' vorstellen?",
+        "Können Sie formell und informell nach Namen fragen?",
+        "Kennen Sie den Unterschied zwischen 'du' und 'Sie'?",
+        "Kennen Sie die Satzstruktur für Aussagen und Fragen?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "تبریک! شما آماده رفتن به درس بعدی هستید.",
+        "en": "Congratulations! You are ready to move to the next lesson.",
+        "de": "Herzlichen Glückwunsch! Sie sind bereit für die nächste Lektion."
+      },
+      "fail": {
+        "fa": "لطفاً بخش‌هایی که ضعیف بوده‌اید را مرور کنید و دوباره امتحان کنید.",
+        "en": "Please review the sections you were weak on and try again.",
+        "de": "Bitte überprüfen Sie die Bereiche, in denen Sie schwach waren, und versuchen Sie es erneut."
+      }
+    }
+  },
+
+  "cheatSheet": {
+    "greetings": [
+      { "de": "Hallo", "fa": "سلام", "time": "همه وقت" },
+      { "de": "Guten Morgen", "fa": "صبح بخیر", "time": "۶-۱۱ صبح" },
+      { "de": "Guten Tag", "fa": "روز بخیر", "time": "۱۱-۱۸" },
+      { "de": "Guten Abend", "fa": "عصر بخیر", "time": "۱۸-۲۲" },
+      { "de": "Gute Nacht", "fa": "شب بخیر", "time": "قبل از خواب" },
+      { "de": "Tschüss", "fa": "خداحافظ", "time": "همه وقت (دوستانه)" },
+      { "de": "Auf Wiedersehen", "fa": "خدانگهدار", "time": "همه وقت (رسمی)" }
+    ],
+    "pronouns": [
+      { "de": "ich", "fa": "من" },
+      { "de": "du", "fa": "تو (دوستانه)" },
+      { "de": "Sie", "fa": "شما (رسمی)" },
+      { "de": "er", "fa": "او (مرد)" },
+      { "de": "sie", "fa": "او (زن)" }
+    ],
+    "keyPhrases": [
+      { "de": "Ich heiße ...", "fa": "نام من ... است" },
+      { "de": "Wie heißt du?", "fa": "اسمت چیست؟ (دوستانه)" },
+      { "de": "Wie heißen Sie?", "fa": "اسم شما چیست؟ (رسمی)" },
+      { "de": "Mein Name ist ...", "fa": "نام من ... است" }
+    ],
+    "grammar": [
+      { "title": "جایگاه فعل", "summary": "فعل همیشه در جایگاه دوم است" },
+      { "title": "سوال با W-Fragen", "summary": "کلمه پرسشی + فعل + فاعل" },
+      { "title": "سوال بلی/خیر", "summary": "فعل + فاعل + بقیه" }
+    ],
+    "duVsSie": [
+      { "situation": "با کودکان", "use": "du" },
+      { "situation": "با افراد غریبه بزرگسال", "use": "Sie" },
+      { "situation": "با خانواده و دوستان", "use": "du" },
+      { "situation": "با پلیس و مقامات", "use": "Sie" }
+    ],
+    "commonMistakes": [
+      "استفاده از حرف تعریف اشتباه",
+      "تلفظ نادرست 'ch' و 'r'",
+      "فراموش کردن حرف تعریف"
+    ],
+    "usefulTips": [
+      "لغات را با حرف تعریف یاد بگیرید",
+      "هر روز ۵ دقیقه فلش‌کارت مرور کنید",
+      "گفتگوها را با صدای بلند تکرار کنید"
+    ]
+  },
+
+  "lessonSummary": {
+    "fa": "در این درس با حروف الفبای آلمانی، سلام و خداحافظی، معرفی خود و دیگران، حروف تعریف der/die/das، تفاوت du و Sie، و گفتگوهای ساده آشنا شدید.",
+    "en": "In this lesson, you learned the German alphabet, greetings and goodbyes, introducing yourself and others, the articles der/die/das, the difference between du and Sie, and simple dialogues.",
+    "de": "In dieser Lektion haben Sie das deutsche Alphabet, Begrüßungen und Verabschiedungen, sich und andere vorstellen, die Artikel der/die/das, den Unterschied zwischen du und Sie und einfache Dialoge gelernt."
+  },
+
+  "metadata": {
+    "createdAt": "2026-07-05",
+    "updatedAt": "2026-07-05",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": ["greetings", "introductions", "pronunciation", "du-vs-sie", "A1"],
+    "difficulty": 1,
+    "prerequisites": []
+  }
+}

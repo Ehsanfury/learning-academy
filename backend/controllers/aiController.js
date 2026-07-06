@@ -1,0 +1,391 @@
+/**
+ * aiController.js
+ * Learning Academy
+ * AI controller
+ * Changes:
+ * - ✅ Added validation for all endpoints
+ * - ✅ Fixed deleteHistory endpoint
+ * - ✅ Using asyncHandler for consistency
+ * - ✅ Added proper error handling
+ * - ✅ Removed raw data from responses
+ * - ✅ All methods now use aiService correctly
+ */
+
+import aiService from "../services/aiService.js";
+import AIConversation from "../models/AIConversation.js";
+import userService from "../services/userService.js";
+import {
+  validateChat,
+  validateGrammarCorrection,
+  validateTranslation,
+  validateGrammarExplanation,
+  validateScenarioStart,
+  validateScenarioContinue,
+} from "../validators/ai.validator.js";
+import { asyncHandler } from "../middlewares/errorHandler.js";
+import { ValidationError } from "../errors/index.js";
+
+/**
+ * Chat with AI
+ * POST /api/ai/chat
+ */
+export const chat = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateChat(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const { message, level, sessionId, context } = validation.data;
+
+  // Get conversation history
+  const history = await AIConversation.findAll({
+    where: {
+      userId,
+      sessionId,
+    },
+    order: [["createdAt", "ASC"]],
+    limit: 10,
+  });
+
+  const aiContext = {
+    userId,
+    level: level,
+    nativeLanguage: req.user.nativeLanguage || "fa",
+    role: context.role || "tutor",
+    topic: context.topic || "general",
+    history: history.map((h) => ({
+      role: h.sender,
+      content: h.message,
+    })),
+  };
+
+  const response = await aiService.generateResponse(message, aiContext);
+
+  // Save conversation
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: message,
+    sender: "user",
+  });
+
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: response.text,
+    sender: "assistant",
+  });
+
+  await userService.addXP(userId, 5, "ai_chat");
+
+  res.json({
+    success: true,
+    data: {
+      response: response.text,
+      sessionId,
+      xpGained: 5,
+    },
+  });
+});
+
+/**
+ * Grammar correction
+ * POST /api/ai/grammar/correct
+ */
+export const correctGrammar = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateGrammarCorrection(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const result = await aiService.correctGrammar(validation.data.text, userId);
+
+  await userService.addXP(userId, 3, "grammar_correction");
+
+  res.json({
+    success: true,
+    data: result,
+  });
+});
+
+/**
+ * Translate to German
+ * POST /api/ai/translate
+ */
+export const translateToGerman = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateTranslation(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const result = await aiService.translateToGerman(
+    validation.data.text,
+    validation.data.nativeLanguage || "fa"
+  );
+
+  await userService.addXP(userId, 3, "translation");
+
+  res.json({
+    success: true,
+    data: result,
+  });
+});
+
+/**
+ * Grammar explanation
+ * POST /api/ai/grammar/explain
+ */
+export const explainGrammar = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateGrammarExplanation(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const result = await aiService.explainGrammar(
+    validation.data.concept,
+    validation.data.level || "A1",
+    validation.data.nativeLanguage || "fa"
+  );
+
+  await userService.addXP(userId, 5, "grammar_explanation");
+
+  res.json({
+    success: true,
+    data: result,
+  });
+});
+
+/**
+ * Generate exercise
+ * POST /api/ai/exercise/generate
+ */
+export const generateExercise = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { topic, level = "A1", count = 5 } = req.body;
+
+  if (!topic) {
+    throw new ValidationError({
+      message: "Topic is required",
+      details: [{ field: "topic", message: "Topic is required" }],
+    });
+  }
+
+  const result = await aiService.generateExercise(topic, level, count);
+
+  await userService.addXP(userId, 5, "exercise_generation");
+
+  res.json({
+    success: true,
+    data: result,
+  });
+});
+
+/**
+ * Start scenario
+ * POST /api/ai/scenario/start
+ */
+export const startScenario = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateScenarioStart(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const result = await aiService.startScenario(
+    validation.data.scenarioType,
+    validation.data.level || "A1"
+  );
+
+  const sessionId = `scenario_${Date.now()}`;
+
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: `[Scenario: ${validation.data.scenarioType}] Started`,
+    sender: "system",
+  });
+
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: result.text,
+    sender: "assistant",
+  });
+
+  res.json({
+    success: true,
+    data: {
+      sessionId,
+      response: result.text,
+      scenarioType: validation.data.scenarioType,
+    },
+  });
+});
+
+/**
+ * Continue scenario
+ * POST /api/ai/scenario/continue
+ */
+export const continueScenario = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const data = req.body;
+
+  const validation = validateScenarioContinue(data);
+  if (!validation.valid) {
+    throw new ValidationError({
+      message: "Validation failed",
+      details: validation.errors,
+    });
+  }
+
+  const { sessionId, message } = validation.data;
+
+  // Get conversation history
+  const history = await AIConversation.findAll({
+    where: {
+      userId,
+      sessionId,
+      sender: ["user", "assistant"],
+    },
+    order: [["createdAt", "ASC"]],
+  });
+
+  const conversationHistory = history.map((h) => `${h.sender}: ${h.message}`).join("\n");
+
+  const result = await aiService.continueScenario(conversationHistory, message);
+
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: message,
+    sender: "user",
+  });
+
+  await AIConversation.create({
+    userId,
+    sessionId,
+    message: result.text,
+    sender: "assistant",
+  });
+
+  await userService.addXP(userId, 5, "scenario_practice");
+
+  res.json({
+    success: true,
+    data: {
+      response: result.text,
+      sessionId,
+    },
+  });
+});
+
+/**
+ * Get conversation history
+ * GET /api/ai/history
+ */
+export const getConversationHistory = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { sessionId = "default", limit = 50 } = req.query;
+
+  const history = await AIConversation.findAll({
+    where: {
+      userId,
+      sessionId,
+    },
+    order: [["createdAt", "ASC"]],
+    limit: parseInt(limit),
+  });
+
+  res.json({
+    success: true,
+    data: history,
+  });
+});
+
+/**
+ * Clear conversation history
+ * DELETE /api/ai/history/:sessionId
+ */
+export const deleteHistory = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { sessionId } = req.params;
+
+  if (!sessionId) {
+    throw new ValidationError({
+      message: "sessionId is required",
+      details: [{ field: "sessionId", message: "sessionId is required" }],
+    });
+  }
+
+  const deletedCount = await AIConversation.destroy({
+    where: {
+      userId,
+      sessionId,
+    },
+  });
+
+  res.json({
+    success: true,
+    message: "Conversation history cleared",
+    data: { deletedCount },
+  });
+});
+
+/**
+ * Get sessions list
+ * GET /api/ai/sessions
+ */
+export const getSessions = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+
+  const sessions = await AIConversation.findAll({
+    where: {
+      userId,
+      sender: "assistant",
+    },
+    attributes: [
+      "sessionId",
+      [
+        AIConversation.sequelize.fn("MAX", AIConversation.sequelize.col("createdAt")),
+        "lastMessageAt",
+      ],
+    ],
+    group: ["sessionId"],
+    order: [[AIConversation.sequelize.literal('"lastMessageAt"'), "DESC"]],
+    limit: 20,
+  });
+
+  res.json({
+    success: true,
+    data: sessions,
+  });
+});

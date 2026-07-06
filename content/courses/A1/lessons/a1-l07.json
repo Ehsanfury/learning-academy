@@ -1,0 +1,533 @@
+{
+  "id": "a1-l07",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 7,
+  "version": "2.0.0",
+  "status": "published",
+  "lastUpdated": "2026-06-26",
+  "estimatedTime": 55,
+  "difficulty": 2,
+  "prerequisites": [
+    "a1-l06"
+  ],
+  "nextLessonId": "a1-l08",
+  "previousLessonId": "a1-l06",
+  "title": {
+    "de": "Wie, wo und wann?",
+    "fa": "چگونه، کجا و چه زمانی؟",
+    "en": "How, where and when?"
+  },
+  "shortTitle": {
+    "de": "Wie, wo und wann?",
+    "fa": "چگونه، کجا و چه زمانی؟",
+    "en": "How, where and when?"
+  },
+  "description": {
+    "fa": "در این درس با حروف اضافه زمان و مکان و مقدمه‌ای بر حالت Dativ آشنا می‌شوید.",
+    "en": "In this lesson you will learn prepositions of time and place and an introduction to the dative case.",
+    "de": "In dieser Lektion lernen Sie Zeit- und Ortspräpositionen und eine Einführung in den Dativ."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ حروف اضافه زمان (am, im, um)",
+      "✅ حروف اضافه مکان (in, an, auf)",
+      "✅ مقدمه‌ای بر حالت Dativ",
+      "✅ پرسیدن زمان و مکان"
+    ]
+  },
+  "xpReward": 60,
+  "perfectBonusXP": 25,
+  "completionBonusXP": 75,
+  "cefr": "A1.1",
+  "goetheChapter": "Kapitel 1",
+  "tags": [],
+  "skills": [
+    "listening",
+    "speaking",
+    "reading",
+    "writing"
+  ],
+  "examRelevance": [
+    "Goethe-A1",
+    "TELC-A1",
+    "ÖSD-A1"
+  ],
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس هفتم خوش آمدید! 🕐\n\nدر این درس با حروف اضافه زمان و مکان و مقدمه‌ای بر حالت Dativ آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• حروف اضافه زمان (am, im, um)\n• حروف اضافه مکان (in, an, auf)\n• مقدمه‌ای بر حالت Dativ\n• چگونه بپرسید 'کی؟' و 'کجا؟'",
+        "en": "Welcome to lesson 7! 🕐\n\nIn this lesson you will learn prepositions of time and place and an introduction to the dative case.\n\nYou will learn:\n• Prepositions of time (am, im, um)\n• Prepositions of place (in, an, auf)\n• Introduction to the dative case\n• How to ask 'when?' and 'where?'",
+        "de": "Willkommen zur siebten Lektion! 🕐\n\nIn dieser Lektion lernen Sie Zeit- und Ortspräpositionen und eine Einführung in den Dativ.\n\nSie lernen:\n• Zeitpräpositionen (am, im, um)\n• Ortspräpositionen (in, an, auf)\n• Einführung in den Dativ\n• Wie man 'wann?' und 'wo?' fragt"
+      },
+      "id": "a1-l07-INTRO-001",
+      "order": 0
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "wann?",
+          "fa": "چه زمانی؟",
+          "en": "when?",
+          "icon": "❓"
+        },
+        {
+          "de": "wo?",
+          "fa": "کجا؟",
+          "en": "where?",
+          "icon": "📍"
+        },
+        {
+          "de": "wie?",
+          "fa": "چگونه؟",
+          "en": "how?",
+          "icon": "❔"
+        },
+        {
+          "de": "am Montag",
+          "fa": "در روز دوشنبه",
+          "en": "on Monday",
+          "icon": "📅"
+        },
+        {
+          "de": "im Januar",
+          "fa": "در ماه ژانویه",
+          "en": "in January",
+          "icon": "📆"
+        },
+        {
+          "de": "um 8 Uhr",
+          "fa": "ساعت ۸",
+          "en": "at 8 o'clock",
+          "icon": "🕗"
+        },
+        {
+          "de": "das Kino",
+          "fa": "سینما",
+          "en": "cinema",
+          "gender": "das",
+          "plural": "die Kinos",
+          "icon": "🎬"
+        },
+        {
+          "de": "die Schule",
+          "fa": "مدرسه",
+          "en": "school",
+          "gender": "die",
+          "plural": "die Schulen",
+          "icon": "🏫"
+        },
+        {
+          "de": "das Haus",
+          "fa": "خانه",
+          "en": "house",
+          "gender": "das",
+          "plural": "die Häuser",
+          "icon": "🏠"
+        },
+        {
+          "de": "der Morgen",
+          "fa": "صبح",
+          "en": "morning",
+          "gender": "der",
+          "icon": "🌅"
+        },
+        {
+          "de": "der Nachmittag",
+          "fa": "بعد از ظهر",
+          "en": "afternoon",
+          "gender": "der",
+          "icon": "☀️"
+        },
+        {
+          "de": "der Abend",
+          "fa": "عصر",
+          "en": "evening",
+          "gender": "der",
+          "icon": "🌆"
+        },
+        {
+          "de": "die Woche",
+          "fa": "هفته",
+          "en": "week",
+          "gender": "die",
+          "plural": "die Wochen",
+          "icon": "📆"
+        },
+        {
+          "de": "das Jahr",
+          "fa": "سال",
+          "en": "year",
+          "gender": "das",
+          "plural": "die Jahre",
+          "icon": "📅"
+        }
+      ],
+      "id": "a1-l07-VOC-002",
+      "order": 1
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "حروف اضافه زمان و مکان",
+        "en": "Prepositions of Time and Place",
+        "de": "Zeit- und Ortspräpositionen"
+      },
+      "explanation": {
+        "fa": "📌 **حروف اضافه زمان (Temporale Präpositionen):**\n\n• **am** (مخفف an + dem) → برای روزها و بخش‌های روز:\n→ am Montag, am Morgen, am Wochenende\n\n• **im** (مخفف in + dem) → برای ماه‌ها و فصل‌ها:\n→ im Januar, im Sommer, im Winter\n\n• **um** → برای ساعت دقیق:\n→ um 9 Uhr, um halb acht\n\n📌 **مقدمه‌ای بر Dativ در مکان (Lokal):**\n\nوقتی می‌خواهیم بگوییم 'در جایی هستیم' (حالت سکون)، از in + Dativ استفاده می‌کنیم:\n\n• in + dem → im (برای مذکر و خنثی)\n• in + der → in der (برای مونث)\n\nمثال: Ich bin im Kino. (من در سینما هستم)",
+        "en": "📌 **Prepositions of Time:**\n\n• **am** (an + dem) → for days and parts of the day:\n→ am Montag, am Morgen, am Wochenende\n\n• **im** (in + dem) → for months and seasons:\n→ im Januar, im Sommer\n\n• **um** → for exact time:\n→ um 9 Uhr\n\n📌 **Introduction to Dative for Place:**\n\nWhen saying 'we are somewhere' (static location), use in + Dative:\n\n• in + dem → im (for masculine and neuter)\n• in + der → in der (for feminine)\n\nExample: Ich bin im Kino.",
+        "de": "📌 **Zeitpräpositionen:**\n\n• **am** (an + dem) → für Tage und Tageszeiten:\n→ am Montag, am Morgen\n\n• **im** (in + dem) → für Monate und Jahreszeiten:\n→ im Januar, im Sommer\n\n• **um** → für die genaue Uhrzeit:\n→ um 9 Uhr\n\n📌 **Einführung in den Dativ für Orte:**\n\nWenn man sagt 'wir sind irgendwo' (statischer Ort), verwendet man in + Dativ:\n\n• in + dem → im (für maskulin und neutrum)\n• in + der → in der (für feminin)\n\nBeispiel: Ich bin im Kino."
+      },
+      "examples": [
+        {
+          "de": "Ich bin am Montag im Kino.",
+          "fa": "من دوشنبه در سینما هستم.",
+          "en": "I am at the cinema on Monday."
+        },
+        {
+          "de": "Wir treffen uns um 8 Uhr.",
+          "fa": "ما ساعت ۸ همدیگر را می‌بینیم.",
+          "en": "We meet at 8 o'clock."
+        },
+        {
+          "de": "Ich bin im Kino.",
+          "fa": "من در سینما هستم.",
+          "en": "I am in the cinema."
+        },
+        {
+          "de": "Sie ist in der Schule.",
+          "fa": "او در مدرسه است.",
+          "en": "She is at school."
+        }
+      ],
+      "id": "a1-l07-GRAM-003",
+      "order": 2
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: برنامه آخر هفته",
+        "en": "📖 Story: Weekend Plan",
+        "de": "📖 Geschichte: Wochenendplan"
+      },
+      "text": {
+        "de": "Am Samstag habe ich Zeit. Ich gehe ins Kino. Ich treffe meine Freunde. Wir treffen uns um 7 Uhr vor dem Kino. Wir sehen einen Film. Der Film ist um 8 Uhr. Nach dem Film gehen wir in ein Café. Wir trinken Kaffee. Am Sonntag bin ich zu Hause. Ich lerne Deutsch.",
+        "fa": "روز شنبه من وقت دارم. به سینما می‌روم. دوستانم را ملاقات می‌کنم. ساعت ۷ جلوی سینما همدیگر را می‌بینیم. یک فیلم می‌بینیم. فیلم ساعت ۸ است. بعد از فیلم به یک کافه می‌رویم. قهوه می‌نوشیم. روز یکشنبه در خانه هستم. آلمانی یاد می‌گیرم.",
+        "en": "On Saturday I have time. I go to the cinema. I meet my friends. We meet at 7 o'clock in front of the cinema. We watch a film. The film is at 8 o'clock. After the film we go to a café. We drink coffee. On Sunday I am at home. I learn German."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "ساعت چند جلوی سینما همدیگر را می‌بینیم؟",
+            "en": "What time do we meet in front of the cinema?",
+            "de": "Wann treffen wir uns vor dem Kino?"
+          },
+          "answer": {
+            "fa": "ساعت ۷",
+            "en": "7 o'clock",
+            "de": "7 Uhr"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "یکشنبه کجا هستم؟",
+            "en": "Where am I on Sunday?",
+            "de": "Wo bin ich am Sonntag?"
+          },
+          "answer": {
+            "fa": "در خانه",
+            "en": "At home",
+            "de": "Zu Hause"
+          }
+        }
+      ],
+      "id": "a1-l07-STORY-004",
+      "order": 3
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "حرف اضافه صحیح: ____ Montag",
+            "en": "Correct preposition: ____ Montag",
+            "de": "Richtige Präposition: ____ Montag"
+          },
+          "options": [
+            "am",
+            "im",
+            "um"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "fa": "am Montag = در روز دوشنبه",
+            "en": "am Montag = on Monday",
+            "de": "am Montag = am Montag"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "حرف اضافه صحیح: ____ Januar",
+            "en": "Correct preposition: ____ Januar",
+            "de": "Richtige Präposition: ____ Januar"
+          },
+          "options": [
+            "am",
+            "im",
+            "um"
+          ],
+          "correctIndex": 1,
+          "explanation": {
+            "fa": "im Januar = در ماه ژانویه",
+            "en": "im Januar = in January",
+            "de": "im Januar = im Januar"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "حرف اضافه صحیح: ____ 10 Uhr",
+            "en": "Correct preposition: ____ 10 Uhr",
+            "de": "Richtige Präposition: ____ 10 Uhr"
+          },
+          "options": [
+            "am",
+            "im",
+            "um"
+          ],
+          "correctIndex": 2,
+          "explanation": {
+            "fa": "um 10 Uhr = ساعت ۱۰",
+            "en": "um 10 Uhr = at 10 o'clock",
+            "de": "um 10 Uhr = um 10 Uhr"
+          }
+        },
+        {
+          "id": "ex4",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'من در سینما هستم.'",
+            "en": "Translate: 'I am in the cinema.'",
+            "de": "Übersetzen: 'Ich bin im Kino.'"
+          },
+          "answer": "Ich bin im Kino.",
+          "hint": {
+            "fa": "Kino خنثی است → im",
+            "en": "Kino is neuter → im",
+            "de": "Kino ist neutrum → im"
+          }
+        }
+      ],
+      "id": "a1-l07-EXER-005",
+      "order": 4
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "wann?",
+          "fa": "چه زمانی؟",
+          "en": "when?",
+          "icon": "❓"
+        },
+        {
+          "de": "wo?",
+          "fa": "کجا؟",
+          "en": "where?",
+          "icon": "📍"
+        },
+        {
+          "de": "am Montag",
+          "fa": "دوشنبه",
+          "en": "on Monday",
+          "icon": "📅"
+        },
+        {
+          "de": "im Januar",
+          "fa": "در ژانویه",
+          "en": "in January",
+          "icon": "📆"
+        },
+        {
+          "de": "um 8 Uhr",
+          "fa": "ساعت ۸",
+          "en": "at 8",
+          "icon": "🕗"
+        },
+        {
+          "de": "das Kino",
+          "fa": "سینما",
+          "en": "cinema",
+          "icon": "🎬"
+        },
+        {
+          "de": "die Schule",
+          "fa": "مدرسه",
+          "en": "school",
+          "icon": "🏫"
+        },
+        {
+          "de": "das Haus",
+          "fa": "خانه",
+          "en": "house",
+          "icon": "🏠"
+        }
+      ],
+      "id": "a1-l07-FLASH-006",
+      "order": 5
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "das Kino",
+          "phonetic": "/das ˈkiːno/"
+        },
+        {
+          "word": "die Schule",
+          "phonetic": "/diː ˈʃuːlə/"
+        },
+        {
+          "word": "der Montag",
+          "phonetic": "/deːɐ̯ ˈmoːntaːk/"
+        },
+        {
+          "word": "der Januar",
+          "phonetic": "/deːɐ̯ ˈjanuaːɐ̯/"
+        }
+      ],
+      "id": "a1-l07-PRON-007",
+      "order": 6
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "حرف اضافه صحیح: ____ Morgen",
+            "en": "Correct preposition: ____ Morgen",
+            "de": "Richtige Präposition: ____ Morgen"
+          },
+          "options": [
+            "am",
+            "im",
+            "um"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "حرف اضافه صحیح: ____ Sommer",
+            "en": "Correct preposition: ____ Sommer",
+            "de": "Richtige Präposition: ____ Sommer"
+          },
+          "options": [
+            "am",
+            "im",
+            "um"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich bin ____ Kino.' (در سینما)",
+            "en": "Complete: 'Ich bin ____ Kino.' (in the cinema)",
+            "de": "Vervollständigen: 'Ich bin ____ Kino.' (im Kino)"
+          },
+          "answer": "im",
+          "xpBonus": 10
+        }
+      ],
+      "id": "a1-l07-QUIZ-008",
+      "order": 7
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ حروف اضافه زمان (am, im, um)",
+          "✅ حروف اضافه مکان (in, an, auf)",
+          "✅ مقدمه‌ای بر حالت Dativ",
+          "✅ پرسیدن زمان و مکان"
+        ],
+        "en": [
+          "✅ Prepositions of time (am, im, um)",
+          "✅ Prepositions of place (in, an, auf)",
+          "✅ Introduction to dative case",
+          "✅ Asking when and where"
+        ],
+        "de": [
+          "✅ Zeitpräpositionen (am, im, um)",
+          "✅ Ortspräpositionen (in, an, auf)",
+          "✅ Einführung in den Dativ",
+          "✅ Nach Zeit und Ort fragen"
+        ]
+      },
+      "id": "a1-l07-SUMM-009",
+      "order": 8
+    }
+  ],
+  "totalSections": 9,
+  "totalQuestions": 0,
+  "totalVocabulary": 0,
+  "isActive": true,
+  "exportable": true
+}

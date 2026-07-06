@@ -1,0 +1,533 @@
+{
+  "id": "a1-l09",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 9,
+  "version": "2.0.0",
+  "status": "published",
+  "lastUpdated": "2026-06-26",
+  "estimatedTime": 55,
+  "difficulty": 2,
+  "prerequisites": [
+    "a1-l08"
+  ],
+  "nextLessonId": "a1-l10",
+  "previousLessonId": "a1-l08",
+  "title": {
+    "de": "Unter Freunden",
+    "fa": "در میان دوستان",
+    "en": "Among Friends"
+  },
+  "shortTitle": {
+    "de": "Freunde",
+    "fa": "دوستان",
+    "en": "Friends"
+  },
+  "description": {
+    "fa": "در این درس با Dativ برای اشخاص، ضمایر شخصی در حالت Dativ و افعالی که با Dativ می‌آیند آشنا می‌شوید.",
+    "en": "In this lesson you will learn Dative for people, personal pronouns in Dative and verbs that take Dative.",
+    "de": "In dieser Lektion lernen Sie Dativ für Personen, Personalpronomen im Dativ und Verben mit Dativ."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ ضمایر شخصی در حالت Dativ",
+      "✅ افعال با Dativ (helfen, geben, danken)",
+      "✅ گفتن اینکه به چه کسی کمک می‌کنید یا چیزی می‌دهید"
+    ]
+  },
+  "xpReward": 60,
+  "perfectBonusXP": 25,
+  "completionBonusXP": 75,
+  "cefr": "A1.1",
+  "goetheChapter": "Kapitel 1",
+  "tags": [],
+  "skills": [
+    "listening",
+    "speaking",
+    "reading",
+    "writing"
+  ],
+  "examRelevance": [
+    "Goethe-A1",
+    "TELC-A1",
+    "ÖSD-A1"
+  ],
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به درس نهم خوش آمدید! 🤝\n\nدر این درس با Dativ برای اشخاص و ضمایر شخصی در حالت Dativ آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• ضمایر شخصی در حالت Dativ (mir, dir, ihm, ihr, uns, euch, ihnen)\n• افعالی که با Dativ می‌آیند (helfen, geben, danken)\n• چگونه بگویید به چه کسی کمک می‌کنید یا چیزی می‌دهید",
+        "en": "Welcome to lesson 9! 🤝\n\nIn this lesson you will learn Dative for people and personal pronouns in Dative.\n\nYou will learn:\n• Personal pronouns in Dative (mir, dir, ihm, ihr, uns, euch, ihnen)\n• Verbs that take Dative (helfen, geben, danken)\n• How to say who you help or give something to",
+        "de": "Willkommen zur neunten Lektion! 🤝\n\nIn dieser Lektion lernen Sie Dativ für Personen und Personalpronomen im Dativ.\n\nSie lernen:\n• Personalpronomen im Dativ (mir, dir, ihm, ihr, uns, euch, ihnen)\n• Verben mit Dativ (helfen, geben, danken)\n• Wie man sagt, wem Sie helfen oder etwas geben"
+      },
+      "id": "a1-l09-INTRO-001",
+      "order": 0
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "der Freund",
+          "fa": "دوست (مذکر)",
+          "en": "friend (male)",
+          "gender": "der",
+          "plural": "die Freunde",
+          "icon": "👨",
+          "example": {
+            "de": "Das ist mein Freund.",
+            "fa": "این دوست من است.",
+            "en": "This is my friend."
+          }
+        },
+        {
+          "de": "die Freundin",
+          "fa": "دوست (مونث)",
+          "en": "friend (female)",
+          "gender": "die",
+          "plural": "die Freundinnen",
+          "icon": "👩",
+          "example": {
+            "de": "Das ist meine Freundin.",
+            "fa": "این دوست من است.",
+            "en": "This is my friend."
+          }
+        },
+        {
+          "de": "geben",
+          "fa": "دادن",
+          "en": "to give",
+          "icon": "🎁",
+          "example": {
+            "de": "Ich gebe dir ein Geschenk.",
+            "fa": "من به تو یک هدیه می‌دهم.",
+            "en": "I give you a gift."
+          }
+        },
+        {
+          "de": "helfen",
+          "fa": "کمک کردن (همیشه با Dativ)",
+          "en": "to help (always with Dative)",
+          "icon": "🤝",
+          "example": {
+            "de": "Ich helfe dir.",
+            "fa": "من به تو کمک می‌کنم.",
+            "en": "I help you."
+          }
+        },
+        {
+          "de": "danken",
+          "fa": "تشکر کردن (همیشه با Dativ)",
+          "en": "to thank (always with Dative)",
+          "icon": "🙏",
+          "example": {
+            "de": "Ich danke dir.",
+            "fa": "من از تو تشکر می‌کنم.",
+            "en": "I thank you."
+          }
+        },
+        {
+          "de": "das Geschenk",
+          "fa": "هدیه",
+          "en": "gift",
+          "gender": "das",
+          "plural": "die Geschenke",
+          "icon": "🎁",
+          "example": {
+            "de": "Das ist ein Geschenk.",
+            "fa": "این یک هدیه است.",
+            "en": "This is a gift."
+          }
+        }
+      ],
+      "id": "a1-l09-VOC-002",
+      "order": 1
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "ضمایر شخصی در حالت Dativ",
+        "en": "Personal Pronouns in Dative",
+        "de": "Personalpronomen im Dativ"
+      },
+      "explanation": {
+        "fa": "📌 **ضمایر شخصی در حالت Dativ:**\n\nوقتی کسی 'گیرنده' یک عمل است (مثلاً چیزی را به او می‌دهید)، ضمیر او تغییر می‌کند:\n\n• ich → mir (به من)\n• du → dir (به تو)\n• er → ihm (به او - مذکر)\n• sie → ihr (به او - مونث)\n• es → ihm (به آن - خنثی)\n• wir → uns (به ما)\n• ihr → euch (به شما - جمع غیررسمی)\n• sie → ihnen (به آنها)\n• Sie → Ihnen (به شما - رسمی)\n\n📌 **افعال با Dativ:**\n\nبرخی افعال همیشه با Dativ می‌آیند:\n\n• helfen (کمک کردن): Ich helfe dir.\n• danken (تشکر کردن): Ich danke dir.\n• geben (دادن): Ich gebe dir ein Buch.",
+        "en": "📌 **Personal Pronouns in Dative:**\n\nWhen someone is the 'receiver' of an action (e.g., you give something to them), the pronoun changes:\n\n• ich → mir (to me)\n• du → dir (to you - informal)\n• er → ihm (to him)\n• sie → ihr (to her)\n• es → ihm (to it)\n• wir → uns (to us)\n• ihr → euch (to you - plural informal)\n• sie → ihnen (to them)\n• Sie → Ihnen (to you - formal)\n\n📌 **Verbs with Dative:**\n\nSome verbs always take Dative:\n\n• helfen (to help): Ich helfe dir.\n• danken (to thank): Ich danke dir.\n• geben (to give): Ich gebe dir ein Buch.",
+        "de": "📌 **Personalpronomen im Dativ:**\n\nWenn jemand der 'Empfänger' einer Handlung ist (z.B. Sie geben ihm etwas), ändert sich das Pronomen:\n\n• ich → mir\n• du → dir\n• er → ihm\n• sie → ihr\n• es → ihm\n• wir → uns\n• ihr → euch\n• sie → ihnen\n• Sie → Ihnen\n\n📌 **Verben mit Dativ:**\n\nEinige Verben stehen immer mit Dativ:\n\n• helfen: Ich helfe dir.\n• danken: Ich danke dir.\n• geben: Ich gebe dir ein Buch."
+      },
+      "examples": [
+        {
+          "de": "Ich helfe dir.",
+          "fa": "من به تو کمک می‌کنم.",
+          "en": "I help you."
+        },
+        {
+          "de": "Kannst du mir helfen?",
+          "fa": "می‌توانی به من کمک کنی؟",
+          "en": "Can you help me?"
+        },
+        {
+          "de": "Ich gebe dir ein Geschenk.",
+          "fa": "من به تو یک هدیه می‌دهم.",
+          "en": "I give you a gift."
+        },
+        {
+          "de": "Ich danke dir für deine Hilfe.",
+          "fa": "من از تو برای کمک‌ت تشکر می‌کنم.",
+          "en": "I thank you for your help."
+        },
+        {
+          "de": "Sie hilft ihm.",
+          "fa": "او (مونث) به او (مذکر) کمک می‌کند.",
+          "en": "She helps him."
+        }
+      ],
+      "id": "a1-l09-GRAM-003",
+      "order": 2
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: کمک به دوست",
+        "en": "📖 Story: Helping a Friend",
+        "de": "📖 Geschichte: Einem Freund helfen"
+      },
+      "text": {
+        "de": "Ich habe einen Freund. Er heißt Max. Er braucht Hilfe. Er hat keine Zeit. Ich helfe ihm. Ich gebe ihm ein Buch. Ich danke ihm für seine Freundschaft. Er dankt mir. Wir sind gute Freunde.",
+        "fa": "من یک دوست دارم. اسم او مکس است. او به کمک نیاز دارد. او وقت ندارد. من به او کمک می‌کنم. من به او یک کتاب می‌دهم. من از او برای دوستی‌اش تشکر می‌کنم. او از من تشکر می‌کند. ما دوستان خوبی هستیم.",
+        "en": "I have a friend. His name is Max. He needs help. He has no time. I help him. I give him a book. I thank him for his friendship. He thanks me. We are good friends."
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "اسم دوست من چیست؟",
+            "en": "What is my friend's name?",
+            "de": "Wie heißt mein Freund?"
+          },
+          "answer": {
+            "fa": "مکس",
+            "en": "Max",
+            "de": "Max"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "من به دوستم چه چیزی می‌دهم؟",
+            "en": "What do I give my friend?",
+            "de": "Was gebe ich meinem Freund?"
+          },
+          "answer": {
+            "fa": "یک کتاب",
+            "en": "A book",
+            "de": "Ein Buch"
+          }
+        }
+      ],
+      "id": "a1-l09-STORY-004",
+      "order": 3
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "ضمیر صحیح در Dativ: (Ich / Mir) helfe dir.",
+            "en": "Choose correct pronoun in Dative: (Ich / Mir) helfe dir.",
+            "de": "Richtiges Pronomen im Dativ: (Ich / Mir) helfe dir."
+          },
+          "options": [
+            "Ich",
+            "Mir"
+          ],
+          "correctIndex": 0,
+          "explanation": {
+            "fa": "فاعل جمله 'من' است → ich",
+            "en": "The subject is 'I' → ich",
+            "de": "Das Subjekt ist 'ich' → ich"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "fill_in",
+          "question": {
+            "fa": "جای خالی: Gibst du ____ (به من) das Geschenk?",
+            "en": "Fill in: Gibst du ____ (to me) das Geschenk?",
+            "de": "Füllen Sie: Gibst du ____ (mir) das Geschenk?"
+          },
+          "answer": "mir",
+          "hint": {
+            "fa": "ich → mir در Dativ",
+            "en": "ich → mir in Dative",
+            "de": "ich → mir im Dativ"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "translation",
+          "question": {
+            "fa": "جمله را ترجمه کنید: 'او (مونث) به من کمک می‌کند.'",
+            "en": "Translate: 'She helps me.'",
+            "de": "Übersetzen: 'Sie hilft mir.'"
+          },
+          "answer": "Sie hilft mir.",
+          "hint": {
+            "fa": "helfen + Dativ",
+            "en": "helfen + Dative",
+            "de": "helfen + Dativ"
+          }
+        },
+        {
+          "id": "ex4",
+          "type": "fill_in",
+          "question": {
+            "fa": "جای خالی: Ich danke ____ (به تو) für deine Hilfe.",
+            "en": "Fill in: Ich danke ____ (to you) for your help.",
+            "de": "Füllen Sie: Ich danke ____ (dir) für deine Hilfe."
+          },
+          "answer": "dir",
+          "hint": {
+            "fa": "du → dir در Dativ",
+            "en": "du → dir in Dative",
+            "de": "du → dir im Dativ"
+          }
+        }
+      ],
+      "id": "a1-l09-EXER-005",
+      "order": 4
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "der Freund",
+          "fa": "دوست (مذکر)",
+          "en": "friend (male)",
+          "icon": "👨"
+        },
+        {
+          "de": "die Freundin",
+          "fa": "دوست (مونث)",
+          "en": "friend (female)",
+          "icon": "👩"
+        },
+        {
+          "de": "helfen",
+          "fa": "کمک کردن",
+          "en": "to help",
+          "icon": "🤝"
+        },
+        {
+          "de": "geben",
+          "fa": "دادن",
+          "en": "to give",
+          "icon": "🎁"
+        },
+        {
+          "de": "danken",
+          "fa": "تشکر کردن",
+          "en": "to thank",
+          "icon": "🙏"
+        },
+        {
+          "de": "mir",
+          "fa": "به من",
+          "en": "to me",
+          "icon": "👇"
+        },
+        {
+          "de": "dir",
+          "fa": "به تو",
+          "en": "to you",
+          "icon": "👉"
+        },
+        {
+          "de": "ihm",
+          "fa": "به او (مذکر)",
+          "en": "to him",
+          "icon": "👤"
+        },
+        {
+          "de": "ihr",
+          "fa": "به او (مونث)",
+          "en": "to her",
+          "icon": "👩"
+        },
+        {
+          "de": "uns",
+          "fa": "به ما",
+          "en": "to us",
+          "icon": "👥"
+        },
+        {
+          "de": "euch",
+          "fa": "به شما (جمع)",
+          "en": "to you (pl.)",
+          "icon": "👥"
+        },
+        {
+          "de": "ihnen",
+          "fa": "به آنها",
+          "en": "to them",
+          "icon": "👥"
+        }
+      ],
+      "id": "a1-l09-FLASH-006",
+      "order": 5
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "helfen",
+          "phonetic": "/ˈhɛlfn̩/"
+        },
+        {
+          "word": "geben",
+          "phonetic": "/ˈɡeːbm̩/"
+        },
+        {
+          "word": "danken",
+          "phonetic": "/ˈdaŋkn̩/"
+        },
+        {
+          "word": "das Geschenk",
+          "phonetic": "/das ɡəˈʃɛŋk/"
+        },
+        {
+          "word": "mir",
+          "phonetic": "/miːɐ̯/"
+        }
+      ],
+      "id": "a1-l09-PRON-007",
+      "order": 6
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "ضمیر صحیح در Dativ: Ich helfe ____.",
+            "en": "Choose correct pronoun in Dative: Ich helfe ____.",
+            "de": "Richtiges Pronomen im Dativ: Ich helfe ____."
+          },
+          "options": [
+            "dir",
+            "du",
+            "dich",
+            "dein"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        },
+        {
+          "id": "qz2",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich gebe ____ (به او - مذکر) ein Buch.'",
+            "en": "Complete: 'Ich gebe ____ (to him) ein Buch.'",
+            "de": "Vervollständigen: 'Ich gebe ____ (ihm) ein Buch.'"
+          },
+          "answer": "ihm",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک از افعال زیر همیشه با Dativ می‌آید؟",
+            "en": "Which verb always takes Dative?",
+            "de": "Welches Verb steht immer mit Dativ?"
+          },
+          "options": [
+            "helfen",
+            "gehen",
+            "kommen",
+            "wohnen"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10
+        }
+      ],
+      "id": "a1-l09-QUIZ-008",
+      "order": 7
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ ضمایر شخصی در حالت Dativ",
+          "✅ افعال با Dativ (helfen, geben, danken)",
+          "✅ گفتن اینکه به چه کسی کمک می‌کنید یا چیزی می‌دهید"
+        ],
+        "en": [
+          "✅ Personal pronouns in Dative",
+          "✅ Verbs with Dative (helfen, geben, danken)",
+          "✅ Saying who you help or give something to"
+        ],
+        "de": [
+          "✅ Personalpronomen im Dativ",
+          "✅ Verben mit Dativ (helfen, geben, danken)",
+          "✅ Sagen, wem Sie helfen oder etwas geben"
+        ]
+      },
+      "nextSteps": {
+        "fa": "📚 در درس بعدی (Was hast du gemacht?) با زمان گذشته (Perfekt) آشنا می‌شوید.",
+        "en": "📚 In the next lesson (Was hast du gemacht?) you will learn the past tense (Perfekt).",
+        "de": "📚 In der nächsten Lektion (Was hast du gemacht?) lernen Sie die Vergangenheitsform (Perfekt)."
+      },
+      "id": "a1-l09-SUMM-009",
+      "order": 8
+    }
+  ],
+  "totalSections": 9,
+  "totalQuestions": 0,
+  "totalVocabulary": 0,
+  "isActive": true,
+  "exportable": true
+}

@@ -1,0 +1,696 @@
+{
+  "id": "a1-l01",
+  "level": "A1",
+  "unit": 1,
+  "lessonNumber": 1,
+  "title": {
+    "de": "Super!",
+    "fa": "خیلی عالی!",
+    "en": "Super!"
+  },
+  "shortTitle": {
+    "de": "Hallo!",
+    "fa": "سلام!",
+    "en": "Hello!"
+  },
+  "description": {
+    "fa": "در این درس با سلام و احوالپرسی، معرفی خود و بیان ملیت و زبان آشنا می‌شوید.",
+    "en": "In this lesson you will learn greetings, introducing yourself and expressing nationality and language.",
+    "de": "In dieser Lektion lernen Sie Begrüßungen, sich vorzustellen und Nationalität und Sprache auszudrücken."
+  },
+  "learningObjectives": {
+    "fa": [
+      "✅ یادگیری ۵ روش مختلف سلام کردن به آلمانی",
+      "✅ گفتن اسم خود با فعل heißen",
+      "✅ بیان ملیت و زبان خود",
+      "✅ پرسیدن نام دیگران به صورت رسمی و غیررسمی"
+    ],
+    "en": [
+      "✅ Learn 5 different ways to greet in German",
+      "✅ Say your name with the verb 'heißen'",
+      "✅ Express your nationality and language",
+      "✅ Ask others' names formally and informally"
+    ],
+    "de": [
+      "✅ 5 verschiedene Arten zu grüßen lernen",
+      "✅ Sagen Sie Ihren Namen mit dem Verb 'heißen'",
+      "✅ Nationalität und Sprache ausdrücken",
+      "✅ Namen anderer formell und informell fragen"
+    ]
+  },
+  "xpReward": 50,
+  "perfectBonusXP": 25,
+  "estimatedMinutes": 45,
+  "difficulty": 1,
+  "prerequisites": [],
+  "nextLessonId": "a1-l02",
+  "previousLessonId": null,
+  "sections": [
+    {
+      "type": "introduction",
+      "title": {
+        "fa": "🌟 مقدمه",
+        "en": "🌟 Introduction",
+        "de": "🌟 Einleitung"
+      },
+      "content": {
+        "fa": "به اولین درس از سطح A1 خوش آمدید! 🎉\n\nدر این درس با سلام و احوالپرسی به زبان آلمانی آشنا می‌شوید. این یکی از مهم‌ترین مباحث برای شروع یادگیری زبان آلمانی است.\n\nدر این درس یاد می‌گیرید:\n• چگونه به آلمانی سلام کنید\n• چگونه خود را معرفی کنید\n• چگونه بپرسید دیگران چه نامی دارند\n• چگونه بگویید اهل کجا هستید و به چه زبان‌هایی صحبت می‌کنید",
+        "en": "Welcome to your first A1 lesson! 🎉\n\nIn this lesson you will learn greetings in German. This is one of the most important topics for starting to learn German.\n\nYou will learn:\n• How to greet in German\n• How to introduce yourself\n• How to ask others' names\n• How to say where you are from and what languages you speak",
+        "de": "Willkommen zu Ihrer ersten A1-Lektion! 🎉\n\nIn dieser Lektion lernen Sie Begrüßungen auf Deutsch. Dies ist eines der wichtigsten Themen für den Einstieg in die deutsche Sprache.\n\nSie lernen:\n• Wie man auf Deutsch grüßt\n• Wie man sich vorstellt\n• Wie man nach Namen fragt\n• Wie man sagt, woher man kommt und welche Sprachen man spricht"
+      }
+    },
+    {
+      "type": "vocabulary",
+      "title": {
+        "fa": "📖 گنجینه لغات",
+        "en": "📖 Vocabulary",
+        "de": "📖 Wortschatz"
+      },
+      "words": [
+        {
+          "de": "Hallo",
+          "fa": "سلام",
+          "en": "Hello",
+          "transliteration": "هالو",
+          "gender": null,
+          "plural": null,
+          "synonyms": [
+            "Hi",
+            "Hey"
+          ],
+          "antonyms": [
+            "Tschüss"
+          ],
+          "example": {
+            "de": "Hallo, wie geht es dir?",
+            "fa": "سلام، حالت چطوره؟",
+            "en": "Hello, how are you?"
+          }
+        },
+        {
+          "de": "Guten Tag",
+          "fa": "روز بخیر",
+          "en": "Good day",
+          "transliteration": "گوتن تاک",
+          "gender": null,
+          "plural": null,
+          "synonyms": [
+            "Tag"
+          ],
+          "antonyms": [
+            "Gute Nacht"
+          ],
+          "example": {
+            "de": "Guten Tag! Ich heiße Thomas.",
+            "fa": "روز بخیر! اسم من توماس است.",
+            "en": "Good day! My name is Thomas."
+          }
+        },
+        {
+          "de": "Wie heißen Sie?",
+          "fa": "نام شما چیست؟ (رسمی)",
+          "en": "What is your name? (formal)",
+          "transliteration": "وی هایسن زی؟",
+          "gender": null,
+          "plural": null,
+          "synonyms": [],
+          "antonyms": [],
+          "example": {
+            "de": "Wie heißen Sie? Ich heiße Schmidt.",
+            "fa": "نام شما چیست؟ اسم من اشمیت است.",
+            "en": "What is your name? My name is Schmidt."
+          }
+        },
+        {
+          "de": "Wie heißt du?",
+          "fa": "نام تو چیست؟ (غیررسمی)",
+          "en": "What is your name? (informal)",
+          "transliteration": "وی هایست دو؟",
+          "gender": null,
+          "plural": null,
+          "synonyms": [],
+          "antonyms": [],
+          "example": {
+            "de": "Wie heißt du? Ich heiße Anna.",
+            "fa": "اسم تو چیست؟ اسم من آنا است.",
+            "en": "What is your name? My name is Anna."
+          }
+        },
+        {
+          "de": "heißen",
+          "fa": "نام داشتن، نامیده شدن",
+          "en": "to be called",
+          "transliteration": "هایسن",
+          "gender": null,
+          "plural": null,
+          "synonyms": [
+            "genannt werden"
+          ],
+          "antonyms": [],
+          "example": {
+            "de": "Ich heiße Ahmad.",
+            "fa": "اسم من احمد است.",
+            "en": "My name is Ahmad."
+          }
+        },
+        {
+          "de": "kommen aus",
+          "fa": "اهل ... بودن، از ... آمدن",
+          "en": "to come from",
+          "transliteration": "کامن آوس",
+          "gender": null,
+          "plural": null,
+          "synonyms": [
+            "stammen aus"
+          ],
+          "antonyms": [],
+          "example": {
+            "de": "Ich komme aus dem Iran.",
+            "fa": "من اهل ایران هستم.",
+            "en": "I come from Iran."
+          }
+        },
+        {
+          "de": "sprechen",
+          "fa": "صحبت کردن",
+          "en": "to speak",
+          "transliteration": "اشپراخن",
+          "gender": null,
+          "plural": null,
+          "synonyms": [
+            "reden",
+            "sagen"
+          ],
+          "antonyms": [
+            "schweigen"
+          ],
+          "example": {
+            "de": "Ich spreche Deutsch und Englisch.",
+            "fa": "من آلمانی و انگلیسی صحبت می‌کنم.",
+            "en": "I speak German and English."
+          }
+        },
+        {
+          "de": "Deutsch",
+          "fa": "آلمانی",
+          "en": "German",
+          "transliteration": "دویچ",
+          "gender": "das",
+          "plural": null,
+          "synonyms": [],
+          "antonyms": [],
+          "example": {
+            "de": "Deutsch ist eine schöne Sprache.",
+            "fa": "آلمانی یک زبان زیباست.",
+            "en": "German is a beautiful language."
+          }
+        },
+        {
+          "de": "Englisch",
+          "fa": "انگلیسی",
+          "en": "English",
+          "transliteration": "انگلیش",
+          "gender": "das",
+          "plural": null,
+          "synonyms": [],
+          "antonyms": [],
+          "example": {
+            "de": "Ich spreche auch Englisch.",
+            "fa": "من همچنین انگلیسی صحبت می‌کنم.",
+            "en": "I also speak English."
+          }
+        },
+        {
+          "de": "Spanisch",
+          "fa": "اسپانیایی",
+          "en": "Spanish",
+          "transliteration": "اشپانیش",
+          "gender": "das",
+          "plural": null,
+          "synonyms": [],
+          "antonyms": [],
+          "example": {
+            "de": "Sie spricht Spanisch.",
+            "fa": "او اسپانیایی صحبت می‌کند.",
+            "en": "She speaks Spanish."
+          }
+        }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": {
+        "fa": "📝 کپسول گرامر",
+        "en": "📝 Grammar Capsule",
+        "de": "📝 Grammatik-Kapsel"
+      },
+      "concept": {
+        "fa": "صرف فعل‌های اصلی (Konjugation)",
+        "en": "Conjugation of main verbs",
+        "de": "Konjugation der Hauptverben"
+      },
+      "explanation": {
+        "fa": "در آلمانی، انتهای فعل با توجه به فاعل تغییر می‌کند.\n\n📌 **فعل heißen (نام داشتن):**\n• ich heiße → من نام دارم\n• du heißt → تو نام داری\n• er/sie/es heißt → او نام دارد\n• wir heißen → ما نام داریم\n• ihr heißt → شما نام دارید\n• sie/Sie heißen → آنها/شما نام دارند\n\n📌 **ساختار جمله خبری و پرسشی:**\n• خبری: Ich komme aus Iran. (فاعل + فعل + مفعول)\n• پرسشی (W-Frage): Woher kommen Sie? (کلمه پرسشی + فعل + فاعل)",
+        "en": "In German, the verb ending changes depending on the subject.\n\n📌 **Verb 'heißen' (to be called):**\n• ich heiße → I am called\n• du heißt → you are called (informal)\n• er/sie/es heißt → he/she/it is called\n• wir heißen → we are called\n• ihr heißt → you are called (plural informal)\n• sie/Sie heißen → they/you are called (formal)\n\n📌 **Sentence structure:**\n• Statement: Ich komme aus Iran. (Subject + Verb + Object)\n• Question (W-Frage): Woher kommen Sie? (Question word + Verb + Subject)",
+        "de": "Im Deutschen ändert sich die Verbendung je nach Subjekt.\n\n📌 **Verb 'heißen':**\n• ich heiße\n• du heißt\n• er/sie/es heißt\n• wir heißen\n• ihr heißt\n• sie/Sie heißen\n\n📌 **Satzstruktur:**\n• Aussage: Ich komme aus Iran. (Subjekt + Verb + Objekt)\n• Frage (W-Frage): Woher kommen Sie? (Fragewort + Verb + Subjekt)"
+      },
+      "examples": [
+        {
+          "de": "Ich heiße Ahmad.",
+          "fa": "اسم من احمد است.",
+          "en": "My name is Ahmad."
+        },
+        {
+          "de": "Wie heißt du?",
+          "fa": "اسم تو چیست؟",
+          "en": "What is your name?"
+        },
+        {
+          "de": "Woher kommen Sie?",
+          "fa": "شما اهل کجا هستید؟",
+          "en": "Where do you come from?"
+        },
+        {
+          "de": "Ich komme aus dem Iran.",
+          "fa": "من اهل ایران هستم.",
+          "en": "I come from Iran."
+        },
+        {
+          "de": "Ich spreche Deutsch und Englisch.",
+          "fa": "من آلمانی و انگلیسی صحبت می‌کنم.",
+          "en": "I speak German and English."
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "title": {
+        "fa": "📖 داستان: روز اول در کلاس آلمانی",
+        "en": "📖 Story: First Day in German Class",
+        "de": "📖 Geschichte: Erster Tag im Deutschunterricht"
+      },
+      "text": {
+        "de": "Hallo! Ich heiße Anna. Ich komme aus Italien. Ich spreche Italienisch, Deutsch und Englisch. Heute ist mein erster Tag im Deutschunterricht. Der Lehrer heißt Herr Müller. Er fragt: 'Wie heißen Sie?' Ich antworte: 'Ich heiße Anna.' Ein Student fragt: 'Woher kommen Sie?' Ich antworte: 'Ich komme aus Italien.' Ein anderer Student heißt Thomas. Er kommt aus Deutschland. Er spricht Deutsch und Englisch. Wir lernen zusammen Deutsch. Es macht Spaß!",
+        "fa": "سلام! اسم من آنا است. من اهل ایتالیا هستم. من ایتالیایی، آلمانی و انگلیسی صحبت می‌کنم. امروز اولین روز من در کلاس آلمانی است. معلم اسمش آقای مولر است. او می‌پرسد: 'نام شما چیست؟' من پاسخ می‌دهم: 'اسم من آنا است.' یک دانشجو می‌پرسد: 'شما اهل کجا هستید؟' من پاسخ می‌دهم: 'من اهل ایتالیا هستم.' دانشجوی دیگری اسمش توماس است. او اهل آلمان است. او آلمانی و انگلیسی صحبت می‌کند. ما با هم آلمانی یاد می‌گیریم. خیلی لذت‌بخش است!",
+        "en": "Hello! My name is Anna. I come from Italy. I speak Italian, German and English. Today is my first day in German class. The teacher's name is Mr. Müller. He asks: 'What is your name?' I answer: 'My name is Anna.' A student asks: 'Where do you come from?' I answer: 'I come from Italy.' Another student's name is Thomas. He comes from Germany. He speaks German and English. We learn German together. It's fun!"
+      },
+      "questions": [
+        {
+          "id": "story_q1",
+          "question": {
+            "fa": "اسم دختر چیست؟",
+            "en": "What is the girl's name?",
+            "de": "Wie heißt das Mädchen?"
+          },
+          "answer": {
+            "fa": "آنا",
+            "en": "Anna",
+            "de": "Anna"
+          }
+        },
+        {
+          "id": "story_q2",
+          "question": {
+            "fa": "او از کجا می‌آید؟",
+            "en": "Where does she come from?",
+            "de": "Woher kommt sie?"
+          },
+          "answer": {
+            "fa": "ایتالیا",
+            "en": "Italy",
+            "de": "Italien"
+          }
+        },
+        {
+          "id": "story_q3",
+          "question": {
+            "fa": "توماس به چه زبان‌هایی صحبت می‌کند؟",
+            "en": "What languages does Thomas speak?",
+            "de": "Welche Sprachen spricht Thomas?"
+          },
+          "answer": {
+            "fa": "آلمانی و انگلیسی",
+            "en": "German and English",
+            "de": "Deutsch und Englisch"
+          }
+        }
+      ]
+    },
+    {
+      "type": "exercises",
+      "title": {
+        "fa": "🏋️ کارگاه تمرین",
+        "en": "🏋️ Exercises",
+        "de": "🏋️ Übungen"
+      },
+      "description": {
+        "fa": "با انجام این تمرین‌ها، آنچه را یاد گرفتی تثبیت کن.",
+        "en": "Reinforce what you've learned with these exercises.",
+        "de": "Festige das Gelernte mit diesen Übungen."
+      },
+      "questions": [
+        {
+          "id": "ex1",
+          "type": "sentence_building",
+          "question": {
+            "fa": "کلمات زیر را مرتب کنید: 'heiße / ich / Thomas'",
+            "en": "Arrange the words: 'heiße / ich / Thomas'",
+            "de": "Ordnen Sie die Wörter: 'heiße / ich / Thomas'"
+          },
+          "answer": "Ich heiße Thomas.",
+          "hint": {
+            "fa": "با فاعل شروع کن",
+            "en": "Start with the subject",
+            "de": "Beginnen Sie mit dem Subjekt"
+          }
+        },
+        {
+          "id": "ex2",
+          "type": "fill_in",
+          "question": {
+            "fa": "جای خالی را پر کنید: 'Du ________ aus Deutschland.' (kommen)",
+            "en": "Fill in the blank: 'Du ________ aus Deutschland.' (kommen)",
+            "de": "Füllen Sie die Lücke: 'Du ________ aus Deutschland.' (kommen)"
+          },
+          "answer": "kommst",
+          "hint": {
+            "fa": "فعل kommen را برای du صرف کن",
+            "en": "Conjugate kommen for du",
+            "de": "Konjugieren Sie kommen für du"
+          }
+        },
+        {
+          "id": "ex3",
+          "type": "translation",
+          "question": {
+            "fa": "جمله زیر را به آلمانی ترجمه کنید: 'من انگلیسی و آلمانی صحبت می‌کنم.'",
+            "en": "Translate to German: 'I speak English and German.'",
+            "de": "Übersetzen Sie ins Deutsche: 'Ich spreche Englisch und Deutsch.'"
+          },
+          "answer": "Ich spreche Englisch und Deutsch.",
+          "hint": {
+            "fa": "از فعل sprechen استفاده کن",
+            "en": "Use the verb sprechen",
+            "de": "Verwenden Sie das Verb sprechen"
+          }
+        },
+        {
+          "id": "ex4",
+          "type": "multiple_choice",
+          "question": {
+            "fa": "کدام یک برای پرسیدن نام به صورت رسمی است؟",
+            "en": "Which one is used to ask for a name formally?",
+            "de": "Welches wird verwendet, um formell nach dem Namen zu fragen?"
+          },
+          "options": [
+            "Wie heißt du?",
+            "Wie heißen Sie?",
+            "Hallo!",
+            "Tschüss!"
+          ],
+          "correctIndex": 1,
+          "explanation": {
+            "fa": "Wie heißen Sie? برای پرسیدن نام به صورت رسمی استفاده می‌شود.",
+            "en": "Wie heißen Sie? is used to ask for a name formally.",
+            "de": "Wie heißen Sie? wird verwendet, um formell nach dem Namen zu fragen."
+          }
+        }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "title": {
+        "fa": "🃏 فلش‌کارت‌های درس",
+        "en": "🃏 Lesson Flashcards",
+        "de": "🃏 Lernkarten der Lektion"
+      },
+      "cards": [
+        {
+          "de": "Hallo",
+          "fa": "سلام",
+          "en": "Hello",
+          "icon": "👋"
+        },
+        {
+          "de": "Guten Tag",
+          "fa": "روز بخیر",
+          "en": "Good day",
+          "icon": "🌞"
+        },
+        {
+          "de": "Wie heißen Sie?",
+          "fa": "نام شما چیست؟ (رسمی)",
+          "en": "What is your name? (formal)",
+          "icon": "👔"
+        },
+        {
+          "de": "Wie heißt du?",
+          "fa": "نام تو چیست؟ (غیررسمی)",
+          "en": "What is your name? (informal)",
+          "icon": "👤"
+        },
+        {
+          "de": "Ich heiße...",
+          "fa": "اسم من ... است",
+          "en": "My name is...",
+          "icon": "📛"
+        },
+        {
+          "de": "kommen aus",
+          "fa": "اهل ... بودن",
+          "en": "to come from",
+          "icon": "🌍"
+        },
+        {
+          "de": "sprechen",
+          "fa": "صحبت کردن",
+          "en": "to speak",
+          "icon": "💬"
+        },
+        {
+          "de": "Deutsch",
+          "fa": "آلمانی",
+          "en": "German",
+          "icon": "🇩🇪"
+        }
+      ]
+    },
+    {
+      "type": "pronunciation",
+      "title": {
+        "fa": "🎤 تمرین تلفظ",
+        "en": "🎤 Pronunciation Practice",
+        "de": "🎤 Ausspracheübung"
+      },
+      "words": [
+        {
+          "word": "Hallo",
+          "phonetic": "/haˈloː/"
+        },
+        {
+          "word": "Guten Tag",
+          "phonetic": "/ˈɡuːtn̩ ˈtaːk/"
+        },
+        {
+          "word": "heißen",
+          "phonetic": "/ˈhaɪ̯sn̩/"
+        },
+        {
+          "word": "kommen",
+          "phonetic": "/ˈkɔmən/"
+        },
+        {
+          "word": "sprechen",
+          "phonetic": "/ˈʃpʁɛçn̩/"
+        }
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": {
+        "fa": "📝 آزمون پایان درس",
+        "en": "📝 End of Lesson Quiz",
+        "de": "📝 Quiz zum Lektionsende"
+      },
+      "description": {
+        "fa": "دانش خود را با این سوالات امتحان کنید.",
+        "en": "Test your knowledge with these questions.",
+        "de": "Testen Sie Ihr Wissen mit diesen Fragen."
+      },
+      "passingScore": 80,
+      "questions": [
+        {
+          "id": "qz1",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک برای سلام کردن به صورت غیررسمی است؟",
+            "en": "Which one is used for informal greetings?",
+            "de": "Welches wird für informelle Begrüßungen verwendet?"
+          },
+          "options": [
+            "Guten Tag",
+            "Hallo",
+            "Auf Wiedersehen",
+            "Gute Nacht"
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10,
+          "explanation": {
+            "fa": "Hallo یک سلام غیررسمی است.",
+            "en": "Hallo is an informal greeting.",
+            "de": "Hallo ist eine informelle Begrüßung."
+          }
+        },
+        {
+          "id": "qz2",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Ich ______ aus dem Iran.' (kommen)",
+            "en": "Complete: 'Ich ______ aus dem Iran.' (kommen)",
+            "de": "Vervollständigen: 'Ich ______ aus dem Iran.' (kommen)"
+          },
+          "answer": "komme",
+          "xpBonus": 10
+        },
+        {
+          "id": "qz3",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "فعل heißen برای 'ich' چگونه صرف می‌شود؟",
+            "en": "How is 'heißen' conjugated for 'ich'?",
+            "de": "Wie wird 'heißen' für 'ich' konjugiert?"
+          },
+          "options": [
+            "heiße",
+            "heißt",
+            "heißen",
+            "heißest"
+          ],
+          "correctIndex": 0,
+          "xpBonus": 10,
+          "explanation": {
+            "fa": "ich heiße = من نام دارم",
+            "en": "ich heiße = I am called",
+            "de": "ich heiße = ich heiße"
+          }
+        },
+        {
+          "id": "qz4",
+          "type": "multiple_choice",
+          "text": {
+            "fa": "کدام یک به معنای 'من اهل ایران هستم' است؟",
+            "en": "Which one means 'I come from Iran'?",
+            "de": "Welches bedeutet 'Ich komme aus dem Iran'?"
+          },
+          "options": [
+            "Ich spreche Iran.",
+            "Ich komme aus dem Iran.",
+            "Ich heiße Iran.",
+            "Ich bin Iran."
+          ],
+          "correctIndex": 1,
+          "xpBonus": 10,
+          "explanation": {
+            "fa": "Ich komme aus dem Iran. = من اهل ایران هستم.",
+            "en": "Ich komme aus dem Iran. = I come from Iran.",
+            "de": "Ich komme aus dem Iran. = Ich komme aus dem Iran."
+          }
+        },
+        {
+          "id": "qz5",
+          "type": "fill_in",
+          "text": {
+            "fa": "جمله را کامل کن: 'Wie ______ du?' (heißen)",
+            "en": "Complete: 'Wie ______ du?' (heißen)",
+            "de": "Vervollständigen: 'Wie ______ du?' (heißen)"
+          },
+          "answer": "heißt",
+          "xpBonus": 10,
+          "explanation": {
+            "fa": "du heißt = تو نام داری",
+            "en": "du heißt = you are called",
+            "de": "du heißt = du heißt"
+          }
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": {
+        "fa": "📋 خلاصه درس",
+        "en": "📋 Lesson Summary",
+        "de": "📋 Zusammenfassung"
+      },
+      "whatYouLearned": {
+        "fa": [
+          "✅ سلام به آلمانی به صورت رسمی و غیررسمی",
+          "✅ معرفی خود با فعل heißen",
+          "✅ بیان ملیت با kommen aus",
+          "✅ بیان زبان‌ها با sprechen",
+          "✅ پرسیدن نام دیگران به دو روش رسمی و غیررسمی"
+        ],
+        "en": [
+          "✅ Greetings in German (formal and informal)",
+          "✅ Introducing yourself with the verb 'heißen'",
+          "✅ Expressing nationality with 'kommen aus'",
+          "✅ Expressing languages with 'sprechen'",
+          "✅ Asking others' names (formal and informal)"
+        ],
+        "de": [
+          "✅ Begrüßungen auf Deutsch (formell und informell)",
+          "✅ Sich vorstellen mit dem Verb 'heißen'",
+          "✅ Nationalität ausdrücken mit 'kommen aus'",
+          "✅ Sprachen ausdrücken mit 'sprechen'",
+          "✅ Namen anderer fragen (formell und informell)"
+        ]
+      },
+      "keyVocabulary": [
+        {
+          "word": "Hallo",
+          "meaning": {
+            "fa": "سلام",
+            "en": "Hello"
+          }
+        },
+        {
+          "word": "Guten Tag",
+          "meaning": {
+            "fa": "روز بخیر",
+            "en": "Good day"
+          }
+        },
+        {
+          "word": "heißen",
+          "meaning": {
+            "fa": "نام داشتن",
+            "en": "to be called"
+          }
+        },
+        {
+          "word": "kommen aus",
+          "meaning": {
+            "fa": "اهل ... بودن",
+            "en": "to come from"
+          }
+        },
+        {
+          "word": "sprechen",
+          "meaning": {
+            "fa": "صحبت کردن",
+            "en": "to speak"
+          }
+        }
+      ],
+      "nextSteps": {
+        "fa": "📚 در درس بعدی (Menschen) با اعداد ۱ تا ۲۰، معرفی افراد و وضعیت تاهل آشنا می‌شوید.",
+        "en": "📚 In the next lesson (Menschen), you will learn numbers 1-20, introducing people and marital status.",
+        "de": "📚 In der nächsten Lektion (Menschen) lernen Sie Zahlen 1-20, Personen vorstellen und Familienstand."
+      },
+      "dailyPractice": {
+        "fa": "💪 امروز ۵ بار خودتان را به آلمانی معرفی کنید و از ۳ نفر بپرسید اسمشان چیست.",
+        "en": "💪 Introduce yourself in German 5 times today and ask 3 people what their names are.",
+        "de": "💪 Stellen Sie sich heute 5 Mal auf Deutsch vor und fragen Sie 3 Personen, wie sie heißen."
+      }
+    }
+  ]
+}

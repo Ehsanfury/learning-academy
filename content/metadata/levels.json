@@ -1,0 +1,162 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2024-01-15",
+  "levels": [
+    {
+      "id": "A1",
+      "order": 1,
+      "name": { "fa": "مبتدی A1", "en": "Beginner A1", "de": "Anfänger A1" },
+      "shortName": { "fa": "A1", "en": "A1", "de": "A1" },
+      "description": {
+        "fa": "بتوانید عبارات آشنا و روزمره را درک کنید و نیازهای ابتدایی را بیان کنید",
+        "en": "Can understand familiar everyday expressions and basic needs",
+        "de": "Kann vertraute, alltägliche Ausdrücke verstehen und einfache Bedürfnisse äußern"
+      },
+      "requiredXP": 0,
+      "totalLessons": 60,
+      "totalWords": 500,
+      "color": "#22c55e",
+      "gradient": "from-green-400 to-green-600",
+      "icon": "🌱",
+      "badgeIcon": "🥉",
+      "isLocked": false
+    },
+    {
+      "id": "A2",
+      "order": 2,
+      "name": {
+        "fa": "مقدماتی A2",
+        "en": "Elementary A2",
+        "de": "Grundlegend A2"
+      },
+      "shortName": { "fa": "A2", "en": "A2", "de": "A2" },
+      "description": {
+        "fa": "بتوانید در موقعیت‌های روزمره ارتباط برقرار کنید و درباره نیازهای ساده صحبت کنید",
+        "en": "Can communicate in routine situations and talk about simple needs",
+        "de": "Kann in routinemäßigen Situationen kommunizieren und über einfache Bedürfnisse sprechen"
+      },
+      "requiredXP": 1000,
+      "totalLessons": 80,
+      "totalWords": 1000,
+      "color": "#3b82f6",
+      "gradient": "from-blue-400 to-blue-600",
+      "icon": "📘",
+      "badgeIcon": "🥈",
+      "isLocked": true
+    },
+    {
+      "id": "B1",
+      "order": 3,
+      "name": {
+        "fa": "متوسط B1",
+        "en": "Intermediate B1",
+        "de": "Mittelstufe B1"
+      },
+      "shortName": { "fa": "B1", "en": "B1", "de": "B1" },
+      "description": {
+        "fa": "بتوانید در سفرها ارتباط برقرار کنید، درباره موضوعات شخصی و کاری صحبت کنید",
+        "en": "Can handle travel situations, talk about personal and work topics",
+        "de": "Kann Reisesituationen bewältigen, über persönliche und berufliche Themen sprechen"
+      },
+      "requiredXP": 2500,
+      "totalLessons": 100,
+      "totalWords": 2000,
+      "color": "#f59e0b",
+      "gradient": "from-amber-400 to-amber-600",
+      "icon": "📗",
+      "badgeIcon": "🥇",
+      "isLocked": true
+    },
+    {
+      "id": "B2",
+      "order": 4,
+      "name": {
+        "fa": "متوسط B2",
+        "en": "Upper Intermediate B2",
+        "de": "Obere Mittelstufe B2"
+      },
+      "shortName": { "fa": "B2", "en": "B2", "de": "B2" },
+      "description": {
+        "fa": "بتوانید با افراد بومی روان صحبت کنید، درباره موضوعات پیچیده بحث کنید",
+        "en": "Can interact fluently with native speakers, discuss complex topics",
+        "de": "Kann fließend mit Muttersprachlern interagieren, komplexe Themen diskutieren"
+      },
+      "requiredXP": 5000,
+      "totalLessons": 120,
+      "totalWords": 3500,
+      "color": "#f97316",
+      "gradient": "from-orange-400 to-orange-600",
+      "icon": "📙",
+      "badgeIcon": "🏆",
+      "isLocked": true
+    },
+    {
+      "id": "C1",
+      "order": 5,
+      "name": {
+        "fa": "پیشرفته C1",
+        "en": "Advanced C1",
+        "de": "Fortgeschritten C1"
+      },
+      "shortName": { "fa": "C1", "en": "C1", "de": "C1" },
+      "description": {
+        "fa": "بتوانید زبان را برای اهداف اجتماعی، حرفه‌ای و آکادمیک به طور مؤثر استفاده کنید",
+        "en": "Can use language effectively for social, professional and academic purposes",
+        "de": "Kann Sprache effektiv für soziale, berufliche und akademische Zwecke nutzen"
+      },
+      "requiredXP": 10000,
+      "totalLessons": 100,
+      "totalWords": 5000,
+      "color": "#ef4444",
+      "gradient": "from-red-400 to-red-600",
+      "icon": "📕",
+      "badgeIcon": "👑",
+      "isLocked": true
+    },
+    {
+      "id": "C2",
+      "order": 6,
+      "name": { "fa": "تسلط C2", "en": "Mastery C2", "de": "Perfektion C2" },
+      "shortName": { "fa": "C2", "en": "C2", "de": "C2" },
+      "description": {
+        "fa": "تسلط کامل بر زبان در تمام موقعیت‌ها با دقت و روانی بالا",
+        "en": "Complete mastery of the language in all situations with high precision and fluency",
+        "de": "Vollständige Beherrschung der Sprache in allen Situationen mit hoher Präzision und Flüssigkeit"
+      },
+      "requiredXP": 20000,
+      "totalLessons": 80,
+      "totalWords": 7000,
+      "color": "#a855f7",
+      "gradient": "from-purple-400 to-purple-600",
+      "icon": "👑",
+      "badgeIcon": "💎",
+      "isLocked": true
+    }
+  ],
+  "cefrMapping": {
+    "A1": {
+      "hoursToComplete": 80,
+      "canDo": ["greetings", "introduction", "basicShopping", "numbers"]
+    },
+    "A2": {
+      "hoursToComplete": 200,
+      "canDo": ["routineTasks", "personalInfo", "travel", "jobBasics"]
+    },
+    "B1": {
+      "hoursToComplete": 350,
+      "canDo": ["work", "education", "opinions", "experiences"]
+    },
+    "B2": {
+      "hoursToComplete": 500,
+      "canDo": ["discussions", "arguments", "specializedTopics", "media"]
+    },
+    "C1": {
+      "hoursToComplete": 700,
+      "canDo": ["academic", "professional", "complexTexts", "idioms"]
+    },
+    "C2": {
+      "hoursToComplete": 900,
+      "canDo": ["fluent", "precise", "subtleties", "professional"]
+    }
+  }
+}
