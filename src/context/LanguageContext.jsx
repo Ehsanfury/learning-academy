@@ -2,6 +2,9 @@
  * LanguageContext.jsx
  * Path: src/context/LanguageContext.jsx
  * Description: Language context with multi-language support
+ * Changes:
+ * - ✅ Added useLanguageContext as alias for useLanguage
+ * - ✅ Fixed exports for backward compatibility
  */
 
 import React, {
@@ -167,7 +170,6 @@ const getNestedValue = (obj, path) => {
 const LanguageContext = createContext(null);
 
 export const LanguageProvider = ({ children }) => {
-  // ✅ Get language from localStorage or browser
   const [language, setLanguage] = useState(() => {
     const saved = localStorage.getItem("german_academy_language");
     if (saved && (saved === "fa" || saved === "en")) {
@@ -185,7 +187,6 @@ export const LanguageProvider = ({ children }) => {
     [],
   );
 
-  // ✅ Update document when language changes
   useEffect(() => {
     const lang = supportedLanguages.find((l) => l.code === language);
     document.documentElement.lang = language;
@@ -193,7 +194,6 @@ export const LanguageProvider = ({ children }) => {
     localStorage.setItem("german_academy_language", language);
   }, [language, supportedLanguages]);
 
-  // ✅ Translation function
   const t = useCallback(
     (key, fallback = "") => {
       const translation = translations[language];
@@ -204,7 +204,6 @@ export const LanguageProvider = ({ children }) => {
     [language],
   );
 
-  // ✅ Change language
   const changeLanguage = useCallback(
     (lang) => {
       if (supportedLanguages.some((l) => l.code === lang)) {
@@ -214,7 +213,6 @@ export const LanguageProvider = ({ children }) => {
     [supportedLanguages],
   );
 
-  // ✅ Toggle language
   const toggleLanguage = useCallback(() => {
     const newLang = language === "fa" ? "en" : "fa";
     setLanguage(newLang);
@@ -241,16 +239,16 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-export const useLanguageContext = () => {
+// ✅ Main hook for using language context
+export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error(
-      "useLanguageContext must be used within a LanguageProvider",
-    );
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };
 
-export const useLanguage = useLanguageContext;
+// ✅ ALIAS for backward compatibility (used in MainLayout.jsx and AuthLayout.jsx)
+export const useLanguageContext = useLanguage;
 
 export default LanguageContext;

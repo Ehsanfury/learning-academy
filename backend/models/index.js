@@ -2,6 +2,8 @@
  * models/index.js
  * Path: backend/models/index.js
  * Description: Central export for all models
+ * Changes:
+ * - ✅ FIXED: WordProgress ↔ Vocabulary association with correct types
  */
 
 import User from "./User.js";

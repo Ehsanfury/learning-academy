@@ -3,15 +3,35 @@
  * Path: backend/middlewares/authMiddleware.js
  * Description: Authentication middleware
  * Changes:
+ * - ✅ FIXED: Using jwt directly instead of verifyAccessToken (to avoid missing file)
  * - ✅ Fixed 401 errors being returned as 500
  * - ✅ Proper error handling for expired/invalid tokens
  * - ✅ Removed error message leakage
  */
 
-import { verifyAccessToken } from "../utils/jwt.js";
+import jwt from "jsonwebtoken";
 import { User } from "../models/index.js";
 import { UnauthorizedError } from "../errors/index.js";
 import logger from "../config/logger.js";
+
+const JWT_SECRET = process.env.JWT_SECRET;
+
+/**
+ * Verify access token
+ */
+const verifyAccessToken = (token) => {
+  try {
+    return jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      throw new UnauthorizedError("Token expired");
+    }
+    if (error.name === "JsonWebTokenError") {
+      throw new UnauthorizedError("Invalid token");
+    }
+    throw new UnauthorizedError("Authentication failed");
+  }
+};
 
 /**
  * Authenticate middleware
@@ -100,6 +120,7 @@ export const optionalAuth = async (req, res, next) => {
 
 /**
  * Authorize middleware
+ * @param {...string} roles - Allowed roles
  */
 export const authorize = (...roles) => {
   return (req, res, next) => {

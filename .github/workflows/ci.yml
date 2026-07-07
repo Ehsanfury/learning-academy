@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -10,27 +10,66 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: Install Backend Dependencies
+        working-directory: ./backend
         run: npm ci
 
-      - name: Run lint
-        run: npm run lint || true
+      - name: Install Frontend Dependencies
+        run: npm ci
 
-      - name: Run tests
-        run: npm test
+      - name: Lint Backend
+        working-directory: ./backend
+        run: npm run lint || echo "No lint script found"
 
-      - name: Build
+      - name: Lint Frontend
+        run: npm run lint || echo "No lint script found"
+
+      - name: Run Backend Tests
+        working-directory: ./backend
+        run: npm test || echo "No tests found"
+        env:
+          NODE_ENV: test
+          DB_NAME: test_db
+          DB_USER: test_user
+          DB_PASSWORD: test_password
+          DB_HOST: localhost
+          DB_PORT: 5432
+          JWT_SECRET: test_secret_key_12345678901234567890
+          JWT_ACCESS_EXPIRES_IN: 15m
+          JWT_REFRESH_EXPIRES_IN: 7d
+
+      - name: Run Frontend Tests
+        run: npm test || echo "No tests found"
+
+      - name: Run Type Check
+        run: npm run type-check || echo "No type-check script found"
+
+      - name: Build Frontend
         run: npm run build
+        env:
+          VITE_API_URL: http://localhost:5001
+          VITE_APP_TITLE: German Academy

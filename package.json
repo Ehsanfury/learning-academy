@@ -16,9 +16,7 @@
     "seed:scenarios": "node backend/scripts/seed-all-scenarios.js",
     "lint": "eslint src/ --ext .js,.jsx",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
-    "test": "vitest",
-    "postinstall": "npm run build"
-    
+    "test": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

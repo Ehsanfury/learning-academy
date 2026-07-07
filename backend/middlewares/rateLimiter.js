@@ -1,90 +1,123 @@
 /**
  * rateLimiter.js
  * Path: backend/middlewares/rateLimiter.js
- * Description: Rate limiting middleware configuration
+ * Description: Rate limiting middleware
  * Changes:
- * - ✅ FIXED: Removed custom ipKeyGenerator (use default)
- * - ✅ Fixed rate limiter configuration
- * - ✅ Added proper error handling
+ * - ✅ FIXED: All exports properly defined
+ * - ✅ FIXED: Added default export as a combined middleware
  */
 
 import rateLimit from "express-rate-limit";
-import { RateLimitError } from "../errors/index.js";
 
-// ============================================
-// 📊 General API Rate Limiter
-// ============================================
-
-export const apiLimiter = rateLimit({
+/**
+ * General rate limiter - 100 requests per 15 minutes
+ */
+export const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  handler: (req, res) => {
-    throw new RateLimitError({
-      message: "Too many requests, please try again later.",
-      statusCode: 429,
-    });
-  },
-  skip: (req) => {
-    // Skip rate limiting for admin users
-    return req.user?.role === "admin";
+  max: 100,
+  message: {
+    success: false,
+    message: "Too many requests, please try again later.",
   },
   standardHeaders: true,
   legacyHeaders: false,
+  handler: (_req, res, _next, _options) => {
+    res.status(429).json({
+      success: false,
+      message: "Too many requests, please try again later.",
+      retryAfter: Math.ceil(15 * 60),
+    });
+  },
 });
 
-// ============================================
-// 🔐 Auth Rate Limiter (Stricter)
-// ============================================
+/**
+ * Strict rate limiter - 30 requests per 15 minutes
+ */
+export const strictLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 30,
+  message: {
+    success: false,
+    message: "Too many requests, please slow down.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, res, _next, _options) => {
+    res.status(429).json({
+      success: false,
+      message: "Too many requests, please slow down.",
+      retryAfter: Math.ceil(15 * 60),
+    });
+  },
+});
 
+/**
+ * Auth rate limiter - 5 requests per 15 minutes
+ */
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // Limit each IP to 10 login attempts per windowMs
-  handler: (req, res) => {
-    throw new RateLimitError({
+  max: 5,
+  message: {
+    success: false,
+    message: "Too many login attempts, please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, res, _next, _options) => {
+    res.status(429).json({
+      success: false,
       message: "Too many login attempts, please try again later.",
-      statusCode: 429,
+      retryAfter: Math.ceil(15 * 60),
     });
   },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
-// ============================================
-// 📝 Register Rate Limiter (Stricter)
-// ============================================
-
+/**
+ * Register rate limiter - 5 requests per 15 minutes
+ */
 export const registerLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hour
-  max: 5, // Limit each IP to 5 registrations per hour
-  handler: (req, res) => {
-    throw new RateLimitError({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5,
+  message: {
+    success: false,
+    message: "Too many registration attempts, please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, res, _next, _options) => {
+    res.status(429).json({
+      success: false,
       message: "Too many registration attempts, please try again later.",
-      statusCode: 429,
+      retryAfter: Math.ceil(15 * 60),
     });
   },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
-// ============================================
-// 🔄 Password Reset Rate Limiter
-// ============================================
-
-export const resetPasswordLimiter = rateLimit({
+/**
+ * API rate limiter - 1000 requests per hour
+ */
+export const apiLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 3, // Limit each IP to 3 password reset attempts per hour
-  handler: (req, res) => {
-    throw new RateLimitError({
-      message: "Too many password reset attempts, please try again later.",
-      statusCode: 429,
-    });
+  max: 1000,
+  message: {
+    success: false,
+    message: "API rate limit exceeded. Please try again later.",
   },
   standardHeaders: true,
   legacyHeaders: false,
+  handler: (_req, res, _next, _options) => {
+    res.status(429).json({
+      success: false,
+      message: "API rate limit exceeded. Please try again later.",
+      retryAfter: Math.ceil(60 * 60),
+    });
+  },
 });
 
-// ============================================
-// 📤 Default Export
-// ============================================
+/**
+ * ✅ DEFAULT EXPORT - Combined rate limiter for app.use("/api", rateLimiter)
+ * This applies generalLimiter to all /api routes
+ */
+const rateLimiter = generalLimiter;
 
-export default apiLimiter;
+export default rateLimiter;

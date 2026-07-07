@@ -3,11 +3,8 @@
  * Learning Academy
  * فایل اصلی Express Application
  * Changes:
- * - ✅ FIXED: responseEnvelope temporarily disabled
- * - ✅ Added trackActivity middleware correctly
- * - ✅ Fixed middleware ordering
- * - ✅ Added Socket.IO setup
- * - ✅ Fixed production readiness checks
+ * - ✅ FIXED: rateLimiter import (default import)
+ * - ✅ FIXED: All middleware imports validated
  */
 
 import express from "express";
@@ -25,11 +22,10 @@ import config, { isAIConfigured, isGeminiConfigured } from "./config/env.js";
 import { logInfo, logError } from "./config/logger.js";
 
 // Middlewares
-import rateLimiter from "./middlewares/rateLimiter.js";
+import rateLimiter from "./middlewares/rateLimiter.js"; // ✅ FIXED: default import
 import { trackActivity } from "./middlewares/activityMiddleware.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 import { authenticate } from "./middlewares/authMiddleware.js";
-// import responseEnvelope from "./middlewares/responseEnvelope.js"; // موقتاً غیرفعال
 
 // Routes
 import authRoutes from "./routes/authRoutes.js";
@@ -42,7 +38,7 @@ import spacedRepetitionRoutes from "./routes/spacedRepetitionRoutes.js";
 import achievementRoutes from "./routes/achievementRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
 import vocabularyRoutes from "./routes/vocabularyRoutes.js";
-import levelsRoutes from "./routes/levelsRoutes.js";
+import levelRoutes from "./routes/levelRoutes.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
 import storiesRoutes from "./routes/storiesRoutes.js";
 import scenariosRoutes from "./routes/scenariosRoutes.js";
@@ -74,6 +70,19 @@ import {
 } from "./models/index.js";
 
 // ============================================
+// ✅ Validate Imports (Debug)
+// ============================================
+
+console.log("✅ Import validation:");
+console.log("  - authenticate:", typeof authenticate === "function" ? "✅ function" : "❌ missing");
+console.log(
+  "  - trackActivity:",
+  typeof trackActivity === "function" ? "✅ function" : "❌ missing"
+);
+console.log("  - levelRoutes:", typeof levelRoutes === "function" ? "✅ function" : "❌ missing");
+console.log("  - rateLimiter:", typeof rateLimiter === "function" ? "✅ function" : "❌ missing");
+
+// ============================================
 // 🚀 Startup Guard
 // ============================================
 
@@ -98,7 +107,6 @@ const checkProductionReadiness = () => {
 
     if (isPlaceholder(jwtSecret)) {
       console.error("❌ Fatal: JWT_SECRET is using a placeholder/development value in production!");
-      console.error("   Please set a secure JWT_SECRET in your .env file.");
       process.exit(1);
     }
 
@@ -106,28 +114,25 @@ const checkProductionReadiness = () => {
       console.error(
         "❌ Fatal: JWT_REFRESH_SECRET is using a placeholder/development value in production!"
       );
-      console.error("   Please set a secure JWT_REFRESH_SECRET in your .env file.");
       process.exit(1);
     }
 
     if (config.db?.password === "123456") {
       console.error("❌ Fatal: DB_PASSWORD is using default '123456' in production!");
-      console.error("   Please set a secure DB_PASSWORD in your .env file.");
       process.exit(1);
     }
 
     if (config.admin?.password === "admin123456" || !config.admin?.password) {
       console.error("❌ Fatal: ADMIN_PASSWORD is using default or not set in production!");
-      console.error("   Please set a secure ADMIN_PASSWORD in your .env file.");
       process.exit(1);
     }
 
     if (!isAIConfigured()) {
-      console.warn("⚠️ Warning: AI_API_KEY (OpenRouter) is not configured in production.");
+      console.warn("⚠️ Warning: OPENROUTER_API_KEY is not configured in production.");
     }
 
     if (!isGeminiConfigured()) {
-      console.warn("⚠️ Warning: AI_API_KEY_GEMINI (Gemini) is not configured in production.");
+      console.warn("⚠️ Warning: GOOGLE_GEMINI_API_KEY is not configured in production.");
     }
 
     console.log("✅ Production readiness checks passed.");
@@ -149,7 +154,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: config.cors?.origin?.split(",") || ["http://localhost:3000"],
+    origin: config.cors?.origin || ["http://localhost:3000"],
     credentials: true,
   },
 });
@@ -162,7 +167,9 @@ setupSocket(io);
 
 app.use(helmet());
 
-const corsOrigins = config.cors?.origin ? config.cors.origin.split(",") : ["http://localhost:3000"];
+// CORS configuration
+const corsOrigins = config.cors?.origin || ["http://localhost:3000"];
+
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -273,31 +280,29 @@ app.get("/", (req, res) => {
   });
 });
 
+// ============================================
+// 🔐 AUTH ROUTES (Public)
+// ============================================
+
 app.use("/api/auth", authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
 // ============================================
 
-app.use(authenticate);
-app.use(trackActivity);
-
-// ✅ responseEnvelope موقتاً غیرفعال شد
-// app.use(responseEnvelope);
-
-app.use("/api/users", userRoutes);
-app.use("/api/lessons", lessonRoutes);
-app.use("/api/progress", progressRoutes);
-app.use("/api/dictionary", dictionaryRoutes);
-app.use("/api/ai", aiRoutes);
-app.use("/api/review", spacedRepetitionRoutes);
-app.use("/api/achievements", achievementRoutes);
-app.use("/api/mentors", mentorRoutes);
-app.use("/api/vocabulary", vocabularyRoutes);
-app.use("/api/levels", levelsRoutes);
-app.use("/api/exercises", exerciseRoutes);
-app.use("/api/stories", storiesRoutes);
-app.use("/api/scenarios", scenariosRoutes);
+app.use("/api/users", authenticate, trackActivity, userRoutes);
+app.use("/api/lessons", authenticate, trackActivity, lessonRoutes);
+app.use("/api/progress", authenticate, trackActivity, progressRoutes);
+app.use("/api/dictionary", authenticate, trackActivity, dictionaryRoutes);
+app.use("/api/ai", authenticate, trackActivity, aiRoutes);
+app.use("/api/review", authenticate, trackActivity, spacedRepetitionRoutes);
+app.use("/api/achievements", authenticate, trackActivity, achievementRoutes);
+app.use("/api/mentors", authenticate, trackActivity, mentorRoutes);
+app.use("/api/vocabulary", authenticate, trackActivity, vocabularyRoutes);
+app.use("/api/levels", authenticate, trackActivity, levelRoutes);
+app.use("/api/exercises", authenticate, trackActivity, exerciseRoutes);
+app.use("/api/stories", authenticate, trackActivity, storiesRoutes);
+app.use("/api/scenarios", authenticate, trackActivity, scenariosRoutes);
 
 // ============================================
 // 📚 API Documentation

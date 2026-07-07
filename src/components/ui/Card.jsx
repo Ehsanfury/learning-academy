@@ -2,10 +2,12 @@
  * Card.jsx
  * Path: src/components/ui/Card.jsx
  * Description: Card component with multiple variants, padding options, and hover effects
- * Version: 2.1 - Fixed padding for better spacing
+ * Version: 2.2 - Added CardHeader, CardBody, CardFooter exports
+ * Changes:
+ * - ✅ Added CardHeader, CardBody, CardFooter as named exports
  */
 
-import { cn } from "@utils/helpers";
+import { cn } from "../../utils/helpers";
 
 /**
  * Card Component
@@ -98,4 +100,52 @@ function Card({
   );
 }
 
+// ============================================
+// ✅ CardHeader Component
+// ============================================
+export const CardHeader = ({ children, className = "", ...props }) => {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-between flex-wrap gap-2 mb-4",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+// ============================================
+// ✅ CardBody Component
+// ============================================
+export const CardBody = ({ children, className = "", ...props }) => {
+  return (
+    <div className={cn("", className)} {...props}>
+      {children}
+    </div>
+  );
+};
+
+// ============================================
+// ✅ CardFooter Component
+// ============================================
+export const CardFooter = ({ children, className = "", ...props }) => {
+  return (
+    <div
+      className={cn(
+        "mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+// ============================================
+// 📤 Default Export
+// ============================================
 export default Card;

@@ -6,6 +6,7 @@
  * - ✅ Added getRefreshToken() method for compatibility
  * - ✅ But it returns null (refresh token is in httpOnly cookie)
  * - ✅ Fixed all storage methods
+ * - ✅ Added missing STORAGE_KEYS exports
  */
 
 const STORAGE_KEYS = {
@@ -30,6 +31,10 @@ export const storage = {
     } else {
       localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
     }
+  },
+
+  removeToken: () => {
+    localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
   },
 
   // ✅ FIXED: Added getRefreshToken() method
@@ -69,6 +74,10 @@ export const storage = {
     } else {
       localStorage.removeItem(STORAGE_KEYS.USER);
     }
+  },
+
+  removeUser: () => {
+    localStorage.removeItem(STORAGE_KEYS.USER);
   },
 
   updateUser: (updatedUser) => {
@@ -134,5 +143,8 @@ export const storage = {
     localStorage.clear();
   },
 };
+
+// ✅ Export STORAGE_KEYS for use in other files
+export { STORAGE_KEYS };
 
 export default storage;

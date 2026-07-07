@@ -11,11 +11,11 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useLanguageContext } from "@context/LanguageContext";
-import { useAuth } from "@context/AuthContext"; // ✅ اصلاح: useAuthContext -> useAuth
-import { UserPlus, Mail, Lock, User, Globe, Target } from "lucide-react";
-import Button from "@components/ui/Button";
-import Input from "@components/ui/Input";
+import { useLanguageContext } from "../../context/LanguageContext";
+import { useAuth } from "../../context/AuthContext";
+import { UserPlus, Mail, Lock, User, GraduationCap } from "lucide-react";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
 import toast from "react-hot-toast";
 
 // ============================================
@@ -42,7 +42,7 @@ const registerSchema = z
 
 function RegisterPage() {
   const { language } = useLanguageContext();
-  const { register: registerUser } = useAuth(); // ✅ اصلاح
+  const { register: registerUser } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -91,7 +91,7 @@ function RegisterPage() {
     >
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <span className="text-3xl font-bold text-white">L</span>
+          <GraduationCap className="w-8 h-8 text-white" />
         </div>
         <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
           {language === "fa" ? "شروع یادگیری!" : "Start Learning!"}
@@ -118,9 +118,7 @@ function RegisterPage() {
         <Input
           label={language === "fa" ? "ایمیل" : "Email"}
           type="email"
-          placeholder={
-            language === "fa" ? "example@email.com" : "example@email.com"
-          }
+          placeholder="example@email.com"
           icon={Mail}
           error={errors.email?.message}
           {...register("email")}
@@ -129,7 +127,7 @@ function RegisterPage() {
         <Input
           label={language === "fa" ? "رمز عبور" : "Password"}
           type="password"
-          placeholder={language === "fa" ? "••••••••" : "••••••••"}
+          placeholder="••••••••"
           icon={Lock}
           error={errors.password?.message}
           {...register("password")}
@@ -138,7 +136,7 @@ function RegisterPage() {
         <Input
           label={language === "fa" ? "تکرار رمز عبور" : "Confirm Password"}
           type="password"
-          placeholder={language === "fa" ? "••••••••" : "••••••••"}
+          placeholder="••••••••"
           icon={Lock}
           error={errors.confirmPassword?.message}
           {...register("confirmPassword")}

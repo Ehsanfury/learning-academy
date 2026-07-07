@@ -3,8 +3,9 @@
  * Path: src/context/AuthContext.jsx
  * Description: Authentication context for user state management
  * Changes:
- * - ✅ Removed 5 second debug delay
- * - ✅ Cleaned up logging
+ * - ✅ Created new file
+ * - ✅ Added useAuth hook
+ * - ✅ Fixed exports
  */
 
 import React, {
@@ -51,27 +52,35 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = useCallback(async (email, password) => {
-    const response = await authApi.login(email, password);
-    if (response.success) {
-      const { user, accessToken } = response.data;
-      storage.setAuth({ accessToken, user });
-      setUser(user);
-      setIsAuthenticated(true);
-      return { success: true, user };
+    try {
+      const response = await authApi.login(email, password);
+      if (response.success) {
+        const { user, accessToken } = response.data;
+        storage.setAuth({ accessToken, user });
+        setUser(user);
+        setIsAuthenticated(true);
+        return { success: true, user };
+      }
+      return { success: false, error: response.message };
+    } catch (error) {
+      return { success: false, error: error.message };
     }
-    return { success: false, error: response.message };
   }, []);
 
   const register = useCallback(async (userData) => {
-    const response = await authApi.register(userData);
-    if (response.success) {
-      const { user, accessToken } = response.data;
-      storage.setAuth({ accessToken, user });
-      setUser(user);
-      setIsAuthenticated(true);
-      return { success: true, user };
+    try {
+      const response = await authApi.register(userData);
+      if (response.success) {
+        const { user, accessToken } = response.data;
+        storage.setAuth({ accessToken, user });
+        setUser(user);
+        setIsAuthenticated(true);
+        return { success: true, user };
+      }
+      return { success: false, error: response.message };
+    } catch (error) {
+      return { success: false, error: error.message };
     }
-    return { success: false, error: response.message };
   }, []);
 
   const logout = useCallback(async () => {
@@ -88,7 +97,11 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = useCallback((updatedUser) => {
     setUser(updatedUser);
-    storage.updateUser(updatedUser);
+    // Update storage if needed
+    const currentUser = storage.getUser();
+    if (currentUser) {
+      storage.setUser({ ...currentUser, ...updatedUser });
+    }
   }, []);
 
   const value = {
@@ -105,6 +118,7 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+// ✅ Main hook for using auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

@@ -5,23 +5,23 @@
  */
 
 export default {
-// TODO: Translate - TODO: Translate - // استفاده از ES Modules
+  // TODO: Translate - TODO: Translate - // استفاده از ES Modules
   transform: {},
   extensionsToTreatAsEsm: [".js"],
 
-// TODO: Translate - TODO: Translate - // محیط تست
+  // TODO: Translate - TODO: Translate - // محیط تست
   testEnvironment: "node",
 
-// TODO: Translate - TODO: Translate - // پوشه‌های تست
+  // TODO: Translate - TODO: Translate - // پوشه‌های تست
   roots: ["<rootDir>/tests"],
 
-// TODO: Translate - TODO: Translate - // الگوی فایل‌های تست
+  // TODO: Translate - TODO: Translate - // الگوی فایل‌های تست
   testMatch: ["**/tests/**/*.test.js", "**/tests/**/*.spec.js"],
 
-// TODO: Translate - TODO: Translate - // پوشه‌های نادیده گرفته شده
+  // TODO: Translate - TODO: Translate - // پوشه‌های نادیده گرفته شده
   testPathIgnorePatterns: ["/node_modules/", "/dist/", "/coverage/"],
 
-// TODO: Translate - TODO: Translate - // گزارش Coverage
+  // TODO: Translate - TODO: Translate - // گزارش Coverage
   collectCoverageFrom: [
     "src/**/*.js",
     "!src/**/*.test.js",
@@ -44,15 +44,15 @@ export default {
 
   // Mock static files
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
-    "^@config/(.*)$": "<rootDir>/src/config/$1",
-    "^@models/(.*)$": "<rootDir>/src/models/$1",
-    "^@services/(.*)$": "<rootDir>/src/services/$1",
-    "^@controllers/(.*)$": "<rootDir>/src/controllers/$1",
-    "^@repositories/(.*)$": "<rootDir>/src/repositories/$1",
-    "^@middlewares/(.*)$": "<rootDir>/src/middlewares/$1",
-    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
-    "^@validators/(.*)$": "<rootDir>/src/validators/$1",
-    "^@errors/(.*)$": "<rootDir>/src/errors/$1",
+    "^@/(.*)$": "<rootDir>/$1",
+    "^@config/(.*)$": "<rootDir>/config/$1",
+    "^@models/(.*)$": "<rootDir>/models/$1",
+    "^@services/(.*)$": "<rootDir>/services/$1",
+    "^@controllers/(.*)$": "<rootDir>/controllers/$1",
+    "^@repositories/(.*)$": "<rootDir>/repositories/$1",
+    "^@middlewares/(.*)$": "<rootDir>/middlewares/$1",
+    "^@utils/(.*)$": "<rootDir>/utils/$1",
+    "^@validators/(.*)$": "<rootDir>/validators/$1",
+    "^@errors/(.*)$": "<rootDir>/errors/$1",
   },
 };

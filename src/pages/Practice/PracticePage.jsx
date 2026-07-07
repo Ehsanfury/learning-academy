@@ -2,15 +2,17 @@
  * PracticePage.jsx
  * Path: src/pages/Practice/PracticePage.jsx
  * Description: Daily practice page with Exercise Engine integration
- * Version: 3.2 - Fixed navigation paths
+ * Version: 3.3 - Fixed lessons.filter and data extraction
  */
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useAuth } from "@context/AuthContext";
-import { useLanguageContext } from "@context/LanguageContext";
-import api from "@services/api";
+import { useAuth } from "../../context/AuthContext";
+import { useLanguage } from "../../context/LanguageContext";
+import api from "../../services/api";
+import lessonApi from "../../services/lessonApi";
+import exerciseApi from "../../services/exerciseApi";
 import debug from "../../utils/debug";
 import {
   Dumbbell,
@@ -35,12 +37,13 @@ import {
   Languages,
   Headphones,
   FileText,
+  RefreshCw,
 } from "lucide-react";
 import toast from "react-hot-toast";
-import { Card, CardHeader, CardBody, CardFooter } from "@components/ui";
-import Button from "@components/ui/Button";
-import Badge from "@components/ui/Badge";
-import Skeleton from "@components/ui/Skeleton";
+import Card from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
+import Badge from "../../components/ui/Badge";
+import Skeleton from "../../components/ui/Skeleton";
 
 // ============================================
 // 📊 Skeleton Components
@@ -112,7 +115,7 @@ const PracticeSkeleton = () => (
 
 const PracticePage = () => {
   const { user } = useAuth();
-  const { language } = useLanguageContext();
+  const { language, t } = useLanguage();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
@@ -128,6 +131,7 @@ const PracticePage = () => {
   const [practiceTypes, setPracticeTypes] = useState([]);
   const [recommended, setRecommended] = useState([]);
   const [results, setResults] = useState(null);
+  const [lessons, setLessons] = useState([]);
 
   // ============================================
   // 📥 Load Data
@@ -141,28 +145,43 @@ const PracticePage = () => {
     try {
       setLoading(true);
 
-      // دریافت آمار
+      // 1. دریافت درس‌ها
       try {
-        const statsRes = await api.get("/lessons/stats");
-        const statsData = statsRes?.data || statsRes || {};
-        setStats((prev) => ({
-          ...prev,
-          total: statsData.totalLessons || 0,
-          completed: statsData.completedLessons || 0,
-          perfect: statsData.perfectLessons || 0,
-          xp: statsData.xp || 0,
-          streak: statsData.streak || 0,
-        }));
-      } catch (e) {
-        debug.warn("Could not fetch stats:", e);
-      }
+        const lessonsResponse = await lessonApi.getAllLessons({ limit: 50 });
 
-      // دریافت تمرین‌های پیشنهادی
-      try {
-        const recommendedRes = await api.get("/lessons");
-        const lessons =
-          recommendedRes?.data?.data || recommendedRes?.data || [];
-        const incomplete = lessons
+        // ✅ FIXED: استخراج صحیح داده‌ها از پاسخ API
+        let lessonsData = [];
+
+        if (
+          lessonsResponse?.data?.data?.lessons &&
+          Array.isArray(lessonsResponse.data.data.lessons)
+        ) {
+          lessonsData = lessonsResponse.data.data.lessons;
+        } else if (
+          lessonsResponse?.data?.lessons &&
+          Array.isArray(lessonsResponse.data.lessons)
+        ) {
+          lessonsData = lessonsResponse.data.lessons;
+        } else if (Array.isArray(lessonsResponse?.data)) {
+          lessonsData = lessonsResponse.data;
+        } else if (Array.isArray(lessonsResponse)) {
+          lessonsData = lessonsResponse;
+        } else if (
+          lessonsResponse?.data?.data &&
+          Array.isArray(lessonsResponse.data.data)
+        ) {
+          lessonsData = lessonsResponse.data.data;
+        }
+
+        // فقط درس‌هایی که بخش دارند
+        const lessonsWithContent = lessonsData.filter(
+          (lesson) => lesson.totalSections > 0 || lesson.sections?.length > 0,
+        );
+
+        setLessons(lessonsWithContent);
+
+        // درس‌های ناقص برای پیشنهاد
+        const incomplete = lessonsWithContent
           .filter((l) => !l.progress || l.progress.status === "not_started")
           .slice(0, 3);
         setRecommended(incomplete);
@@ -170,7 +189,24 @@ const PracticePage = () => {
         debug.warn("Could not fetch lessons:", e);
       }
 
-      // تنظیم انواع تمرین
+      // 2. دریافت آمار
+      try {
+        const statsRes = await api.get("/lessons/stats");
+        const statsData =
+          statsRes?.data?.data || statsRes?.data || statsRes || {};
+        setStats((prev) => ({
+          ...prev,
+          total: statsData.totalLessons || 0,
+          completed: statsData.completedLessons || 0,
+          perfect: statsData.perfectLessons || 0,
+          xp: statsData.totalXP || 0,
+          streak: statsData.streak || 0,
+        }));
+      } catch (e) {
+        debug.warn("Could not fetch stats:", e);
+      }
+
+      // 3. تنظیم انواع تمرین
       setPracticeTypes([
         {
           id: "vocabulary",
@@ -184,7 +220,6 @@ const PracticePage = () => {
           xp: 20,
           color: "blue",
           emoji: "📚",
-          badgeVariant: "primary",
         },
         {
           id: "grammar",
@@ -198,7 +233,6 @@ const PracticePage = () => {
           xp: 25,
           color: "purple",
           emoji: "📝",
-          badgeVariant: "accent",
         },
         {
           id: "listening",
@@ -212,7 +246,6 @@ const PracticePage = () => {
           xp: 30,
           color: "green",
           emoji: "🎧",
-          badgeVariant: "success",
         },
         {
           id: "reading",
@@ -226,7 +259,6 @@ const PracticePage = () => {
           xp: 30,
           color: "teal",
           emoji: "📖",
-          badgeVariant: "info",
         },
         {
           id: "writing",
@@ -240,7 +272,6 @@ const PracticePage = () => {
           xp: 35,
           color: "pink",
           emoji: "✍️",
-          badgeVariant: "danger",
         },
         {
           id: "mixed",
@@ -254,7 +285,6 @@ const PracticePage = () => {
           xp: 40,
           color: "amber",
           emoji: "🎯",
-          badgeVariant: "warning",
           highlight: true,
         },
       ]);
@@ -285,9 +315,7 @@ const PracticePage = () => {
     return colors[color] || colors.blue;
   };
 
-  // ✅ FIXED: مسیرهای صحیح برای هر نوع تمرین
   const startPractice = (type) => {
-    // به جای /exercise، به صفحه تمرین با پارامتر هدایت می‌کنیم
     navigate(`/practice/${type.id}`);
   };
 
@@ -360,7 +388,7 @@ const PracticePage = () => {
               className="bg-amber-50 dark:bg-amber-950 border-amber-200 dark:border-amber-800"
             >
               <p className="text-2xl font-bold text-amber-500">
-                +{results.earnedXP}
+                +{results.earnedXP || 0}
               </p>
               <p className="text-xs text-neutral-500">XP</p>
             </Card>
@@ -371,6 +399,7 @@ const PracticePage = () => {
               variant="primary"
               onClick={() => {
                 setResults(null);
+                loadPracticeData();
               }}
               icon={RefreshCw}
             >
@@ -402,7 +431,7 @@ const PracticePage = () => {
         <div>
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
             <Dumbbell className="w-6 h-6 text-primary-500" />
-            {language === "fa" ? "🏋️ تمرین‌ها" : "🏋️ Practice"}
+            {language === "fa" ? "تمرین‌ها" : "Practice"}
           </h1>
           <p className="text-neutral-500 dark:text-neutral-400 mt-1">
             {language === "fa"
@@ -486,7 +515,7 @@ const PracticePage = () => {
         </Card>
       </motion.div>
 
-      {/* ========== RECOMMENDED PRACTICE ========== */}
+      {/* ========== RECOMMENDED LESSONS ========== */}
       {recommended.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -495,9 +524,7 @@ const PracticePage = () => {
         >
           <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-primary-500" />
-            {language === "fa"
-              ? "📚 درس‌های پیشنهادی"
-              : "📚 Recommended Lessons"}
+            {language === "fa" ? "درس‌های پیشنهادی" : "Recommended Lessons"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {recommended.map((lesson) => (
@@ -506,14 +533,19 @@ const PracticePage = () => {
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="success">{lesson.level}</Badge>
                     <span className="text-xs text-neutral-400">
-                      {lesson.estimatedMinutes} min
+                      {lesson.estimatedTime || lesson.estimatedMinutes || 20}{" "}
+                      min
                     </span>
                   </div>
                   <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-1">
-                    {lesson.title?.[language] || lesson.title?.fa}
+                    {lesson.title?.[language] ||
+                      lesson.title?.fa ||
+                      lesson.title?.en ||
+                      lesson.id}
                   </h3>
                   <p className="text-xs text-neutral-500 mt-1">
-                    {language === "fa" ? "درس" : "Lesson"} {lesson.lessonNumber}
+                    {language === "fa" ? "درس" : "Lesson"}{" "}
+                    {lesson.lessonNumber || lesson.order}
                   </p>
                   <div className="mt-3 flex items-center gap-2 text-xs text-primary-500">
                     <span>
@@ -535,7 +567,7 @@ const PracticePage = () => {
         transition={{ delay: 0.3 }}
       >
         <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
-          {language === "fa" ? "🎯 انواع تمرین" : "🎯 Practice Types"}
+          {language === "fa" ? "انواع تمرین" : "Practice Types"}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {practiceTypes.map((type) => {

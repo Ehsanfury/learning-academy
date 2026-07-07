@@ -3,9 +3,7 @@
  * Path: src/pages/Login/LoginPage.jsx
  * Description: Login page
  * Changes:
- * - ✅ FIXED: useAuthContext → useAuth (correct hook name)
- * - ✅ Removed 5 second debug delay
- * - ✅ Cleaned up logging
+ * - ✅ FIXED: Changed "German Academy" to "Learning Academy" references
  */
 
 import { useState } from "react";
@@ -14,11 +12,11 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useLanguageContext } from "@context/LanguageContext";
-import { useAuth } from "@context/AuthContext";
-import { LogIn, Mail, Lock } from "lucide-react";
-import Button from "@components/ui/Button";
-import Input from "@components/ui/Input";
+import { useLanguageContext } from "../../context/LanguageContext";
+import { useAuth } from "../../context/AuthContext";
+import { LogIn, Mail, Lock, GraduationCap } from "lucide-react";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
 import toast from "react-hot-toast";
 import debug from "../../utils/debug";
 
@@ -84,7 +82,7 @@ const LoginPage = () => {
     >
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <span className="text-3xl font-bold text-white">L</span>
+          <GraduationCap className="w-8 h-8 text-white" />
         </div>
         <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
           {language === "fa" ? "ورود به حساب" : "Login to your account"}
@@ -100,7 +98,7 @@ const LoginPage = () => {
         <Input
           label={language === "fa" ? "ایمیل" : "Email"}
           type="email"
-          placeholder="admin@german-academy.com"
+          placeholder="admin@learning-academy.com"
           icon={Mail}
           error={errors.email?.message}
           {...register("email")}

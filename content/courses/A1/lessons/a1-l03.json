@@ -1,583 +1,2078 @@
 {
-  "id": "a1-l03",
+  "id": "A1-L03",
+  "order": 3,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 3,
+  "unit": 3,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 50,
-  "difficulty": 1,
-  "prerequisites": [
-    "a1-l02"
-  ],
-  "nextLessonId": "a1-l04",
-  "previousLessonId": "a1-l02",
   "title": {
-    "de": "Essen und Trinken",
-    "fa": "خوراک و نوشیدنی",
-    "en": "Food and Drink"
+    "fa": "Essen und Trinken - خوردن و آشامیدن",
+    "en": "Food and Drink",
+    "de": "Essen und Trinken"
   },
-  "shortTitle": {
-    "de": "Essen",
-    "fa": "غذا",
-    "en": "Food"
+  "subtitle": {
+    "fa": "مواد غذایی، نوشیدنی‌ها، رنگ‌ها و قیمت‌ها",
+    "en": "Food, Drinks, Colors and Prices",
+    "de": "Lebensmittel, Getränke, Farben und Preise"
   },
   "description": {
-    "fa": "در این درس با نام غذاها، میوه‌ها و نحوه سفارش دادن در رستوران آشنا می‌شوید.",
-    "en": "In this lesson you will learn food names, fruits and how to order in a restaurant.",
-    "de": "In dieser Lektion lernen Sie Lebensmittelnamen, Obst und wie man im Restaurant bestellt."
+    "fa": "در این درس شما با واژگان مواد غذایی، نوشیدنی‌ها، رنگ‌ها، مفهوم جمع بستن اسامی، فعل‌های essen و haben، و ساختار جمله با جایگاه فعل آشنا می‌شوید.",
+    "en": "In this lesson you will learn food vocabulary, drinks, colors, plural formation, the verbs essen and haben, and sentence structure with verb position.",
+    "de": "In dieser Lektion lernen Sie Lebensmitttelvokabular, Getränke, Farben, Pluralbildung, die Verben essen und haben, und Satzstruktur mit Verbposition."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 2,
+  "cefr": "A1.1",
   "learningObjectives": {
     "fa": [
-      "✅ یادگیری نام غذاها و میوه‌ها به آلمانی",
-      "✅ شناخت جنسیت اسم‌ها (der/die/das)",
-      "✅ نحوه سفارش دادن در رستوران",
-      "✅ استفاده از kein برای منفی کردن"
+      "نام بردن میوه‌ها و سبزیجات به آلمانی",
+      "نام بردن نوشیدنی‌های رایج",
+      "نام بردن رنگ‌های اصلی",
+      "ساختن جمع اسامی با پایانه‌های مختلف",
+      "صرف فعل‌های essen و haben",
+      "گفتن آنچه دوست دارید می‌خورید: Ich esse gerne...",
+      "پرسیدن درباره‌ی غذا: Isst du gerne...?",
+      "استفاده از حرف تعریف صفر (Nullartikel)",
+      "فهمیدن جایگاه فعل در جمله"
+    ],
+    "en": [
+      "Name fruits and vegetables in German",
+      "Name common drinks",
+      "Name main colors",
+      "Form plurals with different endings",
+      "Conjugate the verbs essen and haben",
+      "Say what you like to eat: Ich esse gerne...",
+      "Ask about food: Isst du gerne...?",
+      "Use the zero article (Nullartikel)",
+      "Understand verb position in sentences"
+    ],
+    "de": [
+      "Obst und Gemüse auf Deutsch nennen",
+      "Häufige Getränke nennen",
+      "Hauptfarben nennen",
+      "Plural mit verschiedenen Endungen bilden",
+      "Die Verben essen und haben konjugieren",
+      "Sagen, was man gerne isst: Ich esse gerne...",
+      "Nach Essen fragen: Isst du gerne...?",
+      "Den Nullartikel verwenden",
+      "Die Verbposition im Satz verstehen"
     ]
   },
-  "xpReward": 55,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس سوم خوش آمدید! 🍽️\n\nدر این درس با نام غذاها، میوه‌ها و نحوه سفارش دادن در رستوران آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• نام غذاها و میوه‌ها به آلمانی\n• جنسیت اسم‌ها (der/die/das)\n• چگونه در رستوران سفارش دهید\n• استفاده از kein برای منفی کردن",
-        "en": "Welcome to lesson 3! 🍽️\n\nIn this lesson you will learn food names, fruits and how to order in a restaurant.\n\nYou will learn:\n• Food and fruit names in German\n• Noun genders (der/die/das)\n• How to order in a restaurant\n• Using kein for negation",
-        "de": "Willkommen zur dritten Lektion! 🍽️\n\nIn dieser Lektion lernen Sie Lebensmittelnamen, Obst und wie man im Restaurant bestellt.\n\nSie lernen:\n• Lebensmittel- und Obstnamen auf Deutsch\n• Genus der Nomen (der/die/das)\n• Wie man im Restaurant bestellt\n• Verwendung von kein für die Verneinung"
-      },
-      "id": "a1-l03-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱: احوال‌پرسی، معرفی خود، ضمیرهای شخصی",
+      "تسلط بر درس ۲: Wie geht's، خانواده، ضمیرهای ملکی، اعداد ۱۱-۱۰۰",
+      "آشنایی با حروف تعریف: der, das, die, ein, eine, kein, keine"
+    ],
+    "en": [
+      "Mastery of Lesson 1: Greetings, introductions, personal pronouns",
+      "Mastery of Lesson 2: How are you, family, possessive articles, numbers 11-100",
+      "Familiarity with articles: der, das, die, ein, eine, kein, keine"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1: Begrüßungen, Vorstellung, Personalpronomen",
+      "Beherrschung von Lektion 2: Wie geht's, Familie, Possessivartikel, Zahlen 11-100",
+      "Vertrautheit mit Artikeln: der, das, die, ein, eine, kein, keine"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "صحنه داستان (Story Mode) - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "der Apfel",
-          "fa": "سیب",
-          "en": "apple",
-          "gender": "der",
-          "plural": "die Äpfel",
-          "icon": "🍎",
-          "example": {
-            "de": "Der Apfel ist rot.",
-            "fa": "سیب قرمز است.",
-            "en": "The apple is red."
-          }
-        },
-        {
-          "de": "die Banane",
-          "fa": "موز",
-          "en": "banana",
-          "gender": "die",
-          "plural": "die Bananen",
-          "icon": "🍌",
-          "example": {
-            "de": "Die Banane ist gelb.",
-            "fa": "موز زرد است.",
-            "en": "The banana is yellow."
-          }
-        },
-        {
-          "de": "das Brot",
-          "fa": "نان",
-          "en": "bread",
-          "gender": "das",
-          "plural": "die Brote",
-          "icon": "🍞",
-          "example": {
-            "de": "Das Brot ist frisch.",
-            "fa": "نان تازه است.",
-            "en": "The bread is fresh."
-          }
-        },
-        {
-          "de": "das Wasser",
-          "fa": "آب",
-          "en": "water",
-          "gender": "das",
-          "plural": null,
-          "icon": "💧",
-          "example": {
-            "de": "Das Wasser ist kalt.",
-            "fa": "آب سرد است.",
-            "en": "The water is cold."
-          }
-        },
-        {
-          "de": "der Kaffee",
-          "fa": "قهوه",
-          "en": "coffee",
-          "gender": "der",
-          "plural": null,
-          "icon": "☕",
-          "example": {
-            "de": "Der Kaffee ist heiß.",
-            "fa": "قهوه داغ است.",
-            "en": "The coffee is hot."
-          }
-        },
-        {
-          "de": "der Käse",
-          "fa": "پنیر",
-          "en": "cheese",
-          "gender": "der",
-          "plural": "die Käse",
-          "icon": "🧀",
-          "example": {
-            "de": "Der Käse schmeckt gut.",
-            "fa": "پنیر خوشمزه است.",
-            "en": "The cheese tastes good."
-          }
-        },
-        {
-          "de": "das Gemüse",
-          "fa": "سبزیجات",
-          "en": "vegetables",
-          "gender": "das",
-          "plural": null,
-          "icon": "🥬",
-          "example": {
-            "de": "Das Gemüse ist gesund.",
-            "fa": "سبزیجات سالم هستند.",
-            "en": "Vegetables are healthy."
-          }
-        },
-        {
-          "de": "das Obst",
-          "fa": "میوه",
-          "en": "fruit",
-          "gender": "das",
-          "plural": null,
-          "icon": "🍇",
-          "example": {
-            "de": "Obst ist lecker.",
-            "fa": "میوه خوشمزه است.",
-            "en": "Fruit is delicious."
-          }
-        },
-        {
-          "de": "das Fleisch",
-          "fa": "گوشت",
-          "en": "meat",
-          "gender": "das",
-          "plural": null,
-          "icon": "🥩",
-          "example": {
-            "de": "Ich esse kein Fleisch.",
-            "fa": "من گوشت نمی‌خورم.",
-            "en": "I don't eat meat."
-          }
-        },
-        {
-          "de": "der Fisch",
-          "fa": "ماهی",
-          "en": "fish",
-          "gender": "der",
-          "plural": "die Fische",
-          "icon": "🐟",
-          "example": {
-            "de": "Der Fisch ist frisch.",
-            "fa": "ماهی تازه است.",
-            "en": "The fish is fresh."
-          }
-        }
-      ],
-      "id": "a1-l03-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی سوم کلاس آلمانی. امروز Nina و Fabio به یک سوپرمارکت می‌روند تا برای یک شام کوچک با همکلاسی‌ها خرید کنند. آن‌ها با مواد غذایی، رنگ‌ها و قیمت‌ها مواجه می‌شوند. داستان ما در سوپرمارکت برلین ادامه پیدا می‌کند.",
+      "en": "Third week of German class. Today Nina and Fabio go to a supermarket to shop for a small dinner with classmates. They encounter foods, colors and prices. Our story continues in a Berlin supermarket.",
+      "de": "Dritte Woche des Deutschkurses. Heute gehen Nina und Fabio in einen Supermarkt, um für ein kleines Abendessen mit Kommilitonen einzukaufen. Sie begegnen Lebensmitteln, Farben und Preisen. Unsere Geschichte geht im Berliner Supermarkt weiter."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Nina",
+        "persian": "نی-نا",
+        "country": "ایران",
+        "age": 25,
+        "job": "مهندس کامپیوتر"
       },
-      "concept": {
-        "fa": "ابزار تعریف (Artikel) و منفی کردن با kein",
-        "en": "Articles and Negation with kein",
-        "de": "Artikel und Verneinung mit kein"
+      {
+        "name": "Fabio",
+        "persian": "فا-بی-و",
+        "country": "ایتالیا",
+        "age": 28,
+        "job": "آشپز"
       },
-      "explanation": {
-        "fa": "📌 **ابزار تعریف (Artikel):**\n\nدر آلمانی هر اسم یک جنسیت دارد که باید با آن یاد گرفت:\n\n• der → مذکر: der Apfel\n• die → مونث: die Banane\n• das → خنثی: das Brot\n\n📌 **حالت منفی کردن با 'kein':**\n\nبرای منفی کردن اسامی که der/die/das دارند، از kein استفاده می‌کنیم:\n\n• Das ist ein Apfel. → Das ist kein Apfel. (این یک سیب نیست)\n• Das ist eine Banane. → Das ist keine Banane. (این یک موز نیست)\n• Das ist Brot. → Das ist kein Brot. (این نان نیست)",
-        "en": "📌 **Articles:**\n\nIn German, every noun has a gender that must be learned:\n\n• der → masculine: der Apfel\n• die → feminine: die Banane\n• das → neuter: das Brot\n\n📌 **Negation with 'kein':**\n\nTo negate nouns with der/die/das, use kein:\n\n• Das ist ein Apfel. → Das ist kein Apfel. (This is not an apple)\n• Das ist eine Banane. → Das ist keine Banane. (This is not a banana)\n• Das ist Brot. → Das ist kein Brot. (This is not bread)",
-        "de": "📌 **Artikel:**\n\nIm Deutschen hat jedes Nomen ein Genus, das man lernen muss:\n\n• der → maskulin: der Apfel\n• die → feminin: die Banane\n• das → neutrum: das Brot\n\n📌 **Verneinung mit 'kein':**\n\nUm Nomen mit der/die/das zu verneinen, verwendet man kein:\n\n• Das ist ein Apfel. → Das ist kein Apfel.\n• Das ist eine Banane. → Das ist keine Banane.\n• Das ist Brot. → Das ist kein Brot."
+      {
+        "name": "Martha",
+        "persian": "مار-تا",
+        "country": "آمریکا",
+        "age": 30,
+        "job": "معلم"
       },
-      "examples": [
-        {
-          "de": "Das ist ein Apfel.",
-          "fa": "این یک سیب است.",
-          "en": "This is an apple."
-        },
-        {
-          "de": "Das ist kein Apfel.",
-          "fa": "این یک سیب نیست.",
-          "en": "This is not an apple."
-        },
-        {
-          "de": "Das ist eine Banane.",
-          "fa": "این یک موز است.",
-          "en": "This is a banana."
-        },
-        {
-          "de": "Das ist keine Banane.",
-          "fa": "این یک موز نیست.",
-          "en": "This is not a banana."
-        }
-      ],
-      "id": "a1-l03-GRAM-003",
-      "order": 2
+      {
+        "name": "Frau Schwarz",
+        "persian": "فراو شوارتس",
+        "country": "آلمان",
+        "age": 40,
+        "job": "معلم آلمانی"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس سوم خوش آمدید — Essen und Trinken!",
+      "en": "Welcome to Lesson 3 — Food and Drink!",
+      "de": "Willkommen zu Lektion 3 — Essen und Trinken!"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: در رستوران",
-        "en": "📖 Story: At the Restaurant",
-        "de": "📖 Geschichte: Im Restaurant"
-      },
-      "text": {
-        "de": "Ich bin im Restaurant. Ich möchte etwas essen. Die Kellnerin kommt. Ich bestelle einen Apfel und ein Brot. Ich trinke Wasser. Mein Freund bestellt Kaffee und Käse. Das Essen ist sehr gut. Ich bezahle 10 Euro.",
-        "fa": "من در رستوران هستم. من می‌خواهم چیزی بخورم. پیشخدمت می‌آید. من یک سیب و یک نان سفارش می‌دهم. من آب می‌نوشم. دوست من قهوه و پنیر سفارش می‌دهد. غذا خیلی خوب است. من ۱۰ یورو پرداخت می‌کنم.",
-        "en": "I am in a restaurant. I want to eat something. The waitress comes. I order an apple and bread. I drink water. My friend orders coffee and cheese. The food is very good. I pay 10 euros."
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "چه چیزی سفارش دادم؟",
-            "en": "What did I order?",
-            "de": "Was habe ich bestellt?"
-          },
-          "answer": {
-            "fa": "سیب و نان",
-            "en": "An apple and bread",
-            "de": "Einen Apfel und Brot"
-          }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "دوست من چه چیزی سفارش داد؟",
-            "en": "What did my friend order?",
-            "de": "Was hat mein Freund bestellt?"
-          },
-          "answer": {
-            "fa": "قهوه و پنیر",
-            "en": "Coffee and cheese",
-            "de": "Kaffee und Käse"
-          }
-        }
-      ],
-      "id": "a1-l03-STORY-004",
-      "order": 3
+    "content": {
+      "fa": "تصور کنید وارد یک سوپرمارکت در برلین می‌شوید. می‌خواهید مواد غذایی بخرید، اما نمی‌دانید کلمات آلمانی برای میوه، سبزی، گوشت و نوشیدنی چیست. نمی‌توانید بپرسید قیمت چقدر است یا چه مقدار می‌خواهید.\n\nاین درس به شما کمک می‌کند تا در سوپرمارکت، رستوران و کافه آلمان به‌راحتی خرید کنید و سفارش بدهید. شما با واژگان مواد غذایی، رنگ‌ها، اعداد و گرامر مهم آشنا می‌شوید.",
+      "en": "Imagine walking into a supermarket in Berlin. You want to buy food, but you don't know the German words for fruit, vegetables, meat and drinks. You can't ask how much things cost or how much you want.\n\nThis lesson helps you shop and order easily in German supermarkets, restaurants and cafés. You'll learn food vocabulary, colors, numbers and important grammar.",
+      "de": "Stell dir vor, du betrittst einen Supermarkt in Berlin. Du möchtest Lebensmittel kaufen, aber du kennst die deutschen Wörter für Obst, Gemüse, Fleisch und Getränke nicht. Du kannst nicht fragen, wie viel etwas kostet oder wie viel du möchtest.\n\nDiese Lektion hilft dir, in deutschen Supermärkten, Restaurants und Cafés einfach einzukaufen und zu bestellen. Du lernst Lebensmitttelvokabular, Farben, Zahlen und wichtige Grammatik."
     },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "مقاله صحیح: ____ Wasser",
-            "en": "Correct article: ____ Wasser",
-            "de": "Richtiger Artikel: ____ Wasser"
-          },
-          "options": [
-            "der",
-            "die",
-            "das"
-          ],
-          "correctIndex": 2,
-          "explanation": {
-            "fa": "das Wasser = آب",
-            "en": "das Wasser = water",
-            "de": "das Wasser = Wasser"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "مقاله صحیح: ____ Banane",
-            "en": "Correct article: ____ Banane",
-            "de": "Richtiger Artikel: ____ Banane"
-          },
-          "options": [
-            "der",
-            "die",
-            "das"
-          ],
-          "correctIndex": 1,
-          "explanation": {
-            "fa": "die Banane = موز",
-            "en": "die Banane = banana",
-            "de": "die Banane = Banane"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "fill_in",
-          "question": {
-            "fa": "جمله را منفی کنید: 'Das ist ein Apfel.' (با kein)",
-            "en": "Negate: 'Das ist ein Apfel.' (with kein)",
-            "de": "Verneinen: 'Das ist ein Apfel.' (mit kein)"
-          },
-          "answer": "Das ist kein Apfel.",
-          "hint": {
-            "fa": "ein → kein",
-            "en": "ein → kein",
-            "de": "ein → kein"
-          }
-        },
-        {
-          "id": "ex4",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را به آلمانی ترجمه کنید: 'من یک سیب می‌خورم.'",
-            "en": "Translate: 'I eat an apple.'",
-            "de": "Übersetzen: 'Ich esse einen Apfel.'"
-          },
-          "answer": "Ich esse einen Apfel.",
-          "hint": {
-            "fa": "essen = خوردن",
-            "en": "essen = to eat",
-            "de": "essen = essen"
-          }
-        }
-      ],
-      "id": "a1-l03-EXER-005",
-      "order": 4
+    "imagePrompt": "A bright German supermarket with fresh fruits and vegetables, Nina and Fabio shopping together, Berlin setting"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - سیستم دوزبانه (مرور و آواهای جدید)",
+      "en": "Pronunciation Guide - Bilingual System (Review and New Sounds)",
+      "de": "Ausspracheführer - Zweisprachiges System (Wiederholung und neue Laute)"
     },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "der Apfel",
-          "fa": "سیب",
-          "en": "apple",
-          "icon": "🍎"
-        },
-        {
-          "de": "die Banane",
-          "fa": "موز",
-          "en": "banana",
-          "icon": "🍌"
-        },
-        {
-          "de": "das Brot",
-          "fa": "نان",
-          "en": "bread",
-          "icon": "🍞"
-        },
-        {
-          "de": "das Wasser",
-          "fa": "آب",
-          "en": "water",
-          "icon": "💧"
-        },
-        {
-          "de": "der Kaffee",
-          "fa": "قهوه",
-          "en": "coffee",
-          "icon": "☕"
-        },
-        {
-          "de": "der Käse",
-          "fa": "پنیر",
-          "en": "cheese",
-          "icon": "🧀"
-        },
-        {
-          "de": "das Gemüse",
-          "fa": "سبزیجات",
-          "en": "vegetables",
-          "icon": "🥬"
-        },
-        {
-          "de": "das Obst",
-          "fa": "میوه",
-          "en": "fruit",
-          "icon": "🍇"
-        },
-        {
-          "de": "das Fleisch",
-          "fa": "گوشت",
-          "en": "meat",
-          "icon": "🥩"
-        },
-        {
-          "de": "der Fisch",
-          "fa": "ماهی",
-          "en": "fish",
-          "icon": "🐟"
-        }
-      ],
-      "id": "a1-l03-FLASH-006",
-      "order": 5
+    "layers": {
+      "fa": "سه لایه تلفظ: ۱. تلفظ فارسی ۲. IPA ۳. توصیف فیزیکی. در این درس، علاوه بر مرور آواهای درس ۱، با آوای 'ß' و تلفظ‌های خاص مواد غذایی آشنا می‌شویم.",
+      "en": "Three layers: 1. Persian pronunciation 2. IPA 3. Physical description. In this lesson, besides reviewing Lesson 1 sounds, we learn the 'ß' sound and specific food pronunciations.",
+      "de": "Drei Schichten: 1. Persische Aussprache 2. IPA 3. Physische Beschreibung. In dieser Lektion wiederholen wir die Laute aus Lektion 1 und lernen den 'ß'-Laut und spezifische Lebensmittelaussprachen."
     },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "der Apfel",
-          "phonetic": "/deːɐ̯ ˈapfl̩/"
+    "sounds": [
+      {
+        "id": "sound-r-review",
+        "letter": "r (مرور)",
+        "description": {
+          "fa": "صدای غُرّی از حلق",
+          "en": "Uvular sound",
+          "de": "Uvularer Laut"
         },
-        {
-          "word": "die Banane",
-          "phonetic": "/diː baˈnaːnə/"
+        "ipa": "[ʁ] oder [ɐ]",
+        "persianEquivalent": "≈ غُرّ کردن گربه",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ر' فارسی",
+          "en": "Pronouncing like Persian 'r'",
+          "de": "Wie persisches 'r'"
         },
-        {
-          "word": "das Brot",
-          "phonetic": "/das bʁoːt/"
-        },
-        {
-          "word": "der Kaffee",
-          "phonetic": "/deːɐ̯ ˈkafeː/"
-        },
-        {
-          "word": "das Gemüse",
-          "phonetic": "/das ɡəˈmyːzə/"
-        }
-      ],
-      "id": "a1-l03-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "مقاله صحیح برای 'Brot' چیست؟",
-            "en": "What is the correct article for 'Brot'?",
-            "de": "Was ist der richtige Artikel für 'Brot'?"
+        "examples": [
+          {
+            "word": "Möhre",
+            "persian": "موه-رِه",
+            "meaning": "هویج"
           },
-          "options": [
-            "der",
-            "die",
-            "das"
-          ],
-          "correctIndex": 2,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را منفی کنید: 'Das ist eine Banane.'",
-            "en": "Negate: 'Das ist eine Banane.'",
-            "de": "Verneinen: 'Das ist eine Banane.'"
+          {
+            "word": "Butter",
+            "persian": "بوت-ر",
+            "meaning": "کره"
           },
-          "answer": "Das ist keine Banane.",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "کدام یک به معنای 'من یک سیب می‌خورم' است؟",
-            "en": "Which means 'I eat an apple'?",
-            "de": "Welches bedeutet 'Ich esse einen Apfel'?"
-          },
-          "options": [
-            "Ich esse einen Apfel.",
-            "Ich esse eine Apfel.",
-            "Ich esse ein Apfel.",
-            "Ich esse der Apfel."
-          ],
-          "correctIndex": 0,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l03-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ نام غذاها و میوه‌ها به آلمانی",
-          "✅ جنسیت اسم‌ها (der/die/das)",
-          "✅ منفی کردن با kein",
-          "✅ سفارش دادن در رستوران"
-        ],
-        "en": [
-          "✅ Food and fruit names in German",
-          "✅ Noun genders (der/die/das)",
-          "✅ Negation with kein",
-          "✅ Ordering in a restaurant"
-        ],
-        "de": [
-          "✅ Lebensmittel- und Obstnamen auf Deutsch",
-          "✅ Genus der Nomen (der/die/das)",
-          "✅ Verneinung mit kein",
-          "✅ Bestellen im Restaurant"
+          {
+            "word": "Farbe",
+            "persian": "فار-بِه",
+            "meaning": "رنگ"
+          }
         ]
       },
-      "nextSteps": {
-        "fa": "📚 در درس بعدی (Was ist das?) با اشیاء مدرسه، رنگ‌ها و معرفی اشیاء آشنا می‌شوید.",
-        "en": "📚 In the next lesson (Was ist das?) you will learn school objects, colors and introducing objects.",
-        "de": "📚 In der nächsten Lektion (Was ist das?) lernen Sie Schulgegenstände, Farben und Gegenstände vorstellen."
+      {
+        "id": "sound-ch-hard-review",
+        "letter": "ch (بعد از a, o, u)",
+        "description": {
+          "fa": "'خ' ساده",
+          "en": "Simple 'kh'",
+          "de": "Einfaches 'ch'"
+        },
+        "ipa": "[x]",
+        "persianEquivalent": "≈ 'خ' در 'خوب'",
+        "commonMistake": {
+          "fa": "تلفظ خیلی سخت",
+          "en": "Pronouncing too hard",
+          "de": "Zu hart aussprechen"
+        },
+        "examples": [
+          {
+            "word": "kochen",
+            "persian": "کو-خِن",
+            "meaning": "آشپزی کردن"
+          },
+          {
+            "word": "Milch",
+            "persian": "می-لخ",
+            "meaning": "شیر"
+          }
+        ]
       },
-      "id": "a1-l03-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-ß",
+        "letter": "ß",
+        "description": {
+          "fa": "مثل 'س' سخت - فقط شکل نوشتاری متفاوت",
+          "en": "Like hard 's' - just different written form",
+          "de": "Wie hartes 's' - nur andere Schreibweise"
+        },
+        "ipa": "[s]",
+        "persianEquivalent": "≈ 'س' در 'سنگ'",
+        "commonMistake": {
+          "fa": "فکر کردن حرف خاصی است",
+          "en": "Thinking it's a special sound",
+          "de": "Denken, es sei ein besonderer Laut"
+        },
+        "examples": [
+          {
+            "word": "groß",
+            "persian": "گرو-س",
+            "meaning": "بزرگ"
+          },
+          {
+            "word": "ißt",
+            "persian": "ایست",
+            "meaning": "می‌خورد"
+          },
+          {
+            "word": "Straße",
+            "persian": "شترا-سِه",
+            "meaning": "خیابان"
+          }
+        ]
+      },
+      {
+        "id": "sound-eu",
+        "letter": "eu / äu",
+        "description": {
+          "fa": "مثل 'oi' در انگلیسی 'oil'",
+          "en": "Like 'oi' in English 'oil'",
+          "de": "Wie 'oi' in englisch 'oil'"
+        },
+        "ipa": "[ɔɪ̯]",
+        "persianEquivalent": "≈ 'او-ی'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'او' ساده",
+          "en": "Pronouncing like simple 'ou'",
+          "de": "Wie einfaches 'au'"
+        },
+        "examples": [
+          {
+            "word": "Apfelsaft",
+            "persian": "آپ-فِل-زافت",
+            "meaning": "آب سیب"
+          },
+          {
+            "word": "Milchprodukte",
+            "persian": "می-لخ-پرو-دوکتِه",
+            "meaning": "فرآورده‌های لبنی"
+          }
+        ]
+      },
+      {
+        "id": "sound-umlauts",
+        "letter": "ä, ö, ü (مرور)",
+        "description": {
+          "fa": "اوملاوت‌ها - تغییر صوتی مهم",
+          "en": "Umlauts - important sound change",
+          "de": "Umlaute - wichtige Lautänderung"
+        },
+        "ipa": "[ɛː] / [øː] / [yː]",
+        "persianEquivalent": "ä≈اِ، ö≈بین اُ و اِ، ü≈بین ای و او",
+        "commonMistake": {
+          "fa": "تلفظ مثل حرف بدون اوملاوت",
+          "en": "Pronouncing like letter without umlaut",
+          "de": "Wie Buchstabe ohne Umlaut"
+        },
+        "examples": [
+          {
+            "word": "Möhre",
+            "persian": "موه-رِه",
+            "meaning": "هویج (ö)"
+          },
+          {
+            "word": "Gemüse",
+            "persian": "گِ-موه-زِه",
+            "meaning": "سبزی (ü)"
+          },
+          {
+            "word": "Äpfel",
+            "persian": "اِپ-فِل",
+            "meaning": "سیب‌ها (ä)"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-apfel",
+      "de": "Apfel",
+      "article": "der",
+      "plural": "Äpfel",
+      "ipa": "[ˈapfəl]",
+      "fa": "سیب",
+      "en": "apple",
+      "example": {
+        "de": "Ich esse einen Apfel.",
+        "fa": "من یک سیب می‌خورم.",
+        "en": "I eat an apple."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Apfel، جمع با Umlaut: Äpfel",
+        "en": "Masculine - der Apfel, plural with umlaut: Äpfel",
+        "de": "Maskulin - der Apfel, Plural mit Umlaut: Äpfel"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'pf' مثل 'پف' - دو صدا پشت سر هم",
+        "en": "Pronounce 'pf' as two sounds together",
+        "de": "'pf' als zwei Laute aussprechen"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-banane",
+      "de": "Banane",
+      "article": "die",
+      "plural": "Bananen",
+      "ipa": "[baˈnaːnə]",
+      "fa": "موز",
+      "en": "banana",
+      "example": {
+        "de": "Die Banane ist gelb.",
+        "fa": "موز زرد است.",
+        "en": "The banana is yellow."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Banane، جمع با -n",
+        "en": "Feminine - die Banane, plural with -n",
+        "de": "Feminin - die Banane, Plural mit -n"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کشیده در مقطع دوم",
+        "en": "Long 'a' in second syllable",
+        "de": "Langes 'a' in zweiter Silbe"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-orange",
+      "de": "Orange",
+      "article": "die",
+      "plural": "Orangen",
+      "ipa": "[oˈʁaŋʒə]",
+      "fa": "پرتقال",
+      "en": "orange",
+      "example": {
+        "de": "Ich trinke Orangensaft.",
+        "fa": "من آب پرتقال می‌نوشم.",
+        "en": "I drink orange juice."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Orange، هم میوه و هم رنگ",
+        "en": "Feminine - both fruit and color",
+        "de": "Feminin - sowohl Frucht als auch Farbe"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'a' کشیده",
+        "en": "Uvular 'r' and long 'a'",
+        "de": "Uvulares 'r' und langes 'a'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-tomate",
+      "de": "Tomate",
+      "article": "die",
+      "plural": "Tomaten",
+      "ipa": "[toˈmaːtə]",
+      "fa": "گوجه فرنگی",
+      "en": "tomato",
+      "example": {
+        "de": "Ich kaufe Tomaten.",
+        "fa": "من گوجه می‌خرم.",
+        "en": "I buy tomatoes."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Tomate، جمع با -n",
+        "en": "Feminine - die Tomate, plural with -n",
+        "de": "Feminin - die Tomate, Plural mit -n"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کشیده در مقطع دوم",
+        "en": "Long 'a' in second syllable",
+        "de": "Langes 'a' in zweiter Silbe"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-mohre",
+      "de": "Möhre",
+      "article": "die",
+      "plural": "Möhren",
+      "ipa": "[ˈmøːʁə]",
+      "fa": "هویج",
+      "en": "carrot",
+      "example": {
+        "de": "Die Möhre ist orange.",
+        "fa": "هویج نارنجی است.",
+        "en": "The carrot is orange."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Möhre، با ö",
+        "en": "Feminine - die Möhre, with ö",
+        "de": "Feminin - die Möhre, mit ö"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ö' بین 'اُ' و 'اِ'",
+        "en": "Pronounce 'ö' between 'o' and 'e'",
+        "de": "'ö' zwischen 'o' und 'e'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kartoffel",
+      "de": "Kartoffel",
+      "article": "die",
+      "plural": "Kartoffeln",
+      "ipa": "[kaʁˈtɔfəl]",
+      "fa": "سیب زمینی",
+      "en": "potato",
+      "example": {
+        "de": "Wir kochen Kartoffeln.",
+        "fa": "ما سیب زمینی می‌پزیم.",
+        "en": "We cook potatoes."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Kartoffel",
+        "en": "Feminine - die Kartoffel",
+        "de": "Feminin - die Kartoffel"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی",
+        "en": "Uvular 'r'",
+        "de": "Uvulares 'r'"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-wasser",
+      "de": "Wasser",
+      "article": "das",
+      "plural": "Wasser",
+      "ipa": "[ˈvasɐ]",
+      "fa": "آب",
+      "en": "water",
+      "example": {
+        "de": "Ich trinke Wasser.",
+        "fa": "من آب می‌نوشم.",
+        "en": "I drink water."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Wasser، جمع همان شکل",
+        "en": "Neuter - das Wasser, same plural form",
+        "de": "Neutral - das Wasser, gleicher Plural"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل 'و' فارسی",
+        "en": "Pronounce 'W' like Persian 'v'",
+        "de": "'W' wie persisches 'v'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-milch",
+      "de": "Milch",
+      "article": "die",
+      "plural": "Milch",
+      "ipa": "[mɪlç]",
+      "fa": "شیر",
+      "en": "milk",
+      "example": {
+        "de": "Ich trinke Milch.",
+        "fa": "من شیر می‌نوشم.",
+        "en": "I drink milk."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Milch، معمولاً مفرد استفاده می‌شود",
+        "en": "Feminine - die Milch, usually used singular",
+        "de": "Feminin - die Milch, meist Singular"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ch' بعد از 'l' مثل 'خ' سخت",
+        "en": "Pronounce 'ch' after 'l' like hard 'kh'",
+        "de": "'ch' nach 'l' wie hartes 'ch'"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-kaffee",
+      "de": "Kaffee",
+      "article": "der",
+      "plural": "Kaffee",
+      "ipa": "[ˈkafeː]",
+      "fa": "قهوه",
+      "en": "coffee",
+      "example": {
+        "de": "Ich trinke Kaffee.",
+        "fa": "من قهوه می‌نوشم.",
+        "en": "I drink coffee."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Kaffee، جمع همان شکل",
+        "en": "Masculine - der Kaffee, same plural",
+        "de": "Maskulin - der Kaffee, gleicher Plural"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کوتاه و 'e' کشیده",
+        "en": "Short 'a' and long 'e'",
+        "de": "Kurzes 'a' und langes 'e'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-brot",
+      "de": "Brot",
+      "article": "das",
+      "plural": "Brote",
+      "ipa": "[bʁoːt]",
+      "fa": "نان",
+      "en": "bread",
+      "example": {
+        "de": "Das Brot ist frisch.",
+        "fa": "نان تازه است.",
+        "en": "The bread is fresh."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Brot، جمع با -e",
+        "en": "Neuter - das Brot, plural with -e",
+        "de": "Neutral - das Brot, Plural mit -e"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'o' کشیده",
+        "en": "Uvular 'r' and long 'o'",
+        "de": "Uvulares 'r' und langes 'o'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-fleisch",
+      "de": "Fleisch",
+      "article": "das",
+      "plural": "Fleisch",
+      "ipa": "[flaɪ̯ʃ]",
+      "fa": "گوشت",
+      "en": "meat",
+      "example": {
+        "de": "Ich esse kein Fleisch.",
+        "fa": "من گوشت نمی‌خورم.",
+        "en": "I don't eat meat."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Fleisch، معمولاً مفرد",
+        "en": "Neuter - das Fleisch, usually singular",
+        "de": "Neutral - das Fleisch, meist Singular"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ei' مثل 'ای' کشیده",
+        "en": "Pronounce 'ei' like long 'i'",
+        "de": "'ei' wie langes 'i'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-ei",
+      "de": "Ei",
+      "article": "das",
+      "plural": "Eier",
+      "ipa": "[aɪ̯]",
+      "fa": "تخم مرغ",
+      "en": "egg",
+      "example": {
+        "de": "Ich esse zwei Eier.",
+        "fa": "من دو تخم مرغ می‌خورم.",
+        "en": "I eat two eggs."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Ei، جمع با -er: Eier",
+        "en": "Neuter - das Ei, plural with -er: Eier",
+        "de": "Neutral - das Ei, Plural mit -er: Eier"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ei' کشیده",
+        "en": "Long 'ei' pronunciation",
+        "de": "Langes 'ei'"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kase",
+      "de": "Käse",
+      "article": "der",
+      "plural": "Käse",
+      "ipa": "[ˈkɛːzə]",
+      "fa": "پنیر",
+      "en": "cheese",
+      "example": {
+        "de": "Ich esse gerne Käse.",
+        "fa": "من پنیر دوست دارم.",
+        "en": "I like cheese."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Käse، با ä",
+        "en": "Masculine - der Käse, with ä",
+        "de": "Maskulin - der Käse, mit ä"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ä' مثل 'اِ'",
+        "en": "Pronounce 'ä' like 'e'",
+        "de": "'ä' wie 'e'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-reis",
+      "de": "Reis",
+      "article": "der",
+      "plural": "Reis",
+      "ipa": "[ʁaɪ̯s]",
+      "fa": "برنج",
+      "en": "rice",
+      "example": {
+        "de": "Ich koche Reis.",
+        "fa": "من برنج می‌پزم.",
+        "en": "I cook rice."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Reis، معمولاً مفرد",
+        "en": "Masculine - der Reis, usually singular",
+        "de": "Maskulin - der Reis, meist Singular"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'ei' کشیده",
+        "en": "Uvular 'r' and long 'ei'",
+        "de": "Uvulares 'r' und langes 'ei'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-rot",
+      "de": "rot",
+      "article": "",
+      "plural": "",
+      "ipa": "[ʁoːt]",
+      "fa": "قرمز",
+      "en": "red",
+      "example": {
+        "de": "Die Tomate ist rot.",
+        "fa": "گوجه قرمز است.",
+        "en": "The tomato is red."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ - بدون حرف تعریف",
+        "en": "Color adjective - no article",
+        "de": "Farbadjektiv - ohne Artikel"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی",
+        "en": "Uvular 'r'",
+        "de": "Uvulares 'r'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-gelb",
+      "de": "gelb",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡɛlp]",
+      "fa": "زرد",
+      "en": "yellow",
+      "example": {
+        "de": "Die Banane ist gelb.",
+        "fa": "موز زرد است.",
+        "en": "The banana is yellow."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ",
+        "en": "Color adjective",
+        "de": "Farbadjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'l' قبل از 'b'",
+        "en": "Pronounce 'l' before 'b'",
+        "de": "'l' vor 'b'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-grun",
+      "de": "grün",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡʁyːn]",
+      "fa": "سبز",
+      "en": "green",
+      "example": {
+        "de": "Der Apfel ist grün.",
+        "fa": "سیب سبز است.",
+        "en": "The apple is green."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ - با ü",
+        "en": "Color adjective - with ü",
+        "de": "Farbadjektiv - mit ü"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' بین 'ای' و 'او'",
+        "en": "Pronounce 'ü' between 'i' and 'u'",
+        "de": "'ü' zwischen 'i' und 'u'"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-blau",
+      "de": "blau",
+      "article": "",
+      "plural": "",
+      "ipa": "[blaʊ̯]",
+      "fa": "آبی",
+      "en": "blue",
+      "example": {
+        "de": "Der Himmel ist blau.",
+        "fa": "آسمان آبی است.",
+        "en": "The sky is blue."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ",
+        "en": "Color adjective",
+        "de": "Farbadjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'au' مثل 'آو' کشیده",
+        "en": "Pronounce 'au' like long 'ow'",
+        "de": "'au' wie langes 'au'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-schwarz",
+      "de": "schwarz",
+      "article": "",
+      "plural": "",
+      "ipa": "[ʃvaʁts]",
+      "fa": "سیاه",
+      "en": "black",
+      "example": {
+        "de": "Der Kaffee ist schwarz.",
+        "fa": "قهوه سیاه است.",
+        "en": "The coffee is black."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ",
+        "en": "Color adjective",
+        "de": "Farbadjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sch' مثل 'ش' و 'w' مثل 'و'",
+        "en": "Pronounce 'sch' like 'sh' and 'w' like 'v'",
+        "de": "'sch' wie 'sch' und 'w' wie 'v'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-weis",
+      "de": "weiß",
+      "article": "",
+      "plural": "",
+      "ipa": "[vaɪ̯s]",
+      "fa": "سفید",
+      "en": "white",
+      "example": {
+        "de": "Die Milch ist weiß.",
+        "fa": "شیر سفید است.",
+        "en": "The milk is white."
+      },
+      "usageNotes": {
+        "fa": "صفت رنگ - با ß",
+        "en": "Color adjective - with ß",
+        "de": "Farbadjektiv - mit ß"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ß' مثل 'س' سخت",
+        "en": "Pronounce 'ß' like hard 's'",
+        "de": "'ß' wie hartes 's'"
+      },
+      "difficulty": 1,
+      "frequency": 5
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-essen-conjugation",
+        "title": {
+          "fa": "صرف فعل essen (خوردن) - فعل با تغییر مصوت",
+          "en": "Conjugation of essen (to eat) - verb with vowel change",
+          "de": "Konjugation von essen - Verb mit Vokalwechsel"
+        },
+        "concept": {
+          "fa": "فعل essen یک فعل با تغییر مصوت (Vokalwechsel) است. در اشخاص du و er/sie/es، مصوت 'e' به 'i' تبدیل می‌شود: essen → isst.",
+          "en": "The verb essen has a vowel change. In du and er/sie/es forms, the vowel 'e' changes to 'i': essen → isst.",
+          "de": "Das Verb essen hat einen Vokalwechsel. In du und er/sie/es Formen ändert sich 'e' zu 'i': essen → isst."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "آلمانی",
+            "تلفظ فارسی",
+            "IPA",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "ich esse",
+              "ایخ اِسِه",
+              "[ɪç ˈɛsə]",
+              "من می‌خورم"
+            ],
+            [
+              "du",
+              "du isst",
+              "دو ایست",
+              "[duː ɪst]",
+              "تو می‌خوری"
+            ],
+            [
+              "er/sie/es",
+              "er/sie/es isst",
+              "اِر/زی/اِس ایست",
+              "[eːɐ̯/ziː/ɛs ɪst]",
+              "او می‌خورد"
+            ],
+            [
+              "wir",
+              "wir essen",
+              "ویر اِ-سِن",
+              "[viːɐ̯ ˈɛsn̩]",
+              "ما می‌خوریم"
+            ],
+            [
+              "ihr",
+              "ihr esst",
+              "ایر اِست",
+              "[iːɐ̯ ɛst]",
+              "شما می‌خورید"
+            ],
+            [
+              "sie/Sie",
+              "sie/Sie essen",
+              "زی اِ-سِن",
+              "[ziː ˈɛsn̩]",
+              "آن‌ها/شما می‌خورند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ich → esse • du → isst (تغییر مصوت!) • er/sie/es → isst • plural → essen",
+          "en": "ich → esse • du → isst (vowel change!) • er/sie/es → isst • plural → essen",
+          "de": "ich → esse • du → isst (Vokalwechsel!) • er/sie/es → isst • Plural → essen"
+        }
+      },
+      {
+        "id": "gram-haben-conjugation",
+        "title": {
+          "fa": "صرف فعل haben (داشتن)",
+          "en": "Conjugation of haben (to have)",
+          "de": "Konjugation von haben"
+        },
+        "concept": {
+          "fa": "فعل haben یکی از مهم‌ترین فعل‌های آلمانی است. این فعل برای بیان مالکیت و در زمان‌های مرکب استفاده می‌شود.",
+          "en": "The verb haben is one of the most important German verbs. It's used for possession and in compound tenses.",
+          "de": "Das Verb haben ist eines der wichtigsten deutschen Verben. Es wird für Besitz und in zusammengesetzten Zeiten verwendet."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "آلمانی",
+            "تلفظ فارسی",
+            "IPA",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "ich habe",
+              "ایخ ها-بِه",
+              "[ɪç ˈhaːbə]",
+              "من دارم"
+            ],
+            [
+              "du",
+              "du hast",
+              "دو هاست",
+              "[duː hast]",
+              "تو داری"
+            ],
+            [
+              "er/sie/es",
+              "er/sie/es hat",
+              "اِر/زی/اِس هات",
+              "[eːɐ̯/ziː/ɛs hat]",
+              "او دارد"
+            ],
+            [
+              "wir",
+              "wir haben",
+              "ویر ها-بِن",
+              "[viːɐ̯ ˈhaːbn̩]",
+              "ما داریم"
+            ],
+            [
+              "ihr",
+              "ihr habt",
+              "ایر هابت",
+              "[iːɐ̯ hapt]",
+              "شما دارید"
+            ],
+            [
+              "sie/Sie",
+              "sie/Sie haben",
+              "زی ها-بِن",
+              "[ziː ˈhaˀbn̩]",
+              "آن‌ها/شما دارند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ich → habe • du → hast • er/sie/es → hat • plural → haben",
+          "en": "ich → habe • du → hast • er/sie/es → hat • plural → haben",
+          "de": "ich → habe • du → hast • er/sie/es → hat • Plural → haben"
+        }
+      },
+      {
+        "id": "gram-plural",
+        "title": {
+          "fa": "جمع بستن اسامی (Pluralbildung)",
+          "en": "Plural Formation",
+          "de": "Pluralbildung"
+        },
+        "concept": {
+          "fa": "در آلمانی چندین روش برای جمع بستن اسامی وجود دارد: -e, -(e)n, -er, -s. بعضی اسامی هم Umlaut می‌گیرند.",
+          "en": "German has several plural endings: -e, -(e)n, -er, -s. Some nouns also take an umlaut.",
+          "de": "Deutsch hat mehrere Pluralendungen: -e, -(e)n, -er, -s. Manche Nomen bekommen auch einen Umlaut."
+        },
+        "pluralTable": {
+          "headers": [
+            "پایانه جمع",
+            "مثال مفرد",
+            "مثال جمع",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "-e (با Umlaut)",
+              "der Apfel",
+              "die Äpfel",
+              "سیب/سیب‌ها"
+            ],
+            [
+              "-e",
+              "das Brot",
+              "die Brote",
+              "نان/نان‌ها"
+            ],
+            [
+              "-(e)n",
+              "die Tomate",
+              "die Tomaten",
+              "گوجه/گوجه‌ها"
+            ],
+            [
+              "-(e)n",
+              "die Kartoffel",
+              "die Kartoffeln",
+              "سیب زمینی/سیب زمینی‌ها"
+            ],
+            [
+              "-er (با Umlaut)",
+              "das Kind",
+              "die Kinder",
+              "کودک/کودکان"
+            ],
+            [
+              "-s",
+              "das Auto",
+              "die Autos",
+              "ماشین/ماشین‌ها"
+            ],
+            [
+              "بدون تغییر",
+              "das Wasser",
+              "die Wasser",
+              "آب/آب‌ها"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "قانون کلی: -e برای مذکر/خنثی، -(e)n برای مؤنث، -er برای خنثی، -s برای کلمات خارجی",
+          "en": "General rule: -e for masc/neut, -(e)n for fem, -er for neut, -s for foreign words",
+          "de": "Allgemeine Regel: -e für Mask/Neutr, -(e)n für Fem, -er für Neutr, -s für Fremdwörter"
+        }
+      },
+      {
+        "id": "gram-nullartikel",
+        "title": {
+          "fa": "حرف تعریف صفر (Nullartikel)",
+          "en": "Zero Article",
+          "de": "Nullartikel"
+        },
+        "concept": {
+          "fa": "بعضی کلمات در آلمانی بدون حرف تعریف استفاده می‌شوند: مواد غذایی غیرقابل شمارش (مثل Wasser, Brot, Fleisch)، نام کشورها و شهرها، و در برخی عبارات.",
+          "en": "Some words in German are used without an article: uncountable foods (like Wasser, Brot, Fleisch), country and city names, and in some expressions.",
+          "de": "Einige Wörter werden im Deutschen ohne Artikel verwendet: unzählbare Lebensmittel (wie Wasser, Brot, Fleisch), Länder- und Stadtnamen, und in einigen Ausdrücken."
+        },
+        "examples": {
+          "fa": [
+            "Ich esse Brot. (نان - بدون حرف تعریف)",
+            "Ich trinke Wasser. (آب - بدون حرف تعریف)",
+            "Ich wohne in Berlin. (نام شهر - بدون حرف تعریف)",
+            "Ich komme aus Iran. (نام کشور - بدون حرف تعریف)"
+          ],
+          "en": [
+            "Ich esse Brot. (bread - no article)",
+            "Ich trinke Wasser. (water - no article)",
+            "Ich wohne in Berlin. (city name - no article)",
+            "Ich komme aus Iran. (country name - no article)"
+          ],
+          "de": [
+            "Ich esse Brot. (Brot - ohne Artikel)",
+            "Ich trinke Wasser. (Wasser - ohne Artikel)",
+            "Ich wohne in Berlin. (Stadtname - ohne Artikel)",
+            "Ich komme aus Iran. (Landname - ohne Artikel)"
+          ]
+        }
+      },
+      {
+        "id": "gram-verb-position",
+        "title": {
+          "fa": "جایگاه فعل در جمله (Verbposition)",
+          "en": "Verb Position in Sentences",
+          "de": "Verbposition im Satz"
+        },
+        "concept": {
+          "fa": "در جمله خبری، فعل همیشه در جایگاه دوم است. در سوال بلی/خیری، فعل در جایگاه اول است. در سوال با W-Wort، فعل در جایگاه دوم (بعد از W-Wort) است.",
+          "en": "In statements, the verb is always in position 2. In yes/no questions, the verb is in position 1. In W-questions, the verb is in position 2 (after the W-word).",
+          "de": "In Aussagesätzen steht das Verb immer an Position 2. In Ja-/Nein-Fragen an Position 1. In W-Fragen an Position 2 (nach dem W-Wort)."
+        },
+        "examples": {
+          "fa": [
+            "خبری: Ich esse einen Apfel. (فاعل + فعل + متمم)",
+            "سوال بلی/خیر: Isst du einen Apfel? (فعل + فاعل + متمم)",
+            "W-Frage: Was isst du? (W-Wort + فعل + فاعل)"
+          ],
+          "en": [
+            "Statement: Ich esse einen Apfel. (subject + verb + object)",
+            "Yes/No question: Isst du einen Apfel? (verb + subject + object)",
+            "W-question: Was isst du? (W-word + verb + subject)"
+          ],
+          "de": [
+            "Aussage: Ich esse einen Apfel. (Subjekt + Verb + Objekt)",
+            "Ja-/Nein-Frage: Isst du einen Apfel? (Verb + Subjekt + Objekt)",
+            "W-Frage: Was isst du? (W-Wort + Verb + Subjekt)"
+          ]
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-supermarket-1",
+      "title": {
+        "fa": "دیالوگ سوپرمارکت - خرید مواد غذایی",
+        "en": "Supermarket Dialogue - Food Shopping",
+        "de": "Supermarkt-Dialog - Lebensmitteleinkauf"
+      },
+      "characters": [
+        {
+          "name": "Nina",
+          "role": "دانش‌آموز"
+        },
+        {
+          "name": "Fabio",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Nina",
+          "german": "Fabio, was essen wir heute Abend?",
+          "persian": "فا-بی-و، واس اِ-سِن ویر هوی-تِه آ-بِنت؟",
+          "meaning": {
+            "fa": "فابیو، امشب چه می‌خوریم؟",
+            "en": "Fabio, what are we eating tonight?",
+            "de": "Fabio, was essen wir heute Abend?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ich koche Pasta! Ich brauche Tomaten, Öl und Käse.",
+          "persian": "ایخ کو-خِه پاس-تا! ایخ براو-خِه تو-ما-تِن، اول اوند کِ-زِه.",
+          "meaning": {
+            "fa": "من پاستا می‌پزم! به گوجه، روغن و پنیر نیاز دارم.",
+            "en": "I cook pasta! I need tomatoes, oil and cheese.",
+            "de": "Ich koche Pasta! Ich brauche Tomaten, Öl und Käse."
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Haben wir auch Wasser und Orangensaft?",
+          "persian": "ها-بِن ویر آوخ واس-ر اوند اوران-گِن-زافت؟",
+          "meaning": {
+            "fa": "آیا آب و آب پرتقال هم داریم؟",
+            "en": "Do we also have water and orange juice?",
+            "de": "Haben wir auch Wasser und Orangensaft?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ja, wir haben alles. Und ich kaufe noch Brot und Eier.",
+          "persian": "یا، ویر ها-بِن آ-لِس. اوند ایخ کاو-فِه نُخ بروت اوند ای-ر.",
+          "meaning": {
+            "fa": "بله، همه چیز داریم. و من هنوز نان و تخم مرغ می‌خرم.",
+            "en": "Yes, we have everything. And I also buy bread and eggs.",
+            "de": "Ja, wir haben alles. Und ich kaufe noch Brot und Eier."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "was essen wir",
+          "persian": "واس اِ-سِن ویر",
+          "meaning": "چه می‌خوریم"
+        },
+        {
+          "phrase": "Ich koche",
+          "persian": "ایخ کو-خِه",
+          "meaning": "من می‌پزم"
+        },
+        {
+          "phrase": "Ich brauche",
+          "persian": "ایخ براو-خِه",
+          "meaning": "من نیاز دارم"
+        },
+        {
+          "phrase": "Haben wir",
+          "persian": "ها-بِن ویر",
+          "meaning": "آیا داریم"
+        }
+      ]
+    },
+    {
+      "id": "dialog-restaurant-1",
+      "title": {
+        "fa": "دیالوگ رستوران - سفارش غذا",
+        "en": "Restaurant Dialogue - Ordering Food",
+        "de": "Restaurant-Dialog - Essen bestellen"
+      },
+      "characters": [
+        {
+          "name": "Kellner",
+          "role": "گارسون"
+        },
+        {
+          "name": "Nina",
+          "role": "مشتری"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Kellner",
+          "german": "Guten Tag! Was möchten Sie trinken?",
+          "persian": "گو-تِن تاخ! واس مول-تِن زی ترین-کِن؟",
+          "meaning": {
+            "fa": "روز بخیر! چه میل دارید بنوشید؟",
+            "en": "Good day! What would you like to drink?",
+            "de": "Guten Tag! Was möchten Sie trinken?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich trinke gerne Wasser. Haben Sie Orangensaft?",
+          "persian": "ایخ ترین-کِه گِر-نِه واس-ر. ها-بِن زی اوران-گِن-زافت؟",
+          "meaning": {
+            "fa": "من دوست دارم آب بنوشم. آب پرتقال دارید؟",
+            "en": "I like to drink water. Do you have orange juice?",
+            "de": "Ich trinke gerne Wasser. Haben Sie Orangensaft?"
+          }
+        },
+        {
+          "speaker": "Kellner",
+          "german": "Ja, natürlich. Und zum Essen?",
+          "persian": "یا، ناتور-لیخ. اوند تسوم اِ-سِن؟",
+          "meaning": {
+            "fa": "بله، البته. و برای غذا؟",
+            "en": "Yes, of course. And to eat?",
+            "de": "Ja, natürlich. Und zum Essen?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich esse gerne eine Tomatensuppe und einen Salat.",
+          "persian": "ایخ اِ-سِه گِر-نِه اینِه تو-ما-تِن-زو-پِه اوند اینِن زا-لات.",
+          "meaning": {
+            "fa": "من دوست دارم سوپ گوجه و یک سالاد بخورم.",
+            "en": "I like to eat a tomato soup and a salad.",
+            "de": "Ich esse gerne eine Tomatensuppe und einen Salat."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Was möchten Sie",
+          "persian": "واس مول-تِن زی",
+          "meaning": "چه میل دارید"
+        },
+        {
+          "phrase": "Ich trinke gerne",
+          "persian": "ایخ ترین-کِه گِر-نِه",
+          "meaning": "دوست دارم بنوشم"
+        },
+        {
+          "phrase": "Haben Sie",
+          "persian": "ها-بِن زی",
+          "meaning": "آیا دارید"
+        },
+        {
+          "phrase": "Ich esse gerne",
+          "persian": "ایخ اِ-سِه گِر-نِه",
+          "meaning": "دوست دارم بخورم"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "در آلمان، صبحانه معمولاً شامل نان، کره، پنیر، سوسیس و قهوه یا چای است. ناهار معمولاً گرم و بین ۱۲ تا ۱۳ ساعت خورده می‌شود. شام سبک‌تر است و اغلب نان و پنیر یا سوسیس.\n\nآلمانی‌ها به مواد ارگانیک (bio) اهمیت زیادی می‌دهند. در سوپرمارکت‌ها، بخش بزرگی به محصولات گیاهی (vegetarisch) و وگن (vegan) اختصاص دارد. همچنین بطری‌ها دارای پفالند (Pfand) هستند - مبلغی که با بازگرداندن بطری خالی پس داده می‌شود.\n\nدر رستوران، انعام (Trinkgeld) معمولاً ۵ تا ۱۰ درصد است و مستقیم به گارسون داده می‌شود، نه روی میز گذاشته نمی‌شود.",
+    "en": "In Germany, breakfast usually includes bread, butter, cheese, sausage and coffee or tea. Lunch is typically hot and eaten between 12 and 1 PM. Dinner is lighter, often bread and cheese or sausage.\n\nGermans value organic (bio) products. Supermarkets have large sections for vegetarian and vegan products. Bottles have a deposit (Pfand) - an amount refunded when returning the empty bottle.\n\nIn restaurants, tipping (Trinkgeld) is usually 5-10% and given directly to the waiter, not left on the table.",
+    "de": "In Deutschland besteht das Frühstück meist aus Brot, Butter, Käse, Wurst und Kaffee oder Tee. Das Mittagessen ist typischerweise warm und wird zwischen 12 und 13 Uhr gegessen. Das Abendessen ist leichter, oft Brot und Käse oder Wurst.\n\nDeutsche schätzen Bio-Produkte. Supermärkte haben große Abteilungen für vegetarische und vegane Produkte. Flaschen haben Pfand - einen Betrag, der bei Rückgabe der leeren Flasche erstattet wird.\n\nIm Restaurant ist das Trinkgeld meist 5-10% und wird direkt dem Kellner gegeben, nicht auf den Tisch gelegt."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-food-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: دسته‌بندی مواد غذایی",
+          "en": "Exercise 1: Categorize Foods",
+          "de": "Übung 1: Lebensmittel kategorisieren"
+        },
+        "instructions": {
+          "fa": "برای هر کلمه، دسته‌بندی درست را انتخاب کنید: Obst (میوه)، Gemüse (سبزی)، Getränke (نوشیدنی).",
+          "en": "For each word, choose the correct category: Fruit, Vegetable, Drinks.",
+          "de": "Für jedes Wort, wählen Sie die richtige Kategorie: Obst, Gemüse, Getränke."
+        },
+        "questions": [
+          {
+            "id": "f1-q1",
+            "situation": {
+              "fa": "Apfel",
+              "en": "Apple",
+              "de": "Apfel"
+            },
+            "options": [
+              "Obst",
+              "Gemüse",
+              "Getränke"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Apfel میوه است.",
+              "en": "Apfel is a fruit.",
+              "de": "Apfel ist Obst."
+            }
+          },
+          {
+            "id": "f1-q2",
+            "situation": {
+              "fa": "Tomate",
+              "en": "Tomato",
+              "de": "Tomate"
+            },
+            "options": [
+              "Obst",
+              "Gemüse",
+              "Getränke"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Tomate سبزی است.",
+              "en": "Tomato is a vegetable.",
+              "de": "Tomate ist Gemüse."
+            }
+          },
+          {
+            "id": "f1-q3",
+            "situation": {
+              "fa": "Wasser",
+              "en": "Water",
+              "de": "Wasser"
+            },
+            "options": [
+              "Obst",
+              "Gemüse",
+              "Getränke"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Wasser نوشیدنی است.",
+              "en": "Water is a drink.",
+              "de": "Wasser ist ein Getränk."
+            }
+          },
+          {
+            "id": "f1-q4",
+            "situation": {
+              "fa": "Banane",
+              "en": "Banana",
+              "de": "Banane"
+            },
+            "options": [
+              "Obst",
+              "Gemüse",
+              "Getränke"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Banane میوه است.",
+              "en": "Banana is a fruit.",
+              "de": "Banane ist Obst."
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-verb-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: صرف فعل essen و haben",
+          "en": "Exercise 2: Conjugate essen and haben",
+          "de": "Übung 2: essen und haben konjugieren"
+        },
+        "instructions": {
+          "fa": "جاهای خالی را با شکل درست فعل پر کنید.",
+          "en": "Fill in the blanks with the correct verb form.",
+          "de": "Füllen Sie die Lücken mit der richtigen Verbform."
+        },
+        "questions": [
+          {
+            "id": "v1-q1",
+            "prompt": "Ich ___ einen Apfel. (essen)",
+            "placeholder": "esse"
+          },
+          {
+            "id": "v1-q2",
+            "prompt": "Du ___ eine Banane. (essen)",
+            "placeholder": "isst"
+          },
+          {
+            "id": "v1-q3",
+            "prompt": "Er ___ Fleisch. (essen)",
+            "placeholder": "isst"
+          },
+          {
+            "id": "v1-q4",
+            "prompt": "Wir ___ Tomaten. (essen)",
+            "placeholder": "essen"
+          },
+          {
+            "id": "v1-q5",
+            "prompt": "Ich ___ einen Apfel. (haben)",
+            "placeholder": "habe"
+          },
+          {
+            "id": "v1-q6",
+            "prompt": "Du ___ eine Banane. (haben)",
+            "placeholder": "hast"
+          },
+          {
+            "id": "v1-q7",
+            "prompt": "Er ___ Fleisch. (haben)",
+            "placeholder": "hat"
+          },
+          {
+            "id": "v1-q8",
+            "prompt": "Wir ___ Tomaten. (haben)",
+            "placeholder": "haben"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: نقش‌پردازی در رستوران",
+          "en": "Exercise 3: Restaurant Role Play",
+          "de": "Übung 3: Restaurant-Rollenspiel"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو ۱: سفارش غذا",
+              "en": "Scenario 1: Ordering Food",
+              "de": "Szene 1: Essen bestellen"
+            },
+            "lines": [
+              {
+                "speaker": "Kellner",
+                "german": "Guten Tag! Was möchten Sie trinken?",
+                "persian": "گو-تِن تاخ! واس مول-تِن زی ترین-کِن؟",
+                "meaning": {
+                  "fa": "روز بخیر! چه میل دارید بنوشید؟",
+                  "en": "Good day! What would you like to drink?",
+                  "de": "Guten Tag! Was möchten Sie trinken?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich trinke gerne ______.",
+                "persian": "ایخ ترین-کِه گِر-نِه ______.",
+                "meaning": {
+                  "fa": "دوست دارم ______ بنوشم.",
+                  "en": "I like to drink ______.",
+                  "de": "Ich trinke gerne ______."
+                }
+              },
+              {
+                "speaker": "Kellner",
+                "german": "Und zum Essen?",
+                "persian": "اوند تسوم اِ-سِن؟",
+                "meaning": {
+                  "fa": "و برای غذا؟",
+                  "en": "And to eat?",
+                  "de": "Und zum Essen?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich esse gerne ______.",
+                "persian": "ایخ اِ-سِه گِر-نِه ______.",
+                "meaning": {
+                  "fa": "دوست دارم ______ بخورم.",
+                  "en": "I like to eat ______.",
+                  "de": "Ich esse gerne ______."
+                }
+              }
+            ]
+          },
+          {
+            "id": "rp1-s2",
+            "title": {
+              "fa": "سناریو ۲: خرید در سوپرمارکت",
+              "en": "Scenario 2: Shopping at Supermarket",
+              "de": "Szene 2: Im Supermarkt einkaufen"
+            },
+            "lines": [
+              {
+                "speaker": "Nina",
+                "german": "Was essen wir heute Abend?",
+                "persian": "واس اِ-سِن ویر هوی-تِه آ-بِنت؟",
+                "meaning": {
+                  "fa": "امشب چه می‌خوریم؟",
+                  "en": "What are we eating tonight?",
+                  "de": "Was essen wir heute Abend?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich koche ______.",
+                "persian": "ایخ کو-خِه ______.",
+                "meaning": {
+                  "fa": "من ______ می‌پزم.",
+                  "en": "I cook ______.",
+                  "de": "Ich koche ______."
+                }
+              },
+              {
+                "speaker": "Nina",
+                "german": "Haben wir ______?",
+                "persian": "ها-بِن ویر ______؟",
+                "meaning": {
+                  "fa": "آیا ______ داریم؟",
+                  "en": "Do we have ______?",
+                  "de": "Haben wir ______?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ja, wir haben alles.",
+                "persian": "یا، ویر ها-بِن آ-لِس.",
+                "meaning": {
+                  "fa": "بله، همه چیز داریم.",
+                  "en": "Yes, we have everything.",
+                  "de": "Ja, wir haben alles."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-dusie-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: رسمی یا دوستانه در رستوران؟",
+          "en": "Exercise 4: Formal or Informal in Restaurant?",
+          "de": "Übung 4: Formell oder Informell im Restaurant?"
+        },
+        "instructions": {
+          "fa": "در هر موقعیت، du یا Sie را انتخاب کنید.",
+          "en": "For each situation, choose du or Sie.",
+          "de": "Wählen Sie für jede Situation du oder Sie."
+        },
+        "questions": [
+          {
+            "id": "ds1-q1",
+            "situation": {
+              "fa": "با گارسون در رستوران صحبت می‌کنید",
+              "en": "You speak with the waiter in a restaurant",
+              "de": "Sie sprechen mit dem Kellner im Restaurant"
+            },
+            "options": [
+              "du",
+              "Sie"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "با گارسون باید 'Sie' استفاده کنید (رسمی).",
+              "en": "With the waiter you must use 'Sie' (formal).",
+              "de": "Mit dem Kellner müssen Sie 'Sie' verwenden (formell)."
+            }
+          },
+          {
+            "id": "ds1-q2",
+            "situation": {
+              "fa": "با دوست در کافه درباره غذا صحبت می‌کنید",
+              "en": "You talk with a friend about food in a café",
+              "de": "Sie sprechen mit einem Freund über Essen im Café"
+            },
+            "options": [
+              "du",
+              "Sie"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "با دوست 'du' استفاده می‌کنید (دوستانه).",
+              "en": "With a friend you use 'du' (informal).",
+              "de": "Mit einem Freund verwenden Sie 'du' (informell)."
+            }
+          },
+          {
+            "id": "ds1-q3",
+            "situation": {
+              "fa": "از فروشنده در سوپرمارکت قیمت می‌پرسید",
+              "en": "You ask the shopkeeper for the price in a supermarket",
+              "de": "Sie fragen den Verkäufer nach dem Preis im Supermarkt"
+            },
+            "options": [
+              "du",
+              "Sie"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "با فروشنده غریبه 'Sie' استفاده می‌کنید.",
+              "en": "With a stranger shopkeeper you use 'Sie'.",
+              "de": "Mit einem fremden Verkäufer verwenden Sie 'Sie'."
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ کلمات غذایی",
+          "en": "Exercise 5: Food Words Pronunciation",
+          "de": "Übung 5: Aussprache von Lebensmittelwörtern"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید و سپس صدای خود را ضبط کنید.",
+          "en": "Pronounce the following words and record yourself.",
+          "de": "Sprechen Sie die folgenden Wörter aus und nehmen Sie sich auf."
+        },
+        "words": [
+          {
+            "word": "der Apfel",
+            "persian": "دِر آپ-فِل",
+            "meaning": "سیب"
+          },
+          {
+            "word": "die Möhre",
+            "persian": "دی موه-رِه",
+            "meaning": "هویج"
+          },
+          {
+            "word": "die Milch",
+            "persian": "دی می-لخ",
+            "meaning": "شیر"
+          },
+          {
+            "word": "das Brot",
+            "persian": "داس بروت",
+            "meaning": "نان"
+          },
+          {
+            "word": "das Fleisch",
+            "persian": "داس فلایش",
+            "meaning": "گوشت"
+          },
+          {
+            "word": "der Käse",
+            "persian": "دِر کِ-زِه",
+            "meaning": "پنیر"
+          },
+          {
+            "word": "weiß",
+            "persian": "وای-س",
+            "meaning": "سفید"
+          },
+          {
+            "word": "grün",
+            "persian": "گروان",
+            "meaning": "سبز"
+          }
+        ],
+        "focus": {
+          "fa": "به‌خصوص به این موارد دقت کنید: 'r' غُرّی (در Möhre, Käse) • 'ch' سخت بعد از l (در Milch) • 'ei' کشیده (در Fleisch) • 'ö' بین اُ و اِ (در Möhre) • 'ß' مثل 'س' سخت (در weiß)",
+          "en": "Pay special attention to: uvular 'r' (in Möhre, Käse) • hard 'ch' after 'l' (in Milch) • long 'ei' (in Fleisch) • 'ö' between 'o' and 'e' (in Möhre) • 'ß' like hard 's' (in weiß)",
+          "de": "Achten Sie besonders auf: uvulares 'r' (in Möhre, Käse) • hartes 'ch' nach 'l' (in Milch) • langes 'ei' (in Fleisch) • 'ö' zwischen 'o' und 'e' (in Möhre) • 'ß' wie hartes 's' (in weiß)"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۳",
+      "en": "Lesson 3 Review",
+      "de": "Lektion 3 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'der Apfel' به چه معنی است؟",
+          "en": "What does 'der Apfel' mean?",
+          "de": "Was bedeutet 'der Apfel'?"
+        },
+        "options": [
+          "سیب",
+          "موز",
+          "پرتقال",
+          "گوجه"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "'der Apfel' به معنی سیب است.",
+          "en": "'der Apfel' means apple.",
+          "de": "'der Apfel' bedeutet Apfel."
+        }
+      },
+      {
+        "id": "rev-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "جمع 'die Tomate' چیست؟",
+          "en": "What is the plural of 'die Tomate'?",
+          "de": "Was ist der Plural von 'die Tomate'?"
+        },
+        "options": [
+          "Tomaten",
+          "Tomate",
+          "Tomates",
+          "Tomati"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "جمع با -n ساخته می‌شود: Tomaten.",
+          "en": "Plural with -n: Tomaten.",
+          "de": "Plural mit -n: Tomaten."
+        }
+      },
+      {
+        "id": "rev-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'essen' در 'ich' چگونه صرف می‌شود؟",
+          "en": "How is 'essen' conjugated with 'ich'?",
+          "de": "Wie wird 'essen' mit 'ich' konjugiert?"
+        },
+        "options": [
+          "ich esse",
+          "ich isst",
+          "ich ess",
+          "ich essen"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "ich + esse (بدون تغییر مصوت در ich).",
+          "en": "ich + esse (no vowel change in ich).",
+          "de": "ich + esse (kein Vokalwechsel bei ich)."
+        }
+      },
+      {
+        "id": "rev-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'essen' در 'du' چگونه صرف می‌شود؟",
+          "en": "How is 'essen' conjugated with 'du'?",
+          "de": "Wie wird 'essen' mit 'du' konjugiert?"
+        },
+        "options": [
+          "du esse",
+          "du isst",
+          "du essst",
+          "du est"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "du + isst (با تغییر مصوت: e → i).",
+          "en": "du + isst (with vowel change: e → i).",
+          "de": "du + isst (mit Vokalwechsel: e → i)."
+        }
+      },
+      {
+        "id": "rev-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام کلمه بدون حرف تعریف استفاده می‌شود؟",
+          "en": "Which word is used without an article?",
+          "de": "Welches Wort wird ohne Artikel verwendet?"
+        },
+        "options": [
+          "Wasser",
+          "der Apfel",
+          "die Tomate",
+          "das Brot"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "Wasser (آب) معمولاً بدون حرف تعریف استفاده می‌شود: Ich trinke Wasser.",
+          "en": "Water is usually used without article: Ich trinke Wasser.",
+          "de": "Wasser wird meist ohne Artikel verwendet: Ich trinke Wasser."
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۳",
+      "en": "Lesson 3 Final Assessment",
+      "de": "Lektion 3 Abschlussbewertung"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 4,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "plural": {
+        "count": 3,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      },
+      "culture": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید مواد غذایی اصلی را به آلمانی بگویید؟",
+        "آیا می‌توانید فعل essen را در تمام اشخاص صرف کنید؟",
+        "آیا می‌توانید فعل haben را در تمام اشخاص صرف کنید؟",
+        "آیا می‌توانید جمع اسامی را با پایانه‌های مختلف بسازید؟",
+        "آیا می‌توانید رنگ‌ها را بگویید و به مواد غذایی نسبت دهید؟",
+        "آیا می‌توانید ترجیحات غذایی خود را بیان کنید؟"
+      ],
+      "en": [
+        "Can you name main foods in German?",
+        "Can you conjugate essen in all persons?",
+        "Can you conjugate haben in all persons?",
+        "Can you form plurals with different endings?",
+        "Can you name colors and assign them to foods?",
+        "Can you express your food pronunciation?"
+      ],
+      "de": [
+        "Können Sie Hauptlebensmittel auf Deutsch nennen?",
+        "Können Sie essen in allen Personen konjugieren?",
+        "Können Sie haben in allen Personen konjugieren?",
+        "Können Sie Plurale mit verschiedenen Endungen bilden?",
+        "Können Sie Farben nennen und Lebensmitteln zuordnen?",
+        "Können Sie Ihre Essensvorlieben ausdrücken?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "تبریک! شما آماده رفتن به درس ۴ هستید.",
+        "en": "Congratulations! You are ready for Lesson 4.",
+        "de": "Herzlichen Glückwunsch! Sie sind bereit für Lektion 4."
+      },
+      "fail": {
+        "fa": "لطفاً بخش‌های ضعیف را مرور کنید و دوباره امتحان کنید.",
+        "en": "Please review weak sections and try again.",
+        "de": "Bitte schwache Bereiche überprüfen und erneut versuchen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "foodCategories": [
+      {
+        "category": "Obst (میوه)",
+        "items": [
+          "der Apfel",
+          "die Banane",
+          "die Orange",
+          "die Zitrone"
+        ]
+      },
+      {
+        "category": "Gemüse (سبزی)",
+        "items": [
+          "die Tomate",
+          "die Möhre",
+          "die Kartoffel"
+        ]
+      },
+      {
+        "category": "Getränke (نوشیدنی)",
+        "items": [
+          "das Wasser",
+          "die Milch",
+          "der Kaffee",
+          "der Orangensaft"
+        ]
+      },
+      {
+        "category": "Sonstiges (سایر)",
+        "items": [
+          "das Brot",
+          "das Fleisch",
+          "das Ei",
+          "der Käse",
+          "der Reis"
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "de": "rot",
+        "fa": "قرمز"
+      },
+      {
+        "de": "gelb",
+        "fa": "زرد"
+      },
+      {
+        "de": "grün",
+        "fa": "سبز"
+      },
+      {
+        "de": "blau",
+        "fa": "آبی"
+      },
+      {
+        "de": "schwarz",
+        "fa": "سیاه"
+      },
+      {
+        "de": "weiß",
+        "fa": "سفید"
+      },
+      {
+        "de": "orange",
+        "fa": "نارنجی"
+      }
+    ],
+    "keyVerbs": [
+      {
+        "de": "essen (isst)",
+        "fa": "خوردن",
+        "conjugation": "ich esse, du isst, er isst, wir essen, ihr esst, sie essen"
+      },
+      {
+        "de": "haben",
+        "fa": "داشتن",
+        "conjugation": "ich habe, du hast, er hat, wir haben, ihr habt, sie haben"
+      },
+      {
+        "de": "trinken",
+        "fa": "نوشیدن",
+        "conjugation": "ich trinke, du trinkst, er trinkt, wir trinken, ihr trinkt, sie trinken"
+      },
+      {
+        "de": "kochen",
+        "fa": "آشپزی کردن",
+        "conjugation": "ich koche, du kochst, er kocht, wir kochen, ihr kocht, sie kochen"
+      },
+      {
+        "de": "kaufen",
+        "fa": "خریدن",
+        "conjugation": "ich kaufe, du kaufst, er kauft, wir kaufen, ihr kauft, sie kaufen"
+      }
+    ],
+    "pluralEndings": [
+      {
+        "ending": "-e",
+        "example": "das Brot → die Brote",
+        "use": "مذکر/خنثی"
+      },
+      {
+        "ending": "-e + Umlaut",
+        "example": "der Apfel → die Äpfel",
+        "use": "مذکر"
+      },
+      {
+        "ending": "-(e)n",
+        "example": "die Tomate → die Tomaten",
+        "use": "مؤنث"
+      },
+      {
+        "ending": "-er + Umlaut",
+        "example": "das Kind → die Kinder",
+        "use": "خنثی"
+      },
+      {
+        "ending": "-s",
+        "example": "das Auto → die Autos",
+        "use": "کلمات خارجی"
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Ich esse gerne...",
+        "fa": "دوست دارم بخورم..."
+      },
+      {
+        "de": "Ich trinke gerne...",
+        "fa": "دوست دارم بنوشم..."
+      },
+      {
+        "de": "Was isst du gerne?",
+        "fa": "چه دوست داری بخوری؟"
+      },
+      {
+        "de": "Hast du...?",
+        "fa": "آیا داری...؟"
+      },
+      {
+        "de": "Ich brauche...",
+        "fa": "من نیاز دارم..."
+      }
+    ],
+    "grammar": [
+      {
+        "title": "جایگاه فعل",
+        "summary": "خبری: فعل دوم | سوال بلی/خیر: فعل اول | W-Frage: فعل دوم"
+      },
+      {
+        "title": "Nullartikel",
+        "summary": "مواد غیرقابل شمارش و نام کشور/شهر بدون حرف تعریف"
+      },
+      {
+        "title": "Vokalwechsel",
+        "summary": "essen: e → i در du و er/sie/es"
+      }
+    ],
+    "commonMistakes": [
+      "فراموش کردن تغییر مصوت در essen (isst نه esst)",
+      "استفاده از حرف تعریف برای Wasser و Brot",
+      "اشتباه در جمع بستن (مخصوصاً Umlaut)",
+      "تلفظ نادرست 'ö' و 'ü'"
+    ],
+    "usefulTips": [
+      "کلمات را همیشه با حرف تعریف یاد بگیرید: der Apfel نه Apfel",
+      "جمع و مفرد را همزمان حفظ کنید: der Apfel / die Äpfel",
+      "برای تمرین، در سوپرمارکت کلمات آلمانی را به خود بگویید",
+      "رنگ‌ها را با مواد غذایی مرتبط کنید: rot = Tomate, gelb = Banane"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۳، شما با واژگان مواد غذایی (میوه، سبزی، نوشیدنی)، رنگ‌ها، و گرامر مهم آشنا شدید. شما یاد گرفتید فعل‌های essen و haben را صرف کنید، جمع اسامی را با پایانه‌های مختلف بسازید، و از حرف تعریف صفر استفاده کنید. همچنین یاد گرفتید چگونه ترجیحات غذایی خود را بیان کنید و در سوپرمارکت یا رستوران خرید کنید.",
+    "en": "In Lesson 3, you learned food vocabulary (fruits, vegetables, drinks), colors, and important grammar. You learned to conjugate essen and haben, form plurals with different endings, and use the zero article. You also learned to express food pronunciation and shop in supermarkets or restaurants.",
+    "de": "In Lektion 3 haben Sie Lebensmitttelvokabular (Obst, Gemüse, Getränke), Farben und wichtige Grammatik gelernt. Sie haben gelernt, essen und haben zu konjugieren, Plurale mit verschiedenen Endungen zu bilden, und den Nullartikel zu verwenden. Sie haben auch gelernt, Essensvorlieben auszudrücken und in Supermärkten oder Restaurants einzukaufen."
+  },
+  "metadata": {
+    "createdAt": "2026-07-07",
+    "updatedAt": "2026-07-07",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "food",
+      "drinks",
+      "colors",
+      "plural",
+      "essen",
+      "haben",
+      "nullartikel",
+      "A1"
+    ],
+    "difficulty": 2,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02"
+    ]
+  }
 }

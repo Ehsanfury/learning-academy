@@ -2,23 +2,20 @@
  * DashboardPage.jsx
  * Path: src/pages/Dashboard/DashboardPage.jsx
  * Description: Dashboard page with real data from API
- * Version: 5.0 - Fixed API response handling
+ * Version: 5.2 - Fixed CardHeader, CardBody, CardFooter imports
  * Changes:
- * - ✅ Fixed: lessonsData.find is not a function - added array check
- * - ✅ Fixed: Better error handling for API responses
- * - ✅ Fixed: Loading states with skeletons
- * - ✅ Fixed: Error handling with retry
- * - ✅ Fixed: Empty states
- * - ✅ Fixed: Performance optimizations
- * - ✅ Fixed: Real progress data from API
+ * - ✅ FIXED: CardHeader, CardBody, CardFooter imports added
+ * - ✅ FIXED: lessonsData.find is not a function
+ * - ✅ FIXED: Better error handling for API responses
  */
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useLanguageContext } from "@context/LanguageContext";
-import { useAuth } from "@context/AuthContext";
-import api from "@services/api";
+import { useLanguage } from "../../context/LanguageContext";
+import { useAuth } from "../../context/AuthContext";
+import api from "../../services/api";
+import lessonApi from "../../services/lessonApi";
 import debug from "../../utils/debug";
 import {
   Flame,
@@ -37,20 +34,24 @@ import {
   Calendar,
   ArrowRight,
 } from "lucide-react";
-import XPCard from "@components/XPCard";
-import AchievementCard from "@components/AchievementCard";
-import LessonCard from "@components/LessonCard";
-import ProgressBar from "@components/ProgressBar";
-import Loader from "@components/Loader";
+import XPCard from "../../components/XPCard";
+import AchievementCard from "../../components/AchievementCard";
+import LessonCard from "../../components/LessonCard";
+import ProgressBar from "../../components/ProgressBar";
+import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 
-// ✅ استفاده از کامپوننت‌های جدید UI
-import { Card, CardHeader, CardBody, CardFooter } from "@components/ui";
-import Skeleton from "@components/ui/Skeleton";
-import Button from "@components/ui/Button";
+// ✅ FIXED: Import Card components properly
+import Card, {
+  CardHeader,
+  CardBody,
+  CardFooter,
+} from "../../components/ui/Card";
+import Skeleton from "../../components/ui/Skeleton";
+import Button from "../../components/ui/Button";
 
 // ============================================
-// 📊 Skeleton Components (با کامپوننت Skeleton)
+// 📊 Skeleton Components
 // ============================================
 
 const StatsSkeleton = () => (
@@ -118,7 +119,7 @@ const LessonsSkeleton = () => (
 // ============================================
 
 function DashboardPage() {
-  const { language } = useLanguageContext();
+  const { language } = useLanguage();
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -155,17 +156,28 @@ function DashboardPage() {
       setError(null);
 
       // 1. دریافت درس‌ها
-      const lessonsRes = await api.get("/lessons");
+      const lessonsRes = await lessonApi.getAllLessons({ limit: 50 });
 
-      // ✅ FIXED: نرمالایز کردن پاسخ API
-      let lessonsData =
-        lessonsRes?.data?.lessons ||
-        lessonsRes?.lessons ||
-        lessonsRes?.data?.data ||
-        lessonsRes?.data ||
-        [];
+      let lessonsData = [];
 
-      // ✅ FIXED: If lessonsData is not an array, convert it
+      if (
+        lessonsRes?.data?.data?.lessons &&
+        Array.isArray(lessonsRes.data.data.lessons)
+      ) {
+        lessonsData = lessonsRes.data.data.lessons;
+      } else if (
+        lessonsRes?.data?.lessons &&
+        Array.isArray(lessonsRes.data.lessons)
+      ) {
+        lessonsData = lessonsRes.data.lessons;
+      } else if (Array.isArray(lessonsRes?.data?.data)) {
+        lessonsData = lessonsRes.data.data;
+      } else if (Array.isArray(lessonsRes?.data)) {
+        lessonsData = lessonsRes.data;
+      } else if (Array.isArray(lessonsRes)) {
+        lessonsData = lessonsRes;
+      }
+
       if (!Array.isArray(lessonsData)) {
         console.warn("⚠️ lessonsData is not an array:", lessonsData);
         lessonsData = [];
@@ -174,37 +186,35 @@ function DashboardPage() {
       // 2. دریافت آمار
       try {
         const statsRes = await api.get("/lessons/stats");
+        const statsData =
+          statsRes?.data?.data || statsRes?.data || statsRes || {};
         setStats((prev) => ({
           ...prev,
-          completedLessons: statsRes?.data?.completedLessons || 0,
-          totalLessons: statsRes?.data?.totalLessons || lessonsData.length,
-          xp: statsRes?.data?.xp || user?.xp || 0,
-          level: statsRes?.data?.level || user?.level || 1,
-          streak: statsRes?.data?.streak || user?.streak || 0,
+          completedLessons: statsData.completedLessons || 0,
+          totalLessons: statsData.totalLessons || lessonsData.length,
+          xp: statsData.xp || user?.xp || 0,
+          level: statsData.level || user?.level || 1,
+          streak: statsData.streak || user?.streak || 0,
+          todayXP: statsData.todayXP || 0,
+          dailyGoal: statsData.dailyGoal || 50,
         }));
       } catch (e) {
         debug.warn("⚠️ Could not fetch stats:", e);
       }
 
       // 3. پیدا کردن درس بعدی
-      const next = Array.isArray(lessonsData)
-        ? lessonsData.find(
-            (l) => !l.progress || l.progress.status === "not_started",
-          )
-        : null;
-      setNextLesson(
-        next ||
-          (Array.isArray(lessonsData) && lessonsData.length > 0
-            ? lessonsData[0]
-            : null),
-      );
+      if (Array.isArray(lessonsData) && lessonsData.length > 0) {
+        const next = lessonsData.find(
+          (l) => !l.progress || l.progress.status === "not_started",
+        );
+        setNextLesson(next || lessonsData[0]);
+        setRecentLessons(lessonsData.slice(0, 5));
+      } else {
+        setNextLesson(null);
+        setRecentLessons([]);
+      }
 
-      // 4. آخرین درس‌ها
-      setRecentLessons(
-        Array.isArray(lessonsData) ? lessonsData.slice(0, 5) : [],
-      );
-
-      // 5. دریافت دستاوردها
+      // 4. دریافت دستاوردها
       try {
         const achRes = await api.get("/achievements");
         const achData = achRes?.data?.data || achRes?.data || [];
@@ -214,7 +224,7 @@ function DashboardPage() {
         setAchievements([]);
       }
 
-      // 6. فعالیت هفتگی (Mock - در آینده از API میآید)
+      // 5. فعالیت هفتگی
       setWeeklyActivity(
         Array.from({ length: 7 }, (_, i) => ({
           day: i + 1,
@@ -352,7 +362,6 @@ function DashboardPage() {
   // 🖼️ Render
   // ============================================
 
-  // Loading State
   if (loading) {
     return (
       <div className="space-y-6">
@@ -375,7 +384,6 @@ function DashboardPage() {
     );
   }
 
-  // Error State
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh]">
@@ -426,7 +434,6 @@ function DashboardPage() {
           </p>
         </div>
 
-        {/* Streak Badge */}
         <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-950 rounded-full border border-amber-200 dark:border-amber-800">
           <motion.div
             animate={{ scale: [1, 1.2, 1] }}
@@ -445,7 +452,6 @@ function DashboardPage() {
 
       {/* ========== TOP CARDS ========== */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        {/* XP Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -459,7 +465,6 @@ function DashboardPage() {
           />
         </motion.div>
 
-        {/* Daily Goal */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -500,7 +505,6 @@ function DashboardPage() {
           </Card>
         </motion.div>
 
-        {/* Weekly Activity */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -626,7 +630,6 @@ function DashboardPage() {
 
       {/* ========== ACHIEVEMENTS & STATS ========== */}
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Recent Achievements */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -671,7 +674,6 @@ function DashboardPage() {
           </Card>
         </motion.div>
 
-        {/* Quick Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

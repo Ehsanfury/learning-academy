@@ -1,10 +1,9 @@
 /**
  * Vocabulary.js
  * Path: backend/models/Vocabulary.js
- * Description: Vocabulary model for words and phrases
+ * Description: Vocabulary model
  * Changes:
- * - ✅ FIXED: id type is UUID
- * - ✅ FIXED: lesson_id type is VARCHAR(50)
+ * - ✅ FIXED: ID type is STRING(50) - matches WordProgress.wordId
  */
 
 import { DataTypes } from "sequelize";
@@ -14,8 +13,7 @@ const Vocabulary = sequelize.define(
   "Vocabulary",
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING(50), // ✅ STRING - matches WordProgress.wordId
       primaryKey: true,
       allowNull: false,
     },
@@ -38,7 +36,7 @@ const Vocabulary = sequelize.define(
     },
     level: {
       type: DataTypes.STRING(10),
-      allowNull: true,
+      allowNull: false,
       defaultValue: "A1",
     },
     category: {
@@ -80,7 +78,7 @@ const Vocabulary = sequelize.define(
     },
     isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
+      allowNull: false,
       defaultValue: true,
       field: "is_active",
     },
@@ -101,17 +99,6 @@ const Vocabulary = sequelize.define(
     tableName: "vocabulary",
     timestamps: true,
     underscored: true,
-    indexes: [
-      {
-        fields: ["de"],
-      },
-      {
-        fields: ["lesson_id"],
-      },
-      {
-        fields: ["level", "category"],
-      },
-    ],
   }
 );
 

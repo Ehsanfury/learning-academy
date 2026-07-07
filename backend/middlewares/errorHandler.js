@@ -1,26 +1,114 @@
 /**
  * errorHandler.js
  * Path: backend/middlewares/errorHandler.js
- * Description: Central error handling middleware
+ * Description: Global error handler middleware
  * Changes:
- * - ✅ Fixed import: ApiError -> AppError
- * - ✅ Added proper error handling
- * - ✅ Added logging for all errors
- * - ✅ Added validation error handling
- * - ✅ Added async handler wrapper
+ * - ✅ FIXED: Sanitize sensitive data from logs
+ * - ✅ FIXED: Prevent password leakage in error logs
  */
 
-import { logError } from "../config/logger.js";
-import { AppError, ValidationError, NotFoundError, UnauthorizedError } from "../errors/index.js";
-
-// ============================================
-// 🎯 Async Handler - Wraps async route handlers
-// ============================================
+import logger from "../config/logger.js";
 
 /**
- * Wraps an async function to catch errors and pass to error handler
- * @param {Function} fn - Async function to wrap
- * @returns {Function} Express middleware function
+ * Sanitize request body - remove sensitive fields
+ */
+const sanitizeBody = (body) => {
+  if (!body || typeof body !== "object") return body;
+  if (Array.isArray(body)) return body;
+
+  const safe = { ...body };
+  const sensitiveFields = [
+    "password",
+    "currentPassword",
+    "newPassword",
+    "confirmPassword",
+    "token",
+    "refreshToken",
+    "accessToken",
+    "creditCard",
+    "cvv",
+    "cardNumber",
+    "secret",
+    "apiKey",
+    "privateKey",
+  ];
+
+  sensitiveFields.forEach((field) => {
+    if (field in safe) {
+      safe[field] = "[REDACTED]";
+    }
+  });
+
+  return safe;
+};
+
+/**
+ * Sanitize query parameters
+ */
+const sanitizeQuery = (query) => {
+  if (!query || typeof query !== "object") return query;
+  const safe = { ...query };
+  const sensitiveFields = ["token", "key", "secret"];
+  sensitiveFields.forEach((field) => {
+    if (field in safe) {
+      safe[field] = "[REDACTED]";
+    }
+  });
+  return safe;
+};
+
+/**
+ * Global error handler
+ */
+export const errorHandler = (err, req, res, _next) => {
+  // Log error with sanitized data
+  logger.error(`❌ Error: ${err.message}`, {
+    error: err.stack,
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userId: req.user?.id || "anonymous",
+    body: sanitizeBody(req.body),
+    query: sanitizeQuery(req.query),
+    params: req.params,
+  });
+
+  // Determine status code
+  const statusCode = err.statusCode || err.status || 500;
+
+  // Build error response
+  const response = {
+    success: false,
+    message: err.message || "Internal Server Error",
+    timestamp: new Date().toISOString(),
+  };
+
+  // Add validation errors if present
+  if (err.errors && Array.isArray(err.errors)) {
+    response.errors = err.errors;
+  }
+
+  // Add stack trace in development
+  if (process.env.NODE_ENV === "development") {
+    response.stack = err.stack;
+  }
+
+  res.status(statusCode).json(response);
+};
+
+/**
+ * 404 Not Found handler
+ */
+export const notFoundHandler = (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.method} ${req.url} not found`,
+    timestamp: new Date().toISOString(),
+  });
+};
+
+/**
+ * Async handler wrapper - catches errors in async route handlers
  */
 export const asyncHandler = (fn) => {
   return (req, res, next) => {
@@ -28,117 +116,8 @@ export const asyncHandler = (fn) => {
   };
 };
 
-// ============================================
-// ❌ Error Handler Middleware
-// ============================================
-
-/**
- * Global error handler middleware
- * @param {Error} err - Error object
- * @param {Object} req - Express request
- * @param {Object} res - Express response
- * @param {Function} next - Express next function
- */
-export const errorHandler = (err, req, res, next) => {
-  // Log error
-  logError(`❌ Error: ${err.message}`, {
-    error: err.stack,
-    path: req.path,
-    method: req.method,
-    ip: req.ip,
-    userId: req.user?.id,
-    body: req.body,
-    query: req.query,
-    params: req.params,
-  });
-
-  // Default error values
-  let statusCode = err.statusCode || 500;
-  let message = err.message || "Internal server error";
-  let details = err.details || null;
-
-  // Handle specific error types
-  if (err.name === "SequelizeValidationError" || err.name === "SequelizeUniqueConstraintError") {
-    statusCode = 400;
-    message = "Validation error";
-    details =
-      err.errors?.map((e) => ({
-        field: e.path,
-        message: e.message,
-      })) || null;
-  }
-
-  if (err.name === "SequelizeForeignKeyConstraintError") {
-    statusCode = 400;
-    message = "Related record not found";
-  }
-
-  if (err.name === "JsonWebTokenError") {
-    statusCode = 401;
-    message = "Invalid token";
-  }
-
-  if (err.name === "TokenExpiredError") {
-    statusCode = 401;
-    message = "Token expired";
-  }
-
-  // Handle custom error classes
-  if (err instanceof ValidationError) {
-    statusCode = err.statusCode || 400;
-    message = err.message || "Validation failed";
-    details = err.details;
-  }
-
-  if (err instanceof NotFoundError) {
-    statusCode = err.statusCode || 404;
-    message = err.message || "Resource not found";
-  }
-
-  if (err instanceof UnauthorizedError) {
-    statusCode = err.statusCode || 401;
-    message = err.message || "Unauthorized";
-  }
-
-  // Handle AppError
-  if (err instanceof AppError) {
-    statusCode = err.statusCode || 500;
-    message = err.message || "An error occurred";
-    details = err.details;
-  }
-
-  // Send response
-  res.status(statusCode).json({
-    success: false,
-    message,
-    ...(details && { details }),
-    ...(process.env.NODE_ENV === "development" && {
-      stack: err.stack,
-    }),
-  });
-};
-
-// ============================================
-// 🔄 Not Found Handler
-// ============================================
-
-/**
- * 404 Not Found handler
- * @param {Object} req - Express request
- * @param {Object} res - Express response
- * @param {Function} next - Express next function
- */
-export const notFoundHandler = (req, res, next) => {
-  const error = new AppError(`Route not found: ${req.method} ${req.originalUrl}`, 404);
-  next(error);
-};
-
-// ============================================
-// 📤 Exports
-// ============================================
-
 export default {
-  asyncHandler,
   errorHandler,
   notFoundHandler,
+  asyncHandler,
 };

@@ -3,12 +3,12 @@
  * Path: backend/server.js
  * Description: Server entry point
  * Changes:
- * - ✅ Fixed import of config (default import)
- * - ✅ Added graceful shutdown
- * - ✅ Added error handling
+ * - ✅ FIXED: Removed duplicate startServer call (app.js already handles it)
+ * - ✅ FIXED: Proper error handling
+ * - ✅ FIXED: Clean shutdown
  */
 
-import app, { startServer, shutdown } from "./app.js";
+import { startServer, shutdown } from "./app.js";
 import logger from "./config/logger.js";
 
 // ============================================
@@ -40,7 +40,7 @@ process.on("SIGINT", async () => {
 });
 
 // ============================================
-// ❌ Unhandled Rejections
+// ❌ Unhandled Rejections & Exceptions
 // ============================================
 
 process.on("unhandledRejection", (reason, promise) => {

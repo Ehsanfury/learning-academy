@@ -3,36 +3,34 @@
  * Path: backend/models/Story.js
  * Description: Story model for interactive stories
  * Changes:
- * - ✅ FIXED: Added proper JSONB defaults
- * - ✅ FIXED: Added indexes for performance
+ * - ✅ FIXED: ID type changed to STRING for custom IDs
  */
 
-import { DataTypes, Sequelize } from "sequelize";
+import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
 const Story = sequelize.define(
   "Story",
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING(50),
       primaryKey: true,
       allowNull: false,
     },
     level: {
-      type: DataTypes.STRING(5),
+      type: DataTypes.STRING(10),
       allowNull: false,
       defaultValue: "A1",
     },
     title: {
       type: DataTypes.JSONB,
       allowNull: false,
-      defaultValue: Sequelize.literal("'{}'::jsonb"),
+      defaultValue: {},
     },
     description: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'{}'::jsonb"),
+      defaultValue: {},
     },
     icon: {
       type: DataTypes.STRING(50),
@@ -42,53 +40,48 @@ const Story = sequelize.define(
     paragraphs: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"),
+      defaultValue: [],
     },
     quiz: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"),
+      defaultValue: [],
     },
     xpReward: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       defaultValue: 30,
+      field: "xp_reward",
     },
     estimatedMinutes: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       defaultValue: 5,
+      field: "estimated_minutes",
     },
     isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
+      allowNull: false,
       defaultValue: true,
+      field: "is_active",
     },
     createdAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
       defaultValue: DataTypes.NOW,
+      field: "created_at",
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
       defaultValue: DataTypes.NOW,
+      field: "updated_at",
     },
   },
   {
     tableName: "stories",
     timestamps: true,
     underscored: true,
-    indexes: [
-      {
-        fields: ["level"],
-        name: "idx_stories_level",
-      },
-      {
-        fields: ["is_active"],
-        name: "idx_stories_active",
-      },
-    ],
   }
 );
 

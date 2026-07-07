@@ -3,20 +3,14 @@
  * Path: backend/config/logger.js
  * Description: Winston logger configuration
  * Changes:
- * - ✅ Removed duplicate timestamp (Winston adds it automatically)
- * - ✅ Added separate log levels for different transports
- * - ✅ Added performance logging
- * - ✅ Added request ID tracking
- * - ✅ Added log rotation
- * - ✅ Added log formatting
- * - ✅ Fixed duplicate export of createChildLogger
- * - ✅ Fixed duplicate export of logPerformance
+ * - ✅ FIXED: Removed dependency on config (to avoid circular reference)
+ * - ✅ FIXED: Using process.env directly
+ * - ✅ FIXED: Removed duplicate exports
  */
 
 import winston from "winston";
 import path from "path";
 import fs from "fs";
-import config from "./env.js";
 
 // ============================================
 // 📁 Ensure log directory exists
@@ -89,11 +83,14 @@ const consoleFormat = winston.format.combine(
 );
 
 // ============================================
-// 📊 Create Logger
+// 📊 Create Logger - Using env variables directly
 // ============================================
 
+const isProduction = process.env.NODE_ENV === "production";
+const logLevel = isProduction ? "info" : "debug";
+
 const logger = winston.createLogger({
-  level: config.isProduction ? "info" : "debug",
+  level: logLevel,
   levels: {
     error: 0,
     warn: 1,
@@ -102,16 +99,12 @@ const logger = winston.createLogger({
     debug: 4,
   },
   transports: [
-    // ============================================
-    // 📄 File Transports
-    // ============================================
-
     // ❌ Error logs - only errors
     new winston.transports.File({
       filename: path.join(logDir, "error.log"),
       level: "error",
       format: customFormat,
-      maxsize: 5242880, // 5MB
+      maxsize: 5242880,
       maxFiles: 5,
     }),
 
@@ -119,23 +112,23 @@ const logger = winston.createLogger({
     new winston.transports.File({
       filename: path.join(logDir, "combined.log"),
       format: customFormat,
-      maxsize: 5242880, // 5MB
+      maxsize: 5242880,
       maxFiles: 5,
     }),
 
-    // 📊 Performance logs - only performance related
+    // 📊 Performance logs
     new winston.transports.File({
       filename: path.join(logDir, "performance.log"),
       level: "http",
       format: customFormat,
-      maxsize: 5242880, // 5MB
+      maxsize: 5242880,
       maxFiles: 5,
     }),
 
-    // 🖥️ Console Transport (development)
+    // 🖥️ Console Transport
     new winston.transports.Console({
       format: consoleFormat,
-      level: config.isProduction ? "info" : "debug",
+      level: logLevel,
     }),
   ],
 });
@@ -144,25 +137,11 @@ const logger = winston.createLogger({
 // 🔧 Helper Functions
 // ============================================
 
-/**
- * Log info message
- * @param {string} message - Log message
- * @param {Object} meta - Additional metadata
- * @param {string} requestId - Request ID for tracking
- * @param {string} userId - User ID for tracking
- */
-const logInfo = (message, meta = {}, requestId = null, userId = null) => {
+export const logInfo = (message, meta = {}, requestId = null, userId = null) => {
   logger.info(message, { ...meta, requestId, userId });
 };
 
-/**
- * Log error message
- * @param {string} message - Log message
- * @param {Error|Object} error - Error object or additional metadata
- * @param {string} requestId - Request ID for tracking
- * @param {string} userId - User ID for tracking
- */
-const logError = (message, error = {}, requestId = null, userId = null) => {
+export const logError = (message, error = {}, requestId = null, userId = null) => {
   if (error instanceof Error) {
     logger.error(message, {
       error: error.message,
@@ -176,45 +155,19 @@ const logError = (message, error = {}, requestId = null, userId = null) => {
   }
 };
 
-/**
- * Log warning message
- * @param {string} message - Log message
- * @param {Object} meta - Additional metadata
- * @param {string} requestId - Request ID for tracking
- * @param {string} userId - User ID for tracking
- */
-const logWarn = (message, meta = {}, requestId = null, userId = null) => {
+export const logWarn = (message, meta = {}, requestId = null, userId = null) => {
   logger.warn(message, { ...meta, requestId, userId });
 };
 
-/**
- * Log debug message
- * @param {string} message - Log message
- * @param {Object} meta - Additional metadata
- * @param {string} requestId - Request ID for tracking
- * @param {string} userId - User ID for tracking
- */
-const logDebug = (message, meta = {}, requestId = null, userId = null) => {
+export const logDebug = (message, meta = {}, requestId = null, userId = null) => {
   logger.debug(message, { ...meta, requestId, userId });
 };
 
-/**
- * Log HTTP/performance message
- * @param {string} message - Log message
- * @param {Object} meta - Additional metadata
- * @param {string} requestId - Request ID for tracking
- * @param {string} userId - User ID for tracking
- */
-const logPerformance = (message, meta = {}, requestId = null, userId = null) => {
+export const logPerformance = (message, meta = {}, requestId = null, userId = null) => {
   logger.http(message, { ...meta, requestId, userId });
 };
 
-/**
- * Create a child logger with context
- * @param {Object} context - Context data (requestId, userId, etc.)
- * @returns {Object} - Child logger with context
- */
-const createChildLogger = (context = {}) => {
+export const createChildLogger = (context = {}) => {
   return {
     info: (message, meta = {}) => logInfo(message, meta, context.requestId, context.userId),
     error: (message, error = {}) => logError(message, error, context.requestId, context.userId),
@@ -224,11 +177,5 @@ const createChildLogger = (context = {}) => {
       logPerformance(message, meta, context.requestId, context.userId),
   };
 };
-
-// ============================================
-// 📤 Export - Single export of all functions
-// ============================================
-
-export { logInfo, logError, logWarn, logDebug, logPerformance, createChildLogger };
 
 export default logger;

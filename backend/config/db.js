@@ -3,6 +3,7 @@
  * Path: backend/config/db.js
  * Description: Database configuration
  * Changes:
+ * - ✅ FIXED: Correct property names (name, user instead of database, username)
  * - ✅ Disabled logging in production
  * - ✅ Uses config from env.js
  */
@@ -18,8 +19,8 @@ import logger from "./logger.js";
 const dbConfig = {
   host: config.db.host,
   port: config.db.port,
-  database: config.db.database,
-  username: config.db.username,
+  database: config.db.name, // ✅ FIXED: was config.db.database
+  username: config.db.user, // ✅ FIXED: was config.db.username
   password: config.db.password,
   dialect: "postgres",
   dialectOptions: {
@@ -36,7 +37,6 @@ const dbConfig = {
     acquire: 60000,
     idle: 10000,
   },
-  // ✅ FIXED: Disable logging in production
   logging: config.isProduction ? false : (msg) => logger.debug(msg),
   retry: {
     max: 3,

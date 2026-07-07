@@ -3,12 +3,9 @@
  * Path: backend/config/env.js
  * Description: Environment configuration with validation
  * Changes:
- * - ✅ Added isProduction, isDevelopment, isTest as properties (not functions)
- * - ✅ Fixed config object to include isProduction
- * - ✅ Updated API keys with new values
- * - ✅ Removed hardcoded placeholder patterns
- * - ✅ Added proper validation
- * - ✅ Removed logging of sensitive data
+ * - ✅ FIXED: Added GOOGLE_GEMINI_API_KEY support
+ * - ✅ FIXED: Removed self-reference
+ * - ✅ FIXED: Variable names match .env file
  */
 
 import dotenv from "dotenv";
@@ -18,139 +15,150 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables
-dotenv.config({ path: path.join(__dirname, "../../.env") });
+// Load .env from correct path (backend/.env)
+dotenv.config({ path: path.join(__dirname, "../.env") });
 
 // ============================================
-// 📊 Configuration Object
+// 📋 Required Environment Variables
 // ============================================
 
-const NODE_ENV = process.env.NODE_ENV || "development";
-const isProduction = NODE_ENV === "production";
-const isDevelopment = NODE_ENV === "development";
-const isTest = NODE_ENV === "test";
+const requiredEnvVars = [
+  "NODE_ENV",
+  "PORT",
+  "DB_NAME",
+  "DB_USER",
+  "DB_PASSWORD",
+  "DB_HOST",
+  "DB_PORT",
+  "JWT_SECRET",
+  "JWT_ACCESS_EXPIRES_IN",
+  "JWT_REFRESH_EXPIRES_IN",
+];
 
-const config = {
-  // ============================================
-  // 🚀 Server
-  // ============================================
-  nodeEnv: NODE_ENV,
-  isProduction,
-  isDevelopment,
-  isTest,
+// Check for missing required variables
+const missingVars = requiredEnvVars.filter((varName) => !process.env[varName]);
+
+if (missingVars.length > 0) {
+  console.error(`❌ Missing required environment variables: ${missingVars.join(", ")}`);
+  process.exit(1);
+}
+
+// ============================================
+// 📊 Environment Configuration
+// ============================================
+
+export const env = {
+  // Node environment
+  nodeEnv: process.env.NODE_ENV || "development",
+  isProduction: process.env.NODE_ENV === "production",
+  isDevelopment: process.env.NODE_ENV === "development",
+  isTest: process.env.NODE_ENV === "test",
+
+  // Server
   port: parseInt(process.env.PORT || "5001", 10),
-  appUrl: process.env.APP_URL || "http://localhost:3000",
+  host: process.env.HOST || "localhost",
 
-  // ============================================
-  // 🔐 JWT
-  // ============================================
-  jwt: {
-    accessSecret: process.env.JWT_SECRET,
-    refreshSecret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET,
-    accessExpiry: process.env.JWT_ACCESS_EXPIRY || "15m",
-    refreshExpiry: process.env.JWT_REFRESH_EXPIRY || "7d",
-  },
-
-  // ============================================
-  // 🗄️ Database
-  // ============================================
+  // Database
   db: {
+    name: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST || "localhost",
     port: parseInt(process.env.DB_PORT || "5432", 10),
-    database: process.env.DB_NAME || "mydb",
-    username: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASSWORD,
+    dialect: "postgres",
+    logging: process.env.DB_LOGGING === "true",
   },
 
-  // ============================================
-  // 🤖 AI Services
-  // ============================================
-  ai: {
-    openRouterKey: process.env.AI_API_KEY,
-    geminiKey: process.env.AI_API_KEY_GEMINI,
-    defaultModel: process.env.AI_DEFAULT_MODEL || "openrouter",
+  // JWT
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    accessSecret: process.env.JWT_SECRET,
+    refreshSecret: process.env.JWT_SECRET,
+    accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
+    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
   },
 
-  // ============================================
-  // 🛡️ CORS
-  // ============================================
-  cors: {
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
-  },
-
-  // ============================================
-  // 👑 Admin
-  // ============================================
+  // Admin user
   admin: {
     email: process.env.ADMIN_EMAIL || "admin@german-academy.com",
-    password: process.env.ADMIN_PASSWORD,
+    password: process.env.ADMIN_PASSWORD || "admin123456",
   },
 
-  // ============================================
-  // 📧 Email (optional)
-  // ============================================
+  // AI Services - ✅ ADDED Google Gemini
+  ai: {
+    openRouterApiKey: process.env.OPENROUTER_API_KEY,
+    googleGeminiApiKey: process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY,
+    defaultModel: process.env.DEFAULT_AI_MODEL || "gemini-pro",
+    fallbackModel: process.env.FALLBACK_AI_MODEL || "openrouter/gpt-3.5-turbo",
+  },
+
+  // CORS
+  cors: {
+    origin: process.env.CORS_ORIGIN?.split(",") || [
+      "http://localhost:3000",
+      "http://localhost:5173",
+    ],
+    credentials: true,
+  },
+
+  // Rate Limiting
+  rateLimit: {
+    windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || "900000", 10),
+    max: parseInt(process.env.RATE_LIMIT_MAX || "100", 10),
+  },
+
+  // Logging
+  logging: {
+    level: process.env.LOG_LEVEL || "info",
+    format: process.env.LOG_FORMAT || "json",
+  },
+
+  // Email
   email: {
     host: process.env.EMAIL_HOST,
     port: parseInt(process.env.EMAIL_PORT || "587", 10),
+    secure: process.env.EMAIL_SECURE === "true",
     user: process.env.EMAIL_USER,
     password: process.env.EMAIL_PASSWORD,
-    from: process.env.EMAIL_FROM || "noreply@german-academy.com",
+    from: process.env.EMAIL_FROM,
+  },
+
+  // Redis
+  redis: {
+    host: process.env.REDIS_HOST || "localhost",
+    port: parseInt(process.env.REDIS_PORT || "6379", 10),
+    password: process.env.REDIS_PASSWORD,
+    db: parseInt(process.env.REDIS_DB || "0", 10),
+  },
+
+  // Session
+  session: {
+    secret: process.env.SESSION_SECRET || process.env.JWT_SECRET,
+    maxAge: parseInt(process.env.SESSION_MAX_AGE || "604800000", 10),
   },
 };
 
 // ============================================
-// ✅ Validation
-// ============================================
-
-const validateConfig = () => {
-  const errors = [];
-
-  // Validate JWT secrets
-  if (!config.jwt.accessSecret) {
-    errors.push("JWT_SECRET is required");
-  }
-
-  // Validate database password
-  if (!config.db.password) {
-    errors.push("DB_PASSWORD is required");
-  }
-
-  // Validate at least one AI provider
-  if (!config.ai.openRouterKey && !config.ai.geminiKey) {
-    errors.push("At least one AI provider (AI_API_KEY or AI_API_KEY_GEMINI) is required");
-  }
-
-  if (errors.length > 0) {
-    console.error("❌ Configuration validation failed:");
-    errors.forEach((err) => console.error(`   - ${err}`));
-    if (isProduction) {
-      process.exit(1);
-    }
-  }
-
-  return errors.length === 0;
-};
-
-// ============================================
-// 🔧 Helper Functions
+// 🔍 Helper Functions
 // ============================================
 
 export const isAIConfigured = () => {
-  return !!config.ai.openRouterKey || !!config.ai.geminiKey;
+  return !!env.ai.openRouterApiKey || !!env.ai.googleGeminiApiKey;
 };
 
 export const isGeminiConfigured = () => {
-  return !!config.ai.geminiKey;
+  return !!env.ai.googleGeminiApiKey;
 };
 
-// ============================================
-// ✅ Validate on import
-// ============================================
+export const getAIProvider = () => {
+  if (env.ai.googleGeminiApiKey) return "gemini";
+  if (env.ai.openRouterApiKey) return "openrouter";
+  return null;
+};
 
-validateConfig();
+// Validate JWT secret length
+if (env.jwt.secret && env.jwt.secret.length < 32) {
+  console.warn("⚠️ JWT_SECRET should be at least 32 characters long");
+}
 
-// ============================================
-// 📤 Export
-// ============================================
-
-export default config;
+export default env;

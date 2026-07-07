@@ -1,14 +1,27 @@
-import { Outlet, Link } from "react-router-dom";
+/**
+ * AuthLayout.jsx
+ * Path: src/layouts/AuthLayout.jsx
+ * Description: Authentication layout for login/register pages
+ * Changes:
+ * - ✅ FIXED: Changed "German Academy" to "Learning Academy"
+ * - ✅ FIXED: Proper routing between login and register
+ * - ✅ FIXED: Clean design
+ */
+
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useLanguageContext } from "@context/LanguageContext";
-import { ArrowRight } from "lucide-react";
+import { useLanguageContext } from "../context/LanguageContext";
+import { ArrowRight, GraduationCap } from "lucide-react";
 
 function AuthLayout() {
   const { language, isRTL } = useLanguageContext();
+  const location = useLocation();
+
+  const isLogin = location.pathname === "/login";
 
   return (
     <div className="min-h-screen flex bg-neutral-50 dark:bg-neutral-950">
-      {/* Left Side - Illustration (Hidden on mobile) */}
+      {/* Left Side - Illustration */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-500 to-primary-700 items-center justify-center p-12">
         <div className="max-w-md text-white text-center">
           <motion.div
@@ -17,12 +30,12 @@ function AuthLayout() {
             transition={{ duration: 0.6 }}
           >
             <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <span className="text-4xl font-bold">G</span>
+              <GraduationCap className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-3xl font-bold mb-4">
               {language === "fa"
-                ? "به آکادمی آلمانی خوش آمدید"
-                : "Welcome to German Academy"}
+                ? "به آکادمی یادگیری خوش آمدید"
+                : "Welcome to Learning Academy"}
             </h1>
             <p className="text-lg text-white/80">
               {language === "fa"

@@ -1,3 +1,9 @@
+/**
+ * ThemeContext.jsx
+ * Path: src/context/ThemeContext.jsx
+ * Description: Theme context provider for dark/light mode
+ */
+
 import { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext(null);
@@ -43,5 +49,8 @@ export function useThemeContext() {
   }
   return context;
 }
+
+// ✅ Alias for consistency
+export const useTheme = useThemeContext;
 
 export default ThemeContext;

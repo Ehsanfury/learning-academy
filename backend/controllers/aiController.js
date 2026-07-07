@@ -1,14 +1,10 @@
 /**
  * aiController.js
- * Learning Academy
- * AI controller
+ * Path: backend/controllers/aiController.js
+ * Description: AI controller with all endpoints
  * Changes:
- * - ✅ Added validation for all endpoints
- * - ✅ Fixed deleteHistory endpoint
- * - ✅ Using asyncHandler for consistency
- * - ✅ Added proper error handling
- * - ✅ Removed raw data from responses
- * - ✅ All methods now use aiService correctly
+ * - ✅ FIXED: Use snake_case column names for ORDER BY
+ * - ✅ FIXED: level validation
  */
 
 import aiService from "../services/aiService.js";
@@ -49,23 +45,23 @@ export const chat = asyncHandler(async (req, res) => {
       userId,
       sessionId,
     },
-    order: [["createdAt", "ASC"]],
+    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
     limit: 10,
   });
 
   const aiContext = {
     userId,
-    level: level,
+    level: String(level),
     nativeLanguage: req.user.nativeLanguage || "fa",
     role: context.role || "tutor",
     topic: context.topic || "general",
-    history: history.map((h) => ({
+    messages: history.map((h) => ({
       role: h.sender,
       content: h.message,
     })),
   };
 
-  const response = await aiService.generateResponse(message, aiContext);
+  const response = await aiService.generateResponse(userId, message, level, aiContext);
 
   // Save conversation
   await AIConversation.create({
@@ -276,7 +272,7 @@ export const continueScenario = asyncHandler(async (req, res) => {
       sessionId,
       sender: ["user", "assistant"],
     },
-    order: [["createdAt", "ASC"]],
+    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
   });
 
   const conversationHistory = history.map((h) => `${h.sender}: ${h.message}`).join("\n");
@@ -321,13 +317,99 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
       userId,
       sessionId,
     },
-    order: [["createdAt", "ASC"]],
+    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
     limit: parseInt(limit),
   });
 
   res.json({
     success: true,
     data: history,
+  });
+});
+
+/**
+ * Get conversations list (for AiTutorPage)
+ * GET /api/ai/conversations
+ */
+export const getConversations = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { limit = 20, offset = 0 } = req.query;
+
+  const conversations = await AIConversation.findAll({
+    where: { userId },
+    attributes: [
+      "sessionId",
+      [
+        AIConversation.sequelize.fn("MAX", AIConversation.sequelize.col("created_at")),
+        "lastMessageAt",
+      ],
+      [AIConversation.sequelize.fn("COUNT", AIConversation.sequelize.col("id")), "messageCount"],
+    ],
+    group: ["sessionId"],
+    order: [[AIConversation.sequelize.literal('"lastMessageAt"'), "DESC"]],
+    limit: parseInt(limit),
+    offset: parseInt(offset),
+  });
+
+  // Get first message of each conversation
+  const result = await Promise.all(
+    conversations.map(async (conv) => {
+      const firstMessage = await AIConversation.findOne({
+        where: {
+          userId,
+          sessionId: conv.sessionId,
+          sender: "user",
+        },
+        order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+        attributes: ["message"],
+      });
+
+      return {
+        sessionId: conv.sessionId,
+        lastMessageAt: conv.get("lastMessageAt"),
+        messageCount: parseInt(conv.get("messageCount")),
+        preview: firstMessage?.message?.substring(0, 50) || "Empty conversation",
+      };
+    })
+  );
+
+  res.json({
+    success: true,
+    data: result,
+    total: result.length,
+  });
+});
+
+/**
+ * Get conversation by session ID
+ * GET /api/ai/conversations/:sessionId
+ */
+export const getConversationById = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { sessionId } = req.params;
+
+  if (!sessionId) {
+    throw new ValidationError({
+      message: "sessionId is required",
+      details: [{ field: "sessionId", message: "sessionId is required" }],
+    });
+  }
+
+  const messages = await AIConversation.findAll({
+    where: {
+      userId,
+      sessionId,
+    },
+    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+  });
+
+  res.json({
+    success: true,
+    data: {
+      sessionId,
+      messages,
+      count: messages.length,
+    },
   });
 });
 
@@ -375,7 +457,7 @@ export const getSessions = asyncHandler(async (req, res) => {
     attributes: [
       "sessionId",
       [
-        AIConversation.sequelize.fn("MAX", AIConversation.sequelize.col("createdAt")),
+        AIConversation.sequelize.fn("MAX", AIConversation.sequelize.col("created_at")),
         "lastMessageAt",
       ],
     ],

@@ -3,7 +3,8 @@
  * Path: backend/models/WordProgress.js
  * Description: Word progress model for spaced repetition (SM-2 algorithm)
  * Changes:
- * - ✅ FIXED: word_id type changed to UUID to match vocabulary.id
+ * - ✅ FIXED: wordId type changed from UUID to STRING(50) to match Vocabulary.id
+ * - ✅ FIXED: Foreign key properly defined
  */
 
 import { DataTypes } from "sequelize";
@@ -24,7 +25,7 @@ const WordProgress = sequelize.define(
       field: "user_id",
     },
     wordId: {
-      type: DataTypes.UUID, // ✅ FIXED: Changed from VARCHAR(100) to UUID
+      type: DataTypes.STRING(50), // ✅ STRING(50) - matches Vocabulary.id
       allowNull: false,
       field: "word_id",
     },

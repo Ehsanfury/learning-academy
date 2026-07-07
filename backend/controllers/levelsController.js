@@ -3,106 +3,16 @@
  * Path: backend/controllers/levelsController.js
  * Description: Levels management controller
  * Changes:
- * - ✅ M12: Implemented real level progress tracking
- * - ✅ Using asyncHandler for consistency
- * - ✅ Added proper error handling
+ * - ✅ FIXED: Added missing UnauthorizedError import
  */
 
-import { logInfo, logError } from "../config/logger.js";
+import levelService from "../services/levelService.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
-import { Lesson, LessonProgress } from "../models/index.js";
-import { Op } from "sequelize";
-import { ValidationError, NotFoundError } from "../errors/index.js";
+import { ValidationError, NotFoundError, UnauthorizedError } from "../errors/index.js";
+import logger from "../config/logger.js";
 
 // ============================================
-// 📊 Level Data
-// ============================================
-
-const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
-
-const LEVEL_CONFIG = {
-  A1: {
-    id: "A1",
-    order: 1,
-    label: { fa: "مبتدی", en: "Beginner", de: "Anfänger" },
-    description: {
-      fa: "شروع یادگیری زبان آلمانی از صفر",
-      en: "Start learning German from zero",
-      de: "Deutsch lernen von Null an",
-    },
-    color: "#22c55e",
-    icon: "🌱",
-    badgeIcon: "🥉",
-  },
-  A2: {
-    id: "A2",
-    order: 2,
-    label: { fa: "مقدماتی", en: "Elementary", de: "Grundlegend" },
-    description: {
-      fa: "تکمیل مبانی و شروع مکالمات ساده",
-      en: "Complete basics and start simple conversations",
-      de: "Grundlagen vervollständigen und einfache Gespräche beginnen",
-    },
-    color: "#3b82f6",
-    icon: "📘",
-    badgeIcon: "🥈",
-  },
-  B1: {
-    id: "B1",
-    order: 3,
-    label: { fa: "متوسط", en: "Intermediate", de: "Mittelstufe" },
-    description: {
-      fa: "صحبت درباره موضوعات روزمره و شخصی",
-      en: "Talk about everyday and personal topics",
-      de: "Über alltägliche und persönliche Themen sprechen",
-    },
-    color: "#f59e0b",
-    icon: "📗",
-    badgeIcon: "🥇",
-  },
-  B2: {
-    id: "B2",
-    order: 4,
-    label: { fa: "متوسط پیشرفته", en: "Upper Intermediate", de: "Obere Mittelstufe" },
-    description: {
-      fa: "مکالمات پیچیده و درک متون تخصصی",
-      en: "Complex conversations and understanding specialized texts",
-      de: "Komplexe Gespräche und Verstehen von Fachtexten",
-    },
-    color: "#f97316",
-    icon: "📙",
-    badgeIcon: "🏆",
-  },
-  C1: {
-    id: "C1",
-    order: 5,
-    label: { fa: "پیشرفته", en: "Advanced", de: "Fortgeschritten" },
-    description: {
-      fa: "تسلط بر زبان برای اهداف حرفه‌ای و آکادمیک",
-      en: "Mastery of language for professional and academic purposes",
-      de: "Beherrschung der Sprache für berufliche und akademische Zwecke",
-    },
-    color: "#ef4444",
-    icon: "📕",
-    badgeIcon: "👑",
-  },
-  C2: {
-    id: "C2",
-    order: 6,
-    label: { fa: "تسلط", en: "Mastery", de: "Perfektion" },
-    description: {
-      fa: "تسلط کامل بر زبان در تمام موقعیت‌ها",
-      en: "Complete mastery of the language in all situations",
-      de: "Vollständige Beherrschung der Sprache in allen Situationen",
-    },
-    color: "#a855f7",
-    icon: "👑",
-    badgeIcon: "💎",
-  },
-};
-
-// ============================================
-// 📤 Controllers
+// 📝 Controllers
 // ============================================
 
 /**
@@ -111,36 +21,37 @@ const LEVEL_CONFIG = {
  */
 export const getLevels = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
+  const { level } = req.query;
 
-  logInfo("📊 [Levels] Getting all levels", { userId });
-
-  const levels = LEVELS.map((levelId) => ({
-    ...LEVEL_CONFIG[levelId],
-  }));
+  const levels = await levelService.getLevels({ userId, level });
 
   res.json({
     success: true,
     data: levels,
-    count: levels.length,
   });
 });
 
 /**
- * Get a specific level
- * GET /api/levels/:levelId
+ * Get level by ID
+ * GET /api/levels/:id
  */
-export const getLevel = asyncHandler(async (req, res) => {
-  const { levelId } = req.params;
+export const getLevelById = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
+  const { id } = req.params;
 
-  logInfo("📊 [Levels] Getting level", { userId, levelId });
+  if (!id) {
+    throw new ValidationError({
+      message: "Level ID is required",
+      details: [{ field: "id", message: "Level ID is required" }],
+    });
+  }
 
-  const normalizedLevel = levelId.toUpperCase();
-  const level = LEVEL_CONFIG[normalizedLevel];
+  const level = await levelService.getLevelById(id, userId);
+
   if (!level) {
     throw new NotFoundError({
-      message: `Level ${levelId} not found`,
-      resource: { model: "Level", id: levelId },
+      message: `Level with id "${id}" not found`,
+      resource: { model: "Level", id },
     });
   }
 
@@ -151,127 +62,136 @@ export const getLevel = asyncHandler(async (req, res) => {
 });
 
 /**
- * ✅ M12: Get level progress for user - Real implementation
- * GET /api/levels/:levelId/progress
+ * Get level progress
+ * GET /api/levels/:id/progress
  */
 export const getLevelProgress = asyncHandler(async (req, res) => {
-  const { levelId } = req.params;
   const userId = req.user?.id;
-
-  logInfo("📊 [Levels] Getting level progress", { userId, levelId });
+  const { id } = req.params;
 
   if (!userId) {
-    throw new UnauthorizedError("Authentication required");
+    throw new UnauthorizedError("Not authenticated");
   }
 
-  const normalizedLevel = levelId.toUpperCase();
-  const level = LEVEL_CONFIG[normalizedLevel];
-  if (!level) {
-    throw new NotFoundError({
-      message: `Level ${levelId} not found`,
-      resource: { model: "Level", id: levelId },
-    });
-  }
-
-  // Get all lessons for this level
-  const lessons = await Lesson.findAll({
-    where: {
-      level: normalizedLevel,
-      isActive: true,
-    },
-    order: [
-      ["unit", "ASC"],
-      ["lessonNumber", "ASC"],
-    ],
-  });
-
-  if (lessons.length === 0) {
-    return res.json({
-      success: true,
-      data: {
-        level: normalizedLevel,
-        totalLessons: 0,
-        completedLessons: 0,
-        perfectLessons: 0,
-        progressPercentage: 0,
-        lessons: [],
-      },
-    });
-  }
-
-  const lessonIds = lessons.map((l) => l.id);
-
-  // Get progress for all lessons in this level
-  const progress = await LessonProgress.findAll({
-    where: {
-      userId,
-      lessonId: {
-        [Op.in]: lessonIds,
-      },
-    },
-  });
-
-  const progressMap = {};
-  progress.forEach((p) => {
-    progressMap[p.lessonId] = p;
-  });
-
-  let completedCount = 0;
-  let perfectCount = 0;
-
-  // Build lesson progress details
-  const lessonProgress = lessons.map((lesson) => {
-    const prog = progressMap[lesson.id];
-    const isCompleted = prog && (prog.status === "completed" || prog.status === "perfect");
-    const isPerfect = prog && prog.status === "perfect";
-
-    if (isCompleted) completedCount++;
-    if (isPerfect) perfectCount++;
-
-    return {
-      lessonId: lesson.id,
-      title: lesson.title,
-      unit: lesson.unit,
-      lessonNumber: lesson.lessonNumber,
-      status: prog?.status || "not_started",
-      score: prog?.score || 0,
-      xpEarned: prog?.xpEarned || 0,
-      completedAt: prog?.completedAt || null,
-      isCompleted,
-      isPerfect,
-    };
-  });
-
-  const totalLessons = lessons.length;
-  const progressPercentage =
-    totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
-
-  // Get level XP from completed lessons
-  const totalXp = progress.reduce((sum, p) => sum + (p.xpEarned || 0), 0);
+  const progress = await levelService.getLevelProgress(userId, id);
 
   res.json({
     success: true,
-    data: {
-      level: normalizedLevel,
-      levelInfo: level,
-      totalLessons,
-      completedLessons: completedCount,
-      perfectLessons: perfectCount,
-      progressPercentage,
-      totalXp,
-      lessons: lessonProgress,
-      stats: {
-        completed: completedCount,
-        remaining: totalLessons - completedCount,
-        inProgress: progress.filter((p) => p.status === "in_progress").length,
-        notStarted: totalLessons - progress.length,
-      },
-    },
+    data: progress,
+  });
+});
+
+/**
+ * Get level stats
+ * GET /api/levels/stats
+ */
+export const getLevelStats = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+
+  if (!userId) {
+    throw new UnauthorizedError("Not authenticated");
+  }
+
+  const stats = await levelService.getUserLevelStats(userId);
+
+  res.json({
+    success: true,
+    data: stats,
+  });
+});
+
+/**
+ * Get level suggestions
+ * GET /api/levels/suggestions
+ */
+export const getSuggestions = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+  const { count = 3 } = req.query;
+
+  if (!userId) {
+    throw new UnauthorizedError("Not authenticated");
+  }
+
+  const suggestions = await levelService.getSuggestions(userId, parseInt(count));
+
+  res.json({
+    success: true,
+    data: suggestions,
+  });
+});
+
+/**
+ * Check level lock status
+ * GET /api/levels/:id/lock
+ */
+export const checkLevelLock = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+  const { id } = req.params;
+
+  if (!userId) {
+    throw new UnauthorizedError("Not authenticated");
+  }
+
+  const lockStatus = await levelService.checkLevelLock(userId, id);
+
+  res.json({
+    success: true,
+    data: lockStatus,
+  });
+});
+
+/**
+ * Reset level progress (admin only)
+ * POST /api/levels/:id/reset
+ */
+export const resetLevelProgress = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+  const { id } = req.params;
+
+  if (!userId) {
+    throw new UnauthorizedError("Not authenticated");
+  }
+
+  if (req.user?.role !== "admin") {
+    throw new UnauthorizedError("Admin access required");
+  }
+
+  await levelService.resetLevelProgress(userId, id);
+
+  logger.info(`Level ${id} progress reset for user ${userId}`);
+
+  res.json({
+    success: true,
+    message: "Level progress reset successfully",
+  });
+});
+
+/**
+ * Get level recommendations
+ * GET /api/levels/recommendations
+ */
+export const getRecommendations = asyncHandler(async (req, res) => {
+  const userId = req.user?.id;
+
+  if (!userId) {
+    throw new UnauthorizedError("Not authenticated");
+  }
+
+  const recommendations = await levelService.getRecommendations(userId);
+
+  res.json({
+    success: true,
+    data: recommendations,
   });
 });
 
 export default {
   getLevels,
-  getLevel,
+  getLevelById,
   getLevelProgress,
+  getLevelStats,
+  getSuggestions,
+  checkLevelLock,
+  resetLevelProgress,
+  getRecommendations,
 };

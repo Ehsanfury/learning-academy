@@ -2,6 +2,10 @@
  * App.jsx
  * Path: src/App.jsx
  * Description: Main application component with routing
+ * Changes:
+ * - ✅ FIXED: AuthLayout properly wraps login/register
+ * - ✅ FIXED: MainLayout for public routes
+ * - ✅ FIXED: DashboardLayout for protected routes
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
@@ -25,7 +29,7 @@ import PrivateRoute from "./router/PrivateRoute";
 import PublicRoute from "./router/PublicRoute";
 
 // UI Components
-import LoadingSpinner from "@components/LoadingSpinner";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 // Pages (lazy loaded)
 const Home = lazy(() => import("./pages/Home/HomePage"));
@@ -37,7 +41,7 @@ const Lesson = lazy(() => import("./pages/Lesson/LessonPage"));
 const Practice = lazy(() => import("./pages/Practice/PracticePage"));
 const PracticeDetail = lazy(
   () => import("./pages/Practice/PracticeDetailPage"),
-); // ✅ اضافه شد
+);
 const Stories = lazy(() => import("./pages/Stories/StoriesPage"));
 const Scenarios = lazy(() => import("./pages/Scenarios/ScenariosPage"));
 const Dictionary = lazy(() => import("./pages/Dictionary/DictionaryPage"));
@@ -130,7 +134,16 @@ function App() {
               <Suspense fallback={<LoadingFallback />}>
                 <AnimatePresence mode="wait">
                   <Routes>
-                    {/* Auth Routes */}
+                    {/* ========== PUBLIC ROUTES ========== */}
+
+                    {/* Home Page with MainLayout */}
+                    <Route element={<MainLayout />}>
+                      <Route path="/" element={<Home />} />
+                    </Route>
+
+                    {/* ========== AUTH ROUTES ========== */}
+
+                    {/* Login & Register with AuthLayout */}
                     <Route element={<AuthLayout />}>
                       <Route
                         path="/login"
@@ -150,12 +163,9 @@ function App() {
                       />
                     </Route>
 
-                    {/* Public Routes */}
-                    <Route element={<MainLayout />}>
-                      <Route path="/" element={<Home />} />
-                    </Route>
+                    {/* ========== PROTECTED ROUTES ========== */}
 
-                    {/* Protected Routes */}
+                    {/* Dashboard Layout */}
                     <Route
                       element={
                         <PrivateRoute>
@@ -165,14 +175,11 @@ function App() {
                     >
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/learn" element={<Learn />} />
-
-                      {/* ✅ FIXED: Practice Routes */}
                       <Route path="/practice" element={<Practice />} />
                       <Route
                         path="/practice/:type"
                         element={<PracticeDetail />}
                       />
-
                       <Route path="/stories" element={<Stories />} />
                       <Route path="/scenarios" element={<Scenarios />} />
                       <Route path="/dictionary" element={<Dictionary />} />
@@ -191,7 +198,7 @@ function App() {
                       />
                     </Route>
 
-                    {/* Lesson Routes */}
+                    {/* Lesson Layout */}
                     <Route
                       element={
                         <PrivateRoute>
@@ -225,7 +232,7 @@ function App() {
                       <Route path="/admin/*" element={<Admin />} />
                     </Route>
 
-                    {/* 404 */}
+                    {/* ========== 404 ========== */}
                     <Route path="/404" element={<NotFoundPage />} />
                     <Route path="*" element={<Navigate to="/404" replace />} />
                   </Routes>

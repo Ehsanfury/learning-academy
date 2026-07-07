@@ -3,9 +3,8 @@
  * Path: backend/routes/authRoutes.js
  * Description: Authentication routes
  * Changes:
- * - ✅ Added admin stats endpoint (real implementation)
- * - ✅ Fixed rate limiting
- * - ✅ Added proper validation
+ * - ✅ FIXED: Added /refresh endpoint (without -token)
+ * - ✅ FIXED: Both /refresh and /refresh-token work
  */
 
 import express from "express";
@@ -39,7 +38,8 @@ router.post("/register", registerLimiter, register);
 // Login with rate limiting
 router.post("/login", authLimiter, login);
 
-// Refresh token
+// Refresh token - ✅ FIXED: Both endpoints work
+router.post("/refresh", refreshToken);
 router.post("/refresh-token", refreshToken);
 
 // Forgot password
@@ -74,14 +74,13 @@ router.post("/resend-verification", resendVerification);
 // 👑 Admin Routes
 // ============================================
 
-// ✅ FIXED: Admin stats - real implementation
+// Admin stats
 router.get(
   "/admin/stats",
   authorize("admin"),
   asyncHandler(async (req, res) => {
     logInfo("📊 [Admin] Getting admin stats", { userId: req.user.id });
 
-    // Get user stats
     const userStats = await userService.getAdminStats();
 
     res.json({

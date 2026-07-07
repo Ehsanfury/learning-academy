@@ -476,12 +476,12 @@ class ProgressRepository extends BaseRepository {
           status: {
             [Op.in]: ["completed", "perfect"],
           },
-          completedAt: {
+          completed_at: {
             [Op.ne]: null,
           },
         },
         ...options,
-        order: [["completedAt", "DESC"]],
+        order: [["completed_at", "DESC"]],
         limit,
       };
 
@@ -696,7 +696,7 @@ class ProgressRepository extends BaseRepository {
       const progress = await this.model.findAll({
         where: {
           userId,
-          completedAt: {
+          completed_at: {
             [Op.gte]: date,
           },
           status: {
@@ -704,12 +704,12 @@ class ProgressRepository extends BaseRepository {
           },
         },
         attributes: [
-          [this.model.sequelize.fn("DATE", this.model.sequelize.col("completedAt")), "date"],
+          [this.model.sequelize.fn("DATE", this.model.sequelize.col("completed_at")), "date"],
           [this.model.sequelize.fn("COUNT", this.model.sequelize.col("id")), "count"],
           [this.model.sequelize.fn("SUM", this.model.sequelize.col("xpEarned")), "xp"],
         ],
-        group: [this.model.sequelize.fn("DATE", this.model.sequelize.col("completedAt"))],
-        order: [[this.model.sequelize.fn("DATE", this.model.sequelize.col("completedAt")), "ASC"]],
+        group: [this.model.sequelize.fn("DATE", this.model.sequelize.col("completed_at"))],
+        order: [[this.model.sequelize.fn("DATE", this.model.sequelize.col("completed_at")), "ASC"]],
       });
 
       return progress;

@@ -52,7 +52,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
-          redux: ["@reduxjs/toolkit", "react-redux"],
           ui: ["framer-motion", "lucide-react"],
           i18n: ["i18next", "react-i18next"],
         },

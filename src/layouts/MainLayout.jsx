@@ -3,16 +3,18 @@
  * Path: src/layouts/MainLayout.jsx
  * Description: Main layout with responsive navbar and mobile support
  * Project: Learning Academy
- * Version: 2.0 - Updated with new UI components and project name
+ * Version: 2.0 - Fixed imports
  */
 
 import React, { useState, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguageContext } from "@context/LanguageContext";
-import { useThemeContext } from "@context/ThemeContext";
-import { useAuth } from "@context/AuthContext";
-import { useIsMobile } from "@hooks/MobileDetect";
+// ✅ FIXED: Changed @context to relative path
+import { useLanguageContext } from "../context/LanguageContext";
+import { useThemeContext } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
+// ✅ FIXED: Changed @hooks to relative path
+import { useIsMobile } from "../hooks/MobileDetect";
 import {
   Sun,
   Moon,
@@ -43,10 +45,10 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// ✅ استفاده از کامپوننت‌های جدید UI
-import Button from "@components/ui/Button";
-import { Card, CardHeader, CardBody, CardFooter } from "@components/ui";
-import Badge from "@components/ui/Badge";
+// ✅ FIXED: Changed @components to relative path
+import Button from "../components/ui/Button";
+import { Card, CardHeader, CardBody, CardFooter } from "../components/ui";
+import Badge from "../components/ui/Badge";
 
 // ============================================
 // 📊 Navigation Items
@@ -245,7 +247,6 @@ const MainLayout = () => {
       <AnimatePresence>
         {mobileMenuOpen && isMobile && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -254,7 +255,6 @@ const MainLayout = () => {
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Menu */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -262,7 +262,6 @@ const MainLayout = () => {
               transition={{ type: "spring", damping: 25 }}
               className="fixed top-0 right-0 bottom-0 z-40 w-72 max-w-[80vw] bg-white dark:bg-neutral-950 shadow-2xl p-6 pt-20 overflow-y-auto"
             >
-              {/* User Info */}
               {user && (
                 <div className="mb-6 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-xl">
                   <div className="flex items-center gap-3">
@@ -279,7 +278,6 @@ const MainLayout = () => {
                 </div>
               )}
 
-              {/* Navigation Items */}
               <nav className="space-y-1">
                 {MOBILE_NAV_ITEMS.map((item) => {
                   const isActive =
@@ -305,7 +303,6 @@ const MainLayout = () => {
 
                 <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
 
-                {/* Settings */}
                 <Link
                   to="/settings"
                   onClick={() => setMobileMenuOpen(false)}
@@ -315,7 +312,6 @@ const MainLayout = () => {
                   <span>{language === "fa" ? "تنظیمات" : "Settings"}</span>
                 </Link>
 
-                {/* Logout */}
                 {isAuthenticated && (
                   <button
                     onClick={handleLogout}
@@ -326,7 +322,6 @@ const MainLayout = () => {
                   </button>
                 )}
 
-                {/* Login/Register (if not authenticated) */}
                 {!isAuthenticated && (
                   <>
                     <Link
@@ -349,7 +344,6 @@ const MainLayout = () => {
                 )}
               </nav>
 
-              {/* App Info */}
               <div className="mt-8 pt-4 border-t border-neutral-200 dark:border-neutral-800">
                 <p className="text-xs text-neutral-400 text-center">
                   {language === "fa"
@@ -455,7 +449,6 @@ const Footer = ({ language }) => {
         {/* Desktop Footer */}
         <div className="hidden md:block py-12 lg:py-16">
           <div className="grid grid-cols-4 gap-8 lg:gap-12">
-            {/* Brand Column */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
@@ -498,7 +491,6 @@ const Footer = ({ language }) => {
               </div>
             </div>
 
-            {/* Links Columns */}
             {footerLinks.map((column, idx) => (
               <div key={idx}>
                 <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">

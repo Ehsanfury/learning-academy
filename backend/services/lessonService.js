@@ -2,14 +2,11 @@
  * lessonService.js
  * Path: backend/services/lessonService.js
  * Description: Lesson management service - Production Ready
- * Version: 6.0
+ * Version: 7.0
  * Changes:
- * - ✅ FIXED: Removed include to avoid association error
- * - ✅ FIXED: Complete lesson content extraction
- * - ✅ FIXED: Exercise extraction from all sections
- * - ✅ FIXED: Vocabulary extraction from lesson
- * - ✅ FIXED: Grammar extraction from lesson
- * - ✅ FIXED: Dialogues extraction from lesson
+ * - ✅ FIXED: Better exercise extraction from sections
+ * - ✅ FIXED: Vocabulary extraction from all section types
+ * - ✅ FIXED: Proper content structure for frontend
  */
 
 import { Op } from "sequelize";
@@ -49,7 +46,6 @@ class LessonService {
 
       logger.info(`✅ Found ${total} lessons in database`);
 
-      // Get user progress
       if (userId && lessons.length > 0) {
         const lessonIds = lessons.map((l) => l.id);
         const progressList = await LessonProgress.findAll({
@@ -147,6 +143,7 @@ class LessonService {
       cultureNotes: null,
       pronunciationGuide: null,
       greetings: [],
+      numbers: null,
     };
 
     sections.forEach((section) => {
@@ -217,6 +214,10 @@ class LessonService {
             duVsSie: section.duVsSie || [],
           };
           break;
+
+        case "numbers":
+          content.numbers = section.data || section;
+          break;
       }
     });
 
@@ -224,7 +225,7 @@ class LessonService {
   }
 
   // ============================================
-  // 📊 Extract Exercises
+  // 📊 Extract Exercises - ✅ FIXED
   // ============================================
 
   extractExercises(lesson) {
@@ -235,6 +236,25 @@ class LessonService {
       if (section.type === "exercises" && section.data) {
         const exercises = this.extractExercisesFromSection(section);
         allExercises.push(...exercises);
+      }
+
+      // ✅ Also extract from review section
+      if (section.type === "review" && section.quiz && section.quiz.length > 0) {
+        allExercises.push({
+          id: `review-${Date.now()}`,
+          type: "review",
+          title: section.title || { fa: "مرور درس", en: "Review", de: "Wiederholung" },
+          questions: section.quiz.map((q, index) => ({
+            id: q.id || `rev-${index}`,
+            type: q.type || "multiple_choice",
+            question: q.question || q,
+            options: q.options || [],
+            correct: q.correctIndex !== undefined ? q.correctIndex : q.correct,
+            explanation: q.explanation || "",
+          })),
+          difficulty: 1,
+          xpReward: 15,
+        });
       }
     });
 
@@ -254,8 +274,8 @@ class LessonService {
               id: exercise.id || `${type}-${index}`,
               type: type,
               title: exercise.title || `${type} exercise`,
-              questions: exercise.questions.map((q) => ({
-                id: q.id || `q-${index}-${Math.random().toString(36).substr(2, 6)}`,
+              questions: exercise.questions.map((q, qIndex) => ({
+                id: q.id || `q-${index}-${qIndex}`,
                 type: q.type || "multiple_choice",
                 question: q.question || q,
                 options: q.options || [],
@@ -270,16 +290,20 @@ class LessonService {
       }
     });
 
-    // ✅ استخراج از greeting_practice
+    // ✅ Extract from greeting_practice
     if (data.greeting_practice && Array.isArray(data.greeting_practice)) {
       data.greeting_practice.forEach((exercise, index) => {
         if (exercise.questions && Array.isArray(exercise.questions)) {
           exercises.push({
             id: `greeting-${index}`,
             type: "greeting_practice",
-            title: exercise.title || "تمرین احوال‌پرسی",
-            questions: exercise.questions.map((q) => ({
-              id: q.id || `g-${index}-${Math.random().toString(36).substr(2, 6)}`,
+            title: exercise.title || {
+              fa: "تمرین احوال‌پرسی",
+              en: "Greeting Practice",
+              de: "Begrüßungsübung",
+            },
+            questions: exercise.questions.map((q, qIndex) => ({
+              id: q.id || `g-${index}-${qIndex}`,
               type: q.type || "multiple_choice",
               question: q.question || q.situation || q,
               options: q.options || [],
@@ -293,20 +317,105 @@ class LessonService {
       });
     }
 
-    // ✅ استخراج از du_vs_sie
+    // ✅ Extract from du_vs_sie
     if (data.du_vs_sie && Array.isArray(data.du_vs_sie)) {
       data.du_vs_sie.forEach((exercise, index) => {
         if (exercise.questions && Array.isArray(exercise.questions)) {
           exercises.push({
             id: `duvsie-${index}`,
             type: "du_vs_sie",
-            title: exercise.title || "تمرین du و Sie",
-            questions: exercise.questions.map((q) => ({
-              id: q.id || `d-${index}-${Math.random().toString(36).substr(2, 6)}`,
+            title: exercise.title || {
+              fa: "تمرین du و Sie",
+              en: "du vs Sie Practice",
+              de: "du vs Sie Übung",
+            },
+            questions: exercise.questions.map((q, qIndex) => ({
+              id: q.id || `d-${index}-${qIndex}`,
               type: q.type || "multiple_choice",
               question: q.question || q.situation || q,
               options: q.options || ["du", "Sie"],
               correct: q.correct !== undefined ? q.correct : q.correctIndex || 0,
+              explanation: q.explanation || "",
+            })),
+            difficulty: exercise.difficulty || 1,
+            xpReward: exercise.xpReward || 10,
+          });
+        }
+      });
+    }
+
+    // ✅ Extract from ein_kein
+    if (data.ein_kein && Array.isArray(data.ein_kein)) {
+      data.ein_kein.forEach((exercise, index) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercises.push({
+            id: `eink-${index}`,
+            type: "ein_kein",
+            title: exercise.title || {
+              fa: "تمرین ein و kein",
+              en: "ein vs kein Practice",
+              de: "ein vs kein Übung",
+            },
+            questions: exercise.questions.map((q, qIndex) => ({
+              id: q.id || `ek-${index}-${qIndex}`,
+              type: q.type || "multiple_choice",
+              question: q.question || q.situation || q,
+              options: q.options || [],
+              correct: q.correct !== undefined ? q.correct : q.correctIndex || 0,
+              explanation: q.explanation || "",
+            })),
+            difficulty: exercise.difficulty || 1,
+            xpReward: exercise.xpReward || 10,
+          });
+        }
+      });
+    }
+
+    // ✅ Extract from numbers
+    if (data.numbers && Array.isArray(data.numbers)) {
+      data.numbers.forEach((exercise, index) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercises.push({
+            id: `num-${index}`,
+            type: "numbers",
+            title: exercise.title || {
+              fa: "تمرین اعداد",
+              en: "Numbers Practice",
+              de: "Zahlenübung",
+            },
+            questions: exercise.questions.map((q, qIndex) => ({
+              id: q.id || `n-${index}-${qIndex}`,
+              type: q.type || "multiple_choice",
+              question: q.question || q,
+              options: q.options || [],
+              correct: q.correct !== undefined ? q.correct : q.correctIndex || 0,
+              explanation: q.explanation || "",
+            })),
+            difficulty: exercise.difficulty || 1,
+            xpReward: exercise.xpReward || 10,
+          });
+        }
+      });
+    }
+
+    // ✅ Extract from regular_verbs
+    if (data.regular_verbs && Array.isArray(data.regular_verbs)) {
+      data.regular_verbs.forEach((exercise, index) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercises.push({
+            id: `verb-${index}`,
+            type: "regular_verbs",
+            title: exercise.title || {
+              fa: "تمرین فعل‌های منظم",
+              en: "Regular Verbs Practice",
+              de: "Regelmäßige Verben Übung",
+            },
+            questions: exercise.questions.map((q, qIndex) => ({
+              id: q.id || `v-${index}-${qIndex}`,
+              type: q.type || "fill_in",
+              question: q.question || q.prompt || q,
+              options: q.options || [],
+              correct: q.correct !== undefined ? q.correct : q.answer || "",
               explanation: q.explanation || "",
             })),
             difficulty: exercise.difficulty || 1,
@@ -476,7 +585,6 @@ class LessonService {
       });
     });
 
-    // همچنین review و assessment را بررسی کنید
     const sections = lesson.sections || [];
     sections.forEach((section) => {
       if (section.type === "review" && section.quiz) {

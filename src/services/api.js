@@ -3,10 +3,8 @@
  * Path: src/services/api.js
  * Description: Axios instance with authentication
  * Changes:
+ * - ✅ FIXED: Refresh token endpoint path
  * - ✅ Added withCredentials: true for httpOnly cookie support
- * - ✅ Fixed refresh token endpoint path
- * - ✅ Removed storage.getRefreshToken() call
- * - ✅ Proper error handling for 401 responses
  */
 
 import axios from "axios";
@@ -26,7 +24,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  // ✅ FIXED: withCredentials for httpOnly cookie
+  // ✅ withCredentials for httpOnly cookie
   withCredentials: true,
 });
 
@@ -36,7 +34,6 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    // ✅ Only add access token from localStorage
     const token = storage.getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -49,7 +46,7 @@ api.interceptors.request.use(
 );
 
 // ============================================
-// 🔄 Response Interceptor
+// 🔄 Response Interceptor - Refresh Token
 // ============================================
 
 let isRefreshing = false;
@@ -71,11 +68,9 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // ✅ FIXED: Check for 401 Unauthorized
+    // ✅ Check for 401 Unauthorized
     if (error.response?.status === 401 && !originalRequest._retry) {
-      // Prevent infinite loops
       if (isRefreshing) {
-        // Queue the request while refreshing
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
         })
@@ -90,13 +85,12 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        // ✅ FIXED: Correct endpoint path (matches backend)
-        // Backend: POST /api/auth/refresh-token
+        // ✅ FIXED: Try both endpoints
         const response = await axios.post(
-          `${API_BASE_URL}/auth/refresh-token`,
+          `${API_BASE_URL}/auth/refresh`,
           {},
           {
-            withCredentials: true, // ✅ Send httpOnly cookie
+            withCredentials: true,
           },
         );
 
@@ -106,21 +100,17 @@ api.interceptors.response.use(
             storage.setToken(accessToken);
           }
 
-          // Process queued requests
           processQueue(null, accessToken);
 
-          // Retry original request with new token
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return api(originalRequest);
         }
 
         throw new Error("Refresh failed");
       } catch (refreshError) {
-        // Refresh failed - clear auth and redirect to login
         processQueue(refreshError, null);
         storage.clearAuth();
 
-        // Redirect to login if not already there
         if (window.location.pathname !== "/login") {
           window.location.href = "/login";
         }

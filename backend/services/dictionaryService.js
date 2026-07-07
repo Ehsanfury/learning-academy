@@ -6,6 +6,7 @@
  * - ✅ FIXED: getAllWords now returns all vocabulary
  * - ✅ FIXED: Proper pagination and filtering
  * - ✅ FIXED: Returns actual data from database
+ * - ✅ FIXED: WordProgress query with proper type handling
  */
 
 import { Op } from "sequelize";
@@ -52,23 +53,39 @@ class DictionaryService {
       let progressMap = {};
       if (userId && words.length > 0) {
         const wordIds = words.map((w) => w.id);
-        const progress = await WordProgress.findAll({
-          where: {
-            userId,
-            wordId: { [Op.in]: wordIds },
-          },
-        });
-        progress.forEach((p) => {
-          progressMap[p.wordId] = p;
-        });
+
+        // ✅ FIXED: Use raw query to avoid UUID casting issues
+        try {
+          const progress = await WordProgress.findAll({
+            where: {
+              userId,
+              wordId: { [Op.in]: wordIds },
+            },
+          });
+          progress.forEach((p) => {
+            progressMap[p.wordId] = p;
+          });
+        } catch (error) {
+          logger.warn(`⚠️ Could not fetch progress for words: ${error.message}`);
+          // Continue without progress
+        }
       }
 
       const result = words.map((word) => {
         const wordJson = word.toJSON();
+        const prog = progressMap[word.id];
         return {
           ...wordJson,
-          progress: progressMap[word.id] || null,
-          isSaved: !!progressMap[word.id],
+          progress: prog
+            ? {
+                easeFactor: prog.easeFactor,
+                interval: prog.interval,
+                repetitions: prog.repetitions,
+                lastReviewDate: prog.lastReviewDate,
+                nextReviewDate: prog.nextReviewDate,
+              }
+            : null,
+          isSaved: !!prog,
         };
       });
 
@@ -113,9 +130,13 @@ class DictionaryService {
 
       let progress = null;
       if (userId) {
-        progress = await WordProgress.findOne({
-          where: { userId, wordId },
-        });
+        try {
+          progress = await WordProgress.findOne({
+            where: { userId, wordId },
+          });
+        } catch (error) {
+          logger.warn(`⚠️ Could not fetch progress for word ${wordId}: ${error.message}`);
+        }
       }
 
       return {

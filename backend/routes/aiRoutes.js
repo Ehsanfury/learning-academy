@@ -1,7 +1,7 @@
 /**
  * aiRoutes.js
- * German Academy
- AI routes
+ * Path: backend/routes/aiRoutes.js
+ * Description: AI routes
  */
 
 import express from "express";
@@ -15,15 +15,17 @@ import {
   startScenario,
   continueScenario,
   getConversationHistory,
+  getConversations,
   getSessions,
+  deleteHistory,
 } from "../controllers/aiController.js";
 
 const router = express.Router();
 
-// TODO: Translate - TODO: Translate - همه مسیرها نیاز به احراز هویت دارند
+// همه مسیرها نیاز به احراز هویت دارند
 router.use(authenticate);
 
-// TODO: Translate - TODO: Translate - چت عمومی
+// چت عمومی
 router.post("/chat", chat);
 
 // Grammar correction
@@ -38,12 +40,16 @@ router.post("/grammar/explain", explainGrammar);
 // Generate exercise
 router.post("/exercise/generate", generateExercise);
 
-// TODO: Translate - TODO: Translate - سناریوهای نقش‌آفرینی
+// سناریوها
 router.post("/scenario/start", startScenario);
 router.post("/scenario/continue", continueScenario);
 
-// Get conversation history
+// ✅ تاریخچه مکالمات
 router.get("/history", getConversationHistory);
+router.get("/conversations", getConversations);
 router.get("/sessions", getSessions);
+
+// حذف تاریخچه
+router.delete("/history/:sessionId", deleteHistory);
 
 export default router;

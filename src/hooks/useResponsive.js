@@ -1,40 +1,117 @@
 /**
  * useResponsive.js
  * Path: src/hooks/useResponsive.js
- * Description: Responsive design hook
+ * Description: Responsive design hooks for mobile detection
+ * Changes:
+ * - ✅ FIXED: Added named export 'useResponsive'
+ * - ✅ FIXED: matches variable name
  */
 
 import { useState, useEffect } from "react";
 
-export const useResponsive = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+/**
+ * Hook to detect if screen matches a given media query
+ * @param {string} query - Media query string (e.g., '(max-width: 768px)')
+ * @returns {boolean} - True if screen matches the query
+ */
+export const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+    const media = window.matchMedia(query);
+
+    // Set initial value
+    setMatches(media.matches);
+
+    // Create event listener
+    const listener = (event) => {
+      setMatches(event.matches);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    // Add listener
+    media.addEventListener("change", listener);
 
-  const isMobile = windowSize.width < 768;
-  const isTablet = windowSize.width >= 768 && windowSize.width < 1024;
-  const isDesktop = windowSize.width >= 1024;
+    // Cleanup
+    return () => {
+      media.removeEventListener("change", listener);
+    };
+  }, [query]);
+
+  return matches;
+};
+
+/**
+ * Hook to detect if screen is mobile (max-width: 768px)
+ * @returns {boolean} - True if screen is mobile
+ */
+export const useMobile = () => {
+  return useMediaQuery("(max-width: 768px)");
+};
+
+/**
+ * Hook to detect if screen is tablet (min-width: 769px and max-width: 1024px)
+ * @returns {boolean} - True if screen is tablet
+ */
+export const useTablet = () => {
+  return useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
+};
+
+/**
+ * Hook to detect if screen is desktop (min-width: 1025px)
+ * @returns {boolean} - True if screen is desktop
+ */
+export const useDesktop = () => {
+  return useMediaQuery("(min-width: 1025px)");
+};
+
+/**
+ * Hook to detect if screen is small mobile (max-width: 480px)
+ * @returns {boolean} - True if screen is small mobile
+ */
+export const useSmallMobile = () => {
+  return useMediaQuery("(max-width: 480px)");
+};
+
+/**
+ * Hook to get current device type
+ * @returns {string} - 'mobile' | 'tablet' | 'desktop'
+ */
+export const useDeviceType = () => {
+  const isMobile = useMobile();
+  const isTablet = useTablet();
+  const isDesktop = useDesktop();
+
+  if (isMobile) return "mobile";
+  if (isTablet) return "tablet";
+  return "desktop";
+};
+
+/**
+ * ✅ FIXED: Main responsive hook for App.jsx
+ * Returns breakpoint information for responsive design
+ */
+export const useResponsive = () => {
+  const isMobile = useMobile();
+  const isTablet = useTablet();
+  const isDesktop = useDesktop();
+  const isSmallMobile = useSmallMobile();
 
   return {
     isMobile,
     isTablet,
     isDesktop,
-    width: windowSize.width,
-    height: windowSize.height,
+    isSmallMobile,
+    isMobileOrTablet: isMobile || isTablet,
+    deviceType: isMobile ? "mobile" : isTablet ? "tablet" : "desktop",
   };
 };
 
-export default useResponsive;
+export default {
+  useMediaQuery,
+  useMobile,
+  useTablet,
+  useDesktop,
+  useSmallMobile,
+  useDeviceType,
+  useResponsive,
+};

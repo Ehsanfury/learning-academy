@@ -1,19 +1,15 @@
 /**
  * LessonSeeder.js
  * Path: backend/seeders/LessonSeeder.js
- * Description: Seed lessons from content files into database
- * Version: 2.0 - Fully compatible with new lesson structure
+ * Description: Seed lessons AND vocabulary into database
+ * Version: 4.0 - Integrated Vocabulary Seeding
  * Changes:
- * - ✅ Added support for pronunciationGuide
- * - ✅ Added support for greetings array
- * - ✅ Added support for dialogues array
- * - ✅ Added support for cultureNotes
- * - ✅ Added support for cheatSheet
- * - ✅ Enhanced vocabulary parsing
- * - ✅ Safe handling of all data types
+ * - ✅ Added vocabulary seeding to Vocabulary table
+ * - ✅ Full 11 section support including cheatSheet
+ * - ✅ Extracts vocabulary from lesson content
  */
 
-import { Lesson } from "../models/index.js";
+import { Lesson, Vocabulary } from "../models/index.js";
 import sequelize from "../config/db.js";
 import fs from "fs";
 import path from "path";
@@ -24,9 +20,10 @@ const __dirname = path.dirname(__filename);
 
 const CONTENT_PATH = path.join(__dirname, "../../content/courses/A1/lessons");
 
-/**
- * 🔧 Convert null/undefined to safe default value
- */
+// ============================================
+// 🛠️ Helper Functions
+// ============================================
+
 function sanitizeNull(value, defaultValue = "") {
   if (value === null || value === undefined) {
     return defaultValue;
@@ -34,14 +31,9 @@ function sanitizeNull(value, defaultValue = "") {
   return value;
 }
 
-/**
- * Parse localized string or object
- * Handles both JSON objects and string representations
- */
 function parseLocalized(value) {
   if (!value) return {};
   if (typeof value === "object" && !Array.isArray(value)) {
-    // Remove null values from object
     const cleanObj = {};
     Object.keys(value).forEach((key) => {
       cleanObj[key] = sanitizeNull(value[key], "");
@@ -77,46 +69,16 @@ function parseLocalized(value) {
   return { fa: String(value || ""), en: String(value || ""), de: String(value || "") };
 }
 
-/**
- * Safe number conversion - prevents NaN
- */
 function safeNumber(value, defaultValue = 0) {
   if (value === null || value === undefined) return defaultValue;
   const num = typeof value === "string" ? parseInt(value) : value;
   return isNaN(num) ? defaultValue : num;
 }
 
-/**
- * Safe float conversion - prevents NaN
- */
-function safeFloat(value, defaultValue = 0) {
-  if (value === null || value === undefined) return defaultValue;
-  const num = typeof value === "string" ? parseFloat(value) : value;
-  return isNaN(num) ? defaultValue : num;
-}
+// ============================================
+// 📚 Build Sections
+// ============================================
 
-/**
- * Sanitize array - remove nulls and undefined
- */
-function sanitizeArray(array) {
-  if (!Array.isArray(array)) return [];
-  return array.map((item) => {
-    if (item === null || item === undefined) return "";
-    if (typeof item === "object") {
-      const clean = {};
-      Object.keys(item).forEach((key) => {
-        clean[key] = sanitizeNull(item[key], "");
-      });
-      return clean;
-    }
-    return item;
-  });
-}
-
-/**
- * Build sections from content data
- * Enhanced to support all new content types
- */
 function buildSections(data) {
   const sections = [];
 
@@ -168,7 +130,7 @@ function buildSections(data) {
     });
   }
 
-  // 4. Vocabulary
+  // 4. Vocabulary (Section)
   if (data.vocabulary && Array.isArray(data.vocabulary) && data.vocabulary.length > 0) {
     sections.push({
       id: "vocabulary",
@@ -279,7 +241,7 @@ function buildSections(data) {
     });
   }
 
-  // 11. Cheat Sheet
+  // ✅ 11. Cheat Sheet
   if (data.cheatSheet) {
     sections.push({
       id: "cheat-sheet",
@@ -296,9 +258,41 @@ function buildSections(data) {
   return sections;
 }
 
-/**
- * Count total questions in exercises
- */
+// ============================================
+// 📖 Extract Vocabulary for Database
+// ============================================
+
+function extractVocabularyForDB(content, lessonId) {
+  const vocabulary = [];
+
+  if (content.vocabulary && Array.isArray(content.vocabulary)) {
+    content.vocabulary.forEach((item) => {
+      vocabulary.push({
+        id: item.id || `voc-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
+        de: item.de || "",
+        fa: item.fa || "",
+        en: item.en || "",
+        level: content.level || "A1",
+        category: item.category || "general",
+        partOfSpeech: item.article ? "noun" : "other",
+        gender: item.article || "",
+        plural: item.plural || "",
+        pronunciation: item.ipa || "",
+        example: item.example || {},
+        audioUrl: null,
+        lessonId: lessonId,
+        isActive: true,
+      });
+    });
+  }
+
+  return vocabulary;
+}
+
+// ============================================
+// 📊 Count Functions
+// ============================================
+
 function countQuestions(data) {
   let count = 0;
   if (data.exercises) {
@@ -321,9 +315,6 @@ function countQuestions(data) {
   return count;
 }
 
-/**
- * Count total vocabulary items
- */
 function countVocabulary(data) {
   if (data.vocabulary && Array.isArray(data.vocabulary)) {
     return data.vocabulary.length;
@@ -331,9 +322,10 @@ function countVocabulary(data) {
   return 0;
 }
 
-/**
- * Transform content JSON to database format
- */
+// ============================================
+// 🔄 Transform Lesson Data
+// ============================================
+
 function transformLessonData(content, fileId) {
   const id = content.id || fileId || `lesson-${Date.now()}`;
 
@@ -354,7 +346,6 @@ function transformLessonData(content, fileId) {
     nextLessonId: sanitizeNull(content.nextLessonId, null),
     previousLessonId: sanitizeNull(content.previousLessonId, null),
 
-    // Titles (JSONB)
     title: parseLocalized(content.title),
     shortTitle: parseLocalized(content.shortTitle || content.subtitle || content.title),
     description: parseLocalized(
@@ -362,47 +353,44 @@ function transformLessonData(content, fileId) {
     ),
     learningObjectives: parseLocalized(content.learningObjectives),
 
-    // XP
     xpReward: safeNumber(content.xpReward, 75),
     perfectBonusXP: safeNumber(content.perfectBonusXP, 30),
     completionBonusXP: safeNumber(content.completionBonusXP, 100),
 
-    // CEFR
     cefr: sanitizeNull(content.cefr || content.level, "A1.1"),
     goetheChapter: sanitizeNull(content.goetheChapter || content.metadata?.goetheChapter, null),
     tags: content.metadata?.tags || content.tags || [],
     skills: ["reading", "writing", "listening", "speaking"],
     examRelevance: content.examRelevance || null,
 
-    // ✅ MAIN CONTENT - Sections (JSONB)
     sections: buildSections(content),
     totalSections: buildSections(content).length,
     totalQuestions: countQuestions(content),
     totalVocabulary: countVocabulary(content),
 
-    // Management
     isActive: true,
     exportable: true,
   };
 }
 
-/**
- * Seed lessons from JSON files
- */
+// ============================================
+// 🚀 Seed Lessons & Vocabulary
+// ============================================
+
 export async function seedLessons() {
   console.log("\n📚 ========================================");
-  console.log("📚  Seeding Lessons into Database");
+  console.log("📚  Seeding Lessons & Vocabulary");
   console.log("📚 ========================================\n");
 
   try {
-    // Check if content directory exists
     if (!fs.existsSync(CONTENT_PATH)) {
       console.error(`❌ Content directory not found: ${CONTENT_PATH}`);
       return;
     }
 
-    // Read all JSON files
-    const files = fs.readdirSync(CONTENT_PATH).filter((f) => f.endsWith(".json"));
+    const files = fs
+      .readdirSync(CONTENT_PATH)
+      .filter((f) => f.endsWith(".json") && !f.includes("backup"));
 
     if (files.length === 0) {
       console.error(`❌ No JSON files found in: ${CONTENT_PATH}`);
@@ -413,61 +401,81 @@ export async function seedLessons() {
 
     let created = 0;
     let updated = 0;
+    let vocabCreated = 0;
+    let vocabUpdated = 0;
     let errors = 0;
 
     for (const file of files) {
       const filePath = path.join(CONTENT_PATH, file);
 
       try {
-        // Read file with UTF-8 encoding
         const content = JSON.parse(fs.readFileSync(filePath, "utf8"));
         const fileId = path.basename(file, ".json");
+        const lessonId = (content.id || fileId).toLowerCase();
 
-        // Transform content with safe number handling
+        // 1. Save Lesson
         const lessonData = transformLessonData(content, fileId);
-
-        // Check if lesson exists
-        const existing = await Lesson.findByPk(lessonData.id);
+        const existing = await Lesson.findByPk(lessonId);
 
         if (existing) {
-          // Update existing
           await existing.update(lessonData);
           updated++;
-          console.log(
-            `  🔄 Updated: ${file} → ${lessonData.title?.fa || lessonData.title?.en || "بدون عنوان"} (${lessonData.totalSections} sections, ${lessonData.totalVocabulary} vocab)`
-          );
         } else {
-          // Create new
           await Lesson.create(lessonData);
           created++;
-          console.log(
-            `  ✅ Created: ${file} → ${lessonData.title?.fa || lessonData.title?.en || "بدون عنوان"} (${lessonData.totalSections} sections, ${lessonData.totalVocabulary} vocab)`
-          );
         }
+
+        // 2. Save Vocabulary
+        const vocabItems = extractVocabularyForDB(content, lessonId);
+        if (vocabItems.length > 0) {
+          for (const item of vocabItems) {
+            try {
+              const existingVocab = await Vocabulary.findOne({
+                where: { id: item.id },
+              });
+              if (existingVocab) {
+                await existingVocab.update(item);
+                vocabUpdated++;
+              } else {
+                await Vocabulary.create(item);
+                vocabCreated++;
+              }
+            } catch (vocabError) {
+              // اگر خطا داشت، با id جدید تلاش کن
+              try {
+                const newId = `voc-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
+                await Vocabulary.create({ ...item, id: newId });
+                vocabCreated++;
+              } catch (e) {
+                console.log(`     ⚠️ Could not save vocabulary: ${item.de}`);
+              }
+            }
+          }
+        }
+
+        console.log(
+          `  ${existing ? "🔄" : "✅"} ${file} → ${lessonData.title?.fa || "بدون عنوان"} (${lessonData.totalSections} sections, ${vocabItems.length} vocab)`
+        );
       } catch (error) {
         errors++;
         console.error(`  ❌ Error with ${file}:`, error.message);
-        if (error.message.includes("NaN")) {
-          console.error(`     💡 Check for NaN values in ${file}`);
-        }
-        if (error.message.includes("Unexpected token")) {
-          console.error(`     💡 Check JSON syntax in ${file}`);
-        }
       }
     }
 
-    // Summary
     console.log("\n📊 ========================================");
     console.log("📊  Seeding Complete!");
     console.log("📊 ========================================");
-    console.log(`   ✅ Created:  ${created} lessons`);
-    console.log(`   🔄 Updated:  ${updated} lessons`);
-    console.log(`   ❌ Errors:   ${errors} errors`);
+    console.log(`   ✅ Created: ${created} lessons`);
+    console.log(`   🔄 Updated: ${updated} lessons`);
+    console.log(`   📖 Vocabulary: ${vocabCreated} created, ${vocabUpdated} updated`);
+    console.log(`   ❌ Errors: ${errors}`);
 
     const finalCount = await Lesson.count();
     console.log(`\n📊 Total lessons in database: ${finalCount}`);
 
-    // Show sample of first lesson
+    const vocabCount = await Vocabulary.count();
+    console.log(`📊 Total vocabulary words: ${vocabCount}`);
+
     const firstLesson = await Lesson.findOne({
       order: [["order", "ASC"]],
     });
@@ -479,12 +487,14 @@ export async function seedLessons() {
       console.log(`   Sections: ${firstLesson.totalSections}`);
       console.log(`   Vocabulary: ${firstLesson.totalVocabulary}`);
       console.log(`   Questions: ${firstLesson.totalQuestions}`);
+    }
 
-      // Show section types
-      if (firstLesson.sections && firstLesson.sections.length > 0) {
-        const sectionTypes = firstLesson.sections.map((s) => s.type).join(", ");
-        console.log(`   Section Types: ${sectionTypes}`);
-      }
+    const sampleVocab = await Vocabulary.findOne();
+    if (sampleVocab) {
+      console.log(`\n📖 Sample vocabulary:`);
+      console.log(`   DE: ${sampleVocab.de}`);
+      console.log(`   FA: ${sampleVocab.fa}`);
+      console.log(`   Level: ${sampleVocab.level}`);
     }
   } catch (error) {
     console.error("\n❌ Fatal error:", error.message);
@@ -492,7 +502,6 @@ export async function seedLessons() {
   }
 }
 
-// Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   await sequelize.authenticate();
   await seedLessons();
