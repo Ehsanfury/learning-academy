@@ -3,9 +3,9 @@
  * Path: backend/config/env.js
  * Description: Environment configuration with validation
  * Changes:
+ * - ✅ FIXED: Separate JWT secrets for access and refresh
  * - ✅ FIXED: Added GOOGLE_GEMINI_API_KEY support
- * - ✅ FIXED: Removed self-reference
- * - ✅ FIXED: Variable names match .env file
+ * - ✅ FIXED: All variable names match .env file
  */
 
 import dotenv from "dotenv";
@@ -69,11 +69,11 @@ export const env = {
     logging: process.env.DB_LOGGING === "true",
   },
 
-  // JWT
+  // ✅ FIXED: Separate JWT secrets
   jwt: {
     secret: process.env.JWT_SECRET,
     accessSecret: process.env.JWT_SECRET,
-    refreshSecret: process.env.JWT_SECRET,
+    refreshSecret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET,
     accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
   },
@@ -84,12 +84,12 @@ export const env = {
     password: process.env.ADMIN_PASSWORD || "admin123456",
   },
 
-  // AI Services - ✅ ADDED Google Gemini
+  // AI Services
   ai: {
     openRouterApiKey: process.env.OPENROUTER_API_KEY,
     googleGeminiApiKey: process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY,
-    defaultModel: process.env.DEFAULT_AI_MODEL || "gemini-pro",
-    fallbackModel: process.env.FALLBACK_AI_MODEL || "openrouter/gpt-3.5-turbo",
+    defaultModel: process.env.DEFAULT_AI_MODEL || "gemini-2.0-flash",
+    fallbackModel: process.env.FALLBACK_AI_MODEL || "openrouter/gpt-4o-mini",
   },
 
   // CORS
@@ -156,9 +156,18 @@ export const getAIProvider = () => {
   return null;
 };
 
-// Validate JWT secret length
+// Validate JWT secrets
 if (env.jwt.secret && env.jwt.secret.length < 32) {
   console.warn("⚠️ JWT_SECRET should be at least 32 characters long");
+}
+
+if (env.jwt.refreshSecret && env.jwt.refreshSecret.length < 32) {
+  console.warn("⚠️ JWT_REFRESH_SECRET should be at least 32 characters long");
+}
+
+// Warn if access and refresh secrets are the same (in production)
+if (env.isProduction && env.jwt.accessSecret === env.jwt.refreshSecret) {
+  console.warn("⚠️ JWT_SECRET and JWT_REFRESH_SECRET should be different in production");
 }
 
 export default env;

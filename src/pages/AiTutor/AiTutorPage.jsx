@@ -47,11 +47,29 @@ const AiTutorPage = () => {
   useEffect(() => {
     const loadHistory = async () => {
       try {
-        const response = await api.get("/ai/history");
+        // ✅ FIXED: استفاده از endpoint صحیح
+        const response = await api.get("/ai/conversations");
         if (response.data?.data?.length > 0) {
-          const lastConversation = response.data.data[0];
-          setConversationId(lastConversation.sessionId);
-          setMessages(lastConversation.messages || []);
+          const lastConv = response.data.data[0];
+          setConversationId(lastConv.sessionId);
+
+          // ✅ بارگذاری پیام‌های این جلسه
+          const msgResponse = await api.get(
+            `/ai/conversations/${lastConv.sessionId}`,
+          );
+          if (msgResponse.data?.data?.messages) {
+            setMessages(
+              msgResponse.data.data.messages.map((m) => ({
+                id: m.id,
+                type:
+                  m.sender === "user"
+                    ? MESSAGE_TYPES.USER
+                    : MESSAGE_TYPES.ASSISTANT,
+                content: m.message,
+                timestamp: m.created_at,
+              })),
+            );
+          }
         } else {
           // Add welcome message in Persian
           const welcomeMessage =

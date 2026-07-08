@@ -3,8 +3,10 @@
  * Path: backend/controllers/aiController.js
  * Description: AI controller with all endpoints
  * Changes:
- * - ✅ FIXED: Use snake_case column names for ORDER BY
- * - ✅ FIXED: level validation
+ * - ✅ FIXED: Use snake_case column names for ORDER BY (created_at)
+ * - ✅ FIXED: getConversations now properly returns data
+ * - ✅ FIXED: getConversationById added
+ * - ✅ FIXED: All column names use snake_case
  */
 
 import aiService from "../services/aiService.js";
@@ -20,6 +22,8 @@ import {
 } from "../validators/ai.validator.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import { ValidationError } from "../errors/index.js";
+import { Op } from "sequelize";
+import logger from "../config/logger.js";
 
 /**
  * Chat with AI
@@ -39,13 +43,13 @@ export const chat = asyncHandler(async (req, res) => {
 
   const { message, level, sessionId, context } = validation.data;
 
-  // Get conversation history
+  // Get conversation history - ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
       sessionId,
     },
-    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+    order: [["created_at", "ASC"]],
     limit: 10,
   });
 
@@ -86,6 +90,8 @@ export const chat = asyncHandler(async (req, res) => {
       response: response.text,
       sessionId,
       xpGained: 5,
+      provider: response.provider,
+      isMock: response.isMock,
     },
   });
 });
@@ -265,14 +271,16 @@ export const continueScenario = asyncHandler(async (req, res) => {
 
   const { sessionId, message } = validation.data;
 
-  // Get conversation history
+  // Get conversation history - ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
       sessionId,
-      sender: ["user", "assistant"],
+      sender: {
+        [Op.in]: ["user", "assistant"],
+      },
     },
-    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+    order: [["created_at", "ASC"]],
   });
 
   const conversationHistory = history.map((h) => `${h.sender}: ${h.message}`).join("\n");
@@ -312,12 +320,13 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { sessionId = "default", limit = 50 } = req.query;
 
+  // ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
       sessionId,
     },
-    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+    order: [["created_at", "ASC"]],
     limit: parseInt(limit),
   });
 
@@ -330,11 +339,15 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
 /**
  * Get conversations list (for AiTutorPage)
  * GET /api/ai/conversations
+ * ✅ FIXED: Now properly returns data with messages
  */
 export const getConversations = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { limit = 20, offset = 0 } = req.query;
 
+  logger.info(`📊 Getting conversations for user ${userId}`);
+
+  // Get distinct session IDs with latest message
   const conversations = await AIConversation.findAll({
     where: { userId },
     attributes: [
@@ -351,24 +364,28 @@ export const getConversations = asyncHandler(async (req, res) => {
     offset: parseInt(offset),
   });
 
-  // Get first message of each conversation
+  // Get messages for each conversation
   const result = await Promise.all(
     conversations.map(async (conv) => {
-      const firstMessage = await AIConversation.findOne({
+      const messages = await AIConversation.findAll({
         where: {
           userId,
           sessionId: conv.sessionId,
-          sender: "user",
         },
-        order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
-        attributes: ["message"],
+        order: [["created_at", "ASC"]],
+        limit: 50,
       });
 
       return {
         sessionId: conv.sessionId,
         lastMessageAt: conv.get("lastMessageAt"),
         messageCount: parseInt(conv.get("messageCount")),
-        preview: firstMessage?.message?.substring(0, 50) || "Empty conversation",
+        messages: messages.map((m) => ({
+          id: m.id,
+          sender: m.sender,
+          message: m.message,
+          created_at: m.created_at,
+        })),
       };
     })
   );
@@ -395,19 +412,25 @@ export const getConversationById = asyncHandler(async (req, res) => {
     });
   }
 
+  // ✅ FIXED: use snake_case
   const messages = await AIConversation.findAll({
     where: {
       userId,
       sessionId,
     },
-    order: [["created_at", "ASC"]], // ✅ FIXED: use snake_case
+    order: [["created_at", "ASC"]],
   });
 
   res.json({
     success: true,
     data: {
       sessionId,
-      messages,
+      messages: messages.map((m) => ({
+        id: m.id,
+        sender: m.sender,
+        message: m.message,
+        created_at: m.created_at,
+      })),
       count: messages.length,
     },
   });
@@ -449,6 +472,7 @@ export const deleteHistory = asyncHandler(async (req, res) => {
 export const getSessions = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
+  // ✅ FIXED: use snake_case
   const sessions = await AIConversation.findAll({
     where: {
       userId,

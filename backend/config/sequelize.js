@@ -2,27 +2,27 @@ import config from "./env.js";
 
 export default {
   development: {
-    username: config.db.username,
+    username: config.db.user, // ✅ FIXED: user instead of username
     password: config.db.password,
-    database: config.db.database,
+    database: config.db.name, // ✅ FIXED: name instead of database
     host: config.db.host,
     port: config.db.port,
     dialect: "postgres",
     logging: false,
   },
   test: {
-    username: config.db.username,
+    username: config.db.user, // ✅ FIXED: user instead of username
     password: config.db.password,
-    database: `${config.db.database}_test`,
+    database: `${config.db.name}_test`, // ✅ FIXED: name instead of database
     host: config.db.host,
     port: config.db.port,
     dialect: "postgres",
     logging: false,
   },
   production: {
-    username: config.db.username,
+    username: config.db.user, // ✅ FIXED: user instead of username
     password: config.db.password,
-    database: config.db.database,
+    database: config.db.name, // ✅ FIXED: name instead of database
     host: config.db.host,
     port: config.db.port,
     dialect: "postgres",

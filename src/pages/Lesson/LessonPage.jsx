@@ -1,11 +1,12 @@
 /**
- * LessonPage.jsx - Version 7.0
+ * LessonPage.jsx - Version 7.1
  * Path: src/pages/Lesson/LessonPage.jsx
  * Fully compatible with new lesson structure
  * Changes:
  * - ✅ Fixed: Pronunciation guide padding issue (padding="lg")
  * - ✅ Fixed: Exercises now display properly with ExerciseEngine
- * - ✅ Added: Exercise extraction from section.data
+ * - ✅ Fixed: Support for both section.questions and section.data structures
+ * - ✅ Added: Exercise extraction from section.questions (seeder structure)
  * - ✅ Added: Proper error handling for exercises
  * - ✅ Fixed: Layout issues with min-w-0 and whitespace-nowrap
  * - ✅ Fixed: getAllWords for dictionary
@@ -597,17 +598,45 @@ const LessonPage = () => {
     );
   };
 
-  // ✅ FIXED: renderExercises - اکنون از review هم استخراج می‌کند
-  const renderExercises = (section) => {
-    const data = section.data || {};
+  // ============================================
+  // ✅ FIXED: renderExercises - پشتیبانی از هر دو ساختار
+  // ============================================
 
-    // آرایه سوالات تمرین
+  const renderExercises = (section) => {
     const exerciseQuestions = [];
 
-    // تابع استخراج سوالات از هر نوع تمرین
-    const extractQuestions = (exerciseArray, prefix) => {
-      if (!Array.isArray(exerciseArray)) return;
+    // ✅ CASE 1: اگر section.questions مستقیم وجود دارد (ساختار سیدر a1/unit1.js)
+    if (
+      section.questions &&
+      Array.isArray(section.questions) &&
+      section.questions.length > 0
+    ) {
+      section.questions.forEach((q, idx) => {
+        exerciseQuestions.push({
+          id: q.id || `direct-${idx}-${Date.now()}`,
+          type: q.type || "multiple_choice",
+          question: {
+            fa: q.question?.fa || q.question || q.text?.fa || `سوال ${idx + 1}`,
+            en:
+              q.question?.en ||
+              q.questionEn ||
+              q.text?.en ||
+              `Question ${idx + 1}`,
+          },
+          options: q.options || [],
+          correct: q.correct !== undefined ? q.correct : q.correctIndex || 0,
+          answer: q.answer || "",
+          hint: q.hint?.fa || q.hint || "",
+          explanation: q.explanation || "",
+        });
+      });
+    }
 
+    // ✅ CASE 2: اگر section.data با ساختار data.vocabulary و ... وجود دارد
+    const data = section.data || {};
+
+    const extractFromData = (exerciseArray, prefix) => {
+      if (!Array.isArray(exerciseArray)) return;
       exerciseArray.forEach((exercise, idx) => {
         if (exercise.questions && Array.isArray(exercise.questions)) {
           exercise.questions.forEach((q, qIdx) => {
@@ -633,134 +662,16 @@ const LessonPage = () => {
       });
     };
 
-    // استخراج از همه بخش‌های تمرین
-    extractQuestions(data.vocabulary, "vocab");
-    extractQuestions(data.grammar, "grammar");
-    extractQuestions(data.reading, "reading");
-    extractQuestions(data.listening, "listening");
-    extractQuestions(data.writing, "writing");
-    extractQuestions(data.mixed, "mixed");
+    extractFromData(data.vocabulary, "vocab");
+    extractFromData(data.grammar, "grammar");
+    extractFromData(data.reading, "reading");
+    extractFromData(data.listening, "listening");
+    extractFromData(data.writing, "writing");
+    extractFromData(data.mixed, "mixed");
 
-    // ✅ NEW: استخراج از review quiz
+    // استخراج از review quiz
     if (data.review && data.review.quiz) {
-      extractQuestions([{ questions: data.review.quiz }], "review");
-    }
-
-    // ✅ NEW: استخراج از greeting_practice
-    if (data.greeting_practice && Array.isArray(data.greeting_practice)) {
-      data.greeting_practice.forEach((exercise, idx) => {
-        if (exercise.questions && Array.isArray(exercise.questions)) {
-          exercise.questions.forEach((q, qIdx) => {
-            exerciseQuestions.push({
-              id: q.id || `greeting-${idx}-${qIdx}-${Date.now()}`,
-              type: q.type || "multiple_choice",
-              question: {
-                fa:
-                  q.question?.fa ||
-                  q.question ||
-                  q.situation?.fa ||
-                  `سوال ${qIdx + 1}`,
-                en:
-                  q.question?.en ||
-                  q.questionEn ||
-                  q.situation?.en ||
-                  `Question ${qIdx + 1}`,
-              },
-              options: q.options || [
-                "گزینه ۱",
-                "گزینه ۲",
-                "گزینه ۳",
-                "گزینه ۴",
-              ],
-              correct:
-                q.correct !== undefined ? q.correct : q.correctIndex || 0,
-              explanation: q.explanation || "",
-            });
-          });
-        }
-      });
-    }
-
-    // ✅ NEW: استخراج از du_vs_sie
-    if (data.du_vs_sie && Array.isArray(data.du_vs_sie)) {
-      data.du_vs_sie.forEach((exercise, idx) => {
-        if (exercise.questions && Array.isArray(exercise.questions)) {
-          exercise.questions.forEach((q, qIdx) => {
-            exerciseQuestions.push({
-              id: q.id || `duvsie-${idx}-${qIdx}-${Date.now()}`,
-              type: q.type || "multiple_choice",
-              question: {
-                fa:
-                  q.question?.fa ||
-                  q.question ||
-                  q.situation?.fa ||
-                  `سوال ${qIdx + 1}`,
-                en:
-                  q.question?.en ||
-                  q.questionEn ||
-                  q.situation?.en ||
-                  `Question ${qIdx + 1}`,
-              },
-              options: q.options || ["du", "Sie"],
-              correct:
-                q.correct !== undefined ? q.correct : q.correctIndex || 0,
-              explanation: q.explanation || "",
-            });
-          });
-        }
-      });
-    }
-
-    // ✅ NEW: استخراج از role_play
-    if (data.role_play && Array.isArray(data.role_play)) {
-      data.role_play.forEach((exercise, idx) => {
-        if (exercise.scenarios && Array.isArray(exercise.scenarios)) {
-          exercise.scenarios.forEach((scenario, sIdx) => {
-            if (scenario.lines && Array.isArray(scenario.lines)) {
-              scenario.lines.forEach((line, lIdx) => {
-                exerciseQuestions.push({
-                  id: `roleplay-${idx}-${sIdx}-${lIdx}-${Date.now()}`,
-                  type: "role_play",
-                  question: {
-                    fa: `نقش: ${line.speaker} - ${line.meaning?.fa || line.meaning || line.german}`,
-                    en: `Role: ${line.speaker} - ${line.meaning?.en || line.meaning || line.german}`,
-                  },
-                  options: [],
-                  correct: 0,
-                  explanation: "",
-                  speaker: line.speaker,
-                  german: line.german,
-                  persian: line.persian,
-                  meaning: line.meaning,
-                });
-              });
-            }
-          });
-        }
-      });
-    }
-
-    // ✅ NEW: استخراج از pronunciation
-    if (data.pronunciation && Array.isArray(data.pronunciation)) {
-      data.pronunciation.forEach((exercise, idx) => {
-        if (exercise.words && Array.isArray(exercise.words)) {
-          exercise.words.forEach((word, wIdx) => {
-            exerciseQuestions.push({
-              id: `pronounce-${idx}-${wIdx}-${Date.now()}`,
-              type: "pronunciation",
-              question: {
-                fa: `تلفظ کلمه "${word.word}" به فارسی: ${word.persian}`,
-                en: `Pronunciation of "${word.word}" in Persian: ${word.persian}`,
-              },
-              options: [],
-              correct: 0,
-              explanation: "",
-              word: word.word,
-              persian: word.persian,
-            });
-          });
-        }
-      });
+      extractFromData([{ questions: data.review.quiz }], "review");
     }
 
     // اگر تمرینی وجود نداشت
@@ -792,10 +703,7 @@ const LessonPage = () => {
         </div>
 
         <ExerciseEngine
-          questions={exerciseQuestions}
-          onAnswer={(questionId, value) => {
-            handleAnswer(questionId, value);
-          }}
+          exercise={{ questions: exerciseQuestions, xpReward: 25 }}
           onComplete={(results) => {
             const correct = results.correct || 0;
             const total = results.total || exerciseQuestions.length;

@@ -6,6 +6,8 @@
  * - ✅ FIXED: Better question extraction from various data structures
  * - ✅ FIXED: Added language support
  * - ✅ FIXED: Handle empty questions gracefully
+ * - ✅ FIXED: Support for both 'questions' and 'exercise' props
+ * - ✅ FIXED: Added Target icon import
  */
 
 import React, { useState, useEffect } from "react";
@@ -21,14 +23,18 @@ import { useLanguage } from "../../context/LanguageContext";
 
 const ExerciseEngine = ({
   exercise,
+  questions: propQuestions,
   onComplete,
   onNext,
   onPrevious,
   isFirst = false,
   isLast = false,
   className,
+  language: propLanguage,
 }) => {
-  const { language } = useLanguage();
+  const { language: contextLanguage } = useLanguage();
+  const language = propLanguage || contextLanguage;
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
@@ -75,17 +81,18 @@ const ExerciseEngine = ({
     return [];
   };
 
-  const questions = extractQuestions(exercise);
+  // ✅ Support both 'exercise' and 'questions' props
+  const allQuestions = propQuestions || extractQuestions(exercise);
 
-  // Reset state when exercise changes
+  // Reset state when questions change
   useEffect(() => {
     setCurrentQuestionIndex(0);
     setAnswers({});
     setShowResults(false);
     setShowFeedback(false);
-  }, [exercise]);
+  }, [allQuestions]);
 
-  if (!questions || questions.length === 0) {
+  if (!allQuestions || allQuestions.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-gray-500 dark:text-gray-400">
@@ -97,8 +104,8 @@ const ExerciseEngine = ({
     );
   }
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const totalQuestions = questions.length;
+  const currentQuestion = allQuestions[currentQuestionIndex];
+  const totalQuestions = allQuestions.length;
 
   const handleAnswer = (questionId, answer) => {
     setAnswers((prev) => ({
@@ -115,7 +122,7 @@ const ExerciseEngine = ({
     } else {
       // Calculate score
       let correct = 0;
-      questions.forEach((q) => {
+      allQuestions.forEach((q) => {
         const userAnswer = answers[q.id];
         if (userAnswer !== undefined && userAnswer !== null) {
           if (q.type === "multiple_choice") {
@@ -147,7 +154,7 @@ const ExerciseEngine = ({
           correct,
           total: totalQuestions,
           answers,
-          earnedXP: exercise.xpReward || Math.round(calculatedScore / 10),
+          earnedXP: exercise?.xpReward || Math.round(calculatedScore / 10),
         });
       }
     }
@@ -174,6 +181,7 @@ const ExerciseEngine = ({
     if (q.text) return q.text;
     if (q.prompt) return q.prompt;
     if (q.situation) return q.situation;
+    if (q.questionText) return q.questionText;
     return JSON.stringify(q);
   };
 
@@ -257,7 +265,7 @@ const ExerciseEngine = ({
           <div className="flex items-center gap-2">
             <Target className="w-4 h-4 text-blue-500" />
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {exercise.xpReward || 10} XP
+              {exercise?.xpReward || 10} XP
             </span>
           </div>
         </div>

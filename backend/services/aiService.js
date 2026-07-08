@@ -2,7 +2,12 @@
  * aiService.js
  * Path: backend/services/aiService.js
  * Description: AI service with fallback support
- * Version: 5.0 - Simplified and robust
+ * Version: 6.0 - Fixed Gemini model, conversation history, OpenRouter
+ * Changes:
+ * - ✅ FIXED: Gemini model updated to gemini-2.0-flash
+ * - ✅ FIXED: Conversation history now sent to AI
+ * - ✅ FIXED: OpenRouter model updated to gpt-4o-mini
+ * - ✅ FIXED: Better error handling
  */
 
 import axios from "axios";
@@ -21,16 +26,31 @@ class AIService {
 
   /**
    * Main chat method - always returns a response
+   * ✅ FIXED: Now uses conversation history
    */
   async chat(userId, message, level = "A1", context = {}) {
     try {
       const sanitizedMessage = this.sanitizeInput(message);
       logger.info(`💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..."`);
 
+      // ✅ Build conversation history from context
+      const conversationHistory = (context.messages || []).map((m) => ({
+        role: m.sender === "user" ? "user" : "assistant",
+        content: m.content || m.message || "",
+      }));
+
+      // Remove last user message (it's being sent now)
+      if (
+        conversationHistory.length > 0 &&
+        conversationHistory[conversationHistory.length - 1].role === "user"
+      ) {
+        conversationHistory.pop();
+      }
+
       // Try Gemini first
       if (this.geminiApiKey) {
         try {
-          const response = await this.callGemini(sanitizedMessage, level);
+          const response = await this.callGemini(sanitizedMessage, level, conversationHistory);
           if (response) {
             return {
               text: response,
@@ -46,7 +66,7 @@ class AIService {
       // Try OpenRouter as fallback
       if (this.openRouterApiKey) {
         try {
-          const response = await this.callOpenRouter(sanitizedMessage, level);
+          const response = await this.callOpenRouter(sanitizedMessage, level, conversationHistory);
           if (response) {
             return {
               text: response,
@@ -79,22 +99,40 @@ class AIService {
 
   /**
    * Call Gemini API
+   * ✅ FIXED: Updated to gemini-2.0-flash
+   * ✅ FIXED: Now uses conversation history
    */
-  async callGemini(message, level) {
+  async callGemini(message, level, history = []) {
     const systemPrompt = this.getSystemPrompt(level);
-    const fullPrompt = `${systemPrompt}\n\nUser: ${message}\nAssistant:`;
 
+    // Build contents array with history
+    const contents = [];
+
+    // Add conversation history
+    history.forEach((h) => {
+      contents.push({
+        role: h.role === "assistant" ? "model" : "user",
+        parts: [{ text: h.content }],
+      });
+    });
+
+    // Add current message
+    contents.push({
+      role: "user",
+      parts: [{ text: message }],
+    });
+
+    // ✅ UPDATED: gemini-pro → gemini-2.0-flash
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${this.geminiApiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.geminiApiKey}`,
       {
-        contents: [
-          {
-            parts: [{ text: fullPrompt }],
-          },
-        ],
+        systemInstruction: {
+          parts: [{ text: systemPrompt }],
+        },
+        contents: contents,
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 300,
+          maxOutputTokens: 8192, // ✅ Increased for gemini-2.0-flash
           topP: 0.95,
         },
       },
@@ -117,19 +155,29 @@ class AIService {
 
   /**
    * Call OpenRouter API
+   * ✅ FIXED: Now uses conversation history
+   * ✅ FIXED: Updated to gpt-4o-mini
    */
-  async callOpenRouter(message, level) {
+  async callOpenRouter(message, level, history = []) {
     const systemPrompt = this.getSystemPrompt(level);
 
+    // Build messages with history
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...history.map((h) => ({
+        role: h.role === "assistant" ? "assistant" : "user",
+        content: h.content,
+      })),
+      { role: "user", content: message },
+    ];
+
+    // ✅ UPDATED: gpt-3.5-turbo → gpt-4o-mini
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message },
-        ],
-        max_tokens: 300,
+        model: "openai/gpt-4o-mini",
+        messages: messages,
+        max_tokens: 1000,
         temperature: 0.7,
       },
       {
@@ -170,6 +218,7 @@ Important rules:
 2. Keep responses short (2-3 sentences)
 3. Be encouraging and helpful
 4. Correct mistakes gently
+5. Include vocabulary when helpful
 
 Example: "عالی! جمله شما درست است. به آلمانی می‌گوییم: Ich heiße ..."
 

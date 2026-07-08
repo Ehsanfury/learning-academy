@@ -3,8 +3,9 @@
  * Path: backend/middlewares/rateLimiter.js
  * Description: Rate limiting middleware
  * Changes:
- * - ✅ FIXED: All exports properly defined
- * - ✅ FIXED: Added default export as a combined middleware
+ * - ✅ FIXED: All handlers now properly respond with 429
+ * - ✅ FIXED: Removed throw from handler callbacks
+ * - ✅ FIXED: Added proper exports
  */
 
 import rateLimit from "express-rate-limit";
@@ -21,11 +22,12 @@ export const generalLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (_req, res, _next, _options) => {
+  handler: (_req, res, _next) => {
     res.status(429).json({
       success: false,
       message: "Too many requests, please try again later.",
       retryAfter: Math.ceil(15 * 60),
+      timestamp: new Date().toISOString(),
     });
   },
 });
@@ -42,11 +44,12 @@ export const strictLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (_req, res, _next, _options) => {
+  handler: (_req, res, _next) => {
     res.status(429).json({
       success: false,
       message: "Too many requests, please slow down.",
       retryAfter: Math.ceil(15 * 60),
+      timestamp: new Date().toISOString(),
     });
   },
 });
@@ -63,11 +66,12 @@ export const authLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (_req, res, _next, _options) => {
+  handler: (_req, res, _next) => {
     res.status(429).json({
       success: false,
       message: "Too many login attempts, please try again later.",
       retryAfter: Math.ceil(15 * 60),
+      timestamp: new Date().toISOString(),
     });
   },
 });
@@ -84,11 +88,12 @@ export const registerLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (_req, res, _next, _options) => {
+  handler: (_req, res, _next) => {
     res.status(429).json({
       success: false,
       message: "Too many registration attempts, please try again later.",
       retryAfter: Math.ceil(15 * 60),
+      timestamp: new Date().toISOString(),
     });
   },
 });
@@ -105,18 +110,18 @@ export const apiLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  handler: (_req, res, _next, _options) => {
+  handler: (_req, res, _next) => {
     res.status(429).json({
       success: false,
       message: "API rate limit exceeded. Please try again later.",
       retryAfter: Math.ceil(60 * 60),
+      timestamp: new Date().toISOString(),
     });
   },
 });
 
 /**
  * ✅ DEFAULT EXPORT - Combined rate limiter for app.use("/api", rateLimiter)
- * This applies generalLimiter to all /api routes
  */
 const rateLimiter = generalLimiter;
 

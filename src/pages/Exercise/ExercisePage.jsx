@@ -165,12 +165,15 @@ const ExercisePage = () => {
       </div>
 
       <ExerciseEngine
-        questions={exercises}
-        onSubmit={handleSubmit}
-        isCompleted={false}
+        exercise={{ questions: exercises, xpReward: 50 }} // ✅ FIXED: wrap in exercise object
+        onComplete={(results) => {
+          const correct = results.correct || 0;
+          const total = results.total || exercises.length;
+          const score = Math.round((correct / total) * 100);
+          toast.success(`Score: ${score}%`);
+        }}
         language="fa"
       />
-
       <div className="mt-6 flex justify-center gap-4">
         <button
           onClick={handleRetry}
