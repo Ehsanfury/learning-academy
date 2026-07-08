@@ -6,6 +6,7 @@
  * - ✅ FIXED: Separate JWT secrets for access and refresh
  * - ✅ FIXED: Added GOOGLE_GEMINI_API_KEY support
  * - ✅ FIXED: All variable names match .env file
+ * - ✅ FIXED: Added JWT_REFRESH_SECRET validation
  */
 
 import dotenv from "dotenv";
@@ -31,6 +32,7 @@ const requiredEnvVars = [
   "DB_HOST",
   "DB_PORT",
   "JWT_SECRET",
+  "JWT_REFRESH_SECRET",
   "JWT_ACCESS_EXPIRES_IN",
   "JWT_REFRESH_EXPIRES_IN",
 ];
@@ -69,11 +71,11 @@ export const env = {
     logging: process.env.DB_LOGGING === "true",
   },
 
-  // ✅ FIXED: Separate JWT secrets
+  // ✅ FIXED: Separate JWT secrets - both required
   jwt: {
     secret: process.env.JWT_SECRET,
     accessSecret: process.env.JWT_SECRET,
-    refreshSecret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET,
+    refreshSecret: process.env.JWT_REFRESH_SECRET,
     accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
   },
@@ -161,11 +163,13 @@ if (env.jwt.secret && env.jwt.secret.length < 32) {
   console.warn("⚠️ JWT_SECRET should be at least 32 characters long");
 }
 
-if (env.jwt.refreshSecret && env.jwt.refreshSecret.length < 32) {
+// ✅ FIXED: Validate refresh secret exists and is different
+if (!env.jwt.refreshSecret) {
+  console.warn("⚠️ JWT_REFRESH_SECRET is not set - using JWT_SECRET (not recommended)");
+} else if (env.jwt.refreshSecret.length < 32) {
   console.warn("⚠️ JWT_REFRESH_SECRET should be at least 32 characters long");
 }
 
-// Warn if access and refresh secrets are the same (in production)
 if (env.isProduction && env.jwt.accessSecret === env.jwt.refreshSecret) {
   console.warn("⚠️ JWT_SECRET and JWT_REFRESH_SECRET should be different in production");
 }

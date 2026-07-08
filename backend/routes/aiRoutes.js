@@ -2,6 +2,8 @@
  * aiRoutes.js
  * Path: backend/routes/aiRoutes.js
  * Description: AI routes
+ * Changes:
+ * - ✅ FIXED: Added GET /conversations/:sessionId route
  */
 
 import express from "express";
@@ -16,6 +18,7 @@ import {
   continueScenario,
   getConversationHistory,
   getConversations,
+  getConversationById,
   getSessions,
   deleteHistory,
 } from "../controllers/aiController.js";
@@ -47,6 +50,7 @@ router.post("/scenario/continue", continueScenario);
 // ✅ تاریخچه مکالمات
 router.get("/history", getConversationHistory);
 router.get("/conversations", getConversations);
+router.get("/conversations/:sessionId", getConversationById);
 router.get("/sessions", getSessions);
 
 // حذف تاریخچه

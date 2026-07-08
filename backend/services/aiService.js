@@ -2,8 +2,9 @@
  * aiService.js
  * Path: backend/services/aiService.js
  * Description: AI service with fallback support
- * Version: 6.0 - Fixed Gemini model, conversation history, OpenRouter
+ * Version: 7.0 - Fixed Gemini API key exposure
  * Changes:
+ * - ✅ FIXED: Gemini API key no longer in URL (using @google/generative-ai SDK)
  * - ✅ FIXED: Gemini model updated to gemini-2.0-flash
  * - ✅ FIXED: Conversation history now sent to AI
  * - ✅ FIXED: OpenRouter model updated to gpt-4o-mini
@@ -26,14 +27,13 @@ class AIService {
 
   /**
    * Main chat method - always returns a response
-   * ✅ FIXED: Now uses conversation history
    */
   async chat(userId, message, level = "A1", context = {}) {
     try {
       const sanitizedMessage = this.sanitizeInput(message);
       logger.info(`💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..."`);
 
-      // ✅ Build conversation history from context
+      // Build conversation history from context
       const conversationHistory = (context.messages || []).map((m) => ({
         role: m.sender === "user" ? "user" : "assistant",
         content: m.content || m.message || "",
@@ -99,63 +99,57 @@ class AIService {
 
   /**
    * Call Gemini API
+   * ✅ FIXED: Using @google/generative-ai SDK instead of URL with API key
    * ✅ FIXED: Updated to gemini-2.0-flash
-   * ✅ FIXED: Now uses conversation history
    */
   async callGemini(message, level, history = []) {
-    const systemPrompt = this.getSystemPrompt(level);
+    try {
+      // ✅ FIXED: Use SDK instead of URL with API key
+      const { GoogleGenerativeAI } = await import("@google/generative-ai");
+      const genAI = new GoogleGenerativeAI(this.geminiApiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-    // Build contents array with history
-    const contents = [];
+      const systemPrompt = this.getSystemPrompt(level);
+      const fullPrompt = `${systemPrompt}\n\n`;
 
-    // Add conversation history
-    history.forEach((h) => {
-      contents.push({
-        role: h.role === "assistant" ? "model" : "user",
-        parts: [{ text: h.content }],
+      // Build conversation with history
+      let conversationPrompt = fullPrompt;
+      history.forEach((h) => {
+        const role = h.role === "assistant" ? "AI" : "User";
+        conversationPrompt += `${role}: ${h.content}\n`;
       });
-    });
+      conversationPrompt += `User: ${message}\nAI:`;
 
-    // Add current message
-    contents.push({
-      role: "user",
-      parts: [{ text: message }],
-    });
-
-    // ✅ UPDATED: gemini-pro → gemini-2.0-flash
-    const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${this.geminiApiKey}`,
-      {
-        systemInstruction: {
-          parts: [{ text: systemPrompt }],
-        },
-        contents: contents,
+      const result = await model.generateContent({
+        contents: [
+          {
+            role: "user",
+            parts: [{ text: conversationPrompt }],
+          },
+        ],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 8192, // ✅ Increased for gemini-2.0-flash
+          maxOutputTokens: 8192,
           topP: 0.95,
         },
-      },
-      {
-        timeout: this.timeout,
-        headers: {
-          "Content-Type": "application/json",
-        },
+      });
+
+      const response = await result.response;
+      const text = response.text();
+
+      if (!text) {
+        throw new Error("Empty response from Gemini");
       }
-    );
 
-    const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!text) {
-      throw new Error("Empty response from Gemini");
+      return text;
+    } catch (error) {
+      logger.error(`❌ Gemini API error:`, error.message);
+      throw error;
     }
-
-    return text;
   }
 
   /**
    * Call OpenRouter API
-   * ✅ FIXED: Now uses conversation history
    * ✅ FIXED: Updated to gpt-4o-mini
    */
   async callOpenRouter(message, level, history = []) {
@@ -171,7 +165,6 @@ class AIService {
       { role: "user", content: message },
     ];
 
-    // ✅ UPDATED: gpt-3.5-turbo → gpt-4o-mini
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {

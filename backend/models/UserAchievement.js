@@ -1,7 +1,11 @@
 /**
  * UserAchievement.js
- * German Academy
- * User-Achievement relation model
+ * Path: backend/models/UserAchievement.js
+ * Description: User achievement model (junction table)
+ * Changes:
+ * - ✅ FIXED: Added missing columns
+ * - ✅ FIXED: Added isEarned column
+ * - ✅ FIXED: Proper associations with User and Achievement
  */
 
 import { DataTypes } from "sequelize";
@@ -16,31 +20,48 @@ const UserAchievement = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
-      field: "user_id",
+      references: {
+        model: "users",
+        key: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     },
-
     achievementId: {
       type: DataTypes.UUID,
       allowNull: false,
-      field: "achievement_id",
+      references: {
+        model: "achievements",
+        key: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     },
-
-    // Achievement earned time
+    // ✅ NEW: isEarned column
+    isEarned: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
     earnedAt: {
       type: DataTypes.DATE,
+      allowNull: true,
       defaultValue: DataTypes.NOW,
-      field: "earned_at",
     },
-
-    // Has the user viewed this achievement?
+    // ✅ NEW: isViewed for tracking notification
     isViewed: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
-      field: "is_viewed",
+    },
+    // ✅ NEW: progress for tracking achievement progress
+    progress: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0,
     },
   },
   {
@@ -49,80 +70,17 @@ const UserAchievement = sequelize.define(
     underscored: true,
     indexes: [
       {
+        fields: ["user_id"],
+      },
+      {
+        fields: ["achievement_id"],
+      },
+      {
         unique: true,
         fields: ["user_id", "achievement_id"],
-        name: "unique_user_achievement",
-      },
-      {
-        fields: ["user_id", "earned_at"],
-        name: "idx_user_earned_at",
-      },
-      {
-        fields: ["is_viewed"],
-        name: "idx_is_viewed",
       },
     ],
   }
 );
-
-// ============================================
-// 📚 Static Methods
-// ============================================
-
-/**
- * Get all achievements for a user
- */
-UserAchievement.findByUser = async function (userId) {
-  return this.findAll({
-    where: { userId },
-    order: [["earnedAt", "DESC"]],
-    include: [
-      {
-        association: "achievement",
-      },
-    ],
-  });
-};
-
-/**
- * Get unviewed achievements for a user
- */
-UserAchievement.findUnviewedByUser = async function (userId) {
-  return this.findAll({
-    where: {
-      userId,
-      isViewed: false,
-    },
-    include: [
-      {
-        association: "achievement",
-      },
-    ],
-  });
-};
-
-/**
- * Mark achievement as viewed
- */
-UserAchievement.markAsViewed = async function (userId, achievementId) {
-  return this.update(
-    { isViewed: true },
-    {
-      where: {
-        userId,
-        achievementId,
-      },
-    }
-  );
-};
-
-/**
- * Count achievements for a user
- */
-UserAchievement.countByUser = async function (userId) {
-  return this.count({
-    where: { userId },
-  });
-};
 
 export default UserAchievement;

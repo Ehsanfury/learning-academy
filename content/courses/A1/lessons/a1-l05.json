@@ -1,499 +1,2091 @@
 {
-  "id": "a1-l05",
+  "id": "A1-L05",
+  "order": 5,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 5,
+  "unit": 5,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 50,
-  "difficulty": 1,
-  "prerequisites": [
-    "a1-l04"
-  ],
-  "nextLessonId": "a1-l06",
-  "previousLessonId": "a1-l04",
   "title": {
-    "de": "Was machen Sie?",
-    "fa": "شما چه کار می‌کنید؟",
-    "en": "What do you do?"
+    "fa": "Freizeit - اوقات فراغت",
+    "en": "Free Time",
+    "de": "Freizeit"
   },
-  "shortTitle": {
-    "de": "Was machen Sie?",
-    "fa": "چه کار می‌کنید؟",
-    "en": "What do you do?"
+  "subtitle": {
+    "fa": "سرگرمی‌ها، روزهای هفته، ماه‌ها و فعل‌های Modal",
+    "en": "Hobbies, Days of Week, Months and Modal Verbs",
+    "de": "Hobbys, Wochentage, Monate und Modalverben"
   },
   "description": {
-    "fa": "در این درس با افعال فعالیت‌های روزمره، بیان علایق و استفاده از قیدهای زمان ساده آشنا می‌شوید.",
-    "en": "In this lesson you will learn daily activity verbs, expressing interests and using simple adverbs of time.",
-    "de": "In dieser Lektion lernen Sie Verben für Alltagsaktivitäten, Interessen ausdrücken und einfache Zeitadverbien."
+    "fa": "در این درس شما با واژگان سرگرمی‌ها و هوبی‌ها، روزهای هفته و ماه‌های سال، فعل‌های Modal (können و müssen)، فعل‌های با تغییر مصوت (treffen, fahren, lesen)، حرف اضافه‌ی in در Akkusativ (in den/ins/in die) و ساختار Satzklammer آشنا می‌شوید.",
+    "en": "In this lesson you will learn hobbies vocabulary, days of the week and months, modal verbs (können and müssen), verbs with vowel change (treffen, fahren, lesen), the preposition in with accusative (in den/ins/in die), and the sentence bracket (Satzklammer) structure.",
+    "de": "In dieser Lektion lernen Sie Hobbys, Wochentage und Monate, Modalverben (können und müssen), Verben mit Vokalwechsel (treffen, fahren, lesen), die Präposition in mit Akkusativ (in den/ins/in die) und die Satzklammer."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 2,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ یادگیری افعال فعالیت‌های روزمره",
-      "✅ بیان علایق و سرگرمی‌ها",
-      "✅ استفاده از قیدهای زمان ساده (heute, jetzt)",
-      "✅ ساختار جمله با افعال"
+      "نام بردن سرگرمی‌ها و هوبی‌ها به آلمانی",
+      "پرسیدن درباره‌ی سرگرمی: Was machst du in der Freizeit?",
+      "گفتن آنچه دوست دارید: Ich spiele gerne... / Ich höre gerne...",
+      "صرف فعل‌های با تغییر مصوت: treffen (e→i), fahren (a→ä), lesen (e→ie)",
+      "استفاده از حرف اضافه‌ی in در Akkusativ: in den/ins/in die",
+      "صرف فعل Modal können (توانستن): ich kann, du kannst, er kann...",
+      "صرف فعل Modal müssen (باید): ich muss, du musst, er muss...",
+      "فهمیدن ساختار Satzklammer (کمان جمله) با فعل‌های Modal",
+      "نام بردن روزهای هفته و ماه‌های سال",
+      "گفتن زمان روز: morgens, vormittags, nachmittags, abends, nachts"
+    ],
+    "en": [
+      "Name hobbies and free time activities in German",
+      "Ask about hobbies: Was machst du in der Freizeit?",
+      "Express preferences: Ich spiele gerne... / Ich höre gerne...",
+      "Conjugate verbs with vowel change: treffen (e→i), fahren (a→ä), lesen (e→ie)",
+      "Use preposition in with accusative: in den/ins/in die",
+      "Conjugate modal verb können (can): ich kann, du kannst, er kann...",
+      "Conjugate modal verb müssen (must): ich muss, du musst, er muss...",
+      "Understand Satzklammer (sentence bracket) with modal verbs",
+      "Name days of the week and months",
+      "Tell time of day: morgens, vormittags, nachmittags, abends, nachts"
+    ],
+    "de": [
+      "Hobbys und Freizeitaktivitäten auf Deutsch nennen",
+      "Nach Hobbys fragen: Was machst du in der Freizeit?",
+      "Vorlieben ausdrücken: Ich spiele gerne... / Ich höre gerne...",
+      "Verben mit Vokalwechsel konjugieren: treffen (e→i), fahren (a→ä), lesen (e→ie)",
+      "Präposition in mit Akkusativ verwenden: in den/ins/in die",
+      "Modalverb können konjugieren: ich kann, du kannst, er kann...",
+      "Modalverb müssen konjugieren: ich muss, du musst, er muss...",
+      "Satzklammer mit Modalverben verstehen",
+      "Wochentage und Monate nennen",
+      "Tageszeiten nennen: morgens, vormittags, nachmittags, abends, nachts"
     ]
   },
-  "xpReward": 55,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس پنجم خوش آمدید! ⚽\n\nدر این درس با افعال فعالیت‌های روزمره، بیان علایق و استفاده از قیدهای زمان آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• افعال فعالیت‌های روزمره به آلمانی\n• چگونه بگویید چه کارهایی دوست دارید\n• استفاده از قیدهای زمان ساده",
-        "en": "Welcome to lesson 5! ⚽\n\nIn this lesson you will learn daily activity verbs, expressing interests and using simple adverbs of time.\n\nYou will learn:\n• Daily activity verbs in German\n• How to say what you like to do\n• Using simple adverbs of time",
-        "de": "Willkommen zur fünften Lektion! ⚽\n\nIn dieser Lektion lernen Sie Verben für Alltagsaktivitäten, Interessen ausdrücken und einfache Zeitadverbien.\n\nSie lernen:\n• Verben für Alltagsaktivitäten auf Deutsch\n• Wie man sagt, was man gerne macht\n• Verwendung von einfachen Zeitadverbien"
-      },
-      "id": "a1-l05-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱-۴: احوال‌پرسی، معرفی، خانواده، غذا، شغل، ساعت",
+      "آشنایی با حالت Akkusativ (der → den)",
+      "صرف فعل‌های منظم و فعل‌های با تغییر مصوت (essen, nehmen)",
+      "آشنایی با فعل‌های جداشونده (aufstehen, anfangen)"
+    ],
+    "en": [
+      "Mastery of Lessons 1-4: Greetings, introductions, family, food, professions, time",
+      "Familiarity with accusative case (der → den)",
+      "Conjugation of regular verbs and vowel-change verbs (essen, nehmen)",
+      "Familiarity with separable verbs (aufstehen, anfangen)"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1-4",
+      "Vertrautheit mit Akkusativ (der → den)",
+      "Konjugation regelmäßiger Verben und Vokalwechselverben",
+      "Vertrautheit mit trennbaren Verben (aufstehen, anfangen)"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "صحنه داستان (Story Mode) - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "arbeiten",
-          "fa": "کار کردن",
-          "en": "to work",
-          "icon": "💼",
-          "example": {
-            "de": "Ich arbeite im Büro.",
-            "fa": "من در دفتر کار می‌کنم.",
-            "en": "I work in the office."
-          }
-        },
-        {
-          "de": "lernen",
-          "fa": "یاد گرفتن / مطالعه کردن",
-          "en": "to learn/study",
-          "icon": "📚",
-          "example": {
-            "de": "Ich lerne Deutsch.",
-            "fa": "من آلمانی یاد می‌گیرم.",
-            "en": "I am learning German."
-          }
-        },
-        {
-          "de": "spielen",
-          "fa": "بازی کردن",
-          "en": "to play",
-          "icon": "🎮",
-          "example": {
-            "de": "Ich spiele Fußball.",
-            "fa": "من فوتبال بازی می‌کنم.",
-            "en": "I play football."
-          }
-        },
-        {
-          "de": "hören",
-          "fa": "شنیدن / گوش دادن",
-          "en": "to listen",
-          "icon": "🎧",
-          "example": {
-            "de": "Ich höre Musik.",
-            "fa": "من به موسیقی گوش می‌دهم.",
-            "en": "I listen to music."
-          }
-        },
-        {
-          "de": "lesen",
-          "fa": "خواندن",
-          "en": "to read",
-          "icon": "📖",
-          "example": {
-            "de": "Ich lese ein Buch.",
-            "fa": "من یک کتاب می‌خوانم.",
-            "en": "I read a book."
-          }
-        },
-        {
-          "de": "schreiben",
-          "fa": "نوشتن",
-          "en": "to write",
-          "icon": "✍️",
-          "example": {
-            "de": "Ich schreibe einen Brief.",
-            "fa": "من یک نامه می‌نویسم.",
-            "en": "I write a letter."
-          }
-        },
-        {
-          "de": "die Musik",
-          "fa": "موسیقی",
-          "en": "music",
-          "gender": "die",
-          "icon": "🎵"
-        },
-        {
-          "de": "der Fußball",
-          "fa": "فوتبال",
-          "en": "football",
-          "gender": "der",
-          "icon": "⚽"
-        },
-        {
-          "de": "jetzt",
-          "fa": "اکنون",
-          "en": "now",
-          "icon": "⏰"
-        },
-        {
-          "de": "heute",
-          "fa": "امروز",
-          "en": "today",
-          "icon": "📅"
-        }
-      ],
-      "id": "a1-l05-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی پنجم کلاس آلمانی. دانشجویان امروز درباره‌ی سرگرمی‌ها و هوبی‌هایشان صحبت می‌کنند. Ben، Evelyn و Lisa درباره‌ی آخر هفته‌شان در برلین می‌گویند. Paul و Fabio درباره‌ی برنامه‌های آخر هفته با فعل können صحبت می‌کنند. Laura از استرس آخر هفته‌اش می‌گوید.",
+      "en": "Fifth week of German class. Today students talk about their hobbies and free time. Ben, Evelyn and Lisa talk about their weekends in Berlin. Paul and Fabio discuss weekend plans using können. Laura talks about her weekend stress.",
+      "de": "Fünfte Woche des Deutschkurses. Heute sprechen die Studierenden über ihre Hobbys und Freizeit. Ben, Evelyn und Lisa erzählen von ihren Wochenenden in Berlin. Paul und Fabio besprechen Wochenendpläne mit können. Laura erzählt von ihrem Wochenendstress."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Ben",
+        "persian": "بِن",
+        "country": "آلمان",
+        "age": 25,
+        "job": "دانشجو"
       },
-      "concept": {
-        "fa": "ساختار جمله با افعال و قیدهای زمان",
-        "en": "Sentence Structure with Verbs and Adverbs of Time",
-        "de": "Satzstruktur mit Verben und Zeitadverbien"
+      {
+        "name": "Evelyn",
+        "persian": "اِوِ-لین",
+        "country": "آلمان",
+        "age": 28,
+        "job": "طراح"
       },
-      "explanation": {
-        "fa": "📌 **ساختار جمله با افعال:**\n\nدر جملات خبری، فعل همیشه جایگاه دوم را اشغال می‌کند.\n\n• Ich lerne Deutsch. (من آلمانی یاد می‌گیرم)\n• Heute spiele ich Fußball. (امروز من فوتبال بازی می‌کنم)\n\n📌 **سوالات با کلمه پرسشی (W-Fragen):**\n\n• Was machen Sie? (شما چه کار می‌کنید؟)\n• Was lernst du? (تو چه چیزی یاد می‌گیری؟)",
-        "en": "📌 **Sentence Structure with Verbs:**\n\nIn statements, the verb always occupies the second position.\n\n• Ich lerne Deutsch.\n• Heute spiele ich Fußball.\n\n📌 **Questions with W-Fragen:**\n\n• Was machen Sie? (What do you do?)\n• Was lernst du? (What are you learning?)",
-        "de": "📌 **Satzstruktur mit Verben:**\n\nIn Aussagesätzen steht das Verb immer an zweiter Stelle.\n\n• Ich lerne Deutsch.\n• Heute spiele ich Fußball.\n\n📌 **Fragen mit W-Fragen:**\n\n• Was machen Sie?\n• Was lernst du?"
+      {
+        "name": "Lisa",
+        "persian": "لی-زا",
+        "country": "آلمان",
+        "age": 24,
+        "job": "دانشجو"
       },
-      "examples": [
-        {
-          "de": "Ich lerne Deutsch.",
-          "fa": "من آلمانی یاد می‌گیرم.",
-          "en": "I learn German."
-        },
-        {
-          "de": "Heute spiele ich Fußball.",
-          "fa": "امروز فوتبال بازی می‌کنم.",
-          "en": "Today I play football."
-        },
-        {
-          "de": "Was machen Sie?",
-          "fa": "شما چه کار می‌کنید؟",
-          "en": "What do you do?"
-        },
-        {
-          "de": "Ich höre Musik.",
-          "fa": "من به موسیقی گوش می‌دهم.",
-          "en": "I listen to music."
-        }
-      ],
-      "id": "a1-l05-GRAM-003",
-      "order": 2
+      {
+        "name": "Laura",
+        "persian": "لا-او-را",
+        "country": "آلمان",
+        "age": 26,
+        "job": "مدیر بازاریابی"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس پنجم خوش آمدید — Freizeit!",
+      "en": "Welcome to Lesson 5 — Free Time!",
+      "de": "Willkommen zu Lektion 5 — Freizeit!"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: یک روز معمولی",
-        "en": "📖 Story: A Normal Day",
-        "de": "📖 Geschichte: Ein normaler Tag"
-      },
-      "text": {
-        "de": "Heute ist ein normaler Tag. Ich arbeite im Büro. Ich lerne Deutsch. Ich höre Musik. Ich spiele Fußball. Das ist mein Hobby. Was machst du?",
-        "fa": "امروز یک روز عادی است. من در دفتر کار می‌کنم. من آلمانی یاد می‌گیرم. من به موسیقی گوش می‌دهم. من فوتبال بازی می‌کنم. این سرگرمی من است. تو چه کار می‌کنی؟",
-        "en": "Today is a normal day. I work in the office. I learn German. I listen to music. I play football. This is my hobby. What do you do?"
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "سرگرمی من چیست؟",
-            "en": "What is my hobby?",
-            "de": "Was ist mein Hobby?"
+    "content": {
+      "fa": "تصور کنید یک آلمانی از شما می‌پرسد: «Was machst du am Wochenende?» (آخر هفته چه می‌کنی؟) یا «Was sind deine Hobbys?» (سرگرمی‌هایت چیست؟). این یکی از رایج‌ترین سوالات در مکالمه‌ی روزمره‌ی آلمانی است.\n\nاین درس به شما کمک می‌کند تا درباره‌ی سرگرمی‌ها، آخر هفته و فعالیت‌های روزمره‌تان صحبت کنید. شما با فعل‌های Modal (können و müssen) و ساختار Satzklammer آشنا می‌شوید — دو مورد از مهم‌ترین موضوعات گرامری A1.",
+      "en": "Imagine a German asks you: 'Was machst du am Wochenende?' (What do you do on the weekend?) or 'Was sind deine Hobbys?' (What are your hobbies?). This is one of the most common questions in daily German conversation.\n\nThis lesson helps you talk about hobbies, weekends and daily activities. You'll learn modal verbs (können and müssen) and the Satzklammer (sentence bracket) — two of the most important A1 grammar topics.",
+      "de": "Stell dir vor, ein Deutscher fragt dich: 'Was machst du am Wochenende?' oder 'Was sind deine Hobbys?'. Das ist eine der häufigsten Fragen im deutschen Alltag.\n\nDiese Lektion hilft dir, über Hobbys, Wochenende und Alltag zu sprechen. Du lernst Modalverben (können und müssen) und die Satzklammer — zwei der wichtigsten A1-Grammatikthemen."
+    },
+    "imagePrompt": "Young people enjoying various hobbies in Berlin: someone jogging in a park, another playing piano, a group at a club, someone reading a book, weekend market scene"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
+    },
+    "layers": {
+      "fa": "سه لایه تلفظ: ۱. تلفظ فارسی ۲. IPA ۳. توصیف فیزیکی. این درس روی تلفظ کلمات سرگرمی و روزهای هفته تمرکز می‌کند.",
+      "en": "Three layers: 1. Persian pronunciation 2. IPA 3. Physical description. This lesson focuses on hobby and weekday vocabulary pronunciation.",
+      "de": "Drei Schichten: 1. Persische Aussprache 2. IPA 3. Physische Beschreibung. Diese Lektion konzentriert sich auf Hobby- und Wochentagvokabular."
+    },
+    "sounds": [
+      {
+        "id": "sound-r-review",
+        "letter": "r (مرور)",
+        "description": {
+          "fa": "صدای غُرّی از حلق",
+          "en": "Uvular sound",
+          "de": "Uvularer Laut"
+        },
+        "ipa": "[ʁ] oder [ɐ]",
+        "persianEquivalent": "≈ غُرّ کردن گربه",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ر' فارسی",
+          "en": "Pronouncing like Persian 'r'",
+          "de": "Wie persisches 'r'"
+        },
+        "examples": [
+          {
+            "word": "fahren",
+            "persian": "فا-رِن",
+            "meaning": "سواری کردن"
           },
-          "answer": {
-            "fa": "فوتبال بازی کردن",
-            "en": "Playing football",
-            "de": "Fußball spielen"
+          {
+            "word": "Freizeit",
+            "persian": "فرای-تسایت",
+            "meaning": "اوقات فراغت"
+          },
+          {
+            "word": "Freitag",
+            "persian": "فرای-تاک",
+            "meaning": "جمعه"
           }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "چه چیزی یاد می‌گیرم؟",
-            "en": "What am I learning?",
-            "de": "Was lerne ich?"
-          },
-          "answer": {
-            "fa": "آلمانی",
-            "en": "German",
-            "de": "Deutsch"
-          }
-        }
-      ],
-      "id": "a1-l05-STORY-004",
-      "order": 3
-    },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "fill_in",
-          "question": {
-            "fa": "فعل lernen را برای du صرف کنید: Du ________.",
-            "en": "Conjugate lernen for du: Du ________.",
-            "de": "Konjugieren Sie lernen für du: Du ________."
-          },
-          "answer": "lernst",
-          "hint": {
-            "fa": "du → -st",
-            "en": "du → -st",
-            "de": "du → -st"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "sentence_building",
-          "question": {
-            "fa": "کلمات را مرتب کنید: 'Musik / ich / höre'",
-            "en": "Arrange: 'Musik / ich / höre'",
-            "de": "Ordnen: 'Musik / ich / höre'"
-          },
-          "answer": "Ich höre Musik.",
-          "hint": {
-            "fa": "فعل در جایگاه دوم",
-            "en": "Verb in second position",
-            "de": "Verb an zweiter Stelle"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'او (مذکر) کار می‌کند.'",
-            "en": "Translate: 'He works.'",
-            "de": "Übersetzen: 'Er arbeitet.'"
-          },
-          "answer": "Er arbeitet.",
-          "hint": {
-            "fa": "arbeiten = کار کردن",
-            "en": "arbeiten = to work",
-            "de": "arbeiten = arbeiten"
-          }
-        }
-      ],
-      "id": "a1-l05-EXER-005",
-      "order": 4
-    },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "arbeiten",
-          "fa": "کار کردن",
-          "en": "to work",
-          "icon": "💼"
-        },
-        {
-          "de": "lernen",
-          "fa": "یاد گرفتن",
-          "en": "to learn",
-          "icon": "📚"
-        },
-        {
-          "de": "spielen",
-          "fa": "بازی کردن",
-          "en": "to play",
-          "icon": "🎮"
-        },
-        {
-          "de": "hören",
-          "fa": "گوش دادن",
-          "en": "to listen",
-          "icon": "🎧"
-        },
-        {
-          "de": "lesen",
-          "fa": "خواندن",
-          "en": "to read",
-          "icon": "📖"
-        },
-        {
-          "de": "schreiben",
-          "fa": "نوشتن",
-          "en": "to write",
-          "icon": "✍️"
-        },
-        {
-          "de": "die Musik",
-          "fa": "موسیقی",
-          "en": "music",
-          "icon": "🎵"
-        },
-        {
-          "de": "der Fußball",
-          "fa": "فوتبال",
-          "en": "football",
-          "icon": "⚽"
-        },
-        {
-          "de": "jetzt",
-          "fa": "اکنون",
-          "en": "now",
-          "icon": "⏰"
-        },
-        {
-          "de": "heute",
-          "fa": "امروز",
-          "en": "today",
-          "icon": "📅"
-        }
-      ],
-      "id": "a1-l05-FLASH-006",
-      "order": 5
-    },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "arbeiten",
-          "phonetic": "/ˈaʁbaɪ̯tn̩/"
-        },
-        {
-          "word": "lernen",
-          "phonetic": "/ˈlɛʁnən/"
-        },
-        {
-          "word": "spielen",
-          "phonetic": "/ˈʃpiːlən/"
-        },
-        {
-          "word": "hören",
-          "phonetic": "/ˈhøːʁən/"
-        },
-        {
-          "word": "Fußball",
-          "phonetic": "/ˈfuːsbal/"
-        }
-      ],
-      "id": "a1-l05-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich ________ Deutsch.' (lernen)",
-            "en": "Complete: 'Ich ________ Deutsch.' (lernen)",
-            "de": "Vervollständigen: 'Ich ________ Deutsch.' (lernen)"
-          },
-          "answer": "lerne",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "'من فوتبال بازی می‌کنم' به آلمانی چیست؟",
-            "en": "What is 'I play football' in German?",
-            "de": "Was ist 'Ich spiele Fußball' auf Deutsch?"
-          },
-          "options": [
-            "Ich spiele Fußball.",
-            "Ich spielen Fußball.",
-            "Ich spielst Fußball.",
-            "Ich spielt Fußball."
-          ],
-          "correctIndex": 0,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l05-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ افعال فعالیت‌های روزمره",
-          "✅ بیان علایق و سرگرمی‌ها",
-          "✅ استفاده از قیدهای زمان (heute, jetzt)",
-          "✅ ساختار جمله با افعال"
-        ],
-        "en": [
-          "✅ Daily activity verbs",
-          "✅ Expressing interests and hobbies",
-          "✅ Using adverbs of time (heute, jetzt)",
-          "✅ Sentence structure with verbs"
-        ],
-        "de": [
-          "✅ Verben für Alltagsaktivitäten",
-          "✅ Interessen und Hobbys ausdrücken",
-          "✅ Verwendung von Zeitadverbien (heute, jetzt)",
-          "✅ Satzstruktur mit Verben"
         ]
       },
-      "id": "a1-l05-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-v",
+        "letter": "v",
+        "description": {
+          "fa": "مثل 'ف' در فارسی - نه 'و'",
+          "en": "Like 'f' in Persian - not 'v'",
+          "de": "Wie 'f' - nicht 'w'"
+        },
+        "ipa": "[f]",
+        "persianEquivalent": "≈ 'ف' فارسی",
+        "commonMistake": {
+          "fa": "تلفظ 'v' مثل 'و' - باید 'ف' باشد",
+          "en": "Pronouncing 'v' like 'v' - should be 'f'",
+          "de": "'v' wie 'w' - sollte 'f' sein"
+        },
+        "examples": [
+          {
+            "word": "Freizeit",
+            "persian": "فرای-تسایت",
+            "meaning": "اوقات فراغت"
+          },
+          {
+            "word": "Freitag",
+            "persian": "فرای-تاک",
+            "meaning": "جمعه"
+          },
+          {
+            "word": "fernsehen",
+            "persian": "فِرن-زِ-اِن",
+            "meaning": "تلویزیون دیدن"
+          }
+        ]
+      },
+      {
+        "id": "sound-ei-review",
+        "letter": "ei / ai (مرور)",
+        "description": {
+          "fa": "مثل 'ای' کشیده",
+          "en": "Like long 'i'",
+          "de": "Wie langes 'i'"
+        },
+        "ipa": "[aɪ̯]",
+        "persianEquivalent": "≈ 'ای' کشیده",
+        "commonMistake": {
+          "fa": "تلفظ کوتاه 'ای'",
+          "en": "Pronouncing short 'i'",
+          "de": "Kurzes 'i'"
+        },
+        "examples": [
+          {
+            "word": "Freizeit",
+            "persian": "فرای-تسایت",
+            "meaning": "اوقات فراغت"
+          },
+          {
+            "word": "einladen",
+            "persian": "این-لا-دِن",
+            "meaning": "دعوت کردن"
+          },
+          {
+            "word": "Klavier",
+            "persian": "کلا-فیر",
+            "meaning": "پیانو"
+          }
+        ]
+      },
+      {
+        "id": "sound-ö-review",
+        "letter": "ö (مرور)",
+        "description": {
+          "fa": "بین 'اُ' و 'اِ' - لب‌ها گرد، زبان جلو",
+          "en": "Between 'o' and 'e'",
+          "de": "Zwischen 'o' und 'e'"
+        },
+        "ipa": "[øː]",
+        "persianEquivalent": "≈ بین 'اُ' و 'اِ'",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'و'",
+          "en": "Pronouncing like 'o'",
+          "de": "Wie 'o'"
+        },
+        "examples": [
+          {
+            "word": "können",
+            "persian": "کو-نِن",
+            "meaning": "توانستن"
+          },
+          {
+            "word": "müssen",
+            "persian": "مو-سِن",
+            "meaning": "باید"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-freizeit",
+      "de": "Freizeit",
+      "article": "die",
+      "plural": "Freizeiten",
+      "ipa": "[ˈfraɪ̯ˌtsaɪ̯t]",
+      "fa": "اوقات فراغت",
+      "en": "free time",
+      "example": {
+        "de": "Was machst du in der Freizeit?",
+        "fa": "در اوقات فراغت چه می‌کنی؟",
+        "en": "What do you do in your free time?"
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Freizeit. مرکب از frei (آزاد) + Zeit (زمان)",
+        "en": "Feminine - die Freizeit. Compound of frei (free) + Zeit (time)",
+        "de": "Feminin - die Freizeit. Zusammengesetzt aus frei + Zeit"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'v' مثل 'ف' و 'ei' کشیده و 'z' مثل 'تس'",
+        "en": "Pronounce 'v' like 'f', 'ei' long, 'z' like 'ts'",
+        "de": "'v' wie 'f', 'ei' lang, 'z' wie 'ts'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-sport",
+      "de": "Sport",
+      "article": "der",
+      "plural": "Sportarten",
+      "ipa": "[ʃpɔʁt]",
+      "fa": "ورزش",
+      "en": "sport",
+      "example": {
+        "de": "Ich mache gerne Sport.",
+        "fa": "من ورزش کردن را دوست دارم.",
+        "en": "I like doing sports."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Sport. 'Sport machen' یعنی ورزش کردن",
+        "en": "Masculine - der Sport. 'Sport machen' means to do sports",
+        "de": "Maskulin - der Sport. 'Sport machen'"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sp' مثل 'شپ' در ابتدای کلمه",
+        "en": "Pronounce 'sp' like 'shp' at word start",
+        "de": "'sp' wie 'schp' am Wortanfang"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-musik-horen",
+      "de": "Musik hören",
+      "article": "",
+      "plural": "",
+      "ipa": "[muˈziːk ˈhøːʁən]",
+      "fa": "موسیقی گوش دادن",
+      "en": "to listen to music",
+      "example": {
+        "de": "Ich höre gerne Musik.",
+        "fa": "من موسیقی گوش دادن را دوست دارم.",
+        "en": "I like listening to music."
+      },
+      "usageNotes": {
+        "fa": "عبارت فعل + اسم. 'Musik' مؤنث است: die Musik",
+        "en": "Verb + noun phrase. 'Musik' is feminine: die Musik",
+        "de": "Verb + Nomen. 'Musik' ist feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ö' در hören بین 'اُ' و 'اِ'",
+        "en": "Pronounce 'ö' in hören between 'o' and 'e'",
+        "de": "'ö' in hören zwischen 'o' und 'e'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-fitness-studio",
+      "de": "Fitness-Studio",
+      "article": "das",
+      "plural": "Fitness-Studios",
+      "ipa": "[ˈfɪtnəsˈʃtuːdio]",
+      "fa": "باشگاه ورزشی",
+      "en": "fitness studio, gym",
+      "example": {
+        "de": "Ich gehe ins Fitness-Studio.",
+        "fa": "من به باشگاه می‌روم.",
+        "en": "I go to the gym."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Fitness-Studio. 'ins' = in + das (جهت)",
+        "en": "Neuter - das Fitness-Studio. 'ins' = in + das (direction)",
+        "de": "Neutral - das Fitness-Studio. 'ins' = in + das"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'st' مثل 'شت'",
+        "en": "Pronounce 'st' like 'sht'",
+        "de": "'st' wie 'scht'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-fernsehen",
+      "de": "fernsehen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈfɛʁnˌzeːən]",
+      "fa": "تلویزیون دیدن",
+      "en": "to watch TV",
+      "example": {
+        "de": "Ich sehe abends fern.",
+        "fa": "من عصرها تلویزیون می‌بینم.",
+        "en": "I watch TV in the evening."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده + با تغییر مصوت: e → ie در du و er. Ich sehe ... fern",
+        "en": "Separable verb + vowel change: e → ie. Ich sehe ... fern",
+        "de": "Trennbares Verb + Vokalwechsel: e → ie"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن جدا کردن و تغییر مصوت. نگویید 'Ich fernsehe'",
+        "en": "Forgetting to separate and vowel change",
+        "de": "Vergessen zu trennen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-einkaufen-hobby",
+      "de": "einkaufen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈaɪ̯nˌkaʊ̯fən]",
+      "fa": "خرید کردن (سرگرمی)",
+      "en": "to shop (hobby)",
+      "example": {
+        "de": "Ich gehe gerne einkaufen.",
+        "fa": "من خرید کردن را دوست دارم.",
+        "en": "I like shopping."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده (مرور از درس ۴): ein + kaufen",
+        "en": "Separable verb (review from Lesson 4): ein + kaufen",
+        "de": "Trennbares Verb (Wiederholung Lektion 4)"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن جدا کردن",
+        "en": "Forgetting to separate",
+        "de": "Vergessen zu trennen"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-freunde-treffen",
+      "de": "Freunde treffen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈfʁɔɪ̯ndə ˈtʁɛfn̩]",
+      "fa": "ملاقات دوستان",
+      "en": "to meet friends",
+      "example": {
+        "de": "Ich treffe gerne Freunde.",
+        "fa": "من ملاقات دوستان را دوست دارم.",
+        "en": "I like meeting friends."
+      },
+      "usageNotes": {
+        "fa": "فعل treffen با تغییر مصوت: e → i در du و er: du triffst, er trifft",
+        "en": "Verb treffen with vowel change: e → i in du and er",
+        "de": "Verb treffen mit Vokalwechsel: e → i"
+      },
+      "commonMistakes": {
+        "fa": "تغییر مصوت: نگویید 'du treffst' - بگویید 'du triffst'",
+        "en": "Vowel change: don't say 'du treffst' - say 'du triffst'",
+        "de": "Vokalwechsel: nicht 'du treffst' - 'du triffst'"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-rad-fahren",
+      "de": "Rad fahren",
+      "article": "",
+      "plural": "",
+      "ipa": "[ʁaːt ˈfaːʁən]",
+      "fa": "دوچرخه سواری",
+      "en": "to ride a bike",
+      "example": {
+        "de": "Ich fahre gerne Rad.",
+        "fa": "من دوچرخه سواری را دوست دارم.",
+        "en": "I like riding a bike."
+      },
+      "usageNotes": {
+        "fa": "فعل fahren با تغییر مصوت: a → ä در du و er: du fährst, er fährt",
+        "en": "Verb fahren with vowel change: a → ä in du and er",
+        "de": "Verb fahren mit Vokalwechsel: a → ä"
+      },
+      "commonMistakes": {
+        "fa": "تغییر مصوت: نگویید 'du fahrst' - بگویید 'du fährst'",
+        "en": "Vowel change: don't say 'du fahrst' - say 'du fährst'",
+        "de": "Vokalwechsel: nicht 'du fahrst' - 'du fährst'"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-lesen",
+      "de": "lesen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈleːzən]",
+      "fa": "خواندن",
+      "en": "to read",
+      "example": {
+        "de": "Ich lese gerne Bücher.",
+        "fa": "من کتاب خواندن را دوست دارم.",
+        "en": "I like reading books."
+      },
+      "usageNotes": {
+        "fa": "فعل با تغییر مصوت: e → ie در du و er: du liest, er liest",
+        "en": "Verb with vowel change: e → ie in du and er",
+        "de": "Verb mit Vokalwechsel: e → ie"
+      },
+      "commonMistakes": {
+        "fa": "تغییر مصوت: نگویید 'du lesest' - بگویید 'du liest'",
+        "en": "Vowel change: don't say 'du lesest' - say 'du liest'",
+        "de": "Vokalwechsel: nicht 'du lesest' - 'du liest'"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-einladen",
+      "de": "einladen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈaɪ̯nˌlaːdən]",
+      "fa": "دعوت کردن",
+      "en": "to invite",
+      "example": {
+        "de": "Ich lade Freunde ein.",
+        "fa": "من دوستان را دعوت می‌کنم.",
+        "en": "I invite friends."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده + تغییر مصوت: ein + laden. a → ä در du و er: du lädst ein, er lädt ein",
+        "en": "Separable verb + vowel change: ein + laden. a → ä in du and er",
+        "de": "Trennbares Verb + Vokalwechsel: ein + laden. a → ä"
+      },
+      "commonMistakes": {
+        "fa": "هم جدا کردن و هم تغییر مصوت. نگویید 'du einladest'",
+        "en": "Both separation and vowel change",
+        "de": "Sowohl Trennung als auch Vokalwechsel"
+      },
+      "difficulty": 4,
+      "frequency": 4
+    },
+    {
+      "id": "voc-konnen",
+      "de": "können",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈkœnən]",
+      "fa": "توانستن",
+      "en": "can, to be able to",
+      "example": {
+        "de": "Ich kann schwimmen.",
+        "fa": "من می‌توانم شنا کنم.",
+        "en": "I can swim."
+      },
+      "usageNotes": {
+        "fa": "فعل Modal. فعل اصلی به صورت مصدر (Infinitiv) در انتهای جمله می‌آید. Satzklammer!",
+        "en": "Modal verb. Main verb goes as infinitive to sentence end. Satzklammer!",
+        "de": "Modalverb. Hauptverb als Infinitiv ans Satzende. Satzklammer!"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن قرار دادن فعل اصلی در انتها. نگویید 'Ich kann schwimme'",
+        "en": "Forgetting to put main verb at end. Don't say 'Ich kann schwimme'",
+        "de": "Vergessen, Hauptverb ans Ende zu setzen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-mussen",
+      "de": "müssen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈmʏsn̩]",
+      "fa": "باید، مجبور بودن",
+      "en": "must, to have to",
+      "example": {
+        "de": "Ich muss arbeiten.",
+        "fa": "من باید کار کنم.",
+        "en": "I must work."
+      },
+      "usageNotes": {
+        "fa": "فعل Modal. مثل können، فعل اصلی در انتها می‌آید. 'Ich muss' یعنی 'من باید'",
+        "en": "Modal verb. Like können, main verb at end. 'Ich muss' means 'I must'",
+        "de": "Modalverb. Wie können, Hauptverb am Ende."
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن فعل اصلی در انتها. 'Ich muss arbeiten' نه 'Ich muss arbeite'",
+        "en": "Forgetting main verb at end",
+        "de": "Hauptverb am Ende vergessen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-wochenende",
+      "de": "Wochenende",
+      "article": "das",
+      "plural": "Wochenenden",
+      "ipa": "[ˈvɔxn̩ˌʔɛndə]",
+      "fa": "آخر هفته",
+      "en": "weekend",
+      "example": {
+        "de": "Was machst du am Wochenende?",
+        "fa": "آخر هفته چه می‌کنی؟",
+        "en": "What do you do on the weekend?"
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Wochenende. 'am Wochenende' یعنی 'در آخر هفته'. مرکب از Woche (هفته) + Ende (پایان)",
+        "en": "Neuter - das Wochenende. 'am Wochenende' = 'on the weekend'. Compound of Woche + Ende",
+        "de": "Neutral - das Wochenende. 'am Wochenende'"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل 'و' و 'e' در Ende تقریباً بی‌صدا",
+        "en": "Pronounce 'W' like 'v' and 'e' in Ende nearly silent",
+        "de": "'W' wie 'v' und 'e' in Ende fast stumm"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-spielen",
+      "de": "spielen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃpiːlən]",
+      "fa": "بازی کردن، نواختن",
+      "en": "to play",
+      "example": {
+        "de": "Ich spiele gerne Klavier.",
+        "fa": "من پیانو زدن را دوست دارم.",
+        "en": "I like playing piano."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. هم برای بازی و هم برای نواختن乐器 استفاده می‌شود",
+        "en": "Regular verb. Used for both playing games and playing instruments",
+        "de": "Regelmäßiges Verb. Für Spiele und Instrumente"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sp' مثل 'شپ' در ابتدای کلمه",
+        "en": "Pronounce 'sp' like 'shp' at word start",
+        "de": "'sp' wie 'schp' am Wortanfang"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-feiern",
+      "de": "feiern",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈfaɪ̯ʁən]",
+      "fa": "جشن گرفتن",
+      "en": "to celebrate",
+      "example": {
+        "de": "Wir feiern am Samstag.",
+        "fa": "ما شنبه جشن می‌گیریم.",
+        "en": "We celebrate on Saturday."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. 'Feier' یعنی جشن، 'feiern' یعنی جشن گرفتن",
+        "en": "Regular verb. 'Feier' = celebration, 'feiern' = to celebrate",
+        "de": "Regelmäßiges Verb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ei' کشیده و 'r' غُرّی",
+        "en": "Long 'ei' and uvular 'r'",
+        "de": "Langes 'ei' und uvulares 'r'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-schwimmen",
+      "de": "schwimmen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃvɪmən]",
+      "fa": "شنا کردن",
+      "en": "to swim",
+      "example": {
+        "de": "Ich kann schwimmen.",
+        "fa": "من می‌توانم شنا کنم.",
+        "en": "I can swim."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. با können استفاده می‌شود: Ich kann schwimmen",
+        "en": "Regular verb. Used with können: Ich kann schwimmen",
+        "de": "Regelmäßiges Verb. Mit können verwendet"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sch' مثل 'ش' و 'w' مثل 'و'",
+        "en": "Pronounce 'sch' like 'sh' and 'w' like 'v'",
+        "de": "'sch' wie 'sch' und 'w' wie 'v'"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-joggen",
+      "de": "joggen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈjɔɡn̩]",
+      "fa": "دویدن (جوگینگ)",
+      "en": "to jog",
+      "example": {
+        "de": "Ich jogge im Park.",
+        "fa": "من در پارک می‌دوم.",
+        "en": "I jog in the park."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم (کلمه خارجی). gg مثل 'گ' سخت",
+        "en": "Regular verb (foreign word). 'gg' like hard 'g'",
+        "de": "Regelmäßiges Verb (Fremdwort)"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'j' مثل 'ی' فارسی",
+        "en": "Pronounce 'j' like 'y'",
+        "de": "'j' wie 'j'"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-wandern",
+      "de": "wandern",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈvandɐn]",
+      "fa": "کوهپیمایی",
+      "en": "to hike",
+      "example": {
+        "de": "Wir wandern am Wochenende.",
+        "fa": "ما آخر هفته کوهپیمایی می‌کنیم.",
+        "en": "We hike on the weekend."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. یک فعالیت محبوب در آلمان",
+        "en": "Regular verb. A popular activity in Germany",
+        "de": "Regelmäßiges Verb. Beliebte Aktivität in Deutschland"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل 'و' فارسی",
+        "en": "Pronounce 'W' like 'v'",
+        "de": "'W' wie 'v'"
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-kino",
+      "de": "Kino",
+      "article": "das",
+      "plural": "Kinos",
+      "ipa": "[ˈkiːno]",
+      "fa": "سینما",
+      "en": "cinema, movie theater",
+      "example": {
+        "de": "Ich gehe ins Kino.",
+        "fa": "من به سینما می‌روم.",
+        "en": "I go to the cinema."
+      },
+      "usageNotes": {
+        "fa": "خنثی - das Kino. 'ins Kino gehen' یعنی 'به سینما رفتن'. 'ins' = in + das",
+        "en": "Neuter - das Kino. 'ins Kino gehen' = to go to the cinema",
+        "de": "Neutral - das Kino. 'ins Kino gehen'"
+      },
+      "commonMistakes": {
+        "fa": "استفاده از 'in das' به‌جای 'ins' (مخفف)",
+        "en": "Using 'in das' instead of 'ins' (contraction)",
+        "de": "'in das' statt 'ins'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-park",
+      "de": "Park",
+      "article": "der",
+      "plural": "Parks",
+      "ipa": "[paʁk]",
+      "fa": "پارک",
+      "en": "park",
+      "example": {
+        "de": "Ich jogge im Park.",
+        "fa": "من در پارک می‌دوم.",
+        "en": "I jog in the park."
+      },
+      "usageNotes": {
+        "fa": "مذکر - der Park. 'in den Park gehen' (جهت) vs 'im Park sein' (مکان)",
+        "en": "Masculine - der Park. 'in den Park gehen' (direction) vs 'im Park sein' (location)",
+        "de": "Maskulin - der Park"
+      },
+      "commonMistakes": {
+        "fa": "در Akkusativ جهت: in den Park (نه in der Park)",
+        "en": "Accusative direction: in den Park (not in der Park)",
+        "de": "Akkusativ Richtung: in den Park"
+      },
+      "difficulty": 1,
+      "frequency": 4
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-modalverben-konnen",
+        "title": {
+          "fa": "فعل Modal können (توانستن) و Satzklammer",
+          "en": "Modal Verb können (can) and Sentence Bracket",
+          "de": "Modalverb können und Satzklammer"
+        },
+        "concept": {
+          "fa": "فعل‌های Modal مانند können معنی ability (توانایی) می‌دهند. فعل Modal در جایگاه دوم (مثل فعل معمولی) صرف می‌شود، و فعل اصلی به‌صورت مصدر (Infinitiv) در انتهای جمله قرار می‌گیرد. این ساختار را Satzklammer (کمان جمله) می‌گویند.",
+          "en": "Modal verbs like können express ability. The modal verb is conjugated in position 2 (like a normal verb), and the main verb goes as an infinitive to the end of the sentence. This structure is called Satzklammer (sentence bracket).",
+          "de": "Modalverben wie können drücken Fähigkeit aus. Das Modalverb wird in Position 2 konjugiert, und das Hauptverb geht als Infinitiv ans Satzende. Diese Struktur heißt Satzklammer."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "können",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "kann",
+              "کان",
+              "من می‌توانم"
+            ],
+            [
+              "du",
+              "kannst",
+              "کانست",
+              "تو می‌توانی"
+            ],
+            [
+              "er/sie/es",
+              "kann",
+              "کان",
+              "او می‌تواند"
+            ],
+            [
+              "wir",
+              "können",
+              "کو-نِن",
+              "ما می‌توانیم"
+            ],
+            [
+              "ihr",
+              "könnt",
+              "کونت",
+              "شما می‌توانید"
+            ],
+            [
+              "sie/Sie",
+              "können",
+              "کو-نِن",
+              "آن‌ها/شما می‌توانند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار Satzklammer: [فاعل] + [فعل Modal] + [بقیه جمله] + [فعل اصلی در مصدر]. مثال: Ich kann schwimmen.",
+          "en": "Satzklammer structure: [subject] + [modal verb] + [rest] + [main verb infinitive]. Example: Ich kann schwimmen.",
+          "de": "Satzklammer: [Subjekt] + [Modalverb] + [Rest] + [Hauptverb Infinitiv]. Beispiel: Ich kann schwimmen."
+        }
+      },
+      {
+        "id": "gram-modalverben-mussen",
+        "title": {
+          "fa": "فعل Modal müssen (باید)",
+          "en": "Modal Verb müssen (must)",
+          "de": "Modalverb müssen"
+        },
+        "concept": {
+          "fa": "فعل müssen معنی obligation (اجبار) می‌دهد. مثل können، در Satzklammer استفاده می‌شود: فعل modal در جایگاه دوم، فعل اصلی در انتها.",
+          "en": "The verb müssen expresses obligation. Like können, it uses the Satzklammer: modal verb in position 2, main verb at the end.",
+          "de": "Das Verb müssen drückt Verpflichtung aus. Wie können, verwendet es die Satzklammer."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "müssen",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "muss",
+              "موس",
+              "من باید"
+            ],
+            [
+              "du",
+              "musst",
+              "موست",
+              "تو باید"
+            ],
+            [
+              "er/sie/es",
+              "muss",
+              "موس",
+              "او باید"
+            ],
+            [
+              "wir",
+              "müssen",
+              "مو-سِن",
+              "ما باید"
+            ],
+            [
+              "ihr",
+              "müsst",
+              "موایت",
+              "شما باید"
+            ],
+            [
+              "sie/Sie",
+              "müssen",
+              "مو-سِن",
+              "آن‌ها/شما باید"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: Ich muss arbeiten. (من باید کار کنم.) فعل اصلی 'arbeiten' در انتها.",
+          "en": "Structure: Ich muss arbeiten. Main verb 'arbeiten' at the end.",
+          "de": "Struktur: Ich muss arbeiten. Hauptverb 'arbeiten' am Ende."
+        }
+      },
+      {
+        "id": "gram-vokalwechsel-verben",
+        "title": {
+          "fa": "فعل‌های با تغییر مصوت (Vokalwechsel): treffen, fahren, lesen",
+          "en": "Verbs with Vowel Change: treffen, fahren, lesen",
+          "de": "Verben mit Vokalwechsel: treffen, fahren, lesen"
+        },
+        "concept": {
+          "fa": "بعضی فعل‌های آلمانی در اشخاص du و er/sie/es تغییر مصوت دارند. این یک الگوی مهم است که باید حفظ کنید.",
+          "en": "Some German verbs have vowel changes in the du and er/sie/es forms. This is an important pattern to memorize.",
+          "de": "Einige deutsche Verben haben Vokalwechsel in du und er/sie/es."
+        },
+        "conjugationTable": {
+          "headers": [
+            "فعل",
+            "ich",
+            "du",
+            "er/sie",
+            "تغییر",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "treffen",
+              "treffe",
+              "triffst",
+              "trifft",
+              "e → i",
+              "ملاقات کردن"
+            ],
+            [
+              "fahren",
+              "fahre",
+              "fährst",
+              "fährt",
+              "a → ä",
+              "سواری کردن"
+            ],
+            [
+              "lesen",
+              "lese",
+              "liest",
+              "liest",
+              "e → ie",
+              "خواندن"
+            ],
+            [
+              "fernsehen",
+              "sehe fern",
+              "siehst fern",
+              "sieht fern",
+              "e → ie",
+              "تلویزیون دیدن"
+            ],
+            [
+              "einladen",
+              "lade ein",
+              "lädst ein",
+              "lädt ein",
+              "a → ä",
+              "دعوت کردن"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "الگو: تغییر فقط در du و er/sie/es رخ می‌دهد. ich و plural بدون تغییر.",
+          "en": "Pattern: Change only occurs in du and er/sie/es. ich and plural stay the same.",
+          "de": "Muster: Wechsel nur in du und er/sie/es. ich und Plural bleiben gleich."
+        }
+      },
+      {
+        "id": "gram-in-akkusativ",
+        "title": {
+          "fa": "حرف اضافه‌ی in با Akkusativ (جهت)",
+          "en": "Preposition in with Accusative (Direction)",
+          "de": "Präposition in mit Akkusativ (Richtung)"
+        },
+        "concept": {
+          "fa": "وقتی 'in' برای جهت (حرکت به سوی مکان) استفاده می‌شود، با Akkusativ می‌آید. برای مذکر: in den، برای خنثی: ins (= in + das)، برای مؤنث: in die.",
+          "en": "When 'in' is used for direction (movement toward a place), it takes accusative. Masculine: in den, neuter: ins (= in + das), feminine: in die.",
+          "de": "Wenn 'in' für eine Richtung verwendet wird, steht es mit Akkusativ. Maskulin: in den, neutral: ins (= in + das), feminin: in die."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "حرف تعریف",
+            "in + Akkusativ",
+            "مثال"
+          ],
+          "rows": [
+            [
+              "مذکر",
+              "der",
+              "in den",
+              "Ich gehe in den Park."
+            ],
+            [
+              "خنثی",
+              "das",
+              "ins (= in das)",
+              "Ich gehe ins Kino."
+            ],
+            [
+              "مؤنث",
+              "die",
+              "in die",
+              "Ich gehe in die Stadt."
+            ],
+            [
+              "جمع",
+              "die",
+              "in die",
+              "Ich gehe in die Clubs."
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "قانون: حرکت (Wohin?) → in + Akkusativ. مکان (Wo?) → in + Dativ (در درس بعد).",
+          "en": "Rule: Movement (Wohin?) → in + accusative. Location (Wo?) → in + dative (later lesson).",
+          "de": "Regel: Richtung (Wohin?) → in + Akkusativ. Ort (Wo?) → in + Dativ (später)."
+        }
+      },
+      {
+        "id": "gram-wochentage-monate",
+        "title": {
+          "fa": "روزهای هفته و ماه‌های سال",
+          "en": "Days of the Week and Months",
+          "de": "Wochentage und Monate"
+        },
+        "concept": {
+          "fa": "در آلمانی، روزهای هفته و ماه‌ها همیشه با حرف بزرگ نوشته می‌شوند. برای گفتن 'در روز X' از 'am' استفاده می‌کنید: am Montag, am Samstag.",
+          "en": "In German, days and months are always capitalized. To say 'on day X', use 'am': am Montag, am Samstag.",
+          "de": "Im Deutschen werden Tage und Monate großgeschrieben. Für 'an Tag X' verwendet man 'am': am Montag, am Samstag."
+        },
+        "conjugationTable": {
+          "headers": [
+            "روز هفته",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "Montag",
+              "مون-تاک",
+              "دوشنبه"
+            ],
+            [
+              "Dienstag",
+              "دینس-تاک",
+              "سه‌شنبه"
+            ],
+            [
+              "Mittwoch",
+              "میت-ووخ",
+              "چهارشنبه"
+            ],
+            [
+              "Donnerstag",
+              "دون-رز-تاک",
+              "پنجشنبه"
+            ],
+            [
+              "Freitag",
+              "فرای-تاک",
+              "جمعه"
+            ],
+            [
+              "Samstag",
+              "زامس-تاک",
+              "شنبه"
+            ],
+            [
+              "Sonntag",
+              "زون-تاک",
+              "یکشنبه"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "روزهای هفته: Montag bis Sonntag. 'am' + روز = در آن روز. 'am Wochenende' = در آخر هفته.",
+          "en": "Days: Montag to Sonntag. 'am' + day = on that day. 'am Wochenende' = on the weekend.",
+          "de": "Wochentage: Montag bis Sonntag. 'am' + Tag = an diesem Tag."
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-hobbies-1",
+      "title": {
+        "fa": "دیالوگ سرگرمی‌ها - مکالمه روزمره",
+        "en": "Hobbies Dialogue - Daily Conversation",
+        "de": "Hobbys-Dialog - Alltagskonversation"
+      },
+      "characters": [
+        {
+          "name": "Nina",
+          "role": "دانش‌آموز"
+        },
+        {
+          "name": "Fabio",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Nina",
+          "german": "Fabio, was machst du am Wochenende?",
+          "persian": "فا-بی-و، واس ماخت دو آم ووخِن-اِن-دِه؟",
+          "meaning": {
+            "fa": "فابیو، آخر هفته چه می‌کنی؟",
+            "en": "Fabio, what do you do on the weekend?",
+            "de": "Fabio, was machst du am Wochenende?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ich treffe Freunde und wir gehen ins Kino. Und du?",
+          "persian": "ایخ تریفِه فروین-دِه اوند ویر گِ-اِن اینس کی-نو. اوند دو؟",
+          "meaning": {
+            "fa": "من دوستان را می‌بینم و به سینما می‌رویم. تو چی؟",
+            "en": "I meet friends and we go to the cinema. And you?",
+            "de": "Ich treffe Freunde und wir gehen ins Kino. Und du?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich höre gerne Musik und lese Bücher. Ich kann auch Klavier spielen.",
+          "persian": "ایخ هوه-رِه گِر-نِه مو-زیک اوند لِزِه بو-خِر. ایخ کان آوخ کلا-فیر اِ-شپی-لِن.",
+          "meaning": {
+            "fa": "من موسیقی گوش می‌دهم و کتاب می‌خوانم. من می‌توانم پیانو هم بنوازم.",
+            "en": "I like listening to music and reading books. I can also play piano.",
+            "de": "Ich höre gerne Musik und lese Bücher. Ich kann auch Klavier spielen."
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Cool! Können wir am Samstag ins Fitness-Studio gehen?",
+          "persian": "کول! کو-نِن ویر آم زامس-تاک اینس فیت-نِس-اشتو-دی-و گِ-اِن؟",
+          "meaning": {
+            "fa": "عالیه! می‌توانیم شنبه به باشگاه برویم؟",
+            "en": "Cool! Can we go to the gym on Saturday?",
+            "de": "Cool! Können wir am Samstag ins Fitness-Studio gehen?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ja, gerne! Wir können auch joggen.",
+          "persian": "یا، گِر-نِه! ویر کو-نِن آوخ جو-گِن.",
+          "meaning": {
+            "fa": "بله، حتماً! می‌توانیم بدویم هم.",
+            "en": "Yes, sure! We can also jog.",
+            "de": "Ja, gerne! Wir können auch joggen."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "was machst du am Wochenende",
+          "persian": "واس ماخت دو آم ووخِن-اِن-دِه",
+          "meaning": "آخر هفته چه می‌کنی"
+        },
+        {
+          "phrase": "Ich treffe Freunde",
+          "persian": "ایخ تریفِه فروین-دِه",
+          "meaning": "دوستان را می‌بینم (treffen: e→i)"
+        },
+        {
+          "phrase": "ins Kino gehen",
+          "persian": "اینس کی-نو گِ-اِن",
+          "meaning": "به سینما رفتن (ins = in + das)"
+        },
+        {
+          "phrase": "Ich kann auch Klavier spielen",
+          "persian": "ایخ کان آوخ کلا-فیر اِ-شپی-لِن",
+          "meaning": "می‌توانم پیانو بنوازم (Satzklammer: kann ... spielen)"
+        },
+        {
+          "phrase": "Können wir",
+          "persian": "کو-نِن ویر",
+          "meaning": "می‌توانیم (سوال با فعل modal)"
+        }
+      ]
+    },
+    {
+      "id": "dialog-weekend-1",
+      "title": {
+        "fa": "دیالوگ آخر هفته - برنامه‌ریزی",
+        "en": "Weekend Dialogue - Planning",
+        "de": "Wochenende-Dialog - Planung"
+      },
+      "characters": [
+        {
+          "name": "Paul",
+          "role": "دانش‌آموز"
+        },
+        {
+          "name": "Emma",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Paul",
+          "german": "Und was machen wir am Wochenende?",
+          "persian": "اوند واس ماخِن ویر آم ووخِن-اِن-دِه؟",
+          "meaning": {
+            "fa": "و آخر هفته چه می‌کنیم؟",
+            "en": "And what do we do on the weekend?",
+            "de": "Und was machen wir am Wochenende?"
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Ich weiß noch nicht. Walken?",
+          "persian": "ایخ وایس نوخ نیشت. وال-کِن؟",
+          "meaning": {
+            "fa": "هنوز نمی‌دانم. والکینگ؟",
+            "en": "I don't know yet. Walking?",
+            "de": "Ich weiß noch nicht. Walken?"
+          }
+        },
+        {
+          "speaker": "Paul",
+          "german": "Ja, wir können auch joggen. Und wir können ins Fitness-Studio gehen.",
+          "persian": "یا، ویر کو-نِن آوخ جو-گِن. اوند ویر کو-نِن اینس فیت-نِس-اشتو-دی-و گِ-اِن.",
+          "meaning": {
+            "fa": "بله، می‌توانیم بدویم هم. و می‌توانیم به باشگاه برویم.",
+            "en": "Yes, we can also jog. And we can go to the gym.",
+            "de": "Ja, wir können auch joggen. Und wir können ins Fitness-Studio gehen."
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Super! Ich muss aber am Samstag einkaufen.",
+          "persian": "زو-پِر! ایخ موس آبِر آم زامس-تاک این-کاو-فِن.",
+          "meaning": {
+            "fa": "عالیه! اما شنبه باید خرید کنم.",
+            "en": "Great! But I must shop on Saturday.",
+            "de": "Super! Ich muss aber am Samstag einkaufen."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "was machen wir",
+          "persian": "واس ماخِن ویر",
+          "meaning": "چه می‌کنیم"
+        },
+        {
+          "phrase": "Ich weiß noch nicht",
+          "persian": "ایخ وایس نوخ نیشت",
+          "meaning": "هنوز نمی‌دانم"
+        },
+        {
+          "phrase": "wir können auch",
+          "persian": "ویر کو-نِن آوخ",
+          "meaning": "ما می‌توانیم هم"
+        },
+        {
+          "phrase": "Ich muss aber",
+          "persian": "ایخ موس آبِر",
+          "meaning": "اما من باید (Satzklammer: muss ... einkaufen)"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "در آلمان، آخر هفته (das Wochenende) از شنبه تا یکشنبه است. بیشتر مغازه‌ها یکشنبه‌ها بسته هستند — به‌جز نانوایی‌ها و رستوران‌ها. این یک قانون باستانی است که Sonntagsruhe (آرامش یکشنبه) نامیده می‌شود.\n\nآلمانی‌ها به اوقات فراغت (Freizeit) اهمیت زیادی می‌دهند. ورزش (Sport)، طبیعت‌گردی (Wandern) و موسیقی از محبوب‌ترین سرگرمی‌ها هستند. برلین به‌خاطر زندگی شبانه‌اش معروف است — ۲۵۰ کلوپ و بار دارد.\n\nنکته: در آلمان، زمان آزاد (Freizeit) و زمان کار (Arbeitszeit) به‌وضوح از هم جدا شده‌اند. در زمان آزاد، صحبت درباره‌ی کار معمولاً نکوهش می‌شود.",
+    "en": "In Germany, the weekend (das Wochenende) runs from Saturday to Sunday. Most shops are closed on Sundays — except bakeries and restaurants. This is an ancient law called Sonntagsruhe (Sunday rest).\n\nGermans value their free time (Freizeit). Sports, hiking and music are among the most popular hobbies. Berlin is famous for its nightlife — it has 250 clubs and bars.\n\nNote: In Germany, free time (Freizeit) and work time (Arbeitszeit) are clearly separated. Talking about work during free time is generally discouraged.",
+    "de": "In Deutschland dauert das Wochenende von Samstag bis Sonntag. Die meisten Geschäfte sind sonntags geschlossen — außer Bäckereien und Restaurants. Das ist ein altes Gesetz namens Sonntagsruhe.\n\nDeutsche schätzen ihre Freizeit. Sport, Wandern und Musik sind beliebte Hobbys. Berlin ist berühmt für sein Nachtleben — 250 Clubs und Bars.\n\nHinweis: In Deutschland sind Freizeit und Arbeitszeit klar getrennt. Über Arbeit in der Freizeit zu sprechen, wird generell abgeraten."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-hobby-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: سرگرمی‌ها را دسته‌بندی کنید",
+          "en": "Exercise 1: Categorize Hobbies",
+          "de": "Übung 1: Hobbys kategorisieren"
+        },
+        "instructions": {
+          "fa": "برای هر فعالیت، دسته‌بندی درست را انتخاب کنید: Sport، Musik،放松.",
+          "en": "For each activity, choose the correct category.",
+          "de": "Wählen Sie die richtige Kategorie."
+        },
+        "questions": [
+          {
+            "id": "h1-q1",
+            "situation": {
+              "fa": "joggen",
+              "en": "jogging",
+              "de": "joggen"
+            },
+            "options": [
+              "Sport",
+              "Musik",
+              "Entspannung"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "joggen یک فعالیت ورزشی است.",
+              "en": "jogging is a sport.",
+              "de": "joggen ist Sport."
+            }
+          },
+          {
+            "id": "h1-q2",
+            "situation": {
+              "fa": "Klavier spielen",
+              "en": "playing piano",
+              "de": "Klavier spielen"
+            },
+            "options": [
+              "Sport",
+              "Musik",
+              "Entspannung"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Klavier spielen یک فعالیت موسیقایی است.",
+              "en": "Playing piano is music.",
+              "de": "Klavier spielen ist Musik."
+            }
+          },
+          {
+            "id": "h1-q3",
+            "situation": {
+              "fa": "fernsehen",
+              "en": "watching TV",
+              "de": "fernsehen"
+            },
+            "options": [
+              "Sport",
+              "Musik",
+              "Entspannung"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "fernsehen یک فعالیت استراحت است.",
+              "en": "Watching TV is relaxation.",
+              "de": "fernsehen ist Entspannung."
+            }
+          },
+          {
+            "id": "h1-q4",
+            "situation": {
+              "fa": "schwimmen",
+              "en": "swimming",
+              "de": "schwimmen"
+            },
+            "options": [
+              "Sport",
+              "Musik",
+              "Entspannung"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "schwimmen یک فعالیت ورزشی است.",
+              "en": "Swimming is a sport.",
+              "de": "schwimmen ist Sport."
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-modal-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: فعل‌های Modal (können و müssen)",
+          "en": "Exercise 2: Modal Verbs",
+          "de": "Übung 2: Modalverben"
+        },
+        "instructions": {
+          "fa": "فعل Modal درست را در شکل درست قرار دهید. فراموش نکنید فعل اصلی در انتها می‌آید!",
+          "en": "Conjugate the modal verb correctly. Main verb goes at the end!",
+          "de": "Konjugieren Sie das Modalverb richtig."
+        },
+        "questions": [
+          {
+            "id": "m1-q1",
+            "prompt": "Ich ___ schwimmen. (können)",
+            "placeholder": "kann"
+          },
+          {
+            "id": "m1-q2",
+            "prompt": "Du ___ sehr gut kochen. (können)",
+            "placeholder": "kannst"
+          },
+          {
+            "id": "m1-q3",
+            "prompt": "Wir ___ am Samstag ins Kino gehen. (können)",
+            "placeholder": "können"
+          },
+          {
+            "id": "m1-q4",
+            "prompt": "Ich ___ am Sonntag arbeiten. (müssen)",
+            "placeholder": "muss"
+          },
+          {
+            "id": "m1-q5",
+            "prompt": "Du ___ einkaufen. (müssen)",
+            "placeholder": "musst"
+          },
+          {
+            "id": "m1-q6",
+            "prompt": "Er ___ wandern. (können)",
+            "placeholder": "kann"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: برنامه‌ریزی آخر هفته",
+          "en": "Exercise 3: Weekend Planning",
+          "de": "Übung 3: Wochenendplanung"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو ۱: برنامه آخر هفته",
+              "en": "Scenario 1: Weekend Plans",
+              "de": "Szene 1: Wochenendpläne"
+            },
+            "lines": [
+              {
+                "speaker": "Freund",
+                "german": "Was machst du am Wochenende?",
+                "persian": "واس ماخت دو آم ووخِن-اِن-دِه؟",
+                "meaning": {
+                  "fa": "آخر هفته چه می‌کنی؟",
+                  "en": "What do you do on the weekend?",
+                  "de": "Was machst du am Wochenende?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich ______ ______. (können + Aktivität)",
+                "persian": "ایخ ______ ______.",
+                "meaning": {
+                  "fa": "من می‌توانم ______.",
+                  "en": "I can ______.",
+                  "de": "Ich ______ ______."
+                }
+              },
+              {
+                "speaker": "Freund",
+                "german": "Können wir zusammen ______?",
+                "persian": "کو-نِن ویر تسو-زامِن ______؟",
+                "meaning": {
+                  "fa": "می‌توانیم با هم ______؟",
+                  "en": "Can we ______ together?",
+                  "de": "Können wir zusammen ______?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ja, gerne! Aber ich muss ______.",
+                "persian": "یا، گِر-نِه! آبِر ایخ موس ______.",
+                "meaning": {
+                  "fa": "بله، حتماً! اما من باید ______.",
+                  "en": "Yes, sure! But I must ______.",
+                  "de": "Ja, gerne! Aber ich muss ______."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-vokal-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: فعل‌های با تغییر مصوت",
+          "en": "Exercise 4: Vowel Change Verbs",
+          "de": "Übung 4: Vokalwechselverben"
+        },
+        "instructions": {
+          "fa": "شکل درست فعل در 'du' را انتخاب کنید.",
+          "en": "Choose the correct verb form in 'du'.",
+          "de": "Wählen Sie die richtige Verbform in 'du'."
+        },
+        "questions": [
+          {
+            "id": "v1-q1",
+            "situation": {
+              "fa": "du ___ Freunde (treffen)",
+              "en": "du ___ Freunde (treffen)",
+              "de": "du ___ Freunde (treffen)"
+            },
+            "options": [
+              "treffst",
+              "triffst",
+              "treffen",
+              "triffst"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "treffen: e → i. du triffst",
+              "en": "treffen: e → i. du triffst",
+              "de": "treffen: e → i. du triffst"
+            }
+          },
+          {
+            "id": "v1-q2",
+            "situation": {
+              "fa": "du ___ Rad (fahren)",
+              "en": "du ___ Rad (fahren)",
+              "de": "du ___ Rad (fahren)"
+            },
+            "options": [
+              "fahrst",
+              "fährst",
+              "fahren",
+              "fähren"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "fahren: a → ä. du fährst",
+              "en": "fahren: a → ä. du fährst",
+              "de": "fahren: a → ä. du fährst"
+            }
+          },
+          {
+            "id": "v1-q3",
+            "situation": {
+              "fa": "du ___ Bücher (lesen)",
+              "en": "du ___ books (lesen)",
+              "de": "du ___ Bücher (lesen)"
+            },
+            "options": [
+              "lesest",
+              "liest",
+              "lest",
+              "lesen"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "lesen: e → ie. du liest",
+              "en": "lesen: e → ie. du liest",
+              "de": "lesen: e → ie. du liest"
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ سرگرمی‌ها و روزها",
+          "en": "Exercise 5: Pronouncing Hobbies and Days",
+          "de": "Übung 5: Hobbys und Tage aussprechen"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
+          "en": "Pronounce the following words.",
+          "de": "Sprechen Sie die folgenden Wörter aus."
+        },
+        "words": [
+          {
+            "word": "die Freizeit",
+            "persian": "دی فرای-تسایت",
+            "meaning": "اوقات فراغت"
+          },
+          {
+            "word": "der Sport",
+            "persian": "دِر اِشپورت",
+            "meaning": "ورزش"
+          },
+          {
+            "word": "fernsehen",
+            "persian": "فِرن-زِ-اِن",
+            "meaning": "تلویزیون دیدن"
+          },
+          {
+            "word": "Freunde treffen",
+            "persian": "فروین-دِه تری-فِن",
+            "meaning": "ملاقات دوستان"
+          },
+          {
+            "word": "Rad fahren",
+            "persian": "رات فا-رِن",
+            "meaning": "دوچرخه سواری"
+          },
+          {
+            "word": "können",
+            "persian": "کو-نِن",
+            "meaning": "توانستن"
+          },
+          {
+            "word": "müssen",
+            "persian": "مو-سِن",
+            "meaning": "باید"
+          },
+          {
+            "word": "Montag",
+            "persian": "مون-تاک",
+            "meaning": "دوشنبه"
+          },
+          {
+            "word": "Freitag",
+            "persian": "فرای-تاک",
+            "meaning": "جمعه"
+          },
+          {
+            "word": "Wochenende",
+            "persian": "ووخِن-اِن-دِه",
+            "meaning": "آخر هفته"
+          }
+        ],
+        "focus": {
+          "fa": "توجه کنید به: 'v' مثل 'ف' (Freizeit, Freitag, fernsehen) • 'ei' کشیده (Freizeit, einladen) • 'ö' در können • 'sp' مثل 'شپ' (Sport) • 'st' مثل 'شت' (Fitness-Studio)",
+          "en": "Pay attention to: 'v' like 'f' (Freizeit, Freitag, fernsehen) • long 'ei' (Freizeit, einladen) • 'ö' in können • 'sp' like 'shp' (Sport) • 'st' like 'sht' (Fitness-Studio)",
+          "de": "Achten Sie auf: 'v' wie 'f' (Freizeit, Freitag, fernsehen) • langes 'ei' • 'ö' in können • 'sp' wie 'schp' (Sport) • 'st' wie 'scht'"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۵",
+      "en": "Lesson 5 Review",
+      "de": "Lektion 5 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Was machst du in der Freizeit?' به چه معنی است؟",
+          "en": "What does 'Was machst du in der Freizeit?' mean?",
+          "de": "Was bedeutet 'Was machst du in der Freizeit?'?"
+        },
+        "options": [
+          "کجا ساکنی؟",
+          "در اوقات فراغت چه می‌کنی؟",
+          "شغلت چیست؟",
+          "کی بیدار می‌شوی؟"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Freizeit = اوقات فراغت",
+          "en": "Freizeit = free time",
+          "de": "Freizeit = Freizeit"
+        }
+      },
+      {
+        "id": "rev-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'können' در 'ich' چگونه صرف می‌شود؟",
+          "en": "How is 'können' conjugated with 'ich'?",
+          "de": "Wie wird 'können' mit 'ich' konjugiert?"
+        },
+        "options": [
+          "ich können",
+          "ich kann",
+          "ich könnt",
+          "ich kanne"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "ich kann (فعل Modal: بدون پایانه در ich!)",
+          "en": "ich kann (modal verb: no ending in ich!)",
+          "de": "ich kann (Modalverb: keine Endung bei ich!)"
+        }
+      },
+      {
+        "id": "rev-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام جمله درست است؟ (Satzklammer)",
+          "en": "Which sentence is correct? (Satzklammer)",
+          "de": "Welcher Satz ist richtig? (Satzklammer)"
+        },
+        "options": [
+          "Ich kann schwimme.",
+          "Ich kann schwimmen.",
+          "Ich kann schwimmst.",
+          "Ich schwimmen kann."
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Satzklammer: kann ... schwimmen (مصدر در انتها)",
+          "en": "Satzklammer: kann ... schwimmen (infinitive at end)",
+          "de": "Satzklammer: kann ... schwimmen (Infinitiv am Ende)"
+        }
+      },
+      {
+        "id": "rev-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'treffen' در 'du' چگونه صرف می‌شود؟",
+          "en": "How is 'treffen' conjugated with 'du'?",
+          "de": "Wie wird 'treffen' mit 'du' konjugiert?"
+        },
+        "options": [
+          "du treffst",
+          "du triffst",
+          "du treffen",
+          "du triffst"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "تغییر مصوت: e → i. du triffst",
+          "en": "Vowel change: e → i. du triffst",
+          "de": "Vokalwechsel: e → i. du triffst"
+        }
+      },
+      {
+        "id": "rev-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'ins Kino gehen' به چه معنی است؟",
+          "en": "What does 'ins Kino gehen' mean?",
+          "de": "Was bedeutet 'ins Kino gehen'?"
+        },
+        "options": [
+          "در سینما بودن",
+          "به سینما رفتن",
+          "سینما ساختن",
+          "سینما دیدن"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'ins' = in + das (جهت). یعنی حرکت به سمت سینما.",
+          "en": "'ins' = in + das (direction). Movement toward the cinema.",
+          "de": "'ins' = in + das (Richtung)."
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۵",
+      "en": "Lesson 5 Final Assessment",
+      "de": "Lektion 5 Abschlussbewertung"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید سرگرمی‌ها را به آلمانی بگویید؟",
+        "آیا می‌توانید فعل können را صرف کنید؟",
+        "آیا می‌توانید فعل müssen را صرف کنید؟",
+        "آیا Satzklammer را می‌دانید (فعل modal + فعل اصلی در انتها)؟",
+        "آیا می‌توانید فعل‌های با تغییر مصوت (treffen, fahren, lesen) را صرف کنید؟",
+        "آیا می‌توانید از in + Akkusativ استفاده کنید (in den/ins/in die)؟",
+        "آیا روزهای هفته را می‌دانید؟"
+      ],
+      "en": [
+        "Can you name hobbies in German?",
+        "Can you conjugate können?",
+        "Can you conjugate müssen?",
+        "Do you know Satzklammer (modal + main verb at end)?",
+        "Can you conjugate vowel-change verbs (treffen, fahren, lesen)?",
+        "Can you use in + accusative (in den/ins/in die)?",
+        "Do you know the days of the week?"
+      ],
+      "de": [
+        "Können Sie Hobbys nennen?",
+        "Können Sie können konjugieren?",
+        "Können Sie müssen konjugieren?",
+        "Kennen Sie die Satzklammer?",
+        "Können Sie Vokalwechselverben konjugieren?",
+        "Können Sie in + Akkusativ verwenden?",
+        "Kennen Sie die Wochentage?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "تبریک! آماده‌ی درس ۶ هستید.",
+        "en": "Congratulations! Ready for Lesson 6.",
+        "de": "Herzlichen Glückwunsch! Bereit für Lektion 6."
+      },
+      "fail": {
+        "fa": "بخش‌های ضعیف را مرور کنید.",
+        "en": "Review weak sections.",
+        "de": "Schwache Bereiche überprüfen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "hobbies": [
+      {
+        "de": "Sport machen",
+        "fa": "ورزش کردن"
+      },
+      {
+        "de": "Musik hören",
+        "fa": "موسیقی گوش دادن"
+      },
+      {
+        "de": "fernsehen",
+        "fa": "تلویزیون دیدن"
+      },
+      {
+        "de": "Freunde treffen",
+        "fa": "ملاقات دوستان"
+      },
+      {
+        "de": "Rad fahren",
+        "fa": "دوچرخه سواری"
+      },
+      {
+        "de": "lesen",
+        "fa": "خواندن"
+      },
+      {
+        "de": "ins Kino gehen",
+        "fa": "به سینما رفتن"
+      },
+      {
+        "de": "ins Fitness-Studio gehen",
+        "fa": "به باشگاه رفتن"
+      },
+      {
+        "de": "einkaufen",
+        "fa": "خرید کردن"
+      },
+      {
+        "de": "feiern",
+        "fa": "جشن گرفتن"
+      },
+      {
+        "de": "schwimmen",
+        "fa": "شنا کردن"
+      },
+      {
+        "de": "wandern",
+        "fa": "کوهپیمایی"
+      }
+    ],
+    "modalVerbs": [
+      {
+        "verb": "können",
+        "conjugation": "ich kann, du kannst, er kann, wir können, ihr könnt, sie können",
+        "fa": "توانستن"
+      },
+      {
+        "verb": "müssen",
+        "conjugation": "ich muss, du musst, er muss, wir müssen, ihr müsst, sie müssen",
+        "fa": "باید"
+      }
+    ],
+    "vowelChangeVerbs": [
+      {
+        "verb": "treffen",
+        "change": "e → i",
+        "forms": "du triffst, er trifft",
+        "fa": "ملاقات کردن"
+      },
+      {
+        "verb": "fahren",
+        "change": "a → ä",
+        "forms": "du fährst, er fährt",
+        "fa": "سواری کردن"
+      },
+      {
+        "verb": "lesen",
+        "change": "e → ie",
+        "forms": "du liest, er liest",
+        "fa": "خواندن"
+      },
+      {
+        "verb": "fernsehen",
+        "change": "e → ie",
+        "forms": "du siehst fern, er sieht fern",
+        "fa": "تلویزیون دیدن"
+      },
+      {
+        "verb": "einladen",
+        "change": "a → ä",
+        "forms": "du lädst ein, er lädt ein",
+        "fa": "دعوت کردن"
+      }
+    ],
+    "inAkkusativ": [
+      {
+        "gender": "مذکر",
+        "form": "in den",
+        "example": "in den Park"
+      },
+      {
+        "gender": "خنثی",
+        "form": "ins (in + das)",
+        "example": "ins Kino"
+      },
+      {
+        "gender": "مؤنث",
+        "form": "in die",
+        "example": "in die Stadt"
+      },
+      {
+        "gender": "جمع",
+        "form": "in die",
+        "example": "in die Clubs"
+      }
+    ],
+    "daysOfWeek": [
+      {
+        "de": "Montag",
+        "fa": "دوشنبه"
+      },
+      {
+        "de": "Dienstag",
+        "fa": "سه‌شنبه"
+      },
+      {
+        "de": "Mittwoch",
+        "fa": "چهارشنبه"
+      },
+      {
+        "de": "Donnerstag",
+        "fa": "پنجشنبه"
+      },
+      {
+        "de": "Freitag",
+        "fa": "جمعه"
+      },
+      {
+        "de": "Samstag",
+        "fa": "شنبه"
+      },
+      {
+        "de": "Sonntag",
+        "fa": "یکشنبه"
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Was machst du in der Freizeit?",
+        "fa": "در اوقات فراغت چه می‌کنی؟"
+      },
+      {
+        "de": "Ich spiele gerne...",
+        "fa": "من دوست دارم ... بازی کنم/بنوازم"
+      },
+      {
+        "de": "Ich kann...",
+        "fa": "من می‌توانم..."
+      },
+      {
+        "de": "Ich muss...",
+        "fa": "من باید..."
+      },
+      {
+        "de": "Was machst du am Wochenende?",
+        "fa": "آخر هفته چه می‌کنی؟"
+      }
+    ],
+    "grammar": [
+      {
+        "title": "Satzklammer",
+        "summary": "فعل modal در جایگاه ۲ + فعل اصلی (مصدر) در انتها"
+      },
+      {
+        "title": "Vokalwechsel",
+        "summary": "تغییر مصوت در du و er/sie: treffen→triffst, fahren→fährst, lesen→liest"
+      },
+      {
+        "title": "in + Akkusativ",
+        "summary": "جهت: in den (مذکر), ins (خنثی), in die (مؤنث)"
+      },
+      {
+        "title": "am + Tag",
+        "summary": "برای روزها: am Montag, am Samstag, am Wochenende"
+      }
+    ],
+    "commonMistakes": [
+      "فراموش کردن قرار دادن فعل اصلی در انتهای جمله با modal",
+      "اشتباه در تغییر مصوت (du triffst نه treffst)",
+      "استفاده از 'in der' به‌جای 'in den' برای جهت",
+      "فراموش کردن 'am' قبل از روزهای هفته"
+    ],
+    "usefulTips": [
+      "Satzklammer را تصور کنید: فعل modal و فعل اصلی مثل دو تکه کمان هستند",
+      "فعل‌های با تغییر مصوت را به‌صورت جد جداگانه حفظ کنید",
+      "برای جهت 'Wohin?' از in + Akkusativ استفاده کنید",
+      "روزهای هفته را با یک آهنگ یا شعر حفظ کنید"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۵، شما با سرگرمی‌ها، روزهای هفته، فعل‌های Modal (können و müssen)، فعل‌های با تغییر مصوت و حرف اضافه‌ی in با Akkusativ آشنا شدید. شما یاد گرفتید چگونه درباره‌ی هوبی‌ها و آخر هفته صحبت کنید و چگونه از ساختار Satzklammer استفاده کنید.",
+    "en": "In Lesson 5, you learned hobbies, days of the week, modal verbs (können and müssen), vowel-change verbs, and preposition in with accusative. You learned to talk about hobbies and weekends, and to use the Satzklammer structure.",
+    "de": "In Lektion 5 haben Sie Hobbys, Wochentage, Modalverben (können und müssen), Vokalwechselverben und die Präposition in mit Akkusativ gelernt."
+  },
+  "metadata": {
+    "createdAt": "2026-07-08",
+    "updatedAt": "2026-07-08",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "hobbies",
+      "freizeit",
+      "modalverben",
+      "können",
+      "müssen",
+      "satzklammer",
+      "vokalwechsel",
+      "in-akkusativ",
+      "wochentage",
+      "A1"
+    ],
+    "difficulty": 2,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04"
+    ]
+  }
 }

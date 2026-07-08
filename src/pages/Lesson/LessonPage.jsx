@@ -1,19 +1,15 @@
 /**
- * LessonPage.jsx - Version 7.1
+ * LessonPage.jsx - Version 7.4
  * Path: src/pages/Lesson/LessonPage.jsx
- * Fully compatible with new lesson structure
  * Changes:
- * - ✅ Fixed: Pronunciation guide padding issue (padding="lg")
- * - ✅ Fixed: Exercises now display properly with ExerciseEngine
- * - ✅ Fixed: Support for both section.questions and section.data structures
- * - ✅ Added: Exercise extraction from section.questions (seeder structure)
- * - ✅ Added: Proper error handling for exercises
- * - ✅ Fixed: Layout issues with min-w-0 and whitespace-nowrap
- * - ✅ Fixed: getAllWords for dictionary
- * - ✅ Fixed: Complete renderSectionContent with all section types
+ * - ✅ FIXED: Lesson completion saves to backend via API call
+ * - ✅ FIXED: XP properly awarded after lesson completion
+ * - ✅ FIXED: Progress persisted across sessions
+ * - ✅ FIXED: Exercises display from both section.questions and section.data
+ * - ✅ FIXED: Full support for greeting_practice, du_vs_sie, role_play, pronunciation, fill_in
  */
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@context/AuthContext";
@@ -167,6 +163,7 @@ const LessonPage = () => {
   const [sectionProgress, setSectionProgress] = useState({});
   const [completed, setCompleted] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
+  const [isCompleting, setIsCompleting] = useState(false);
 
   // ============================================
   // 📥 Load Lesson
@@ -240,6 +237,48 @@ const LessonPage = () => {
 
   const isSectionComplete = (sectionId) => {
     return sectionProgress[sectionId] || false;
+  };
+
+  // ============================================
+  // ✅ Complete Lesson - Saves to Backend
+  // ============================================
+
+  const completeLesson = async () => {
+    if (isCompleting) return;
+
+    setIsCompleting(true);
+
+    try {
+      const response = await api.post(`/lessons/${id}/complete`, {
+        answers: answers,
+        timeSpent: 0,
+        score: 100,
+      });
+
+      if (response.data?.success) {
+        setCompleted(true);
+        setShowCompletion(true);
+
+        const xpEarned =
+          response.data?.data?.xpEarned || lesson?.xpReward || 50;
+        toast.success(`🎉 درس کامل شد! +${xpEarned} XP`);
+
+        if (user?.id) {
+          try {
+            await api.get("/users/profile");
+          } catch (e) {
+            // Ignore profile refresh error
+          }
+        }
+      } else {
+        toast.error("خطا در ذخیره پیشرفت درس");
+      }
+    } catch (err) {
+      console.error("Error completing lesson:", err);
+      toast.error(err.response?.data?.message || "خطا در ذخیره پیشرفت درس");
+    } finally {
+      setIsCompleting(false);
+    }
   };
 
   // ============================================
@@ -599,13 +638,13 @@ const LessonPage = () => {
   };
 
   // ============================================
-  // ✅ FIXED: renderExercises - پشتیبانی از هر دو ساختار
+  // ✅ FIXED: renderExercises - Full support for all exercise types
   // ============================================
 
   const renderExercises = (section) => {
     const exerciseQuestions = [];
 
-    // ✅ CASE 1: اگر section.questions مستقیم وجود دارد (ساختار سیدر a1/unit1.js)
+    // 📌 CASE 1: اگر section.questions مستقیم وجود دارد
     if (
       section.questions &&
       Array.isArray(section.questions) &&
@@ -632,9 +671,151 @@ const LessonPage = () => {
       });
     }
 
-    // ✅ CASE 2: اگر section.data با ساختار data.vocabulary و ... وجود دارد
+    // 📌 CASE 2: اگر section.data با ساختار data وجود دارد
     const data = section.data || {};
 
+    // 📌 استخراج از data.greeting_practice
+    if (data.greeting_practice && Array.isArray(data.greeting_practice)) {
+      data.greeting_practice.forEach((exercise, idx) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercise.questions.forEach((q, qIdx) => {
+            exerciseQuestions.push({
+              id: q.id || `greeting-${idx}-${qIdx}-${Date.now()}`,
+              type: q.type || "multiple_choice",
+              question: {
+                fa:
+                  q.question?.fa ||
+                  q.question ||
+                  q.situation?.fa ||
+                  `سوال ${qIdx + 1}`,
+                en:
+                  q.question?.en ||
+                  q.questionEn ||
+                  q.situation?.en ||
+                  `Question ${qIdx + 1}`,
+              },
+              options: q.options || [],
+              correct:
+                q.correct !== undefined ? q.correct : q.correctIndex || 0,
+              explanation: q.explanation || "",
+            });
+          });
+        }
+      });
+    }
+
+    // 📌 استخراج از data.du_vs_sie
+    if (data.du_vs_sie && Array.isArray(data.du_vs_sie)) {
+      data.du_vs_sie.forEach((exercise, idx) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercise.questions.forEach((q, qIdx) => {
+            exerciseQuestions.push({
+              id: q.id || `duvsie-${idx}-${qIdx}-${Date.now()}`,
+              type: q.type || "multiple_choice",
+              question: {
+                fa:
+                  q.question?.fa ||
+                  q.question ||
+                  q.situation?.fa ||
+                  `سوال ${qIdx + 1}`,
+                en:
+                  q.question?.en ||
+                  q.questionEn ||
+                  q.situation?.en ||
+                  `Question ${qIdx + 1}`,
+              },
+              options: q.options || [],
+              correct:
+                q.correct !== undefined ? q.correct : q.correctIndex || 0,
+              explanation: q.explanation || "",
+            });
+          });
+        }
+      });
+    }
+
+    // 📌 استخراج از data.role_play
+    if (data.role_play && Array.isArray(data.role_play)) {
+      data.role_play.forEach((exercise, idx) => {
+        if (exercise.scenarios && Array.isArray(exercise.scenarios)) {
+          exercise.scenarios.forEach((scenario, sIdx) => {
+            if (scenario.lines && Array.isArray(scenario.lines)) {
+              scenario.lines.forEach((line, lIdx) => {
+                exerciseQuestions.push({
+                  id: `roleplay-${idx}-${sIdx}-${lIdx}-${Date.now()}`,
+                  type: "role_play",
+                  question: {
+                    fa: `نقش: ${line.speaker} - ${line.meaning?.fa || line.meaning || line.german}`,
+                    en: `Role: ${line.speaker} - ${line.meaning?.en || line.meaning || line.german}`,
+                  },
+                  options: [],
+                  correct: 0,
+                  speaker: line.speaker,
+                  german: line.german,
+                  persian: line.persian,
+                  meaning: line.meaning,
+                });
+              });
+            }
+          });
+        }
+      });
+    }
+
+    // 📌 استخراج از data.pronunciation
+    if (data.pronunciation && Array.isArray(data.pronunciation)) {
+      data.pronunciation.forEach((exercise, idx) => {
+        if (exercise.words && Array.isArray(exercise.words)) {
+          exercise.words.forEach((word, wIdx) => {
+            exerciseQuestions.push({
+              id: `pronounce-${idx}-${wIdx}-${Date.now()}`,
+              type: "pronunciation",
+              question: {
+                fa: `تلفظ کلمه "${word.word}" به فارسی: ${word.persian}`,
+                en: `Pronunciation of "${word.word}" in Persian: ${word.persian}`,
+              },
+              options: [],
+              correct: 0,
+              word: word.word,
+              persian: word.persian,
+            });
+          });
+        }
+      });
+    }
+
+    // 📌 استخراج از data.fill_in
+    if (data.fill_in && Array.isArray(data.fill_in)) {
+      data.fill_in.forEach((exercise, idx) => {
+        if (exercise.questions && Array.isArray(exercise.questions)) {
+          exercise.questions.forEach((q, qIdx) => {
+            exerciseQuestions.push({
+              id: q.id || `fillin-${idx}-${qIdx}-${Date.now()}`,
+              type: q.type || "fill_in",
+              question: {
+                fa:
+                  q.question?.fa ||
+                  q.question ||
+                  q.prompt?.fa ||
+                  `سوال ${qIdx + 1}`,
+                en:
+                  q.question?.en ||
+                  q.questionEn ||
+                  q.prompt?.en ||
+                  `Question ${qIdx + 1}`,
+              },
+              options: [],
+              correct: 0,
+              answer: q.answer || "",
+              hint: q.hint?.fa || q.hint || "",
+              explanation: q.explanation || "",
+            });
+          });
+        }
+      });
+    }
+
+    // 📌 استخراج از data.vocabulary, data.grammar و غیره
     const extractFromData = (exerciseArray, prefix) => {
       if (!Array.isArray(exerciseArray)) return;
       exerciseArray.forEach((exercise, idx) => {
@@ -669,12 +850,10 @@ const LessonPage = () => {
     extractFromData(data.writing, "writing");
     extractFromData(data.mixed, "mixed");
 
-    // استخراج از review quiz
     if (data.review && data.review.quiz) {
       extractFromData([{ questions: data.review.quiz }], "review");
     }
 
-    // اگر تمرینی وجود نداشت
     if (exerciseQuestions.length === 0) {
       return (
         <div className="text-center py-12 text-neutral-500">
@@ -953,7 +1132,6 @@ const LessonPage = () => {
       ? ((activeSectionIndex + 1) / sections.length) * 100
       : 0;
 
-  // Render section content based on type
   const renderSectionContent = (section) => {
     if (!section)
       return <p className="text-neutral-500">بخشی برای نمایش وجود ندارد.</p>;
@@ -1152,16 +1330,24 @@ const LessonPage = () => {
             if (activeSectionIndex < sections.length - 1) {
               setActiveSectionIndex(activeSectionIndex + 1);
             } else {
-              setCompleted(true);
-              setShowCompletion(true);
-              toast.success("🎉 درس کامل شد!");
+              completeLesson();
             }
           }}
           icon={
             activeSectionIndex === sections.length - 1 ? Trophy : CheckCircle
           }
+          disabled={isCompleting}
         >
-          {activeSectionIndex === sections.length - 1 ? "تکمیل درس" : "بعدی"}
+          {isCompleting ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              در حال ذخیره...
+            </>
+          ) : activeSectionIndex === sections.length - 1 ? (
+            "تکمیل درس"
+          ) : (
+            "بعدی"
+          )}
         </Button>
 
         <Button

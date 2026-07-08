@@ -104,7 +104,7 @@ const ReviewPage = () => {
     if (!word) return;
 
     try {
-      await api.post(`/review/${word.id}`, { quality: 5 });
+      await api.post(`/review/${word.id}/review`, { quality: 5 });
 
       setSessionStats((prev) => ({
         ...prev,
@@ -126,7 +126,7 @@ const ReviewPage = () => {
     if (!word) return;
 
     try {
-      await api.post(`/review/${word.id}`, { quality: 1 });
+      await api.post(`/review/${word.id}/review`, { quality: 1 });
 
       setSessionStats((prev) => ({
         ...prev,

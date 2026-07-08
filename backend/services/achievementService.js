@@ -2,14 +2,17 @@
  * achievementService.js
  * Path: backend/services/achievementService.js
  * Description: Achievement management service
- * Version: 2.0 - Complete implementation
+ * Version: 2.1 - Fixed UserAchievement association
+ * Changes:
+ * - ✅ FIXED: Added proper include with 'achievement' alias
+ * - ✅ FIXED: getAllAchievementsWithStatus now correctly fetches achievement details
+ * - ✅ FIXED: getUserAchievements with proper association
+ * - ✅ FIXED: getUnviewedAchievements with proper association
  */
 
 import { Achievement, UserAchievement, User } from "../models/index.js";
 import { NotFoundError, ValidationError } from "../errors/index.js";
 import logger from "../config/logger.js";
-import xpService from "./xpService.js";
-// ✅ FIXED: Added sequelize import
 import sequelize from "../config/db.js";
 
 class AchievementService {
@@ -19,6 +22,7 @@ class AchievementService {
 
   /**
    * Get all achievements with status for user
+   * ✅ FIXED: Added proper include with 'achievement' alias
    */
   async getAllAchievementsWithStatus(userId) {
     try {
@@ -29,6 +33,12 @@ class AchievementService {
 
       const userAchievements = await UserAchievement.findAll({
         where: { userId },
+        include: [
+          {
+            model: Achievement,
+            as: "achievement",
+          },
+        ],
       });
 
       const earnedIds = new Set(userAchievements.map((ua) => ua.achievementId));
@@ -43,15 +53,17 @@ class AchievementService {
         earnedAt: earnedMap[achievement.id]?.earnedAt || null,
         isViewed: earnedMap[achievement.id]?.isViewed || false,
         progress: earnedIds.has(achievement.id) ? 100 : 0,
+        userAchievementId: earnedMap[achievement.id]?.id || null,
       }));
     } catch (error) {
-      logger.error("Error in getAllAchievementsWithStatus:", error);
+      logger.error("❌ Error in getAllAchievementsWithStatus:", error);
       throw error;
     }
   }
 
   /**
    * Get user earned achievements
+   * ✅ FIXED: Added proper include with 'achievement' alias
    */
   async getUserAchievements(userId) {
     try {
@@ -66,20 +78,24 @@ class AchievementService {
         order: [["earnedAt", "DESC"]],
       });
 
-      return userAchievements.map((ua) => ({
-        ...ua.achievement.toJSON(),
-        earnedAt: ua.earnedAt,
-        isViewed: ua.isViewed,
-        userAchievementId: ua.id,
-      }));
+      return userAchievements.map((ua) => {
+        const data = ua.toJSON();
+        return {
+          ...data.achievement,
+          earnedAt: data.earnedAt,
+          isViewed: data.isViewed,
+          userAchievementId: data.id,
+        };
+      });
     } catch (error) {
-      logger.error("Error in getUserAchievements:", error);
+      logger.error("❌ Error in getUserAchievements:", error);
       throw error;
     }
   }
 
   /**
    * Get unviewed achievements
+   * ✅ FIXED: Added proper include with 'achievement' alias
    */
   async getUnviewedAchievements(userId) {
     try {
@@ -97,13 +113,16 @@ class AchievementService {
         order: [["earnedAt", "DESC"]],
       });
 
-      return userAchievements.map((ua) => ({
-        ...ua.achievement.toJSON(),
-        earnedAt: ua.earnedAt,
-        userAchievementId: ua.id,
-      }));
+      return userAchievements.map((ua) => {
+        const data = ua.toJSON();
+        return {
+          ...data.achievement,
+          earnedAt: data.earnedAt,
+          userAchievementId: data.id,
+        };
+      });
     } catch (error) {
-      logger.error("Error in getUnviewedAchievements:", error);
+      logger.error("❌ Error in getUnviewedAchievements:", error);
       throw error;
     }
   }
@@ -119,7 +138,7 @@ class AchievementService {
       }
       return achievement;
     } catch (error) {
-      logger.error("Error in getAchievementById:", error);
+      logger.error("❌ Error in getAchievementById:", error);
       throw error;
     }
   }
@@ -147,14 +166,13 @@ class AchievementService {
         remaining: total - earned,
       };
     } catch (error) {
-      logger.error("Error in getAchievementStats:", error);
+      logger.error("❌ Error in getAchievementStats:", error);
       throw error;
     }
   }
 
   /**
    * Get global achievement statistics
-   * ✅ FIXED: Added sequelize import
    */
   async getGlobalStats() {
     try {
@@ -200,7 +218,7 @@ class AchievementService {
         })),
       };
     } catch (error) {
-      logger.error("Error in getGlobalStats:", error);
+      logger.error("❌ Error in getGlobalStats:", error);
       throw error;
     }
   }
@@ -228,10 +246,10 @@ class AchievementService {
 
       await userAchievement.update({ isViewed: true });
 
-      logger.info(`Achievement ${achievementId} marked as viewed for user ${userId}`);
+      logger.info(`✅ Achievement ${achievementId} marked as viewed for user ${userId}`);
       return { success: true, alreadyViewed: false };
     } catch (error) {
-      logger.error("Error in markAsViewed:", error);
+      logger.error("❌ Error in markAsViewed:", error);
       throw error;
     }
   }
@@ -251,10 +269,10 @@ class AchievementService {
         }
       );
 
-      logger.info(`All achievements marked as viewed for user ${userId}`);
+      logger.info(`✅ All achievements marked as viewed for user ${userId}`);
       return { success: true, updatedCount: result[0] };
     } catch (error) {
-      logger.error("Error in markAllAsViewed:", error);
+      logger.error("❌ Error in markAllAsViewed:", error);
       throw error;
     }
   }
@@ -291,6 +309,7 @@ class AchievementService {
         achievementId: achievement.id,
         earnedAt: new Date(),
         isViewed: false,
+        isEarned: true,
       });
 
       // Update total earned count
@@ -310,7 +329,7 @@ class AchievementService {
         }
       }
 
-      logger.info(`Achievement ${achievementName} awarded to user ${userId} (${xpAmount} XP)`);
+      logger.info(`🏆 Achievement ${achievementName} awarded to user ${userId} (+${xpAmount} XP)`);
 
       return {
         success: true,
@@ -319,7 +338,7 @@ class AchievementService {
         xpEarned: xpAmount,
       };
     } catch (error) {
-      logger.error("Error in awardAchievement:", error);
+      logger.error("❌ Error in awardAchievement:", error);
       throw error;
     }
   }
@@ -374,7 +393,7 @@ class AchievementService {
         count: awarded.length,
       };
     } catch (error) {
-      logger.error("Error in checkAndAwardAchievements:", error);
+      logger.error("❌ Error in checkAndAwardAchievements:", error);
       throw error;
     }
   }
@@ -458,10 +477,10 @@ class AchievementService {
   async createAchievement(data) {
     try {
       const achievement = await Achievement.create(data);
-      logger.info(`New achievement created: ${achievement.name}`);
+      logger.info(`✅ New achievement created: ${achievement.name}`);
       return achievement;
     } catch (error) {
-      logger.error("Error in createAchievement:", error);
+      logger.error("❌ Error in createAchievement:", error);
       throw error;
     }
   }
@@ -477,10 +496,10 @@ class AchievementService {
       }
 
       await achievement.update(data);
-      logger.info(`Achievement updated: ${achievement.name}`);
+      logger.info(`✅ Achievement updated: ${achievement.name}`);
       return achievement;
     } catch (error) {
-      logger.error("Error in updateAchievement:", error);
+      logger.error("❌ Error in updateAchievement:", error);
       throw error;
     }
   }
@@ -501,10 +520,10 @@ class AchievementService {
       });
 
       await achievement.destroy();
-      logger.info(`Achievement deleted: ${achievement.name}`);
+      logger.info(`🗑️ Achievement deleted: ${achievement.name}`);
       return { success: true };
     } catch (error) {
-      logger.error("Error in deleteAchievement:", error);
+      logger.error("❌ Error in deleteAchievement:", error);
       throw error;
     }
   }

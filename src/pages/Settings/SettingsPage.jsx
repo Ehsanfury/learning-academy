@@ -150,11 +150,10 @@ const SettingsPage = () => {
     try {
       setIsChangingPassword(true);
 
-      await api.post("/users/change-password", {
+      await api.post("/auth/change-password", {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
       });
-
       toast.success("رمز عبور با موفقیت تغییر کرد");
       setPasswordData({
         currentPassword: "",

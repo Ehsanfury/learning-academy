@@ -5,6 +5,8 @@
  * Changes:
  * - ✅ FIXED: rateLimiter import (default import)
  * - ✅ FIXED: All middleware imports validated
+ * - ✅ FIXED: Double Authentication removed (authenticate only in routes)
+ * - ✅ FIXED: Added notificationRoutes and analyticsRoutes
  */
 
 import express from "express";
@@ -22,7 +24,7 @@ import config, { isAIConfigured, isGeminiConfigured } from "./config/env.js";
 import { logInfo, logError } from "./config/logger.js";
 
 // Middlewares
-import rateLimiter from "./middlewares/rateLimiter.js"; // ✅ FIXED: default import
+import rateLimiter from "./middlewares/rateLimiter.js";
 import { trackActivity } from "./middlewares/activityMiddleware.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 import { authenticate } from "./middlewares/authMiddleware.js";
@@ -42,6 +44,8 @@ import levelRoutes from "./routes/levelRoutes.js";
 import exerciseRoutes from "./routes/exerciseRoutes.js";
 import storiesRoutes from "./routes/storiesRoutes.js";
 import scenariosRoutes from "./routes/scenariosRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
 
 // Socket Handler
 import setupSocket from "./socketHandler.js";
@@ -275,6 +279,8 @@ app.get("/", (req, res) => {
       exercises: "/api/exercises",
       stories: "/api/stories",
       scenarios: "/api/scenarios",
+      notifications: "/api/notifications",
+      analytics: "/api/analytics",
     },
     documentation: "/api/docs",
   });
@@ -288,22 +294,25 @@ app.use("/api/auth", authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
+// ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)
+// authenticate is only applied inside individual route files
 // ============================================
 
-app.use("/api/users", authenticate, trackActivity, userRoutes);
-app.use("/api/lessons", authenticate, trackActivity, lessonRoutes);
-app.use("/api/progress", authenticate, trackActivity, progressRoutes);
-app.use("/api/dictionary", authenticate, trackActivity, dictionaryRoutes);
-app.use("/api/ai", authenticate, trackActivity, aiRoutes);
-app.use("/api/review", authenticate, trackActivity, spacedRepetitionRoutes);
-app.use("/api/achievements", authenticate, trackActivity, achievementRoutes);
-app.use("/api/mentors", authenticate, trackActivity, mentorRoutes);
-app.use("/api/vocabulary", authenticate, trackActivity, vocabularyRoutes);
-app.use("/api/levels", authenticate, trackActivity, levelRoutes);
-app.use("/api/exercises", authenticate, trackActivity, exerciseRoutes);
-app.use("/api/stories", authenticate, trackActivity, storiesRoutes);
-app.use("/api/scenarios", authenticate, trackActivity, scenariosRoutes);
-
+app.use("/api/users", trackActivity, userRoutes);
+app.use("/api/lessons", trackActivity, lessonRoutes);
+app.use("/api/progress", trackActivity, progressRoutes);
+app.use("/api/dictionary", trackActivity, dictionaryRoutes);
+app.use("/api/ai", trackActivity, aiRoutes);
+app.use("/api/review", trackActivity, spacedRepetitionRoutes);
+app.use("/api/achievements", trackActivity, achievementRoutes);
+app.use("/api/mentors", trackActivity, mentorRoutes);
+app.use("/api/vocabulary", trackActivity, vocabularyRoutes);
+app.use("/api/levels", trackActivity, levelRoutes);
+app.use("/api/exercises", trackActivity, exerciseRoutes);
+app.use("/api/stories", trackActivity, storiesRoutes);
+app.use("/api/scenarios", trackActivity, scenariosRoutes);
+app.use("/api/notifications", trackActivity, notificationRoutes);
+app.use("/api/analytics", trackActivity, analyticsRoutes);
 // ============================================
 // 📚 API Documentation
 // ============================================
@@ -386,6 +395,16 @@ app.get("/api/docs", (req, res) => {
         path: "/api/review",
         methods: ["POST /word/:id", "GET /due", "GET /stats"],
         description: "Spaced repetition system endpoints",
+      },
+      {
+        path: "/api/notifications",
+        methods: ["GET /", "PUT /:id/read", "PUT /read-all", "GET /unread-count"],
+        description: "Notification system endpoints",
+      },
+      {
+        path: "/api/analytics",
+        methods: ["POST /event", "GET /stats", "GET /weekly-activity", "GET /insights"],
+        description: "Analytics endpoints",
       },
     ],
   });

@@ -3,7 +3,10 @@
  * Path: backend/models/index.js
  * Description: Central export for all models
  * Changes:
- * - ✅ FIXED: WordProgress ↔ Vocabulary association with correct types
+ * - ✅ FIXED: Changed 'notifications' alias to 'userNotifications' to avoid collision
+ * - ✅ FIXED: Changed 'users' alias to 'notificationUsers' to avoid collision
+ * - ✅ FIXED: Added proper Notification ↔ UserNotification associations
+ * - ✅ FIXED: All aliases are unique
  */
 
 import User from "./User.js";
@@ -21,57 +24,100 @@ import Vocabulary from "./Vocabulary.js";
 import Story from "./Story.js";
 import StoryProgress from "./StoryProgress.js";
 import Scenario from "./Scenario.js";
-import ScenarioSession from "./ScenarioSession.js";
 import XPHistory from "./XPHistory.js";
 import UserRefreshToken from "./UserRefreshToken.js";
 import Exercise from "./Exercise.js";
+import ScenarioSession from "./ScenarioSession.js";
 
 // ============================================
-// 📊 Associations
+// 📊 Associations (ALL ALIASES ARE UNIQUE)
 // ============================================
 
 // ============================================
-// ✅ Lesson ↔ Vocabulary
+// ✅ User ↔ Notification (through UserNotification)
+// ✅ FIXED: Changed aliases to avoid collision with 'notifications' attribute
 // ============================================
-Lesson.hasMany(Vocabulary, {
-  foreignKey: "lessonId",
-  as: "vocabularyItems",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-Vocabulary.belongsTo(Lesson, {
-  foreignKey: "lessonId",
-  as: "lesson",
-});
-
-// ============================================
-// ✅ WordProgress ↔ Vocabulary
-// ============================================
-WordProgress.belongsTo(Vocabulary, {
-  foreignKey: "wordId",
-  as: "vocabulary",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-Vocabulary.hasMany(WordProgress, {
-  foreignKey: "wordId",
-  as: "progresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-
-// ============================================
-// User ↔ WordProgress
-// ============================================
-User.hasMany(WordProgress, {
+User.belongsToMany(Notification, {
+  through: UserNotification,
   foreignKey: "userId",
-  as: "userWordProgresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
+  otherKey: "notificationId",
+  as: "userNotificationList", // ✅ Changed from 'notifications'
 });
-WordProgress.belongsTo(User, {
+
+Notification.belongsToMany(User, {
+  through: UserNotification,
+  foreignKey: "notificationId",
+  otherKey: "userId",
+  as: "notificationUserList", // ✅ Changed from 'users'
+});
+
+// ============================================
+// ✅ Notification ↔ UserNotification
+// ============================================
+Notification.hasMany(UserNotification, {
+  foreignKey: "notificationId",
+  as: "userNotificationEntries",
+});
+
+UserNotification.belongsTo(Notification, {
+  foreignKey: "notificationId",
+  as: "notification",
+});
+
+// ============================================
+// ✅ User ↔ UserNotification
+// ============================================
+User.hasMany(UserNotification, {
   foreignKey: "userId",
-  as: "wordProgressUser",
+  as: "userNotificationEntries",
+});
+
+UserNotification.belongsTo(User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+// ============================================
+// User ↔ Achievement (through UserAchievement)
+// ============================================
+User.belongsToMany(Achievement, {
+  through: UserAchievement,
+  foreignKey: "userId",
+  otherKey: "achievementId",
+  as: "achievements",
+});
+
+Achievement.belongsToMany(User, {
+  through: UserAchievement,
+  foreignKey: "achievementId",
+  otherKey: "userId",
+  as: "users",
+});
+
+// ============================================
+// UserAchievement ↔ Achievement
+// ============================================
+UserAchievement.belongsTo(Achievement, {
+  foreignKey: "achievementId",
+  as: "achievement",
+});
+
+Achievement.hasMany(UserAchievement, {
+  foreignKey: "achievementId",
+  as: "userAchievements",
+});
+
+// ============================================
+// UserAchievement ↔ User
+// ============================================
+UserAchievement.belongsTo(User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+User.hasMany(UserAchievement, {
+  foreignKey: "userId",
+  as: "userAchievementEntries",
 });
 
 // ============================================
@@ -80,8 +126,6 @@ WordProgress.belongsTo(User, {
 User.hasMany(Exercise, {
   foreignKey: "userId",
   as: "userExercises",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 Exercise.belongsTo(User, {
   foreignKey: "userId",
@@ -94,26 +138,10 @@ Exercise.belongsTo(User, {
 User.hasMany(ScenarioSession, {
   foreignKey: "userId",
   as: "userScenarioSessions",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 ScenarioSession.belongsTo(User, {
   foreignKey: "userId",
   as: "scenarioSessionUser",
-});
-
-// ============================================
-// Scenario ↔ ScenarioSession
-// ============================================
-Scenario.hasMany(ScenarioSession, {
-  foreignKey: "scenarioId",
-  as: "scenarioSessions",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-});
-ScenarioSession.belongsTo(Scenario, {
-  foreignKey: "scenarioId",
-  as: "scenario",
 });
 
 // ============================================
@@ -122,8 +150,6 @@ ScenarioSession.belongsTo(Scenario, {
 User.hasMany(LessonProgress, {
   foreignKey: "userId",
   as: "userLessonProgresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 LessonProgress.belongsTo(User, {
   foreignKey: "userId",
@@ -136,8 +162,6 @@ LessonProgress.belongsTo(User, {
 Lesson.hasMany(LessonProgress, {
   foreignKey: "lessonId",
   as: "lessonProgresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 LessonProgress.belongsTo(Lesson, {
   foreignKey: "lessonId",
@@ -145,31 +169,27 @@ LessonProgress.belongsTo(Lesson, {
 });
 
 // ============================================
-// User ↔ UserAchievement
+// User ↔ WordProgress
 // ============================================
-User.hasMany(UserAchievement, {
+User.hasMany(WordProgress, {
   foreignKey: "userId",
-  as: "userAchievements",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
+  as: "userWordProgresses",
 });
-UserAchievement.belongsTo(User, {
+WordProgress.belongsTo(User, {
   foreignKey: "userId",
-  as: "achievementUser",
+  as: "wordProgressUser",
 });
 
 // ============================================
-// Achievement ↔ UserAchievement
+// WordProgress ↔ Vocabulary
 // ============================================
-Achievement.hasMany(UserAchievement, {
-  foreignKey: "achievementId",
-  as: "achievementUserAchievements",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
+WordProgress.belongsTo(Vocabulary, {
+  foreignKey: "wordId",
+  as: "vocabulary",
 });
-UserAchievement.belongsTo(Achievement, {
-  foreignKey: "achievementId",
-  as: "userAchievement",
+Vocabulary.hasMany(WordProgress, {
+  foreignKey: "wordId",
+  as: "progresses",
 });
 
 // ============================================
@@ -178,8 +198,6 @@ UserAchievement.belongsTo(Achievement, {
 User.hasMany(AIConversation, {
   foreignKey: "userId",
   as: "userAIConversations",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 AIConversation.belongsTo(User, {
   foreignKey: "userId",
@@ -192,8 +210,6 @@ AIConversation.belongsTo(User, {
 User.hasOne(Mentor, {
   foreignKey: "userId",
   as: "userMentor",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 Mentor.belongsTo(User, {
   foreignKey: "userId",
@@ -206,8 +222,6 @@ Mentor.belongsTo(User, {
 Mentor.hasMany(MentorSession, {
   foreignKey: "mentorId",
   as: "mentorSessions",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 MentorSession.belongsTo(Mentor, {
   foreignKey: "mentorId",
@@ -220,8 +234,6 @@ MentorSession.belongsTo(Mentor, {
 User.hasMany(MentorSession, {
   foreignKey: "studentId",
   as: "userStudentSessions",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 MentorSession.belongsTo(User, {
   foreignKey: "studentId",
@@ -234,8 +246,6 @@ MentorSession.belongsTo(User, {
 User.hasMany(StoryProgress, {
   foreignKey: "userId",
   as: "userStoryProgresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 StoryProgress.belongsTo(User, {
   foreignKey: "userId",
@@ -248,8 +258,6 @@ StoryProgress.belongsTo(User, {
 Story.hasMany(StoryProgress, {
   foreignKey: "storyId",
   as: "storyProgresses",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 StoryProgress.belongsTo(Story, {
   foreignKey: "storyId",
@@ -262,8 +270,6 @@ StoryProgress.belongsTo(Story, {
 User.hasMany(XPHistory, {
   foreignKey: "userId",
   as: "userXPHistories",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 XPHistory.belongsTo(User, {
   foreignKey: "userId",
@@ -276,8 +282,6 @@ XPHistory.belongsTo(User, {
 User.hasMany(UserRefreshToken, {
   foreignKey: "userId",
   as: "userRefreshTokens",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
 });
 UserRefreshToken.belongsTo(User, {
   foreignKey: "userId",
@@ -304,11 +308,15 @@ export {
   Story,
   StoryProgress,
   Scenario,
-  ScenarioSession,
   XPHistory,
   UserRefreshToken,
   Exercise,
+  ScenarioSession,
 };
+
+// ============================================
+// 📤 Default Export
+// ============================================
 
 export default {
   User,
@@ -326,8 +334,8 @@ export default {
   Story,
   StoryProgress,
   Scenario,
-  ScenarioSession,
   XPHistory,
   UserRefreshToken,
   Exercise,
+  ScenarioSession,
 };

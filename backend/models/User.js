@@ -2,7 +2,9 @@
  * User.js
  * Path: backend/models/User.js
  * Description: User model with all fields
- * Version: 2.1 - Fixed syntax error
+ * Version: 2.3 - Removed refreshToken (use UserRefreshToken model)
+ *         - Removed duplicate streak/XP logic (use services)
+ *         - Added database indexes
  */
 
 import { DataTypes, Op } from "sequelize";
@@ -164,12 +166,7 @@ const User = sequelize.define(
       defaultValue: null,
       field: "reset_password_expires",
     },
-    refreshToken: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      field: "refresh_token",
-    },
+    // ✅ REMOVED: refreshToken - use UserRefreshToken model instead
     lastLoginAt: {
       type: DataTypes.DATE,
       allowNull: true,
@@ -185,6 +182,17 @@ const User = sequelize.define(
     underscored: true,
     paranoid: true,
     deletedAt: "deleted_at",
+    indexes: [
+      { fields: ["email"] },
+      { fields: ["username"] },
+      { fields: ["role"] },
+      { fields: ["is_active"] },
+      { fields: ["level"] },
+      { fields: ["xp"] },
+      { fields: ["streak"] },
+      { fields: ["last_active_date"] },
+      { fields: ["created_at"] },
+    ],
     hooks: {
       beforeCreate: async (user) => {
         if (user.password) {
@@ -213,7 +221,6 @@ const User = sequelize.define(
 // 🔐 Instance Methods
 // ============================================
 
-// ✅ متد comparePassword - برای مقایسه رمز عبور
 User.prototype.comparePassword = async function (candidatePassword) {
   if (!candidatePassword || !this.password) {
     return false;
@@ -228,7 +235,6 @@ User.prototype.toJSON = function () {
     "verification_token",
     "reset_password_token",
     "reset_password_expires",
-    "refresh_token",
   ];
   sensitiveFields.forEach((field) => delete values[field]);
   return values;
@@ -253,65 +259,6 @@ User.findByResetToken = async function (token) {
       },
     },
   });
-};
-
-User.updateStreak = async function (userId, today) {
-  if (!userId || !today) return null;
-
-  const user = await this.findByPk(userId);
-  if (!user) return null;
-
-  const todayStr = today instanceof Date ? today.toISOString().slice(0, 10) : today;
-  const lastActive = user.last_active_date;
-
-  const yesterday = new Date(todayStr);
-  yesterday.setDate(yesterday.getDate() - 1);
-  const yesterdayStr = yesterday.toISOString().slice(0, 10);
-
-  let newStreak = user.streak;
-
-  if (lastActive === yesterdayStr) {
-    newStreak = user.streak + 1;
-  } else if (lastActive !== todayStr) {
-    newStreak = 1;
-  }
-
-  const longestStreak = Math.max(newStreak, user.longest_streak || 0);
-
-  await user.update({
-    streak: newStreak,
-    longest_streak: longestStreak,
-    last_active_date: todayStr,
-    last_login_at: new Date(),
-  });
-
-  return {
-    streak: newStreak,
-    longestStreak: longestStreak,
-    today: todayStr,
-  };
-};
-
-User.addXP = async function (userId, amount) {
-  if (!userId || !amount || amount <= 0) return null;
-
-  const user = await this.findByPk(userId);
-  if (!user) return null;
-
-  const newXP = user.xp + amount;
-  const xpPerLevel = 100;
-  const newLevel = Math.floor(newXP / xpPerLevel) + 1;
-
-  await user.update({
-    xp: newXP,
-    level: newLevel,
-  });
-
-  return {
-    xp: newXP,
-    level: newLevel,
-    gained: amount,
-  };
 };
 
 export default User;

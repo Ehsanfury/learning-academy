@@ -1,19 +1,17 @@
 /**
  * lessonRepository.js
  * Path: backend/repositories/lessonRepository.js
- * Description: Repository for Lesson model with specific query methods
+ * Description: Lesson repository
  * Changes:
- * - ✅ FIXED: Added count method
- * - ✅ FIXED: Replaced isPublished with isActive (matching model)
- * - ✅ All queries now use isActive instead of isPublished
- * - ✅ Added proper error handling
+ * - ✅ FIXED: Added countAll method
+ * - ✅ FIXED: Added proper error handling
+ * - ✅ FIXED: All methods use BaseRepository pattern
  */
 
 import { Op } from "sequelize";
-import Lesson from "../models/Lesson.js";
+import { Lesson, LessonProgress } from "../models/index.js";
 import BaseRepository from "./baseRepository.js";
 import logger from "../config/logger.js";
-import { NotFoundError, ValidationError } from "../errors/index.js";
 
 class LessonRepository extends BaseRepository {
   constructor() {
@@ -21,244 +19,92 @@ class LessonRepository extends BaseRepository {
   }
 
   /**
-   * ✅ ADDED: Count lessons with options
+   * Find active lessons with filters
    */
-  async count(options = {}) {
+  async findActive(filters = {}, options = {}) {
     try {
-      const safeOptions = options || {};
-      logger.debug(`📊 Counting Lesson records`, { options: safeOptions });
-      const result = await this.model.count(safeOptions);
-      logger.debug(`✅ Counted ${result} Lesson records`);
-      return result;
+      const {
+        level,
+        search,
+        limit = 50,
+        offset = 0,
+        order = [
+          ["level", "ASC"],
+          ["order", "ASC"],
+        ],
+      } = filters;
+
+      const where = { isActive: true };
+
+      if (level) {
+        where.level = level;
+      }
+
+      if (search) {
+        where[Op.or] = [
+          { id: { [Op.iLike]: `%${search}%` } },
+          { "$title.fa$": { [Op.iLike]: `%${search}%` } },
+          { "$title.en$": { [Op.iLike]: `%${search}%` } },
+          { "$title.de$": { [Op.iLike]: `%${search}%` } },
+        ];
+      }
+
+      const queryOptions = {
+        where,
+        limit,
+        offset,
+        order,
+        ...options,
+      };
+
+      const { rows, count } = await this.model.findAndCountAll(queryOptions);
+
+      return {
+        lessons: rows,
+        total: count,
+        limit,
+        offset,
+      };
     } catch (error) {
-      logger.error(`❌ LessonRepository.count error:`, {
-        error: error.message,
-        stack: error.stack,
-        options,
-      });
-      throw error;
+      logger.error(`❌ Error in findActive:`, error);
+      return {
+        lessons: [],
+        total: 0,
+        limit: 0,
+        offset: 0,
+      };
     }
   }
 
   /**
-   * Find lesson by ID with progress
+   * Find lesson by ID with progress for a user
    */
-  async findByIdWithProgress(id, userId) {
+  async findByIdWithProgress(lessonId, userId = null) {
     try {
-      const lesson = await this.model.findByPk(id);
+      if (!lessonId) {
+        throw new Error("Lesson ID is required");
+      }
+
+      const lesson = await this.findByIdOrFail(lessonId);
+
       if (!lesson) {
-        logger.debug(`ℹ️ Lesson not found with id: ${id}`);
         return null;
       }
 
-      const lessonData = lesson.toJSON();
+      const result = lesson.toJSON();
 
-      // Get user progress if userId provided
       if (userId) {
-        const { LessonProgress } = await import("../models/index.js");
         const progress = await LessonProgress.findOne({
-          where: { userId, lessonId: id },
+          where: { userId, lessonId },
         });
-        if (progress) {
-          lessonData.progress = progress.toJSON();
-        }
+
+        result.progress = progress ? progress.toJSON() : null;
       }
 
-      return lessonData;
+      return result;
     } catch (error) {
-      logger.error(`❌ LessonRepository.findByIdWithProgress error:`, {
-        error: error.message,
-        stack: error.stack,
-        id,
-        userId,
-      });
-      throw error;
-    }
-  }
-
-  /**
-   * Find lessons by level with pagination
-   * ✅ FIXED: Using isActive instead of isPublished
-   */
-  async findByLevel(level, options = {}) {
-    try {
-      const { limit = 50, offset = 0 } = options;
-
-      const { count, rows } = await this.model.findAndCountAll({
-        where: {
-          level: level.toUpperCase(),
-          isActive: true,
-        },
-        limit,
-        offset,
-        order: [
-          ["unit", "ASC"],
-          ["lessonNumber", "ASC"],
-        ],
-      });
-
-      logger.debug(`✅ Found ${rows.length} lessons for level ${level}`);
-      return {
-        lessons: rows,
-        total: count,
-        limit,
-        offset,
-      };
-    } catch (error) {
-      logger.error(`❌ LessonRepository.findByLevel error:`, {
-        error: error.message,
-        stack: error.stack,
-        level,
-        options,
-      });
-      throw error;
-    }
-  }
-
-  /**
-   * Find active lessons
-   * ✅ FIXED: Using isActive instead of isPublished
-   */
-  async findActive(options = {}) {
-    try {
-      const { limit = 50, offset = 0, level } = options;
-
-      const where = {
-        isActive: true,
-      };
-
-      if (level) {
-        where.level = level.toUpperCase();
-      }
-
-      const { count, rows } = await this.model.findAndCountAll({
-        where,
-        limit,
-        offset,
-        order: [
-          ["level", "ASC"],
-          ["unit", "ASC"],
-          ["lessonNumber", "ASC"],
-        ],
-      });
-
-      logger.debug(`✅ Found ${rows.length} active lessons`);
-      return {
-        lessons: rows,
-        total: count,
-        limit,
-        offset,
-      };
-    } catch (error) {
-      logger.error(`❌ LessonRepository.findActive error:`, {
-        error: error.message,
-        stack: error.stack,
-        options,
-      });
-      throw error;
-    }
-  }
-
-  /**
-   * Find lessons with prerequisites
-   */
-  async findWithPrerequisites(userId, options = {}) {
-    try {
-      const { limit = 50, offset = 0 } = options;
-
-      const lessons = await this.model.findAll({
-        where: {
-          isActive: true,
-        },
-        limit,
-        offset,
-        order: [
-          ["level", "ASC"],
-          ["unit", "ASC"],
-          ["lessonNumber", "ASC"],
-        ],
-      });
-
-      logger.debug(`✅ Found ${lessons.length} lessons with prerequisites`);
-      return lessons;
-    } catch (error) {
-      logger.error(`❌ LessonRepository.findWithPrerequisites error:`, {
-        error: error.message,
-        stack: error.stack,
-        userId,
-        options,
-      });
-      throw error;
-    }
-  }
-
-  /**
-   * Find lessons by search query
-   */
-  async search(query, options = {}) {
-    try {
-      const { limit = 20, offset = 0, level } = options;
-
-      const where = {
-        isActive: true,
-        [Op.or]: [
-          { title: { [Op.iLike]: `%${query}%` } },
-          { description: { [Op.iLike]: `%${query}%` } },
-        ],
-      };
-
-      if (level) {
-        where.level = level.toUpperCase();
-      }
-
-      const { count, rows } = await this.model.findAndCountAll({
-        where,
-        limit,
-        offset,
-      });
-
-      logger.debug(`✅ Found ${rows.length} lessons matching search`);
-      return {
-        lessons: rows,
-        total: count,
-        limit,
-        offset,
-      };
-    } catch (error) {
-      logger.error(`❌ LessonRepository.search error:`, {
-        error: error.message,
-        stack: error.stack,
-        query,
-        options,
-      });
-      throw error;
-    }
-  }
-
-  /**
-   * Get lesson by ID or throw not found
-   */
-  async findByIdOrFail(id, options = {}) {
-    try {
-      const lesson = await this.findById(id, options);
-      if (!lesson) {
-        throw new NotFoundError({
-          message: `Lesson with id "${id}" not found`,
-          resource: { model: "Lesson", id },
-        });
-      }
-      return lesson;
-    } catch (error) {
-      if (error instanceof NotFoundError) {
-        throw error;
-      }
-      logger.error(`❌ LessonRepository.findByIdOrFail error:`, {
-        error: error.message,
-        stack: error.stack,
-        id,
-        options,
-      });
-      throw error;
+      logger.error(`❌ Error in findByIdWithProgress:`, error);
+      return null;
     }
   }
 
@@ -271,7 +117,6 @@ class LessonRepository extends BaseRepository {
         return {};
       }
 
-      const { LessonProgress } = await import("../models/index.js");
       const progress = await LessonProgress.findAll({
         where: {
           userId,
@@ -284,52 +129,133 @@ class LessonRepository extends BaseRepository {
         progressMap[p.lessonId] = p;
       });
 
-      logger.debug(`✅ Found ${progress.length} progress records for user ${userId}`);
       return progressMap;
     } catch (error) {
-      logger.error(`❌ LessonRepository.getUserProgress error:`, {
-        error: error.message,
-        stack: error.stack,
-        userId,
-        lessonIds,
-      });
+      logger.error(`❌ Error in getUserProgress:`, error);
       return {};
     }
   }
 
   /**
-   * Get lesson statistics
+   * ✅ NEW: Count all active lessons
    */
-  async getStats() {
+  async countAll(filters = {}) {
     try {
-      const total = await this.model.count({ where: { isActive: true } });
+      const where = { isActive: true };
 
-      const byLevel = await this.model.findAll({
-        where: { isActive: true },
-        attributes: [
-          "level",
-          [this.model.sequelize.fn("COUNT", this.model.sequelize.col("id")), "count"],
-        ],
-        group: ["level"],
-        order: [["level", "ASC"]],
-      });
+      if (filters.level) {
+        where.level = filters.level;
+      }
 
-      const levelStats = {};
-      byLevel.forEach((item) => {
-        levelStats[item.level] = parseInt(item.get("count"));
-      });
-
-      logger.debug(`✅ Lesson stats: total ${total}, byLevel ${Object.keys(levelStats).length}`);
-      return {
-        total,
-        byLevel: levelStats,
-      };
+      const count = await this.model.count({ where });
+      return count;
     } catch (error) {
-      logger.error(`❌ LessonRepository.getStats error:`, {
-        error: error.message,
-        stack: error.stack,
+      logger.error(`❌ Error in countAll:`, error);
+      return 0;
+    }
+  }
+
+  /**
+   * Get lessons by level
+   */
+  async findByLevel(level, options = {}) {
+    try {
+      if (!level) {
+        throw new Error("Level is required");
+      }
+
+      const queryOptions = {
+        where: {
+          level: level.toUpperCase(),
+          isActive: true,
+        },
+        order: [["order", "ASC"]],
+        ...options,
+      };
+
+      return await this.model.findAll(queryOptions);
+    } catch (error) {
+      logger.error(`❌ Error in findByLevel:`, error);
+      return [];
+    }
+  }
+
+  /**
+   * Get next lesson
+   */
+  async getNextLesson(lessonId) {
+    try {
+      if (!lessonId) {
+        return null;
+      }
+
+      const lesson = await this.findById(lessonId);
+      if (!lesson) {
+        return null;
+      }
+
+      const nextLesson = await this.model.findOne({
+        where: {
+          level: lesson.level,
+          order: lesson.order + 1,
+          isActive: true,
+        },
       });
-      throw error;
+
+      return nextLesson;
+    } catch (error) {
+      logger.error(`❌ Error in getNextLesson:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Get previous lesson
+   */
+  async getPreviousLesson(lessonId) {
+    try {
+      if (!lessonId) {
+        return null;
+      }
+
+      const lesson = await this.findById(lessonId);
+      if (!lesson) {
+        return null;
+      }
+
+      const previousLesson = await this.model.findOne({
+        where: {
+          level: lesson.level,
+          order: lesson.order - 1,
+          isActive: true,
+        },
+      });
+
+      return previousLesson;
+    } catch (error) {
+      logger.error(`❌ Error in getPreviousLesson:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Get lesson levels
+   */
+  async getLevels() {
+    try {
+      const levels = await this.model.findAll({
+        attributes: [
+          [this.model.sequelize.fn("DISTINCT", this.model.sequelize.col("level")), "level"],
+        ],
+        where: { isActive: true },
+        order: [["level", "ASC"]],
+        raw: true,
+      });
+
+      return levels.map((l) => l.level).filter(Boolean);
+    } catch (error) {
+      logger.error(`❌ Error in getLevels:`, error);
+      return ["A1", "A2", "B1", "B2", "C1", "C2"];
     }
   }
 }

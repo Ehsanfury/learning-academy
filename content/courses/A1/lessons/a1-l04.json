@@ -1,582 +1,1872 @@
 {
-  "id": "a1-l04",
+  "id": "A1-L04",
+  "order": 4,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 4,
+  "unit": 4,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 50,
-  "difficulty": 1,
-  "prerequisites": [
-    "a1-l03"
-  ],
-  "nextLessonId": "a1-l05",
-  "previousLessonId": "a1-l03",
   "title": {
-    "de": "Was ist das?",
-    "fa": "این چیست؟",
-    "en": "What is this?"
+    "fa": "Mein Leben - زندگی من",
+    "en": "My Life",
+    "de": "Mein Leben"
   },
-  "shortTitle": {
-    "de": "Was ist das?",
-    "fa": "این چیست؟",
-    "en": "What is this?"
+  "subtitle": {
+    "fa": "شغل‌ها، ساعت، دستگاه‌های اداری و روال روزانه",
+    "en": "Professions, Time, Office Devices and Daily Routine",
+    "de": "Berufe, Uhrzeit, IT-Geräte und Tagesablauf"
   },
   "description": {
-    "fa": "در این درس با نام اشیاء (مدرسه، دفتر کار)، رنگ‌ها و معرفی اشیاء با استفاده از ابزار تعریف آشنا می‌شوید.",
-    "en": "In this lesson you will learn school and office objects, colors and introducing objects using articles.",
-    "de": "In dieser Lektion lernen Sie Schul- und Bürogegenstände, Farben und das Vorstellen von Gegenständen mit Artikeln."
+    "fa": "در این درس شما با واژگان شغل‌ها، گفتن ساعت به دو روش رسمی و غیررسمی، دستگاه‌های اداری و IT، فعل‌های جداشونده (trennbare Verben)، حالت Akkusativ و روال روزانه آشنا می‌شوید.",
+    "en": "In this lesson you will learn profession vocabulary, telling time (formal and informal), IT devices, separable verbs, accusative case and daily routine.",
+    "de": "In dieser Lektion lernen Sie Berufsvokabular, Uhrzeiten (formell und informell), IT-Geräte, trennbare Verben, Akkusativ und Tagesablauf."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 2,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ یادگیری نام اشیاء مدرسه و دفتر کار به آلمانی",
-      "✅ شناخت رنگ‌ها به آلمانی",
-      "✅ استفاده از ابزار تعریف نامعین (ein/eine)",
-      "✅ منفی کردن با kein/keine"
+      "نام بردن شغل‌های مختلف به آلمانی",
+      "پرسیدن و گفتن شغل: Was bist du von Beruf?",
+      "گفتن ساعت به روش رسمی: Es ist vierzehn Uhr fünfzehn",
+      "گفتن ساعت به روش غیررسمی: Viertel nach sieben",
+      "پرسیدن ساعت: Wie spät ist es?",
+      "استفاده از حروف تعریف در حالت Akkusativ: den, einen, keinen",
+      "صرف فعل‌های جداشونده: aufstehen, anfangen, einkaufen",
+      "گفتن روال روزانه: Ich stehe um... auf",
+      "نام بردن دستگاه‌های اداری و IT"
+    ],
+    "en": [
+      "Name various professions in German",
+      "Ask and tell professions: Was bist du von Beruf?",
+      "Tell time formally: Es ist vierzehn Uhr fünfzehn",
+      "Tell time informally: Viertel nach sieben",
+      "Ask for time: Wie spät ist es?",
+      "Use articles in accusative: den, einen, keinen",
+      "Conjugate separable verbs: aufstehen, anfangen, einkaufen",
+      "Describe daily routine: Ich stehe um... auf",
+      "Name office and IT devices"
+    ],
+    "de": [
+      "Verschiedene Berufe auf Deutsch nennen",
+      "Nach Berufen fragen und sie nennen: Was bist du von Beruf?",
+      "Uhrzeit formell sagen: Es ist vierzehn Uhr fünfzehn",
+      "Uhrzeit informell sagen: Viertel nach sieben",
+      "Nach der Uhrzeit fragen: Wie spät ist es?",
+      "Artikel im Akkusativ verwenden: den, einen, keinen",
+      "Trennbare Verben konjugieren: aufstehen, anfangen, einkaufen",
+      "Tagesablauf beschreiben: Ich stehe um... auf",
+      "IT-Geräte und Bürobedarf nennen"
     ]
   },
-  "xpReward": 55,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس چهارم خوش آمدید! 📚\n\nدر این درس با نام اشیاء مدرسه و دفتر کار، رنگ‌ها و معرفی اشیاء آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• نام اشیاء مدرسه و دفتر کار به آلمانی\n• رنگ‌های اصلی به آلمانی\n• استفاده از ein/eine برای اشیاء نامشخص\n• منفی کردن با kein/keine",
-        "en": "Welcome to lesson 4! 📚\n\nIn this lesson you will learn school and office objects, colors and introducing objects.\n\nYou will learn:\n• School and office object names in German\n• Main colors in German\n• Using ein/eine for indefinite objects\n• Negation with kein/keine",
-        "de": "Willkommen zur vierten Lektion! 📚\n\nIn dieser Lektion lernen Sie Schul- und Bürogegenstände, Farben und das Vorstellen von Gegenständen.\n\nSie lernen:\n• Schul- und Bürogegenstände auf Deutsch\n• Hauptfarben auf Deutsch\n• Verwendung von ein/eine für unbestimmte Gegenstände\n• Verneinung mit kein/keine"
-      },
-      "id": "a1-l04-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱-۳: احوال‌پرسی، معرفی خود، خانواده، مواد غذایی",
+      "آشنایی با حروف تعریف: der, das, die, ein, eine, kein, keine",
+      "صرف فعل‌های منظم و فعل‌های sein، haben، essen",
+      "آشنایی با اعداد ۰ تا ۱۰۰"
+    ],
+    "en": [
+      "Mastery of Lessons 1-3: Greetings, introductions, family, food",
+      "Familiarity with articles: der, das, die, ein, eine, kein, keine",
+      "Conjugation of regular verbs and sein, haben, essen",
+      "Familiarity with numbers 0-100"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1-3: Begrüßungen, Vorstellung, Familie, Essen",
+      "Vertrautheit mit Artikeln: der, das, die, ein, eine, kein, keine",
+      "Konjugation regelmäßiger Verben und sein, haben, essen",
+      "Vertrautheit mit Zahlen 0-100"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "صحنه داستان (Story Mode) - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "der Tisch",
-          "fa": "میز",
-          "en": "table",
-          "gender": "der",
-          "plural": "die Tische",
-          "icon": "🪑",
-          "example": {
-            "de": "Der Tisch ist groß.",
-            "fa": "میز بزرگ است.",
-            "en": "The table is big."
-          }
-        },
-        {
-          "de": "der Stuhl",
-          "fa": "صندلی",
-          "en": "chair",
-          "gender": "der",
-          "plural": "die Stühle",
-          "icon": "🪑",
-          "example": {
-            "de": "Der Stuhl ist klein.",
-            "fa": "صندلی کوچک است.",
-            "en": "The chair is small."
-          }
-        },
-        {
-          "de": "die Lampe",
-          "fa": "لامپ",
-          "en": "lamp",
-          "gender": "die",
-          "plural": "die Lampen",
-          "icon": "💡",
-          "example": {
-            "de": "Die Lampe ist an.",
-            "fa": "لامپ روشن است.",
-            "en": "The lamp is on."
-          }
-        },
-        {
-          "de": "das Buch",
-          "fa": "کتاب",
-          "en": "book",
-          "gender": "das",
-          "plural": "die Bücher",
-          "icon": "📖",
-          "example": {
-            "de": "Das Buch ist interessant.",
-            "fa": "کتاب جالب است.",
-            "en": "The book is interesting."
-          }
-        },
-        {
-          "de": "das Heft",
-          "fa": "دفتر",
-          "en": "notebook",
-          "gender": "das",
-          "plural": "die Hefte",
-          "icon": "📓",
-          "example": {
-            "de": "Das Heft ist neu.",
-            "fa": "دفتر جدید است.",
-            "en": "The notebook is new."
-          }
-        },
-        {
-          "de": "der Bleistift",
-          "fa": "مداد",
-          "en": "pencil",
-          "gender": "der",
-          "plural": "die Bleistifte",
-          "icon": "✏️",
-          "example": {
-            "de": "Der Bleistift ist lang.",
-            "fa": "مداد بلند است.",
-            "en": "The pencil is long."
-          }
-        },
-        {
-          "de": "der Kuli",
-          "fa": "خودکار",
-          "en": "pen",
-          "gender": "der",
-          "plural": "die Kulis",
-          "icon": "🖊️",
-          "example": {
-            "de": "Der Kuli schreibt gut.",
-            "fa": "خودکار خوب می‌نویسد.",
-            "en": "The pen writes well."
-          }
-        },
-        {
-          "de": "rot",
-          "fa": "قرمز",
-          "en": "red",
-          "icon": "🔴"
-        },
-        {
-          "de": "blau",
-          "fa": "آبی",
-          "en": "blue",
-          "icon": "🔵"
-        },
-        {
-          "de": "grün",
-          "fa": "سبز",
-          "en": "green",
-          "icon": "🟢"
-        },
-        {
-          "de": "gelb",
-          "fa": "زرد",
-          "en": "yellow",
-          "icon": "🟡"
-        },
-        {
-          "de": "schwarz",
-          "fa": "سیاه",
-          "en": "black",
-          "icon": "⚫"
-        },
-        {
-          "de": "weiß",
-          "fa": "سفید",
-          "en": "white",
-          "icon": "⚪"
-        }
-      ],
-      "id": "a1-l04-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی چهارم کلاس آلمانی. دانشجویان امروز درباره‌ی شغل‌ها و روال روزانه‌شان صحبت می‌کنند. Paul کشفی می‌کند: او IT-مهندس است اما به‌عنوان آشپز کار می‌کند! Sara درباره‌ی روز کاری‌اش با اسمارت‌فونش می‌گوید. داستان ما در دنیای کار ادامه پیدا می‌کند.",
+      "en": "Fourth week of German class. Today students talk about their professions and daily routines. Paul makes a discovery: he's an IT engineer but works as a cook! Sara talks about her workday with her smartphone. Our story continues in the world of work.",
+      "de": "Vierte Woche des Deutschkurses. Heute sprechen die Studierenden über ihre Berufe und ihren Tagesablauf. Paul macht eine Entdeckung: Er ist IT-Ingenieur, arbeitet aber als Koch! Sara erzählt von ihrem Arbeitstag mit dem Smartphone. Unsere Geschichte geht in der Arbeitswelt weiter."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Paul",
+        "persian": "پاول",
+        "country": "برزیل",
+        "age": 26,
+        "job": "آشپز (در اصل IT-مهندس)"
       },
-      "concept": {
-        "fa": "ابزار تعریف نامعین (ein/eine) و منفی کردن",
-        "en": "Indefinite Articles (ein/eine) and Negation",
-        "de": "Unbestimmte Artikel (ein/eine) und Verneinung"
+      {
+        "name": "Sara",
+        "persian": "زا-را",
+        "country": "آلمان",
+        "age": 24,
+        "job": "دانشجو"
       },
-      "explanation": {
-        "fa": "📌 **ابزار تعریف نامعین (Unbestimmter Artikel):**\n\nوقتی درباره یک شیء 'نامشخص' صحبت می‌کنیم (یک میز، یک کتاب)، از ein یا eine استفاده می‌کنیم:\n\n• مذکر (der) → ein: Das ist ein Tisch.\n• خنثی (das) → ein: Das ist ein Buch.\n• مونث (die) → eine: Das ist eine Lampe.\n\n📌 **حالت منفی با 'kein/keine':**\n\nبرای اینکه بگوییم 'این یک [شیء] نیست'، از kein استفاده می‌کنیم:\n\n• Das ist kein Tisch. (این یک میز نیست)\n• Das ist keine Lampe. (این یک لامپ نیست)",
-        "en": "📌 **Indefinite Articles:**\n\nWhen talking about an 'unspecified' object (a table, a book), use ein or eine:\n\n• masculine (der) → ein: Das ist ein Tisch.\n• neuter (das) → ein: Das ist ein Buch.\n• feminine (die) → eine: Das ist eine Lampe.\n\n📌 **Negation with 'kein/keine':**\n\nTo say 'this is not a [object]', use kein:\n\n• Das ist kein Tisch. (This is not a table)\n• Das ist keine Lampe. (This is not a lamp)",
-        "de": "📌 **Unbestimmte Artikel:**\n\nWenn man über einen 'unbestimmten' Gegenstand spricht (ein Tisch, ein Buch), verwendet man ein oder eine:\n\n• maskulin (der) → ein: Das ist ein Tisch.\n• neutrum (das) → ein: Das ist ein Buch.\n• feminin (die) → eine: Das ist eine Lampe.\n\n📌 **Verneinung mit 'kein/keine':**\n\nUm zu sagen 'das ist kein [Gegenstand]', verwendet man kein:\n\n• Das ist kein Tisch.\n• Das ist keine Lampe."
+      {
+        "name": "Emma",
+        "persian": "اِ-ما",
+        "country": "آلمان",
+        "age": 22,
+        "job": "دانشجو"
       },
-      "examples": [
-        {
-          "de": "Das ist ein Tisch.",
-          "fa": "این یک میز است.",
-          "en": "This is a table."
-        },
-        {
-          "de": "Das ist kein Tisch.",
-          "fa": "این یک میز نیست.",
-          "en": "This is not a table."
-        },
-        {
-          "de": "Das ist eine Lampe.",
-          "fa": "این یک لامپ است.",
-          "en": "This is a lamp."
-        },
-        {
-          "de": "Das ist keine Lampe.",
-          "fa": "این یک لامپ نیست.",
-          "en": "This is not a lamp."
-        },
-        {
-          "de": "Das ist ein rotes Buch.",
-          "fa": "این یک کتاب قرمز است.",
-          "en": "This is a red book."
-        }
-      ],
-      "id": "a1-l04-GRAM-003",
-      "order": 2
+      {
+        "name": "Aylin",
+        "persian": "ای-لین",
+        "country": "ترکیه",
+        "age": 27,
+        "job": "آرایشگر"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس چهارم خوش آمدید — Mein Leben!",
+      "en": "Welcome to Lesson 4 — My Life!",
+      "de": "Willkommen zu Lektion 4 — Mein Leben!"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: کلاس درس",
-        "en": "📖 Story: The Classroom",
-        "de": "📖 Geschichte: Das Klassenzimmer"
-      },
-      "text": {
-        "de": "Das ist ein Klassenzimmer. Da ist ein Tisch. Der Tisch ist braun. Da ist ein Stuhl. Der Stuhl ist schwarz. Da ist eine Lampe. Die Lampe ist neu. Da ist ein Buch. Das Buch ist rot. Da ist ein Heft. Das Heft ist grün. Da ist ein Bleistift. Der Bleistift ist lang.",
-        "fa": "این یک کلاس درس است. یک میز وجود دارد. میز قهوه‌ای است. یک صندلی وجود دارد. صندلی سیاه است. یک لامپ وجود دارد. لامپ جدید است. یک کتاب وجود دارد. کتاب قرمز است. یک دفتر وجود دارد. دفتر سبز است. یک مداد وجود دارد. مداد بلند است.",
-        "en": "This is a classroom. There is a table. The table is brown. There is a chair. The chair is black. There is a lamp. The lamp is new. There is a book. The book is red. There is a notebook. The notebook is green. There is a pencil. The pencil is long."
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "رنگ میز چیست؟",
-            "en": "What color is the table?",
-            "de": "Welche Farbe hat der Tisch?"
-          },
-          "answer": {
-            "fa": "قهوه‌ای",
-            "en": "Brown",
-            "de": "Braun"
-          }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "رنگ کتاب چیست؟",
-            "en": "What color is the book?",
-            "de": "Welche Farbe hat das Buch?"
-          },
-          "answer": {
-            "fa": "قرمز",
-            "en": "Red",
-            "de": "Rot"
-          }
-        }
-      ],
-      "id": "a1-l04-STORY-004",
-      "order": 3
+    "content": {
+      "fa": "تصور کنید در یک مصاحبه کاری در آلمان هستید. از شما می‌پرسند: «Was bist du von Beruf?» (شغلت چیست؟) و «Wann stehst du auf?» (کی بیدار می‌شوی؟). اگر نتوانید جواب بدهید، مصاحبه خراب می‌شود.\n\nاین درس به شما کمک می‌کند تا درباره‌ی شغل، ساعت و روال روزانه‌تان صحبت کنید. شما با فعل‌های جداشونده (مثل aufstehen) و حالت Akkusativ آشنا می‌شوید — دو مورد از مهم‌ترین موضوعات گرامری A1.",
+      "en": "Imagine you're in a job interview in Germany. They ask: 'Was bist du von Beruf?' (What's your profession?) and 'Wann stehst du auf?' (When do you get up?). If you can't answer, the interview fails.\n\nThis lesson helps you talk about your profession, time, and daily routine. You'll learn separable verbs (like aufstehen) and the accusative case — two of the most important A1 grammar topics.",
+      "de": "Stell dir vor, du bist in einem Vorstellungsgespräch in Deutschland. Man fragt dich: 'Was bist du von Beruf?' und 'Wann stehst du auf?'. Wenn du nicht antworten kannst, ist das Gespräch gelaufen.\n\nDiese Lektion hilft dir, über Beruf, Uhrzeit und Tagesablauf zu sprechen. Du lernst trennbare Verben (wie aufstehen) und den Akkusativ — zwei der wichtigsten A1-Grammatikthemen."
     },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "انتخاب صحیح: Das ist ____ Buch.",
-            "en": "Choose correct: Das ist ____ Buch.",
-            "de": "Richtig wählen: Das ist ____ Buch."
-          },
-          "options": [
-            "ein",
-            "eine"
-          ],
-          "correctIndex": 0,
-          "explanation": {
-            "fa": "Buch خنثی است → ein",
-            "en": "Buch is neuter → ein",
-            "de": "Buch ist neutrum → ein"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "انتخاب صحیح: Das ist ____ Lampe.",
-            "en": "Choose correct: Das ist ____ Lampe.",
-            "de": "Richtig wählen: Das ist ____ Lampe."
-          },
-          "options": [
-            "ein",
-            "eine"
-          ],
-          "correctIndex": 1,
-          "explanation": {
-            "fa": "Lampe مونث است → eine",
-            "en": "Lampe is feminine → eine",
-            "de": "Lampe ist feminin → eine"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "fill_in",
-          "question": {
-            "fa": "جمله را منفی کنید: 'Das ist ein Bleistift.'",
-            "en": "Negate: 'Das ist ein Bleistift.'",
-            "de": "Verneinen: 'Das ist ein Bleistift.'"
-          },
-          "answer": "Das ist kein Bleistift.",
-          "hint": {
-            "fa": "ein → kein",
-            "en": "ein → kein",
-            "de": "ein → kein"
-          }
-        },
-        {
-          "id": "ex4",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'یک کتاب قرمز'",
-            "en": "Translate: 'a red book'",
-            "de": "Übersetzen: 'ein rotes Buch'"
-          },
-          "answer": "ein rotes Buch",
-          "hint": {
-            "fa": "Buch خنثی است",
-            "en": "Buch is neuter",
-            "de": "Buch ist neutrum"
-          }
-        }
-      ],
-      "id": "a1-l04-EXER-005",
-      "order": 4
+    "imagePrompt": "A modern Berlin office space with young professionals, Paul cooking in a kitchen, Sara with smartphone, clock showing different time zones"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
     },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "der Tisch",
-          "fa": "میز",
-          "en": "table",
-          "icon": "🪑"
-        },
-        {
-          "de": "der Stuhl",
-          "fa": "صندلی",
-          "en": "chair",
-          "icon": "🪑"
-        },
-        {
-          "de": "die Lampe",
-          "fa": "لامپ",
-          "en": "lamp",
-          "icon": "💡"
-        },
-        {
-          "de": "das Buch",
-          "fa": "کتاب",
-          "en": "book",
-          "icon": "📖"
-        },
-        {
-          "de": "das Heft",
-          "fa": "دفتر",
-          "en": "notebook",
-          "icon": "📓"
-        },
-        {
-          "de": "der Bleistift",
-          "fa": "مداد",
-          "en": "pencil",
-          "icon": "✏️"
-        },
-        {
-          "de": "rot",
-          "fa": "قرمز",
-          "en": "red",
-          "icon": "🔴"
-        },
-        {
-          "de": "blau",
-          "fa": "آبی",
-          "en": "blue",
-          "icon": "🔵"
-        },
-        {
-          "de": "grün",
-          "fa": "سبز",
-          "en": "green",
-          "icon": "🟢"
-        },
-        {
-          "de": "gelb",
-          "fa": "زرد",
-          "en": "yellow",
-          "icon": "🟡"
-        }
-      ],
-      "id": "a1-l04-FLASH-006",
-      "order": 5
+    "layers": {
+      "fa": "سه لایه تلفظ: ۱. تلفظ فارسی ۲. IPA ۳. توصیف فیزیکی. این درس روی تلفظ شغل‌ها و زمان تمرکز می‌کند.",
+      "en": "Three layers: 1. Persian pronunciation 2. IPA 3. Physical description. This lesson focuses on profession and time vocabulary pronunciation.",
+      "de": "Drei Schichten: 1. Persische Aussprache 2. IPA 3. Physische Beschreibung. Diese Lektion konzentriert sich auf Berufs- und Uhrzeitvokabular."
     },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "der Tisch",
-          "phonetic": "/deːɐ̯ tɪʃ/"
+    "sounds": [
+      {
+        "id": "sound-r-review",
+        "letter": "r (مرور)",
+        "description": {
+          "fa": "صدای غُرّی از حلق",
+          "en": "Uvular sound",
+          "de": "Uvularer Laut"
         },
-        {
-          "word": "das Buch",
-          "phonetic": "/das buːx/"
+        "ipa": "[ʁ] oder [ɐ]",
+        "persianEquivalent": "≈ غُرّ کردن گربه",
+        "commonMistake": {
+          "fa": "تلفظ مثل 'ر' فارسی",
+          "en": "Pronouncing like Persian 'r'",
+          "de": "Wie persisches 'r'"
         },
-        {
-          "word": "der Bleistift",
-          "phonetic": "/deːɐ̯ ˈblaɪ̯ʃtɪft/"
-        },
-        {
-          "word": "rot",
-          "phonetic": "/ʁoːt/"
-        },
-        {
-          "word": "grün",
-          "phonetic": "/ɡʁyːn/"
-        }
-      ],
-      "id": "a1-l04-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "انتخاب صحیح: Das ist ____ Tisch.",
-            "en": "Choose correct: Das ist ____ Tisch.",
-            "de": "Richtig wählen: Das ist ____ Tisch."
+        "examples": [
+          {
+            "word": "Beruf",
+            "persian": "بِ-روف",
+            "meaning": "شغل"
           },
-          "options": [
-            "ein",
-            "eine"
-          ],
-          "correctIndex": 0,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Das ist ____ Lampe.' (یک)",
-            "en": "Complete: 'Das ist ____ Lampe.' (a)",
-            "de": "Vervollständigen: 'Das ist ____ Lampe.' (eine)"
+          {
+            "word": "Friseur",
+            "persian": "فری-زور",
+            "meaning": "آرایشگر"
           },
-          "answer": "eine",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "'یک کتاب قرمز' به آلمانی چیست؟",
-            "en": "What is 'a red book' in German?",
-            "de": "Was ist 'ein rotes Buch' auf Deutsch?"
-          },
-          "options": [
-            "ein roter Buch",
-            "ein rotes Buch",
-            "eine rote Buch",
-            "einen roten Buch"
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l04-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ نام اشیاء مدرسه و دفتر کار به آلمانی",
-          "✅ رنگ‌های اصلی به آلمانی",
-          "✅ استفاده از ein/eine",
-          "✅ منفی کردن با kein/keine"
-        ],
-        "en": [
-          "✅ School and office object names in German",
-          "✅ Main colors in German",
-          "✅ Using ein/eine",
-          "✅ Negation with kein/keine"
-        ],
-        "de": [
-          "✅ Schul- und Bürogegenstände auf Deutsch",
-          "✅ Hauptfarben auf Deutsch",
-          "✅ Verwendung von ein/eine",
-          "✅ Verneinung mit kein/keine"
+          {
+            "word": "Uhr",
+            "persian": "اور",
+            "meaning": "ساعت"
+          }
         ]
       },
-      "nextSteps": {
-        "fa": "📚 در درس بعدی (Was machen Sie?) با افعال فعالیت‌های روزمره و بیان علایق آشنا می‌شوید.",
-        "en": "📚 In the next lesson (Was machen Sie?) you will learn daily activities and expressing interests.",
-        "de": "📚 In der nächsten Lektion (Was machen Sie?) lernen Sie Alltagsaktivitäten und Interessen ausdrücken."
+      {
+        "id": "sound-sp-st",
+        "letter": "sp / st (در ابتدای کلمه)",
+        "description": {
+          "fa": "مثل 'شپ' و 'شت' - s قبل از p/t مثل sh",
+          "en": "Like 'shp' and 'sht'",
+          "de": "Wie 'schp' und 'scht'"
+        },
+        "ipa": "[ʃp] / [ʃt]",
+        "persianEquivalent": "≈ 'شپ' و 'شت'",
+        "commonMistake": {
+          "fa": "تلفظ 'سپ' و 'ست' - اشتباه!",
+          "en": "Pronouncing 'sp' and 'st' - wrong!",
+          "de": "'sp' und 'st' - falsch!"
+        },
+        "examples": [
+          {
+            "word": "Smartphone",
+            "persian": "اشارت-فون",
+            "meaning": "گوشی هوشمند"
+          },
+          {
+            "word": "USB-Stick",
+            "persian": "او-اِس-بِه اشتیک",
+            "meaning": "فلش مموری"
+          },
+          {
+            "word": "Stadt",
+            "persian": "اشتات",
+            "meaning": "شهر"
+          }
+        ]
       },
-      "id": "a1-l04-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-au",
+        "letter": "au",
+        "description": {
+          "fa": "مثل 'آو' کشیده",
+          "en": "Like long 'ow'",
+          "de": "Wie langes 'au'"
+        },
+        "ipa": "[aʊ̯]",
+        "persianEquivalent": "≈ 'آو' کشیده",
+        "commonMistake": {
+          "fa": "تلفظ کوتاه 'او'",
+          "en": "Pronouncing short 'ou'",
+          "de": "Kurzes 'au'"
+        },
+        "examples": [
+          {
+            "word": "aufstehen",
+            "persian": "آوف-شتِ-اِن",
+            "meaning": "بیدار شدن"
+          },
+          {
+            "word": "kaufen",
+            "persian": "کاو-فِن",
+            "meaning": "خریدن"
+          },
+          {
+            "word": "Brauchst",
+            "persian": "براوخت",
+            "meaning": "نیاز داری"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-beruf",
+      "de": "Beruf",
+      "article": "der",
+      "plural": "Berufe",
+      "ipa": "[bəˈʁuːf]",
+      "fa": "شغل، حرفه",
+      "en": "profession",
+      "example": {
+        "de": "Was bist du von Beruf?",
+        "fa": "شغلت چیست؟",
+        "en": "What's your profession?"
+      },
+      "usageNotes": {
+        "fa": "مذکر. عبارت 'von Beruf sein' یعنی 'شغلاً بودن'",
+        "en": "Masculine. 'von Beruf sein' means 'to be by profession'",
+        "de": "Maskulin. 'von Beruf sein' heißt beruflich sein"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'u' کشیده",
+        "en": "Uvular 'r' and long 'u'",
+        "de": "Uvulares 'r' und langes 'u'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-koch",
+      "de": "Koch",
+      "article": "der",
+      "plural": "Köche",
+      "ipa": "[kɔx]",
+      "fa": "آشپز (مرد)",
+      "en": "cook (male)",
+      "example": {
+        "de": "Er arbeitet als Koch.",
+        "fa": "او به‌عنوان آشپز کار می‌کند.",
+        "en": "He works as a cook."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مؤنث: die Köchin. جمع با Umlaut: Köche",
+        "en": "Masculine. Feminine: die Köchin",
+        "de": "Maskulin. Feminin: die Köchin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ch' بعد از 'o' مثل 'خ' سخت",
+        "en": "Hard 'ch' after 'o'",
+        "de": "Hartes 'ch' nach 'o'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-arzt",
+      "de": "Arzt",
+      "article": "der",
+      "plural": "Ärzte",
+      "ipa": "[aʁt͡st]",
+      "fa": "پزشک (مرد)",
+      "en": "doctor (male)",
+      "example": {
+        "de": "Der Arzt arbeitet im Krankenhaus.",
+        "fa": "پزشک در بیمارستان کار می‌کند.",
+        "en": "The doctor works in the hospital."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مؤنث: die Ärztin. جمع با Umlaut: Ärzte",
+        "en": "Masculine. Feminine: die Ärztin",
+        "de": "Maskulin. Feminin: die Ärztin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'rz' مثل 'رتس'",
+        "en": "Pronounce 'rz' like 'rts'",
+        "de": "'rz' wie 'rts'"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-friseur",
+      "de": "Friseur",
+      "article": "der",
+      "plural": "Friseure",
+      "ipa": "[fʁiˈzøːʁ]",
+      "fa": "آرایشگر",
+      "en": "hairdresser",
+      "example": {
+        "de": "Ich bin Friseur von Beruf.",
+        "fa": "من شغلاً آرایشگرم.",
+        "en": "I'm a hairdresser by profession."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مؤنث: die Friseurin",
+        "en": "Masculine. Feminine: die Friseurin",
+        "de": "Maskulin. Feminin: die Friseurin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'ö' بین اُ و اِ",
+        "en": "Uvular 'r' and 'ö'",
+        "de": "Uvulares 'r' und 'ö'"
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-manager",
+      "de": "Manager",
+      "article": "der",
+      "plural": "Manager",
+      "ipa": "[ˈmɛnɪdʒɐ]",
+      "fa": "مدیر",
+      "en": "manager",
+      "example": {
+        "de": "Sie ist Managerin bei Sony.",
+        "fa": "او مدیر در سونی است.",
+        "en": "She's a manager at Sony."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مؤنث: die Managerin",
+        "en": "Masculine. Feminine: die Managerin",
+        "de": "Maskulin. Feminin: die Managerin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کوتاه",
+        "en": "Short 'a'",
+        "de": "Kurzes 'a'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-ingenieur",
+      "de": "Ingenieur",
+      "article": "der",
+      "plural": "Ingenieure",
+      "ipa": "[ɪŋəˈnjøːɐ̯]",
+      "fa": "مهندس",
+      "en": "engineer",
+      "example": {
+        "de": "Paul ist IT-Ingenieur.",
+        "fa": "پاول مهندس IT است.",
+        "en": "Paul is an IT engineer."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مؤنث: die Ingenieurin",
+        "en": "Masculine. Feminine: die Ingenieurin",
+        "de": "Maskulin. Feminin: die Ingenieurin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ فرانسوی‌تبار",
+        "en": "French-origin pronunciation",
+        "de": "Französische Aussprache"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-uhr",
+      "de": "Uhr",
+      "article": "die",
+      "plural": "Uhren",
+      "ipa": "[uːɐ̯]",
+      "fa": "ساعت",
+      "en": "clock, watch",
+      "example": {
+        "de": "Wie spät ist es? — Es ist zehn Uhr.",
+        "fa": "ساعت چنده؟ — ساعت ده است.",
+        "en": "What time is it? — It's ten o'clock."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. هم ساعت دیواری و هم مچی",
+        "en": "Feminine. Both wall clock and wristwatch",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'u' کشیده و 'r' غُرّی",
+        "en": "Long 'u' and uvular 'r'",
+        "de": "Langes 'u' und uvulares 'r'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-laptop",
+      "de": "Laptop",
+      "article": "der",
+      "plural": "Laptops",
+      "ipa": "[ˈlaːptɔp]",
+      "fa": "لپ‌تاپ",
+      "en": "laptop",
+      "example": {
+        "de": "Ich habe einen Laptop.",
+        "fa": "من یک لپ‌تاپ دارم.",
+        "en": "I have a laptop."
+      },
+      "usageNotes": {
+        "fa": "مذکر. جمع با -s (کلمه خارجی)",
+        "en": "Masculine. Plural with -s",
+        "de": "Maskulin. Plural mit -s"
+      },
+      "commonMistakes": {
+        "fa": "در Akkusativ: einen Laptop",
+        "en": "Accusative: einen Laptop",
+        "de": "Akkusativ: einen Laptop"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-smartphone",
+      "de": "Smartphone",
+      "article": "das",
+      "plural": "Smartphones",
+      "ipa": "[ˈsmaʁtfɔn]",
+      "fa": "گوشی هوشمند",
+      "en": "smartphone",
+      "example": {
+        "de": "Brauchst du ein Smartphone?",
+        "fa": "به گوشی هوشمند نیاز داری؟",
+        "en": "Do you need a smartphone?"
+      },
+      "usageNotes": {
+        "fa": "خنثی. تلفظ 'sp' مثل 'شپ'",
+        "en": "Neuter. Pronounce 'sp' like 'shp'",
+        "de": "Neutral. 'sp' wie 'schp'"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sp' مثل 'سپ' - باید 'شپ' باشد",
+        "en": "'sp' like 'sp' - should be 'shp'",
+        "de": "'sp' wie 'sp' - sollte 'schp'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-buro",
+      "de": "Büro",
+      "article": "das",
+      "plural": "Büros",
+      "ipa": "[byˈʁoː]",
+      "fa": "دفتر کار",
+      "en": "office",
+      "example": {
+        "de": "Ich arbeite im Büro.",
+        "fa": "من در دفتر کار می‌کنم.",
+        "en": "I work in the office."
+      },
+      "usageNotes": {
+        "fa": "خنثی. با ü تلفظ می‌شود",
+        "en": "Neuter. Pronounced with ü",
+        "de": "Neutral. Mit ü"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' بین 'ای' و 'او'",
+        "en": "'ü' between 'i' and 'u'",
+        "de": "'ü' zwischen 'i' und 'u'"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-drucker",
+      "de": "Drucker",
+      "article": "der",
+      "plural": "Drucker",
+      "ipa": "[ˈdʁʊkɐ]",
+      "fa": "پرینتر",
+      "en": "printer",
+      "example": {
+        "de": "Ich habe keinen Drucker.",
+        "fa": "من پرینتر ندارم.",
+        "en": "I don't have a printer."
+      },
+      "usageNotes": {
+        "fa": "مذکر. در Akkusativ منفی: keinen Drucker",
+        "en": "Masculine. Negative accusative: keinen Drucker",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "در Akkusativ منفی: keinen Drucker",
+        "en": "Negative accusative: keinen Drucker",
+        "de": "Negativer Akkusativ: keinen Drucker"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-maus",
+      "de": "Maus",
+      "article": "die",
+      "plural": "Mäuse",
+      "ipa": "[maʊ̯s]",
+      "fa": "موس (کامپیوتر)",
+      "en": "mouse (computer)",
+      "example": {
+        "de": "Die Maus ist cool!",
+        "fa": "موس عالیه!",
+        "en": "The mouse is cool!"
+      },
+      "usageNotes": {
+        "fa": "مؤنث. جمع با Umlaut: Mäuse",
+        "en": "Feminine. Plural with umlaut: Mäuse",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'au' مثل 'آو' کشیده",
+        "en": "Long 'au'",
+        "de": "Langes 'au'"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-arbeit",
+      "de": "Arbeit",
+      "article": "die",
+      "plural": "Arbeiten",
+      "ipa": "[ˈaʁbaɪ̯t]",
+      "fa": "کار",
+      "en": "work, job",
+      "example": {
+        "de": "Ich habe keine Arbeit.",
+        "fa": "من کار ندارم.",
+        "en": "I don't have a job."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. 'arbeite als' یعنی 'به‌عنوان ... کار می‌کنم'",
+        "en": "Feminine. 'arbeite als' means 'work as'",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ei' کشیده و 'r' غُرّی",
+        "en": "Long 'ei' and uvular 'r'",
+        "de": "Langes 'ei' und uvulares 'r'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-firma",
+      "de": "Firma",
+      "article": "die",
+      "plural": "Firmen",
+      "ipa": "[ˈfɪʁma]",
+      "fa": "شرکت",
+      "en": "company",
+      "example": {
+        "de": "Sony ist eine Firma.",
+        "fa": "سونی یک شرکت است.",
+        "en": "Sony is a company."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. جمع با -n: Firmen",
+        "en": "Feminine. Plural with -n: Firmen",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'i' کوتاه",
+        "en": "Short 'i'",
+        "de": "Kurzes 'i'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-aufstehen",
+      "de": "aufstehen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈaʊ̯fˌʃteːən]",
+      "fa": "بیدار شدن",
+      "en": "to get up",
+      "example": {
+        "de": "Ich stehe um sieben auf.",
+        "fa": "من ساعت هفت بیدار می‌شوم.",
+        "en": "I get up at seven."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده: auf + stehen. در جمله جدا می‌شود",
+        "en": "Separable verb: auf + stehen",
+        "de": "Trennbares Verb: auf + stehen"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن جدا کردن: نگویید 'Ich aufstehe'",
+        "en": "Forgetting to separate",
+        "de": "Vergessen zu trennen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-anfangen",
+      "de": "anfangen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈanˌfaŋən]",
+      "fa": "شروع کردن",
+      "en": "to start",
+      "example": {
+        "de": "Der Kurs fängt um acht an.",
+        "fa": "کلاس ساعت هفت شروع می‌شود.",
+        "en": "The class starts at eight."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده: an + fangen. با تغییر مصوت در du: fängst an",
+        "en": "Separable verb: an + fangen. Vowel change in du",
+        "de": "Trennbares Verb: an + fangen"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن جدا کردن و تغییر مصوت",
+        "en": "Forgetting to separate and vowel change",
+        "de": "Vergessen zu trennen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-einkaufen",
+      "de": "einkaufen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈaɪ̯nˌkaʊ̯fən]",
+      "fa": "خرید کردن",
+      "en": "to shop",
+      "example": {
+        "de": "Ich kaufe bei ALDI ein.",
+        "fa": "من از آلدی خرید می‌کنم.",
+        "en": "I shop at ALDI."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشونده: ein + kaufen",
+        "en": "Separable verb: ein + kaufen",
+        "de": "Trennbares Verb: ein + kaufen"
+      },
+      "commonMistakes": {
+        "fa": "فراموش کردن جدا کردن",
+        "en": "Forgetting to separate",
+        "de": "Vergessen zu trennen"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-nehmen",
+      "de": "nehmen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈneːmən]",
+      "fa": "گرفتن، انتخاب کردن",
+      "en": "to take",
+      "example": {
+        "de": "Ich nehme den Tarif XL.",
+        "fa": "من تعرفه XL را انتخاب می‌کنم.",
+        "en": "I take the XL tariff."
+      },
+      "usageNotes": {
+        "fa": "فعل با تغییر مصوت: e → i در du و er/sie: du nimmst, er nimmt",
+        "en": "Verb with vowel change: e → i in du and er/sie",
+        "de": "Verb mit Vokalwechsel: e → i"
+      },
+      "commonMistakes": {
+        "fa": "تغییر مصوت: نگویید 'du nehmst' - بگویید 'du nimmst'",
+        "en": "Vowel change: don't say 'du nehmst'",
+        "de": "Vokalwechsel: nicht 'du nehmst'"
+      },
+      "difficulty": 3,
+      "frequency": 5
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-trennbare-verben",
+        "title": {
+          "fa": "فعل‌های جداشونده (Trennbare Verben)",
+          "en": "Separable Verbs",
+          "de": "Trennbare Verben"
+        },
+        "concept": {
+          "fa": "بعضی فعل‌های آلمانی از دو بخش تشکیل شده‌اند: پیشوند + فعل. در صرف، پیشوند جدا می‌شود و به انتهای جمله می‌رود.",
+          "en": "Some German verbs consist of prefix + verb. When conjugated, the prefix separates and goes to the end of the sentence.",
+          "de": "Einige deutsche Verben bestehen aus Präfix + Verb. Bei der Konjugation trennt sich das Präfix und ans Satzende."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "aufstehen",
+            "anfangen",
+            "einkaufen",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "stehe auf",
+              "fange an",
+              "kaufe ein",
+              "بیدار می‌شوم/شروع می‌کنم/خرید می‌کنم"
+            ],
+            [
+              "du",
+              "stehst auf",
+              "fängst an*",
+              "kaufst ein",
+              "بیدار می‌شوی/شروع می‌کنی/خرید می‌کنی"
+            ],
+            [
+              "er/sie",
+              "steht auf",
+              "fängt an*",
+              "kauft ein",
+              "بیدار می‌شود/شروع می‌کند/خرید می‌کند"
+            ],
+            [
+              "wir",
+              "stehen auf",
+              "fangen an",
+              "kaufen ein",
+              "بیدار می‌شویم/شروع می‌کنیم/خرید می‌کنیم"
+            ],
+            [
+              "ihr",
+              "steht auf",
+              "fangt an",
+              "kauft ein",
+              "بیدار می‌شوید/شروع می‌کنید/خرید می‌کنید"
+            ],
+            [
+              "sie/Sie",
+              "stehen auf",
+              "fangen an",
+              "kaufen ein",
+              "بیدار می‌شوند/شروع می‌کنند/خرید می‌کنند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: [فاعل] + [فعل صرف‌شده] + [بقیه جمله] + [پیشوند]. *anfangen تغییر مصوت: a → ä",
+          "en": "Structure: [subject] + [conjugated verb] + [rest] + [prefix]. *anfangen vowel change: a → ä",
+          "de": "Struktur: [Subjekt] + [Verb] + [Rest] + [Präfix]. *anfangen Vokalwechsel: a → ä"
+        }
+      },
+      {
+        "id": "gram-akkusativ",
+        "title": {
+          "fa": "حالت Akkusativ (مفعول مستقیم)",
+          "en": "Accusative Case",
+          "de": "Akkusativ"
+        },
+        "concept": {
+          "fa": "وقتی یک اسم مفعول مستقیم فعل است، در حالت Akkusativ قرار می‌گیرد. فقط حرف تعریف مذکر تغییر می‌کند: der → den.",
+          "en": "When a noun is the direct object, it's in the accusative case. Only the masculine article changes: der → den.",
+          "de": "Wenn ein Nomen das direkte Objekt ist, steht es im Akkusativ. Nur der maskuline Artikel ändert sich: der → den."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "Nominativ",
+            "Akkusativ",
+            "مثال"
+          ],
+          "rows": [
+            [
+              "مذکر",
+              "der/ein/kein",
+              "den/einen/keinen",
+              "Ich habe einen Laptop."
+            ],
+            [
+              "مؤنث",
+              "die/eine/keine",
+              "die/eine/keine",
+              "Ich habe eine Maus."
+            ],
+            [
+              "خنثی",
+              "das/ein/kein",
+              "das/ein/kein",
+              "Ich habe ein Büro."
+            ],
+            [
+              "جمع",
+              "die/—/keine",
+              "die/—/keine",
+              "Ich habe keine Kinder."
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "قانون: فقط مذکر تغییر می‌کند! der → den، ein → einen، kein → keinen",
+          "en": "Rule: Only masculine changes! der → den, ein → einen, kein → keinen",
+          "de": "Regel: Nur maskulin ändert sich! der → den, ein → einen, kein → keinen"
+        }
+      },
+      {
+        "id": "gram-uhrzeit",
+        "title": {
+          "fa": "گفتن ساعت (Uhrzeit)",
+          "en": "Telling Time",
+          "de": "Uhrzeit"
+        },
+        "concept": {
+          "fa": "در آلمانی دو روش برای گفتن ساعت وجود دارد: رسمی (offiziell) و غیررسمی (inoffiziell).",
+          "en": "German has two ways to tell time: formal (official) and informal.",
+          "de": "Deutsch hat zwei Arten, die Uhrzeit zu sagen: formell und informell."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ساعت",
+            "رسمی (offiziell)",
+            "غیررسمی (inoffiziell)",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "07:00",
+              "sieben Uhr",
+              "sieben",
+              "هفت"
+            ],
+            [
+              "07:15",
+              "sieben Uhr fünfzehn",
+              "Viertel nach sieben",
+              "یک ربع بعد از هفت"
+            ],
+            [
+              "07:30",
+              "sieben Uhr dreißig",
+              "halb acht",
+              "نیمه هشت (=۷:۳۰)"
+            ],
+            [
+              "07:45",
+              "sieben Uhr fünfundvierzig",
+              "Viertel vor acht",
+              "یک ربع به هفت"
+            ],
+            [
+              "14:15",
+              "vierzehn Uhr fünfzehn",
+              "Viertel nach zwei",
+              "یک ربع بعد از دو"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "رسمی: [ساعت] Uhr [دقیقه] | غیررسمی: [دقیقه] nach/vor [ساعت بعدی]. 'halb acht' یعنی ۷:۳۰!",
+          "en": "Formal: [hour] Uhr [minutes] | Informal: [minutes] nach/vor [next hour]. 'halb acht' = 7:30!",
+          "de": "Formell: [Stunde] Uhr [Minuten] | Informell: [Minuten] nach/vor [nächste Stunde]. 'halb acht' = 7:30!"
+        }
+      },
+      {
+        "id": "gram-nehmen-konjugation",
+        "title": {
+          "fa": "صرف فعل nehmen (گرفتن)",
+          "en": "Conjugation of nehmen",
+          "de": "Konjugation von nehmen"
+        },
+        "concept": {
+          "fa": "فعل nehmen با تغییر مصوت: e → i در du و er/sie.",
+          "en": "nehmen has vowel change: e → i in du and er/sie.",
+          "de": "nehmen hat Vokalwechsel: e → i in du und er/sie."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "آلمانی",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "ich nehme",
+              "ایخ نِ-مِه",
+              "من می‌گیرم"
+            ],
+            [
+              "du",
+              "du nimmst",
+              "دو نیمست",
+              "تو می‌گیری"
+            ],
+            [
+              "er/sie/es",
+              "er/sie/es nimmt",
+              "اِر/زی نیمت",
+              "او می‌گیرد"
+            ],
+            [
+              "wir",
+              "wir nehmen",
+              "ویر نِ-مِن",
+              "ما می‌گیریم"
+            ],
+            [
+              "ihr",
+              "ihr nehmt",
+              "ایر نِمت",
+              "شما می‌گیرید"
+            ],
+            [
+              "sie/Sie",
+              "sie/Sie nehmen",
+              "زی نِ-مِن",
+              "آن‌ها/شما می‌گیرند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ich → nehme • du → nimmst (e → i!) • er/sie → nimmt • plural → nehmen",
+          "en": "ich → nehme • du → nimmst (e → i!) • er/sie → nimmt • plural → nehmen",
+          "de": "ich → nehme • du → nimmst (e → i!) • er/sie → nimmt → Plural → nehmen"
+        }
+      },
+      {
+        "id": "gram-um-uhrzeit",
+        "title": {
+          "fa": "حرف اضافه‌ی زمان: um + Uhrzeit",
+          "en": "Temporal: um + time",
+          "de": "Temporal: um + Uhrzeit"
+        },
+        "concept": {
+          "fa": "برای گفتن ساعت انجام کار از 'um' استفاده می‌کنید: um + [ساعت].",
+          "en": "To say at what time you do something, use 'um': um + [time].",
+          "de": "Um zu sagen, um welche Uhrzeit Sie etwas tun, verwenden Sie 'um': um + [Uhrzeit]."
+        },
+        "examples": {
+          "fa": [
+            "Ich stehe um sieben Uhr auf.",
+            "Der Kurs fängt um acht an.",
+            "Wann kommst du? — Um Viertel nach sieben."
+          ],
+          "en": [
+            "Ich stehe um sieben Uhr auf.",
+            "Der Kurs fängt um acht an.",
+            "Wann kommst du? — Um Viertel nach sieben."
+          ],
+          "de": [
+            "Ich stehe um sieben Uhr auf.",
+            "Der Kurs fängt um acht an.",
+            "Wann kommst du? — Um Viertel nach sieben."
+          ]
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-interview-1",
+      "title": {
+        "fa": "دیالوگ مصاحبه - شغل و ساعت",
+        "en": "Interview - Profession and Time",
+        "de": "Interview - Beruf und Uhrzeit"
+      },
+      "characters": [
+        {
+          "name": "Frau Schwarz",
+          "role": "معلم"
+        },
+        {
+          "name": "Paul",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Frau Schwarz",
+          "german": "Paul, was bist du von Beruf?",
+          "persian": "پاول، واس بیست دو فون بِ-روف؟",
+          "meaning": {
+            "fa": "پاول، شغلت چیست؟",
+            "en": "Paul, what's your profession?",
+            "de": "Paul, was bist du von Beruf?"
+          }
+        },
+        {
+          "speaker": "Paul",
+          "german": "Ich bin IT-Ingenieur. Aber ich arbeite als Koch.",
+          "persian": "ایخ بین ای-تِه-این-گِ-نی-ور. آبِر ایخ آر-بایتِه آلس کُخ.",
+          "meaning": {
+            "fa": "من مهندس IT هستم. اما به‌عنوان آشپز کار می‌کنم.",
+            "en": "I'm an IT engineer. But I work as a cook.",
+            "de": "Ich bin IT-Ingenieur. Aber ich arbeite als Koch."
+          }
+        },
+        {
+          "speaker": "Frau Schwarz",
+          "german": "Wann stehst du auf?",
+          "persian": "وان اِشتِست دو آوف؟",
+          "meaning": {
+            "fa": "کی بیدار می‌شوی؟",
+            "en": "When do you get up?",
+            "de": "Wann stehst du auf?"
+          }
+        },
+        {
+          "speaker": "Paul",
+          "german": "Ich stehe um fünf Uhr auf. Ich fange um sechs an.",
+          "persian": "ایخ اِشتِه اوم فونف اور آوف. ایخ فان-گِه اوم زِخس آن.",
+          "meaning": {
+            "fa": "ساعت پنج بیدار می‌شوم. ساعت شش شروع می‌کنم.",
+            "en": "I get up at five. I start at six.",
+            "de": "Ich stehe um fünf Uhr auf. Ich fange um sechs an."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "was bist du von Beruf",
+          "persian": "واس بیست دو فون بِ-روف",
+          "meaning": "شغلت چیست"
+        },
+        {
+          "phrase": "ich arbeite als",
+          "persian": "ایخ آر-بایتِه آلس",
+          "meaning": "به‌عنوان ... کار می‌کنم"
+        },
+        {
+          "phrase": "Wann stehst du auf",
+          "persian": "وان اِشتِست دو آوف",
+          "meaning": "کی بیدار می‌شوی (فعل جداشونده)"
+        },
+        {
+          "phrase": "um fünf Uhr",
+          "persian": "اوم فونف اور",
+          "meaning": "ساعت پنج (um + Uhrzeit)"
+        }
+      ]
+    },
+    {
+      "id": "dialog-shop-1",
+      "title": {
+        "fa": "دیالوگ فروشگاه - خرید اسمارت‌فون",
+        "en": "Shop - Buying a Smartphone",
+        "de": "Shop - Smartphone kaufen"
+      },
+      "characters": [
+        {
+          "name": "Emma",
+          "role": "مشتری"
+        },
+        {
+          "name": "Verkäufer",
+          "role": "فروشنده"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Emma",
+          "german": "Brauchst du ein Smartphone?",
+          "persian": "براوخت دو این اشارت-فون؟",
+          "meaning": {
+            "fa": "به گوشی هوشمند نیاز داری؟",
+            "en": "Do you need a smartphone?",
+            "de": "Brauchst du ein Smartphone?"
+          }
+        },
+        {
+          "speaker": "Verkäufer",
+          "german": "Ja, ich nehme das Smartphone hier. Was kostet der XL Tarif?",
+          "persian": "یا، ایخ نِ-مِه داس اشارت-فون هیر. واس کُ-شتِت دِر ایکس-اِل تاریف؟",
+          "meaning": {
+            "fa": "بله، من این گوشی را انتخاب می‌کنم. تعرفه XL چقدر می‌شود؟",
+            "en": "Yes, I take this smartphone. How much is the XL tariff?",
+            "de": "Ja, ich nehme das Smartphone hier. Was kostet der XL Tarif?"
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Der XL Tarif kostet 29,80 Euro.",
+          "persian": "دِر ایکس-اِل تاریف کُ-شتِت نوی-اوند-اَخت-تسیخ اوی-رو.",
+          "meaning": {
+            "fa": "تعرفه XL ۲۹.۸۰ یورو می‌شود.",
+            "en": "The XL tariff costs 29.80 euros.",
+            "de": "Der XL Tarif kostet 29,80 Euro."
+          }
+        },
+        {
+          "speaker": "Verkäufer",
+          "german": "Okay, dann nehme ich den Tarif XL und das Handy.",
+          "persian": "او-کِه، دان نِ-مِه ایخ دِن تاریف ایکس-اِل اوند داس هَن-دی.",
+          "meaning": {
+            "fa": "باشه، پس من تعرفه XL و گوشی را انتخاب می‌کنم.",
+            "en": "Okay, then I take the XL tariff and the phone.",
+            "de": "Okay, dann nehme ich den Tarif XL und das Handy."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Brauchst du",
+          "persian": "براوخت دو",
+          "meaning": "نیاز داری"
+        },
+        {
+          "phrase": "ich nehme",
+          "persian": "ایخ نِ-مِه",
+          "meaning": "من انتخاب می‌کنم (nehmen)"
+        },
+        {
+          "phrase": "Was kostet",
+          "persian": "واس کُ-شتِت",
+          "meaning": "چقدر می‌شود"
+        },
+        {
+          "phrase": "den Tarif XL",
+          "persian": "دِن تاریف ایکس-اِل",
+          "meaning": "تعرفه XL را (Akkusativ: der → den)"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "در آلمان، ساعت به دو روش گفته می‌شود. در محیط‌های رسمی از روش ۲۴ ساعته استفاده می‌شود. در مکالمه روزمره از روش ۱۲ ساعته.\n\nنکته مهم: آلمانی‌ها «halb acht» می‌گویند یعنی ۷:۳۰ (نیمه هشت)، نه ۸:۳۰. این یعنی «نیمی از ساعت هشت گذشته».\n\nدر محیط کار آلمان، زمان‌بندی بسیار مهم است. دیر کردن حتی چند دقیقه‌ای بی‌احترامی محسوب می‌شود.",
+    "en": "In Germany, time is told formally (24-hour) and informally (12-hour). Important: 'halb acht' means 7:30, not 8:30. Punctuality is extremely important in German work culture.",
+    "de": "In Deutschland wird die Uhrzeit formell (24-Stunden) und informell (12-Stunden) gesagt. Wichtig: 'halb acht' heißt 7:30, nicht 8:30. Pünktlichkeit ist in der deutschen Arbeitskultur extrem wichtig."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-prof-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: شغل‌ها را پیدا کنید",
+          "en": "Exercise 1: Match Professions",
+          "de": "Übung 1: Berufe zuordnen"
+        },
+        "instructions": {
+          "fa": "برای هر توصیف، شغل درست را انتخاب کنید.",
+          "en": "For each description, choose the correct profession.",
+          "de": "Wählen Sie den richtigen Beruf."
+        },
+        "questions": [
+          {
+            "id": "p1-q1",
+            "situation": {
+              "fa": "این شخص برای کودکان غذا می‌پزد",
+              "en": "This person cooks for children",
+              "de": "Diese Person kocht für Kinder"
+            },
+            "options": [
+              "Koch",
+              "Arzt",
+              "Friseur",
+              "Manager"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Koch = آشپز",
+              "en": "Koch = cook",
+              "de": "Koch = Koch"
+            }
+          },
+          {
+            "id": "p1-q2",
+            "situation": {
+              "fa": "این شخص موهای مردم را اصلاح می‌کند",
+              "en": "This person cuts hair",
+              "de": "Diese Person schneidet Haare"
+            },
+            "options": [
+              "Arzt",
+              "Friseur",
+              "Ingenieur",
+              "Koch"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Friseur = آرایشگر",
+              "en": "Friseur = hairdresser",
+              "de": "Friseur = Friseur"
+            }
+          },
+          {
+            "id": "p1-q3",
+            "situation": {
+              "fa": "این شخص در بیمارستان کار می‌کند",
+              "en": "This person works in a hospital",
+              "de": "Diese Person arbeitet im Krankenhaus"
+            },
+            "options": [
+              "Manager",
+              "Koch",
+              "Arzt",
+              "Friseur"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Arzt = پزشک",
+              "en": "Arzt = doctor",
+              "de": "Arzt = Arzt"
+            }
+          },
+          {
+            "id": "p1-q4",
+            "situation": {
+              "fa": "این شخص در یک شرکت کار می‌کند",
+              "en": "This person works in a company",
+              "de": "Diese Person arbeitet in einer Firma"
+            },
+            "options": [
+              "Ingenieur",
+              "Manager",
+              "Koch",
+              "Friseur"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Manager = مدیر",
+              "en": "Manager = manager",
+              "de": "Manager = Manager"
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-verb-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: فعل‌های جداشونده",
+          "en": "Exercise 2: Separable Verbs",
+          "de": "Übung 2: Trennbare Verben"
+        },
+        "instructions": {
+          "fa": "فعل‌های جداشونده را در شکل درست قرار دهید. پیشوند را جدا کنید!",
+          "en": "Conjugate the separable verbs. Separate the prefix!",
+          "de": "Konjugieren Sie trennbare Verben. Trennen Sie das Präfix!"
+        },
+        "questions": [
+          {
+            "id": "v1-q1",
+            "prompt": "Ich ___ um sieben Uhr ___. (aufstehen)",
+            "placeholder": "stehe ... auf"
+          },
+          {
+            "id": "v1-q2",
+            "prompt": "Du ___ um sechs Uhr ___. (aufstehen)",
+            "placeholder": "stehst ... auf"
+          },
+          {
+            "id": "v1-q3",
+            "prompt": "Der Kurs ___ um acht ___. (anfangen)",
+            "placeholder": "fängt ... an"
+          },
+          {
+            "id": "v1-q4",
+            "prompt": "Wir ___ bei ALDI ___. (einkaufen)",
+            "placeholder": "kaufen ... ein"
+          },
+          {
+            "id": "v1-q5",
+            "prompt": "Ich ___ den Tarif XL ___. (nehmen)",
+            "placeholder": "nehme"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: مصاحبه شغلی",
+          "en": "Exercise 3: Job Interview",
+          "de": "Übung 3: Vorstellungsgespräch"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو ۱: مصاحبه کاری",
+              "en": "Scenario 1: Job Interview",
+              "de": "Szene 1: Vorstellungsgespräch"
+            },
+            "lines": [
+              {
+                "speaker": "Interviewer",
+                "german": "Was bist du von Beruf?",
+                "persian": "واس بیست دو فون بِ-روف؟",
+                "meaning": {
+                  "fa": "شغلت چیست؟",
+                  "en": "What's your profession?",
+                  "de": "Was bist du von Beruf?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich bin ______ von Beruf.",
+                "persian": "ایخ بین ______ فون بِ-روف.",
+                "meaning": {
+                  "fa": "من شغلاً ______ هستم.",
+                  "en": "I'm a ______ by profession.",
+                  "de": "Ich bin ______ von Beruf."
+                }
+              },
+              {
+                "speaker": "Interviewer",
+                "german": "Wann stehst du auf?",
+                "persian": "وان اِشتِست دو آوف؟",
+                "meaning": {
+                  "fa": "کی بیدار می‌شوی؟",
+                  "en": "When do you get up?",
+                  "de": "Wann stehst du auf?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich stehe um ______ Uhr auf.",
+                "persian": "ایخ اِشتِه اوم ______ اور آوف.",
+                "meaning": {
+                  "fa": "ساعت ______ بیدار می‌شوم.",
+                  "en": "I get up at ______.",
+                  "de": "Ich stehe um ______ Uhr auf."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-akk-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: حالت Akkusativ",
+          "en": "Exercise 4: Accusative Case",
+          "de": "Übung 4: Akkusativ"
+        },
+        "instructions": {
+          "fa": "حرف تعریف درست در Akkusativ را انتخاب کنید.",
+          "en": "Choose the correct article in accusative.",
+          "de": "Wählen Sie den richtigen Artikel im Akkusativ."
+        },
+        "questions": [
+          {
+            "id": "a1-q1",
+            "situation": {
+              "fa": "Ich habe ___ Laptop. (مذکر)",
+              "en": "Ich have ___ Laptop. (masculine)",
+              "de": "Ich habe ___ Laptop. (maskulin)"
+            },
+            "options": [
+              "den",
+              "die",
+              "das"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "مذکر: der → den",
+              "en": "Masculine: der → den",
+              "de": "Maskulin: der → den"
+            }
+          },
+          {
+            "id": "a1-q2",
+            "situation": {
+              "fa": "Ich habe ___ Maus. (مؤنث)",
+              "en": "Ich have ___ Maus. (feminine)",
+              "de": "Ich habe ___ Maus. (feminin)"
+            },
+            "options": [
+              "den",
+              "die",
+              "das"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "مؤنث: die → die",
+              "en": "Feminine: die → die",
+              "de": "Feminin: die → die"
+            }
+          },
+          {
+            "id": "a1-q3",
+            "situation": {
+              "fa": "Ich habe ___ Büro. (خنثی)",
+              "en": "Ich have ___ Büro. (neuter)",
+              "de": "Ich habe ___ Büro. (neutral)"
+            },
+            "options": [
+              "den",
+              "die",
+              "das"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "خنثی: das → das",
+              "en": "Neuter: das → das",
+              "de": "Neutral: das → das"
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ شغل‌ها و ساعت",
+          "en": "Exercise 5: Pronouncing Professions and Time",
+          "de": "Übung 5: Berufe und Uhrzeit aussprechen"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
+          "en": "Pronounce the following words.",
+          "de": "Sprechen Sie die folgenden Wörter aus."
+        },
+        "words": [
+          {
+            "word": "der Beruf",
+            "persian": "دِر بِ-روف",
+            "meaning": "شغل"
+          },
+          {
+            "word": "der Koch",
+            "persian": "دِر کُخ",
+            "meaning": "آشپز"
+          },
+          {
+            "word": "der Friseur",
+            "persian": "دِر فری-زور",
+            "meaning": "آرایشگر"
+          },
+          {
+            "word": "die Uhr",
+            "persian": "دی اور",
+            "meaning": "ساعت"
+          },
+          {
+            "word": "aufstehen",
+            "persian": "آوف-شتِ-اِن",
+            "meaning": "بیدار شدن"
+          },
+          {
+            "word": "anfangen",
+            "persian": "آن-فان-گِن",
+            "meaning": "شروع کردن"
+          },
+          {
+            "word": "einkaufen",
+            "persian": "این-کاو-فِن",
+            "meaning": "خرید کردن"
+          },
+          {
+            "word": "das Smartphone",
+            "persian": "داس اشارت-فون",
+            "meaning": "گوشی هوشمند"
+          }
+        ],
+        "focus": {
+          "fa": "توجه کنید به: 'r' غُرّی (Beruf, Friseur, Uhr) • 'ch' سخت بعد از o (Koch) • 'sp' مثل 'شپ' (Smartphone) • 'au' کشیده (aufstehen, einkaufen)",
+          "en": "Pay attention to: uvular 'r' (Beruf, Friseur, Uhr) • hard 'ch' after 'o' (Koch) • 'sp' like 'shp' (Smartphone) • long 'au' (aufstehen, einkaufen)",
+          "de": "Achten Sie auf: uvulares 'r' (Beruf, Friseur, Uhr) • hartes 'ch' nach 'o' (Koch) • 'sp' wie 'schp' (Smartphone) • langes 'au' (aufstehen, einkaufen)"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۴",
+      "en": "Lesson 4 Review",
+      "de": "Lektion 4 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Was bist du von Beruf?' به چه معنی است؟",
+          "en": "What does 'Was bist du von Beruf?' mean?",
+          "de": "Was bedeutet 'Was bist du von Beruf?'?"
+        },
+        "options": [
+          "اسمت چیست؟",
+          "شغلت چیست؟",
+          "کجا ساکنی؟",
+          "کی بیدار می‌شوی؟"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'von Beruf sein' یعنی 'شغلاً بودن'",
+          "en": "'von Beruf sein' means 'to be by profession'",
+          "de": "'von Beruf sein' heißt beruflich sein"
+        }
+      },
+      {
+        "id": "rev-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'aufstehen' در 'ich' چگونه صرف می‌شود؟",
+          "en": "How is 'aufstehen' conjugated with 'ich'?",
+          "de": "Wie wird 'aufstehen' mit 'ich' konjugiert?"
+        },
+        "options": [
+          "ich aufstehe",
+          "ich stehe auf",
+          "ich aufstehen",
+          "ich stehe"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "فعل جداشونده: Ich stehe ... auf",
+          "en": "Separable verb: Ich stehe ... auf",
+          "de": "Trennbares Verb: Ich stehe ... auf"
+        }
+      },
+      {
+        "id": "rev-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'halb acht' به چه معنی است؟",
+          "en": "What does 'halb acht' mean?",
+          "de": "Was bedeutet 'halb acht'?"
+        },
+        "options": [
+          "۸:۳۰",
+          "۷:۳۰",
+          "۸:۰۰",
+          "۷:۰۰"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "'halb acht' یعنی ۷:۳۰!",
+          "en": "'halb acht' means 7:30!",
+          "de": "'halb acht' heißt 7:30!"
+        }
+      },
+      {
+        "id": "rev-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "در Akkusativ، 'der Laptop' چگونه تغییر می‌کند؟",
+          "en": "In accusative, how does 'der Laptop' change?",
+          "de": "Wie ändert sich 'der Laptop' im Akkusativ?"
+        },
+        "options": [
+          "den Laptop",
+          "die Laptop",
+          "das Laptop",
+          "des Laptop"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "مذکر: der → den",
+          "en": "Masculine: der → den",
+          "de": "Maskulin: der → den"
+        }
+      },
+      {
+        "id": "rev-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل 'nehmen' در 'du' چگونه صرف می‌شود؟",
+          "en": "How is 'nehmen' conjugated with 'du'?",
+          "de": "Wie wird 'nehmen' mit 'du' konjugiert?"
+        },
+        "options": [
+          "du nehmst",
+          "du nimmst",
+          "du nimmt",
+          "du nehmen"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "تغییر مصوت: e → i. du nimmst",
+          "en": "Vowel change: e → i. du nimmst",
+          "de": "Vokalwechsel: e → i. du nimmst"
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۴",
+      "en": "Lesson 4 Final Assessment",
+      "de": "Lektion 4 Abschlussbewertung"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید شغل‌های اصلی را بگویید؟",
+        "آیا فعل‌های جداشونده را صرف می‌کنید؟",
+        "آیا ساعت را به دو روش می‌گویید؟",
+        "آیا Akkusativ را می‌دانید؟",
+        "آیا روال روزانه‌تان را توصیف می‌کنید؟",
+        "آیا دستگاه‌های اداری را نام می‌برید؟"
+      ],
+      "en": [
+        "Can you name professions?",
+        "Can you conjugate separable verbs?",
+        "Can you tell time both ways?",
+        "Do you know accusative?",
+        "Can you describe daily routine?",
+        "Can you name office devices?"
+      ],
+      "de": [
+        "Können Sie Berufe nennen?",
+        "Können Sie trennbare Verben konjugieren?",
+        "Können Sie Uhrzeit sagen?",
+        "Kennen Sie Akkusativ?",
+        "Können Sie Tagesablauf beschreiben?",
+        "Können Sie IT-Geräte nennen?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "تبریک! آماده‌ی درس ۵ هستید.",
+        "en": "Congratulations! Ready for Lesson 5.",
+        "de": "Herzlichen Glückwunsch! Bereit für Lektion 5."
+      },
+      "fail": {
+        "fa": "بخش‌های ضعیف را مرور کنید.",
+        "en": "Review weak sections.",
+        "de": "Schwache Bereiche überprüfen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "professions": [
+      {
+        "de": "der Koch / die Köchin",
+        "fa": "آشپز"
+      },
+      {
+        "de": "der Arzt / die Ärztin",
+        "fa": "پزشک"
+      },
+      {
+        "de": "der Friseur / die Friseurin",
+        "fa": "آرایشگر"
+      },
+      {
+        "de": "der Manager / die Managerin",
+        "fa": "مدیر"
+      },
+      {
+        "de": "der Ingenieur / die Ingenieurin",
+        "fa": "مهندس"
+      }
+    ],
+    "timeExpressions": [
+      {
+        "formal": "sieben Uhr",
+        "informal": "sieben",
+        "fa": "۷:۰۰"
+      },
+      {
+        "formal": "sieben Uhr fünfzehn",
+        "informal": "Viertel nach sieben",
+        "fa": "۷:۱۵"
+      },
+      {
+        "formal": "sieben Uhr dreißig",
+        "informal": "halb acht",
+        "fa": "۷:۳۰"
+      },
+      {
+        "formal": "sieben Uhr fünfundvierzig",
+        "informal": "Viertel vor acht",
+        "fa": "۷:۴۵"
+      }
+    ],
+    "separableVerbs": [
+      {
+        "verb": "aufstehen",
+        "conjugation": "ich stehe auf, du stehst auf, er steht auf",
+        "fa": "بیدار شدن"
+      },
+      {
+        "verb": "anfangen",
+        "conjugation": "ich fange an, du fängst an, er fängt an",
+        "fa": "شروع کردن"
+      },
+      {
+        "verb": "einkaufen",
+        "conjugation": "ich kaufe ein, du kaufst ein, er kauft ein",
+        "fa": "خرید کردن"
+      }
+    ],
+    "accusativeTable": [
+      {
+        "gender": "مذکر",
+        "nominativ": "der/ein/kein",
+        "akkusativ": "den/einen/keinen"
+      },
+      {
+        "gender": "مؤنث",
+        "nominativ": "die/eine/keine",
+        "akkusativ": "die/eine/keine"
+      },
+      {
+        "gender": "خنثی",
+        "nominativ": "das/ein/kein",
+        "akkusativ": "das/ein/kein"
+      },
+      {
+        "gender": "جمع",
+        "nominativ": "die/—/keine",
+        "akkusativ": "die/—/keine"
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Was bist du von Beruf?",
+        "fa": "شغلت چیست؟"
+      },
+      {
+        "de": "Ich arbeite als...",
+        "fa": "به‌عنوان ... کار می‌کنم"
+      },
+      {
+        "de": "Wie spät ist es?",
+        "fa": "ساعت چنده؟"
+      },
+      {
+        "de": "Ich stehe um... auf",
+        "fa": "ساعت ... بیدار می‌شوم"
+      },
+      {
+        "de": "Wann fängt der Kurs an?",
+        "fa": "کلاس کی شروع می‌شود؟"
+      }
+    ],
+    "grammar": [
+      {
+        "title": "فعل جداشونده",
+        "summary": "پیشوند جدا می‌شود و به انتهای جمله می‌رود"
+      },
+      {
+        "title": "Akkusativ",
+        "summary": "فقط مذکر تغییر می‌کند: der → den"
+      },
+      {
+        "title": "Uhrzeit",
+        "summary": "رسمی: Stunde Uhr Minute | غیررسمی: Minute nach/vor Stunde"
+      },
+      {
+        "title": "um + Uhrzeit",
+        "summary": "برای گفتن زمان انجام کار"
+      }
+    ],
+    "commonMistakes": [
+      "فراموش کردن جدا کردن فعل جداشونده",
+      "تغییر ندادن der به den در Akkusativ",
+      "اشتباه در 'halb acht' (یعنی ۷:۳۰ نه ۸:۳۰)",
+      "تلفظ 'sp' و 'st' مثل 'سپ' و 'ست'"
+    ],
+    "usefulTips": [
+      "فعل‌های جداشونده را با پیشوند جداگانه یاد بگیرید",
+      "برای Akkusativ فقط یادتان باشد: مذکر تغییر می‌کند",
+      "ساعت غیررسمی را با مثال‌های روزمره تمرین کنید",
+      "روال روزانه‌تان را به آلمانی بنویسید"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۴، شما با شغل‌ها، گفتن ساعت، دستگاه‌های اداری، فعل‌های جداشونده و حالت Akkusativ آشنا شدید. شما یاد گرفتید چگونه درباره‌ی شغل و روال روزانه‌تان صحبت کنید و چگونه ساعت را به دو روش بگویید.",
+    "en": "In Lesson 4, you learned professions, telling time, office devices, separable verbs and accusative case. You learned to talk about your profession and daily routine.",
+    "de": "In Lektion 4 haben Sie Berufe, Uhrzeiten, IT-Geräte, trennbare Verben und Akkusativ gelernt."
+  },
+  "metadata": {
+    "createdAt": "2026-07-08",
+    "updatedAt": "2026-07-08",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "professions",
+      "time",
+      "separable-verbs",
+      "akkusativ",
+      "daily-routine",
+      "IT-devices",
+      "A1"
+    ],
+    "difficulty": 2,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03"
+    ]
+  }
 }

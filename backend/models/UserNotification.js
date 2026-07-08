@@ -1,7 +1,10 @@
 /**
  * UserNotification.js
- * German Academy
-// TODO: Translate - TODO: Translate - * مدل ارتباط کاربر و نوتیفیکیشن‌ها
+ * Path: backend/models/UserNotification.js
+ * Description: User notification junction table
+ * Changes:
+ * - ✅ FIXED: Added proper associations
+ * - ✅ FIXED: Added indexes for performance
  */
 
 import { DataTypes } from "sequelize";
@@ -19,37 +22,42 @@ const UserNotification = sequelize.define(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
-      field: "user_id",
     },
     notificationId: {
       type: DataTypes.UUID,
       allowNull: false,
-      field: "notification_id",
     },
     isRead: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
-      field: "is_read",
     },
     isDismissed: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
-      field: "is_dismissed",
     },
     readAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: "read_at",
     },
     dismissedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: "dismissed_at",
     },
     clickedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: "clicked_at",
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
@@ -58,20 +66,20 @@ const UserNotification = sequelize.define(
     underscored: true,
     indexes: [
       {
+        fields: ["user_id"],
+      },
+      {
+        fields: ["notification_id"],
+      },
+      {
+        fields: ["is_read"],
+      },
+      {
         unique: true,
         fields: ["user_id", "notification_id"],
-        name: "unique_user_notification",
-      },
-      {
-        fields: ["user_id", "is_read"],
-        name: "idx_user_notifications_read",
-      },
-      {
-        fields: ["user_id", "is_dismissed"],
-        name: "idx_user_notifications_dismissed",
       },
     ],
-  },
+  }
 );
 
 export default UserNotification;

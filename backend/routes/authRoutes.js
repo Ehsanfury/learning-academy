@@ -5,6 +5,8 @@
  * Changes:
  * - ✅ FIXED: Added /refresh endpoint (without -token)
  * - ✅ FIXED: Both /refresh and /refresh-token work
+ * - ✅ FIXED: Removed duplicate imports
+ * - ✅ FIXED: Added rate limiting to sensitive endpoints
  */
 
 import express from "express";
@@ -20,7 +22,7 @@ import {
   verifyEmail,
   resendVerification,
 } from "../controllers/authController.js";
-import { authLimiter, registerLimiter } from "../middlewares/rateLimiter.js";
+import { authLimiter, registerLimiter, strictLimiter } from "../middlewares/rateLimiter.js";
 import { authenticate, authorize } from "../middlewares/authMiddleware.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import userService from "../services/userService.js";
@@ -38,17 +40,17 @@ router.post("/register", registerLimiter, register);
 // Login with rate limiting
 router.post("/login", authLimiter, login);
 
-// Refresh token - ✅ FIXED: Both endpoints work
-router.post("/refresh", refreshToken);
-router.post("/refresh-token", refreshToken);
+// ✅ FIXED: Refresh token with rate limiting
+router.post("/refresh", authLimiter, refreshToken);
+router.post("/refresh-token", authLimiter, refreshToken);
 
-// Forgot password
-router.post("/forgot-password", forgotPassword);
+// ✅ FIXED: Forgot password with rate limiting
+router.post("/forgot-password", authLimiter, forgotPassword);
 
-// Reset password
-router.post("/reset-password", resetPassword);
+// ✅ FIXED: Reset password with rate limiting
+router.post("/reset-password", authLimiter, resetPassword);
 
-// Verify email
+// Verify email (no rate limit needed)
 router.get("/verify-email", verifyEmail);
 
 // ============================================

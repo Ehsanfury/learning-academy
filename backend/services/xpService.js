@@ -2,8 +2,16 @@
  * xpService.js
  * Path: backend/services/xpService.js
  * Description: Unified XP management service
- * Version: 1.0 - New architecture
+ * Version: 2.0 - Integrated with User model and userService
+ * Changes:
+ * - ✅ Unified XP logic from User.js, userService.js, and xpService.js
+ * - ✅ Single source of truth for XP calculations
+ * - ✅ Atomic operations using increment()
  */
+
+import { User, XPHistory } from "../models/index.js";
+import sequelize from "../config/db.js";
+import logger from "../config/logger.js";
 
 const XP_PER_LEVEL = 100;
 
@@ -45,21 +53,77 @@ class XPService {
   }
 
   /**
-   * Add XP and calculate changes
+   * Add XP to user - ATOMIC operation
+   * ✅ Single source of truth for XP addition
+   * ✅ Uses increment() to avoid race conditions
    */
-  addXP(currentXP, amount) {
-    const newXP = Math.max(0, currentXP + amount);
-    const oldLevel = this.calculateLevel(currentXP);
-    const newLevel = this.calculateLevel(newXP);
+  async addXP(userId, amount, source = "unknown", sourceId = null, metadata = {}) {
+    try {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
 
-    return {
-      xp: newXP,
-      level: newLevel,
-      leveledUp: newLevel > oldLevel,
-      progress: this.getProgressToNextLevel(newXP),
-      oldLevel,
-      xpGained: amount,
-    };
+      if (amount <= 0) {
+        logger.warn(`⚠️ Attempted to add non-positive XP: ${amount} for user ${userId}`);
+        return { xp: 0, level: 0, leveledUp: false };
+      }
+
+      const transaction = await sequelize.transaction();
+
+      try {
+        // ✅ Atomic increment
+        const [updatedUser] = await User.increment(
+          { xp: amount },
+          {
+            where: { id: userId },
+            returning: true,
+            transaction,
+          }
+        );
+
+        const user = updatedUser?.[0] || (await User.findByPk(userId, { transaction }));
+        const newXP = user?.xp || 0;
+        const oldLevel = this.calculateLevel(newXP - amount);
+        const newLevel = this.calculateLevel(newXP);
+
+        // Update level if changed
+        if (newLevel !== oldLevel) {
+          await user.update({ level: newLevel }, { transaction });
+        }
+
+        // Log XP history
+        await XPHistory.create(
+          {
+            userId,
+            amount,
+            totalXP: newXP,
+            source,
+            sourceId,
+            metadata,
+          },
+          { transaction }
+        );
+
+        await transaction.commit();
+
+        logger.info(`➕ User ${userId} earned ${amount} XP (total: ${newXP}, level: ${newLevel})`);
+
+        return {
+          xp: newXP,
+          level: newLevel,
+          earned: amount,
+          leveledUp: newLevel > oldLevel,
+          oldLevel,
+          progress: this.getProgressToNextLevel(newXP),
+        };
+      } catch (error) {
+        await transaction.rollback();
+        throw error;
+      }
+    } catch (error) {
+      logger.error(`❌ Error in addXP:`, error);
+      throw error;
+    }
   }
 
   /**

@@ -1,8 +1,9 @@
 /**
  * Lesson.js
  * Path: backend/models/Lesson.js
- * Description: Lesson model
+ * Description: Lesson model with indexes
  * Changes:
+ * - ✅ FIXED: Added database indexes for performance
  * - ✅ FIXED: JSONB defaults use sequelize literal for PostgreSQL
  * - ✅ FIXED: lessonNumber allowNull: true
  */
@@ -69,7 +70,7 @@ const Lesson = sequelize.define(
     prerequisites: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"), // ✅ FIXED
+      defaultValue: Sequelize.literal("'[]'::jsonb"),
     },
     nextLessonId: {
       type: DataTypes.STRING(50),
@@ -86,7 +87,7 @@ const Lesson = sequelize.define(
     title: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'{}'::jsonb"), // ✅ FIXED
+      defaultValue: Sequelize.literal("'{}'::jsonb"),
     },
     shortTitle: {
       type: DataTypes.JSONB,
@@ -137,12 +138,12 @@ const Lesson = sequelize.define(
     tags: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"), // ✅ FIXED
+      defaultValue: Sequelize.literal("'[]'::jsonb"),
     },
     skills: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"), // ✅ FIXED
+      defaultValue: Sequelize.literal("'[]'::jsonb"),
     },
     examRelevance: {
       type: DataTypes.JSONB,
@@ -153,7 +154,7 @@ const Lesson = sequelize.define(
     sections: {
       type: DataTypes.JSONB,
       allowNull: true,
-      defaultValue: Sequelize.literal("'[]'::jsonb"), // ✅ FIXED
+      defaultValue: Sequelize.literal("'[]'::jsonb"),
     },
     totalSections: {
       type: DataTypes.INTEGER,
@@ -201,6 +202,26 @@ const Lesson = sequelize.define(
     tableName: "lessons",
     timestamps: true,
     underscored: true,
+    indexes: [
+      {
+        fields: ["level"],
+      },
+      {
+        fields: ["order"],
+      },
+      {
+        fields: ["is_active"],
+      },
+      {
+        fields: ["level", "order"],
+      },
+      {
+        fields: ["status"],
+      },
+      {
+        fields: ["created_at"],
+      },
+    ],
   }
 );
 

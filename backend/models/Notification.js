@@ -1,7 +1,10 @@
 /**
  * Notification.js
- * German Academy
- Notifications and promotions model
+ * Path: backend/models/Notification.js
+ * Description: Notification model for system notifications
+ * Changes:
+ * - ✅ FIXED: Added proper JSONB defaults
+ * - ✅ FIXED: Added indexes for performance
  */
 
 import { DataTypes } from "sequelize";
@@ -19,23 +22,16 @@ const Notification = sequelize.define(
     title: {
       type: DataTypes.JSONB,
       allowNull: false,
-      defaultValue: {
-        fa: "",
-        en: "",
-        de: "",
-      },
+      defaultValue: { fa: "", en: "", de: "" },
     },
     message: {
       type: DataTypes.JSONB,
       allowNull: false,
-      defaultValue: {
-        fa: "",
-        en: "",
-        de: "",
-      },
+      defaultValue: { fa: "", en: "", de: "" },
     },
     type: {
       type: DataTypes.ENUM("info", "warning", "success", "promotion", "system"),
+      allowNull: false,
       defaultValue: "info",
     },
     image: {
@@ -48,42 +44,52 @@ const Notification = sequelize.define(
     },
     isGlobal: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
-      field: "is_global",
     },
     isPromotion: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
-      field: "is_promotion",
     },
     expiresAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: "expires_at",
     },
     isActive: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: true,
-      field: "is_active",
     },
     priority: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       defaultValue: 0,
     },
     clickCount: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       defaultValue: 0,
-      field: "click_count",
     },
     viewCount: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       defaultValue: 0,
-      field: "view_count",
     },
     targetUsers: {
       type: DataTypes.ARRAY(DataTypes.UUID),
+      allowNull: true,
       defaultValue: [],
-      field: "target_users",
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
@@ -92,23 +98,19 @@ const Notification = sequelize.define(
     underscored: true,
     indexes: [
       {
-        fields: ["is_active"],
-        name: "idx_notifications_active",
+        fields: ["type"],
       },
       {
-        fields: ["type"],
-        name: "idx_notifications_type",
+        fields: ["is_active"],
+      },
+      {
+        fields: ["created_at"],
       },
       {
         fields: ["expires_at"],
-        name: "idx_notifications_expires",
-      },
-      {
-        fields: ["is_promotion"],
-        name: "idx_notifications_promotion",
       },
     ],
-  },
+  }
 );
 
 export default Notification;
