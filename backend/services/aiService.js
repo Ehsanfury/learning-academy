@@ -1,14 +1,12 @@
 /**
  * aiService.js
  * Path: backend/services/aiService.js
- * Description: AI service with fallback support
- * Version: 7.0 - Fixed Gemini API key exposure
+ * Description: AI service with support for Gemini, OpenRouter, and Cerebras
+ * Version: 8.0 - Added Cerebras support
  * Changes:
- * - ✅ FIXED: Gemini API key no longer in URL (using @google/generative-ai SDK)
- * - ✅ FIXED: Gemini model updated to gemini-2.0-flash
- * - ✅ FIXED: Conversation history now sent to AI
- * - ✅ FIXED: OpenRouter model updated to gpt-4o-mini
- * - ✅ FIXED: Better error handling
+ * - ✅ ADDED: Cerebras AI support (csk-...)
+ * - ✅ FIXED: Better error handling for all providers
+ * - ✅ FIXED: Mock mode as final fallback
  */
 
 import axios from "axios";
@@ -18,11 +16,13 @@ class AIService {
   constructor() {
     this.geminiApiKey = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
     this.openRouterApiKey = process.env.OPENROUTER_API_KEY;
+    this.cerebrasApiKey = process.env.CEREBRAS_API_KEY;
     this.timeout = 30000;
 
     logger.info("🤖 AI Service Initialized");
     logger.info(`   Gemini: ${this.geminiApiKey ? "✅ Configured" : "❌ Not configured"}`);
     logger.info(`   OpenRouter: ${this.openRouterApiKey ? "✅ Configured" : "❌ Not configured"}`);
+    logger.info(`   Cerebras: ${this.cerebrasApiKey ? "✅ Configured" : "❌ Not configured"}`);
   }
 
   /**
@@ -31,15 +31,18 @@ class AIService {
   async chat(userId, message, level = "A1", context = {}) {
     try {
       const sanitizedMessage = this.sanitizeInput(message);
-      logger.info(`💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..."`);
+      const mode = context.mode || "tutor";
+      const language = context.language || "fa";
 
-      // Build conversation history from context
+      logger.info(
+        `💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..." (mode: ${mode})`
+      );
+
       const conversationHistory = (context.messages || []).map((m) => ({
         role: m.sender === "user" ? "user" : "assistant",
         content: m.content || m.message || "",
       }));
 
-      // Remove last user message (it's being sent now)
       if (
         conversationHistory.length > 0 &&
         conversationHistory[conversationHistory.length - 1].role === "user"
@@ -47,10 +50,38 @@ class AIService {
         conversationHistory.pop();
       }
 
-      // Try Gemini first
+      // ✅ Try Cerebras first (new)
+      if (this.cerebrasApiKey) {
+        try {
+          const response = await this.callCerebras(
+            sanitizedMessage,
+            level,
+            conversationHistory,
+            mode,
+            language
+          );
+          if (response) {
+            return {
+              text: response,
+              provider: "cerebras",
+              isMock: false,
+            };
+          }
+        } catch (error) {
+          logger.warn(`⚠️ Cerebras failed: ${error.message}`);
+        }
+      }
+
+      // Try Gemini
       if (this.geminiApiKey) {
         try {
-          const response = await this.callGemini(sanitizedMessage, level, conversationHistory);
+          const response = await this.callGemini(
+            sanitizedMessage,
+            level,
+            conversationHistory,
+            mode,
+            language
+          );
           if (response) {
             return {
               text: response,
@@ -66,7 +97,13 @@ class AIService {
       // Try OpenRouter as fallback
       if (this.openRouterApiKey) {
         try {
-          const response = await this.callOpenRouter(sanitizedMessage, level, conversationHistory);
+          const response = await this.callOpenRouter(
+            sanitizedMessage,
+            level,
+            conversationHistory,
+            mode,
+            language
+          );
           if (response) {
             return {
               text: response,
@@ -82,7 +119,7 @@ class AIService {
       // Final fallback: mock response
       logger.warn(`⚠️ Using mock response for user ${userId}`);
       return {
-        text: this.getMockResponse(sanitizedMessage),
+        text: this.getMockResponse(sanitizedMessage, mode),
         provider: "mock",
         isMock: true,
       };
@@ -98,44 +135,85 @@ class AIService {
   }
 
   /**
-   * Call Gemini API
-   * ✅ FIXED: Using @google/generative-ai SDK instead of URL with API key
-   * ✅ FIXED: Updated to gemini-2.0-flash
+   * ✅ NEW: Call Cerebras API
+   * Cerebras uses OpenAI-compatible API
    */
-  async callGemini(message, level, history = []) {
+  async callCerebras(message, level, history = [], mode = "tutor", language = "fa") {
+    const systemPrompt = this.getSystemPrompt(level, mode, language);
+
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...history.map((h) => ({
+        role: h.role === "assistant" ? "assistant" : "user",
+        content: h.content,
+      })),
+      { role: "user", content: message },
+    ];
+
+    const response = await axios.post(
+      "https://api.cerebras.ai/v1/chat/completions",
+      {
+        model: "llama3.1-70b",
+        messages: messages,
+        max_tokens: 1000,
+        temperature: 0.7,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${this.cerebrasApiKey}`,
+          "Content-Type": "application/json",
+        },
+        timeout: this.timeout,
+      }
+    );
+
+    const text = response.data?.choices?.[0]?.message?.content;
+
+    if (!text) {
+      throw new Error("Empty response from Cerebras");
+    }
+
+    return text;
+  }
+
+  /**
+   * Call Gemini API
+   */
+  async callGemini(message, level, history = [], mode = "tutor", language = "fa") {
     try {
-      // ✅ FIXED: Use SDK instead of URL with API key
-      const { GoogleGenerativeAI } = await import("@google/generative-ai");
-      const genAI = new GoogleGenerativeAI(this.geminiApiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+      const systemPrompt = this.getSystemPrompt(level, mode, language);
+      let conversationPrompt = `${systemPrompt}\n\n`;
 
-      const systemPrompt = this.getSystemPrompt(level);
-      const fullPrompt = `${systemPrompt}\n\n`;
-
-      // Build conversation with history
-      let conversationPrompt = fullPrompt;
       history.forEach((h) => {
         const role = h.role === "assistant" ? "AI" : "User";
         conversationPrompt += `${role}: ${h.content}\n`;
       });
       conversationPrompt += `User: ${message}\nAI:`;
 
-      const result = await model.generateContent({
-        contents: [
-          {
-            role: "user",
-            parts: [{ text: conversationPrompt }],
+      const response = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`,
+        {
+          contents: [
+            {
+              parts: [{ text: conversationPrompt }],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 8192,
+            topP: 0.95,
           },
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 8192,
-          topP: 0.95,
         },
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": this.geminiApiKey,
+          },
+          timeout: this.timeout,
+        }
+      );
 
-      const response = await result.response;
-      const text = response.text();
+      const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
       if (!text) {
         throw new Error("Empty response from Gemini");
@@ -143,19 +221,19 @@ class AIService {
 
       return text;
     } catch (error) {
-      logger.error(`❌ Gemini API error:`, error.message);
+      if (error.response?.status === 403) {
+        logger.error(`❌ Gemini API Key is invalid or expired.`);
+      }
       throw error;
     }
   }
 
   /**
    * Call OpenRouter API
-   * ✅ FIXED: Updated to gpt-4o-mini
    */
-  async callOpenRouter(message, level, history = []) {
-    const systemPrompt = this.getSystemPrompt(level);
+  async callOpenRouter(message, level, history = [], mode = "tutor", language = "fa") {
+    const systemPrompt = this.getSystemPrompt(level, mode, language);
 
-    // Build messages with history
     const messages = [
       { role: "system", content: systemPrompt },
       ...history.map((h) => ({
@@ -194,34 +272,46 @@ class AIService {
   }
 
   /**
-   * Generate response (alias for chat)
+   * Get system prompt based on mode
    */
-  async generateResponse(userId, message, level = "A1", context = {}) {
-    return this.chat(userId, message, level, context);
+  getSystemPrompt(level, mode = "tutor", language = "fa") {
+    const basePrompt = `You are a friendly German language assistant. The student is at level ${level}.`;
+
+    const modePrompts = {
+      tutor: `
+You are a professional German language tutor. Your role is to:
+1. Teach German in a structured way
+2. Correct mistakes gently
+3. Explain grammar rules
+4. Provide examples
+5. Always respond in ${language} but include German examples
+
+Example: "عالی! جمله شما درست است. به آلمانی می‌گوییم: Ich heiße ..."`,
+
+      conversation: `
+You are a friendly German conversation partner. Your role is to:
+1. Have natural conversations in German
+2. Help the user practice speaking
+3. Keep the conversation flowing
+4. Use simple German with occasional English help
+5. Respond in German with English translations when needed`,
+
+      free: `
+You are a helpful AI assistant. Your role is to:
+1. Answer questions about any topic
+2. Help with German language learning when asked
+3. Be friendly and helpful
+4. Respond in ${language} or German based on user's preference
+5. Be versatile and adaptable`,
+    };
+
+    return basePrompt + (modePrompts[mode] || modePrompts.tutor);
   }
 
   /**
-   * Get system prompt
+   * Get mock response
    */
-  getSystemPrompt(level) {
-    return `You are a friendly German language tutor. Your student is at level ${level}.
-
-Important rules:
-1. Always respond in Persian (Farsi) but include German examples
-2. Keep responses short (2-3 sentences)
-3. Be encouraging and helpful
-4. Correct mistakes gently
-5. Include vocabulary when helpful
-
-Example: "عالی! جمله شما درست است. به آلمانی می‌گوییم: Ich heiße ..."
-
-Now respond to the user's message in Persian.`;
-  }
-
-  /**
-   * Get mock response (fallback)
-   */
-  getMockResponse(message) {
+  getMockResponse(message, mode = "tutor") {
     const lower = message.toLowerCase();
 
     if (lower.includes("hallo") || lower.includes("سلام") || lower.includes("hi")) {
@@ -239,8 +329,8 @@ Now respond to the user's message in Persian.`;
     if (lower.includes("tschüss") || lower.includes("خداحافظ") || lower.includes("بای")) {
       return "Auf Wiedersehen! Bis bald! (خدانگهدار! به زودی می‌بینمت!)";
     }
-    if (lower.includes("was") || lower.includes("چیست") || lower.includes("این")) {
-      return "Das ist ein/eine... (این یک ... است). برای یادگیری بهتر، می‌توانید بپرسید: 'Was bedeutet das?' (این یعنی چه؟)";
+    if (lower.includes("lieblingsessen") || lower.includes("غذا")) {
+      return "Mein Lieblingsessen ist Pizza! Ich esse gerne Pizza mit Tomaten und Käse. (غذای مورد علاقه من پیتزا است! من پیتزا با گوجه و پنیر دوست دارم.)";
     }
 
     return `این یک جمله جالب است! به آلمانی می‌توانید بگویید: "${message}"
@@ -257,6 +347,13 @@ Now respond to the user's message in Persian.`;
       .replace(/[{}[\]()]/g, "")
       .replace(/system:/gi, "")
       .trim();
+  }
+
+  /**
+   * Generate response (alias for chat)
+   */
+  async generateResponse(userId, message, level = "A1", context = {}) {
+    return this.chat(userId, message, level, context);
   }
 
   /**
