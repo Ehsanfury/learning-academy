@@ -32,9 +32,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache-dependency-path: |
-            package-lock.json
-            backend/package-lock.json
 
       - name: Install Backend Dependencies
         working-directory: ./backend
