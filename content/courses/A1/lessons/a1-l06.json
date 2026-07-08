@@ -1,597 +1,1889 @@
 {
-  "id": "a1-l06",
+  "id": "A1-L06",
+  "order": 6,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 6,
+  "unit": 6,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 50,
-  "difficulty": 1,
-  "prerequisites": [
-    "a1-l05"
-  ],
-  "nextLessonId": "a1-l07",
-  "previousLessonId": "a1-l05",
   "title": {
-    "de": "Meine Familie",
-    "fa": "خانواده من",
-    "en": "My Family"
+    "fa": "Meine Stadt, meine Wohnung - شهر من، آپارتمان من",
+    "en": "My City, My Apartment",
+    "de": "Meine Stadt, meine Wohnung"
   },
-  "shortTitle": {
-    "de": "Familie",
-    "fa": "خانواده",
-    "en": "Family"
+  "subtitle": {
+    "fa": "شهر، روستا، اتاق‌های خانه، مبلمان و حرف اضافه‌ی in با Dativ",
+    "en": "City, Countryside, Rooms, Furniture and in + Dative",
+    "de": "Stadt, Land, Zimmer, Möbel und in + Dativ"
   },
   "description": {
-    "fa": "در این درس با اعضای خانواده، ضمایر مالکیت و اعداد بزرگتر آشنا می‌شوید.",
-    "en": "In this lesson you will learn family members, possessive pronouns and larger numbers.",
-    "de": "In dieser Lektion lernen Sie Familienmitglieder, Possessivpronomen und größere Zahlen."
+    "fa": "در این درس شما با واژگان شهر و روستا، اتاق‌های خانه و مبلمان، صفت‌های توصیفی، حرف اضافه‌ی in با Dativ (مکان)، ساختار es gibt + Akkusativ، سوالات ja/nein/doch و جهت‌یابی آشنا می‌شوید.",
+    "en": "In this lesson you will learn city/countryside vocabulary, rooms, furniture, adjectives, in + dative, es gibt + accusative, ja/nein/doch, and directions.",
+    "de": "In dieser Lektion lernen Sie Stadt/Land, Zimmer, Möbel, Adjektive, in + Dativ, es gibt + Akkusativ, ja/nein/doch und Richtungen."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 3,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ یادگیری اعضای خانواده به آلمانی",
-      "✅ استفاده از ضمایر مالکیت (mein/meine)",
-      "✅ اعداد ۲۰ تا ۱۰۰",
-      "✅ معرفی خانواده خود"
+      "نام بردن مکان‌های شهر",
+      "توصیف شهر و روستا با صفت‌ها",
+      "استفاده از in + Dativ (مکان)",
+      "استفاده از es gibt + Akkusativ",
+      "نام بردن اتاق‌ها و مبلمان",
+      "پاسخ با doch به سوالات منفی",
+      "پرسیدن مکان: Wo wohnst du?"
+    ],
+    "en": [
+      "Name city places",
+      "Describe city and countryside",
+      "Use in + dative (location)",
+      "Use es gibt + accusative",
+      "Name rooms and furniture",
+      "Answer with doch",
+      "Ask: Wo wohnst du?"
+    ],
+    "de": [
+      "Stadtörter nennen",
+      "Stadt und Land beschreiben",
+      "in + Dativ verwenden",
+      "es gibt + Akkusativ verwenden",
+      "Zimmer und Möbel nennen",
+      "Mit doch antworten",
+      "Nach Orten fragen"
     ]
   },
-  "xpReward": 55,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس ششم خوش آمدید! 👨‍👩‍👧‍👦\n\nدر این درس با اعضای خانواده، ضمایر مالکیت و اعداد بزرگتر آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• اعضای خانواده به آلمانی\n• ضمایر مالکیت (mein/meine)\n• اعداد ۲۰ تا ۱۰۰\n• چگونه خانواده خود را معرفی کنید",
-        "en": "Welcome to lesson 6! 👨‍👩‍👧‍👦\n\nIn this lesson you will learn family members, possessive pronouns and larger numbers.\n\nYou will learn:\n• Family members in German\n• Possessive pronouns (mein/meine)\n• Numbers 20-100\n• How to introduce your family",
-        "de": "Willkommen zur sechsten Lektion! 👨‍👩‍👧‍👦\n\nIn dieser Lektion lernen Sie Familienmitglieder, Possessivpronomen und größere Zahlen.\n\nSie lernen:\n• Familienmitglieder auf Deutsch\n• Possessivpronomen (mein/meine)\n• Zahlen 20-100\n• Wie Sie Ihre Familie vorstellen"
-      },
-      "id": "a1-l06-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱-۵",
+      "آشنایی با Akkusativ",
+      "آشنایی با فعل‌های Modal"
+    ],
+    "en": [
+      "Mastery of Lessons 1-5",
+      "Familiarity with accusative",
+      "Familiarity with modal verbs"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1-5",
+      "Vertrautheit mit Akkusativ",
+      "Vertrautheit mit Modalverben"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "Story Mode - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "die Familie",
-          "fa": "خانواده",
-          "en": "family",
-          "gender": "die",
-          "plural": "die Familien",
-          "icon": "👨‍👩‍👧‍👦"
-        },
-        {
-          "de": "die Mutter",
-          "fa": "مادر",
-          "en": "mother",
-          "gender": "die",
-          "plural": "die Mütter",
-          "icon": "👩",
-          "example": {
-            "de": "Das ist meine Mutter.",
-            "fa": "این مادر من است.",
-            "en": "This is my mother."
-          }
-        },
-        {
-          "de": "der Vater",
-          "fa": "پدر",
-          "en": "father",
-          "gender": "der",
-          "plural": "die Väter",
-          "icon": "👨",
-          "example": {
-            "de": "Das ist mein Vater.",
-            "fa": "این پدر من است.",
-            "en": "This is my father."
-          }
-        },
-        {
-          "de": "der Bruder",
-          "fa": "برادر",
-          "en": "brother",
-          "gender": "der",
-          "plural": "die Brüder",
-          "icon": "👦",
-          "example": {
-            "de": "Das ist mein Bruder.",
-            "fa": "این برادر من است.",
-            "en": "This is my brother."
-          }
-        },
-        {
-          "de": "die Schwester",
-          "fa": "خواهر",
-          "en": "sister",
-          "gender": "die",
-          "plural": "die Schwestern",
-          "icon": "👧",
-          "example": {
-            "de": "Das ist meine Schwester.",
-            "fa": "این خواهر من است.",
-            "en": "This is my sister."
-          }
-        },
-        {
-          "de": "das Kind",
-          "fa": "فرزند / کودک",
-          "en": "child",
-          "gender": "das",
-          "plural": "die Kinder",
-          "icon": "🧒",
-          "example": {
-            "de": "Das ist mein Kind.",
-            "fa": "این فرزند من است.",
-            "en": "This is my child."
-          }
-        },
-        {
-          "de": "die Schwester",
-          "fa": "خواهر",
-          "en": "sister",
-          "gender": "die",
-          "plural": "die Schwestern",
-          "icon": "👧"
-        },
-        {
-          "de": "der Bruder",
-          "fa": "برادر",
-          "en": "brother",
-          "gender": "der",
-          "plural": "die Brüder",
-          "icon": "👦"
-        },
-        {
-          "de": "mein",
-          "fa": "مال من (برای مذکر/خنثی)",
-          "en": "my (masculine/neuter)",
-          "icon": "🔹"
-        },
-        {
-          "de": "meine",
-          "fa": "مال من (برای مونث/جمع)",
-          "en": "my (feminine/plural)",
-          "icon": "🔸"
-        },
-        {
-          "de": "dreißig",
-          "fa": "سی",
-          "en": "thirty",
-          "icon": "3️⃣0️⃣"
-        },
-        {
-          "de": "vierzig",
-          "fa": "چهل",
-          "en": "forty",
-          "icon": "4️⃣0️⃣"
-        },
-        {
-          "de": "fünfzig",
-          "fa": "پنجاه",
-          "en": "fifty",
-          "icon": "5️⃣0️⃣"
-        },
-        {
-          "de": "sechzig",
-          "fa": "شصت",
-          "en": "sixty",
-          "icon": "6️⃣0️⃣"
-        },
-        {
-          "de": "siebzig",
-          "fa": "هفتاد",
-          "en": "seventy",
-          "icon": "7️⃣0️⃣"
-        },
-        {
-          "de": "achtzig",
-          "fa": "هشتاد",
-          "en": "eighty",
-          "icon": "8️⃣0️⃣"
-        },
-        {
-          "de": "neunzig",
-          "fa": "نود",
-          "en": "ninety",
-          "icon": "9️⃣0️⃣"
-        },
-        {
-          "de": "hundert",
-          "fa": "صد",
-          "en": "hundred",
-          "icon": "💯"
-        }
-      ],
-      "id": "a1-l06-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی ششم. Emma در شهر برلین و Martha در روستای Grünow زندگی می‌کنند. یک Couchsurfer به نام Manu آپارتمان Stephanie را بازدید می‌کند.",
+      "en": "Week 6. Emma lives in Berlin, Martha in the village Grünow. A couchsurfer named Manu visits Stephanie's apartment.",
+      "de": "Woche 6. Emma wohnt in Berlin, Martha in Grünow. Ein Couchsurfer besucht Stephanies Wohnung."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Emma",
+        "persian": "اِ-ما",
+        "country": "آلمان",
+        "age": 22,
+        "job": "دانشجو",
+        "location": "برلین"
       },
-      "concept": {
-        "fa": "ضمایر مالکیت و اعداد بزرگتر",
-        "en": "Possessive Pronouns and Larger Numbers",
-        "de": "Possessivpronomen und größere Zahlen"
+      {
+        "name": "Martha",
+        "persian": "مار-تا",
+        "country": "آمریکا",
+        "age": 30,
+        "job": "معلم",
+        "location": "Grünow"
       },
-      "explanation": {
-        "fa": "📌 **ضمیر مالکیت (Possessivartikel - 'Mein'):**\n\nپایان ضمیر مالکیت بستگی به جنسیت کلمه بعد از آن دارد:\n\n• کلمات مذکر (der) یا خنثی (das) → mein\n→ Mein Vater (پدر من)\n→ Mein Kind (فرزند من)\n\n• کلمات مونث (die) یا جمع → meine\n→ Meine Mutter (مادر من)\n→ Meine Schwestern (خواهران من)\n\n📌 **اعداد بزرگتر (Zahlen 20-100):**\n\nدر آلمانی، از اعداد کوچک به بزرگ می‌گوییم:\n\n• 21 → einundzwanzig (یک و بیست)\n• 35 → fünfunddreißig (پنج و سی)\n• 42 → zweiundvierzig (دو و چهل)\n• 99 → neunundneunzig (نه و نود)",
-        "en": "📌 **Possessive Pronouns:**\n\nThe ending of the possessive pronoun depends on the gender of the following word:\n\n• Masculine (der) or neuter (das) → mein\n→ Mein Vater (my father)\n→ Mein Kind (my child)\n\n• Feminine (die) or plural → meine\n→ Meine Mutter (my mother)\n→ Meine Schwestern (my sisters)\n\n📌 **Larger Numbers (20-100):**\n\nIn German, you say the smaller number first:\n\n• 21 → einundzwanzig (one and twenty)\n• 35 → fünfunddreißig (five and thirty)\n• 42 → zweiundvierzig (two and forty)",
-        "de": "📌 **Possessivartikel:**\n\nDie Endung des Possessivartikels hängt vom Genus des folgenden Wortes ab:\n\n• Maskulin (der) oder Neutrum (das) → mein\n→ Mein Vater\n→ Mein Kind\n\n• Feminin (die) oder Plural → meine\n→ Meine Mutter\n→ Meine Schwestern\n\n📌 **Größere Zahlen (20-100):**\n\nIm Deutschen sagt man zuerst die kleinere Zahl:\n\n• 21 → einundzwanzig\n• 35 → fünfunddreißig"
+      {
+        "name": "Manu",
+        "persian": "ما-نو",
+        "country": "اسپانیا",
+        "age": 25,
+        "job": "Couchsurfer",
+        "location": "برلین"
       },
-      "examples": [
-        {
-          "de": "Das ist mein Vater.",
-          "fa": "این پدر من است.",
-          "en": "This is my father."
-        },
-        {
-          "de": "Das ist meine Mutter.",
-          "fa": "این مادر من است.",
-          "en": "This is my mother."
-        },
-        {
-          "de": "Das ist mein Bruder.",
-          "fa": "این برادر من است.",
-          "en": "This is my brother."
-        },
-        {
-          "de": "Das ist meine Schwester.",
-          "fa": "این خواهر من است.",
-          "en": "This is my sister."
-        },
-        {
-          "de": "Ich bin 32 Jahre alt.",
-          "fa": "من ۳۲ سال دارم.",
-          "en": "I am 32 years old."
-        },
-        {
-          "de": "Meine Mutter ist 55 Jahre alt.",
-          "fa": "مادر من ۵۵ سال دارد.",
-          "en": "My mother is 55 years old."
-        }
-      ],
-      "id": "a1-l06-GRAM-003",
-      "order": 2
+      {
+        "name": "Stephanie",
+        "persian": "اِ-تِ-فا-نی",
+        "country": "آلمان",
+        "age": 27,
+        "job": "طراح",
+        "location": "برلین"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس ششم خوش آمدید — Meine Stadt, meine Wohnung!",
+      "en": "Welcome to Lesson 6!",
+      "de": "Willkommen zu Lektion 6!"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: خانواده من",
-        "en": "📖 Story: My Family",
-        "de": "📖 Geschichte: Meine Familie"
-      },
-      "text": {
-        "de": "Das ist meine Familie. Das ist mein Vater. Er heißt Thomas. Er ist 45 Jahre alt. Das ist meine Mutter. Sie heißt Maria. Sie ist 43 Jahre alt. Das ist mein Bruder. Er heißt Max. Er ist 15 Jahre alt. Das ist meine Schwester. Sie heißt Anna. Sie ist 12 Jahre alt. Ich bin 20 Jahre alt. Wir sind eine glückliche Familie.",
-        "fa": "این خانواده من است. این پدر من است. اسم او توماس است. او ۴۵ سال دارد. این مادر من است. اسم او ماریا است. او ۴۳ سال دارد. این برادر من است. اسم او مکس است. او ۱۵ سال دارد. این خواهر من است. اسم او آنا است. او ۱۲ سال دارد. من ۲۰ سال دارم. ما یک خانواده خوشحال هستیم.",
-        "en": "This is my family. This is my father. His name is Thomas. He is 45 years old. This is my mother. Her name is Maria. She is 43 years old. This is my brother. His name is Max. He is 15 years old. This is my sister. Her name is Anna. She is 12 years old. I am 20 years old. We are a happy family."
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "پدر من چند سال دارد؟",
-            "en": "How old is my father?",
-            "de": "Wie alt ist mein Vater?"
-          },
-          "answer": {
-            "fa": "۴۵ سال",
-            "en": "45 years old",
-            "de": "45 Jahre alt"
-          }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "خواهر من چند سال دارد؟",
-            "en": "How old is my sister?",
-            "de": "Wie alt ist meine Schwester?"
-          },
-          "answer": {
-            "fa": "۱۲ سال",
-            "en": "12 years old",
-            "de": "12 Jahre alt"
-          }
-        }
-      ],
-      "id": "a1-l06-STORY-004",
-      "order": 3
+    "content": {
+      "fa": "تصور کنید به‌دنبال آپارتمان می‌گردید. باید بپرسید: Wo wohnst du? و Was gibt es in der Nähe? این درس به شما کمک می‌کند تا درباره‌ی شهر و خانه‌تان صحبت کنید.",
+      "en": "Imagine looking for an apartment. You need to ask: Wo wohnst du? and Was gibt es? This lesson helps you talk about your city and home.",
+      "de": "Stell dir vor, du suchst eine Wohnung. Du fragst: Wo wohnst du? Diese Lektion hilft dir, über Stadt und Wohnung zu sprechen."
     },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "fill_in",
-          "question": {
-            "fa": "مالکیت: 'خواهر من' → ____ Schwester.",
-            "en": "Possessive: 'my sister' → ____ Schwester.",
-            "de": "Possessiv: 'meine Schwester' → ____ Schwester."
-          },
-          "answer": "meine",
-          "hint": {
-            "fa": "Schwester مونث است",
-            "en": "Schwester is feminine",
-            "de": "Schwester ist feminin"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "fill_in",
-          "question": {
-            "fa": "مالکیت: 'برادر من' → ____ Bruder.",
-            "en": "Possessive: 'my brother' → ____ Bruder.",
-            "de": "Possessiv: 'mein Bruder' → ____ Bruder."
-          },
-          "answer": "mein",
-          "hint": {
-            "fa": "Bruder مذکر است",
-            "en": "Bruder is masculine",
-            "de": "Bruder ist maskulin"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "fill_in",
-          "question": {
-            "fa": "عدد ۳۲ به آلمانی: ____",
-            "en": "Number 32 in German: ____",
-            "de": "Zahl 32 auf Deutsch: ____"
-          },
-          "answer": "zweiunddreißig",
-          "hint": {
-            "fa": "دو و سی",
-            "en": "two and thirty",
-            "de": "zwei und dreißig"
-          }
-        },
-        {
-          "id": "ex4",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'این برادر من است.'",
-            "en": "Translate: 'This is my brother.'",
-            "de": "Übersetzen: 'Das ist mein Bruder.'"
-          },
-          "answer": "Das ist mein Bruder.",
-          "hint": {
-            "fa": "Bruder مذکر است",
-            "en": "Bruder is masculine",
-            "de": "Bruder ist maskulin"
-          }
-        }
-      ],
-      "id": "a1-l06-EXER-005",
-      "order": 4
+    "imagePrompt": "Berlin street with apartment building, contrasted with rural village house, furniture visible through windows"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ",
+      "en": "Pronunciation Guide",
+      "de": "Ausspracheführer"
     },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "die Mutter",
-          "fa": "مادر",
-          "en": "mother",
-          "icon": "👩"
-        },
-        {
-          "de": "der Vater",
-          "fa": "پدر",
-          "en": "father",
-          "icon": "👨"
-        },
-        {
-          "de": "der Bruder",
-          "fa": "برادر",
-          "en": "brother",
-          "icon": "👦"
-        },
-        {
-          "de": "die Schwester",
-          "fa": "خواهر",
-          "en": "sister",
-          "icon": "👧"
-        },
-        {
-          "de": "das Kind",
-          "fa": "فرزند",
-          "en": "child",
-          "icon": "🧒"
-        },
-        {
-          "de": "mein",
-          "fa": "مال من (مذکر/خنثی)",
-          "en": "my (masc./neut.)",
-          "icon": "🔹"
-        },
-        {
-          "de": "meine",
-          "fa": "مال من (مونث/جمع)",
-          "en": "my (fem./pl.)",
-          "icon": "🔸"
-        },
-        {
-          "de": "dreißig",
-          "fa": "سی",
-          "en": "thirty",
-          "icon": "3️⃣0️⃣"
-        },
-        {
-          "de": "vierzig",
-          "fa": "چهل",
-          "en": "forty",
-          "icon": "4️⃣0️⃣"
-        },
-        {
-          "de": "hundert",
-          "fa": "صد",
-          "en": "hundred",
-          "icon": "💯"
-        }
-      ],
-      "id": "a1-l06-FLASH-006",
-      "order": 5
+    "layers": {
+      "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی",
+      "en": "Three layers: Persian, IPA, physical",
+      "de": "Drei Schichten"
     },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "die Familie",
-          "phonetic": "/diː faˈmiːli̯ə/"
+    "sounds": [
+      {
+        "id": "sound-r",
+        "letter": "r",
+        "description": {
+          "fa": "غُرّی",
+          "en": "uvular",
+          "de": "uvular"
         },
-        {
-          "word": "die Mutter",
-          "phonetic": "/diː ˈmʊtɐ/"
+        "ipa": "[ʁ]",
+        "persianEquivalent": "≈ غُرّ گربه",
+        "commonMistake": {
+          "fa": "مثل ر فارسی",
+          "en": "like Persian r",
+          "de": "wie persisches r"
         },
-        {
-          "word": "der Vater",
-          "phonetic": "/deːɐ̯ ˈfaːtɐ/"
-        },
-        {
-          "word": "der Bruder",
-          "phonetic": "/deːɐ̯ ˈbʁuːdɐ/"
-        },
-        {
-          "word": "dreißig",
-          "phonetic": "/ˈdʁaɪ̯sɪç/"
-        }
-      ],
-      "id": "a1-l06-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "fill_in",
-          "text": {
-            "fa": "مالکیت: 'خواهر من' → ____ Schwester.",
-            "en": "Possessive: 'my sister' → ____ Schwester.",
-            "de": "Possessiv: 'meine Schwester' → ____ Schwester."
+        "examples": [
+          {
+            "word": "ruhig",
+            "persian": "رو-ایخ",
+            "meaning": "آرام"
           },
-          "answer": "meine",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "fill_in",
-          "text": {
-            "fa": "عدد ۲۱ به آلمانی: ____",
-            "en": "Number 21 in German: ____",
-            "de": "Zahl 21 auf Deutsch: ____"
-          },
-          "answer": "einundzwanzig",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "'این پدر من است' به آلمانی چیست؟",
-            "en": "What is 'This is my father' in German?",
-            "de": "Was ist 'Das ist mein Vater' auf Deutsch?"
-          },
-          "options": [
-            "Das ist meine Vater.",
-            "Das ist mein Vater.",
-            "Das ist meiner Vater.",
-            "Das ist mein Vaters."
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l06-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ اعضای خانواده به آلمانی",
-          "✅ ضمایر مالکیت (mein/meine)",
-          "✅ اعداد ۲۰ تا ۱۰۰",
-          "✅ معرفی خانواده خود"
-        ],
-        "en": [
-          "✅ Family members in German",
-          "✅ Possessive pronouns (mein/meine)",
-          "✅ Numbers 20-100",
-          "✅ Introducing your family"
-        ],
-        "de": [
-          "✅ Familienmitglieder auf Deutsch",
-          "✅ Possessivpronomen (mein/meine)",
-          "✅ Zahlen 20-100",
-          "✅ Ihre Familie vorstellen"
+          {
+            "word": "Kirche",
+            "persian": "کیر-خِه",
+            "meaning": "کلیسا"
+          }
         ]
       },
-      "nextSteps": {
-        "fa": "📚 در درس بعدی (Wie, wo und wann?) با حروف اضافه زمان و مکان آشنا می‌شوید.",
-        "en": "📚 In the next lesson (Wie, wo und wann?) you will learn prepositions of time and place.",
-        "de": "📚 In der nächsten Lektion (Wie, wo und wann?) lernen Sie Zeit- und Ortspräpositionen."
+      {
+        "id": "sound-ch-soft",
+        "letter": "ch (بعد از e,i)",
+        "description": {
+          "fa": "ه فشرده",
+          "en": "soft ch",
+          "de": "weiches ch"
+        },
+        "ipa": "[ç]",
+        "persianEquivalent": "≈ ه فشرده",
+        "commonMistake": {
+          "fa": "مثل خ",
+          "en": "like kh",
+          "de": "wie ch"
+        },
+        "examples": [
+          {
+            "word": "Kirche",
+            "persian": "کیر-خِه",
+            "meaning": "کلیسا"
+          },
+          {
+            "word": "Küche",
+            "persian": "کو-خِه",
+            "meaning": "آشپزخانه"
+          }
+        ]
       },
-      "id": "a1-l06-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-eu",
+        "letter": "eu",
+        "description": {
+          "fa": "او-ی",
+          "en": "oi sound",
+          "de": "oi"
+        },
+        "ipa": "[ɔɪ̯]",
+        "persianEquivalent": "≈ او-ی",
+        "commonMistake": {
+          "fa": "مثل او",
+          "en": "like ou",
+          "de": "wie au"
+        },
+        "examples": [
+          {
+            "word": "teuer",
+            "persian": "توی-ر",
+            "meaning": "گران"
+          },
+          {
+            "word": "Kühlschrank",
+            "persian": "کول-اشرانک",
+            "meaning": "یخچال"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-stadt",
+      "de": "Stadt",
+      "article": "die",
+      "plural": "Städte",
+      "ipa": "[ʃtat]",
+      "fa": "شهر",
+      "en": "city",
+      "example": {
+        "de": "Ich wohne in der Stadt.",
+        "fa": "در شهر ساکنم.",
+        "en": "I live in the city."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. جمع با Umlaut: Städte",
+        "en": "Feminine. Plural with umlaut",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "st مثل شت",
+        "en": "st like sht",
+        "de": "st wie scht"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-land",
+      "de": "Land",
+      "article": "das",
+      "plural": "Länder",
+      "ipa": "[lant]",
+      "fa": "روستا",
+      "en": "countryside",
+      "example": {
+        "de": "Ich wohne auf dem Land.",
+        "fa": "در روستا ساکنم.",
+        "en": "I live in the countryside."
+      },
+      "usageNotes": {
+        "fa": "خنثی. 'auf dem Land' ثابت",
+        "en": "Neuter. 'auf dem Land' is fixed",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "استفاده از in dem به‌جای auf dem",
+        "en": "using in dem instead of auf dem",
+        "de": "in dem statt auf dem"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-wohnung",
+      "de": "Wohnung",
+      "article": "die",
+      "plural": "Wohnungen",
+      "ipa": "[ˈvɔnʊŋ]",
+      "fa": "آپارتمان",
+      "en": "apartment",
+      "example": {
+        "de": "Meine Wohnung hat drei Zimmer.",
+        "fa": "آپارتمانم سه اتاق دارد.",
+        "en": "My apartment has three rooms."
+      },
+      "usageNotes": {
+        "fa": "مؤنث",
+        "en": "Feminine",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "W مثل و",
+        "en": "W like v",
+        "de": "W wie v"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-haus",
+      "de": "Haus",
+      "article": "das",
+      "plural": "Häuser",
+      "ipa": "[haʊ̯s]",
+      "fa": "خانه",
+      "en": "house",
+      "example": {
+        "de": "Wir haben ein Haus.",
+        "fa": "ما خانه داریم.",
+        "en": "We have a house."
+      },
+      "usageNotes": {
+        "fa": "خنثی. جمع با Umlaut+er",
+        "en": "Neuter. Plural with umlaut+er",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "au کشیده",
+        "en": "long au",
+        "de": "lang au"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-wohnzimmer",
+      "de": "Wohnzimmer",
+      "article": "das",
+      "plural": "Wohnzimmer",
+      "ipa": "[ˈvɔnt͡sɪmɐ]",
+      "fa": "اتاق نشیمن",
+      "en": "living room",
+      "example": {
+        "de": "Im Wohnzimmer ist eine Couch.",
+        "fa": "در نشیمن یک مبل است.",
+        "en": "In the living room there's a couch."
+      },
+      "usageNotes": {
+        "fa": "خنثی. مرکب: wohnen+Zimmer",
+        "en": "Neuter. Compound",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "z مثل تس",
+        "en": "z like ts",
+        "de": "z wie ts"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-kuche",
+      "de": "Küche",
+      "article": "die",
+      "plural": "Küchen",
+      "ipa": "[ˈkyːçə]",
+      "fa": "آشپزخانه",
+      "en": "kitchen",
+      "example": {
+        "de": "Die Küche ist klein.",
+        "fa": "آشپزخانه کوچک است.",
+        "en": "The kitchen is small."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. با ü",
+        "en": "Feminine. With ü",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "ü و ch نرم",
+        "en": "ü and soft ch",
+        "de": "ü und weich ch"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-schlafzimmer",
+      "de": "Schlafzimmer",
+      "article": "das",
+      "plural": "Schlafzimmer",
+      "ipa": "[ˈʃlaːft͡sɪmɐ]",
+      "fa": "اتاق خواب",
+      "en": "bedroom",
+      "example": {
+        "de": "Im Schlafzimmer ist ein Bett.",
+        "fa": "در خواب یک تخت است.",
+        "en": "In the bedroom there's a bed."
+      },
+      "usageNotes": {
+        "fa": "خنثی. مرکب: schlafen+Zimmer",
+        "en": "Neuter",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "sch مثل ش",
+        "en": "sch like sh",
+        "de": "sch"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-bad",
+      "de": "Bad",
+      "article": "das",
+      "plural": "Bäder",
+      "ipa": "[baːt]",
+      "fa": "حمام",
+      "en": "bathroom",
+      "example": {
+        "de": "Wo ist das Bad?",
+        "fa": "حمام کجاست؟",
+        "en": "Where is the bathroom?"
+      },
+      "usageNotes": {
+        "fa": "خنثی. جمع: Bäder",
+        "en": "Neuter",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "a کشیده و d مثل t",
+        "en": "long a, d like t",
+        "de": "lang a"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-couch",
+      "de": "Couch",
+      "article": "die",
+      "plural": "Couchs",
+      "ipa": "[kaʊ̯tʃ]",
+      "fa": "مبل",
+      "en": "couch",
+      "example": {
+        "de": "Die Couch ist bequem.",
+        "fa": "مبل راحت است.",
+        "en": "The couch is comfortable."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. انگلیسی‌تبار",
+        "en": "Feminine",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "ou مثل آو",
+        "en": "ou like ow",
+        "de": "ou"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-tisch",
+      "de": "Tisch",
+      "article": "der",
+      "plural": "Tische",
+      "ipa": "[tɪʃ]",
+      "fa": "میز",
+      "en": "table",
+      "example": {
+        "de": "Der Tisch ist aus Holz.",
+        "fa": "میز چوبی است.",
+        "en": "The table is wood."
+      },
+      "usageNotes": {
+        "fa": "مذکر",
+        "en": "Masculine",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "i کوتاه و sch",
+        "en": "short i, sch",
+        "de": "kurz i"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-stuhl",
+      "de": "Stuhl",
+      "article": "der",
+      "plural": "Stühle",
+      "ipa": "[ʃtuːl]",
+      "fa": "صندلی",
+      "en": "chair",
+      "example": {
+        "de": "Ich brauche einen Stuhl.",
+        "fa": "یک صندلی نیاز دارم.",
+        "en": "I need a chair."
+      },
+      "usageNotes": {
+        "fa": "مذکر. جمع با Umlaut",
+        "en": "Masculine",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "st مثل شت",
+        "en": "st like sht",
+        "de": "st"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-bett",
+      "de": "Bett",
+      "article": "das",
+      "plural": "Betten",
+      "ipa": "[bɛt]",
+      "fa": "تخت",
+      "en": "bed",
+      "example": {
+        "de": "Das Bett ist groß.",
+        "fa": "تخت بزرگ است.",
+        "en": "The bed is big."
+      },
+      "usageNotes": {
+        "fa": "خنثی",
+        "en": "Neuter",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "e کوتاه",
+        "en": "short e",
+        "de": "kurz e"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-schrank",
+      "de": "Schrank",
+      "article": "der",
+      "plural": "Schränke",
+      "ipa": "[ʃʁaŋk]",
+      "fa": "کمد",
+      "en": "closet",
+      "example": {
+        "de": "Der Schrank ist neu.",
+        "fa": "کمد جدید است.",
+        "en": "The closet is new."
+      },
+      "usageNotes": {
+        "fa": "مذکر",
+        "en": "Masculine",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "sch و r غُرّی",
+        "en": "sch and uvular r",
+        "de": "sch"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kuhlschrank",
+      "de": "Kühlschrank",
+      "article": "der",
+      "plural": "Kühlschränke",
+      "ipa": "[ˈkyːlʃʁaŋk]",
+      "fa": "یخچال",
+      "en": "refrigerator",
+      "example": {
+        "de": "Der Kühlschrank ist leer.",
+        "fa": "یخچال خالی است.",
+        "en": "The fridge is empty."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مرکب: kühlen+Schrank",
+        "en": "Masculine",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "کلمه طولانی - ü, sch, r",
+        "en": "long word",
+        "de": "lang"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-lampe",
+      "de": "Lampe",
+      "article": "die",
+      "plural": "Lampen",
+      "ipa": "[ˈlampə]",
+      "fa": "چراغ",
+      "en": "lamp",
+      "example": {
+        "de": "Die Lampe ist an.",
+        "fa": "چراغ روشن است.",
+        "en": "The lamp is on."
+      },
+      "usageNotes": {
+        "fa": "مؤنث",
+        "en": "Feminine",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "a کوتاه",
+        "en": "short a",
+        "de": "kurz a"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kirche",
+      "de": "Kirche",
+      "article": "die",
+      "plural": "Kirchen",
+      "ipa": "[ˈkɪʁçə]",
+      "fa": "کلیسا",
+      "en": "church",
+      "example": {
+        "de": "Es gibt eine Kirche.",
+        "fa": "کلیسایی هست.",
+        "en": "There's a church."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. ch نرم بعد از i",
+        "en": "Feminine",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "ch نرم نه خ",
+        "en": "soft ch not kh",
+        "de": "weich ch"
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-bahnhof",
+      "de": "Bahnhof",
+      "article": "der",
+      "plural": "Bahnhöfe",
+      "ipa": "[ˈbaːnhoːf]",
+      "fa": "ایستگاه قطار",
+      "en": "train station",
+      "example": {
+        "de": "Der Bahnhof ist nicht weit.",
+        "fa": "ایستگاه دور نیست.",
+        "en": "The station is not far."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مرکب: Bahn+Hof",
+        "en": "Masculine",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "a و o کشیده",
+        "en": "long a and o",
+        "de": "lang a, o"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-ruhig",
+      "de": "ruhig",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʁuːɪç]",
+      "fa": "آرام",
+      "en": "quiet",
+      "example": {
+        "de": "Auf dem Land ist es ruhig.",
+        "fa": "در روستا آرام است.",
+        "en": "It's quiet in the countryside."
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد: laut",
+        "en": "adjective. Opposite: laut",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "r غُرّی و ig مثل ایخ",
+        "en": "uvular r, ig like ich",
+        "de": "r, ig"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-laut",
+      "de": "laut",
+      "article": "",
+      "plural": "",
+      "ipa": "[laʊ̯t]",
+      "fa": "پر سر و صدا",
+      "en": "loud",
+      "example": {
+        "de": "In der Stadt ist es laut.",
+        "fa": "در شهر پر سرو صدا است.",
+        "en": "It's loud in the city."
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد: ruhig",
+        "en": "adjective",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "au کشیده",
+        "en": "long au",
+        "de": "lang au"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-teuer",
+      "de": "teuer",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈtɔɪ̯ɐ]",
+      "fa": "گران",
+      "en": "expensive",
+      "example": {
+        "de": "Die Wohnungen sind teuer.",
+        "fa": "آپارتمان‌ها گرانند.",
+        "en": "Apartments are expensive."
+      },
+      "usageNotes": {
+        "fa": "صفت. eu مثل او-ی",
+        "en": "adjective. eu like oi",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "eu مثل او ساده",
+        "en": "eu like ou",
+        "de": "eu wie au"
+      },
+      "difficulty": 2,
+      "frequency": 5
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-in-dativ",
+        "title": {
+          "fa": "in + Dativ (مکان / Wo?)",
+          "en": "in + Dative (Location)",
+          "de": "in + Dativ (Ort)"
+        },
+        "concept": {
+          "fa": "وقتی in برای مکان استفاده می‌شود، با Dativ می‌آید. der→dem, die→der, das→dem. im = in+dem.",
+          "en": "When in is used for location, it takes dative. im = in+dem.",
+          "de": "in für Ort → Dativ. im = in+dem."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "Nominativ",
+            "Dativ",
+            "in+Dativ",
+            "مثال"
+          ],
+          "rows": [
+            [
+              "مذکر",
+              "der Park",
+              "dem",
+              "im Park",
+              "Ich bin im Park."
+            ],
+            [
+              "مؤنث",
+              "die Stadt",
+              "der",
+              "in der Stadt",
+              "Ich wohne in der Stadt."
+            ],
+            [
+              "خنثی",
+              "das Haus",
+              "dem",
+              "im Haus",
+              "Ich bin im Haus."
+            ],
+            [
+              "ثابت",
+              "das Land",
+              "dem",
+              "auf dem Land",
+              "Ich wohne auf dem Land."
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "Wo? → in+Dativ. Wohin? → in+Akkusativ. im=in+dem.",
+          "en": "Wo? → in+dative. Wohin? → in+accusative.",
+          "de": "Wo? → in+Dativ. Wohin? → in+Akkusativ."
+        }
+      },
+      {
+        "id": "gram-es-gibt",
+        "title": {
+          "fa": "es gibt + Akkusativ",
+          "en": "es gibt + Accusative",
+          "de": "es gibt + Akkusativ"
+        },
+        "concept": {
+          "fa": "es gibt = وجود دارد. همیشه با Akkusativ: einen/eine/ein.",
+          "en": "es gibt = there is. Always with accusative.",
+          "de": "es gibt = es gibt. Immer mit Akkusativ."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "es gibt+Akk",
+            "مثال",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "مذکر",
+              "einen",
+              "Es gibt einen Bahnhof.",
+              "ایستگاهی هست."
+            ],
+            [
+              "مؤنث",
+              "eine",
+              "Es gibt eine Kirche.",
+              "کلیسایی هست."
+            ],
+            [
+              "خنثی",
+              "ein",
+              "Es gibt ein Kino.",
+              "سینمایی هست."
+            ],
+            [
+              "جمع",
+              "—",
+              "Es gibt Geschäfte.",
+              "مغازه‌هایی هست."
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "es gibt + Akkusativ (همیشه!)",
+          "en": "es gibt + accusative (always!)",
+          "de": "es gibt + Akkusativ (immer!)"
+        }
+      },
+      {
+        "id": "gram-ja-nein-doch",
+        "title": {
+          "fa": "ja / nein / doch",
+          "en": "ja / nein / doch",
+          "de": "ja / nein / doch"
+        },
+        "concept": {
+          "fa": "سوال منفی → doch = رد منفی، تأیید مثبت!",
+          "en": "Negative question → doch = rejecting the negative!",
+          "de": "Negative Frage → doch = Negation zurückweisen!"
+        },
+        "conjugationTable": {
+          "headers": [
+            "سوال",
+            "پاسخ",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "Ist Berlin nicht schön?",
+              "Doch!",
+              "چرا! زیباست!"
+            ],
+            [
+              "Ist Berlin nicht schön?",
+              "Nein.",
+              "خیر، زیبا نیست."
+            ],
+            [
+              "Schlafe ich nicht auf der Couch?",
+              "Doch!",
+              "بله، روی مبل می‌خوابی!"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "سوال مثبت → ja/nein. سوال منفی → ja/nein/doch.",
+          "en": "Positive → ja/nein. Negative → ja/nein/doch.",
+          "de": "Positiv → ja/nein. Negativ → ja/nein/doch."
+        }
+      },
+      {
+        "id": "gram-adjektive",
+        "title": {
+          "fa": "صفت‌های توصیفی",
+          "en": "Descriptive Adjectives",
+          "de": "Adjektive"
+        },
+        "concept": {
+          "fa": "صفت‌ها قبل از اسم یا بعد از sein می‌آیند.",
+          "en": "Adjectives come before nouns or after sein.",
+          "de": "Adjektive vor Nomen oder nach sein."
+        },
+        "conjugationTable": {
+          "headers": [
+            "صفت",
+            "تلفظ",
+            "معنی",
+            "متضاد"
+          ],
+          "rows": [
+            [
+              "schön",
+              "شون",
+              "زیبا",
+              "hässlich"
+            ],
+            [
+              "ruhig",
+              "رو-ایخ",
+              "آرام",
+              "laut"
+            ],
+            [
+              "teuer",
+              "توی-ر",
+              "گران",
+              "billig"
+            ],
+            [
+              "alt",
+              "آلت",
+              "قدیمی",
+              "neu"
+            ],
+            [
+              "interessant",
+              "این-تِ-رِ-سانت",
+              "جالب",
+              "langweilig"
+            ],
+            [
+              "groß",
+              "گرو-س",
+              "بزرگ",
+              "klein"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "Die schöne Stadt / Die Stadt ist schön.",
+          "en": "Die schöne Stadt / Die Stadt ist schön.",
+          "de": "Die schöne Stadt / Die Stadt ist schön."
+        }
+      },
+      {
+        "id": "gram-wo-wohnen",
+        "title": {
+          "fa": "Wo wohnst du?",
+          "en": "Where do you live?",
+          "de": "Wo wohnst du?"
+        },
+        "concept": {
+          "fa": "برای پرسیدن محل سکونت: Wo wohnst du? پاسخ با in+Dativ.",
+          "en": "To ask where someone lives: Wo wohnst du? Answer with in+dative.",
+          "de": "Nach Wohnort fragen: Wo wohnst du?"
+        },
+        "examples": {
+          "fa": [
+            "Wo wohnst du? — In der Stadt.",
+            "Wo wohnst du? — Auf dem Land.",
+            "Wo ist das? — Bei Prenzlau."
+          ],
+          "en": [
+            "Wo wohnst du? — In der Stadt.",
+            "Wo wohnst du? — Auf dem Land.",
+            "Wo ist das? — Bei Prenzlau."
+          ],
+          "de": [
+            "Wo wohnst du? — In der Stadt.",
+            "Wo wohnst du? — Auf dem Land.",
+            "Wo ist das? — Bei Prenzlau."
+          ]
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-where-live",
+      "title": {
+        "fa": "دیالوگ محل سکونت",
+        "en": "Where Do You Live?",
+        "de": "Wo wohnst du?"
+      },
+      "characters": [
+        {
+          "name": "Interviewer",
+          "role": "مصاحبه‌کننده"
+        },
+        {
+          "name": "Martha",
+          "role": "مصاحبه‌شونده"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Interviewer",
+          "german": "Wohnst du auf dem Land, Martha?",
+          "persian": "وونست دو آوف دِم لانت، مار-تا؟",
+          "meaning": {
+            "fa": "در روستا ساکنی، مارتا؟",
+            "en": "Do you live in the countryside, Martha?",
+            "de": "Wohnst du auf dem Land, Martha?"
+          }
+        },
+        {
+          "speaker": "Martha",
+          "german": "Ja, in Grünow. Bei Prenzlau.",
+          "persian": "یا، این گرو-نوو. بای پرِنتس-لاو.",
+          "meaning": {
+            "fa": "بله، در گرونوو. نزدیک پرنتسلاو.",
+            "en": "Yes, in Grünow. Near Prenzlau.",
+            "de": "Ja, in Grünow. Bei Prenzlau."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Gibt es Geschäfte?",
+          "persian": "گیت اِس گِ-شِفتِه؟",
+          "meaning": {
+            "fa": "مغازه‌ای هست؟",
+            "en": "Are there shops?",
+            "de": "Gibt es Geschäfte?"
+          }
+        },
+        {
+          "speaker": "Martha",
+          "german": "Nein, Geschäfte sind in Prenzlau. Da gibt es einen Bahnhof.",
+          "persian": "ناین، گِ-شِفتِه زیند این پرِنتس-لاو. دا گیت اِس اینِن بان-هوف.",
+          "meaning": {
+            "fa": "خیر، مغازه‌ها در پرنتسلاو هستند. آنجا ایستگاه هست.",
+            "en": "No, shops are in Prenzlau. There's a station.",
+            "de": "Nein, Geschäfte sind in Prenzlau."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "auf dem Land",
+          "persian": "آوف دِم لانت",
+          "meaning": "در روستا (ثابت)"
+        },
+        {
+          "phrase": "Bei Prenzlau",
+          "persian": "بای پرِنتس-لاو",
+          "meaning": "نزدیک پرنتسلاو"
+        },
+        {
+          "phrase": "Gibt es",
+          "persian": "گیت اِس",
+          "meaning": "هست؟ (es gibt + Akk)"
+        },
+        {
+          "phrase": "Da gibt es",
+          "persian": "دا گیت اِس",
+          "meaning": "آنجا هست"
+        }
+      ]
+    },
+    {
+      "id": "dialog-apartment",
+      "title": {
+        "fa": "دیالوگ بازدید آپارتمان",
+        "en": "Apartment Tour",
+        "de": "Wohnungsbesichtigung"
+      },
+      "characters": [
+        {
+          "name": "Stephanie",
+          "role": "میزبان"
+        },
+        {
+          "name": "Manu",
+          "role": "Couchsurfer"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Manu",
+          "german": "Schlafe ich denn nicht auf der Couch?",
+          "persian": "اشلافِه ایخ دِن نیشت آوف دِر کاوچ؟",
+          "meaning": {
+            "fa": "آیا روی مبل نمی‌خوابم؟",
+            "en": "Aren't I sleeping on the couch?",
+            "de": "Schlafe ich nicht auf der Couch?"
+          }
+        },
+        {
+          "speaker": "Stephanie",
+          "german": "Doch! Aber das Wohnzimmer ist groß.",
+          "persian": "دوخ! آبِر داس وون-تسی-مِر ایست گرو-س.",
+          "meaning": {
+            "fa": "چرا! اما نشیمن بزرگ است.",
+            "en": "Yes you are! But the living room is big.",
+            "de": "Doch! Aber das Wohnzimmer ist groß."
+          }
+        },
+        {
+          "speaker": "Manu",
+          "german": "Ist deine Wohnung nicht in Charlottenburg?",
+          "persian": "ایست داینِه وون-اونگ نیشت این شار-لو-تِن-بورگ؟",
+          "meaning": {
+            "fa": "آیا آپارتمانت در شارلوتنبورگ نیست؟",
+            "en": "Isn't your apartment in Charlottenburg?",
+            "de": "Ist deine Wohnung nicht in Charlottenburg?"
+          }
+        },
+        {
+          "speaker": "Stephanie",
+          "german": "Doch! Hier ist die Küche und da ist das Bad.",
+          "persian": "دوخ! هیر ایست دی کو-خِه اوند دا ایست داس بات.",
+          "meaning": {
+            "fa": "چرا! اینجا آشپزخانه و آنجا حمام است.",
+            "en": "Yes! Here's the kitchen and there's the bathroom.",
+            "de": "Doch! Hier ist die Küche."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Schlafe ich nicht",
+          "persian": "اشلافِه ایخ نیشت",
+          "meaning": "آیا نمی‌خوابم (سوال منفی→doch)"
+        },
+        {
+          "phrase": "Doch!",
+          "persian": "دوخ!",
+          "meaning": "چرا! (رد منفی)"
+        },
+        {
+          "phrase": "Ist deine Wohnung nicht",
+          "persian": "ایست داینِه وون-اونگ نیشت",
+          "meaning": "آیا آپارتمانت نیست (منفی)"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "در آلمان بیشتر مردم در آپارتمان زندگی می‌کنند. اجاره در برلین و مونیخ گران است. WG (خانه اشتراکی) بین دانشجویان رایج است. Couchsurfing هم محبوب است. روستا آرام و سبز است اما مغازه کم دارد.",
+    "en": "In Germany, most people live in apartments. Rent in Berlin and Munich is expensive. WG (shared housing) is common among students. Couchsurfing is popular. The countryside is quiet but has fewer shops.",
+    "de": "In Deutschland leben die meisten in Wohnungen. Miete in Berlin und München ist teuer. WG ist bei Studierenden beliebt. Couchsurfing ist populär. Das Land ist ruhig, hat aber weniger Geschäfte."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-place-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: مکان‌های شهر",
+          "en": "Exercise 1: City Places",
+          "de": "Übung 1"
+        },
+        "instructions": {
+          "fa": "مکان درست را انتخاب کنید.",
+          "en": "Choose the correct place.",
+          "de": "Wählen Sie."
+        },
+        "questions": [
+          {
+            "id": "p1-q1",
+            "situation": {
+              "fa": "اینجا قطار می‌آید",
+              "en": "Trains come here",
+              "de": "Züge kommen hier"
+            },
+            "options": [
+              "Bahnhof",
+              "Kino",
+              "Kirche",
+              "Krankenhaus"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Bahnhof = ایستگاه",
+              "en": "Bahnhof = station",
+              "de": "Bahnhof"
+            }
+          },
+          {
+            "id": "p1-q2",
+            "situation": {
+              "fa": "اینجا فیلم نشان می‌دهند",
+              "en": "Films are shown here",
+              "de": "Filme hier"
+            },
+            "options": [
+              "Restaurant",
+              "Kino",
+              "Geschäft",
+              "Bad"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Kino = سینما",
+              "en": "Kino = cinema",
+              "de": "Kino"
+            }
+          },
+          {
+            "id": "p1-q3",
+            "situation": {
+              "fa": "اینجا بیماران درمان می‌شوند",
+              "en": "Patients are treated here",
+              "de": "Patienten hier"
+            },
+            "options": [
+              "Kino",
+              "Kirche",
+              "Krankenhaus",
+              "Bahnhof"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Krankenhaus = بیمارستان",
+              "en": "Krankenhaus = hospital",
+              "de": "Krankenhaus"
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-esgibt-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: es gibt + Akkusativ",
+          "en": "Exercise 2: es gibt + Acc",
+          "de": "Übung 2"
+        },
+        "instructions": {
+          "fa": "حرف تعریف درست را پر کنید.",
+          "en": "Fill in the correct article.",
+          "de": "Füllen Sie aus."
+        },
+        "questions": [
+          {
+            "id": "e1-q1",
+            "prompt": "Es gibt ___ Bahnhof. (مذکر)",
+            "placeholder": "einen"
+          },
+          {
+            "id": "e1-q2",
+            "prompt": "Es gibt ___ Kirche. (مؤنث)",
+            "placeholder": "eine"
+          },
+          {
+            "id": "e1-q3",
+            "prompt": "Es gibt ___ Kino. (خنثی)",
+            "placeholder": "ein"
+          },
+          {
+            "id": "e1-q4",
+            "prompt": "Es gibt ___ Geschäfte. (جمع)",
+            "placeholder": "—"
+          },
+          {
+            "id": "e1-q5",
+            "prompt": "Es gibt ___ Kino. (منفی)",
+            "placeholder": "kein"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: توصیف آپارتمان",
+          "en": "Exercise 3: Describe Apartment",
+          "de": "Übung 3"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو: توصیف خانه",
+              "en": "Scenario: Describe Home",
+              "de": "Szene"
+            },
+            "lines": [
+              {
+                "speaker": "Freund",
+                "german": "Wo wohnst du?",
+                "persian": "وو وونست دو؟",
+                "meaning": {
+                  "fa": "کجا ساکنی؟",
+                  "en": "Where do you live?",
+                  "de": "Wo wohnst du?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich wohne in ______.",
+                "persian": "ایخ وونِه این ______.",
+                "meaning": {
+                  "fa": "در ______ ساکنم.",
+                  "en": "I live in ______.",
+                  "de": "Ich wohne in ______."
+                }
+              },
+              {
+                "speaker": "Freund",
+                "german": "Was gibt es da?",
+                "persian": "واس گیت اِس دا؟",
+                "meaning": {
+                  "fa": "آنجا چی هست؟",
+                  "en": "What's there?",
+                  "de": "Was gibt es da?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Es gibt ______ und ______.",
+                "persian": "اِس گیت ______ اوند ______.",
+                "meaning": {
+                  "fa": "______ و ______ هست.",
+                  "en": "There's ______ and ______.",
+                  "de": "Es gibt ______ und ______."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-doch-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: ja، nein یا doch؟",
+          "en": "Exercise 4: ja, nein or doch?",
+          "de": "Übung 4"
+        },
+        "instructions": {
+          "fa": "به سوالات منفی پاسخ دهید.",
+          "en": "Answer negative questions.",
+          "de": "Antworten Sie."
+        },
+        "questions": [
+          {
+            "id": "d1-q1",
+            "situation": {
+              "fa": "Ist Berlin nicht schön? (برلین زیباست)",
+              "en": "Isn't Berlin beautiful? (It is)",
+              "de": "Ist Berlin nicht schön?"
+            },
+            "options": [
+              "ja",
+              "nein",
+              "doch"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "doch! رد منفی",
+              "en": "doch!",
+              "de": "doch!"
+            }
+          },
+          {
+            "id": "d1-q2",
+            "situation": {
+              "fa": "Ist Berlin nicht schön? (زیبا نیست)",
+              "en": "Isn't Berlin beautiful? (It isn't)",
+              "de": "Ist Berlin nicht schön?"
+            },
+            "options": [
+              "ja",
+              "nein",
+              "doch"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "nein. موافقت با منفی",
+              "en": "nein",
+              "de": "nein"
+            }
+          },
+          {
+            "id": "d1-q3",
+            "situation": {
+              "fa": "Schlafe ich nicht auf der Couch? (بله، روی مبل)",
+              "en": "Aren't I on the couch? (You are)",
+              "de": "Schlafe ich nicht?"
+            },
+            "options": [
+              "ja",
+              "nein",
+              "doch"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "doch! بله!",
+              "en": "doch!",
+              "de": "doch!"
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ شهر و مبلمان",
+          "en": "Exercise 5: Pronunciation",
+          "de": "Übung 5"
+        },
+        "instructions": {
+          "fa": "کلمات را بلند بگویید.",
+          "en": "Pronounce the words.",
+          "de": "Sprechen Sie."
+        },
+        "words": [
+          {
+            "word": "die Stadt",
+            "persian": "دی اشتات",
+            "meaning": "شهر"
+          },
+          {
+            "word": "die Wohnung",
+            "persian": "دی وون-اونگ",
+            "meaning": "آپارتمان"
+          },
+          {
+            "word": "die Küche",
+            "persian": "دی کو-خِه",
+            "meaning": "آشپزخانه"
+          },
+          {
+            "word": "der Kühlschrank",
+            "persian": "دِر کول-اشرانک",
+            "meaning": "یخچال"
+          },
+          {
+            "word": "die Couch",
+            "persian": "دی کاوچ",
+            "meaning": "مبل"
+          },
+          {
+            "word": "ruhig",
+            "persian": "رو-ایخ",
+            "meaning": "آرام"
+          },
+          {
+            "word": "teuer",
+            "persian": "توی-ر",
+            "meaning": "گران"
+          },
+          {
+            "word": "die Kirche",
+            "persian": "دی کیر-خِه",
+            "meaning": "کلیسا"
+          }
+        ],
+        "focus": {
+          "fa": "توجه: r غُرّی • ch نرم بعد i (Kirche) • ch نرم بعد ü (Küche) • ü • au (Couch) • eu (teuer)",
+          "en": "Pay attention to: uvular r • soft ch • ü • au • eu",
+          "de": "Achten Sie auf: r • ch • ü • au • eu"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۶",
+      "en": "Lesson 6 Review",
+      "de": "Lektion 6"
+    },
+    "quiz": [
+      {
+        "id": "r1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'auf dem Land' به چه معنی؟",
+          "en": "What does 'auf dem Land' mean?",
+          "de": "Was bedeutet 'auf dem Land'?"
+        },
+        "options": [
+          "در شهر",
+          "در روستا",
+          "در آپارتمان",
+          "در هتل"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "auf dem Land = در روستا",
+          "en": "countryside",
+          "de": "auf dem Land"
+        }
+      },
+      {
+        "id": "r2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "بعد از es gibt چه حالتی؟",
+          "en": "What case after es gibt?",
+          "de": "Welcher Kasus nach es gibt?"
+        },
+        "options": [
+          "Nominativ",
+          "Akkusativ",
+          "Dativ",
+          "Genitiv"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "es gibt + Akkusativ",
+          "en": "accusative",
+          "de": "Akkusativ"
+        }
+      },
+      {
+        "id": "r3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "Ist Berlin nicht schön? (زیباست) → پاسخ؟",
+          "en": "Isn't Berlin beautiful? (It is) → answer?",
+          "de": "Antwort?"
+        },
+        "options": [
+          "ja",
+          "nein",
+          "doch",
+          "vielleicht"
+        ],
+        "correctIndex": 2,
+        "explanation": {
+          "fa": "doch! رد منفی",
+          "en": "doch!",
+          "de": "doch!"
+        }
+      },
+      {
+        "id": "r4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام درست است؟ (مکان)",
+          "en": "Which is correct? (location)",
+          "de": "Welcher ist richtig?"
+        },
+        "options": [
+          "Ich bin in den Park.",
+          "Ich bin im Park.",
+          "Ich bin in das Park.",
+          "Ich bin in die Park."
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "مکان → in+Dativ: im Park",
+          "en": "location → in+dative",
+          "de": "im Park"
+        }
+      },
+      {
+        "id": "r5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "der Kühlschrank = ?",
+          "en": "der Kühlschrank = ?",
+          "de": "der Kühlschrank?"
+        },
+        "options": [
+          "کمد",
+          "یخچال",
+          "تخت",
+          "چراغ"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "یخچال",
+          "en": "refrigerator",
+          "de": "Kühlschrank"
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون درس ۶",
+      "en": "Lesson 6 Assessment",
+      "de": "Lektion 6"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "مکان‌های شهر را بلدم",
+        "اتاق و مبلمان را بلدم",
+        "in+Dativ را بلدم",
+        "es gibt+Akk را بلدم",
+        "doch را بلدم",
+        "شهر/روستا را توصیف می‌کنم"
+      ],
+      "en": [
+        "I know city places",
+        "I know rooms and furniture",
+        "I know in+dative",
+        "I know es gibt+acc",
+        "I know doch",
+        "I can describe city/countryside"
+      ],
+      "de": [
+        "Ich kenne Stadtörter",
+        "Ich kenne Zimmer und Möbel",
+        "Ich kenne in+Dativ",
+        "Ich kenne es gibt+Akk",
+        "Ich kenne doch",
+        "Ich kann beschreiben"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "آماده‌ی درس ۷!",
+        "en": "Ready for Lesson 7!",
+        "de": "Bereit für Lektion 7!"
+      },
+      "fail": {
+        "fa": "مرور کنید.",
+        "en": "Review.",
+        "de": "Überprüfen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "cityPlaces": [
+      {
+        "de": "die Kirche",
+        "fa": "کلیسا"
+      },
+      {
+        "de": "der Bahnhof",
+        "fa": "ایستگاه"
+      },
+      {
+        "de": "das Kino",
+        "fa": "سینما"
+      },
+      {
+        "de": "das Krankenhaus",
+        "fa": "بیمارستان"
+      }
+    ],
+    "rooms": [
+      {
+        "de": "das Wohnzimmer",
+        "fa": "نشیمن"
+      },
+      {
+        "de": "die Küche",
+        "fa": "آشپزخانه"
+      },
+      {
+        "de": "das Schlafzimmer",
+        "fa": "خواب"
+      },
+      {
+        "de": "das Bad",
+        "fa": "حمام"
+      }
+    ],
+    "furniture": [
+      {
+        "de": "die Couch",
+        "fa": "مبل"
+      },
+      {
+        "de": "der Tisch",
+        "fa": "میز"
+      },
+      {
+        "de": "der Stuhl",
+        "fa": "صندلی"
+      },
+      {
+        "de": "das Bett",
+        "fa": "تخت"
+      },
+      {
+        "de": "der Kühlschrank",
+        "fa": "یخچال"
+      }
+    ],
+    "adjectives": [
+      {
+        "de": "schön/hässlich",
+        "fa": "زیبا/زشت"
+      },
+      {
+        "de": "ruhig/laut",
+        "fa": "آرام/پرسروصدا"
+      },
+      {
+        "de": "teuer/billig",
+        "fa": "گران/ارزان"
+      },
+      {
+        "de": "alt/neu",
+        "fa": "قدیمی/جدید"
+      }
+    ],
+    "inDativ": [
+      {
+        "gender": "مذکر",
+        "form": "im",
+        "example": "im Park"
+      },
+      {
+        "gender": "مؤنث",
+        "form": "in der",
+        "example": "in der Stadt"
+      },
+      {
+        "gender": "خنثی",
+        "form": "im",
+        "example": "im Haus"
+      },
+      {
+        "gender": "ثابت",
+        "form": "auf dem",
+        "example": "auf dem Land"
+      }
+    ],
+    "esGibtTable": [
+      {
+        "gender": "مذکر",
+        "form": "einen",
+        "example": "Es gibt einen Bahnhof."
+      },
+      {
+        "gender": "مؤنث",
+        "form": "eine",
+        "example": "Es gibt eine Kirche."
+      },
+      {
+        "gender": "خنثی",
+        "form": "ein",
+        "example": "Es gibt ein Kino."
+      },
+      {
+        "gender": "جمع",
+        "form": "—",
+        "example": "Es gibt Geschäfte."
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Wo wohnst du?",
+        "fa": "کجا ساکنی؟"
+      },
+      {
+        "de": "Ich wohne in der Stadt.",
+        "fa": "در شهر ساکنم"
+      },
+      {
+        "de": "Was gibt es da?",
+        "fa": "آنجا چی هست؟"
+      },
+      {
+        "de": "Es gibt einen/eine/ein...",
+        "fa": "یک ... هست"
+      },
+      {
+        "de": "Doch!",
+        "fa": "چرا! (رد منفی)"
+      }
+    ],
+    "grammar": [
+      {
+        "title": "in+Dativ",
+        "summary": "مکان: im, in der, auf dem"
+      },
+      {
+        "title": "es gibt+Akk",
+        "summary": "همیشه Akkusativ"
+      },
+      {
+        "title": "ja/nein/doch",
+        "summary": "سوال منفی → doch"
+      },
+      {
+        "title": "Adjektive",
+        "summary": "قبل از اسم یا بعد از sein"
+      }
+    ],
+    "commonMistakes": [
+      "استفاده Akkusativ به‌جای Dativ برای مکان",
+      "فراموش کردن Akkusativ بعد es gibt",
+      "استفاده ja به‌جای doch",
+      "تلفظ ch در Kirche/Küche"
+    ],
+    "usefulTips": [
+      "Wo?→in+Dativ | Wohin?→in+Akk",
+      "es gibt همیشه Akkusativ",
+      "doch = رد منفی",
+      "صفت‌های متضاد را جفت یاد بگیرید"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۶، شما با شهر، روستا، اتاق‌ها، مبلمان، in+Dativ، es gibt+Akkusativ، ja/nein/doch و صفت‌ها آشنا شدید. این مهارت‌ها برای توصیف محل زندگی و پیدا کردن آپارتمان ضروری هستند.",
+    "en": "In Lesson 6, you learned city, countryside, rooms, furniture, in+dative, es gibt+accusative, ja/nein/doch, and adjectives. These skills are essential for describing where you live.",
+    "de": "In Lektion 6 haben Sie Stadt, Land, Zimmer, Möbel, in+Dativ, es geben+Akkusativ, ja/nein/doch und Adjektive gelernt."
+  },
+  "metadata": {
+    "createdAt": "2026-07-09",
+    "updatedAt": "2026-07-09",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "city",
+      "apartment",
+      "furniture",
+      "in-dativ",
+      "es-gibt",
+      "doch",
+      "rooms",
+      "A1"
+    ],
+    "difficulty": 3,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04",
+      "A1-L05"
+    ]
+  }
 }

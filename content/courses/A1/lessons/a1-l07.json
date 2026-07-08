@@ -1,533 +1,2080 @@
 {
-  "id": "a1-l07",
+  "id": "A1-L07",
+  "order": 7,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 7,
+  "unit": 7,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 55,
-  "difficulty": 2,
-  "prerequisites": [
-    "a1-l06"
-  ],
-  "nextLessonId": "a1-l08",
-  "previousLessonId": "a1-l06",
   "title": {
-    "de": "Wie, wo und wann?",
-    "fa": "چگونه، کجا و چه زمانی؟",
-    "en": "How, where and when?"
+    "fa": "Wie, wo und wann? - چطور، کجا و کِی؟",
+    "en": "How, Where and When?",
+    "de": "Wie, wo und wann?"
   },
-  "shortTitle": {
-    "de": "Wie, wo und wann?",
-    "fa": "چگونه، کجا و چه زمانی؟",
-    "en": "How, where and when?"
+  "subtitle": {
+    "fa": "آب‌وهوا، تاریخ، زمان گذشته (Perfekt و Präteritum)",
+    "en": "Weather, Dates, Past Tense (Perfekt and Präteritum)",
+    "de": "Wetter, Datum, Vergangenheit (Perfekt und Präteritum)"
   },
   "description": {
-    "fa": "در این درس با حروف اضافه زمان و مکان و مقدمه‌ای بر حالت Dativ آشنا می‌شوید.",
-    "en": "In this lesson you will learn prepositions of time and place and an introduction to the dative case.",
-    "de": "In dieser Lektion lernen Sie Zeit- und Ortspräpositionen und eine Einführung in den Dativ."
+    "fa": "در این درس شما با واژگان آب‌وهوا، تاریخ و اعداد ترتیبی، زمان گذشته Perfekt با haben (hat geregnet)، زمان گذشته Präteritum فعل sein (war/waren)، حروف اضافه‌ی مکانی in/auf + Dativ و حرف اضافه‌ی زمانی am + تاریخ آشنا می‌شوید.",
+    "en": "In this lesson you will learn weather vocabulary, dates and ordinal numbers, the Perfekt tense with haben (hat geregnet), the Präteritum of sein (war/waren), local prepositions in/auf + dative, and temporal preposition am + date.",
+    "de": "In dieser Lektion lernen Sie Wettervokabular, Datum und Ordinalzahlen, das Perfekt mit haben, das Präteritum von sein, lokale Präpositionen in/auf + Dativ und temporale Präposition am + Datum."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 3,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ حروف اضافه زمان (am, im, um)",
-      "✅ حروف اضافه مکان (in, an, auf)",
-      "✅ مقدمه‌ای بر حالت Dativ",
-      "✅ پرسیدن زمان و مکان"
+      "نام بردن آب‌وهوا: sonnig, bewölkt, regnen, schneien, kalt, kühl, warm, heiß",
+      "گفتن دما: plus 5 Grad, minus 2 Grad",
+      "صرف زمان گذشته Perfekt با haben: es hat geregnet, es hat geschneit",
+      "صرف زمان گذشته Präteritum فعل sein: ich war, du warst, er war, wir waren",
+      "گفتن تاریخ با اعداد ترتیبی: am ersten März, am fünften Mai",
+      "گفتن سال: neunzehnhundertsiebenundneunzig, zweitausendsiebzehn",
+      "استفاده از حروف اضافه‌ی مکانی: im Norden, im Süden, auf dem Flughafen",
+      "پرسیدن تاریخ تولد: Wann bist du geboren? Wo bist du geboren?",
+      "گفتن گذشته: Wie war das Wetter gestern?"
+    ],
+    "en": [
+      "Name weather: sonnig, bewölkt, regnen, schneien, kalt, kühl, warm, heiß",
+      "Tell temperature: plus 5 Grad, minus 2 Grad",
+      "Conjugate Perfekt with haben: es hat geregnet, es hat geschneit",
+      "Conjugate Präteritum of sein: ich war, du warst, er war, wir waren",
+      "Tell dates with ordinal numbers: am ersten März, am fünften Mai",
+      "Say years: neunzehnhundertsiebenundneunzig, zweitausendsiebzehn",
+      "Use local prepositions: im Norden, im Süden, auf dem Flughafen",
+      "Ask birth date/place: Wann bist du geboren? Wo bist du geboren?",
+      "Talk about the past: Wie war das Wetter gestern?"
+    ],
+    "de": [
+      "Wetter benennen: sonnig, bewölkt, regnen, schneien, kalt, kühl, warm, heiß",
+      "Temperatur sagen: plus 5 Grad, minus 2 Grad",
+      "Perfekt mit haben konjugieren: es hat geregnet",
+      "Präteritum von sein konjugieren: ich war, wir waren",
+      "Datum mit Ordinalzahlen: am ersten März",
+      "Jahre sagen: neunzehnhundertsiebenundneunzig",
+      "Lokale Präpositionen: im Norden, auf dem Flughafen",
+      "Nach Geburt fragen: Wann/Wo bist du geboren?",
+      "Über Vergangenheit sprechen: Wie war das Wetter gestern?"
     ]
   },
-  "xpReward": 60,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس هفتم خوش آمدید! 🕐\n\nدر این درس با حروف اضافه زمان و مکان و مقدمه‌ای بر حالت Dativ آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• حروف اضافه زمان (am, im, um)\n• حروف اضافه مکان (in, an, auf)\n• مقدمه‌ای بر حالت Dativ\n• چگونه بپرسید 'کی؟' و 'کجا؟'",
-        "en": "Welcome to lesson 7! 🕐\n\nIn this lesson you will learn prepositions of time and place and an introduction to the dative case.\n\nYou will learn:\n• Prepositions of time (am, im, um)\n• Prepositions of place (in, an, auf)\n• Introduction to the dative case\n• How to ask 'when?' and 'where?'",
-        "de": "Willkommen zur siebten Lektion! 🕐\n\nIn dieser Lektion lernen Sie Zeit- und Ortspräpositionen und eine Einführung in den Dativ.\n\nSie lernen:\n• Zeitpräpositionen (am, im, um)\n• Ortspräpositionen (in, an, auf)\n• Einführung in den Dativ\n• Wie man 'wann?' und 'wo?' fragt"
-      },
-      "id": "a1-l07-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱-۶: احوال‌پرسی، معرفی، خانواده، غذا، شغل، سرگرمی، شهر و خانه",
+      "آشنایی با حالت Akkusativ و Dativ",
+      "صرف فعل‌های sein، haben، Modalverben",
+      "آشنایی با اعداد ۰ تا ۱۰۰"
+    ],
+    "en": [
+      "Mastery of Lessons 1-6",
+      "Familiarity with accusative and dative cases",
+      "Conjugation of sein, haben, modal verbs",
+      "Numbers 0-100"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1-6",
+      "Vertrautheit mit Akkusativ und Dativ",
+      "Konjugation von sein, haben, Modalverben",
+      "Zahlen 0-100"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "صحنه داستان (Story Mode) - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "wann?",
-          "fa": "چه زمانی؟",
-          "en": "when?",
-          "icon": "❓"
-        },
-        {
-          "de": "wo?",
-          "fa": "کجا؟",
-          "en": "where?",
-          "icon": "📍"
-        },
-        {
-          "de": "wie?",
-          "fa": "چگونه؟",
-          "en": "how?",
-          "icon": "❔"
-        },
-        {
-          "de": "am Montag",
-          "fa": "در روز دوشنبه",
-          "en": "on Monday",
-          "icon": "📅"
-        },
-        {
-          "de": "im Januar",
-          "fa": "در ماه ژانویه",
-          "en": "in January",
-          "icon": "📆"
-        },
-        {
-          "de": "um 8 Uhr",
-          "fa": "ساعت ۸",
-          "en": "at 8 o'clock",
-          "icon": "🕗"
-        },
-        {
-          "de": "das Kino",
-          "fa": "سینما",
-          "en": "cinema",
-          "gender": "das",
-          "plural": "die Kinos",
-          "icon": "🎬"
-        },
-        {
-          "de": "die Schule",
-          "fa": "مدرسه",
-          "en": "school",
-          "gender": "die",
-          "plural": "die Schulen",
-          "icon": "🏫"
-        },
-        {
-          "de": "das Haus",
-          "fa": "خانه",
-          "en": "house",
-          "gender": "das",
-          "plural": "die Häuser",
-          "icon": "🏠"
-        },
-        {
-          "de": "der Morgen",
-          "fa": "صبح",
-          "en": "morning",
-          "gender": "der",
-          "icon": "🌅"
-        },
-        {
-          "de": "der Nachmittag",
-          "fa": "بعد از ظهر",
-          "en": "afternoon",
-          "gender": "der",
-          "icon": "☀️"
-        },
-        {
-          "de": "der Abend",
-          "fa": "عصر",
-          "en": "evening",
-          "gender": "der",
-          "icon": "🌆"
-        },
-        {
-          "de": "die Woche",
-          "fa": "هفته",
-          "en": "week",
-          "gender": "die",
-          "plural": "die Wochen",
-          "icon": "📆"
-        },
-        {
-          "de": "das Jahr",
-          "fa": "سال",
-          "en": "year",
-          "gender": "das",
-          "plural": "die Jahre",
-          "icon": "📅"
-        }
-      ],
-      "id": "a1-l07-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی هفتم کلاس آلمانی. دانشجویان امروز درباره‌ی آب‌وهوا و تاریخ تولدشان صحبت می‌کنند. Chris، یک پیک دوچرخه‌سوار در برلین، درباره‌ی کارش در هوای بد می‌گوید. Martha از کنگره‌ی معماری در زوریخ با Paul تلفنی حرف می‌زند و از آب‌وهوای برلین می‌پرسد. داستان ما در گذشته و حال ادامه پیدا می‌کند.",
+      "en": "Seventh week of German class. Today students talk about weather and birth dates. Chris, a bike courier in Berlin, talks about working in bad weather. Martha calls Paul from an architecture congress in Zurich to ask about Berlin's weather. Our story moves between past and present.",
+      "de": "Siebte Woche des Deutschkurses. Heute sprechen die Studierenden über Wetter und Geburtstage. Chris, ein Fahrradkurier in Berlin, erzählt von der Arbeit bei schlechtem Wetter. Martha ruft Paul aus Zürich an."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Chris",
+        "persian": "کریس",
+        "country": "آلمان",
+        "age": 24,
+        "job": "پیک دوچرخه‌سوار"
       },
-      "concept": {
-        "fa": "حروف اضافه زمان و مکان",
-        "en": "Prepositions of Time and Place",
-        "de": "Zeit- und Ortspräpositionen"
+      {
+        "name": "Martha",
+        "persian": "مار-تا",
+        "country": "آمریکا",
+        "age": 30,
+        "job": "معلم",
+        "location": "زوریخ (کنگره)"
       },
-      "explanation": {
-        "fa": "📌 **حروف اضافه زمان (Temporale Präpositionen):**\n\n• **am** (مخفف an + dem) → برای روزها و بخش‌های روز:\n→ am Montag, am Morgen, am Wochenende\n\n• **im** (مخفف in + dem) → برای ماه‌ها و فصل‌ها:\n→ im Januar, im Sommer, im Winter\n\n• **um** → برای ساعت دقیق:\n→ um 9 Uhr, um halb acht\n\n📌 **مقدمه‌ای بر Dativ در مکان (Lokal):**\n\nوقتی می‌خواهیم بگوییم 'در جایی هستیم' (حالت سکون)، از in + Dativ استفاده می‌کنیم:\n\n• in + dem → im (برای مذکر و خنثی)\n• in + der → in der (برای مونث)\n\nمثال: Ich bin im Kino. (من در سینما هستم)",
-        "en": "📌 **Prepositions of Time:**\n\n• **am** (an + dem) → for days and parts of the day:\n→ am Montag, am Morgen, am Wochenende\n\n• **im** (in + dem) → for months and seasons:\n→ im Januar, im Sommer\n\n• **um** → for exact time:\n→ um 9 Uhr\n\n📌 **Introduction to Dative for Place:**\n\nWhen saying 'we are somewhere' (static location), use in + Dative:\n\n• in + dem → im (for masculine and neuter)\n• in + der → in der (for feminine)\n\nExample: Ich bin im Kino.",
-        "de": "📌 **Zeitpräpositionen:**\n\n• **am** (an + dem) → für Tage und Tageszeiten:\n→ am Montag, am Morgen\n\n• **im** (in + dem) → für Monate und Jahreszeiten:\n→ im Januar, im Sommer\n\n• **um** → für die genaue Uhrzeit:\n→ um 9 Uhr\n\n📌 **Einführung in den Dativ für Orte:**\n\nWenn man sagt 'wir sind irgendwo' (statischer Ort), verwendet man in + Dativ:\n\n• in + dem → im (für maskulin und neutrum)\n• in + der → in der (für feminin)\n\nBeispiel: Ich bin im Kino."
+      {
+        "name": "Paul",
+        "persian": "پاول",
+        "country": "برزیل",
+        "age": 26,
+        "job": "آشپز",
+        "location": "برلین"
       },
-      "examples": [
-        {
-          "de": "Ich bin am Montag im Kino.",
-          "fa": "من دوشنبه در سینما هستم.",
-          "en": "I am at the cinema on Monday."
-        },
-        {
-          "de": "Wir treffen uns um 8 Uhr.",
-          "fa": "ما ساعت ۸ همدیگر را می‌بینیم.",
-          "en": "We meet at 8 o'clock."
-        },
-        {
-          "de": "Ich bin im Kino.",
-          "fa": "من در سینما هستم.",
-          "en": "I am in the cinema."
-        },
-        {
-          "de": "Sie ist in der Schule.",
-          "fa": "او در مدرسه است.",
-          "en": "She is at school."
-        }
-      ],
-      "id": "a1-l07-GRAM-003",
-      "order": 2
+      {
+        "name": "Emma",
+        "persian": "اِ-ما",
+        "country": "آلمان",
+        "age": 22,
+        "job": "دانشجو"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس هفتم خوش آمدید — Wie, wo und wann?",
+      "en": "Welcome to Lesson 7 — How, Where and When?",
+      "de": "Willkommen zu Lektion 7 — Wie, wo und wann?"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: برنامه آخر هفته",
-        "en": "📖 Story: Weekend Plan",
-        "de": "📖 Geschichte: Wochenendplan"
-      },
-      "text": {
-        "de": "Am Samstag habe ich Zeit. Ich gehe ins Kino. Ich treffe meine Freunde. Wir treffen uns um 7 Uhr vor dem Kino. Wir sehen einen Film. Der Film ist um 8 Uhr. Nach dem Film gehen wir in ein Café. Wir trinken Kaffee. Am Sonntag bin ich zu Hause. Ich lerne Deutsch.",
-        "fa": "روز شنبه من وقت دارم. به سینما می‌روم. دوستانم را ملاقات می‌کنم. ساعت ۷ جلوی سینما همدیگر را می‌بینیم. یک فیلم می‌بینیم. فیلم ساعت ۸ است. بعد از فیلم به یک کافه می‌رویم. قهوه می‌نوشیم. روز یکشنبه در خانه هستم. آلمانی یاد می‌گیرم.",
-        "en": "On Saturday I have time. I go to the cinema. I meet my friends. We meet at 7 o'clock in front of the cinema. We watch a film. The film is at 8 o'clock. After the film we go to a café. We drink coffee. On Sunday I am at home. I learn German."
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "ساعت چند جلوی سینما همدیگر را می‌بینیم؟",
-            "en": "What time do we meet in front of the cinema?",
-            "de": "Wann treffen wir uns vor dem Kino?"
+    "content": {
+      "fa": "تصور کنید با یک آلمانی درباره‌ی دیروز صحبت می‌کنید. باید بگویید: «دیروز باران بارید» (Gestern hat es geregnet) یا «هوا سرد بود» (Es war kalt). این اولین بار است که شما درباره‌ی گذشته صحبت می‌کنید!\n\nاین درس به شما کمک می‌کند تا درباره‌ی آب‌وهوا، تاریخ و گذشته صحبت کنید. شما با دو زمان گذشته آشنا می‌شوید: Perfekt (برای مکالمه) و Präteritum فعل sein (war/waren).",
+      "en": "Imagine talking to a German about yesterday. You need to say: 'Yesterday it rained' (Gestern hat es geregnet) or 'It was cold' (Es war kalt). This is your first time talking about the past!\n\nThis lesson helps you talk about weather, dates and the past. You'll learn two past tenses: Perfekt (for conversation) and Präteritum of sein (war/waren).",
+      "de": "Stell dir vor, du sprichst mit einem Deutschen über gestern. Du sagst: 'Gestern hat es geregnet' oder 'Es war kalt'. Das ist dein erstes Mal in der Vergangenheit!\n\nDiese Lektion hilft dir, über Wetter, Datum und Vergangenheit zu sprechen."
+    },
+    "imagePrompt": "Berlin weather scene: sunny day turning to rain and snow, Chris on bicycle as courier, calendar with dates, weather app on smartphone"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer"
+    },
+    "layers": {
+      "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی. این درس روی تلفظ کلمات آب‌وهوا و اعداد ترتیبی تمرکز می‌کند.",
+      "en": "Three layers: Persian, IPA, physical. This lesson focuses on weather and ordinal number pronunciation.",
+      "de": "Drei Schichten. Diese Lektion fokussiert auf Wetter- und Ordinalzahl-Aussprache."
+    },
+    "sounds": [
+      {
+        "id": "sound-r-review",
+        "letter": "r (مرور)",
+        "description": {
+          "fa": "صدای غُرّی از حلق",
+          "en": "uvular",
+          "de": "uvular"
+        },
+        "ipa": "[ʁ]",
+        "persianEquivalent": "≈ غُرّ گربه",
+        "commonMistake": {
+          "fa": "مثل ر فارسی",
+          "en": "like Persian r",
+          "de": "wie persisches r"
+        },
+        "examples": [
+          {
+            "word": "regnen",
+            "persian": "رِگ-نِن",
+            "meaning": "باران باریدن"
           },
-          "answer": {
-            "fa": "ساعت ۷",
-            "en": "7 o'clock",
-            "de": "7 Uhr"
+          {
+            "word": "warm",
+            "persian": "وارم",
+            "meaning": "گرم"
+          },
+          {
+            "word": "Geburt",
+            "persian": "گِ-بورت",
+            "meaning": "تولد"
           }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "یکشنبه کجا هستم؟",
-            "en": "Where am I on Sunday?",
-            "de": "Wo bin ich am Sonntag?"
-          },
-          "answer": {
-            "fa": "در خانه",
-            "en": "At home",
-            "de": "Zu Hause"
-          }
-        }
-      ],
-      "id": "a1-l07-STORY-004",
-      "order": 3
-    },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "حرف اضافه صحیح: ____ Montag",
-            "en": "Correct preposition: ____ Montag",
-            "de": "Richtige Präposition: ____ Montag"
-          },
-          "options": [
-            "am",
-            "im",
-            "um"
-          ],
-          "correctIndex": 0,
-          "explanation": {
-            "fa": "am Montag = در روز دوشنبه",
-            "en": "am Montag = on Monday",
-            "de": "am Montag = am Montag"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "حرف اضافه صحیح: ____ Januar",
-            "en": "Correct preposition: ____ Januar",
-            "de": "Richtige Präposition: ____ Januar"
-          },
-          "options": [
-            "am",
-            "im",
-            "um"
-          ],
-          "correctIndex": 1,
-          "explanation": {
-            "fa": "im Januar = در ماه ژانویه",
-            "en": "im Januar = in January",
-            "de": "im Januar = im Januar"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "multiple_choice",
-          "question": {
-            "fa": "حرف اضافه صحیح: ____ 10 Uhr",
-            "en": "Correct preposition: ____ 10 Uhr",
-            "de": "Richtige Präposition: ____ 10 Uhr"
-          },
-          "options": [
-            "am",
-            "im",
-            "um"
-          ],
-          "correctIndex": 2,
-          "explanation": {
-            "fa": "um 10 Uhr = ساعت ۱۰",
-            "en": "um 10 Uhr = at 10 o'clock",
-            "de": "um 10 Uhr = um 10 Uhr"
-          }
-        },
-        {
-          "id": "ex4",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'من در سینما هستم.'",
-            "en": "Translate: 'I am in the cinema.'",
-            "de": "Übersetzen: 'Ich bin im Kino.'"
-          },
-          "answer": "Ich bin im Kino.",
-          "hint": {
-            "fa": "Kino خنثی است → im",
-            "en": "Kino is neuter → im",
-            "de": "Kino ist neutrum → im"
-          }
-        }
-      ],
-      "id": "a1-l07-EXER-005",
-      "order": 4
-    },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "wann?",
-          "fa": "چه زمانی؟",
-          "en": "when?",
-          "icon": "❓"
-        },
-        {
-          "de": "wo?",
-          "fa": "کجا؟",
-          "en": "where?",
-          "icon": "📍"
-        },
-        {
-          "de": "am Montag",
-          "fa": "دوشنبه",
-          "en": "on Monday",
-          "icon": "📅"
-        },
-        {
-          "de": "im Januar",
-          "fa": "در ژانویه",
-          "en": "in January",
-          "icon": "📆"
-        },
-        {
-          "de": "um 8 Uhr",
-          "fa": "ساعت ۸",
-          "en": "at 8",
-          "icon": "🕗"
-        },
-        {
-          "de": "das Kino",
-          "fa": "سینما",
-          "en": "cinema",
-          "icon": "🎬"
-        },
-        {
-          "de": "die Schule",
-          "fa": "مدرسه",
-          "en": "school",
-          "icon": "🏫"
-        },
-        {
-          "de": "das Haus",
-          "fa": "خانه",
-          "en": "house",
-          "icon": "🏠"
-        }
-      ],
-      "id": "a1-l07-FLASH-006",
-      "order": 5
-    },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "das Kino",
-          "phonetic": "/das ˈkiːno/"
-        },
-        {
-          "word": "die Schule",
-          "phonetic": "/diː ˈʃuːlə/"
-        },
-        {
-          "word": "der Montag",
-          "phonetic": "/deːɐ̯ ˈmoːntaːk/"
-        },
-        {
-          "word": "der Januar",
-          "phonetic": "/deːɐ̯ ˈjanuaːɐ̯/"
-        }
-      ],
-      "id": "a1-l07-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "حرف اضافه صحیح: ____ Morgen",
-            "en": "Correct preposition: ____ Morgen",
-            "de": "Richtige Präposition: ____ Morgen"
-          },
-          "options": [
-            "am",
-            "im",
-            "um"
-          ],
-          "correctIndex": 0,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "حرف اضافه صحیح: ____ Sommer",
-            "en": "Correct preposition: ____ Sommer",
-            "de": "Richtige Präposition: ____ Sommer"
-          },
-          "options": [
-            "am",
-            "im",
-            "um"
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich bin ____ Kino.' (در سینما)",
-            "en": "Complete: 'Ich bin ____ Kino.' (in the cinema)",
-            "de": "Vervollständigen: 'Ich bin ____ Kino.' (im Kino)"
-          },
-          "answer": "im",
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l07-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ حروف اضافه زمان (am, im, um)",
-          "✅ حروف اضافه مکان (in, an, auf)",
-          "✅ مقدمه‌ای بر حالت Dativ",
-          "✅ پرسیدن زمان و مکان"
-        ],
-        "en": [
-          "✅ Prepositions of time (am, im, um)",
-          "✅ Prepositions of place (in, an, auf)",
-          "✅ Introduction to dative case",
-          "✅ Asking when and where"
-        ],
-        "de": [
-          "✅ Zeitpräpositionen (am, im, um)",
-          "✅ Ortspräpositionen (in, an, auf)",
-          "✅ Einführung in den Dativ",
-          "✅ Nach Zeit und Ort fragen"
         ]
       },
-      "id": "a1-l07-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-sch-st",
+        "letter": "sp / st (مرور)",
+        "description": {
+          "fa": "مثل شپ و شت",
+          "en": "like shp and sht",
+          "de": "wie schp und scht"
+        },
+        "ipa": "[ʃp] / [ʃt]",
+        "persianEquivalent": "≈ شپ و شت",
+        "commonMistake": {
+          "fa": "تلفظ سپ و ست",
+          "en": "pronouncing sp and st",
+          "de": "sp und st"
+        },
+        "examples": [
+          {
+            "word": "Es schneit",
+            "persian": "اِس اِشنای-تْ",
+            "meaning": "برف می‌بارد"
+          },
+          {
+            "word": "Station",
+            "persian": "اِ-تات-سی-اون",
+            "meaning": "ایستگاه"
+          }
+        ]
+      },
+      {
+        "id": "sound-ei-ai",
+        "letter": "ei / ai (مرور)",
+        "description": {
+          "fa": "مثل ای کشیده",
+          "en": "like long i",
+          "de": "wie langes i"
+        },
+        "ipa": "[aɪ̯]",
+        "persianEquivalent": "≈ ای کشیده",
+        "commonMistake": {
+          "fa": "تلفظ کوتاه",
+          "en": "pronouncing short",
+          "de": "kurz"
+        },
+        "examples": [
+          {
+            "word": "heiß",
+            "persian": "هایس",
+            "meaning": "داغ"
+          },
+          {
+            "word": "heute",
+            "persian": "هوی-تِه",
+            "meaning": "امروز"
+          }
+        ]
+      },
+      {
+        "id": "sound-v-f",
+        "letter": "v (مرور)",
+        "description": {
+          "fa": "مثل ف فارسی - نه و",
+          "en": "like f - not v",
+          "de": "wie f"
+        },
+        "ipa": "[f]",
+        "persianEquivalent": "≈ ف",
+        "commonMistake": {
+          "fa": "تلفظ مثل و",
+          "en": "pronouncing like v",
+          "de": "wie w"
+        },
+        "examples": [
+          {
+            "word": "vorbei",
+            "persian": "فور-بای",
+            "meaning": "گذشت"
+          },
+          {
+            "word": "Viel",
+            "persian": "فیل",
+            "meaning": "زیاد"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-sonnig",
+      "de": "sonnig",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈzɔnɪç]",
+      "fa": "آفتابی",
+      "en": "sunny",
+      "example": {
+        "de": "Es ist sonnig.",
+        "fa": "هوا آفتابی است.",
+        "en": "It's sunny."
+      },
+      "usageNotes": {
+        "fa": "صفت. از das Sonne (خورشید) + -ig",
+        "en": "adjective. From Sonne + -ig",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 's' اول مثل 'ز' و 'ig' مثل 'ایخ'",
+        "en": "initial 's' like 'z' and 'ig' like 'ich'",
+        "de": "'s' wie 'z'"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-bewolkt",
+      "de": "bewölkt",
+      "article": "",
+      "plural": "",
+      "ipa": "[bəˈvœlkt]",
+      "fa": "ابری",
+      "en": "cloudy",
+      "example": {
+        "de": "Es ist bewölkt.",
+        "fa": "هوا ابری است.",
+        "en": "It's cloudy."
+      },
+      "usageNotes": {
+        "fa": "صفت. از die Wolke (ابر) + -t",
+        "en": "adjective. From Wolke",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ö' بین اُ و اِ",
+        "en": "'ö' between o and e",
+        "de": "'ö'"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-regnen",
+      "de": "regnen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʁeːɡnən]",
+      "fa": "باران باریدن",
+      "en": "to rain",
+      "example": {
+        "de": "Es hat geregnet.",
+        "fa": "باران باریده است.",
+        "en": "It rained."
+      },
+      "usageNotes": {
+        "fa": "فعل. در Perfekt: es hat geregnet. در حال: es regnet",
+        "en": "verb. Perfekt: es hat geregnet",
+        "de": "Verb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'g' نرم",
+        "en": "uvular 'r' and soft 'g'",
+        "de": "r und g"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-schneien",
+      "de": "schneien",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃnaɪ̯ən]",
+      "fa": "برف باریدن",
+      "en": "to snow",
+      "example": {
+        "de": "Es hat geschneit.",
+        "fa": "برف باریده است.",
+        "en": "It snowed."
+      },
+      "usageNotes": {
+        "fa": "فعل. در Perfekt: es hat geschneit. در حال: es schneit",
+        "en": "verb. Perfekt: es hat geschneit",
+        "de": "Verb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sch' مثل ش و 'ei' کشیده",
+        "en": "'sch' like sh, long 'ei'",
+        "de": "sch und ei"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kalt",
+      "de": "kalt",
+      "article": "",
+      "plural": "",
+      "ipa": "[kalt]",
+      "fa": "سرد",
+      "en": "cold",
+      "example": {
+        "de": "Es ist kalt.",
+        "fa": "هوا سرد است.",
+        "en": "It's cold."
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد: warm (گرم)",
+        "en": "adjective. Opposite: warm",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کوتاه و 'l' واضح",
+        "en": "short 'a' and clear 'l'",
+        "de": "kurz a"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-warm",
+      "de": "warm",
+      "article": "",
+      "plural": "",
+      "ipa": "[vaʁm]",
+      "fa": "گرم",
+      "en": "warm",
+      "example": {
+        "de": "Es ist warm.",
+        "fa": "هوا گرم است.",
+        "en": "It's warm."
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد: kalt (سرد)",
+        "en": "adjective. Opposite: kalt",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل و و 'r' غُرّی",
+        "en": "'W' like v, uvular 'r'",
+        "de": "W und r"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-heis",
+      "de": "heiß",
+      "article": "",
+      "plural": "",
+      "ipa": "[haɪ̯s]",
+      "fa": "داغ",
+      "en": "hot",
+      "example": {
+        "de": "Es ist heiß.",
+        "fa": "هوا داغ است.",
+        "en": "It's hot."
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد: kalt. با ß",
+        "en": "adjective. With ß",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ei' کشیده و 'ß' مثل س سخت",
+        "en": "long 'ei' and 'ß' like hard 's'",
+        "de": "ei und ß"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-kul",
+      "de": "kühl",
+      "article": "",
+      "plural": "",
+      "ipa": "[kyːl]",
+      "fa": "خنک",
+      "en": "cool",
+      "example": {
+        "de": "Es ist kühl.",
+        "fa": "هوا خنک است.",
+        "en": "It's cool."
+      },
+      "usageNotes": {
+        "fa": "صفت. بین kalt و warm. با ü",
+        "en": "adjective. Between cold and warm. With ü",
+        "de": "Adjektiv"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' بین ای و او",
+        "en": "'ü' between i and u",
+        "de": "ü"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-grad",
+      "de": "Grad",
+      "article": "der",
+      "plural": "Grade",
+      "ipa": "[ɡʁaːt]",
+      "fa": "درجه (دما)",
+      "en": "degree",
+      "example": {
+        "de": "Es sind plus 5 Grad.",
+        "fa": "۵ درجه بالای صفر است.",
+        "en": "It's plus 5 degrees."
+      },
+      "usageNotes": {
+        "fa": "مذکر. plus = بالای صفر، minus = زیر صفر",
+        "en": "masculine. plus = above zero, minus = below",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کشیده و 'd' در انتها مثل 't'",
+        "en": "long 'a' and final 'd' like 't'",
+        "de": "lang a"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-gestern",
+      "de": "gestern",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈɡɛstɐn]",
+      "fa": "دیروز",
+      "en": "yesterday",
+      "example": {
+        "de": "Gestern hat es geregnet.",
+        "fa": "دیروز باران بارید.",
+        "en": "Yesterday it rained."
+      },
+      "usageNotes": {
+        "fa": "قید زمان. برای گذشته استفاده می‌شود",
+        "en": "adverb. Used for past",
+        "de": "Adverb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'e' کوتاه و 'r' غُرّی",
+        "en": "short 'e' and uvular 'r'",
+        "de": "kurz e"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-heute",
+      "de": "heute",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈhɔɪ̯tə]",
+      "fa": "امروز",
+      "en": "today",
+      "example": {
+        "de": "Heute ist es sonnig.",
+        "fa": "امروز آفتابی است.",
+        "en": "Today it's sunny."
+      },
+      "usageNotes": {
+        "fa": "قید زمان. 'eu' مثل 'او-ی'",
+        "en": "adverb. 'eu' like 'oi'",
+        "de": "Adverb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'eu' مثل 'او' - باید 'او-ی' باشد",
+        "en": "'eu' like 'ou' - should be 'oi'",
+        "de": "eu"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-morgen-time",
+      "de": "morgen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈmɔʁɡn̩]",
+      "fa": "فردا",
+      "en": "tomorrow",
+      "example": {
+        "de": "Morgen wird es warm.",
+        "fa": "فردا گرم خواهد بود.",
+        "en": "Tomorrow it will be warm."
+      },
+      "usageNotes": {
+        "fa": "قید زمان. توجه: 'morgen' = فردا، 'am Morgen' = صبح",
+        "en": "adverb. Note: 'morgen' = tomorrow, 'am Morgen' = in the morning",
+        "de": "Adverb"
+      },
+      "commonMistakes": {
+        "fa": "اشتباه با 'am Morgen' (صبح) - morgen = فردا",
+        "en": "confusing with 'am Morgen' - morgen = tomorrow",
+        "de": "Verwechslung mit am Morgen"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-war",
+      "de": "war",
+      "article": "",
+      "plural": "",
+      "ipa": "[vaːɐ̯]",
+      "fa": "بود (Präteritum sein)",
+      "en": "was (past of sein)",
+      "example": {
+        "de": "Es war kalt.",
+        "fa": "سرد بود.",
+        "en": "It was cold."
+      },
+      "usageNotes": {
+        "fa": "Präteritum فعل sein. ich war, du warst, er war, wir waren",
+        "en": "Präteritum of sein",
+        "de": "Präteritum sein"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل و و 'a' کشیده و 'r' غُرّی",
+        "en": "'W' like v, long 'a', uvular 'r'",
+        "de": "W, a, r"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-waren",
+      "de": "waren",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈvaːʁən]",
+      "fa": "بودند (Präteritum sein جمع)",
+      "en": "were (past of sein, plural)",
+      "example": {
+        "de": "Wir waren in Berlin.",
+        "fa": "ما در برلین بودیم.",
+        "en": "We were in Berlin."
+      },
+      "usageNotes": {
+        "fa": "Präteritum فعل sein برای wir/sie/Sie",
+        "en": "Präteritum of sein for we/they/you",
+        "de": "Präteritum sein"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل و و 'a' کشیده",
+        "en": "'W' like v, long 'a'",
+        "de": "W, a"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-geboren",
+      "de": "geboren",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡəˈbɔːʁən]",
+      "fa": "متولد",
+      "en": "born",
+      "example": {
+        "de": "Ich bin in Iran geboren.",
+        "fa": "من در ایران متولد شدم.",
+        "en": "I was born in Iran."
+      },
+      "usageNotes": {
+        "fa": "صفت/Past Participle. 'geboren sein' = متولد بودن. همیشه با sein",
+        "en": "past participle. 'geboren sein' = to be born",
+        "de": "Partizip"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'g' نرم و 'o' کشیده و 'r' غُرّی",
+        "en": "soft 'g', long 'o', uvular 'r'",
+        "de": "g, o, r"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-datum",
+      "de": "Datum",
+      "article": "das",
+      "plural": "Daten",
+      "ipa": "[ˈdaːtʊm]",
+      "fa": "تاریخ",
+      "en": "date",
+      "example": {
+        "de": "Wann bist du geboren? — Am 5. Mai.",
+        "fa": "کی متولد شدی؟ — ۵ مه.",
+        "en": "When were you born? — May 5th."
+      },
+      "usageNotes": {
+        "fa": "خنثی. 'am' + عدد ترتیبی + ماه: am ersten März",
+        "en": "neuter. 'am' + ordinal + month",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'a' کشیده و 'u' کوتاه",
+        "en": "long 'a' and short 'u'",
+        "de": "lang a"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-norden",
+      "de": "Norden",
+      "article": "der",
+      "plural": "",
+      "ipa": "[ˈnɔʁdn̩]",
+      "fa": "شمال",
+      "en": "north",
+      "example": {
+        "de": "Im Norden ist es kalt.",
+        "fa": "در شمال سرد است.",
+        "en": "It's cold in the north."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'im Norden' = در شمال. سایر: Süden (جنوب)، Westen (غرب)، Osten (شرق)",
+        "en": "masculine. 'im Norden' = in the north",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی",
+        "en": "uvular 'r'",
+        "de": "r"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-scheinen",
+      "de": "scheinen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃaɪ̯nən]",
+      "fa": "تابیدن (خورشید)",
+      "en": "to shine (sun)",
+      "example": {
+        "de": "Die Sonne scheint.",
+        "fa": "خورشید می‌تابد.",
+        "en": "The sun is shining."
+      },
+      "usageNotes": {
+        "fa": "فعل. 'Die Sonne scheint' = خورشید می‌تابد",
+        "en": "verb. 'Die Sonne scheint'",
+        "de": "Verb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sch' مثل ش و 'ei' کشیده",
+        "en": "'sch' like sh, long 'ei'",
+        "de": "sch, ei"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-flughafen",
+      "de": "Flughafen",
+      "article": "der",
+      "plural": "Flughäfen",
+      "ipa": "[ˈfluːkˌhaːfn̩]",
+      "fa": "فرودگاه",
+      "en": "airport",
+      "example": {
+        "de": "Ich bin auf dem Flughafen geboren.",
+        "fa": "من در فرودگاه متولد شدم.",
+        "en": "I was born at the airport."
+      },
+      "usageNotes": {
+        "fa": "مذکر. مرکب: Flug (پرواز) + Hafen (بندر). 'auf dem Flughafen' (Dativ)",
+        "en": "masculine. Compound: Flug + Hafen",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'u' کشیده و 'a' کشیده",
+        "en": "long 'u' and long 'a'",
+        "de": "lang u, a"
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-krankenhaus",
+      "de": "Krankenhaus",
+      "article": "das",
+      "plural": "Krankenhäuser",
+      "ipa": "[ˈkʁaŋkn̩ˌhaʊ̯s]",
+      "fa": "بیمارستان",
+      "en": "hospital",
+      "example": {
+        "de": "Ich bin im Krankenhaus geboren.",
+        "fa": "من در بیمارستان متولد شدم.",
+        "en": "I was born in a hospital."
+      },
+      "usageNotes": {
+        "fa": "خنثی. مرکب: krank (بیمار) + Haus (خانه)",
+        "en": "neuter. Compound: krank + Haus",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'au' کشیده",
+        "en": "uvular 'r' and long 'au'",
+        "de": "r, au"
+      },
+      "difficulty": 2,
+      "frequency": 4
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-perfekt-haben",
+        "title": {
+          "fa": "زمان گذشته Perfekt با haben",
+          "en": "Perfekt Tense with haben",
+          "de": "Perfekt mit haben"
+        },
+        "concept": {
+          "fa": "Perfekt مهم‌ترین زمان گذشته در مکالمه‌ی آلمانی است. ساختار: haben (صرف‌شده) + گذشته‌ساز (Partizip II). برای فعل‌های منظم: ge- + stem + -t. مثلاً: regnen → hat geregnet.",
+          "en": "Perfekt is the most important past tense in spoken German. Structure: haben (conjugated) + past participle. Regular verbs: ge- + stem + -t. Example: regnen → hat geregnet.",
+          "de": "Das Perfekt ist die wichtigste Vergangenheitsform im gesprochenen Deutsch."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "haben",
+            "Partizip II",
+            "مثال کامل",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "habe",
+              "geregnet",
+              "Ich habe gegessen.",
+              "من خوردم"
+            ],
+            [
+              "du",
+              "hast",
+              "geregnet",
+              "Du hast gearbeitet.",
+              "تو کار کردی"
+            ],
+            [
+              "er/sie",
+              "hat",
+              "geregnet",
+              "Es hat geregnet.",
+              "باران بارید"
+            ],
+            [
+              "wir",
+              "haben",
+              "geregnet",
+              "Wir haben gespielt.",
+              "ما بازی کردیم"
+            ],
+            [
+              "ihr",
+              "habt",
+              "geregnet",
+              "Ihr habt gemacht.",
+              "شما کردید"
+            ],
+            [
+              "sie/Sie",
+              "haben",
+              "geregnet",
+              "Sie haben gearbeitet.",
+              "آن‌ها کردند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: [فاعل] + [haben صرف‌شده] + [بقیه] + [Partizip II در انتها]. فعل‌های منظم: ge + stem + -t. فعل‌های نامنظم: ge + stem(تغییر) + -en.",
+          "en": "Structure: [subject] + [haben conjugated] + [rest] + [Partizip II at end]. Regular: ge+stem+-t. Irregular: ge+stem(change)+-en.",
+          "de": "Struktur: [Subjekt] + [haben] + [Rest] + [Partizip II am Ende]."
+        }
+      },
+      {
+        "id": "gram-prateritum-sein",
+        "title": {
+          "fa": "زمان گذشته Präteritum فعل sein (war/waren)",
+          "en": "Präteritum of sein (war/waren)",
+          "de": "Präteritum von sein"
+        },
+        "concept": {
+          "fa": "Präteritum فعل sein در مکالمه برای بودن در گذشته استفاده می‌شود: ich war (من بودم)، wir waren (ما بودیم). این فرم در مکالمه‌ی روزمره رایج است.",
+          "en": "The Präteritum of sein is used in conversation for 'was/were' in the past: ich war, wir waren. This form is common in daily speech.",
+          "de": "Das Präteritum von sein wird auch in der Umgangssprache verwendet."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "Präteritum sein",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "war",
+              "وار",
+              "من بودم"
+            ],
+            [
+              "du",
+              "warst",
+              "وارست",
+              "تو بودی"
+            ],
+            [
+              "er/sie/es",
+              "war",
+              "وار",
+              "او بود"
+            ],
+            [
+              "wir",
+              "waren",
+              "وا-رِن",
+              "ما بودیم"
+            ],
+            [
+              "ihr",
+              "wart",
+              "وارت",
+              "شما بودید"
+            ],
+            [
+              "sie/Sie",
+              "waren",
+              "وا-رِن",
+              "آن‌ها/شما بودند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ich war • du warst • er war • wir waren • ihr wart • sie waren. تلفظ: 'W' مثل 'و'، 'a' کشیده، 'r' غُرّی.",
+          "en": "ich war • du warst • er war • wir waren. Pronounce: 'W' like 'v', long 'a', uvular 'r'.",
+          "de": "ich war, du warst, er war, wir waren, ihr wart, sie waren."
+        }
+      },
+      {
+        "id": "gram-am-datum",
+        "title": {
+          "fa": "حرف اضافه‌ی am + تاریخ (اعداد ترتیبی)",
+          "en": "Preposition am + Date (Ordinal Numbers)",
+          "de": "Präposition am + Datum"
+        },
+        "concept": {
+          "fa": "برای گفتن تاریخ از 'am' + عدد ترتیبی + ماه استفاده می‌کنید. اعداد ترتیبی با -ten ساخته می‌شوند: am ersten (اول)، am zweiten (دوم)، am dritten (سوم)...",
+          "en": "To say a date, use 'am' + ordinal number + month. Ordinals are formed with -ten: am ersten (1st), am zweiten (2nd), am dritten (3rd)...",
+          "de": "Für das Datum verwenden Sie 'am' + Ordinalzahl + Monat."
+        },
+        "conjugationTable": {
+          "headers": [
+            "عدد",
+            "آلمانی",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "1.",
+              "am ersten",
+              "ام اِر-ستِن",
+              "اول"
+            ],
+            [
+              "2.",
+              "am zweiten",
+              "ام تسوای-تِن",
+              "دوم"
+            ],
+            [
+              "3.",
+              "am dritten",
+              "ام دریت-تِن",
+              "سوم"
+            ],
+            [
+              "4.",
+              "am vierten",
+              "ام فیر-تِن",
+              "چهارم"
+            ],
+            [
+              "5.",
+              "am fünften",
+              "ام فونف-تِن",
+              "پنجم"
+            ],
+            [
+              "10.",
+              "am zehnten",
+              "ام تسِن-تِن",
+              "دهم"
+            ],
+            [
+              "21.",
+              "am einundzwanzigsten",
+              "ام این-اوند-تسوان-تسیخ-ستِن",
+              "بیست و یکم"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: am + [عدد ترتیبی]-ten + [ماه]. استثنا: am ersten (اول)، am dritten (سوم)، am siebten (هفتم).",
+          "en": "Structure: am + [ordinal]-ten + [month]. Exceptions: am ersten, am dritten, am siebten.",
+          "de": "Struktur: am + [Ordinalzahl]-ten + [Monat]."
+        }
+      },
+      {
+        "id": "gram-in-auf-dativ",
+        "title": {
+          "fa": "حروف اضافه‌ی مکانی in, auf + Dativ",
+          "en": "Local Prepositions in, auf + Dative",
+          "de": "Lokale Präpositionen in, auf + Dativ"
+        },
+        "concept": {
+          "fa": "برای گفتن مکان در گذشته و حال، از in/auf + Dativ استفاده می‌کنید: im Norden (در شمال)، auf dem Flughafen (در فرودگاه)، im Krankenhaus (در بیمارستان).",
+          "en": "To express location in past and present, use in/auf + dative: im Norden, auf dem Flughafen, im Krankenhaus.",
+          "de": "Für Orte verwenden Sie in/auf + Dativ."
+        },
+        "conjugationTable": {
+          "headers": [
+            "حرف اضافه",
+            "جنسیت",
+            "Dativ",
+            "مثال",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "in",
+              "مذکر",
+              "in dem → im",
+              "im Norden",
+              "در شمال"
+            ],
+            [
+              "in",
+              "خنثی",
+              "in dem → im",
+              "im Krankenhaus",
+              "در بیمارستان"
+            ],
+            [
+              "in",
+              "مؤنث",
+              "in der",
+              "in der U-Bahn",
+              "در مترو"
+            ],
+            [
+              "auf",
+              "مذکر",
+              "auf dem",
+              "auf dem Flughafen",
+              "در فرودگاه"
+            ],
+            [
+              "auf",
+              "خنثی",
+              "auf dem",
+              "auf dem Bett",
+              "روی تخت"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "in + dem = im. auf + dem = auf dem. مذکر و خنثی در Dativ: dem. مؤنث: der.",
+          "en": "in + dem = im. auf + dem = auf dem. Dative: dem (masc/neut), der (fem).",
+          "de": "in + dem = im. auf + dem = auf dem."
+        }
+      },
+      {
+        "id": "gram-jahreszahlen",
+        "title": {
+          "fa": "گفتن سال (Jahreszahlen)",
+          "en": "Saying Years",
+          "de": "Jahreszahlen sagen"
+        },
+        "concept": {
+          "fa": "در آلمانی، سال‌ها به دو روش خوانده می‌شوند: 1900-1999 به‌صورت 'neunzehnhundert + ...' و 2000+ به‌صورت 'zweitausend + ...'.",
+          "en": "In German, years are read two ways: 1900-1999 as 'neunzehnhundert + ...' and 2000+ as 'zweitausend + ...'.",
+          "de": "Jahre werden gelesen: 1900-1999 als 'neunzehnhundert + ...' und 2000+ als 'zweitausend + ...'."
+        },
+        "examples": {
+          "fa": [
+            "1998 = neunzehnhundertachtundneunzig (نهصد و نود و هشت)",
+            "2003 = zweitausenddrei (دو هزار و سه)",
+            "2016 = zweitausendsechzehn (دو هزار و شانزده)",
+            "Ich bin 1995 geboren. = من در ۱۹۹۵ متولد شدم."
+          ],
+          "en": [
+            "1998 = neunzehnhundertachtundneunzig",
+            "2003 = zweitausenddrei",
+            "2016 = zweitausendsechzehn",
+            "Ich bin 1995 geboren."
+          ],
+          "de": [
+            "1998 = neunzehnhundertachtundneunzig",
+            "2003 = zweitausenddrei",
+            "2016 = zweitausendsechzehn"
+          ]
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-weather-1",
+      "title": {
+        "fa": "دیالوگ آب‌وهوا - Martha و Paul",
+        "en": "Weather Dialogue - Martha and Paul",
+        "de": "Wetter-Dialog - Martha und Paul"
+      },
+      "characters": [
+        {
+          "name": "Martha",
+          "role": "در زوریخ"
+        },
+        {
+          "name": "Paul",
+          "role": "در برلین"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Martha",
+          "german": "Paul, wie ist das Wetter in Berlin?",
+          "persian": "پاول، وای ایست داس وِ-تِر این بِر-لین؟",
+          "meaning": {
+            "fa": "پاول، آب‌وهوای برلین چطوره؟",
+            "en": "Paul, how's the weather in Berlin?",
+            "de": "Paul, wie ist das Wetter in Berlin?"
+          }
+        },
+        {
+          "speaker": "Paul",
+          "german": "Es ist kühl und es regnet. Und in Zürich?",
+          "persian": "اِس ایست کول اوند اِس رِگ-نِتْ. اوند این تسو-ریخ؟",
+          "meaning": {
+            "fa": "خنک است و باران می‌بارد. و زوریخ؟",
+            "en": "It's cool and raining. And in Zurich?",
+            "de": "Es ist kühl und es regnet."
+          }
+        },
+        {
+          "speaker": "Martha",
+          "german": "Hier ist es sonnig und warm. 22 Grad!",
+          "persian": "هیر ایست اِس زو-نیخ اوند وارم. تسوای-اوند-تسیخ گرات!",
+          "meaning": {
+            "fa": "اینجا آفتابی و گرم است. ۲۲ درجه!",
+            "en": "Here it's sunny and warm. 22 degrees!",
+            "de": "Hier ist es sonnig und warm."
+          }
+        },
+        {
+          "speaker": "Paul",
+          "german": "Wow! Und wie war das Wetter gestern?",
+          "persian": "وائ! اوند وای وار داس وِ-تِر گِ-ستِرن؟",
+          "meaning": {
+            "fa": "وای! و دیروز آب‌وهوا چطور بود؟",
+            "en": "Wow! And how was the weather yesterday?",
+            "de": "Und wie war das Wetter gestern?"
+          }
+        },
+        {
+          "speaker": "Martha",
+          "german": "Gestern war es bewölkt. Aber es hat nicht geregnet.",
+          "persian": "گِ-ستِرن وار اِس بِ-وُلکت. آبِر اِس هات نیشت گِ-رِگ-نِتْ.",
+          "meaning": {
+            "fa": "دیروز ابری بود. اما باران نیامد.",
+            "en": "Yesterday it was cloudy. But it didn't rain.",
+            "de": "Gestern war es bewölkt."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "wie ist das Wetter",
+          "persian": "وای ایست داس وِ-تِر",
+          "meaning": "آب‌وهوا چطوره؟"
+        },
+        {
+          "phrase": "es regnet",
+          "persian": "اِس رِگ-نِتْ",
+          "meaning": "باران می‌بارد (حال)"
+        },
+        {
+          "phrase": "wie war das Wetter gestern",
+          "persian": "وای وار داس وِ-تِر گِ-ستِرن",
+          "meaning": "دیروز آب‌وهوا چطور بود؟ (war = Präteritum)"
+        },
+        {
+          "phrase": "es war bewölkt",
+          "persian": "اِس وار بِ-وُلکت",
+          "meaning": "ابری بود (Präteritum sein)"
+        },
+        {
+          "phrase": "es hat nicht geregnet",
+          "persian": "اِس هات نیشت گِ-رِگ-نِتْ",
+          "meaning": "باران نیامد (Perfekt منفی)"
+        }
+      ]
+    },
+    {
+      "id": "dialog-birth-1",
+      "title": {
+        "fa": "دیالوگ تاریخ تولد - کی و کجا متولد شدی؟",
+        "en": "Birth Date Dialogue",
+        "de": "Geburtstags-Dialog"
+      },
+      "characters": [
+        {
+          "name": "Nina",
+          "role": "دانش‌آموز"
+        },
+        {
+          "name": "Fabio",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Nina",
+          "german": "Fabio, wann bist du geboren?",
+          "persian": "فا-بی-و، وان بیست دو گِ-بو-رِن؟",
+          "meaning": {
+            "fa": "فابیو، کِی متولد شدی؟",
+            "en": "Fabio, when were you born?",
+            "de": "Wann bist du geboren?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ich bin am 15. März 1996 geboren. Und du?",
+          "persian": "ایخ بین ام فونf-تِن مِرتس نوی-نْتسِن-هون-دِرت-زِخس-اوند-نوی-تسیخ گِ-بو-رِن. اوند دو؟",
+          "meaning": {
+            "fa": "من ۱۵ مارس ۱۹۹۶ متولد شدم. و تو؟",
+            "en": "I was born on March 15, 1996. And you?",
+            "de": "Ich bin am 15. März 1996 geboren."
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich bin am 3. September 2000 geboren.",
+          "persian": "ایخ بین ام دریت-تِن زِپ-تِم-بِر تسوای-تاو-زِندْ گِ-بو-رِن.",
+          "meaning": {
+            "fa": "من ۳ سپتامبر ۲۰۰۰ متولد شدم.",
+            "en": "I was born on September 3, 2000.",
+            "de": "Ich bin am 3. September 2000 geboren."
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Und wo bist du geboren?",
+          "persian": "اوند وو بیست دو گِ-بو-رِن؟",
+          "meaning": {
+            "fa": "و کجا متولد شدی؟",
+            "en": "And where were you born?",
+            "de": "Und wo bist du geboren?"
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Ich bin in Teheran geboren. Und du?",
+          "persian": "ایخ بین این تِ-هِ-ران گِ-بو-رِن. اوند دو؟",
+          "meaning": {
+            "fa": "من در تهران متولد شدم. و تو؟",
+            "en": "I was born in Tehran. And you?",
+            "de": "Ich bin in Teheran geboren."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "wann bist du geboren",
+          "persian": "وان بیست دو گِ-بو-رِن",
+          "meaning": "کی متولد شدی؟"
+        },
+        {
+          "phrase": "am 15. März",
+          "persian": "ام فونف-تِن مِرتس",
+          "meaning": "۱۵ مارس (am + عدد ترتیبی + ماه)"
+        },
+        {
+          "phrase": "wo bist du geboren",
+          "persian": "وو بیست دو گِ-بو-رِن",
+          "meaning": "کجا متولد شدی؟"
+        },
+        {
+          "phrase": "in Teheran",
+          "persian": "این تِ-هِ-ران",
+          "meaning": "در تهران (in + Dativ)"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "در آلمان، آب‌وهوا (das Wetter) موضوع بسیار رایج در مکالمه‌ی روزمره است — مخصوصاً چون آب‌وهوا در آلمان تغییرپذیر است. آلمانی‌ها معمولاً صبح از آب‌وهوا می‌پرسند و در ایستگاه‌های قطار، کافه و محل کار درباره‌ی آن صحبت می‌کنند.\n\nآب‌وهوای آلمان معتدل است: تابستان‌ها گرم (۲۰-۳۰ درجه) و زمستان‌ها سرد (۰ تا -۱۰ درجه). باران در تمام سال می‌بارد. برف بیشتر در جنوب (باواریا) و کوهستان‌ها می‌بارد.\n\nنکته: در آلمانی، برای گفتن 'باران بارید' از 'es hat geregnet' (Perfekt) استفاده می‌شود — نه 'es regnete' (Präteritum). Präteritum بیشتر در نوشتار و اخبار استفاده می‌شود، به‌جز فعل sein که در مکالمه هم رایج است: 'es war kalt' (سرد بود).\n\nتاریخ تولد در آلمان به‌صورت روز/ماه/سال نوشته می‌شود: 15.03.1996. در مکالمه: am fünfzehnten dritten (یا: am fünfzehnten März).",
+    "en": "In Germany, weather (das Wetter) is a very common conversation topic — especially since German weather is changeable. Germans typically ask about the weather in the morning and discuss it at train stations, cafés and workplaces.\n\nGerman weather is moderate: summers are warm (20-30°C) and winters cold (0 to -10°C). Rain falls year-round. Snow is more common in the south (Bavaria) and mountains.\n\nNote: In German, 'it rained' is 'es hat geregnet' (Perfekt) — not 'es regnete' (Präteritum). Präteritum is mostly used in writing and news, except for sein which is common in speech: 'es war kalt'.\n\nBirth dates in Germany are written day/month/year: 15.03.1996. Spoken: am fünfzehnten dritten (or: am fünfzehnten März).",
+    "de": "In Deutschland ist das Wetter ein sehr häufiges Gesprächsthema. Das deutsche Wetter ist wechselhaft.\n\nDas Wetter ist gemäßigt: Sommer 20-30°C, Winter 0 bis -10°C. Regen gibt es das ganze Jahr. Schnee häufiger im Süden.\n\nHinweis: 'Es hat geregnet' (Perfekt) in der Umgangssprache, nicht 'es regnete' (Präteritum). Präteritum nur für sein im Alltag: 'es war kalt'.\n\nDatum: 15.03.1996. Gesprochen: am fünfzehnten März."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-weather-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: آب‌وهوا را پیدا کنید",
+          "en": "Exercise 1: Match Weather",
+          "de": "Übung 1: Wetter zuordnen"
+        },
+        "instructions": {
+          "fa": "برای هر توصیف، کلمه‌ی آب‌وهوای درست را انتخاب کنید.",
+          "en": "For each description, choose the correct weather word.",
+          "de": "Wählen Sie das richtige Wetterwort."
+        },
+        "questions": [
+          {
+            "id": "w1-q1",
+            "situation": {
+              "fa": "خورشید می‌تابد و هوا گرم است",
+              "en": "Sun shines and it's hot",
+              "de": "Sonne scheint, heiß"
+            },
+            "options": [
+              "sonnig und warm",
+              "bewölkt und kalt",
+              "es schneit",
+              "es regnet"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "sonnig = آفتابی، warm = گرم",
+              "en": "sonnig = sunny, warm = warm",
+              "de": "sonnig und warm"
+            }
+          },
+          {
+            "id": "w1-q2",
+            "situation": {
+              "fa": "آسمان ابری است و باران می‌بارد",
+              "en": "Sky is cloudy and it rains",
+              "de": "Bewölkt und Regen"
+            },
+            "options": [
+              "sonnig",
+              "bewölkt und es regnet",
+              "heiß",
+              "schneit"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "bewölkt = ابری، es regnet = باران می‌بارد",
+              "en": "bewölkt = cloudy",
+              "de": "bewölkt"
+            }
+          },
+          {
+            "id": "w1-q3",
+            "situation": {
+              "fa": "سفید سفید می‌بارد و خیلی سرد است",
+              "en": "White flakes fall and it's very cold",
+              "de": "Weiß fällt, sehr kalt"
+            },
+            "options": [
+              "es regnet",
+              "es schneit und es ist kalt",
+              "sonnig",
+              "warm"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "es schneit = برف می‌بارد، kalt = سرد",
+              "en": "schneit = snows",
+              "de": "es schneit"
+            }
+          },
+          {
+            "id": "w1-q4",
+            "situation": {
+              "fa": "هوا خیلی گرم است، 35 درجه!",
+              "en": "It's very hot, 35 degrees!",
+              "de": "Sehr heiß, 35 Grad!"
+            },
+            "options": [
+              "kalt",
+              "kühl",
+              "heiß",
+              "bewölkt"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "heiß = داغ",
+              "en": "heiß = hot",
+              "de": "heiß"
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-perfekt-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: Perfekt با haben",
+          "en": "Exercise 2: Perfekt with haben",
+          "de": "Übung 2: Perfekt mit haben"
+        },
+        "instructions": {
+          "fa": "جملات را در Perfekt کامل کنید: haben + Partizip II.",
+          "en": "Complete sentences in Perfekt: haben + Partizip II.",
+          "de": "Vervollständigen Sie im Perfekt."
+        },
+        "questions": [
+          {
+            "id": "p1-q1",
+            "prompt": "Es ___ gestern ___. (regnen) → Es ___ ___.",
+            "placeholder": "hat geregnet"
+          },
+          {
+            "id": "p1-q2",
+            "prompt": "Es ___ am Nachmittag ___. (schneien) → Es ___ ___.",
+            "placeholder": "hat geschneit"
+          },
+          {
+            "id": "p1-q3",
+            "prompt": "Wir ___ Fußball ___. (spielen) → Wir ___ ___.",
+            "placeholder": "haben gespielt"
+          },
+          {
+            "id": "p1-q4",
+            "prompt": "Ich ___ eine Pizza ___. (essen) → Ich ___ ___.",
+            "placeholder": "habe gegessen"
+          },
+          {
+            "id": "p1-q5",
+            "prompt": "Es ___ heute nicht ___. (regnen, negativ) → Es ___ nicht ___.",
+            "placeholder": "hat geregnet"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: مکالمه درباره‌ی آب‌وهوا",
+          "en": "Exercise 3: Weather Conversation",
+          "de": "Übung 3: Wetter-Gespräch"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو: آب‌وهوای دیروز",
+              "en": "Scenario: Yesterday's Weather",
+              "de": "Szene: Wetter gestern"
+            },
+            "lines": [
+              {
+                "speaker": "Freund",
+                "german": "Wie war das Wetter gestern?",
+                "persian": "وای وار داس وِ-تِر گِ-ستِرن؟",
+                "meaning": {
+                  "fa": "دیروز آب‌وهوا چطور بود؟",
+                  "en": "How was the weather yesterday?",
+                  "de": "Wie war das Wetter gestern?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Es war ______ und es hat ______.",
+                "persian": "اِس وار ______ اوند اِس هات ______.",
+                "meaning": {
+                  "fa": "______ بود و ______ بارید.",
+                  "en": "It was ______ and it ______.",
+                  "de": "Es war ______ und es hat ______."
+                }
+              },
+              {
+                "speaker": "Freund",
+                "german": "Und wie ist das Wetter heute?",
+                "persian": "اوند وای ایست داس وِ-تِر هوی-تِه؟",
+                "meaning": {
+                  "fa": "و امروز آب‌وهوا چطوره؟",
+                  "en": "And how is the weather today?",
+                  "de": "Und heute?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Heute ist es ______.",
+                "persian": "هوی-تِه ایست اِس ______.",
+                "meaning": {
+                  "fa": "امروز ______ است.",
+                  "en": "Today it's ______.",
+                  "de": "Heute ist es ______."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-war-waren-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: war یا waren؟ (Präteritum sein)",
+          "en": "Exercise 4: war or waren?",
+          "de": "Übung 4: war oder waren?"
+        },
+        "instructions": {
+          "fa": "شکل درست فعل sein در گذشته را انتخاب کنید.",
+          "en": "Choose the correct past form of sein.",
+          "de": "Wählen Sie die richtige Vergangenheitsform."
+        },
+        "questions": [
+          {
+            "id": "w1-q1",
+            "situation": {
+              "fa": "Ich ___ in Berlin. (war/waren)",
+              "en": "Ich ___ in Berlin.",
+              "de": "Ich ___ in Berlin."
+            },
+            "options": [
+              "war",
+              "waren",
+              "warst",
+              "wart"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "ich war (اول شخص مفرد)",
+              "en": "ich war (1st singular)",
+              "de": "ich war"
+            }
+          },
+          {
+            "id": "w1-q2",
+            "situation": {
+              "fa": "Wir ___ im Kino. (war/waren)",
+              "en": "Wir ___ im Kino.",
+              "de": "Wir ___ im Kino."
+            },
+            "options": [
+              "war",
+              "waren",
+              "warst",
+              "wart"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "wir waren (اول شخص جمع)",
+              "en": "wir waren (1st plural)",
+              "de": "wir waren"
+            }
+          },
+          {
+            "id": "w1-q3",
+            "situation": {
+              "fa": "Es ___ kalt. (war/waren)",
+              "en": "Es ___ kalt.",
+              "de": "Es ___ kalt."
+            },
+            "options": [
+              "war",
+              "waren",
+              "warst",
+              "wart"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "es war (سوم شخص مفرد)",
+              "en": "es war (3rd singular)",
+              "de": "es war"
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ آب‌وهوا و تاریخ",
+          "en": "Exercise 5: Pronouncing Weather and Dates",
+          "de": "Übung 5: Wetter und Datum aussprechen"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
+          "en": "Pronounce the following words.",
+          "de": "Sprechen Sie die Wörter aus."
+        },
+        "words": [
+          {
+            "word": "sonnig",
+            "persian": "زو-نیخ",
+            "meaning": "آفتابی"
+          },
+          {
+            "word": "bewölkt",
+            "persian": "بِ-وُلکت",
+            "meaning": "ابری"
+          },
+          {
+            "word": "es regnet",
+            "persian": "اِس رِگ-نِتْ",
+            "meaning": "باران می‌بارد"
+          },
+          {
+            "word": "es schneit",
+            "persian": "اِس اِشنای-تْ",
+            "meaning": "برف می‌بارد"
+          },
+          {
+            "word": "es war kalt",
+            "persian": "اِس وار کالت",
+            "meaning": "سرد بود"
+          },
+          {
+            "word": "am ersten März",
+            "persian": "ام اِر-ستِن مِرتس",
+            "meaning": "اول مارس"
+          },
+          {
+            "word": "geboren",
+            "persian": "گِ-بو-رِن",
+            "meaning": "متولد"
+          },
+          {
+            "word": "das Wetter",
+            "persian": "داس وِ-تِر",
+            "meaning": "آب‌وهوا"
+          }
+        ],
+        "focus": {
+          "fa": "توجه: 'r' غُرّی (regnen, warm, war, geboren) • 'sch' مثل ش (schneit) • 'ei' کشیده (schneit) • 'ö' در bewölkt • 'W' مثل و در war/warm • 'v' مثل ف در vorbe",
+          "en": "Pay attention to: uvular 'r' • 'sch' like sh • long 'ei' • 'ö' in bewölkt • 'W' like v • 'v' like f",
+          "de": "Achten Sie auf: r • sch • ei • ö • W • v"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۷",
+      "en": "Lesson 7 Review",
+      "de": "Lektion 7 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "r1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Es hat geregnet.' به چه معنی؟",
+          "en": "What does 'Es hat geregnet' mean?",
+          "de": "Was bedeutet 'Es hat geregnet'?"
+        },
+        "options": [
+          "باران می‌بارد",
+          "باران بارید",
+          "باران نمی‌بارد",
+          "باران نمی‌بارید"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Perfekt: hat geregnet = باران بارید",
+          "en": "Perfekt: hat geregnet = it rained",
+          "de": "Perfekt"
+        }
+      },
+      {
+        "id": "r2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فعل sein در 'ich' در Präteritum چگونه می‌شود؟",
+          "en": "How is sein in 'ich' in Präteritum?",
+          "de": "Wie ist sein bei 'ich' im Präteritum?"
+        },
+        "options": [
+          "ich bin",
+          "ich war",
+          "ich habe",
+          "ich waren"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "ich war (Präteritum sein)",
+          "en": "ich war",
+          "de": "ich war"
+        }
+      },
+      {
+        "id": "r3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'am 5. Mai' به چه معنی؟",
+          "en": "What does 'am 5. Mai' mean?",
+          "de": "Was bedeutet 'am 5. Mai'?"
+        },
+        "options": [
+          "۵ مه",
+          "۱۵ مه",
+          "۵۰ مه",
+          "۵ ماه"
+        ],
+        "correctIndex": 0,
+        "explanation": {
+          "fa": "am fünften Mai = ۵ مه",
+          "en": "am fünften Mai = May 5th",
+          "de": "am fünften Mai"
+        }
+      },
+      {
+        "id": "r4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'bewölkt' به چه معنی؟",
+          "en": "What does 'bewölkt' mean?",
+          "de": "Was bedeutet 'bewölkt'?"
+        },
+        "options": [
+          "آفتابی",
+          "ابری",
+          "بارانی",
+          "برفی"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "bewölkt = ابری",
+          "en": "bewölkt = cloudy",
+          "de": "bewölkt"
+        }
+      },
+      {
+        "id": "r5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام جمله درست است؟ (Perfekt)",
+          "en": "Which sentence is correct? (Perfekt)",
+          "de": "Welcher Satz ist richtig?"
+        },
+        "options": [
+          "Es hat schneit.",
+          "Es hat geschneit.",
+          "Es haben geschneit.",
+          "Es hat schneien."
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Perfekt: hat + ge + stem + -t = hat geschneit",
+          "en": "Perfekt: hat geschneit",
+          "de": "hat geschneit"
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۷",
+      "en": "Lesson 7 Assessment",
+      "de": "Lektion 7"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید آب‌وهوا را توصیف کنید؟",
+        "آیا Perfekt با haben را بلدید؟",
+        "آیا Präteritum sein (war/waren) را بلدید؟",
+        "آیا می‌توانید تاریخ بگویید؟",
+        "آیا می‌توانید سال بگویید؟",
+        "آیا می‌توانید درباره‌ی گذشته صحبت کنید؟"
+      ],
+      "en": [
+        "Can you describe weather?",
+        "Do you know Perfekt with haben?",
+        "Do you know Präteritum sein?",
+        "Can you say dates?",
+        "Can you say years?",
+        "Can you talk about the past?"
+      ],
+      "de": [
+        "Können Sie Wetter beschreiben?",
+        "Kennen Sie Perfekt mit haben?",
+        "Kennen Sie Präteritum sein?",
+        "Können Sie Datum sagen?",
+        "Können Sie Jahre sagen?",
+        "Können Sie über Vergangenheit sprechen?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "آماده‌ی درس ۸!",
+        "en": "Ready for Lesson 8!",
+        "de": "Bereit für Lektion 8!"
+      },
+      "fail": {
+        "fa": "مرور کنید.",
+        "en": "Review.",
+        "de": "Überprüfen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "weatherWords": [
+      {
+        "de": "sonnig",
+        "fa": "آفتابی"
+      },
+      {
+        "de": "bewölkt",
+        "fa": "ابری"
+      },
+      {
+        "de": "es regnet",
+        "fa": "باران می‌بارد"
+      },
+      {
+        "de": "es schneit",
+        "fa": "برف می‌بارد"
+      },
+      {
+        "de": "kalt",
+        "fa": "سرد"
+      },
+      {
+        "de": "kühl",
+        "fa": "خنک"
+      },
+      {
+        "de": "warm",
+        "fa": "گرم"
+      },
+      {
+        "de": "heiß",
+        "fa": "داغ"
+      },
+      {
+        "de": "die Sonne scheint",
+        "fa": "خورشید می‌تابد"
+      }
+    ],
+    "timeWords": [
+      {
+        "de": "gestern",
+        "fa": "دیروز"
+      },
+      {
+        "de": "heute",
+        "fa": "امروز"
+      },
+      {
+        "de": "morgen",
+        "fa": "فردا"
+      },
+      {
+        "de": "am Vormittag",
+        "fa": "صبح"
+      },
+      {
+        "de": "am Nachmittag",
+        "fa": "بعدازظهر"
+      },
+      {
+        "de": "am Abend",
+        "fa": "عصر"
+      },
+      {
+        "de": "in der Nacht",
+        "fa": "شب"
+      }
+    ],
+    "perfektTable": [
+      {
+        "pronoun": "ich",
+        "haben": "habe",
+        "example": "Ich habe geregnet."
+      },
+      {
+        "pronoun": "du",
+        "haben": "hast",
+        "example": "Du hast gespielt."
+      },
+      {
+        "pronoun": "er/sie",
+        "haben": "hat",
+        "example": "Es hat geschneit."
+      },
+      {
+        "pronoun": "wir",
+        "haben": "haben",
+        "example": "Wir haben gearbeitet."
+      },
+      {
+        "pronoun": "ihr",
+        "haben": "habt",
+        "example": "Ihr habt gemacht."
+      },
+      {
+        "pronoun": "sie/Sie",
+        "haben": "haben",
+        "example": "Sie haben gelernt."
+      }
+    ],
+    "prateritumSein": [
+      {
+        "pronoun": "ich",
+        "form": "war"
+      },
+      {
+        "pronoun": "du",
+        "form": "warst"
+      },
+      {
+        "pronoun": "er/sie/es",
+        "form": "war"
+      },
+      {
+        "pronoun": "wir",
+        "form": "waren"
+      },
+      {
+        "pronoun": "ihr",
+        "form": "wart"
+      },
+      {
+        "pronoun": "sie/Sie",
+        "form": "waren"
+      }
+    ],
+    "ordinalNumbers": [
+      {
+        "number": "1.",
+        "de": "am ersten",
+        "fa": "اول"
+      },
+      {
+        "number": "2.",
+        "de": "am zweiten",
+        "fa": "دوم"
+      },
+      {
+        "number": "3.",
+        "de": "am dritten",
+        "fa": "سوم"
+      },
+      {
+        "number": "5.",
+        "de": "am fünften",
+        "fa": "پنجم"
+      },
+      {
+        "number": "10.",
+        "de": "am zehnten",
+        "fa": "دهم"
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Wie ist das Wetter?",
+        "fa": "آب‌وهوا چطوره؟"
+      },
+      {
+        "de": "Wie war das Wetter gestern?",
+        "fa": "دیروز آب‌وهوا چطور بود؟"
+      },
+      {
+        "de": "Es hat geregnet.",
+        "fa": "باران بارید"
+      },
+      {
+        "de": "Es war kalt.",
+        "fa": "سرد بود"
+      },
+      {
+        "de": "Wann bist du geboren?",
+        "fa": "کی متولد شدی؟"
+      },
+      {
+        "de": "Wo bist du geboren?",
+        "fa": "کجا متولد شدی؟"
+      },
+      {
+        "de": "Ich bin am ... geboren.",
+        "fa": "من ... متولد شدم"
+      }
+    ],
+    "grammar": [
+      {
+        "title": "Perfekt mit haben",
+        "summary": "haben (Position 2) + Partizip II (am Ende). Regelmäßig: ge+Stamm+-t"
+      },
+      {
+        "title": "Präteritum sein",
+        "summary": "ich war, du warst, er war, wir waren, ihr wart, sie waren"
+      },
+      {
+        "title": "am + Datum",
+        "summary": "am + Ordinalzahl (-ten) + Monat: am ersten März"
+      },
+      {
+        "title": "in/auf + Dativ",
+        "summary": "Ort: im Norden, im Krankenhaus, auf dem Flughafen"
+      }
+    ],
+    "commonMistakes": [
+      "فراموش کردن ge- در شروع Partizip II",
+      "استفاده از Präteritum به‌جای Perfekt در مکالمه (به‌جز sein)",
+      "اشتباه در اعداد ترتیبی: am dritten نه am dreiten",
+      "اشتباه در تلفظ 'ö' در bewölkt و 'ü' in kühl"
+    ],
+    "usefulTips": [
+      "Perfekt برای مکالمه، Präteritum برای نوشتار (به‌جز sein)",
+      "Partizip II همیشه در انتهای جمله (مثل Satzklammer)",
+      "تاریخ: am + [عدد]-ten + [ماه]",
+      "سال‌های ۲۰۰۰+: zweitausend + بقیه"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۷، شما با آب‌وهوا، تاریخ، زمان گذشته Perfekt (با haben) و Präteritum فعل sein (war/waren) آشنا شدید. شما یاد گرفتید چگونه درباره‌ی دیروز صحبت کنید، تاریخ تولد را بگویید، و آب‌وهوا را توصیف کنید. این اولین قدم شما در دنیای زمان گذشته‌ی آلمانی بود.",
+    "en": "In Lesson 7, you learned weather, dates, Perfekt with haben, and Präteritum of sein (war/waren). You learned to talk about yesterday, say your birth date, and describe weather. This was your first step into the German past tense.",
+    "de": "In Lektion 7 haben Sie Wetter, Datum, Perfekt mit haben und Präteritum von sein gelernt."
+  },
+  "metadata": {
+    "createdAt": "2026-07-09",
+    "updatedAt": "2026-07-09",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "weather",
+      "perfekt",
+      "prateritum",
+      "sein",
+      "dates",
+      "ordinal-numbers",
+      "past-tense",
+      "A1"
+    ],
+    "difficulty": 3,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04",
+      "A1-L05",
+      "A1-L06"
+    ]
+  }
 }

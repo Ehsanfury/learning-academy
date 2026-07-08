@@ -19,6 +19,7 @@ import logger from "../config/logger.js";
 class ProgressService {
   /**
    * Get user progress summary
+   * ✅ FIXED: Uses Lesson.count() instead of lessonRepository.countAll()
    */
   async getUserProgressSummary(userId) {
     try {
@@ -26,6 +27,7 @@ class ProgressService {
         throw new Error("User ID is required");
       }
 
+      // ✅ FIXED: Use Lesson.count() directly
       const totalLessons = await Lesson.count({
         where: { isActive: true },
       });
