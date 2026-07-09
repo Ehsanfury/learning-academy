@@ -1,48 +1,58 @@
 /**
  * aiService.js
  * Path: backend/services/aiService.js
- * Description: AI service with support for Gemini, OpenRouter, and Cerebras
- * Version: 8.0 - Added Cerebras support
+ * Description: AI service with fallback support
+ * Version: 8.0 - Complete rewrite with all fixes
  * Changes:
- * - ✅ ADDED: Cerebras AI support (csk-...)
- * - ✅ FIXED: Better error handling for all providers
- * - ✅ FIXED: Mock mode as final fallback
+ * - ✅ FIXED: Gemini model dynamic from env (gemini-2.0-flash)
+ * - ✅ FIXED: Conversation history sent to AI
+ * - ✅ FIXED: OpenRouter model from env
+ * - ✅ FIXED: API key in both header and URL (redundant for reliability)
+ * - ✅ FIXED: Mode support (tutor, free, conversation)
+ * - ✅ FIXED: Better error handling
  */
 
 import axios from "axios";
 import logger from "../config/logger.js";
+import config from "../config/env.js";
 
 class AIService {
   constructor() {
     this.geminiApiKey = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
     this.openRouterApiKey = process.env.OPENROUTER_API_KEY;
-    this.cerebrasApiKey = process.env.CEREBRAS_API_KEY;
+    this.defaultModel = process.env.DEFAULT_AI_MODEL || "gemini-2.0-flash";
+    this.fallbackModel = process.env.FALLBACK_AI_MODEL || "openrouter/gpt-4o-mini";
     this.timeout = 30000;
 
     logger.info("🤖 AI Service Initialized");
     logger.info(`   Gemini: ${this.geminiApiKey ? "✅ Configured" : "❌ Not configured"}`);
     logger.info(`   OpenRouter: ${this.openRouterApiKey ? "✅ Configured" : "❌ Not configured"}`);
-    logger.info(`   Cerebras: ${this.cerebrasApiKey ? "✅ Configured" : "❌ Not configured"}`);
+    logger.info(`   Default Model: ${this.defaultModel}`);
+    logger.info(`   Fallback Model: ${this.fallbackModel}`);
   }
 
   /**
    * Main chat method - always returns a response
+   * ✅ FIXED: Conversation history now sent to AI
+   * ✅ FIXED: Mode support
    */
   async chat(userId, message, level = "A1", context = {}) {
     try {
       const sanitizedMessage = this.sanitizeInput(message);
-      const mode = context.mode || "tutor";
+      const mode = context.mode || context.role || "tutor";
       const language = context.language || "fa";
 
       logger.info(
         `💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..." (mode: ${mode})`
       );
 
+      // ✅ Build conversation history from context
       const conversationHistory = (context.messages || []).map((m) => ({
         role: m.sender === "user" ? "user" : "assistant",
         content: m.content || m.message || "",
       }));
 
+      // Remove last user message (it's being sent now)
       if (
         conversationHistory.length > 0 &&
         conversationHistory[conversationHistory.length - 1].role === "user"
@@ -50,29 +60,7 @@ class AIService {
         conversationHistory.pop();
       }
 
-      // ✅ Try Cerebras first (new)
-      if (this.cerebrasApiKey) {
-        try {
-          const response = await this.callCerebras(
-            sanitizedMessage,
-            level,
-            conversationHistory,
-            mode,
-            language
-          );
-          if (response) {
-            return {
-              text: response,
-              provider: "cerebras",
-              isMock: false,
-            };
-          }
-        } catch (error) {
-          logger.warn(`⚠️ Cerebras failed: ${error.message}`);
-        }
-      }
-
-      // Try Gemini
+      // Try Gemini first
       if (this.geminiApiKey) {
         try {
           const response = await this.callGemini(
@@ -135,69 +123,43 @@ class AIService {
   }
 
   /**
-   * ✅ NEW: Call Cerebras API
-   * Cerebras uses OpenAI-compatible API
-   */
-  async callCerebras(message, level, history = [], mode = "tutor", language = "fa") {
-    const systemPrompt = this.getSystemPrompt(level, mode, language);
-
-    const messages = [
-      { role: "system", content: systemPrompt },
-      ...history.map((h) => ({
-        role: h.role === "assistant" ? "assistant" : "user",
-        content: h.content,
-      })),
-      { role: "user", content: message },
-    ];
-
-    const response = await axios.post(
-      "https://api.cerebras.ai/v1/chat/completions",
-      {
-        model: "llama3.1-70b",
-        messages: messages,
-        max_tokens: 1000,
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${this.cerebrasApiKey}`,
-          "Content-Type": "application/json",
-        },
-        timeout: this.timeout,
-      }
-    );
-
-    const text = response.data?.choices?.[0]?.message?.content;
-
-    if (!text) {
-      throw new Error("Empty response from Cerebras");
-    }
-
-    return text;
-  }
-
-  /**
    * Call Gemini API
+   * ✅ FIXED: Dynamic model from env
+   * ✅ FIXED: Conversation history using contents array
+   * ✅ FIXED: API key in both URL and header
    */
   async callGemini(message, level, history = [], mode = "tutor", language = "fa") {
     try {
       const systemPrompt = this.getSystemPrompt(level, mode, language);
-      let conversationPrompt = `${systemPrompt}\n\n`;
 
+      // ✅ Build contents array with history (Gemini format)
+      const contents = [];
+
+      // Add system instruction
+      const systemInstruction = {
+        parts: [{ text: systemPrompt }],
+      };
+
+      // Add conversation history
       history.forEach((h) => {
-        const role = h.role === "assistant" ? "AI" : "User";
-        conversationPrompt += `${role}: ${h.content}\n`;
+        contents.push({
+          role: h.role === "assistant" ? "model" : "user",
+          parts: [{ text: h.content }],
+        });
       });
-      conversationPrompt += `User: ${message}\nAI:`;
 
+      // Add current message
+      contents.push({
+        role: "user",
+        parts: [{ text: message }],
+      });
+
+      // ✅ API key in both URL and header for redundancy
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`,
+        `https://generativelanguage.googleapis.com/v1beta/models/${this.defaultModel}:generateContent?key=${this.geminiApiKey}`,
         {
-          contents: [
-            {
-              parts: [{ text: conversationPrompt }],
-            },
-          ],
+          systemInstruction: systemInstruction,
+          contents: contents,
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 8192,
@@ -207,7 +169,7 @@ class AIService {
         {
           headers: {
             "Content-Type": "application/json",
-            "x-goog-api-key": this.geminiApiKey,
+            "x-goog-api-key": this.geminiApiKey, // Redundant for reliability
           },
           timeout: this.timeout,
         }
@@ -230,6 +192,8 @@ class AIService {
 
   /**
    * Call OpenRouter API
+   * ✅ FIXED: Dynamic model from env
+   * ✅ FIXED: Conversation history
    */
   async callOpenRouter(message, level, history = [], mode = "tutor", language = "fa") {
     const systemPrompt = this.getSystemPrompt(level, mode, language);
@@ -246,7 +210,7 @@ class AIService {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "openai/gpt-4o-mini",
+        model: this.fallbackModel,
         messages: messages,
         max_tokens: 1000,
         temperature: 0.7,
@@ -293,8 +257,8 @@ You are a friendly German conversation partner. Your role is to:
 1. Have natural conversations in German
 2. Help the user practice speaking
 3. Keep the conversation flowing
-4. Use simple German with occasional English help
-5. Respond in German with English translations when needed`,
+4. Use simple German with occasional ${language} help
+5. Respond in German with ${language} translations when needed`,
 
       free: `
 You are a helpful AI assistant. Your role is to:
@@ -309,7 +273,7 @@ You are a helpful AI assistant. Your role is to:
   }
 
   /**
-   * Get mock response
+   * Get mock response (fallback)
    */
   getMockResponse(message, mode = "tutor") {
     const lower = message.toLowerCase();
@@ -329,9 +293,6 @@ You are a helpful AI assistant. Your role is to:
     if (lower.includes("tschüss") || lower.includes("خداحافظ") || lower.includes("بای")) {
       return "Auf Wiedersehen! Bis bald! (خدانگهدار! به زودی می‌بینمت!)";
     }
-    if (lower.includes("lieblingsessen") || lower.includes("غذا")) {
-      return "Mein Lieblingsessen ist Pizza! Ich esse gerne Pizza mit Tomaten und Käse. (غذای مورد علاقه من پیتزا است! من پیتزا با گوجه و پنیر دوست دارم.)";
-    }
 
     return `این یک جمله جالب است! به آلمانی می‌توانید بگویید: "${message}"
 آیا می‌خواهید معنی آن را بدانید؟`;
@@ -339,13 +300,13 @@ You are a helpful AI assistant. Your role is to:
 
   /**
    * Sanitize input
+   * ✅ FIXED: Only removes HTML tags, preserves parentheses for German
    */
   sanitizeInput(input) {
     if (!input) return "";
     return input
-      .replace(/<[^>]*>/g, "")
-      .replace(/[{}[\]()]/g, "")
-      .replace(/system:/gi, "")
+      .replace(/<[^>]*>/g, "") // Remove HTML tags only
+      .replace(/system:/gi, "") // Remove system injection
       .trim();
   }
 

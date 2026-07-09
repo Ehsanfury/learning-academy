@@ -1,230 +1,194 @@
 /**
  * socketHandler.js
  * Path: backend/socketHandler.js
- * Description: Socket.IO handler with authentication
+ * Description: WebSocket connection management with JWT authentication
  * Changes:
- * - ✅ FIXED: JWT_SECRET from config.jwt.accessSecret
- * - ✅ Added authentication middleware
- * - ✅ Added user validation for room joining
- * - ✅ Added proper error handling
- * - ✅ Added logging for connections
+ * - ✅ FIXED: Added user.isActive check
+ * - ✅ FIXED: JWT authentication middleware
+ * - ✅ FIXED: Room access restricted to authenticated users
+ * - ✅ FIXED: Proper error handling
  */
 
 import jwt from "jsonwebtoken";
-import config from "./config/env.js";
-import logger from "./config/logger.js";
 import { User } from "./models/index.js";
+import logger from "./config/logger.js";
+import config from "./config/env.js";
 
-// ✅ FIXED: Use config.jwt.accessSecret
 const JWT_SECRET = config.jwt.accessSecret;
 
 /**
- * Setup Socket.IO with authentication
- * @param {Object} io - Socket.IO instance
+ * Authenticate socket connection with JWT
  */
-function setupSocket(io) {
-  // ============================================
-  // 🔐 Authentication Middleware
-  // ============================================
+const authenticateSocket = async (socket, next) => {
+  try {
+    const token =
+      socket.handshake.auth?.token || socket.handshake.headers?.authorization?.split(" ")[1];
 
-  io.use(async (socket, next) => {
-    try {
-      const token =
-        socket.handshake.auth.token || socket.handshake.headers.authorization?.split(" ")[1];
-
-      if (!token) {
-        logger.warn(`⚠️ Socket connection attempt without token from ${socket.handshake.address}`);
-        return next(new Error("Authentication required"));
-      }
-
-      // Verify token
-      const decoded = jwt.verify(token, JWT_SECRET);
-
-      // Check if user exists
-      const user = await User.findByPk(decoded.id);
-      if (!user) {
-        logger.warn(`⚠️ Socket connection attempt with invalid user: ${decoded.id}`);
-        return next(new Error("User not found"));
-      }
-
-      // Attach user info to socket
-      socket.userId = decoded.id;
-      socket.userRole = decoded.role;
-      socket.user = user;
-
-      logger.info(`✅ Socket authenticated for user: ${user.email} (${socket.id})`);
-      next();
-    } catch (error) {
-      logger.error(`❌ Socket authentication error: ${error.message}`);
-      next(new Error("Invalid token"));
+    if (!token) {
+      logger.warn(`🔌 Socket ${socket.id} connection rejected: No token provided`);
+      return next(new Error("Authentication required"));
     }
-  });
 
-  // ============================================
-  // 📡 Connection Handler
-  // ============================================
+    // Verify JWT
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+    // Get user from database
+    const user = await User.findByPk(decoded.id, {
+      attributes: { exclude: ["password", "refreshToken"] },
+    });
+
+    if (!user) {
+      logger.warn(`🔌 Socket ${socket.id} connection rejected: User not found`);
+      return next(new Error("User not found"));
+    }
+
+    // ✅ FIXED: Check if user is active
+    if (!user.isActive) {
+      logger.warn(`🔌 Socket ${socket.id} connection rejected: Account deactivated`);
+      return next(new Error("Account deactivated"));
+    }
+
+    // Attach user to socket
+    socket.user = user;
+    socket.userId = user.id;
+
+    logger.info(`🔌 Socket ${socket.id} authenticated for user: ${user.id}`);
+    next();
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      logger.warn(`🔌 Socket ${socket.id} connection rejected: Token expired`);
+      return next(new Error("Token expired"));
+    }
+    if (error.name === "JsonWebTokenError") {
+      logger.warn(`🔌 Socket ${socket.id} connection rejected: Invalid token`);
+      return next(new Error("Invalid token"));
+    }
+    logger.error(`🔌 Socket ${socket.id} authentication error:`, error.message);
+    return next(new Error("Authentication failed"));
+  }
+};
+
+/**
+ * Initialize Socket.IO with authentication
+ */
+export const initializeSocket = (io) => {
+  // ✅ Use authentication middleware
+  io.use(authenticateSocket);
 
   io.on("connection", (socket) => {
     const userId = socket.userId;
-    logger.info(`✅ User ${userId} connected to socket (${socket.id})`);
+    logger.info(`🔌 Client connected: ${socket.id} (User: ${userId})`);
+
+    // Join user's personal room for private messages
+    socket.join(`user:${userId}`);
+    logger.info(`📨 Socket ${socket.id} joined user room: user:${userId}`);
 
     // ============================================
-    // 📍 Room Management
+    // 📚 Lesson Rooms (Authenticated)
     // ============================================
 
-    /**
-     * Join a room (with permission check)
-     */
-    socket.on("join-room", async (roomId, callback) => {
-      try {
-        if (roomId.startsWith("user-") && roomId !== `user-${userId}`) {
-          logger.warn(`⚠️ User ${userId} attempted to join unauthorized room: ${roomId}`);
-          callback({ success: false, error: "Access denied to this room" });
-          return;
-        }
-
-        const rooms = Array.from(socket.rooms);
-        rooms.forEach((room) => {
-          if (room !== socket.id) {
-            socket.leave(room);
-          }
-        });
-
-        socket.join(roomId);
-        logger.info(`📌 User ${userId} joined room: ${roomId}`);
-
-        callback({ success: true, room: roomId });
-      } catch (error) {
-        logger.error(`❌ Error joining room ${roomId}: ${error.message}`);
-        callback({ success: false, error: error.message });
+    socket.on("join-lesson", (lessonId) => {
+      if (!lessonId) {
+        socket.emit("error", { message: "Lesson ID is required" });
+        return;
       }
+
+      socket.join(`lesson:${lessonId}`);
+      logger.info(`📚 Socket ${socket.id} joined lesson:${lessonId} (User: ${userId})`);
+
+      socket.to(`lesson:${lessonId}`).emit("user-joined", {
+        userId: userId,
+        timestamp: new Date(),
+      });
     });
 
-    /**
-     * Leave a room
-     */
-    socket.on("leave-room", (roomId, callback) => {
-      try {
-        socket.leave(roomId);
-        logger.info(`📌 User ${userId} left room: ${roomId}`);
-        callback({ success: true });
-      } catch (error) {
-        logger.error(`❌ Error leaving room ${roomId}: ${error.message}`);
-        callback({ success: false, error: error.message });
-      }
+    socket.on("leave-lesson", (lessonId) => {
+      if (!lessonId) return;
+
+      socket.leave(`lesson:${lessonId}`);
+      logger.info(`📚 Socket ${socket.id} left lesson:${lessonId} (User: ${userId})`);
     });
 
     // ============================================
-    // 💬 Messaging
+    // 📝 Answer Submission (Authenticated)
     // ============================================
 
-    socket.on("send-message", async (data, callback) => {
-      try {
-        const { roomId, message, type = "text" } = data;
+    socket.on("submit-answer", (data) => {
+      const { lessonId, questionId, answer } = data;
 
-        if (!roomId || !message) {
-          callback({ success: false, error: "Room ID and message are required" });
-          return;
-        }
-
-        if (!socket.rooms.has(roomId)) {
-          logger.warn(`⚠️ User ${userId} attempted to send message to room not joined: ${roomId}`);
-          callback({ success: false, error: "Not a member of this room" });
-          return;
-        }
-
-        const messageData = {
-          id: `msg_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
-          userId,
-          userName: socket.user?.name || "User",
-          message,
-          type,
-          timestamp: new Date().toISOString(),
-        };
-
-        io.to(roomId).emit("new-message", messageData);
-
-        logger.info(`💬 Message sent from user ${userId} to room ${roomId}`);
-        callback({ success: true, message: messageData });
-      } catch (error) {
-        logger.error(`❌ Error sending message: ${error.message}`);
-        callback({ success: false, error: error.message });
+      if (!lessonId || !questionId) {
+        socket.emit("error", { message: "Lesson ID and Question ID are required" });
+        return;
       }
+
+      socket.to(`lesson:${lessonId}`).emit("answer-submitted", {
+        userId: userId,
+        questionId,
+        answer,
+        timestamp: new Date(),
+      });
     });
+
+    // ============================================
+    // ⌨️ Typing Indicator (Authenticated)
+    // ============================================
 
     socket.on("typing", (data) => {
-      const { roomId, isTyping } = data;
+      const { lessonId, isTyping } = data;
 
-      if (socket.rooms.has(roomId)) {
-        socket.to(roomId).emit("user-typing", {
-          userId,
-          userName: socket.user?.name || "User",
-          isTyping,
-        });
+      if (!lessonId) {
+        socket.emit("error", { message: "Lesson ID is required" });
+        return;
       }
+
+      socket.to(`lesson:${lessonId}`).emit("user-typing", {
+        userId: userId,
+        isTyping,
+        timestamp: new Date(),
+      });
     });
 
     // ============================================
-    // 👤 User Status
+    // 🤖 AI Tutor (Authenticated)
     // ============================================
 
-    socket.on("update-status", async (status, callback) => {
+    socket.on("join-ai-tutor", () => {
+      socket.join(`ai:${userId}`);
+      logger.info(`🤖 Socket ${socket.id} joined AI tutor for user:${userId}`);
+    });
+
+    socket.on("ai-message", async (data) => {
+      const { message, mode, level } = data;
+
+      if (!message) {
+        socket.emit("error", { message: "Message is required" });
+        return;
+      }
+
+      socket.emit("ai-thinking", { status: true });
+
       try {
-        io.emit("user-status-change", {
-          userId,
-          status,
-          timestamp: new Date().toISOString(),
+        const aiService = (await import("./services/aiService.js")).default;
+
+        const response = await aiService.chat(userId, message, level || "A1", {
+          mode: mode || "general",
+          nativeLanguage: "fa",
         });
 
-        logger.info(`👤 User ${userId} status updated to: ${status}`);
-        callback({ success: true });
+        socket.emit("ai-response", {
+          text: response.text,
+          provider: response.provider,
+          isMock: response.isMock,
+          timestamp: new Date(),
+        });
       } catch (error) {
-        logger.error(`❌ Error updating status: ${error.message}`);
-        callback({ success: false, error: error.message });
-      }
-    });
-
-    // ============================================
-    // 🔔 Notifications
-    // ============================================
-
-    socket.on("send-notification", (data, callback) => {
-      try {
-        const { targetUserId, notification } = data;
-
-        const targetSockets = io.sockets.sockets;
-        let found = false;
-
-        for (const [socketId, targetSocket] of targetSockets) {
-          if (targetSocket.userId === targetUserId) {
-            targetSocket.emit("notification", notification);
-            found = true;
-            break;
-          }
-        }
-
-        if (found) {
-          logger.info(`🔔 Notification sent to user ${targetUserId}`);
-          callback({ success: true });
-        } else {
-          logger.warn(`⚠️ User ${targetUserId} not connected`);
-          callback({ success: false, error: "User not connected" });
-        }
-      } catch (error) {
-        logger.error(`❌ Error sending notification: ${error.message}`);
-        callback({ success: false, error: error.message });
-      }
-    });
-
-    // ============================================
-    // 💓 Heartbeat / Ping
-    // ============================================
-
-    socket.on("ping", (callback) => {
-      const timestamp = new Date().toISOString();
-      socket.emit("pong", { timestamp });
-      if (callback) {
-        callback({ timestamp });
+        logger.error(`🤖 AI message error for user ${userId}:`, error.message);
+        socket.emit("ai-error", {
+          message: "Failed to process AI request",
+          timestamp: new Date(),
+        });
+      } finally {
+        socket.emit("ai-thinking", { status: false });
       }
     });
 
@@ -233,61 +197,9 @@ function setupSocket(io) {
     // ============================================
 
     socket.on("disconnect", () => {
-      logger.info(`🔌 User ${userId} disconnected (${socket.id})`);
-
-      io.emit("user-offline", {
-        userId,
-        timestamp: new Date().toISOString(),
-      });
-    });
-
-    socket.on("error", (error) => {
-      logger.error(`❌ Socket error for user ${userId}: ${error.message}`);
-    });
-
-    // ============================================
-    // 📢 Welcome Message
-    // ============================================
-
-    socket.emit("welcome", {
-      userId,
-      socketId: socket.id,
-      message: "Connected to Learning Academy socket server",
-      timestamp: new Date().toISOString(),
-    });
-
-    socket.broadcast.emit("user-online", {
-      userId,
-      userName: socket.user?.name || "User",
-      timestamp: new Date().toISOString(),
+      logger.info(`🔌 Client disconnected: ${socket.id} (User: ${userId})`);
     });
   });
+};
 
-  // ============================================
-  // 📊 Admin Functions
-  // ============================================
-
-  io.getConnectedCount = () => {
-    return io.sockets.sockets.size;
-  };
-
-  io.getConnectedUsers = () => {
-    const users = [];
-    for (const [socketId, socket] of io.sockets.sockets) {
-      if (socket.userId) {
-        users.push({
-          socketId,
-          userId: socket.userId,
-          userName: socket.user?.name || "User",
-          connectedAt: socket.handshake?.time || new Date().toISOString(),
-        });
-      }
-    }
-    return users;
-  };
-
-  logger.info("✅ Socket.IO server initialized with authentication");
-  return io;
-}
-
-export default setupSocket;
+export default initializeSocket;

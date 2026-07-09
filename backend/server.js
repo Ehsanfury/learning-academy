@@ -4,6 +4,7 @@
  * Description: Server entry point
  * Changes:
  * - ✅ FIXED: Removed duplicate startServer call (app.js already handles it)
+ * - ✅ FIXED: SIGTERM/SIGINT only handled here (not in app.js)
  * - ✅ FIXED: Proper error handling
  * - ✅ FIXED: Clean shutdown
  */
@@ -24,7 +25,7 @@ startServer().catch((error) => {
 });
 
 // ============================================
-// 🛑 Graceful Shutdown
+// 🛑 Graceful Shutdown - ONLY HERE
 // ============================================
 
 process.on("SIGTERM", async () => {

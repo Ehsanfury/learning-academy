@@ -4,9 +4,9 @@
  * Description: Environment configuration with validation
  * Changes:
  * - ✅ FIXED: Separate JWT secrets for access and refresh
+ * - ✅ FIXED: SESSION_SECRET now has its own validation
  * - ✅ FIXED: Added GOOGLE_GEMINI_API_KEY support
  * - ✅ FIXED: All variable names match .env file
- * - ✅ FIXED: Added JWT_REFRESH_SECRET validation
  */
 
 import dotenv from "dotenv";
@@ -35,14 +35,27 @@ const requiredEnvVars = [
   "JWT_REFRESH_SECRET",
   "JWT_ACCESS_EXPIRES_IN",
   "JWT_REFRESH_EXPIRES_IN",
+  "SESSION_SECRET", // ✅ NEW: Required for production
 ];
 
 // Check for missing required variables
 const missingVars = requiredEnvVars.filter((varName) => !process.env[varName]);
 
-if (missingVars.length > 0) {
+// In production, all variables are required
+if (process.env.NODE_ENV === "production" && missingVars.length > 0) {
   console.error(`❌ Missing required environment variables: ${missingVars.join(", ")}`);
   process.exit(1);
+}
+
+// In development, only warn about missing SESSION_SECRET
+if (process.env.NODE_ENV === "development") {
+  const devMissing = missingVars.filter((v) => v !== "SESSION_SECRET");
+  if (devMissing.length > 0) {
+    console.warn(`⚠️ Missing environment variables: ${devMissing.join(", ")}`);
+  }
+  if (missingVars.includes("SESSION_SECRET")) {
+    console.warn("⚠️ SESSION_SECRET not set - using fallback (not recommended for production)");
+  }
 }
 
 // ============================================
@@ -69,15 +82,30 @@ export const env = {
     port: parseInt(process.env.DB_PORT || "5432", 10),
     dialect: "postgres",
     logging: process.env.DB_LOGGING === "true",
+    // SSL configuration
+    ssl: {
+      enabled: process.env.DB_SSL === "true" || process.env.NODE_ENV === "production",
+      rejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === "true",
+    },
   },
 
-  // ✅ FIXED: Separate JWT secrets - both required
+  // JWT - Separate secrets
   jwt: {
     secret: process.env.JWT_SECRET,
     accessSecret: process.env.JWT_SECRET,
     refreshSecret: process.env.JWT_REFRESH_SECRET,
     accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
+  },
+
+  // ✅ FIXED: Session secret separate from JWT
+  session: {
+    secret:
+      process.env.SESSION_SECRET ||
+      (process.env.NODE_ENV === "production"
+        ? null
+        : "development-session-secret-do-not-use-in-production"),
+    maxAge: parseInt(process.env.SESSION_MAX_AGE || "604800000", 10),
   },
 
   // Admin user
@@ -132,12 +160,6 @@ export const env = {
     password: process.env.REDIS_PASSWORD,
     db: parseInt(process.env.REDIS_DB || "0", 10),
   },
-
-  // Session
-  session: {
-    secret: process.env.SESSION_SECRET || process.env.JWT_SECRET,
-    maxAge: parseInt(process.env.SESSION_MAX_AGE || "604800000", 10),
-  },
 };
 
 // ============================================
@@ -163,15 +185,18 @@ if (env.jwt.secret && env.jwt.secret.length < 32) {
   console.warn("⚠️ JWT_SECRET should be at least 32 characters long");
 }
 
-// ✅ FIXED: Validate refresh secret exists and is different
-if (!env.jwt.refreshSecret) {
-  console.warn("⚠️ JWT_REFRESH_SECRET is not set - using JWT_SECRET (not recommended)");
-} else if (env.jwt.refreshSecret.length < 32) {
+if (env.jwt.refreshSecret && env.jwt.refreshSecret.length < 32) {
   console.warn("⚠️ JWT_REFRESH_SECRET should be at least 32 characters long");
 }
 
 if (env.isProduction && env.jwt.accessSecret === env.jwt.refreshSecret) {
   console.warn("⚠️ JWT_SECRET and JWT_REFRESH_SECRET should be different in production");
+}
+
+// Validate session secret in production
+if (env.isProduction && !env.session.secret) {
+  console.error("❌ SESSION_SECRET is required in production!");
+  process.exit(1);
 }
 
 export default env;

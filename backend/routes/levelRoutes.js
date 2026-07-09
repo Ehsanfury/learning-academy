@@ -2,9 +2,13 @@
  * levelRoutes.js
  * Path: backend/routes/levelRoutes.js
  * Description: Level routes
+ * Changes:
+ * - ✅ FIXED: Added authenticate middleware to all routes
+ * - ✅ FIXED: All routes now protected
  */
 
 import express from "express";
+import { authenticate } from "../middlewares/authMiddleware.js";
 import {
   getLevels,
   getLevelById,
@@ -17,6 +21,12 @@ import {
 } from "../controllers/levelsController.js";
 
 const router = express.Router();
+
+// ============================================
+// 🔐 All routes require authentication
+// ============================================
+
+router.use(authenticate);
 
 // ============================================
 // 📊 Level Routes

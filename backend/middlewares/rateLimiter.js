@@ -5,7 +5,7 @@
  * Changes:
  * - ✅ FIXED: All handlers now properly respond with 429
  * - ✅ FIXED: Removed throw from handler callbacks
- * - ✅ FIXED: Added proper exports
+ * - ✅ NEW: Added aiLimiter for AI endpoints
  */
 
 import rateLimit from "express-rate-limit";
@@ -115,6 +115,29 @@ export const apiLimiter = rateLimit({
       success: false,
       message: "API rate limit exceeded. Please try again later.",
       retryAfter: Math.ceil(60 * 60),
+      timestamp: new Date().toISOString(),
+    });
+  },
+});
+
+/**
+ * ✅ NEW: AI rate limiter - 20 requests per minute
+ * AI endpoints cost money, so we need stricter limits
+ */
+export const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 20,
+  message: {
+    success: false,
+    message: "Too many AI requests, please wait a moment.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, res, _next) => {
+    res.status(429).json({
+      success: false,
+      message: "Too many AI requests, please wait a moment.",
+      retryAfter: Math.ceil(60),
       timestamp: new Date().toISOString(),
     });
   },

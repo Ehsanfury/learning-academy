@@ -3,6 +3,7 @@
  * Path: backend/config/db.js
  * Description: Database configuration
  * Changes:
+ * - ✅ FIXED: SSL configuration with rejectUnauthorized in production
  * - ✅ FIXED: Correct property names (name, user instead of database, username)
  * - ✅ Disabled logging in production
  * - ✅ Uses config from env.js
@@ -19,18 +20,11 @@ import logger from "./logger.js";
 const dbConfig = {
   host: config.db.host,
   port: config.db.port,
-  database: config.db.name, // ✅ FIXED: was config.db.database
-  username: config.db.user, // ✅ FIXED: was config.db.username
+  database: config.db.name,
+  username: config.db.user,
   password: config.db.password,
   dialect: "postgres",
-  dialectOptions: {
-    ssl: config.isProduction
-      ? {
-          require: true,
-          rejectUnauthorized: false,
-        }
-      : false,
-  },
+  dialectOptions: {},
   pool: {
     max: 20,
     min: 2,
@@ -50,6 +44,24 @@ const dbConfig = {
     ],
   },
 };
+
+// ✅ FIXED: SSL configuration for production
+if (config.db.ssl?.enabled) {
+  dbConfig.dialectOptions.ssl = {
+    require: true,
+    rejectUnauthorized: config.db.ssl?.rejectUnauthorized !== false, // Default: true for production
+  };
+}
+
+// Also handle the case where ssl is enabled but not in config.db.ssl
+if (config.isProduction && !config.db.ssl?.enabled) {
+  // In production, default to SSL with strict validation
+  dbConfig.dialectOptions.ssl = {
+    require: true,
+    rejectUnauthorized: true,
+  };
+  logger.info("🔒 SSL enabled for production database connection (strict mode)");
+}
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
 

@@ -57,7 +57,7 @@ export const chat = asyncHandler(async (req, res) => {
     userId,
     level: String(level),
     nativeLanguage: req.user.nativeLanguage || "fa",
-    role: context.role || "tutor",
+    mode: context.role || context.mode || "tutor", // ✅ FIXED: supports both
     topic: context.topic || "general",
     messages: history.map((h) => ({
       role: h.sender,
@@ -339,15 +339,28 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
 /**
  * Get conversations list (for AiTutorPage)
  * GET /api/ai/conversations
- * ✅ FIXED: Now properly returns data with messages
+ * ✅ FIXED: N+1 query with one query using GROUP BY
+ * ✅ FIXED: limit with max cap
+ * ✅ FIXED: total count
  */
 export const getConversations = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { limit = 20, offset = 0 } = req.query;
 
+  // ✅ FIXED: Max limit cap to prevent DoS
+  const safeLimit = Math.min(parseInt(limit) || 20, 100);
+  const safeOffset = parseInt(offset) || 0;
+
   logger.info(`📊 Getting conversations for user ${userId}`);
 
-  // Get distinct session IDs with latest message
+  // ✅ FIXED: Get total count first
+  const total = await AIConversation.count({
+    where: { userId },
+    distinct: true,
+    col: "sessionId",
+  });
+
+  // ✅ FIXED: One query with GROUP BY
   const conversations = await AIConversation.findAll({
     where: { userId },
     attributes: [
@@ -357,43 +370,36 @@ export const getConversations = asyncHandler(async (req, res) => {
         "lastMessageAt",
       ],
       [AIConversation.sequelize.fn("COUNT", AIConversation.sequelize.col("id")), "messageCount"],
+      // ✅ FIXED: Get first message directly
+      [
+        AIConversation.sequelize.literal(
+          `(SELECT message FROM ai_conversations AS sub 
+            WHERE sub.user_id = AIConversation.user_id 
+            AND sub.session_id = AIConversation.session_id 
+            ORDER BY sub.created_at ASC LIMIT 1)`
+        ),
+        "firstMessage",
+      ],
     ],
     group: ["sessionId"],
     order: [[AIConversation.sequelize.literal('"lastMessageAt"'), "DESC"]],
-    limit: parseInt(limit),
-    offset: parseInt(offset),
+    limit: safeLimit,
+    offset: safeOffset,
   });
 
-  // Get messages for each conversation
-  const result = await Promise.all(
-    conversations.map(async (conv) => {
-      const messages = await AIConversation.findAll({
-        where: {
-          userId,
-          sessionId: conv.sessionId,
-        },
-        order: [["created_at", "ASC"]],
-        limit: 50,
-      });
-
-      return {
-        sessionId: conv.sessionId,
-        lastMessageAt: conv.get("lastMessageAt"),
-        messageCount: parseInt(conv.get("messageCount")),
-        messages: messages.map((m) => ({
-          id: m.id,
-          sender: m.sender,
-          message: m.message,
-          created_at: m.created_at,
-        })),
-      };
-    })
-  );
+  const result = conversations.map((conv) => ({
+    sessionId: conv.sessionId,
+    lastMessageAt: conv.get("lastMessageAt"),
+    messageCount: parseInt(conv.get("messageCount")),
+    preview: (conv.get("firstMessage") || "").substring(0, 50),
+  }));
 
   res.json({
     success: true,
     data: result,
-    total: result.length,
+    total: total,
+    limit: safeLimit,
+    offset: safeOffset,
   });
 });
 

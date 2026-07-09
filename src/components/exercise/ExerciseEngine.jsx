@@ -1,13 +1,13 @@
 /**
  * ExerciseEngine.jsx
  * Path: src/components/exercise/ExerciseEngine.jsx
- * Description: Exercise engine component for rendering and handling exercises
+ * Description: Exercise engine with full question type support
  * Changes:
- * - ✅ FIXED: Better question extraction from various data structures
- * - ✅ FIXED: Added language support
- * - ✅ FIXED: Handle empty questions gracefully
- * - ✅ FIXED: Support for both 'questions' and 'exercise' props
- * - ✅ FIXED: Added Target icon import
+ * - ✅ FIXED: Added match_situation support
+ * - ✅ FIXED: Added role_play support
+ * - ✅ FIXED: Added pronunciation support
+ * - ✅ FIXED: Fixed true_false comparison (string vs boolean)
+ * - ✅ FIXED: All question types now have UI
  */
 
 import React, { useState, useEffect } from "react";
@@ -17,6 +17,7 @@ import {
   ArrowRight,
   ArrowLeft,
   Target,
+  Volume2,
 } from "lucide-react";
 import { cn } from "../../utils/helpers";
 import { useLanguage } from "../../context/LanguageContext";
@@ -42,11 +43,9 @@ const ExerciseEngine = ({
   const [correctCount, setCorrectCount] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
 
-  // ✅ FIXED: استخراج صحیح سوالات از ساختارهای مختلف
   const extractQuestions = (exerciseData) => {
     if (!exerciseData) return [];
 
-    // 1. اگر خود exerciseData شامل questions باشد
     if (
       exerciseData.questions &&
       Array.isArray(exerciseData.questions) &&
@@ -54,37 +53,26 @@ const ExerciseEngine = ({
     ) {
       return exerciseData.questions;
     }
-
-    // 2. اگر exerciseData.data شامل questions باشد
     if (
       exerciseData.data?.questions &&
       Array.isArray(exerciseData.data.questions)
     ) {
       return exerciseData.data.questions;
     }
-
-    // 3. اگر exerciseData شامل quiz باشد
     if (exerciseData.quiz && Array.isArray(exerciseData.quiz)) {
       return exerciseData.quiz;
     }
-
-    // 4. اگر exerciseData شامل items باشد
     if (exerciseData.items && Array.isArray(exerciseData.items)) {
       return exerciseData.items;
     }
-
-    // 5. اگر exerciseData یک آرایه است
     if (Array.isArray(exerciseData)) {
       return exerciseData;
     }
-
     return [];
   };
 
-  // ✅ Support both 'exercise' and 'questions' props
   const allQuestions = propQuestions || extractQuestions(exercise);
 
-  // Reset state when questions change
   useEffect(() => {
     setCurrentQuestionIndex(0);
     setAnswers({});
@@ -98,7 +86,7 @@ const ExerciseEngine = ({
         <p className="text-gray-500 dark:text-gray-400">
           {language === "fa"
             ? "هیچ سوالی برای این تمرین وجود ندارد"
-            : "No questions available for this exercise"}
+            : "No questions available"}
         </p>
       </div>
     );
@@ -108,10 +96,7 @@ const ExerciseEngine = ({
   const totalQuestions = allQuestions.length;
 
   const handleAnswer = (questionId, answer) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: answer,
-    }));
+    setAnswers((prev) => ({ ...prev, [questionId]: answer }));
     setShowFeedback(true);
   };
 
@@ -120,17 +105,22 @@ const ExerciseEngine = ({
       setCurrentQuestionIndex((prev) => prev + 1);
       setShowFeedback(false);
     } else {
-      // Calculate score
       let correct = 0;
       allQuestions.forEach((q) => {
         const userAnswer = answers[q.id];
         if (userAnswer !== undefined && userAnswer !== null) {
-          if (q.type === "multiple_choice") {
+          if (q.type === "multiple_choice" || q.type === "match_situation") {
             if (userAnswer === q.correct || userAnswer === q.correctIndex) {
               correct++;
             }
           } else if (q.type === "true_false") {
-            if (userAnswer === q.answer) {
+            // ✅ FIXED: Compare string vs boolean correctly
+            const normalizedUser = String(userAnswer).toLowerCase();
+            const normalizedCorrect =
+              typeof q.answer === "boolean"
+                ? String(q.answer).toLowerCase()
+                : String(q.answer).toLowerCase();
+            if (normalizedUser === normalizedCorrect) {
               correct++;
             }
           } else if (q.type === "fill_in" || q.type === "gap_fill") {
@@ -139,6 +129,9 @@ const ExerciseEngine = ({
             ) {
               correct++;
             }
+          } else if (q.type === "role_play" || q.type === "pronunciation") {
+            // Auto-pass for speaking exercises
+            correct++;
           }
         }
       });
@@ -255,7 +248,6 @@ const ExerciseEngine = ({
 
     return (
       <div className="space-y-6">
-        {/* Progress */}
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-400">
             {language === "fa"
@@ -270,7 +262,6 @@ const ExerciseEngine = ({
           </div>
         </div>
 
-        {/* Progress Bar */}
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
           <div
             className="bg-blue-600 h-2 rounded-full transition-all duration-300"
@@ -280,10 +271,10 @@ const ExerciseEngine = ({
           />
         </div>
 
-        {/* Question */}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
           <h4 className="text-lg font-medium mb-4">{qText}</h4>
 
+          {/* ✅ multiple_choice */}
           {qType === "multiple_choice" && (
             <div className="space-y-3">
               {options.map((option, index) => {
@@ -327,6 +318,7 @@ const ExerciseEngine = ({
             </div>
           )}
 
+          {/* ✅ true_false */}
           {qType === "true_false" && (
             <div className="flex gap-4">
               {["True", "False"].map((value) => {
@@ -357,6 +349,7 @@ const ExerciseEngine = ({
             </div>
           )}
 
+          {/* ✅ fill_in */}
           {qType === "fill_in" && (
             <div>
               <input
@@ -392,6 +385,116 @@ const ExerciseEngine = ({
             </div>
           )}
 
+          {/* ✅ match_situation */}
+          {qType === "match_situation" && (
+            <div className="space-y-3">
+              {options.map((option, index) => {
+                const isSelected = answers[currentQuestion.id] === index;
+                const isCorrect = showFeedback && index === correct;
+                const isWrong = showFeedback && isSelected && index !== correct;
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(currentQuestion.id, index)}
+                    disabled={showFeedback}
+                    className={cn(
+                      "w-full text-left px-4 py-3 rounded-lg border-2 transition-all",
+                      isSelected && !showFeedback
+                        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                        : "border-gray-200 dark:border-gray-700 hover:border-blue-400",
+                      isCorrect && showFeedback
+                        ? "border-green-500 bg-green-50 dark:bg-green-900/20"
+                        : "",
+                      isWrong && showFeedback
+                        ? "border-red-500 bg-red-50 dark:bg-red-900/20"
+                        : "",
+                    )}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center text-sm font-medium">
+                        {String.fromCharCode(65 + index)}
+                      </span>
+                      <span>{option}</span>
+                      {isCorrect && showFeedback && (
+                        <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
+                      )}
+                      {isWrong && showFeedback && (
+                        <XCircle className="w-5 h-5 text-red-500 ml-auto" />
+                      )}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ✅ role_play */}
+          {qType === "role_play" && (
+            <div className="space-y-4">
+              <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
+                <p className="text-sm text-blue-600 dark:text-blue-400">
+                  🎭{" "}
+                  {language === "fa"
+                    ? "نقش خود را اجرا کنید"
+                    : "Play your role"}
+                </p>
+                {currentQuestion.speaker && (
+                  <p className="text-sm font-medium mt-2">
+                    {currentQuestion.speaker}: {currentQuestion.german}
+                  </p>
+                )}
+                {currentQuestion.meaning && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {currentQuestion.meaning.fa || currentQuestion.meaning}
+                  </p>
+                )}
+                <p className="text-xs text-gray-400 mt-2">
+                  💡 {language === "fa" ? "با صدای بلند بخوانید" : "Read aloud"}
+                </p>
+              </div>
+              <button
+                onClick={() => handleAnswer(currentQuestion.id, "done")}
+                disabled={showFeedback}
+                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              >
+                {language === "fa" ? "✅ انجام دادم" : "✅ Done"}
+              </button>
+            </div>
+          )}
+
+          {/* ✅ pronunciation */}
+          {qType === "pronunciation" && (
+            <div className="space-y-4">
+              <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <Volume2 className="w-6 h-6 text-purple-500" />
+                  <p className="text-sm font-medium">
+                    {currentQuestion.word || currentQuestion.question}
+                  </p>
+                </div>
+                {currentQuestion.persian && (
+                  <p className="text-sm text-gray-500 mt-2">
+                    📖 {currentQuestion.persian}
+                  </p>
+                )}
+                <p className="text-xs text-gray-400 mt-2">
+                  🎤{" "}
+                  {language === "fa"
+                    ? "با صدای بلند تکرار کنید"
+                    : "Repeat aloud"}
+                </p>
+              </div>
+              <button
+                onClick={() => handleAnswer(currentQuestion.id, "done")}
+                disabled={showFeedback}
+                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              >
+                {language === "fa" ? "✅ تکرار کردم" : "✅ I repeated"}
+              </button>
+            </div>
+          )}
+
           {showFeedback && currentQuestion.explanation && (
             <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg">
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -401,7 +504,6 @@ const ExerciseEngine = ({
           )}
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-between items-center">
           <button
             onClick={handlePrevious}
@@ -415,7 +517,6 @@ const ExerciseEngine = ({
           {currentQuestionIndex === totalQuestions - 1 ? (
             <button
               onClick={handleNext}
-              disabled={Object.keys(answers).length < totalQuestions}
               className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {language === "fa" ? "مشاهده نتایج" : "See Results"}

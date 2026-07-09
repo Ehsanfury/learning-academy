@@ -3,10 +3,10 @@
  * Path: backend/controllers/progressController.js
  * Description: Controller for user progress management
  * Changes:
+ * - ✅ FIXED: getProgress now uses getAllProgress with proper params
  * - ✅ Using asyncHandler to remove repetitive try/catch
  * - ✅ Integrated custom Error Classes
  * - ✅ Cleaner error handling
- * - ✅ Removed manual error message checking
  * - ✅ Added logging for all operations
  */
 
@@ -23,22 +23,28 @@ import { ValidationError } from "../errors/index.js";
 /**
  * Get all progress for a user
  * GET /api/progress
+ * ✅ FIXED: Uses getAllProgress with pagination
  */
 export const getProgress = asyncHandler(async (req, res) => {
   const userId = req.user.id;
+  const { limit = 50, offset = 0 } = req.query;
 
-  logInfo("📊 [Controller] Getting all progress", { userId });
+  logInfo("📊 [Controller] Getting all progress", { userId, limit, offset });
 
-  const progress = await progressService.getAllProgress(userId);
+  const result = await progressService.getAllProgress(userId, parseInt(limit), parseInt(offset));
 
   logInfo("✅ [Controller] Progress fetched successfully", {
     userId,
-    count: progress.length,
+    count: result.progress?.length || 0,
+    total: result.total || 0,
   });
 
   res.json({
     success: true,
-    data: progress,
+    data: result.progress || [],
+    total: result.total || 0,
+    limit: result.limit || parseInt(limit),
+    offset: result.offset || parseInt(offset),
   });
 });
 
@@ -51,12 +57,12 @@ export const getStats = asyncHandler(async (req, res) => {
 
   logInfo("📊 [Controller] Getting progress stats", { userId });
 
-  const stats = await progressService.getStats(userId);
+  const stats = await progressService.getUserProgressSummary(userId);
 
   logInfo("✅ [Controller] Stats fetched successfully", {
     userId,
     completedLessons: stats.completedLessons,
-    progressPercentage: stats.progressPercentage,
+    completionRate: stats.completionRate,
   });
 
   res.json({
@@ -149,16 +155,20 @@ export const getInProgressLessons = asyncHandler(async (req, res) => {
     limit,
   });
 
-  const progress = await progressService.getInProgressLessons(userId, parseInt(limit, 10));
+  // Use getAllProgress with status filter
+  const result = await progressService.getAllProgress(userId, parseInt(limit), 0);
+
+  const inProgress = (result.progress || []).filter((p) => p.status === "in_progress");
 
   logInfo("✅ [Controller] In-progress lessons fetched", {
     userId,
-    count: progress.length,
+    count: inProgress.length,
   });
 
   res.json({
     success: true,
-    data: progress,
+    data: inProgress,
+    total: inProgress.length,
   });
 });
 
@@ -173,16 +183,20 @@ export const getLastCompletedLesson = asyncHandler(async (req, res) => {
     userId,
   });
 
-  const progress = await progressService.getLastCompletedLesson(userId);
+  const progress = await progressService.getUserProgressWithLessons(userId, 1, 0);
+
+  const lastCompleted = (progress.progress || []).find(
+    (p) => p.status === "completed" || p.status === "perfect"
+  );
 
   logInfo("✅ [Controller] Last completed lesson fetched", {
     userId,
-    found: !!progress,
+    found: !!lastCompleted,
   });
 
   res.json({
     success: true,
-    data: progress,
+    data: lastCompleted || null,
   });
 });
 
@@ -199,16 +213,21 @@ export const getCompletedLessons = asyncHandler(async (req, res) => {
     limit,
   });
 
-  const progress = await progressService.getCompletedLessons(userId, parseInt(limit, 10));
+  const result = await progressService.getAllProgress(userId, parseInt(limit), 0);
+
+  const completed = (result.progress || []).filter(
+    (p) => p.status === "completed" || p.status === "perfect"
+  );
 
   logInfo("✅ [Controller] Completed lessons fetched", {
     userId,
-    count: progress.length,
+    count: completed.length,
   });
 
   res.json({
     success: true,
-    data: progress,
+    data: completed,
+    total: completed.length,
   });
 });
 
@@ -223,7 +242,7 @@ export const getLevelDistribution = asyncHandler(async (req, res) => {
     userId,
   });
 
-  const distribution = await progressService.getLevelDistribution(userId);
+  const distribution = await progressService.getProgressByLevel(userId);
 
   logInfo("✅ [Controller] Level distribution fetched", {
     userId,
@@ -248,7 +267,7 @@ export const getDailyStats = asyncHandler(async (req, res) => {
     days,
   });
 
-  const stats = await progressService.getDailyStats(userId, parseInt(days, 10));
+  const stats = await progressService.getDailyActivity(userId, parseInt(days, 10));
 
   logInfo("✅ [Controller] Daily stats fetched", {
     userId,
@@ -261,3 +280,15 @@ export const getDailyStats = asyncHandler(async (req, res) => {
     data: stats,
   });
 });
+
+export default {
+  getProgress,
+  getStats,
+  updateProgress,
+  getLessonProgress,
+  getInProgressLessons,
+  getLastCompletedLesson,
+  getCompletedLessons,
+  getLevelDistribution,
+  getDailyStats,
+};

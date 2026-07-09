@@ -6,6 +6,7 @@
  * - ✅ FIXED: Removed countAll() - using Lesson.count() directly
  * - ✅ FIXED: N+1 Query - fetching all lessons in one query
  * - ✅ FIXED: Added LIMIT to all unbounded queries
+ * - ✅ NEW: Added getAllProgress method
  * - ✅ FIXED: Added proper error handling
  */
 
@@ -19,7 +20,6 @@ import logger from "../config/logger.js";
 class ProgressService {
   /**
    * Get user progress summary
-   * ✅ FIXED: Uses Lesson.count() instead of lessonRepository.countAll()
    */
   async getUserProgressSummary(userId) {
     try {
@@ -27,7 +27,6 @@ class ProgressService {
         throw new Error("User ID is required");
       }
 
-      // ✅ FIXED: Use Lesson.count() directly
       const totalLessons = await Lesson.count({
         where: { isActive: true },
       });
@@ -75,6 +74,49 @@ class ProgressService {
         inProgress: 0,
         totalXP: 0,
         completionRate: 0,
+      };
+    }
+  }
+
+  /**
+   * ✅ NEW: Get all progress for a user
+   * GET /api/progress
+   */
+  async getAllProgress(userId, limit = 50, offset = 0) {
+    try {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
+
+      const safeLimit = Math.min(parseInt(limit) || 50, 100);
+
+      const { rows: progress, count: total } = await LessonProgress.findAndCountAll({
+        where: { userId },
+        limit: safeLimit,
+        offset: parseInt(offset) || 0,
+        order: [["updatedAt", "DESC"]],
+        include: [
+          {
+            model: Lesson,
+            as: "progressLesson",
+            attributes: ["id", "title", "level", "lessonNumber", "xpReward", "totalSections"],
+          },
+        ],
+      });
+
+      return {
+        progress,
+        total,
+        limit: safeLimit,
+        offset: parseInt(offset) || 0,
+      };
+    } catch (error) {
+      logger.error(`❌ Error in getAllProgress:`, error);
+      return {
+        progress: [],
+        total: 0,
+        limit: 50,
+        offset: 0,
       };
     }
   }

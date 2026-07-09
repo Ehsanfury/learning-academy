@@ -5,6 +5,7 @@
  * Changes:
  * - ✅ FIXED: underscored: true - all fields use snake_case
  * - ✅ FIXED: removed field definitions (redundant with underscored)
+ * - ✅ FIXED: metaData → meta_data
  */
 
 import { DataTypes } from "sequelize";
@@ -22,11 +23,13 @@ const AIConversation = sequelize.define(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      field: "user_id",
     },
     sessionId: {
       type: DataTypes.STRING(255),
       allowNull: false,
       defaultValue: "default",
+      field: "session_id",
     },
     message: {
       type: DataTypes.TEXT,
@@ -42,16 +45,18 @@ const AIConversation = sequelize.define(
       allowNull: true,
       defaultValue: DataTypes.NOW,
     },
+    // ✅ FIXED: renamed from metaData to meta_data
     metaData: {
       type: DataTypes.JSONB,
       allowNull: true,
       defaultValue: {},
+      field: "meta_data",
     },
   },
   {
     tableName: "ai_conversations",
     timestamps: true,
-    underscored: true, // ✅ This automatically maps createdAt -> created_at
+    underscored: true,
   }
 );
 

@@ -3,6 +3,7 @@
  * Path: src/services/api.js
  * Description: Axios instance with authentication
  * Changes:
+ * - ✅ FIXED: Removed double /api prefix from baseURL
  * - ✅ FIXED: Refresh token endpoint path
  * - ✅ Added withCredentials: true for httpOnly cookie support
  */
@@ -18,16 +19,15 @@ import debug from "../utils/debug";
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
+// ✅ baseURL already includes /api, so endpoints should not have /api prefix
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 30000,
   headers: {
     "Content-Type": "application/json",
   },
-  // ✅ withCredentials for httpOnly cookie
   withCredentials: true,
 });
-
 // ============================================
 // 🔄 Request Interceptor
 // ============================================
@@ -111,6 +111,7 @@ api.interceptors.response.use(
         processQueue(refreshError, null);
         storage.clearAuth();
 
+        // ✅ Only redirect if not already on login page
         if (window.location.pathname !== "/login") {
           window.location.href = "/login";
         }
@@ -119,6 +120,11 @@ api.interceptors.response.use(
       } finally {
         isRefreshing = false;
       }
+    }
+
+    // ✅ Handle 404 errors gracefully
+    if (error.response?.status === 404) {
+      debug.warn(`⚠️ API endpoint not found: ${error.config?.url}`);
     }
 
     return Promise.reject(error);

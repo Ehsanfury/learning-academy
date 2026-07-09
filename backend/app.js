@@ -7,6 +7,9 @@
  * - ✅ FIXED: All middleware imports validated
  * - ✅ FIXED: Double Authentication removed (authenticate only in routes)
  * - ✅ FIXED: Added notificationRoutes and analyticsRoutes
+ * - ✅ FIXED: Removed duplicate SIGTERM handlers (only in server.js)
+ * - ✅ FIXED: Removed console.log in production
+ * - ✅ FIXED: Changed alter: false to alter: true in development
  */
 
 import express from "express";
@@ -74,17 +77,22 @@ import {
 } from "./models/index.js";
 
 // ============================================
-// ✅ Validate Imports (Debug)
+// ✅ Validate Imports (Debug) - Only in development
 // ============================================
 
-console.log("✅ Import validation:");
-console.log("  - authenticate:", typeof authenticate === "function" ? "✅ function" : "❌ missing");
-console.log(
-  "  - trackActivity:",
-  typeof trackActivity === "function" ? "✅ function" : "❌ missing"
-);
-console.log("  - levelRoutes:", typeof levelRoutes === "function" ? "✅ function" : "❌ missing");
-console.log("  - rateLimiter:", typeof rateLimiter === "function" ? "✅ function" : "❌ missing");
+if (config.isDevelopment) {
+  console.log("✅ Import validation:");
+  console.log(
+    "  - authenticate:",
+    typeof authenticate === "function" ? "✅ function" : "❌ missing"
+  );
+  console.log(
+    "  - trackActivity:",
+    typeof trackActivity === "function" ? "✅ function" : "❌ missing"
+  );
+  console.log("  - levelRoutes:", typeof levelRoutes === "function" ? "✅ function" : "❌ missing");
+  console.log("  - rateLimiter:", typeof rateLimiter === "function" ? "✅ function" : "❌ missing");
+}
 
 // ============================================
 // 🚀 Startup Guard
@@ -229,6 +237,13 @@ app.get("/health", async (req, res) => {
   try {
     const isConnected = await testConnection();
 
+    if (config.isProduction) {
+      return res.status(isConnected ? 200 : 503).json({
+        status: isConnected ? "healthy" : "unhealthy",
+        timestamp: new Date().toISOString(),
+      });
+    }
+
     const health = {
       status: isConnected ? "healthy" : "unhealthy",
       timestamp: new Date().toISOString(),
@@ -248,7 +263,7 @@ app.get("/health", async (req, res) => {
     res.status(503).json({
       status: "unhealthy",
       timestamp: new Date().toISOString(),
-      error: error.message,
+      ...(config.isDevelopment ? { error: error.message } : {}),
     });
   }
 });
@@ -294,8 +309,6 @@ app.use("/api/auth", authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
-// ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)
-// authenticate is only applied inside individual route files
 // ============================================
 
 app.use("/api/users", trackActivity, userRoutes);
@@ -313,6 +326,7 @@ app.use("/api/stories", trackActivity, storiesRoutes);
 app.use("/api/scenarios", trackActivity, scenariosRoutes);
 app.use("/api/notifications", trackActivity, notificationRoutes);
 app.use("/api/analytics", trackActivity, analyticsRoutes);
+
 // ============================================
 // 📚 API Documentation
 // ============================================
@@ -429,7 +443,8 @@ export const initializeDatabase = async () => {
     }
 
     if (config.isDevelopment) {
-      await sequelize.sync({ alter: false });
+      // ✅ FIXED: Changed alter: false to alter: true for development
+      await sequelize.sync({ alter: true });
       logInfo("✅ Database synced successfully (development mode)");
     } else {
       logInfo("✅ Database connection verified (production mode)");
@@ -524,31 +539,9 @@ export const shutdown = async () => {
   }
 };
 
-process.on("SIGTERM", async () => {
-  logInfo("🛑 SIGTERM received");
-  await shutdown();
-  process.exit(0);
-});
-
-process.on("SIGINT", async () => {
-  logInfo("🛑 SIGINT received");
-  await shutdown();
-  process.exit(0);
-});
-
-process.on("uncaughtException", (error) => {
-  logError("❌ Uncaught Exception:", error);
-  shutdown().then(() => {
-    process.exit(1);
-  });
-});
-
-process.on("unhandledRejection", (reason, promise) => {
-  logError("❌ Unhandled Rejection:", reason);
-  shutdown().then(() => {
-    process.exit(1);
-  });
-});
+// ============================================
+// ❌ SIGTERM/SIGINT handled ONLY in server.js
+// ============================================
 
 // ============================================
 // 📤 Exports
