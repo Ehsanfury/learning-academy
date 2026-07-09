@@ -2,12 +2,11 @@
  * aiService.js
  * Path: backend/services/aiService.js
  * Description: AI service with fallback support
- * Version: 8.0 - Complete rewrite with all fixes
+ * Version: 8.0 - Fixed all AI issues
  * Changes:
- * - ✅ FIXED: Gemini model dynamic from env (gemini-2.0-flash)
- * - ✅ FIXED: Conversation history sent to AI
- * - ✅ FIXED: OpenRouter model from env
- * - ✅ FIXED: API key in both header and URL (redundant for reliability)
+ * - ✅ FIXED: Conversation history now sent to AI using contents array
+ * - ✅ FIXED: Gemini API key in both URL and header (redundant)
+ * - ✅ FIXED: OpenRouter model from env (not hardcoded)
  * - ✅ FIXED: Mode support (tutor, free, conversation)
  * - ✅ FIXED: Better error handling
  */
@@ -21,6 +20,7 @@ class AIService {
     this.geminiApiKey = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
     this.openRouterApiKey = process.env.OPENROUTER_API_KEY;
     this.defaultModel = process.env.DEFAULT_AI_MODEL || "gemini-2.0-flash";
+    // ✅ FIXED: OpenRouter model from env (not hardcoded)
     this.fallbackModel = process.env.FALLBACK_AI_MODEL || "openrouter/gpt-4o-mini";
     this.timeout = 30000;
 
@@ -124,9 +124,8 @@ class AIService {
 
   /**
    * Call Gemini API
-   * ✅ FIXED: Dynamic model from env
    * ✅ FIXED: Conversation history using contents array
-   * ✅ FIXED: API key in both URL and header
+   * ✅ FIXED: API key in both URL and header (redundant)
    */
   async callGemini(message, level, history = [], mode = "tutor", language = "fa") {
     try {
@@ -134,11 +133,6 @@ class AIService {
 
       // ✅ Build contents array with history (Gemini format)
       const contents = [];
-
-      // Add system instruction
-      const systemInstruction = {
-        parts: [{ text: systemPrompt }],
-      };
 
       // Add conversation history
       history.forEach((h) => {
@@ -154,11 +148,13 @@ class AIService {
         parts: [{ text: message }],
       });
 
-      // ✅ API key in both URL and header for redundancy
+      // ✅ FIXED: API key in both URL and header for redundancy
       const response = await axios.post(
         `https://generativelanguage.googleapis.com/v1beta/models/${this.defaultModel}:generateContent?key=${this.geminiApiKey}`,
         {
-          systemInstruction: systemInstruction,
+          systemInstruction: {
+            parts: [{ text: systemPrompt }],
+          },
           contents: contents,
           generationConfig: {
             temperature: 0.7,
@@ -169,7 +165,7 @@ class AIService {
         {
           headers: {
             "Content-Type": "application/json",
-            "x-goog-api-key": this.geminiApiKey, // Redundant for reliability
+            "x-goog-api-key": this.geminiApiKey, // ✅ Redundant for reliability
           },
           timeout: this.timeout,
         }
@@ -192,12 +188,13 @@ class AIService {
 
   /**
    * Call OpenRouter API
-   * ✅ FIXED: Dynamic model from env
+   * ✅ FIXED: Dynamic model from env (not hardcoded)
    * ✅ FIXED: Conversation history
    */
   async callOpenRouter(message, level, history = [], mode = "tutor", language = "fa") {
     const systemPrompt = this.getSystemPrompt(level, mode, language);
 
+    // Build messages with history
     const messages = [
       { role: "system", content: systemPrompt },
       ...history.map((h) => ({
@@ -207,6 +204,7 @@ class AIService {
       { role: "user", content: message },
     ];
 
+    // ✅ FIXED: Using this.fallbackModel from env (not hardcoded)
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
@@ -293,6 +291,9 @@ You are a helpful AI assistant. Your role is to:
     if (lower.includes("tschüss") || lower.includes("خداحافظ") || lower.includes("بای")) {
       return "Auf Wiedersehen! Bis bald! (خدانگهدار! به زودی می‌بینمت!)";
     }
+    if (lower.includes("was") || lower.includes("چیست") || lower.includes("این")) {
+      return "Das ist ein/eine... (این یک ... است). برای یادگیری بهتر، می‌توانید بپرسید: 'Was bedeutet das?' (این یعنی چه؟)";
+    }
 
     return `این یک جمله جالب است! به آلمانی می‌توانید بگویید: "${message}"
 آیا می‌خواهید معنی آن را بدانید؟`;
@@ -300,12 +301,11 @@ You are a helpful AI assistant. Your role is to:
 
   /**
    * Sanitize input
-   * ✅ FIXED: Only removes HTML tags, preserves parentheses for German
    */
   sanitizeInput(input) {
     if (!input) return "";
     return input
-      .replace(/<[^>]*>/g, "") // Remove HTML tags only
+      .replace(/<[^>]*>/g, "") // Remove HTML tags
       .replace(/system:/gi, "") // Remove system injection
       .trim();
   }

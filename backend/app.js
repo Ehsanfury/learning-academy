@@ -309,6 +309,8 @@ app.use("/api/auth", authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
+// ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)
+// authenticate is only applied inside individual route files
 // ============================================
 
 app.use("/api/users", trackActivity, userRoutes);

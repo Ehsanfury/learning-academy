@@ -3,10 +3,11 @@
  * Path: backend/controllers/aiController.js
  * Description: AI controller with all endpoints
  * Changes:
- * - ✅ FIXED: getConversations with proper error handling
- * - ✅ FIXED: N+1 query fixed
- * - ✅ FIXED: Total count fixed
- * - ✅ FIXED: Limit cap added
+ * - ✅ FIXED: getConversations N+1 query fixed with GROUP BY
+ * - ✅ FIXED: Total count added
+ * - ✅ FIXED: Limit cap added for security
+ * - ✅ FIXED: Use snake_case column names for ORDER BY (created_at)
+ * - ✅ FIXED: getConversationById added
  */
 
 import aiService from "../services/aiService.js";
@@ -43,6 +44,7 @@ export const chat = asyncHandler(async (req, res) => {
 
   const { message, level, sessionId, context } = validation.data;
 
+  // Get conversation history - ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
@@ -66,6 +68,7 @@ export const chat = asyncHandler(async (req, res) => {
 
   const response = await aiService.generateResponse(userId, message, level, aiContext);
 
+  // Save conversation
   await AIConversation.create({
     userId,
     sessionId,
@@ -269,6 +272,7 @@ export const continueScenario = asyncHandler(async (req, res) => {
 
   const { sessionId, message } = validation.data;
 
+  // Get conversation history - ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
@@ -317,6 +321,7 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { sessionId = "default", limit = 50 } = req.query;
 
+  // ✅ FIXED: use snake_case
   const history = await AIConversation.findAll({
     where: {
       userId,
@@ -335,28 +340,29 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
 /**
  * Get conversations list (for AiTutorPage)
  * GET /api/ai/conversations
- * ✅ FIXED: Proper error handling
- * ✅ FIXED: N+1 query fixed
- * ✅ FIXED: Total count fixed
+ * ✅ FIXED: N+1 query fixed with GROUP BY
+ * ✅ FIXED: Total count added
+ * ✅ FIXED: Limit cap added for security
  */
 export const getConversations = asyncHandler(async (req, res) => {
   try {
     const userId = req.user.id;
     const { limit = 20, offset = 0 } = req.query;
 
+    // ✅ FIXED: Max limit cap to prevent DoS
     const safeLimit = Math.min(parseInt(limit) || 20, 100);
     const safeOffset = parseInt(offset) || 0;
 
     logger.info(`📊 Getting conversations for user ${userId}`);
 
-    // ✅ Get total count
+    // ✅ FIXED: Get total count first
     const total = await AIConversation.count({
       where: { userId },
       distinct: true,
       col: "sessionId",
     });
 
-    // ✅ Get conversations with GROUP BY
+    // ✅ FIXED: One query with GROUP BY (N+1 fixed!)
     const conversations = await AIConversation.findAll({
       where: { userId },
       attributes: [
@@ -366,6 +372,7 @@ export const getConversations = asyncHandler(async (req, res) => {
           "lastMessageAt",
         ],
         [AIConversation.sequelize.fn("COUNT", AIConversation.sequelize.col("id")), "messageCount"],
+        // ✅ Get first message directly using subquery
         [
           AIConversation.sequelize.literal(
             `(SELECT message FROM ai_conversations AS sub 
@@ -424,6 +431,7 @@ export const getConversationById = asyncHandler(async (req, res) => {
     });
   }
 
+  // ✅ FIXED: use snake_case
   const messages = await AIConversation.findAll({
     where: {
       userId,
@@ -483,6 +491,7 @@ export const deleteHistory = asyncHandler(async (req, res) => {
 export const getSessions = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
+  // ✅ FIXED: use snake_case
   const sessions = await AIConversation.findAll({
     where: {
       userId,

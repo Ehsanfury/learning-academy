@@ -2,8 +2,9 @@
  * DashboardPage.jsx
  * Path: src/pages/Dashboard/DashboardPage.jsx
  * Description: Dashboard page with real data from API
- * Version: 5.2 - Fixed CardHeader, CardBody, CardFooter imports
+ * Version: 5.5 - Added About & Support to user dropdown menu
  * Changes:
+ * - ✅ FIXED: Added About and Support/Contact to user dropdown menu
  * - ✅ FIXED: CardHeader, CardBody, CardFooter imports added
  * - ✅ FIXED: lessonsData.find is not a function
  * - ✅ FIXED: Better error handling for API responses
@@ -33,6 +34,12 @@ import {
   RefreshCw,
   Calendar,
   ArrowRight,
+  Info,
+  Headphones,
+  User,
+  Settings,
+  LogOut,
+  LayoutDashboard,
 } from "lucide-react";
 import XPCard from "../../components/XPCard";
 import AchievementCard from "../../components/AchievementCard";
@@ -41,7 +48,6 @@ import ProgressBar from "../../components/ProgressBar";
 import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 
-// ✅ FIXED: Import Card components properly
 import Card, {
   CardHeader,
   CardBody,
@@ -120,13 +126,14 @@ const LessonsSkeleton = () => (
 
 function DashboardPage() {
   const { language } = useLanguage();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const [greeting, setGreeting] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const [stats, setStats] = useState({
     xp: 0,
@@ -146,6 +153,56 @@ function DashboardPage() {
     Array.from({ length: 7 }, (_, i) => ({ day: i + 1, xp: 0 })),
   );
 
+  // ✅ User menu items with About & Support (پایین تر از پروفایل و تنظیمات)
+  const userMenuItems = useMemo(
+    () => [
+      {
+        path: "/dashboard",
+        label: { fa: "داشبورد", en: "Dashboard" },
+        icon: LayoutDashboard,
+      },
+      {
+        path: "/profile",
+        label: { fa: "پروفایل", en: "Profile" },
+        icon: User,
+      },
+      {
+        path: "/settings",
+        label: { fa: "تنظیمات", en: "Settings" },
+        icon: Settings,
+      },
+      {
+        path: "/learn",
+        label: { fa: "مسیر یادگیری", en: "Learning Path" },
+        icon: BookOpen,
+      },
+      {
+        type: "divider",
+      },
+      // ✅ NEW: About Us (پایین تر از تنظیمات)
+      {
+        path: "/about",
+        label: { fa: "درباره ما", en: "About Us" },
+        icon: Info,
+      },
+      // ✅ NEW: Support / Contact Us (پایین تر از درباره ما)
+      {
+        path: "/contact",
+        label: { fa: "ارتباط با پشتیبانی", en: "Support" },
+        icon: Headphones,
+      },
+      {
+        type: "divider",
+      },
+      {
+        label: { fa: "خروج", en: "Logout" },
+        icon: LogOut,
+        isLogout: true,
+      },
+    ],
+    [],
+  );
+
   // ============================================
   // 📥 Load Dashboard Data
   // ============================================
@@ -155,7 +212,6 @@ function DashboardPage() {
       setLoading(true);
       setError(null);
 
-      // 1. دریافت درس‌ها
       const lessonsRes = await lessonApi.getAllLessons({ limit: 50 });
 
       let lessonsData = [];
@@ -183,7 +239,6 @@ function DashboardPage() {
         lessonsData = [];
       }
 
-      // 2. دریافت آمار
       try {
         const statsRes = await api.get("/lessons/stats");
         const statsData =
@@ -202,7 +257,6 @@ function DashboardPage() {
         debug.warn("⚠️ Could not fetch stats:", e);
       }
 
-      // 3. پیدا کردن درس بعدی
       if (Array.isArray(lessonsData) && lessonsData.length > 0) {
         const next = lessonsData.find(
           (l) => !l.progress || l.progress.status === "not_started",
@@ -214,7 +268,6 @@ function DashboardPage() {
         setRecentLessons([]);
       }
 
-      // 4. دریافت دستاوردها
       try {
         const achRes = await api.get("/achievements");
         const achData = achRes?.data?.data || achRes?.data || [];
@@ -224,7 +277,6 @@ function DashboardPage() {
         setAchievements([]);
       }
 
-      // 5. فعالیت هفتگی
       setWeeklyActivity(
         Array.from({ length: 7 }, (_, i) => ({
           day: i + 1,
@@ -280,6 +332,12 @@ function DashboardPage() {
     setRetryCount((prev) => prev + 1);
     loadDashboardData();
   }, [loadDashboardData]);
+
+  const handleLogout = useCallback(async () => {
+    await logout();
+    setUserMenuOpen(false);
+    navigate("/login");
+  }, [logout, navigate]);
 
   // ============================================
   // 📊 Computed Values
@@ -434,19 +492,82 @@ function DashboardPage() {
           </p>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-950 rounded-full border border-amber-200 dark:border-amber-800">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
+        {/* ✅ User Dropdown Menu with About & Support (پایین تر از پروفایل و تنظیمات) */}
+        <div className="relative">
+          <button
+            onClick={() => setUserMenuOpen(!userMenuOpen)}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            aria-label="User menu"
           >
-            <Flame className="w-5 h-5 text-amber-500" />
+            <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-semibold text-sm">
+              {user?.name?.charAt(0) || "U"}
+            </div>
+            <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hidden sm:block">
+              {user?.name?.split(" ")[0] || "User"}
+            </span>
+            <ChevronLeft className="w-4 h-4 text-neutral-400" />
+          </button>
+
+          {/* Dropdown */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
+              opacity: userMenuOpen ? 1 : 0,
+              y: userMenuOpen ? 0 : -10,
+            }}
+            className={`absolute right-0 mt-2 w-56 bg-white dark:bg-neutral-900 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden z-50 ${
+              userMenuOpen ? "block" : "hidden"
+            }`}
+          >
+            <div className="p-3 border-b border-neutral-200 dark:border-neutral-700">
+              <p className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm">
+                {user?.name || "User"}
+              </p>
+              <p className="text-xs text-neutral-500 truncate">
+                {user?.email || ""}
+              </p>
+            </div>
+
+            <div className="p-1">
+              {userMenuItems.map((item, index) => {
+                if (item.type === "divider") {
+                  return (
+                    <hr
+                      key={index}
+                      className="my-1 border-neutral-200 dark:border-neutral-700"
+                    />
+                  );
+                }
+
+                const Icon = item.icon;
+
+                if (item.isLogout) {
+                  return (
+                    <button
+                      key={index}
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 rounded-lg transition-colors"
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label[language]}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    onClick={() => setUserMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                  >
+                    <Icon className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
+                    {item.label[language]}
+                  </Link>
+                );
+              })}
+            </div>
           </motion.div>
-          <span className="font-bold text-amber-600 dark:text-amber-400">
-            {stats.streak || 0}
-          </span>
-          <span className="text-sm text-amber-600 dark:text-amber-400">
-            {language === "fa" ? "روز" : "days"}
-          </span>
         </div>
       </motion.div>
 

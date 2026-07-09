@@ -2,12 +2,14 @@
  * ExerciseEngine.jsx
  * Path: src/components/exercise/ExerciseEngine.jsx
  * Description: Exercise engine with full question type support
+ * Version: 4.0 - Complete rewrite with all question types
  * Changes:
- * - ✅ FIXED: Added match_situation support
- * - ✅ FIXED: Added role_play support
- * - ✅ FIXED: Added pronunciation support
+ * - ✅ FIXED: Added match_situation support (like multiple_choice)
+ * - ✅ FIXED: Added role_play support with "Done" button
+ * - ✅ FIXED: Added pronunciation support with "I repeated" button
  * - ✅ FIXED: Fixed true_false comparison (string vs boolean)
- * - ✅ FIXED: All question types now have UI
+ * - ✅ FIXED: All question types now have proper UI
+ * - ✅ FIXED: Auto-pass for role_play and pronunciation
  */
 
 import React, { useState, useEffect } from "react";
@@ -18,6 +20,8 @@ import {
   ArrowLeft,
   Target,
   Volume2,
+  Mic,
+  Users,
 } from "lucide-react";
 import { cn } from "../../utils/helpers";
 import { useLanguage } from "../../context/LanguageContext";
@@ -130,7 +134,7 @@ const ExerciseEngine = ({
               correct++;
             }
           } else if (q.type === "role_play" || q.type === "pronunciation") {
-            // Auto-pass for speaking exercises
+            // ✅ Auto-pass for speaking exercises
             correct++;
           }
         }
@@ -318,11 +322,63 @@ const ExerciseEngine = ({
             </div>
           )}
 
+          {/* ✅ match_situation - مثل multiple_choice */}
+          {qType === "match_situation" && (
+            <div className="space-y-3">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                {language === "fa"
+                  ? "گزینه درست را انتخاب کنید:"
+                  : "Choose the correct option:"}
+              </p>
+              {options.map((option, index) => {
+                const isSelected = answers[currentQuestion.id] === index;
+                const isCorrect = showFeedback && index === correct;
+                const isWrong = showFeedback && isSelected && index !== correct;
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(currentQuestion.id, index)}
+                    disabled={showFeedback}
+                    className={cn(
+                      "w-full text-left px-4 py-3 rounded-lg border-2 transition-all",
+                      isSelected && !showFeedback
+                        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                        : "border-gray-200 dark:border-gray-700 hover:border-blue-400",
+                      isCorrect && showFeedback
+                        ? "border-green-500 bg-green-50 dark:bg-green-900/20"
+                        : "",
+                      isWrong && showFeedback
+                        ? "border-red-500 bg-red-50 dark:bg-red-900/20"
+                        : "",
+                    )}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center text-sm font-medium">
+                        {String.fromCharCode(65 + index)}
+                      </span>
+                      <span>{option}</span>
+                      {isCorrect && showFeedback && (
+                        <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
+                      )}
+                      {isWrong && showFeedback && (
+                        <XCircle className="w-5 h-5 text-red-500 ml-auto" />
+                      )}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           {/* ✅ true_false */}
           {qType === "true_false" && (
             <div className="flex gap-4">
               {["True", "False"].map((value) => {
                 const isSelected = answers[currentQuestion.id] === value;
+                const isCorrect = showFeedback && value === correct;
+                const isWrong = showFeedback && isSelected && value !== correct;
+
                 return (
                   <button
                     key={value}
@@ -333,13 +389,12 @@ const ExerciseEngine = ({
                       isSelected && !showFeedback
                         ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
                         : "border-gray-200 dark:border-gray-700 hover:border-blue-400",
-                      showFeedback &&
-                        value === correct &&
-                        "border-green-500 bg-green-50 dark:bg-green-900/20",
-                      showFeedback &&
-                        isSelected &&
-                        value !== correct &&
-                        "border-red-500 bg-red-50 dark:bg-red-900/20",
+                      isCorrect && showFeedback
+                        ? "border-green-500 bg-green-50 dark:bg-green-900/20"
+                        : "",
+                      isWrong && showFeedback
+                        ? "border-red-500 bg-red-50 dark:bg-red-900/20"
+                        : "",
                     )}
                   >
                     {value}
@@ -385,68 +440,29 @@ const ExerciseEngine = ({
             </div>
           )}
 
-          {/* ✅ match_situation */}
-          {qType === "match_situation" && (
-            <div className="space-y-3">
-              {options.map((option, index) => {
-                const isSelected = answers[currentQuestion.id] === index;
-                const isCorrect = showFeedback && index === correct;
-                const isWrong = showFeedback && isSelected && index !== correct;
-
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleAnswer(currentQuestion.id, index)}
-                    disabled={showFeedback}
-                    className={cn(
-                      "w-full text-left px-4 py-3 rounded-lg border-2 transition-all",
-                      isSelected && !showFeedback
-                        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-                        : "border-gray-200 dark:border-gray-700 hover:border-blue-400",
-                      isCorrect && showFeedback
-                        ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                        : "",
-                      isWrong && showFeedback
-                        ? "border-red-500 bg-red-50 dark:bg-red-900/20"
-                        : "",
-                    )}
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center text-sm font-medium">
-                        {String.fromCharCode(65 + index)}
-                      </span>
-                      <span>{option}</span>
-                      {isCorrect && showFeedback && (
-                        <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
-                      )}
-                      {isWrong && showFeedback && (
-                        <XCircle className="w-5 h-5 text-red-500 ml-auto" />
-                      )}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          )}
-
-          {/* ✅ role_play */}
+          {/* ✅ role_play - NEW */}
           {qType === "role_play" && (
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                <p className="text-sm text-blue-600 dark:text-blue-400">
-                  🎭{" "}
-                  {language === "fa"
-                    ? "نقش خود را اجرا کنید"
-                    : "Play your role"}
-                </p>
+              <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
+                <div className="flex items-center gap-3 mb-3">
+                  <Users className="w-5 h-5 text-blue-500" />
+                  <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                    {language === "fa"
+                      ? "🎭 نقش خود را اجرا کنید"
+                      : "🎭 Play your role"}
+                  </p>
+                </div>
                 {currentQuestion.speaker && (
                   <p className="text-sm font-medium mt-2">
-                    {currentQuestion.speaker}: {currentQuestion.german}
+                    <span className="text-gray-500 dark:text-gray-400">
+                      {currentQuestion.speaker}:
+                    </span>{" "}
+                    {currentQuestion.german}
                   </p>
                 )}
                 {currentQuestion.meaning && (
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {currentQuestion.meaning.fa || currentQuestion.meaning}
+                    📖 {currentQuestion.meaning.fa || currentQuestion.meaning}
                   </p>
                 )}
                 <p className="text-xs text-gray-400 mt-2">
@@ -456,29 +472,49 @@ const ExerciseEngine = ({
               <button
                 onClick={() => handleAnswer(currentQuestion.id, "done")}
                 disabled={showFeedback}
-                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                className={cn(
+                  "w-full px-6 py-3 rounded-lg transition-colors text-white font-medium",
+                  showFeedback
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-500 hover:bg-green-600",
+                )}
               >
-                {language === "fa" ? "✅ انجام دادم" : "✅ Done"}
+                {showFeedback ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    {language === "fa" ? "✅ انجام شد" : "✅ Done"}
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <Users className="w-5 h-5" />
+                    {language === "fa" ? "انجام دادم" : "I did it"}
+                  </span>
+                )}
               </button>
             </div>
           )}
 
-          {/* ✅ pronunciation */}
+          {/* ✅ pronunciation - NEW */}
           {qType === "pronunciation" && (
             <div className="space-y-4">
-              <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <Volume2 className="w-6 h-6 text-purple-500" />
-                  <p className="text-sm font-medium">
-                    {currentQuestion.word || currentQuestion.question}
+              <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg border border-purple-200 dark:border-purple-800">
+                <div className="flex items-center gap-3 mb-3">
+                  <Volume2 className="w-5 h-5 text-purple-500" />
+                  <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
+                    {language === "fa" ? "🎤 تلفظ کلمه" : "🎤 Pronunciation"}
                   </p>
                 </div>
-                {currentQuestion.persian && (
-                  <p className="text-sm text-gray-500 mt-2">
-                    📖 {currentQuestion.persian}
+                <div className="text-center py-3">
+                  <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                    {currentQuestion.word || currentQuestion.question}
                   </p>
-                )}
-                <p className="text-xs text-gray-400 mt-2">
+                  {currentQuestion.persian && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      📖 {currentQuestion.persian}
+                    </p>
+                  )}
+                </div>
+                <p className="text-xs text-gray-400 mt-2 text-center">
                   🎤{" "}
                   {language === "fa"
                     ? "با صدای بلند تکرار کنید"
@@ -488,9 +524,24 @@ const ExerciseEngine = ({
               <button
                 onClick={() => handleAnswer(currentQuestion.id, "done")}
                 disabled={showFeedback}
-                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                className={cn(
+                  "w-full px-6 py-3 rounded-lg transition-colors text-white font-medium",
+                  showFeedback
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-500 hover:bg-green-600",
+                )}
               >
-                {language === "fa" ? "✅ تکرار کردم" : "✅ I repeated"}
+                {showFeedback ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    {language === "fa" ? "✅ تکرار شد" : "✅ Repeated"}
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <Mic className="w-5 h-5" />
+                    {language === "fa" ? "تکرار کردم" : "I repeated"}
+                  </span>
+                )}
               </button>
             </div>
           )}

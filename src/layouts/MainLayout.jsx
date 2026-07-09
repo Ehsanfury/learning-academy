@@ -3,12 +3,10 @@
  * Path: src/layouts/MainLayout.jsx
  * Description: Main layout with responsive navbar and mobile support
  * Project: Learning Academy
- * Version: 3.0 - New 5-column footer
+ * Version: 3.1 - Added About & Support to user menu
  * Changes:
+ * - ✅ FIXED: Added About and Support/Contact to user dropdown menu
  * - ✅ FIXED: 5-column footer with proper sizing
- * - ✅ FIXED: Column 1 (Learning Academy) is largest
- * - ✅ FIXED: Columns 2-4 are equal size
- * - ✅ FIXED: Column 5 (Rules) is half the size
  */
 
 import React, { useState, useEffect } from "react";
@@ -51,6 +49,8 @@ import {
   Shield,
   FileText,
   Award,
+  Info,
+  Headphones,
 } from "lucide-react";
 import Button from "../components/ui/Button";
 import { Card, CardHeader, CardBody, CardFooter } from "../components/ui";
@@ -137,6 +137,7 @@ const MainLayout = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -148,6 +149,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setUserMenuOpen(false);
   }, [location]);
 
   const scrollToTop = () => {
@@ -157,7 +159,44 @@ const MainLayout = () => {
   const handleLogout = async () => {
     await logout();
     setMobileMenuOpen(false);
+    setUserMenuOpen(false);
   };
+
+  // ============================================
+  // 📊 User Dropdown Menu Items
+  // ============================================
+
+  const userMenuItems = [
+    {
+      path: "/profile",
+      label: { fa: "پروفایل", en: "Profile" },
+      icon: User,
+    },
+    {
+      path: "/settings",
+      label: { fa: "تنظیمات", en: "Settings" },
+      icon: Settings,
+    },
+    {
+      path: "/about",
+      label: { fa: "درباره ما", en: "About Us" },
+      icon: Info,
+    },
+    {
+      path: "/contact",
+      label: { fa: "تماس با ما", en: "Contact Us" },
+      icon: Headphones,
+    },
+    {
+      type: "divider",
+    },
+    {
+      path: "/logout",
+      label: { fa: "خروج", en: "Logout" },
+      icon: LogOut,
+      isLogout: true,
+    },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-neutral-50 dark:bg-neutral-950">
@@ -196,6 +235,7 @@ const MainLayout = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-1 sm:gap-2">
+            {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -207,6 +247,7 @@ const MainLayout = () => {
               </span>
             </button>
 
+            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -219,6 +260,7 @@ const MainLayout = () => {
               )}
             </button>
 
+            {/* Auth Buttons */}
             {isAuthenticated ? (
               <>
                 <Link to="/dashboard" className="hidden sm:block">
@@ -226,13 +268,86 @@ const MainLayout = () => {
                     {language === "fa" ? "داشبورد" : "Dashboard"}
                   </Button>
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="hidden md:flex items-center gap-1 px-3 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950 rounded-lg transition-colors"
-                >
-                  <LogOut className="w-4 h-4" />
-                  {language === "fa" ? "خروج" : "Logout"}
-                </button>
+
+                {/* ✅ User Dropdown Menu */}
+                <div className="relative">
+                  <button
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                    aria-label="User menu"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-semibold text-sm">
+                      {user?.name?.charAt(0) || "U"}
+                    </div>
+                    <ChevronRight
+                      className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
+                        userMenuOpen ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* Dropdown */}
+                  <AnimatePresence>
+                    {userMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute right-0 mt-2 w-56 bg-white dark:bg-neutral-900 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden z-50"
+                      >
+                        <div className="p-3 border-b border-neutral-200 dark:border-neutral-700">
+                          <p className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm">
+                            {user?.name || "User"}
+                          </p>
+                          <p className="text-xs text-neutral-500 truncate">
+                            {user?.email || ""}
+                          </p>
+                        </div>
+
+                        <div className="p-1">
+                          {userMenuItems.map((item, index) => {
+                            if (item.type === "divider") {
+                              return (
+                                <hr
+                                  key={index}
+                                  className="my-1 border-neutral-200 dark:border-neutral-700"
+                                />
+                              );
+                            }
+
+                            const Icon = item.icon;
+
+                            if (item.isLogout) {
+                              return (
+                                <button
+                                  key={index}
+                                  onClick={handleLogout}
+                                  className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 rounded-lg transition-colors"
+                                >
+                                  <Icon className="w-4 h-4" />
+                                  {item.label[language]}
+                                </button>
+                              );
+                            }
+
+                            return (
+                              <Link
+                                key={index}
+                                to={item.path}
+                                onClick={() => setUserMenuOpen(false)}
+                                className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                              >
+                                <Icon className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
+                                {item.label[language]}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </>
             ) : (
               <div className="flex items-center gap-2">
@@ -251,6 +366,7 @@ const MainLayout = () => {
               </div>
             )}
 
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -325,6 +441,23 @@ const MainLayout = () => {
 
                 <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
 
+                {/* ✅ Mobile: About & Support/Contact */}
+                <Link
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                >
+                  <Info className="w-5 h-5" />
+                  <span>{language === "fa" ? "درباره ما" : "About Us"}</span>
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                >
+                  <Headphones className="w-5 h-5" />
+                  <span>{language === "fa" ? "تماس با ما" : "Contact Us"}</span>
+                </Link>
                 <Link
                   to="/settings"
                   onClick={() => setMobileMenuOpen(false)}
@@ -333,6 +466,8 @@ const MainLayout = () => {
                   <Settings className="w-5 h-5" />
                   <span>{language === "fa" ? "تنظیمات" : "Settings"}</span>
                 </Link>
+
+                <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
 
                 {isAuthenticated && (
                   <button
@@ -429,7 +564,7 @@ const Footer = ({ language }) => {
   return (
     <footer className="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        {/* ✅ 5-Column Grid */}
+        {/* 5-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
           {/* ===== COLUMN 1: Learning Academy (Largest - 4 columns) ===== */}
           <div className="md:col-span-4 lg:col-span-5">
