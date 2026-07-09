@@ -392,6 +392,18 @@ const MainLayout = () => {
 
       {/* ========== FOOTER ========== */}
       <Footer language={language} />
+      <Link
+        to="/about"
+        className="text-sm text-neutral-500 hover:text-primary-500 transition-colors"
+      >
+        {language === "fa" ? "درباره ما" : "About Us"}
+      </Link>
+      <Link
+        to="/support"
+        className="text-sm text-neutral-500 hover:text-primary-500 transition-colors"
+      >
+        {language === "fa" ? "پشتیبانی" : "Support"}
+      </Link>
     </div>
   );
 };

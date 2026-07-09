@@ -3,9 +3,8 @@
  * Path: src/App.jsx
  * Description: Main application component with routing
  * Changes:
- * - ✅ FIXED: AuthLayout properly wraps login/register
- * - ✅ FIXED: MainLayout for public routes
- * - ✅ FIXED: DashboardLayout for protected routes
+ * - ✅ FIXED: Home page is now public (no redirect to login)
+ * - ✅ FIXED: Added About and Support pages
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
@@ -62,6 +61,10 @@ const VocabularyPage = lazy(() => import("./pages/Vocabulary/VocabularyPage"));
 const NotificationsPage = lazy(
   () => import("./pages/Notifications/NotificationsPage"),
 );
+
+// ✅ NEW: About and Support pages
+const AboutPage = lazy(() => import("./pages/About/AboutPage"));
+const SupportPage = lazy(() => import("./pages/Support/SupportPage"));
 
 // Components
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -134,16 +137,17 @@ function App() {
               <Suspense fallback={<LoadingFallback />}>
                 <AnimatePresence mode="wait">
                   <Routes>
-                    {/* ========== PUBLIC ROUTES ========== */}
+                    {/* ========== PUBLIC ROUTES (No Auth Required) ========== */}
 
-                    {/* Home Page with MainLayout */}
+                    {/* ✅ Home Page - Public (No redirect to login) */}
                     <Route element={<MainLayout />}>
                       <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<AboutPage />} />
+                      <Route path="/support" element={<SupportPage />} />
                     </Route>
 
                     {/* ========== AUTH ROUTES ========== */}
 
-                    {/* Login & Register with AuthLayout */}
                     <Route element={<AuthLayout />}>
                       <Route
                         path="/login"
@@ -163,9 +167,8 @@ function App() {
                       />
                     </Route>
 
-                    {/* ========== PROTECTED ROUTES ========== */}
+                    {/* ========== PROTECTED ROUTES (Auth Required) ========== */}
 
-                    {/* Dashboard Layout */}
                     <Route
                       element={
                         <PrivateRoute>
