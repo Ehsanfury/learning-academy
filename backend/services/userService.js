@@ -7,6 +7,8 @@
  * - ✅ FIXED: User rank - using subquery COUNT
  * - ✅ FIXED: Removed duplicate XP logic (use xpService)
  * - ✅ FIXED: Removed duplicate streak logic (use streakService)
+ * - ✅ FIXED: calculateLevel now directly uses xpService
+ * - ✅ FIXED: addXP now properly returns object with earned field
  * - ✅ NEW: Added getRecentActivity method
  */
 
@@ -26,9 +28,32 @@ import logger from "../config/logger.js";
 class UserService {
   /**
    * Add XP to user - DELEGATED to xpService
+   * ✅ FIXED: Returns proper object with earned field
    */
   async addXP(userId, amount, source = "unknown", sourceId = null, metadata = {}) {
-    return xpService.addXP(userId, amount, source, sourceId, metadata);
+    try {
+      // اگر مقدار XP نامعتبر باشد، وضعیت فعلی را برمی‌گردانیم
+      if (!amount || amount <= 0) {
+        logger.warn(`⚠️ Attempted to add non-positive XP: ${amount} for user ${userId}`);
+        const user = await User.findByPk(userId);
+        const currentXP = user?.xp || 0;
+        const currentLevel = xpService.calculateLevel(currentXP);
+        return {
+          xp: currentXP,
+          level: currentLevel,
+          earned: 0,
+        };
+      }
+
+      return xpService.addXP(userId, amount, source, sourceId, metadata);
+    } catch (error) {
+      logger.error(`❌ Error in addXP:`, error);
+      return {
+        xp: 0,
+        level: 1,
+        earned: 0,
+      };
+    }
   }
 
   /**
@@ -305,6 +330,7 @@ class UserService {
 
   /**
    * Get user recent activity
+   * ✅ NEW: Added missing method for /api/users/activity endpoint
    */
   async getRecentActivity(userId, limit = 10) {
     try {

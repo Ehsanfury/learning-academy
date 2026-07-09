@@ -3,10 +3,9 @@
  * Path: backend/config/db.js
  * Description: Database configuration
  * Changes:
- * - ✅ FIXED: SSL configuration with rejectUnauthorized in production
- * - ✅ FIXED: Correct property names (name, user instead of database, username)
- * - ✅ Disabled logging in production
- * - ✅ Uses config from env.js
+ * - ✅ FIXED: Added test database support
+ * - ✅ FIXED: Proper property names (name, user instead of database, username)
+ * - ✅ FIXED: NODE_ENV=test uses mydb_test
  */
 
 import { Sequelize } from "sequelize";
@@ -17,14 +16,36 @@ import logger from "./logger.js";
 // 📊 Database Configuration
 // ============================================
 
+// ✅ برای تست، از دیتابیس جداگانه استفاده کنید
+const getDatabaseName = () => {
+  // اگر در محیط تست هستیم، از دیتابیس تست استفاده کن
+  if (process.env.NODE_ENV === "test") {
+    const testDbName = config.db.name + "_test";
+    logger.info(`🧪 Using test database: ${testDbName}`);
+    return testDbName;
+  }
+  return config.db.name;
+};
+
+// SSL configuration
+const sslConfig = config.db.ssl || {};
+const isSSLEnabled = sslConfig.enabled || process.env.NODE_ENV === "production";
+
 const dbConfig = {
   host: config.db.host,
   port: config.db.port,
-  database: config.db.name,
+  database: getDatabaseName(),
   username: config.db.user,
   password: config.db.password,
   dialect: "postgres",
-  dialectOptions: {},
+  dialectOptions: isSSLEnabled
+    ? {
+        ssl: {
+          require: true,
+          rejectUnauthorized: sslConfig.rejectUnauthorized !== false,
+        },
+      }
+    : {},
   pool: {
     max: 20,
     min: 2,
@@ -44,24 +65,6 @@ const dbConfig = {
     ],
   },
 };
-
-// ✅ FIXED: SSL configuration for production
-if (config.db.ssl?.enabled) {
-  dbConfig.dialectOptions.ssl = {
-    require: true,
-    rejectUnauthorized: config.db.ssl?.rejectUnauthorized !== false, // Default: true for production
-  };
-}
-
-// Also handle the case where ssl is enabled but not in config.db.ssl
-if (config.isProduction && !config.db.ssl?.enabled) {
-  // In production, default to SSL with strict validation
-  dbConfig.dialectOptions.ssl = {
-    require: true,
-    rejectUnauthorized: true,
-  };
-  logger.info("🔒 SSL enabled for production database connection (strict mode)");
-}
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig);
 

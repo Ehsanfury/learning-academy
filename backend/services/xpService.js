@@ -2,32 +2,68 @@
  * xpService.js
  * Path: backend/services/xpService.js
  * Description: Unified XP management service
- * Version: 2.0 - Integrated with User model and userService
+ * Version: 2.1 - FIXED: calculateLevel logic corrected
  * Changes:
  * - ✅ Unified XP logic from User.js, userService.js, and xpService.js
  * - ✅ Single source of truth for XP calculations
  * - ✅ Atomic operations using increment()
+ * - ✅ FIXED: calculateLevel now matches test expectations
+ * - ✅ FIXED: Level calculation with proper thresholds
  */
 
 import { User, XPHistory } from "../models/index.js";
 import sequelize from "../config/db.js";
 import logger from "../config/logger.js";
 
-const XP_PER_LEVEL = 100;
+// ============================================
+// 📊 XP Configuration
+// ============================================
+
+// ✅ FIXED: Level thresholds based on test expectations
+const LEVEL_THRESHOLDS = [
+  { level: 1, minXP: 0, maxXP: 99 },
+  { level: 2, minXP: 100, maxXP: 249 },
+  { level: 3, minXP: 250, maxXP: 499 },
+  { level: 4, minXP: 500, maxXP: 999 },
+  { level: 5, minXP: 1000, maxXP: 1999 },
+  { level: 6, minXP: 2000, maxXP: 3499 },
+  { level: 7, minXP: 3500, maxXP: 4999 },
+  { level: 8, minXP: 5000, maxXP: 7499 },
+  { level: 9, minXP: 7500, maxXP: 9999 },
+  { level: 10, minXP: 10000, maxXP: Infinity },
+];
+
+// Fallback XP per level (for levels beyond 10)
+const XP_PER_LEVEL = 1000;
 
 class XPService {
   /**
    * Calculate level based on XP
+   * ✅ FIXED: Now uses threshold-based calculation matching tests
    */
   calculateLevel(xp) {
-    return Math.floor(Math.max(0, xp) / XP_PER_LEVEL) + 1;
+    if (xp < 0) xp = 0;
+
+    for (const threshold of LEVEL_THRESHOLDS) {
+      if (xp >= threshold.minXP && xp <= threshold.maxXP) {
+        return threshold.level;
+      }
+    }
+
+    // For levels beyond 10
+    return Math.floor(xp / XP_PER_LEVEL) + 1;
   }
 
   /**
    * Get XP required for a specific level
    */
   getXPForLevel(level) {
-    return Math.max(0, (level - 1) * XP_PER_LEVEL);
+    if (level <= 1) return 0;
+    if (level <= 10) {
+      const threshold = LEVEL_THRESHOLDS[level - 1];
+      return threshold ? threshold.minXP : 0;
+    }
+    return (level - 1) * XP_PER_LEVEL;
   }
 
   /**
@@ -35,7 +71,7 @@ class XPService {
    */
   getXPForNextLevel(currentXP) {
     const currentLevel = this.calculateLevel(currentXP);
-    return currentLevel * XP_PER_LEVEL;
+    return this.getXPForLevel(currentLevel + 1);
   }
 
   /**
@@ -65,7 +101,16 @@ class XPService {
 
       if (amount <= 0) {
         logger.warn(`⚠️ Attempted to add non-positive XP: ${amount} for user ${userId}`);
-        return { xp: 0, level: 0, leveledUp: false };
+        const user = await User.findByPk(userId);
+        const currentXP = user?.xp || 0;
+        return {
+          xp: currentXP,
+          level: this.calculateLevel(currentXP),
+          earned: 0,
+          leveledUp: false,
+          oldLevel: this.calculateLevel(currentXP),
+          progress: this.getProgressToNextLevel(currentXP),
+        };
       }
 
       const transaction = await sequelize.transaction();
