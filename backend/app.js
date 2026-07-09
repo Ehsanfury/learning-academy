@@ -20,6 +20,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import { setupSwagger } from "./config/swagger.js";
 
 // Config
 import sequelize, { testConnection } from "./config/db.js";
@@ -199,7 +200,7 @@ app.use(
 );
 
 app.use(compression());
-
+setupSwagger(app);
 app.use(
   morgan("combined", {
     stream: {

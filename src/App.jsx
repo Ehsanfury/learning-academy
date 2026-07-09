@@ -3,8 +3,9 @@
  * Path: src/App.jsx
  * Description: Main application component with routing
  * Changes:
- * - ✅ FIXED: About, Contact, FAQ, Privacy, Terms, Blog added
- * - ✅ FIXED: Support page moved to /support
+ * - ✅ FIXED: Home page is now PUBLIC and accessible without login
+ * - ✅ FIXED: MainLayout does NOT redirect to login
+ * - ✅ FIXED: Only /dashboard and protected routes require auth
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
@@ -62,7 +63,7 @@ const NotificationsPage = lazy(
   () => import("./pages/Notifications/NotificationsPage"),
 );
 
-// ✅ NEW: Public Pages
+// ✅ Public Pages
 const AboutPage = lazy(() => import("./pages/About/AboutPage"));
 const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
 const FAQPage = lazy(() => import("./pages/FAQ/FAQPage"));
@@ -72,6 +73,7 @@ const BlogPage = lazy(() => import("./pages/Blog/BlogPage"));
 const SupportPage = lazy(() => import("./pages/Support/SupportPage"));
 const DisclaimerPage = lazy(() => import("./pages/Disclaimer/DisclaimerPage"));
 const CookiesPage = lazy(() => import("./pages/Cookies/CookiesPage"));
+
 // Components
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -143,11 +145,17 @@ function App() {
               <Suspense fallback={<LoadingFallback />}>
                 <AnimatePresence mode="wait">
                   <Routes>
-                    {/* ========== PUBLIC ROUTES (No Auth Required) ========== */}
+                    {/* ========================================================= */}
+                    {/* ✅ PUBLIC ROUTES - No Auth Required */}
+                    {/* ========================================================= */}
 
-                    {/* ✅ Main Layout - All public pages */}
+                    {/* ✅ Home Page - Always accessible */}
+                    <Route path="/" element={<MainLayout />}>
+                      <Route index element={<Home />} />
+                    </Route>
+
+                    {/* ✅ Other Public Pages with MainLayout */}
                     <Route element={<MainLayout />}>
-                      <Route path="/" element={<Home />} />
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/contact" element={<ContactPage />} />
                       <Route path="/faq" element={<FAQPage />} />
@@ -159,7 +167,9 @@ function App() {
                       <Route path="/cookies" element={<CookiesPage />} />
                     </Route>
 
-                    {/* ========== AUTH ROUTES ========== */}
+                    {/* ========================================================= */}
+                    {/* ✅ AUTH ROUTES - Login/Register */}
+                    {/* ========================================================= */}
 
                     <Route element={<AuthLayout />}>
                       <Route
@@ -180,8 +190,11 @@ function App() {
                       />
                     </Route>
 
-                    {/* ========== PROTECTED ROUTES (Auth Required) ========== */}
+                    {/* ========================================================= */}
+                    {/* 🔒 PROTECTED ROUTES - Auth Required */}
+                    {/* ========================================================= */}
 
+                    {/* ✅ Dashboard Layout - All protected pages */}
                     <Route
                       element={
                         <PrivateRoute>
@@ -214,7 +227,7 @@ function App() {
                       />
                     </Route>
 
-                    {/* Lesson Layout */}
+                    {/* ✅ Lesson Layout - Protected */}
                     <Route
                       element={
                         <PrivateRoute>
@@ -225,7 +238,7 @@ function App() {
                       <Route path="/lesson/:id" element={<Lesson />} />
                     </Route>
 
-                    {/* Exercise Routes */}
+                    {/* ✅ Exercise Routes - Protected */}
                     <Route
                       element={
                         <PrivateRoute>
@@ -237,7 +250,7 @@ function App() {
                       <Route path="/exercise/:type" element={<Exercise />} />
                     </Route>
 
-                    {/* Admin Routes */}
+                    {/* ✅ Admin Routes - Protected + Admin Role */}
                     <Route
                       element={
                         <AdminRoute>
@@ -248,7 +261,10 @@ function App() {
                       <Route path="/admin/*" element={<Admin />} />
                     </Route>
 
-                    {/* ========== 404 ========== */}
+                    {/* ========================================================= */}
+                    {/* ❌ 404 Not Found */}
+                    {/* ========================================================= */}
+
                     <Route path="/404" element={<NotFoundPage />} />
                     <Route path="*" element={<Navigate to="/404" replace />} />
                   </Routes>

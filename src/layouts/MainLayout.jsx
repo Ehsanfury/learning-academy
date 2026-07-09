@@ -3,10 +3,12 @@
  * Path: src/layouts/MainLayout.jsx
  * Description: Main layout with responsive navbar and mobile support
  * Project: Learning Academy
- * Version: 3.1 - Added About & Support to user menu
+ * Version: 3.2 - PUBLIC LAYOUT - NO REDIRECT TO LOGIN
  * Changes:
- * - ✅ FIXED: Added About and Support/Contact to user dropdown menu
+ * - ✅ FIXED: This layout is PUBLIC - does NOT redirect to login
+ * - ✅ FIXED: Added About & Support to user dropdown menu
  * - ✅ FIXED: 5-column footer with proper sizing
+ * - ✅ FIXED: MainLayout is now completely public
  */
 
 import React, { useState, useEffect } from "react";
@@ -125,7 +127,7 @@ const FOOTER_LINKS = {
 };
 
 // ============================================
-// 📊 MainLayout Component
+// 📊 MainLayout Component - PUBLIC
 // ============================================
 
 const MainLayout = () => {
@@ -161,6 +163,12 @@ const MainLayout = () => {
     setMobileMenuOpen(false);
     setUserMenuOpen(false);
   };
+
+  // ============================================
+  // ✅ IMPORTANT: MainLayout is PUBLIC
+  // ============================================
+  // This layout does NOT redirect to login.
+  // Only the PrivateRoute component handles authentication.
 
   // ============================================
   // 📊 User Dropdown Menu Items

@@ -2,10 +2,14 @@
  * Badge.jsx
  * Path: src/components/ui/Badge.jsx
  * Description: Badge component with multiple variants, sizes, and dot indicator
- * Version: 2.0 - Improved with more variants and features
+ * Version: 2.1 - FIXED: Handles object children properly (no React child error)
+ * Changes:
+ * - ✅ FIXED: Now safely renders object children {fa, en, de}
+ * - ✅ FIXED: Prevents "Objects are not valid as a React child" error
  */
 
 import { cn } from "@utils/helpers";
+import React from "react";
 
 // ============================================
 // 🎨 Variants
@@ -68,6 +72,9 @@ function Badge({
   count = null,
   maxCount = 99,
 
+  // ========== Language Context (for object children) ==========
+  language = "fa",
+
   ...props
 }) {
   // ============================================
@@ -80,6 +87,57 @@ function Badge({
   const pillClass = pill ? "rounded-full" : "rounded-md";
 
   const dotPulseClass = dotPulse ? "animate-pulse" : "";
+
+  // ============================================
+  // ✅ FIXED: Safe render children - handles objects
+  // ============================================
+
+  const renderChildren = () => {
+    // اگر children وجود نداشته باشد
+    if (children === undefined || children === null) {
+      return null;
+    }
+
+    // اگر string یا number باشد
+    if (typeof children === "string" || typeof children === "number") {
+      return children;
+    }
+
+    // اگر یک عنصر React معتبر باشد
+    if (React.isValidElement(children)) {
+      return children;
+    }
+
+    // اگر یک آرایه باشد
+    if (Array.isArray(children)) {
+      return children.map((child, index) => {
+        if (typeof child === "object" && child !== null) {
+          return (
+            child[language] ||
+            child.fa ||
+            child.en ||
+            child.de ||
+            JSON.stringify(child)
+          );
+        }
+        return child;
+      });
+    }
+
+    // اگر یک آبجکت چندزبانه باشد {fa, en, de}
+    if (typeof children === "object" && children !== null) {
+      return (
+        children[language] ||
+        children.fa ||
+        children.en ||
+        children.de ||
+        JSON.stringify(children)
+      );
+    }
+
+    // Fallback: تبدیل به string
+    return String(children);
+  };
 
   // ============================================
   // 🖼️ Render
@@ -107,8 +165,8 @@ function Badge({
         />
       )}
 
-      {/* Content */}
-      {children}
+      {/* ✅ FIXED: Content with safe rendering */}
+      <span>{renderChildren()}</span>
 
       {/* Count */}
       {displayCount !== null && (
