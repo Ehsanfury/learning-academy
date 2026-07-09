@@ -2,12 +2,15 @@
  * Sidebar.jsx
  * German Academy
  * نوار کناری داشبورد
+ * Changes:
+ * - ✅ Added "About Us" and "Contact Support" to bottomItems
+ * - ✅ Added Info and Headphones icons
  */
 
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "@context/AuthContext"; // ✅ اصلاح شده
+import { useAuth } from "@context/AuthContext";
 import { useLanguageContext } from "@context/LanguageContext";
 import { useThemeContext } from "@context/ThemeContext";
 import {
@@ -29,6 +32,8 @@ import {
   Languages,
   Trophy,
   Flame,
+  Info,
+  Headphones,
 } from "lucide-react";
 
 const menuItems = [
@@ -80,6 +85,7 @@ const menuItems = [
   },
 ];
 
+// ✅ NEW: Added About Us and Contact Support
 const bottomItems = [
   {
     path: "/profile",
@@ -91,11 +97,21 @@ const bottomItems = [
     icon: Settings,
     label: { fa: "تنظیمات", en: "Settings" },
   },
+  {
+    path: "/about",
+    icon: Info,
+    label: { fa: "درباره ما", en: "About Us" },
+  },
+  {
+    path: "/support",
+    icon: Headphones,
+    label: { fa: "ارتباط با پشتیبانی", en: "Contact Support" },
+  },
 ];
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const { user, logout } = useAuth(); // ✅ اصلاح شده
+  const { user, logout } = useAuth();
   const { language, toggleLanguage } = useLanguageContext();
   const { isDark, toggleTheme } = useThemeContext();
   const location = useLocation();
