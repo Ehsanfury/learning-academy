@@ -901,56 +901,56 @@ const LessonPage = () => {
     );
   };
 
-  const renderReview = (section) => {
-    const quiz = section.quiz || [];
+const renderReview = (section) => {
+  const quiz = section.quiz || [];
 
-    if (quiz.length === 0) {
-      return (
-        <p className="text-neutral-500">هیچ سوالی برای مرور وجود ندارد.</p>
-      );
-    }
+  if (quiz.length === 0) {
+    return <p className="text-neutral-500">هیچ سوالی برای مرور وجود ندارد.</p>;
+  }
 
-    return (
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold">
-          {getLocalized(section.titleObj)}
+  // ✅ Convert quiz questions to exercise format
+  const exerciseQuestions = quiz.map((q, idx) => ({
+    id: q.id || `review-${idx}`,
+    type: q.type || "multiple_choice",
+    question: {
+      fa: q.question?.fa || q.question || `سوال ${idx + 1}`,
+      en: q.question?.en || q.questionEn || `Question ${idx + 1}`,
+    },
+    options: q.options || [],
+    correct: q.correctIndex || 0,
+    explanation: q.explanation || "",
+  }));
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+          <ListChecks className="w-6 h-6 text-red-500" />
+          {getLocalized(section.titleObj || { fa: "📝 مرور", en: "📝 Review" })}
         </h3>
-        {quiz.map((q, idx) => (
-          <Card key={idx} variant="bordered" padding="md">
-            <p className="font-medium">
-              {idx + 1}. {getLocalized(q.question)}
-            </p>
-            {q.options && (
-              <div className="mt-2 space-y-1">
-                {q.options.map((opt, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center gap-2 text-sm cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800 p-1 rounded"
-                  >
-                    <input
-                      type="radio"
-                      name={`quiz-${idx}`}
-                      value={i}
-                      onChange={() => handleAnswer(q.id, i)}
-                      className="w-4 h-4 text-primary-500"
-                    />
-                    {opt}
-                  </label>
-                ))}
-              </div>
-            )}
-            {answers[q.id] !== undefined && (
-              <div
-                className={`mt-2 p-2 rounded-lg text-sm ${answers[q.id] === q.correctIndex ? "bg-green-100 dark:bg-green-900 text-green-700" : "bg-red-100 dark:bg-red-900 text-red-700"}`}
-              >
-                {answers[q.id] === q.correctIndex ? "✅ صحیح!" : "❌ اشتباه"}
-              </div>
-            )}
-          </Card>
-        ))}
+        <Badge variant="primary" size="sm" className="text-sm">
+          {exerciseQuestions.length} {getLocalized({ fa: "سوال", en: "questions" })}
+        </Badge>
       </div>
-    );
-  };
+
+      <ExerciseEngine
+        exercise={{ questions: exerciseQuestions, xpReward: 10 }}
+        onComplete={(results) => {
+          const correct = results.correct || 0;
+          const total = results.total || exerciseQuestions.length;
+          const score = Math.round((correct / total) * 100);
+
+          if (score >= 70) {
+            toast.success(`✅ ${score}% از سوالات مرور صحیح بود!`);
+          } else {
+            toast.info(`💪 ${score}% - دوباره تلاش کنید!`);
+          }
+        }}
+        language={language}
+      />
+    </div>
+  );
+};
 
   const renderAssessment = (section) => {
     return (

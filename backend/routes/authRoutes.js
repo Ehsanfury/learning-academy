@@ -22,7 +22,7 @@ import {
   verifyEmail,
   resendVerification,
 } from "../controllers/authController.js";
-import { authLimiter, registerLimiter, strictLimiter } from "../middlewares/rateLimiter.js";
+import { authLimiter, registerLimiter } from "../middlewares/rateLimiter.js";
 import { authenticate, authorize } from "../middlewares/authMiddleware.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import userService from "../services/userService.js";

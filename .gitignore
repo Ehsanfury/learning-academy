@@ -1,5 +1,35 @@
 # ============================================
-# 📁 Logs
+# 🚀 Learning Academy - .gitignore
+# ============================================
+
+# ============================================
+# 📦 Dependencies
+# ============================================
+node_modules/
+.pnp/
+.pnp.js
+
+# ============================================
+# 🔨 Build outputs
+# ============================================
+dist/
+build/
+out/
+.next/
+.vite/
+
+# ============================================
+# 🔐 Environment files
+# ============================================
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+
+# ============================================
+# 📊 Logs
 # ============================================
 logs/
 *.log
@@ -8,43 +38,26 @@ yarn-debug.log*
 yarn-error.log*
 
 # ============================================
-# 📦 Dependencies
+# 💻 OS files
 # ============================================
-node_modules/
-yarn.lock
+.DS_Store
+Thumbs.db
+Desktop.ini
 
 # ============================================
-# 🔧 Environment
-# ============================================
-.env
-.env.local
-.env.*.local
-.env.example
-# ============================================
-# 🏗️ Build# ============================================
-dist/
-build/
-*.tsbuildinfo
-
-# ============================================
-# 🗄️ Database
-# ============================================
-*.sqlite
-*.sqlite-journal
-*.db
-
-# ============================================
-# 🖥️ IDE
+# 📝 IDE files
 # ============================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
+*.iml
+.project
+.classpath
 
 # ============================================
-# 📊 Coverage
+# 🧪 Testing
 # ============================================
 coverage/
 .nyc_output/
@@ -55,3 +68,28 @@ coverage/
 *.pem
 *.key
 *.crt
+*.p12
+
+# ============================================
+# 📦 Lock files (optional - uncomment if needed)
+# ============================================
+# **/package-lock.json
+# **/yarn.lock
+
+# ============================================
+# 🗄️ Backend specific
+# ============================================
+backend/.env
+backend/.env.local
+backend/logs/
+backend/tmp/
+backend/uploads/
+backend/database.sqlite
+backend/database.sqlite-journal
+backend/*.tgz
+
+# ============================================
+# 🎨 Frontend specific
+# ============================================
+src/**/*.css.map
+*.tsbuildinfo

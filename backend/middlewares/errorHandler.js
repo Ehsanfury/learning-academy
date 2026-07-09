@@ -5,6 +5,7 @@
  * Changes:
  * - ✅ FIXED: Sanitize sensitive data from logs
  * - ✅ FIXED: Prevent password leakage in error logs
+ * - ✅ FIXED: 404 handler limited in production
  */
 
 import logger from "../config/logger.js";
@@ -97,9 +98,19 @@ export const errorHandler = (err, req, res, _next) => {
 };
 
 /**
- * 404 Not Found handler
+ * ✅ FIXED: 404 Not Found handler - limited in production
  */
 export const notFoundHandler = (req, res) => {
+  // ✅ In production, don't expose method and URL
+  if (process.env.NODE_ENV === "production") {
+    return res.status(404).json({
+      success: false,
+      message: "Not found",
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  // ✅ In development, show full details
   res.status(404).json({
     success: false,
     message: `Route ${req.method} ${req.url} not found`,

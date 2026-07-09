@@ -1,83 +1,26 @@
-# ============================================
-# 📁 Logs
-# ============================================
+.env
+.env.local
+.env.*.local
+.env.production
+
+node_modules/
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-backend/logs/
-backend/performance.log
 
-# ============================================
-# 📦 Dependencies
-# ============================================
-
-# ============================================
-# 🔧 Environment
-# ============================================
-.env
-.env.local
-.env.*.local
-backend/.env
-
-# ============================================
-# 🏗️ Build
-# ============================================
-dist/
-build/
-*.tsbuildinfo
-
-# ============================================
-# 🗄️ Database
-# ============================================
-*.sqlite
-*.sqlite-journal
-*.db
-
-# ============================================
-# 🖥️ IDE
-# ============================================
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
 .DS_Store
-
-# ============================================
-# 📊 Coverage
-# ============================================
-coverage/
-.nyc_output/
-
-# ============================================
-# 🔒 Security
-# ============================================
+Thumbs.db
 *.pem
 *.key
 *.crt
 
-# ============================================
-# 📁 Project specific
-# ============================================
-debug-output.txt
-debug-project.ps1
-extract-project.ps1
-project-analysis/
-project-analysis-*/
-*.zip
-backup-analysis/
-backup-analysis-*/
-
-# Backup files
-*.backup
-content/backup/
-
-# Empty icons
-public/icons/*.png
-public/images/*.webp
-public/images/*.svg
-
-# Database migrations - only keep in backend
-database/
+dist/
+build/
+tmp/
+uploads/
+database.sqlite
+database.sqlite-journal
+coverage/
+.nyc_output/

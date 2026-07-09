@@ -1,486 +1,2062 @@
 {
-  "id": "a1-l10",
+  "id": "A1-L10",
+  "order": 10,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 10,
+  "unit": 10,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 55,
-  "difficulty": 2,
-  "prerequisites": [
-    "a1-l09"
-  ],
-  "nextLessonId": "a1-l11",
-  "previousLessonId": "a1-l09",
   "title": {
-    "de": "Was hast du gemacht?",
-    "fa": "چه کار کردی؟",
-    "en": "What did you do?"
+    "fa": "Ich war noch nie... - هنوز هرگز نبودم...",
+    "en": "I Was Never... ",
+    "de": "Ich war noch nie..."
   },
-  "shortTitle": {
-    "de": "Was hast du gemacht?",
-    "fa": "چه کار کردی؟",
-    "en": "What did you do?"
+  "subtitle": {
+    "fa": "فصل‌ها، تعطیلات، مقاصد سفر و Konjunktiv II",
+    "en": "Seasons, Holidays, Travel Destinations and Konjunktiv II",
+    "de": "Jahreszeiten, Urlaub, Reiseziele und Konjunktiv II"
   },
   "description": {
-    "fa": "در این درس با زمان گذشته (Perfekt) برای صحبت درباره اتفاقات گذشته آشنا می‌شوید.",
-    "en": "In this lesson you will learn the past tense (Perfekt) to talk about past events.",
-    "de": "In dieser Lektion lernen Sie die Vergangenheitsform (Perfekt) um über vergangene Ereignisse zu sprechen."
+    "fa": "در این درس شما با واژگان فصل‌ها و تعطیلات، مقاصد سفر (ساحل، کوه، جزیره)، زمان گذشته Perfekt فعل sein (ich bin gewesen)، Konjunktiv II با würde (می‌خواستم)، ضمایر پرسشی welch- در Nominativ، حروف اضافه‌ی سفر (nach, in, auf) و مکان‌های اقامتی آشنا می‌شوید.",
+    "en": "In this lesson you will learn seasons and holiday vocabulary, travel destinations (beach, mountains, island), Perfekt of sein (ich bin gewesen), Konjunktiv II with würde (I would like), interrogative pronouns welch- in nominative, travel prepositions (nach, in, auf), and accommodation types.",
+    "de": "In dieser Lektion lernen Sie Jahreszeiten und Urlaubsvokabular, Reiseziele, Perfekt von sein, Konjunktiv II mit würde, Fragewort welch-, Reisepräpositionen und Unterkünfte."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 4,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ ساختار زمان گذشته (Perfekt)",
-      "✅ فعل کمکی haben/sein",
-      "✅ Partizip II (شکل سوم فعل)",
-      "✅ گفتن اینکه چه کارهایی انجام داده‌اید"
+      "نام بردن فصل‌ها: Frühling, Sommer, Herbst, Winter",
+      "نام بردن مقاصد تعطیلات: der Strand, die Berge, die Insel, das Meer",
+      "صرف Konjunktiv II با würde: ich würde, du würdest, er würde...",
+      "استفاده از würde + gern + infinitiv: Ich würde gerne nach Paris fahren",
+      "صرف Perfekt فعل sein: ich bin gewesen, wir sind gewesen",
+      "استفاده از ضمیر پرسشی welch-: welcher Monat? welches Land? welche Stadt?",
+      "استفاده از حروف اضافه‌ی سفر: nach (شهر/کشور)، in (جزیره)، auf (جزیره)",
+      "نام بردن مکان‌های اقامتی: das Hotel, die Jugendherberge, die Pension, das Appartement",
+      "گفتن تجربه‌ی سفر: Ich war noch nie in... / Ich war schon in..."
+    ],
+    "en": [
+      "Name seasons: Frühling, Sommer, Herbst, Winter",
+      "Name holiday destinations: der Strand, die Berge, die Insel, das Meer",
+      "Conjugate Konjunktiv II with würde: ich würde, du würdest, er würde...",
+      "Use würde + gern + infinitive: Ich würde gerne nach Paris fahren",
+      "Conjugate Perfekt of sein: ich bin gewesen, wir sind gewesen",
+      "Use interrogative welch-: welcher Monat? welches Land? welche Stadt?",
+      "Use travel prepositions: nach (city/country), in (island), auf (island)",
+      "Name accommodations: das Hotel, die Jugendherberge, die Pension, das Appartement",
+      "Express travel experience: Ich war noch nie in... / Ich war schon in..."
+    ],
+    "de": [
+      "Jahreszeiten nennen: Frühling, Sommer, Herbst, Winter",
+      "Reiseziele nennen: der Strand, die Berge, die Insel, das Meer",
+      "Konjunktiv II mit würde konjugieren",
+      "würde + gern + Infinitiv verwenden",
+      "Perfekt von sein konjugieren: ich bin gewesen",
+      "Fragewort welch- verwenden",
+      "Reisepräpositionen: nach, in, auf",
+      "Unterkünfte nennen: Hotel, Jugendherberge, Pension, Appartement",
+      "Reiseerfahrung ausdrücken: Ich war noch nie..."
     ]
   },
-  "xpReward": 60,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
-    {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
-      },
-      "content": {
-        "fa": "به درس دهم خوش آمدید! ⏳\n\nدر این درس با زمان گذشته (Perfekt) آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• ساختار زمان گذشته در آلمانی\n• استفاده از فعل کمکی haben/sein\n• ساختن Partizip II (شکل سوم فعل)\n• چگونه بگویید چه کارهایی انجام داده‌اید",
-        "en": "Welcome to lesson 10! ⏳\n\nIn this lesson you will learn the past tense (Perfekt).\n\nYou will learn:\n• Structure of the past tense in German\n• Using auxiliary verbs haben/sein\n• Forming Partizip II (past participle)\n• How to say what you have done",
-        "de": "Willkommen zur zehnten Lektion! ⏳\n\nIn dieser Lektion lernen Sie die Vergangenheitsform (Perfekt).\n\nSie lernen:\n• Struktur der Vergangenheitsform im Deutschen\n• Verwendung der Hilfsverben haben/sein\n• Bildung des Partizip II\n• Wie man sagt, was Sie getan haben"
-      },
-      "id": "a1-l10-INTRO-001",
-      "order": 0
+  "requiredPreviousKnowledge": {
+    "fa": [
+      "تسلط بر درس ۱-۹",
+      "آشنایی با Präteritum sein (war/waren)",
+      "آشنایی با Perfekt با haben",
+      "آشنایی با فعل‌های Modal"
+    ],
+    "en": [
+      "Mastery of Lessons 1-9",
+      "Präteritum of sein (war/waren)",
+      "Perfekt with haben",
+      "Modal verbs"
+    ],
+    "de": [
+      "Beherrschung von Lektion 1-9",
+      "Präteritum von sein",
+      "Perfekt mit haben",
+      "Modalverben"
+    ]
+  },
+  "storyMode": {
+    "title": {
+      "fa": "Story Mode - ادامه",
+      "en": "Story Mode - Continued",
+      "de": "Story Mode - Fortsetzung"
     },
-    {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
-      },
-      "words": [
-        {
-          "de": "machen",
-          "fa": "انجام دادن",
-          "en": "to do/make",
-          "partizip": "gemacht",
-          "icon": "🛠️",
-          "example": {
-            "de": "Ich habe die Hausaufgaben gemacht.",
-            "fa": "من تکالیف را انجام دادم.",
-            "en": "I did the homework."
-          }
-        },
-        {
-          "de": "lernen",
-          "fa": "یاد گرفتن",
-          "en": "to learn",
-          "partizip": "gelernt",
-          "icon": "📚",
-          "example": {
-            "de": "Ich habe Deutsch gelernt.",
-            "fa": "من آلمانی یاد گرفتم.",
-            "en": "I learned German."
-          }
-        },
-        {
-          "de": "kochen",
-          "fa": "آشپزی کردن",
-          "en": "to cook",
-          "partizip": "gekocht",
-          "icon": "🍳",
-          "example": {
-            "de": "Ich habe Pizza gekocht.",
-            "fa": "من پیتزا پختم.",
-            "en": "I cooked pizza."
-          }
-        },
-        {
-          "de": "besuchen",
-          "fa": "ملاقات کردن / دیدن",
-          "en": "to visit",
-          "partizip": "besucht",
-          "icon": "👋",
-          "example": {
-            "de": "Ich habe meine Oma besucht.",
-            "fa": "من مادربزرگم را ملاقات کردم.",
-            "en": "I visited my grandma."
-          }
-        },
-        {
-          "de": "spielen",
-          "fa": "بازی کردن",
-          "en": "to play",
-          "partizip": "gespielt",
-          "icon": "🎮",
-          "example": {
-            "de": "Ich habe Fußball gespielt.",
-            "fa": "من فوتبال بازی کردم.",
-            "en": "I played football."
-          }
-        },
-        {
-          "de": "lesen",
-          "fa": "خواندن",
-          "en": "to read",
-          "partizip": "gelesen",
-          "icon": "📖",
-          "example": {
-            "de": "Ich habe ein Buch gelesen.",
-            "fa": "من یک کتاب خواندم.",
-            "en": "I read a book."
-          }
-        }
-      ],
-      "id": "a1-l10-VOC-002",
-      "order": 1
+    "description": {
+      "fa": "هفته‌ی دهم کلاس آلمانی. دانشجویان درباره‌ی تعطیلات و سفر صحبت می‌کنند. Carla در زمستان، Tina در تابستان، Johannes در پاییز و Tim در بهار سفر می‌کنند. Emma، Martha، Paul و Fabio به جزیره‌ی Sylt می‌روند و در آنجا اقامت می‌کنند. داستان ما در فصل‌های مختلف ادامه پیدا می‌کند.",
+      "en": "Tenth week. Students talk about holidays and travel. Carla travels in winter, Tina in summer, Johannes in autumn, Tim in spring. Emma, Martha, Paul and Fabio go to the island of Sylt.",
+      "de": "Zehnte Woche. Die Studierenden sprechen über Urlaub und Reisen. Emma, Martha, Paul und Fabio fahren nach Sylt."
     },
-    {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+    "characters": [
+      {
+        "name": "Emma",
+        "persian": "اِ-ما",
+        "country": "آلمان",
+        "age": 22,
+        "job": "دانشجو",
+        "destination": "Sylt"
       },
-      "concept": {
-        "fa": "زمان گذشته (Perfekt)",
-        "en": "Past Tense (Perfekt)",
-        "de": "Vergangenheit (Perfekt)"
+      {
+        "name": "Martha",
+        "persian": "مار-تا",
+        "country": "آمریکا",
+        "age": 30,
+        "job": "معلم",
+        "destination": "Sylt"
       },
-      "explanation": {
-        "fa": "📌 **ساختار زمان گذشته (Perfekt):**\n\nدر آلمانی، برای صحبت در مکالمه از Perfekt استفاده می‌کنیم:\n\n**فعل کمکی (haben/sein) + Partizip II**\n\n• بخش اول: فعل کمکی haben (یا sein) در جایگاه دوم جمله صرف می‌شود.\n• بخش دوم: Partizip II به آخرین کلمه جمله می‌رود.\n\n📌 **قوانین ساختن Partizip II:**\n\n• افعال با قاعده: ge- + ریشه فعل + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• افعال بی‌قاعده: ge- + ریشه تغییر یافته + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **چه زمانی از sein استفاده می‌کنیم؟**\n\nاگر فعل مربوط به جابجایی از نقطه A به B باشد (مثل gehen, fahren, kommen)، از sein استفاده می‌کنیم:\n\n• Ich bin nach Hause gegangen.",
-        "en": "📌 **Structure of Perfekt:**\n\nIn German, Perfekt is used in spoken language:\n\n**Auxiliary verb (haben/sein) + Partizip II**\n\n• First part: The auxiliary verb is conjugated in second position.\n• Second part: Partizip II goes to the end of the sentence.\n\n📌 **Rules for forming Partizip II:**\n\n• Regular verbs: ge- + verb stem + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• Irregular verbs: ge- + changed stem + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **When to use sein?**\n\nIf the verb involves movement from point A to B (e.g., gehen, fahren, kommen), use sein:\n\n• Ich bin nach Hause gegangen.",
-        "de": "📌 **Struktur des Perfekt:**\n\nIm Deutschen wird Perfekt in der gesprochenen Sprache verwendet:\n\n**Hilfsverb (haben/sein) + Partizip II**\n\n• Erster Teil: Das Hilfsverb wird an zweiter Stelle konjugiert.\n• Zweiter Teil: Das Partizip II kommt ans Ende des Satzes.\n\n📌 **Regeln für die Bildung des Partizip II:**\n\n• Regelmäßige Verben: ge- + Verbstamm + -t\n→ machen → gemacht\n→ lernen → gelernt\n\n• Unregelmäßige Verben: ge- + veränderter Stamm + -en\n→ lesen → gelesen\n→ fahren → gefahren\n\n📌 **Wann verwendet man sein?**\n\nWenn das Verb eine Bewegung von A nach B beschreibt (z.B. gehen, fahren, kommen), verwendet man sein:\n\n• Ich bin nach Hause gegangen."
+      {
+        "name": "Paul",
+        "persian": "پاول",
+        "country": "برزیل",
+        "age": 26,
+        "job": "آشپز",
+        "destination": "Sylt"
       },
-      "examples": [
-        {
-          "de": "Ich habe Deutsch gelernt.",
-          "fa": "من آلمانی یاد گرفتم.",
-          "en": "I learned German."
-        },
-        {
-          "de": "Ich habe Pizza gekocht.",
-          "fa": "من پیتزا پختم.",
-          "en": "I cooked pizza."
-        },
-        {
-          "de": "Ich bin nach Hause gegangen.",
-          "fa": "من به خانه رفتم.",
-          "en": "I went home."
-        },
-        {
-          "de": "Ich habe ein Buch gelesen.",
-          "fa": "من یک کتاب خواندم.",
-          "en": "I read a book."
-        },
-        {
-          "de": "Was hast du gemacht?",
-          "fa": "چه کار کردی؟",
-          "en": "What did you do?"
-        }
-      ],
-      "id": "a1-l10-GRAM-003",
-      "order": 2
+      {
+        "name": "Fabio",
+        "persian": "فا-بی-و",
+        "country": "ایتالیا",
+        "age": 28,
+        "job": "آشپز",
+        "destination": "Sylt"
+      },
+      {
+        "name": "Carla",
+        "persian": "کار-لا",
+        "country": "آلمان",
+        "age": 24,
+        "job": "دانشجو",
+        "destination": "اسباعی"
+      },
+      {
+        "name": "Tina",
+        "persian": "تی-نا",
+        "country": "آلمان",
+        "age": 28,
+        "job": "دانشجو",
+        "destination": "تابستانی"
+      }
+    ]
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "به درس دهم خوش آمدید — Ich war noch nie...",
+      "en": "Welcome to Lesson 10!",
+      "de": "Willkommen zu Lektion 10!"
     },
-    {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: آخر هفته",
-        "en": "📖 Story: The Weekend",
-        "de": "📖 Geschichte: Das Wochenende"
-      },
-      "text": {
-        "de": "Am Wochenende habe ich viel gemacht. Ich habe Deutsch gelernt. Ich habe Pizza gekocht. Ich habe ein Buch gelesen. Ich habe meinen Freund besucht. Wir haben Fußball gespielt. Am Abend bin ich nach Hause gegangen. Es war ein schöner Tag.",
-        "fa": "آخر هفته کارهای زیادی انجام دادم. من آلمانی یاد گرفتم. من پیتزا پختم. من یک کتاب خواندم. من دوستم را ملاقات کردم. ما فوتبال بازی کردیم. عصر به خانه رفتم. روز قشنگی بود.",
-        "en": "On the weekend I did a lot. I learned German. I cooked pizza. I read a book. I visited my friend. We played football. In the evening I went home. It was a beautiful day."
-      },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "چه چیزی یاد گرفتم؟",
-            "en": "What did I learn?",
-            "de": "Was habe ich gelernt?"
+    "content": {
+      "fa": "تصور کنید با یک آلمانی درباره‌ی سفر صحبت می‌کنید. باید بگویید: «من هنوز هرگز در پاریس نبودم» (Ich war noch nie in Paris) یا «دوست دارم به ایتالیا بروم» (Ich würde gerne nach Italien fahren).\n\nاین درس به شما کمک می‌کند تا درباره‌ی تعطیلات و سفر صحبت کنید. شما با Konjunktiv II (می‌خواستم) و Perfekt فعل sein (بوده‌ام) آشنا می‌شوید.",
+      "en": "Imagine talking to a German about travel. You need to say: 'I was never in Paris' (Ich war noch nie in Paris) or 'I would like to go to Italy' (Ich würde gerne nach Italien fahren).\n\nThis lesson helps you talk about holidays and travel. You'll learn Konjunktiv II (would) and Perfekt of sein.",
+      "de": "Stell dir vor, du sprichst über Reisen. Du sagst: 'Ich war noch nie in Paris' oder 'Ich würde gerne nach Italien fahren'."
+    },
+    "imagePrompt": "Four seasons travel collage: spring in Rome, summer on Sylt beach, autumn in the mountains, winter snowboarding, suitcase with travel items"
+  },
+  "pronunciationGuide": {
+    "title": {
+      "fa": "راهنمای تلفظ",
+      "en": "Pronunciation Guide",
+      "de": "Ausspracheführer"
+    },
+    "layers": {
+      "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی. این درس روی تلفظ فصل‌ها و مقاصد سفر تمرکز می‌کند.",
+      "en": "Three layers. This lesson focuses on seasons and travel vocabulary.",
+      "de": "Drei Schichten."
+    },
+    "sounds": [
+      {
+        "id": "sound-r",
+        "letter": "r (مرور)",
+        "description": {
+          "fa": "غُرّی",
+          "en": "uvular",
+          "de": "uvular"
+        },
+        "ipa": "[ʁ]",
+        "persianEquivalent": "≈ غُرّ گربه",
+        "commonMistake": {
+          "fa": "مثل ر فارسی",
+          "en": "like Persian r",
+          "de": "wie persisches r"
+        },
+        "examples": [
+          {
+            "word": "Frühling",
+            "persian": "فرو-لینگ",
+            "meaning": "بهار"
           },
-          "answer": {
-            "fa": "آلمانی",
-            "en": "German",
-            "de": "Deutsch"
+          {
+            "word": "Herbst",
+            "persian": "هِرپست",
+            "meaning": "پاییز"
           }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "با دوستم چه کار کردیم؟",
-            "en": "What did I do with my friend?",
-            "de": "Was habe ich mit meinem Freund gemacht?"
-          },
-          "answer": {
-            "fa": "فوتبال بازی کردیم",
-            "en": "Played football",
-            "de": "Fußball gespielt"
-          }
-        }
-      ],
-      "id": "a1-l10-STORY-004",
-      "order": 3
-    },
-    {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
-      },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "sentence_building",
-          "question": {
-            "fa": "کلمات را به زمان گذشته تبدیل کنید: 'ich / Fußball / spielen / haben'",
-            "en": "Convert to past tense: 'ich / Fußball / spielen / haben'",
-            "de": "Ins Perfekt umwandeln: 'ich / Fußball / spielen / haben'"
-          },
-          "answer": "Ich habe Fußball gespielt.",
-          "hint": {
-            "fa": "haben + Partizip II",
-            "en": "haben + Partizip II",
-            "de": "haben + Partizip II"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "fill_in",
-          "question": {
-            "fa": "جای خالی: Was ________ du gemacht? (فعل کمکی)",
-            "en": "Fill in: Was ________ du gemacht? (auxiliary verb)",
-            "de": "Füllen Sie: Was ________ du gemacht? (Hilfsverb)"
-          },
-          "answer": "hast",
-          "hint": {
-            "fa": "du → hast",
-            "en": "du → hast",
-            "de": "du → hast"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'من یک کتاب خواندم.'",
-            "en": "Translate: 'I read a book.'",
-            "de": "Übersetzen: 'Ich habe ein Buch gelesen.'"
-          },
-          "answer": "Ich habe ein Buch gelesen.",
-          "hint": {
-            "fa": "lesen → gelesen",
-            "en": "lesen → gelesen",
-            "de": "lesen → gelesen"
-          }
-        }
-      ],
-      "id": "a1-l10-EXER-005",
-      "order": 4
-    },
-    {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
-      },
-      "cards": [
-        {
-          "de": "gemacht",
-          "fa": "انجام داده",
-          "en": "done",
-          "icon": "✅"
-        },
-        {
-          "de": "gelernt",
-          "fa": "یاد گرفته",
-          "en": "learned",
-          "icon": "📚"
-        },
-        {
-          "de": "gekocht",
-          "fa": "پخته",
-          "en": "cooked",
-          "icon": "🍳"
-        },
-        {
-          "de": "besucht",
-          "fa": "ملاقات کرده",
-          "en": "visited",
-          "icon": "👋"
-        },
-        {
-          "de": "gespielt",
-          "fa": "بازی کرده",
-          "en": "played",
-          "icon": "🎮"
-        },
-        {
-          "de": "gelesen",
-          "fa": "خوانده",
-          "en": "read",
-          "icon": "📖"
-        },
-        {
-          "de": "gegangen",
-          "fa": "رفته",
-          "en": "gone",
-          "icon": "🚶"
-        }
-      ],
-      "id": "a1-l10-FLASH-006",
-      "order": 5
-    },
-    {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
-      },
-      "words": [
-        {
-          "word": "gemacht",
-          "phonetic": "/ɡəˈmaxt/"
-        },
-        {
-          "word": "gelernt",
-          "phonetic": "/ɡəˈlɛʁnt/"
-        },
-        {
-          "word": "gekocht",
-          "phonetic": "/ɡəˈkɔxt/"
-        },
-        {
-          "word": "gelesen",
-          "phonetic": "/ɡəˈleːzn̩/"
-        },
-        {
-          "word": "gegangen",
-          "phonetic": "/ɡəˈɡaŋən/"
-        }
-      ],
-      "id": "a1-l10-PRON-007",
-      "order": 6
-    },
-    {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
-      },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich habe Deutsch ________.' (lernen)",
-            "en": "Complete: 'Ich habe Deutsch ________.' (lernen)",
-            "de": "Vervollständigen: 'Ich habe Deutsch ________.' (lernen)"
-          },
-          "answer": "gelernt",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "کدام یک Partizip II فعل 'lesen' است؟",
-            "en": "Which is the Partizip II of 'lesen'?",
-            "de": "Welches ist das Partizip II von 'lesen'?"
-          },
-          "options": [
-            "lesen",
-            "las",
-            "gelesen",
-            "liest"
-          ],
-          "correctIndex": 2,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "برای فعل 'gehen' از کدام فعل کمکی استفاده می‌شود؟",
-            "en": "Which auxiliary verb is used for 'gehen'?",
-            "de": "Welches Hilfsverb wird für 'gehen' verwendet?"
-          },
-          "options": [
-            "haben",
-            "sein"
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l10-QUIZ-008",
-      "order": 7
-    },
-    {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
-      },
-      "whatYouLearned": {
-        "fa": [
-          "✅ ساختار زمان گذشته (Perfekt)",
-          "✅ فعل کمکی haben/sein",
-          "✅ ساختن Partizip II",
-          "✅ گفتن اینکه چه کارهایی انجام داده‌اید"
-        ],
-        "en": [
-          "✅ Structure of Perfekt",
-          "✅ Auxiliary verbs haben/sein",
-          "✅ Forming Partizip II",
-          "✅ Saying what you have done"
-        ],
-        "de": [
-          "✅ Struktur des Perfekt",
-          "✅ Hilfsverben haben/sein",
-          "✅ Bildung des Partizip II",
-          "✅ Sagen, was Sie getan haben"
         ]
       },
-      "nextSteps": {
-        "fa": "📚 در درس بعدی (Was kannst du?) با افعال مودال آشنا می‌شوید.",
-        "en": "📚 In the next lesson (Was kannst du?) you will learn modal verbs.",
-        "de": "📚 In der nächsten Lektion (Was kannst du?) lernen Sie Modalverben."
+      {
+        "id": "sound-ü-l10",
+        "letter": "ü (مرور)",
+        "description": {
+          "fa": "بین ای و او",
+          "en": "between i and u",
+          "de": "zwischen i und u"
+        },
+        "ipa": "[yː]",
+        "persianEquivalent": "≈ بین ای و او",
+        "commonMistake": {
+          "fa": "مثل و",
+          "en": "like u",
+          "de": "wie u"
+        },
+        "examples": [
+          {
+            "word": "Frühling",
+            "persian": "فرو-لینگ",
+            "meaning": "بهار"
+          },
+          {
+            "word": "würde",
+            "persian": "وور-دِه",
+            "meaning": "می‌خواستم"
+          }
+        ]
       },
-      "id": "a1-l10-SUMM-009",
-      "order": 8
+      {
+        "id": "sound-eu-l10",
+        "letter": "eu / äu (مرور)",
+        "description": {
+          "fa": "مثل او-ی",
+          "en": "like oi",
+          "de": "wie oi"
+        },
+        "ipa": "[ɔɪ̯]",
+        "persianEquivalent": "≈ او-ی",
+        "commonMistake": {
+          "fa": "مثل او",
+          "en": "like ou",
+          "de": "wie au"
+        },
+        "examples": [
+          {
+            "word": "Gebäude",
+            "persian": "گِ-بوی-دِه",
+            "meaning": "ساختمان"
+          }
+        ]
+      },
+      {
+        "id": "sound-st-sp-l10",
+        "letter": "st / sp (مرور)",
+        "description": {
+          "fa": "مثل شت و شپ",
+          "en": "like sht and shp",
+          "de": "wie scht und schp"
+        },
+        "ipa": "[ʃt] / [ʃp]",
+        "persianEquivalent": "≈ شت و شپ",
+        "commonMistake": {
+          "fa": "تلفظ ست و سپ",
+          "en": "pronouncing st and sp",
+          "de": "st und sp"
+        },
+        "examples": [
+          {
+            "word": "Strand",
+            "persian": "اشتراند",
+            "meaning": "ساحل"
+          }
+        ]
+      }
+    ]
+  },
+  "greetings": {
+    "items": []
+  },
+  "greetingsTable": {
+    "headers": [],
+    "rows": []
+  },
+  "vocabulary": [
+    {
+      "id": "voc-fruhling",
+      "de": "Frühling",
+      "article": "der",
+      "plural": "Frühlinge",
+      "ipa": "[ˈfʁyːlɪŋ]",
+      "fa": "بهار",
+      "en": "spring",
+      "example": {
+        "de": "Im Frühling blühen die Blumen.",
+        "fa": "در بهار گل‌ها شکوفا می‌شوند.",
+        "en": "In spring flowers bloom."
+      },
+      "usageNotes": {
+        "fa": "مذکر. با ü تلفظ می‌شود",
+        "en": "masculine. With ü",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' بین ای و او",
+        "en": "'ü' between i and u",
+        "de": "ü"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-sommer",
+      "de": "Sommer",
+      "article": "der",
+      "plural": "Sommer",
+      "ipa": "[ˈzɔmɐ]",
+      "fa": "تابستان",
+      "en": "summer",
+      "example": {
+        "de": "Im Sommer mache ich Urlaub.",
+        "fa": "در تابستان تعطیلات می‌کنم.",
+        "en": "I go on holiday in summer."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'Im Sommer' = در تابستان",
+        "en": "masculine. 'Im Sommer' = in summer",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'S' اول مثل 'ز' و 'o' کوتاه",
+        "en": "initial 's' like 'z', short 'o'",
+        "de": "s wie z"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-herbst",
+      "de": "Herbst",
+      "article": "der",
+      "plural": "Herbste",
+      "ipa": "[hɛʁpst]",
+      "fa": "پاییز",
+      "en": "autumn, fall",
+      "example": {
+        "de": "Im Herbst fallen die Blätter.",
+        "fa": "در پاییز برگ‌ها می‌ریزند.",
+        "en": "In autumn leaves fall."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'Im Herbst' = در پاییز",
+        "en": "masculine. 'Im Herbst'",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'st' مثل 'شت'",
+        "en": "uvular 'r' and 'st' like 'sht'",
+        "de": "r, st"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-winter",
+      "de": "Winter",
+      "article": "der",
+      "plural": "Winter",
+      "ipa": "[ˈvɪntɐ]",
+      "fa": "زمستان",
+      "en": "winter",
+      "example": {
+        "de": "Im Winter schneit es.",
+        "fa": "در زمستان برف می‌بارد.",
+        "en": "It snows in winter."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'Im Winter' = در زمستان",
+        "en": "masculine. 'Im Winter'",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل 'و' و 'i' کوتاه",
+        "en": "'W' like v, short 'i'",
+        "de": "W, i"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-urlaub",
+      "de": "Urlaub",
+      "article": "der",
+      "plural": "Urlaube",
+      "ipa": "[ˈuːɐ̯ˌlaʊ̯p]",
+      "fa": "تعطیلات، مرخصی",
+      "en": "holiday, vacation",
+      "example": {
+        "de": "Ich mache Urlaub.",
+        "fa": "من تعطیلات می‌کنم.",
+        "en": "I'm on holiday."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'Urlaub machen' = تعطیلات کردن. 'im Urlaub' = در تعطیلات",
+        "en": "masculine. 'Urlaub machen' = to go on holiday",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'u' کشیده و 'au' کشیده",
+        "en": "long 'u' and long 'au'",
+        "de": "u, au"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-strand",
+      "de": "Strand",
+      "article": "der",
+      "plural": "Strände",
+      "ipa": "[ʃtʁant]",
+      "fa": "ساحل",
+      "en": "beach",
+      "example": {
+        "de": "Wir gehen an den Strand.",
+        "fa": "ما به ساحل می‌رویم.",
+        "en": "We go to the beach."
+      },
+      "usageNotes": {
+        "fa": "مذکر. 'an den Strand gehen' = به ساحل رفتن. جمع با Umlaut: Strände",
+        "en": "masculine. 'an den Strand gehen'",
+        "de": "Maskulin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'st' مثل 'شت' و 'r' غُرّی",
+        "en": "'st' like 'sht' and uvular 'r'",
+        "de": "st, r"
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-berge",
+      "de": "Berge",
+      "article": "die",
+      "plural": "Berge",
+      "ipa": "[ˈbɛʁɡə]",
+      "fa": "کوه‌ها",
+      "en": "mountains",
+      "example": {
+        "de": "Wir fahren in die Berge.",
+        "fa": "ما به کوهستان می‌رویم.",
+        "en": "We go to the mountains."
+      },
+      "usageNotes": {
+        "fa": "مؤنث - die Berge (معمولاً جمع). 'in die Berge fahren' = به کوهستان رفتن",
+        "en": "feminine - die Berge (usually plural)",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'r' غُرّی و 'e' کوتاه",
+        "en": "uvular 'r' and short 'e'",
+        "de": "r, e"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-insel",
+      "de": "Insel",
+      "article": "die",
+      "plural": "Inseln",
+      "ipa": "[ˈɪnzl̩]",
+      "fa": "جزیره",
+      "en": "island",
+      "example": {
+        "de": "Sylt ist eine Insel.",
+        "fa": "Sylt یک جزیره است.",
+        "en": "Sylt is an island."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. 'auf einer Insel' = روی جزیره. 'auf Sylt' = در Sylt",
+        "en": "feminine. 'auf einer Insel' = on an island",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'i' کوتاه و 'n' نرم",
+        "en": "short 'i' and soft 'n'",
+        "de": "i, n"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-meer",
+      "de": "Meer",
+      "article": "das",
+      "plural": "Meere",
+      "ipa": "[meːɐ̯]",
+      "fa": "دریا",
+      "en": "sea, ocean",
+      "example": {
+        "de": "Die Nordsee ist ein Meer.",
+        "fa": "دریای شمال یک دریاست.",
+        "en": "The North Sea is a sea."
+      },
+      "usageNotes": {
+        "fa": "خنثی. 'am Meer' = در ساحل دریا. 'ins Meer' = به دریا",
+        "en": "neuter. 'am Meer' = at the sea",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'e' کشیده و 'r' غُرّی",
+        "en": "long 'e' and uvular 'r'",
+        "de": "e, r"
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-hotel-l10",
+      "de": "Hotel",
+      "article": "das",
+      "plural": "Hotels",
+      "ipa": "[hoˈtɛl]",
+      "fa": "هتل",
+      "en": "hotel",
+      "example": {
+        "de": "Wir übernachten im Hotel.",
+        "fa": "ما در هتل اقامت می‌کنیم.",
+        "en": "We stay at a hotel."
+      },
+      "usageNotes": {
+        "fa": "خنثی. 'im Hotel übernachten' = در هتل اقامت کردن. کلمه فرانسوی‌تبار",
+        "en": "neuter. 'im Hotel übernachten'",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'h' شنیده می‌شود و 'o' کوتاه",
+        "en": "'h' is heard, short 'o'",
+        "de": "h, o"
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-jugendherberge",
+      "de": "Jugendherberge",
+      "article": "die",
+      "plural": "Jugendherbergen",
+      "ipa": "[ˈjuːgntˌhɛʁbɛʁɡə]",
+      "fa": "مسافرخانه جوانان",
+      "en": "youth hostel",
+      "example": {
+        "de": "Die Jugendherberge ist billig.",
+        "fa": "مسافرخانه جوانان ارزان است.",
+        "en": "The youth hostel is cheap."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. مرکب: Jugend (جوانی) + Herberge (مسافرخانه). کلمه طولانی!",
+        "en": "feminine. Compound: Jugend + Herberge",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "کلمه بسیار طولانی - آن را به قسمت‌ها تقسیم کنید",
+        "en": "Very long word - break into parts",
+        "de": "Sehr langes Wort"
+      },
+      "difficulty": 4,
+      "frequency": 2
+    },
+    {
+      "id": "voc-pension",
+      "de": "Pension",
+      "article": "die",
+      "plural": "Pensionen",
+      "ipa": "[pɑ̃ˈsjɔ̃]",
+      "fa": "مسافرخانه",
+      "en": "guesthouse, B&B",
+      "example": {
+        "de": "Wir übernachten in einer Pension.",
+        "fa": "ما در مسافرخانه اقامت می‌کنیم.",
+        "en": "We stay at a guesthouse."
+      },
+      "usageNotes": {
+        "fa": "مؤنث. کلمه فرانسوی‌تبار. ارزان‌تر از هتل",
+        "en": "feminine. French-origin. Cheaper than hotel",
+        "de": "Feminin"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ فرانسوی‌تبار - 'on' در انتها نازک",
+        "en": "French pronunciation - nasal 'on'",
+        "de": "französische Aussprache"
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-appartement",
+      "de": "Appartement",
+      "article": "das",
+      "plural": "Appartements",
+      "ipa": "[aˈpaʁtmɑ̃]",
+      "fa": "آپارتمان (اقتصادی)",
+      "en": "apartment (holiday)",
+      "example": {
+        "de": "Wir mieten ein Appartement.",
+        "fa": "ما یک آپارتمان اجاره می‌کنیم.",
+        "en": "We rent an apartment."
+      },
+      "usageNotes": {
+        "fa": "خنثی. کلمه فرانسوی‌تبار. برای تعطیلات",
+        "en": "neuter. French-origin. For holidays",
+        "de": "Neutral"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ فرانسوی‌تبار",
+        "en": "French pronunciation",
+        "de": "französische Aussprache"
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-ubernachten",
+      "de": "übernachten",
+      "article": "",
+      "plural": "",
+      "ipa": "[yːbɐˈnaxtn̩]",
+      "fa": "اقامت کردن، شب‌ماندن",
+      "en": "to stay overnight",
+      "example": {
+        "de": "Wo übernachtet ihr?",
+        "fa": "کجا اقامت می‌کنید؟",
+        "en": "Where do you stay?"
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. 'im Hotel übernachten' = در هتل اقامت کردن",
+        "en": "regular verb. 'im Hotel übernachten'",
+        "de": "Regelmäßiges Verb"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' و 'ch' بعد از 'a' مثل 'خ' سخت",
+        "en": "'ü' and hard 'ch' after 'a'",
+        "de": "ü, ch"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-wurde",
+      "de": "würde",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈvyːʁdə]",
+      "fa": "می‌خواستم (Konjunktiv II)",
+      "en": "would (Konjunktiv II)",
+      "example": {
+        "de": "Ich würde gerne nach Paris fahren.",
+        "fa": "دوست دارم به پاریس بروم.",
+        "en": "I would like to go to Paris."
+      },
+      "usageNotes": {
+        "fa": "Konjunktiv II فعل werden. برای آرزو و مودبانه درخواست. 'würde + gern + infinitiv'",
+        "en": "Konjunktiv II of werden. For wishes and polite requests. 'würde + gern + infinitive'",
+        "de": "Konjunktiv II von werden"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ü' و 'r' غُرّی. فراموش کردن infinitiv در انتها",
+        "en": "'ü', uvular 'r'. Forget infinitive at end",
+        "de": "ü, r"
+      },
+      "difficulty": 4,
+      "frequency": 5
+    },
+    {
+      "id": "voc-gewesen",
+      "de": "gewesen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡəˈveːzn̩]",
+      "fa": "بوده (Perfekt sein)",
+      "en": "been (Perfekt of sein)",
+      "example": {
+        "de": "Ich bin in Paris gewesen.",
+        "fa": "من در پاریس بوده‌ام.",
+        "en": "I have been to Paris."
+      },
+      "usageNotes": {
+        "fa": "Partizip II فعل sein. 'sein gewesen' در Perfekt: ich bin gewesen",
+        "en": "Past participle of sein. Perfekt: ich bin gewesen",
+        "de": "Partizip II von sein"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'e' کشیده و 's' سخت. استفاده از haben به‌جای sein",
+        "en": "long 'e', hard 's'. Using haben instead of sein",
+        "de": "e, s. haben statt sein"
+      },
+      "difficulty": 4,
+      "frequency": 5
+    },
+    {
+      "id": "voc-welch",
+      "de": "welch-",
+      "article": "",
+      "plural": "",
+      "ipa": "[vɛlç]",
+      "fa": "کدام؟",
+      "en": "which?",
+      "example": {
+        "de": "Welcher Monat? Welches Land? Welche Stadt?",
+        "fa": "کدام ماه؟ کدام کشور؟ کدام شهر؟",
+        "en": "Which month? Which country? Which city?"
+      },
+      "usageNotes": {
+        "fa": "ضمیر پرسشی. با جنسیت تطبیق می‌شود: welcher (مذکر)، welches (خنثی)، welche (مؤنث/جمع)",
+        "en": "interrogative pronoun. Declines: welcher (masc), welches (neut), welche (fem/plural)",
+        "de": "Fragepronomen"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'W' مثل 'و' و 'ch' نرم. فراموش کردن تطبیق با جنسیت",
+        "en": "'W' like v, soft 'ch'. Forgetting gender agreement",
+        "de": "W, ch"
+      },
+      "difficulty": 3,
+      "frequency": 4
+    },
+    {
+      "id": "voc-noch-nie",
+      "de": "noch nie",
+      "article": "",
+      "plural": "",
+      "ipa": "[nɔx niː]",
+      "fa": "هنوز هرگز",
+      "en": "never (before)",
+      "example": {
+        "de": "Ich war noch nie in Paris.",
+        "fa": "من هنوز هرگز در پاریس نبودم.",
+        "en": "I was never in Paris."
+      },
+      "usageNotes": {
+        "fa": "عبارت قیدی. 'noch nie' = هنوز هرگز. با Perfekt یا Präteritum استفاده می‌شود",
+        "en": "adverbial phrase. Used with Perfekt or Präteritum",
+        "de": "Adverbialphrase"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'ch' بعد از 'o' مثل 'خ' و 'ie' کشیده",
+        "en": "'ch' after 'o' like 'kh', long 'ie'",
+        "de": "ch, ie"
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-schwimmen-l10",
+      "de": "schwimmen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃvɪmən]",
+      "fa": "شنا کردن",
+      "en": "to swim",
+      "example": {
+        "de": "Man kann schwimmen.",
+        "fa": "می‌توان شنا کرد.",
+        "en": "You can swim."
+      },
+      "usageNotes": {
+        "fa": "فعل منظم. Perfekt با sein: ich bin geschwommen (حرکت)",
+        "en": "regular verb. Perfekt with sein: ich bin geschwommen",
+        "de": "Regelmäßiges Verb. Perfekt mit sein"
+      },
+      "commonMistakes": {
+        "fa": "تلفظ 'sch' مثل ش و 'w' مثل و. Perfekt با sein نه haben",
+        "en": "'sch' like sh, 'w' like v. Perfekt with sein not haben",
+        "de": "sch, w. Perfekt mit sein"
+      },
+      "difficulty": 2,
+      "frequency": 4
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-konjunktiv2-wurde",
+        "title": {
+          "fa": "Konjunktiv II با würde (می‌خواستم)",
+          "en": "Konjunktiv II with würde (would)",
+          "de": "Konjunktiv II mit würde"
+        },
+        "concept": {
+          "fa": "Konjunktiv II با würde برای آرزو و درخواست مودبانه استفاده می‌شود. ساختار: würde + gern + infinitiv. مثل: Ich würde gerne nach Paris fahren (دوست دارم به پاریس بروم).",
+          "en": "Konjunktiv II with würde is used for wishes and polite requests. Structure: würde + gern + infinitive. Example: Ich würde gerne nach Paris fahren.",
+          "de": "Konjunktiv II mit würde für Wünsche und höfliche Bitten."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "würde",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "würde",
+              "وور-دِه",
+              "می‌خواستم"
+            ],
+            [
+              "du",
+              "würdest",
+              "وور-دِست",
+              "می‌خواستی"
+            ],
+            [
+              "er/sie/es",
+              "würde",
+              "وور-دِه",
+              "می‌خواست"
+            ],
+            [
+              "wir",
+              "würden",
+              "وور-دِن",
+              "می‌خواستیم"
+            ],
+            [
+              "ihr",
+              "würdet",
+              "وور-دِت",
+              "می‌خواستید"
+            ],
+            [
+              "sie/Sie",
+              "würden",
+              "وور-دِن",
+              "می‌خواستند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: [فاعل] + würde + gern + [infinitiv در انتها]. مثال: Ich würde gerne nach Italien fahren.",
+          "en": "Structure: [subject] + würde + gern + [infinitive at end]. Example: Ich würde gerne nach Italien fahren.",
+          "de": "Struktur: [Subjekt] + würde + gern + [Infinitiv am Ende]."
+        }
+      },
+      {
+        "id": "gram-perfekt-sein",
+        "title": {
+          "fa": "Perfekt فعل sein (gewesen)",
+          "en": "Perfekt of sein (gewesen)",
+          "de": "Perfekt von sein"
+        },
+        "concept": {
+          "fa": "برای گذشته‌ی sein در مکالمه، از Perfekt استفاده می‌کنید: ich bin gewesen (من بوده‌ام). همیشه با sein ساخته می‌شود (نه haben).",
+          "en": "For past tense of sein in conversation, use Perfekt: ich bin gewesen (I have been). Always formed with sein (not haben).",
+          "de": "Für die Vergangenheit von sein im Perfekt: ich bin gewesen."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "sein (Perfekt)",
+            "تلفظ فارسی",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "ich",
+              "bin gewesen",
+              "بین گِ-وِ-زِن",
+              "من بوده‌ام"
+            ],
+            [
+              "du",
+              "bist gewesen",
+              "بیست گِ-وِ-زِن",
+              "تو بوده‌ای"
+            ],
+            [
+              "er/sie/es",
+              "ist gewesen",
+              "ایست گِ-وِ-زِن",
+              "او بوده"
+            ],
+            [
+              "wir",
+              "sind gewesen",
+              "زیند گِ-وِ-زِن",
+              "ما بوده‌ایم"
+            ],
+            [
+              "ihr",
+              "seid gewesen",
+              "زاید گِ-وِ-زِن",
+              "شما بوده‌اید"
+            ],
+            [
+              "sie/Sie",
+              "sind gewesen",
+              "زیند گِ-وِ-زِن",
+              "آن‌ها/شما بوده‌اند"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "ساختار: [sein صرف‌شده] + [بقیه] + [gewesen در انتها]. مثال: Ich bin in Paris gewesen.",
+          "en": "Structure: [sein conjugated] + [rest] + [gewesen at end]. Example: Ich bin in Paris gewesen.",
+          "de": "Struktur: [sein] + [Rest] + [gewesen am Ende]."
+        }
+      },
+      {
+        "id": "gram-welch-nominativ",
+        "title": {
+          "fa": "ضمیر پرسشی welch- در Nominativ",
+          "en": "Interrogative Pronoun welch- in Nominative",
+          "de": "Fragepronomen welch- im Nominativ"
+        },
+        "concept": {
+          "fa": "welch- برای پرسیدن 'کدام؟' استفاده می‌شود. با جنسیت اسم تطبیق می‌کند: welcher (مذکر)، welches (خنثی)، welche (مؤنث/جمع).",
+          "en": "welch- is used to ask 'which?'. It agrees with the noun's gender: welcher (masc), welches (neut), welche (fem/plural).",
+          "de": "welch- fragt 'which?'. Stimmt mit dem Genus überein."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جنسیت",
+            "welch- (Nominativ)",
+            "مثال",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "مذکر",
+              "welcher",
+              "Welcher Monat fehlt?",
+              "کدام ماه غایب است؟"
+            ],
+            [
+              "خنثی",
+              "welches",
+              "Welches Land fehlt?",
+              "کدام کشور غایب است؟"
+            ],
+            [
+              "مؤنث",
+              "welche",
+              "Welche Stadt fehlt?",
+              "کدام شهر غایب است؟"
+            ],
+            [
+              "جمع",
+              "welche",
+              "Welche Länder?",
+              "کدام کشورها؟"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "welcher (مذکر) • welches (خنثی) • welche (مؤنث/جمع). مثل der/das/die.",
+          "en": "welcher (masc) • welches (neut) • welche (fem/plural). Like der/das/die.",
+          "de": "welcher (m) • welches (n) • welche (f/Pl). Wie der/das/die."
+        }
+      },
+      {
+        "id": "gram-reise-prapositionen",
+        "title": {
+          "fa": "حروف اضافه‌ی سفر: nach, in, auf",
+          "en": "Travel Prepositions: nach, in, auf",
+          "de": "Reisepräpositionen: nach, in, auf"
+        },
+        "concept": {
+          "fa": "برای گفتن مقصد سفر از حروف اضافه‌ی متفاوت استفاده می‌شود: nach (شهر/کشور بدون حرف تعریف)، in (جزیره با Dativ/Akkusativ)، auf (جزیره با Dativ/Akkusativ).",
+          "en": "Different prepositions are used for travel destinations: nach (city/country without article), in (island with dative/accusative), auf (island with dative/accusative).",
+          "de": "Für Reiseziele: nach (Stadt/Land ohne Artikel), in/auf (Insel mit Dativ/Akkusativ)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "مقصد",
+            "حرف اضافه",
+            "مثال",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "شهر",
+              "nach",
+              "nach Paris",
+              "به پاریس"
+            ],
+            [
+              "کشور",
+              "nach",
+              "nach Italien",
+              "به ایتالیا"
+            ],
+            [
+              "جزیره",
+              "auf / in",
+              "auf Sylt / in Sylt",
+              "در Sylt"
+            ],
+            [
+              "کشور با حرف تعریف",
+              "in",
+              "in die Schweiz",
+              "به سوئیس"
+            ],
+            [
+              "مکان با حرف تعریف",
+              "in",
+              "in die Berge",
+              "به کوهستان"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "nach + شهر/کشور (بدون حرف تعریف). in/auf + جزیره. in + کشور با حرف تعریف (die Schweiz, die Türkei).",
+          "en": "nach + city/country (no article). in/auf + island. in + country with article (die Schweiz).",
+          "de": "nach + Stadt/Land (ohne Artikel). in/auf + Insel."
+        }
+      },
+      {
+        "id": "gram-perfekt-sein-vs-haben",
+        "title": {
+          "fa": "Perfekt با sein یا haben؟",
+          "en": "Perfekt with sein or haben?",
+          "de": "Perfekt mit sein oder haben?"
+        },
+        "concept": {
+          "fa": "بعضی فعل‌ها در Perfekt با sein ساخته می‌شوند (نه haben): فعل‌های حرکت (gehen, fahren, kommen, schwimmen)، فعل sein (gewesen)، و فعل‌های تغییر حالت.",
+          "en": "Some verbs form Perfekt with sein (not haben): verbs of motion (gehen, fahren, come, swim), sein (gewesen), and change-of-state verbs.",
+          "de": "Einige Verben bilden das Perfekt mit sein: Bewegungsverben, sein, Zustandswechsel."
+        },
+        "conjugationTable": {
+          "headers": [
+            "فعل",
+            "Perfekt با",
+            "مثال",
+            "معنی"
+          ],
+          "rows": [
+            [
+              "gehen (رفتن)",
+              "sein",
+              "Ich bin gegangen.",
+              "من رفتم"
+            ],
+            [
+              "fahren (سواری)",
+              "sein",
+              "Ich bin gefahren.",
+              "من سواری کردم"
+            ],
+            [
+              "kommen (آمدن)",
+              "sein",
+              "Ich bin gekommen.",
+              "من آمدم"
+            ],
+            [
+              "sein (بودن)",
+              "sein",
+              "Ich bin gewesen.",
+              "من بوده‌ام"
+            ],
+            [
+              "schwimmen (شنا)",
+              "sein",
+              "Ich bin geschwommen.",
+              "من شنا کردم"
+            ],
+            [
+              "essen (خوردن)",
+              "haben",
+              "Ich habe gegessen.",
+              "من خوردم"
+            ]
+          ]
+        },
+        "pattern": {
+          "fa": "قانون: فعل‌های حرکت + sein → sein. بقیه → haben. استثنا: sein خودش با sein!",
+          "en": "Rule: verbs of motion + sein → Perfekt with sein. Others → haben. Exception: sein itself uses sein!",
+          "de": "Regel: Bewegungsverben + sein → Perfekt mit sein."
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-travel-1",
+      "title": {
+        "fa": "دیالوگ سفر - آرزوی سفر",
+        "en": "Travel Dialogue - Travel Wish",
+        "de": "Reise-Dialog - Reisewunsch"
+      },
+      "characters": [
+        {
+          "name": "Nina",
+          "role": "دانش‌آموز"
+        },
+        {
+          "name": "Fabio",
+          "role": "دانش‌آموز"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Nina",
+          "german": "Ich würde gerne mal nach Paris fahren.",
+          "persian": "ایخ وور-دِه گِر-نِه مال ناخ پا-ری فا-رِن.",
+          "meaning": {
+            "fa": "دوست دارم یک بار به پاریس بروم.",
+            "en": "I would like to go to Paris sometime.",
+            "de": "Ich würde gerne nach Paris fahren."
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ich auch, denn ich war noch nie in Frankreich.",
+          "persian": "ایخ آوخ، دِن ایخ وار نوخ نی این فران-کرایش.",
+          "meaning": {
+            "fa": "من هم، چون هنوز هرگز در فرانسه نبودم.",
+            "en": "Me too, because I was never in France.",
+            "de": "Ich auch, denn ich war noch nie in Frankreich."
+          }
+        },
+        {
+          "speaker": "Nina",
+          "german": "Wohin würdest du gerne fahren?",
+          "persian": "وو-هین وور-دِست دو گِر-نِه فا-رِن؟",
+          "meaning": {
+            "fa": "دوست داری کجا بروی؟",
+            "en": "Where would you like to go?",
+            "de": "Wohin würdest du gerne fahren?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Ich würde gerne nach Italien fahren, nach Rom.",
+          "persian": "ایخ وور-دِه گِر-نِه ناخ ایتا-لی-اِن فا-رِن، ناخ روم.",
+          "meaning": {
+            "fa": "دوست دارم به ایتالیا بروم، به رم.",
+            "en": "I would like to go to Italy, to Rome.",
+            "de": "Ich würde gerne nach Italien fahren."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Ich würde gerne",
+          "persian": "ایخ وور-دِه گِر-نِه",
+          "meaning": "دوست دارم (Konjunktiv II: würde + gern + infinitiv)"
+        },
+        {
+          "phrase": "nach Paris fahren",
+          "persian": "ناخ پا-ری فا-رِن",
+          "meaning": "به پاریس رفتن (nach + شهر)"
+        },
+        {
+          "phrase": "ich war noch nie",
+          "persian": "ایخ وار نوخ نی",
+          "meaning": "هنوز هرگز نبودم (Präteritum sein + noch nie)"
+        },
+        {
+          "phrase": "Wohin würdest du",
+          "persian": "وو-هین وور-دِست دو",
+          "meaning": "کجا دوست داری (سوال با Konjunktiv II)"
+        }
+      ]
+    },
+    {
+      "id": "dialog-urlaub-1",
+      "title": {
+        "fa": "دیالوگ تعطیلات - چطور بود؟",
+        "en": "Holiday Dialogue - How Was It?",
+        "de": "Urlaubs-Dialog - Wie war's?"
+      },
+      "characters": [
+        {
+          "name": "Emilia",
+          "role": "دوست"
+        },
+        {
+          "name": "Fabio",
+          "role": "مسافر"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Emilia",
+          "german": "Hi Fabio! Wie war's im Urlaub?",
+          "persian": "های فا-بی-و! وای وار'س اوم اور-لاوپ؟",
+          "meaning": {
+            "fa": "سلام فابیو! تعطیلات چطور بود؟",
+            "en": "Hi Fabio! How was the holiday?",
+            "de": "Wie war's im Urlaub?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Super! Ich war auf Sylt.",
+          "persian": "زو-پِر! ایخ وار آوف زولت.",
+          "meaning": {
+            "fa": "عالی! در Sylt بودم.",
+            "en": "Great! I was on Sylt.",
+            "de": "Super! Ich war auf Sylt."
+          }
+        },
+        {
+          "speaker": "Emilia",
+          "german": "Und wie war das Wetter?",
+          "persian": "اوند وای وار داس وِ-تِر؟",
+          "meaning": {
+            "fa": "و آب‌وهوا چطور بود؟",
+            "en": "And how was the weather?",
+            "de": "Und wie war das Wetter?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Na ja, es geht. Ein bisschen kühl, aber es hat nicht geregnet.",
+          "persian": "نا یا، اِس گِت. این بیس-خِن کول، آبِر اِس هات نیشت گِ-رِگ-نِتْ.",
+          "meaning": {
+            "fa": "خب، بد نیست. کمی خنک، اما باران نیامد.",
+            "en": "Well, okay. A bit cool, but it didn't rain.",
+            "de": "Na ja, es geht. Ein bisschen kühl."
+          }
+        },
+        {
+          "speaker": "Emilia",
+          "german": "Was habt ihr gemacht?",
+          "persian": "واس هابْتْ اییر گِ-ماختْ؟",
+          "meaning": {
+            "fa": "چه کردید؟",
+            "en": "What did you do?",
+            "de": "Was habt ihr gemacht?"
+          }
+        },
+        {
+          "speaker": "Fabio",
+          "german": "Wir sind an den Strand gegangen und haben viel gesehen.",
+          "persian": "ویر زیند آن دِن اشتراند گِ-گان-گِن اوند هابْنْ فیل گِ-زِ-اِن.",
+          "meaning": {
+            "fa": "ما به ساحل رفتیم و چیزهای زیادی دیدیم.",
+            "en": "We went to the beach and saw a lot.",
+            "de": "Wir sind an den Strand gegangen."
+          }
+        }
+      ],
+      "analysis": [
+        {
+          "phrase": "Wie war's",
+          "persian": "وای وار'س",
+          "meaning": "چطور بود؟ (Präteritum sein)"
+        },
+        {
+          "phrase": "ich war auf Sylt",
+          "persian": "ایخ وار آوف زولت",
+          "meaning": "در Sylt بودم (auf + جزیره)"
+        },
+        {
+          "phrase": "es hat nicht geregnet",
+          "persian": "اِس هات نیشت گِ-رِگ-نِتْ",
+          "meaning": "باران نیامد (Perfekt منفی)"
+        },
+        {
+          "phrase": "Wir sind gegangen",
+          "persian": "ویر زیند گِ-گان-گِن",
+          "meaning": "ما رفتیم (Perfekt sein: gegangen)"
+        },
+        {
+          "phrase": "haben gesehen",
+          "persian": "هابْنْ گِ-زِ-اِن",
+          "meaning": "دیدیم (Perfekt haben: gesehen)"
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "آلمانی‌ها عاشق سفر هستند. به‌طور متوسط، هر آلمانی سالانه ۳۰ روز مرخصی دارد — یکی از بالاترین نرخ‌ها در جهان. مقاصد محبوب: اسپانیا (مخصوصاً Mallorca)، ایتالیا، ترکیه و اتریش.\n\nSylt معروف‌ترین جزیره‌ی آلمان است — در دریای شمال، با ۴۰ کیلومتر ساحل. در تابستان، بیش از ۴۰٬۰۰۰ بازدیدکننده در روز دارد. سفر به Sylt گران است — یک شب در هتل می‌تواند ۲۰۰ یورو یا بیشتر هزینه داشته باشد.\n\nJugendherberge (مسافرخانه جوانان) یک گزینه‌ی ارزان‌تر است — معمولاً ۲۰-۴۰ یورو در شب. در آلمان بیش از ۵۰۰ مسافرخانه جوانان وجود دارد.\n\nنکته: آلمانی‌ها بین 'Urlaub machen' (تعطیلات کردن) و 'Reisen' (سفر کردن) تفاوت قائل می‌شوند. Urlaub می‌تواند در خانه هم باشد، اما Reisen همیشه حرکت است.\n\nKonjunktiv II (würde) در مکالمه‌ی مودبانه‌ی آلمانی بسیار مهم است. به‌جای 'Ich will nach Paris' (می‌خواهم به پاریس)، 'Ich würde gerne nach Paris fahren' (دوست دارم به پاریس بروم) مودبانه‌تر است.",
+    "en": "Germans love to travel. On average, each German has 30 days of paid vacation per year — one of the highest rates in the world. Popular destinations: Spain (especially Mallorca), Italy, Turkey and Austria.\n\nSylt is Germany's most famous island — in the North Sea, with 40 km of beach. In summer, over 40,000 visitors per day. Traveling to Sylt is expensive — a hotel night can cost 200+ euros.\n\nJugendherberge (youth hostel) is a cheaper option — usually 20-40 euros per night. Germany has over 500 youth hostels.\n\nNote: Germans distinguish between 'Urlaub machen' (being on holiday) and 'Reisen' (traveling). Urlaub can be at home, but Reisen always involves movement.\n\nKonjunktiv II (würde) is very important in polite German conversation. Instead of 'Ich will nach Paris' (I want to go to Paris), 'Ich würde gerne nach Paris fahren' (I would like to go to Paris) is more polite.",
+    "de": "Deutsche reisen gerne. Im Durchschnitt 30 Tage Urlaub pro Jahr. Beliebte Ziele: Spanien (Mallorca), Italien, Türkei, Österreich.\n\nSylt ist Deutschlands bekannteste Insel — 40 km Strand. Im Sommer über 40.000 Besucher pro Tag. Teuer.\n\nJugendherberge: günstiger, 20-40 Euro pro Nacht. Über 500 in Deutschland.\n\nKonjunktiv II (würde) ist wichtig für höfliche Kommunikation."
+  },
+  "exercises": {
+    "greeting_practice": [
+      {
+        "id": "ex-seasons-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۱: فصل‌ها و مقاصد",
+          "en": "Exercise 1: Seasons and Destinations",
+          "de": "Übung 1: Jahreszeiten und Reiseziele"
+        },
+        "instructions": {
+          "fa": "برای هر فصل، مقصد یا فعالیت مناسب را انتخاب کنید.",
+          "en": "For each season, choose the appropriate destination or activity.",
+          "de": "Wählen Sie das passende Ziel."
+        },
+        "questions": [
+          {
+            "id": "s1-q1",
+            "situation": {
+              "fa": "Im Sommer — چه می‌کنید؟",
+              "en": "In summer — what do you do?",
+              "de": "Im Sommer"
+            },
+            "options": [
+              "schwimmen und an den Strand gehen",
+              "schneien und kalt",
+              "Skifahren",
+              "Laub färbt sich"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "تابستان: شنا و ساحل",
+              "en": "Summer: swimming and beach",
+              "de": "Sommer: Schwimmen"
+            }
+          },
+          {
+            "id": "s1-q2",
+            "situation": {
+              "fa": "Im Winter — کجا می‌روید؟",
+              "en": "In winter — where do you go?",
+              "de": "Im Winter"
+            },
+            "options": [
+              "an den Strand",
+              "in die Berge — Skifahren",
+              "nach Italien",
+              "schwimmen"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "زمستان: کوهستان و اسکی",
+              "en": "Winter: mountains and skiing",
+              "de": "Winter: Berge, Skifahren"
+            }
+          },
+          {
+            "id": "s1-q3",
+            "situation": {
+              "fa": "Im Frühling — هوا چطوره؟",
+              "en": "In spring — how's the weather?",
+              "de": "Im Frühling"
+            },
+            "options": [
+              "sehr kalt und Schnee",
+              "warm und Blumen blühen",
+              "sehr heiß",
+              "Sturm und Regen"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "بهار: گرم و شکوفه‌ها",
+              "en": "Spring: warm and flowers bloom",
+              "de": "Frühling: warm, Blumen"
+            }
+          },
+          {
+            "id": "s1-q4",
+            "situation": {
+              "fa": "Im Herbst — چه می‌بینید؟",
+              "en": "In autumn — what do you see?",
+              "de": "Im Herbst"
+            },
+            "options": [
+              "Schnee überall",
+              "Blätter fallen",
+              "Blumen blühen",
+              "sehr heiß"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "پاییز: برگ‌ها می‌ریزند",
+              "en": "Autumn: leaves fall",
+              "de": "Herbst: Blätter fallen"
+            }
+          }
+        ]
+      }
+    ],
+    "fill_in": [
+      {
+        "id": "ex-wurde-1",
+        "type": "fill_in",
+        "title": {
+          "fa": "تمرین ۲: Konjunktiv II با würde",
+          "en": "Exercise 2: Konjunktiv II with würde",
+          "de": "Übung 2: Konjunktiv II mit würde"
+        },
+        "instructions": {
+          "fa": "فعل würde را در شکل درست صرف کنید. فراموش نکنید: ich würde (بدون پایانه)!",
+          "en": "Conjugate würde correctly. Remember: ich würde (no ending)!",
+          "de": "Konjugieren Sie würde richtig."
+        },
+        "questions": [
+          {
+            "id": "w1-q1",
+            "prompt": "Ich ___ gerne nach Paris fahren. (würde)",
+            "placeholder": "würde"
+          },
+          {
+            "id": "w1-q2",
+            "prompt": "Du ___ gerne nach Italien fahren. (würde)",
+            "placeholder": "würdest"
+          },
+          {
+            "id": "w1-q3",
+            "prompt": "Wir ___ gerne auf Sylt übernachten. (würde)",
+            "placeholder": "würden"
+          },
+          {
+            "id": "w1-q4",
+            "prompt": "Er ___ gerne schwimmen. (würde)",
+            "placeholder": "würde"
+          },
+          {
+            "id": "w1-q5",
+            "prompt": "Ihr ___ gerne in die Berge fahren. (würde)",
+            "placeholder": "würdet"
+          }
+        ]
+      }
+    ],
+    "role_play": [
+      {
+        "id": "ex-role-1",
+        "type": "role_play",
+        "title": {
+          "fa": "تمرین ۳: آرزوی سفر",
+          "en": "Exercise 3: Travel Wish",
+          "de": "Übung 3: Reisewunsch"
+        },
+        "scenarios": [
+          {
+            "id": "rp1-s1",
+            "title": {
+              "fa": "سناریو: دوست داری کجا بروی؟",
+              "en": "Scenario: Where Would You Like to Go?",
+              "de": "Szene: Wohin würdest du gerne?"
+            },
+            "lines": [
+              {
+                "speaker": "Freund",
+                "german": "Wohin würdest du gerne fahren?",
+                "persian": "وو-هین وور-دِست دو گِر-نِه فا-رِن؟",
+                "meaning": {
+                  "fa": "دوست داری کجا بروی؟",
+                  "en": "Where would you like to go?",
+                  "de": "Wohin würdest du gerne fahren?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Ich würde gerne nach ______ fahren.",
+                "persian": "ایخ وور-دِه گِر-نِه ناخ ______ فا-رِن.",
+                "meaning": {
+                  "fa": "دوست دارم به ______ بروم.",
+                  "en": "I would like to go to ______.",
+                  "de": "Ich würde gerne nach ______ fahren."
+                }
+              },
+              {
+                "speaker": "Freund",
+                "german": "Warst du schon da?",
+                "persian": "وارست دو اِشون دا؟",
+                "meaning": {
+                  "fa": "آیا قبلاً آنجا بوده‌ای؟",
+                  "en": "Have you been there before?",
+                  "de": "Warst du schon da?"
+                }
+              },
+              {
+                "speaker": "Du",
+                "german": "Nein, ich war noch nie da. / Ja, schon einmal.",
+                "persian": "ناین، ایخ وار نوخ نی دا. / یا، اِشون این-مال.",
+                "meaning": {
+                  "fa": "نه، هنوز هرگز نبودم. / بله، یک بار.",
+                  "en": "No, never. / Yes, once.",
+                  "de": "Nein, noch nie. / Ja, schon einmal."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "du_vs_sie": [
+      {
+        "id": "ex-perfekt-sein-1",
+        "type": "match_situation",
+        "title": {
+          "fa": "تمرین ۴: Perfekt فعل sein (gewesen)",
+          "en": "Exercise 4: Perfekt of sein (gewesen)",
+          "de": "Übung 4: Perfekt von sein"
+        },
+        "instructions": {
+          "fa": "شکل درست Perfekt فعل sein را انتخاب کنید.",
+          "en": "Choose the correct Perfekt form of sein.",
+          "de": "Wählen Sie die richtige Perfekt-Form."
+        },
+        "questions": [
+          {
+            "id": "p1-q1",
+            "situation": {
+              "fa": "Ich ___ in Paris ___. (bin/gewesen)",
+              "en": "Ich ___ in Paris ___.",
+              "de": "Ich ___ in Paris ___."
+            },
+            "options": [
+              "bin gewesen",
+              "habe gewesen",
+              "war gewesen",
+              "bin war"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Perfekt sein: bin gewesen (همیشه با sein!)",
+              "en": "Perfekt sein: bin gewesen (always with sein!)",
+              "de": "bin gewesen"
+            }
+          },
+          {
+            "id": "p1-q2",
+            "situation": {
+              "fa": "Wir ___ in Berlin ___. (sind/gewesen)",
+              "en": "We ___ in Berlin ___.",
+              "de": "Wir ___ in Berlin ___."
+            },
+            "options": [
+              "sind gewesen",
+              "haben gewesen",
+              "waren gewesen",
+              "sind war"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Perfekt sein: sind gewesen",
+              "en": "sind gewesen",
+              "de": "sind gewesen"
+            }
+          },
+          {
+            "id": "p1-q3",
+            "situation": {
+              "fa": "Er ___ auf Sylt ___. (ist/gewesen)",
+              "en": "He ___ on Sylt ___.",
+              "de": "Er ___ auf Sylt ___."
+            },
+            "options": [
+              "ist gewesen",
+              "hat gewesen",
+              "war gewesen",
+              "ist war"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Perfekt sein: ist gewesen",
+              "en": "ist gewesen",
+              "de": "ist gewesen"
+            }
+          }
+        ]
+      }
+    ],
+    "pronunciation": [
+      {
+        "id": "ex-pron-1",
+        "type": "pronunciation",
+        "title": {
+          "fa": "تمرین ۵: تلفظ فصل‌ها و سفر",
+          "en": "Exercise 5: Pronouncing Seasons and Travel",
+          "de": "Übung 5: Jahreszeiten und Reise aussprechen"
+        },
+        "instructions": {
+          "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
+          "en": "Pronounce the following words.",
+          "de": "Sprechen Sie die Wörter aus."
+        },
+        "words": [
+          {
+            "word": "der Frühling",
+            "persian": "دِر فرو-لینگ",
+            "meaning": "بهار"
+          },
+          {
+            "word": "der Sommer",
+            "persian": "دِر زو-مِر",
+            "meaning": "تابستان"
+          },
+          {
+            "word": "der Herbst",
+            "persian": "دِر هِرپست",
+            "meaning": "پاییز"
+          },
+          {
+            "word": "der Winter",
+            "persian": "دِر وین-تِر",
+            "meaning": "زمستان"
+          },
+          {
+            "word": "der Urlaub",
+            "persian": "دِر اور-لاوپ",
+            "meaning": "تعطیلات"
+          },
+          {
+            "word": "der Strand",
+            "persian": "دِر اِشتراند",
+            "meaning": "ساحل"
+          },
+          {
+            "word": "die Insel",
+            "persian": "دی این-زِل",
+            "meaning": "جزیره"
+          },
+          {
+            "word": "würde",
+            "persian": "وور-دِه",
+            "meaning": "می‌خواستم"
+          },
+          {
+            "word": "gewesen",
+            "persian": "گِ-وِ-زِن",
+            "meaning": "بوده"
+          },
+          {
+            "word": "noch nie",
+            "persian": "نوخ نی",
+            "meaning": "هنوز هرگز"
+          }
+        ],
+        "focus": {
+          "fa": "توجه: 'ü' در Frühling و würde • 'r' غُرّی (Frühling, Herbst, Urlaub) • 'st' مثل شت (Herbst, Strand) • 'W' مثل و (Winter, würde) • 'au' کشیده (Urlaub) • 'ie' کشیده (nie)",
+          "en": "Pay attention to: 'ü' in Frühling/würde • uvular 'r' • 'st' like 'sht' • 'W' like v • long 'au' in Urlaub • long 'ie' in nie",
+          "de": "Achten Sie auf: ü • r • st • W • au • ie"
+        }
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۱۰",
+      "en": "Lesson 10 Review",
+      "de": "Lektion 10"
+    },
+    "quiz": [
+      {
+        "id": "r1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Ich würde gerne nach Paris fahren.' به چه معنی؟",
+          "en": "What does 'Ich würde gerne nach Paris fahren' mean?",
+          "de": "Was bedeutet das?"
+        },
+        "options": [
+          "من به پاریس می‌روم",
+          "دوست دارم به پاریس بروم",
+          "من در پاریس بودم",
+          "من به پاریس نمی‌روم"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Konjunktiv II: würde + gern + infinitiv = دوست دارم",
+          "en": "Konjunktiv II: would like to",
+          "de": "Konjunktiv II"
+        }
+      },
+      {
+        "id": "r2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "Perfekt فعل sein در 'ich' چگونه است؟",
+          "en": "How is Perfekt of sein with 'ich'?",
+          "de": "Wie ist Perfekt von sein bei ich?"
+        },
+        "options": [
+          "ich habe gewesen",
+          "ich bin gewesen",
+          "ich war gewesen",
+          "ich ist gewesen"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "Perfekt sein: ich bin gewesen (همیشه با sein!)",
+          "en": "bin gewesen (always with sein!)",
+          "de": "bin gewesen"
+        }
+      },
+      {
+        "id": "r3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'nach Italien fahren' — کدام حرف اضافه؟",
+          "en": "'nach Italien fahren' — which preposition?",
+          "de": "Welche Präposition?"
+        },
+        "options": [
+          "in",
+          "nach",
+          "auf",
+          "zu"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "nach + کشور (بدون حرف تعریف)",
+          "en": "nach + country (no article)",
+          "de": "nach + Land"
+        }
+      },
+      {
+        "id": "r4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'welcher Monat?' — 'welcher' برای چه جنسیتی؟",
+          "en": "'welcher Monat?' — which gender?",
+          "de": "Welches Genus?"
+        },
+        "options": [
+          "مؤنث",
+          "مذکر",
+          "خنثی",
+          "جمع"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "welcher = مذکر (der Monat)",
+          "en": "welcher = masculine (der Monat)",
+          "de": "welcher = maskulin"
+        }
+      },
+      {
+        "id": "r5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "'Ich war noch nie in Rom.' به چه معنی؟",
+          "en": "What does 'Ich war noch nie in Rom' mean?",
+          "de": "Was bedeutet das?"
+        },
+        "options": [
+          "من در رم بودم",
+          "من هنوز هرگز در رم نبودم",
+          "من به رم می‌روم",
+          "من در رم ساکنم"
+        ],
+        "correctIndex": 1,
+        "explanation": {
+          "fa": "noch nie = هنوز هرگز",
+          "en": "noch nie = never before",
+          "de": "noch nie"
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۱۰",
+      "en": "Lesson 10 Assessment",
+      "de": "Lektion 10"
+    },
+    "totalQuestions": 15,
+    "passingScore": 70,
+    "sections": {
+      "greetings": {
+        "count": 3,
+        "questions": []
+      },
+      "vocabulary": {
+        "count": 4,
+        "questions": []
+      },
+      "grammar": {
+        "count": 4,
+        "questions": []
+      },
+      "dialogues": {
+        "count": 2,
+        "questions": []
+      },
+      "du_vs_sie": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید فصل‌ها را بگویید؟",
+        "آیا Konjunktiv II با würde را بلدید؟",
+        "آیا Perfekt sein را بلدید؟",
+        "آیا welch- را استفاده می‌کنید؟",
+        "آیا حروف اضافه‌ی سفر را بلدید؟",
+        "آیا می‌توانید درباره‌ی سفر صحبت کنید؟"
+      ],
+      "en": [
+        "Can you name seasons?",
+        "Do you know Konjunktiv II with würde?",
+        "Do you know Perfekt of sein?",
+        "Can you use welch-?",
+        "Do you know travel prepositions?",
+        "Can you talk about travel?"
+      ],
+      "de": [
+        "Können Sie Jahreszeiten nennen?",
+        "Kennen Sie Konjunktiv II?",
+        "Kennen Sie Perfekt von sein?",
+        "Können Sie welch- verwenden?"
+      ]
+    },
+    "recommendations": {
+      "pass": {
+        "fa": "آماده‌ی درس ۱۱!",
+        "en": "Ready for Lesson 11!",
+        "de": "Bereit für Lektion 11!"
+      },
+      "fail": {
+        "fa": "مرور کنید.",
+        "en": "Review.",
+        "de": "Überprüfen."
+      }
+    }
+  },
+  "cheatSheet": {
+    "greetings": [],
+    "pronouns": [],
+    "duVsSie": [],
+    "seasons": [
+      {
+        "de": "der Frühling",
+        "fa": "بهار"
+      },
+      {
+        "de": "der Sommer",
+        "fa": "تابستان"
+      },
+      {
+        "de": "der Herbst",
+        "fa": "پاییز"
+      },
+      {
+        "de": "der Winter",
+        "fa": "زمستان"
+      }
+    ],
+    "travelDestinations": [
+      {
+        "de": "der Strand",
+        "fa": "ساحل"
+      },
+      {
+        "de": "die Berge",
+        "fa": "کوه‌ها"
+      },
+      {
+        "de": "die Insel",
+        "fa": "جزیره"
+      },
+      {
+        "de": "das Meer",
+        "fa": "دریا"
+      }
+    ],
+    "accommodations": [
+      {
+        "de": "das Hotel",
+        "fa": "هتل"
+      },
+      {
+        "de": "die Jugendherberge",
+        "fa": "مسافرخانه جوانان"
+      },
+      {
+        "de": "die Pension",
+        "fa": "مسافرخانه"
+      },
+      {
+        "de": "das Appartement",
+        "fa": "آپارتمان"
+      }
+    ],
+    "konjunktiv2Table": [
+      {
+        "pronoun": "ich",
+        "form": "würde"
+      },
+      {
+        "pronoun": "du",
+        "form": "würdest"
+      },
+      {
+        "pronoun": "er/sie/es",
+        "form": "würde"
+      },
+      {
+        "pronoun": "wir",
+        "form": "würden"
+      },
+      {
+        "pronoun": "ihr",
+        "form": "würdet"
+      },
+      {
+        "pronoun": "sie/Sie",
+        "form": "würden"
+      }
+    ],
+    "perfektSeinTable": [
+      {
+        "pronoun": "ich",
+        "form": "bin gewesen"
+      },
+      {
+        "pronoun": "du",
+        "form": "bist gewesen"
+      },
+      {
+        "pronoun": "er/sie/es",
+        "form": "ist gewesen"
+      },
+      {
+        "pronoun": "wir",
+        "form": "sind gewesen"
+      },
+      {
+        "pronoun": "ihr",
+        "form": "seid gewesen"
+      },
+      {
+        "pronoun": "sie/Sie",
+        "form": "sind gewesen"
+      }
+    ],
+    "travelPrepositions": [
+      {
+        "destination": "شهر",
+        "preposition": "nach",
+        "example": "nach Paris, nach Berlin"
+      },
+      {
+        "destination": "کشور",
+        "preposition": "nach",
+        "example": "nach Italien, nach Spanien"
+      },
+      {
+        "destination": "جزیره",
+        "preposition": "auf / in",
+        "example": "auf Sylt, in Sylt"
+      },
+      {
+        "destination": "کشور با حرف تعریف",
+        "preposition": "in",
+        "example": "in die Schweiz, in die Türkei"
+      }
+    ],
+    "welchTable": [
+      {
+        "gender": "مذکر",
+        "form": "welcher",
+        "example": "Welcher Monat?"
+      },
+      {
+        "gender": "خنثی",
+        "form": "welches",
+        "example": "Welches Land?"
+      },
+      {
+        "gender": "مؤنث",
+        "form": "welche",
+        "example": "Welche Stadt?"
+      },
+      {
+        "gender": "جمع",
+        "form": "welche",
+        "example": "Welche Länder?"
+      }
+    ],
+    "keyPhrases": [
+      {
+        "de": "Ich würde gerne nach... fahren.",
+        "fa": "دوست دارم به ... بروم"
+      },
+      {
+        "de": "Ich war noch nie in...",
+        "fa": "من هنوز هرگز در ... نبودم"
+      },
+      {
+        "de": "Wie war's im Urlaub?",
+        "fa": "تعطیلات چطور بود؟"
+      },
+      {
+        "de": "Wohin würdest du gerne fahren?",
+        "fa": "دوست داری کجا بروی؟"
+      },
+      {
+        "de": "Wir sind an den Strand gegangen.",
+        "fa": "ما به ساحل رفتیم"
+      }
+    ],
+    "grammar": [
+      {
+        "title": "Konjunktiv II würde",
+        "summary": "ich würde + gern + infinitiv. برای آرزو/مودبانه"
+      },
+      {
+        "title": "Perfekt sein",
+        "summary": "ich bin gewesen (همیشه با sein!)"
+      },
+      {
+        "title": "welch-",
+        "summary": "welcher (مذکر) • welches (خنثی) • welche (مؤنث/جمع)"
+      },
+      {
+        "title": "Reisepräpositionen",
+        "summary": "nach (شهر/کشور) • auf/in (جزیره)"
+      },
+      {
+        "title": "Perfekt sein vs haben",
+        "summary": "حرکت → sein (gehen, fahren, kommen, sein)"
+      }
+    ],
+    "commonMistakes": [
+      "استفاده از haben به‌جای sein در Perfekt فعل sein",
+      "فراموش کردن infinitiv در انتها با würde (Satzklammer)",
+      "استفاده از in به‌جای nach برای شهر/کشور",
+      "اشتباه در welch-: welcher نه welche برای مذکر"
+    ],
+    "usefulTips": [
+      "Perfekt sein همیشه با sein: bin/ist/sind + gewesen",
+      "Konjunktiv II: würde + gern + infinitiv (مودبانه!)",
+      "nach + شهر/کشور بدون حرف تعریف",
+      "welch- مثل der/das/die تطبیق می‌کند: welcher/welches/welche"
+    ]
+  },
+  "lessonSummary": {
+    "fa": "در درس ۱۰، شما با فصل‌ها، تعطیلات، مقاصد سفر، Konjunktiv II با würde (می‌خواستم)، Perfekt فعل sein (gewesen)، ضمیر پرسشی welch-، و حروف اضافه‌ی سفر آشنا شدید. شما یاد گرفتید چگونه درباره‌ی آرزوهای سفر و تجربه‌های گذشته صحبت کنید.",
+    "en": "In Lesson 10, you learned seasons, holidays, travel destinations, Konjunktiv II with würde, Perfekt of sein, interrogative welch-, and travel prepositions. You learned to talk about travel wishes and past experiences.",
+    "de": "In Lektion 10 haben Sie Jahreszeiten, Urlaub, Reiseziele, Konjunktiv II, Perfekt von sein, welch- und Reisepräpositionen gelernt."
+  },
+  "metadata": {
+    "createdAt": "2026-07-09",
+    "updatedAt": "2026-07-09",
+    "version": "2.0.0",
+    "author": "German Academy Team",
+    "status": "published",
+    "tags": [
+      "seasons",
+      "holidays",
+      "travel",
+      "konjunktiv2",
+      "perfekt-sein",
+      "welch",
+      "reise-prapositionen",
+      "A1"
+    ],
+    "difficulty": 4,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04",
+      "A1-L05",
+      "A1-L06",
+      "A1-L07",
+      "A1-L08",
+      "A1-L09"
+    ]
+  }
 }

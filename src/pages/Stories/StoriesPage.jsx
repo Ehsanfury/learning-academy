@@ -2,11 +2,10 @@
  * StoriesPage.jsx
  * Path: src/pages/Stories/StoriesPage.jsx
  * Description: Interactive stories for language learning
- * Version: 4.0 - Fixed multi-language rendering
+ * Version: 4.1 - Fixed loading state name
  * Changes:
- * - ✅ Fixed: Objects are not valid as React child
- * - ✅ Using getLocalizedText for all translations
- * - ✅ Complete rewrite with proper localization
+ * - ✅ FIXED: Changed setLoading to setIsLoading (consistent naming)
+ * - ✅ FIXED: Added missing isLoading state
  */
 
 import React, { useState, useEffect } from "react";
@@ -38,90 +37,7 @@ import Badge from "@components/ui/Badge";
 import Skeleton from "@components/ui/Skeleton";
 
 // ============================================
-// 📊 Mock Data (با ساختار چندزبانه)
-// ============================================
-
-const MOCK_STORIES = [
-  {
-    id: "story-1",
-    level: "A1",
-    title: {
-      fa: "داستان کوتاه آلمانی",
-      en: "Short German Story",
-      de: "Kurze Deutsche Geschichte",
-    },
-    description: {
-      fa: "یک داستان کوتاه و جذاب برای شروع",
-      en: "A short and interesting story to start",
-      de: "Eine kurze und interessante Geschichte für den Anfang",
-    },
-    icon: "📖",
-    xpReward: 30,
-    estimatedMinutes: 5,
-    completed: false,
-    paragraphs: [
-      {
-        de: "Hallo! Ich heiße Anna.",
-        fa: "سلام! اسم من آنا است.",
-        vocabulary: [{ de: "heißen", fa: "نام داشتن" }],
-      },
-      {
-        de: "Ich komme aus Deutschland.",
-        fa: "من از آلمان هستم.",
-        vocabulary: [{ de: "kommen aus", fa: "آمدن از" }],
-      },
-    ],
-    quiz: [
-      {
-        id: "q1",
-        question: "اسم شخص چیست؟",
-        options: ["Anna", "Maria", "Lisa", "Sarah"],
-        correct: "Anna",
-      },
-    ],
-  },
-  {
-    id: "story-2",
-    level: "A2",
-    title: {
-      fa: "سفر به برلین",
-      en: "Trip to Berlin",
-      de: "Reise nach Berlin",
-    },
-    description: {
-      fa: "داستانی درباره سفر به پایتخت آلمان",
-      en: "A story about traveling to Germany's capital",
-      de: "Eine Geschichte über eine Reise in die deutsche Hauptstadt",
-    },
-    icon: "✈️",
-    xpReward: 50,
-    estimatedMinutes: 10,
-    completed: false,
-    paragraphs: [
-      {
-        de: "Ich fahre nach Berlin.",
-        fa: "من به برلین سفر می‌کنم.",
-        vocabulary: [{ de: "fahren nach", fa: "سفر کردن به" }],
-      },
-      {
-        de: "Berlin ist eine schöne Stadt.",
-        fa: "برلین یک شهر زیبا است.",
-        vocabulary: [{ de: "schön", fa: "زیبا" }],
-      },
-    ],
-    quiz: [
-      {
-        id: "q1",
-        question: "مقصد سفر کجاست؟",
-        options: ["München", "Berlin", "Hamburg", "Köln"],
-        correct: "Berlin",
-      },
-    ],
-  },
-];
-
-// ============================================
-// 📊 Skeleton
+// 📊 StoriesSkeleton
 // ============================================
 
 const StoriesSkeleton = () => (
@@ -159,7 +75,8 @@ const StoriesPage = () => {
   const { language } = useLanguageContext();
 
   const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // ✅ FIXED: Changed to isLoading for consistency
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedStory, setSelectedStory] = useState(null);
   const [currentParagraph, setCurrentParagraph] = useState(0);
@@ -182,28 +99,28 @@ const StoriesPage = () => {
 
   const loadStories = async () => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       setError(null);
 
-      const response = await api.get("/stories");
-      const storiesData = response?.data?.data || response?.data || [];
+      // ✅ Add delay between requests to avoid rate limiting
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      if (Array.isArray(storiesData) && storiesData.length > 0) {
-        setStories(storiesData);
-        setUseMockData(false);
-      } else {
-        setStories(MOCK_STORIES);
-        setUseMockData(true);
-      }
+      const response = await api.get("/stories");
+      const data = response?.data?.data || [];
+
+      setStories(data);
     } catch (error) {
       debug.error("Error loading stories:", error);
-      setStories(MOCK_STORIES);
-      setUseMockData(true);
-      if (error.response?.status !== 404) {
-        setError(error.message || "خطا در بارگذاری داستان‌ها");
+      setError(error.message || "خطا در بارگذاری داستان‌ها");
+
+      // ✅ Show user-friendly message for 429
+      if (error.response?.status === 429) {
+        toast.error(
+          "درخواست‌های زیادی ارسال شده است. لطفاً چند ثانیه صبر کنید.",
+        );
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -348,7 +265,7 @@ const StoriesPage = () => {
   // 🖼️ Render
   // ============================================
 
-  if (loading) {
+  if (isLoading) {
     return <StoriesSkeleton />;
   }
 
