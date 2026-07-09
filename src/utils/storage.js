@@ -7,6 +7,7 @@
  * - ✅ But it returns null (refresh token is in httpOnly cookie)
  * - ✅ Fixed all storage methods
  * - ✅ Added missing STORAGE_KEYS exports
+ * - ✅ NEW: Added useSessionStorage flag for session persistence
  */
 
 const STORAGE_KEYS = {
@@ -16,39 +17,45 @@ const STORAGE_KEYS = {
   LANGUAGE: "german_academy_language",
 };
 
+// ✅ NEW: Choose persistence type
+// true = sessionStorage (cleared when browser closed)
+// false = localStorage (persistent)
+const USE_SESSION_STORAGE = false; // ✅ Default: persistent (like now)
+
+const getStorage = () => {
+  return USE_SESSION_STORAGE ? sessionStorage : localStorage;
+};
+
 export const storage = {
   // ============================================
   // 🔑 Token Management
   // ============================================
 
   getToken: () => {
-    return localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
+    return getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN);
   },
 
   setToken: (token) => {
     if (token) {
-      localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
+      getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
     } else {
-      localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+      getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
     }
   },
 
   removeToken: () => {
-    localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+    getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
   },
 
   // ✅ FIXED: Added getRefreshToken() method
-  // Returns null because refresh token is in httpOnly cookie
   getRefreshToken: () => {
     // ❌ Refresh token is NOT stored in localStorage
     // It's stored in httpOnly cookie for security
     return null;
   },
 
-  // ✅ FIXED: Added setRefreshToken() method (no-op)
   setRefreshToken: (token) => {
     // ❌ Refresh token should NOT be stored in localStorage
-    // It's stored in httpOnly cookie by the backend
     // This is a no-op for security
   },
 
@@ -57,7 +64,7 @@ export const storage = {
   // ============================================
 
   getUser: () => {
-    const user = localStorage.getItem(STORAGE_KEYS.USER);
+    const user = getStorage().getItem(STORAGE_KEYS.USER);
     if (user) {
       try {
         return JSON.parse(user);
@@ -70,14 +77,14 @@ export const storage = {
 
   setUser: (user) => {
     if (user) {
-      localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+      getStorage().setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     } else {
-      localStorage.removeItem(STORAGE_KEYS.USER);
+      getStorage().removeItem(STORAGE_KEYS.USER);
     }
   },
 
   removeUser: () => {
-    localStorage.removeItem(STORAGE_KEYS.USER);
+    getStorage().removeItem(STORAGE_KEYS.USER);
   },
 
   updateUser: (updatedUser) => {
@@ -95,16 +102,16 @@ export const storage = {
 
   setAuth: ({ accessToken, user }) => {
     if (accessToken) {
-      localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+      getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     }
     if (user) {
-      localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+      getStorage().setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     }
   },
 
   clearAuth: () => {
-    localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
-    localStorage.removeItem(STORAGE_KEYS.USER);
+    getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+    getStorage().removeItem(STORAGE_KEYS.USER);
   },
 
   isAuthenticated: () => {
@@ -116,11 +123,11 @@ export const storage = {
   // ============================================
 
   getTheme: () => {
-    return localStorage.getItem(STORAGE_KEYS.THEME) || "light";
+    return getStorage().getItem(STORAGE_KEYS.THEME) || "light";
   },
 
   setTheme: (theme) => {
-    localStorage.setItem(STORAGE_KEYS.THEME, theme);
+    getStorage().setItem(STORAGE_KEYS.THEME, theme);
   },
 
   // ============================================
@@ -128,11 +135,11 @@ export const storage = {
   // ============================================
 
   getLanguage: () => {
-    return localStorage.getItem(STORAGE_KEYS.LANGUAGE) || "fa";
+    return getStorage().getItem(STORAGE_KEYS.LANGUAGE) || "fa";
   },
 
   setLanguage: (lang) => {
-    localStorage.setItem(STORAGE_KEYS.LANGUAGE, lang);
+    getStorage().setItem(STORAGE_KEYS.LANGUAGE, lang);
   },
 
   // ============================================
@@ -140,11 +147,9 @@ export const storage = {
   // ============================================
 
   clearAll: () => {
-    localStorage.clear();
+    getStorage().clear();
   },
 };
 
-// ✅ Export STORAGE_KEYS for use in other files
 export { STORAGE_KEYS };
-
 export default storage;
