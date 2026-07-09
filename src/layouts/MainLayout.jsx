@@ -3,17 +3,20 @@
  * Path: src/layouts/MainLayout.jsx
  * Description: Main layout with responsive navbar and mobile support
  * Project: Learning Academy
- * Version: 2.0 - Fixed imports
+ * Version: 3.0 - New 5-column footer
+ * Changes:
+ * - ✅ FIXED: 5-column footer with proper sizing
+ * - ✅ FIXED: Column 1 (Learning Academy) is largest
+ * - ✅ FIXED: Columns 2-4 are equal size
+ * - ✅ FIXED: Column 5 (Rules) is half the size
  */
 
 import React, { useState, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-// ✅ FIXED: Changed @context to relative path
 import { useLanguageContext } from "../context/LanguageContext";
 import { useThemeContext } from "../context/ThemeContext";
 import { useAuth } from "../context/AuthContext";
-// ✅ FIXED: Changed @hooks to relative path
 import { useIsMobile } from "../hooks/MobileDetect";
 import {
   Sun,
@@ -43,9 +46,12 @@ import {
   Settings,
   LogOut,
   ChevronRight,
+  GraduationCap,
+  Globe,
+  Shield,
+  FileText,
+  Award,
 } from "lucide-react";
-
-// ✅ FIXED: Changed @components to relative path
 import Button from "../components/ui/Button";
 import { Card, CardHeader, CardBody, CardFooter } from "../components/ui";
 import Badge from "../components/ui/Badge";
@@ -82,6 +88,43 @@ const MOBILE_NAV_ITEMS = [
 ];
 
 // ============================================
+// 📋 Footer Links Data
+// ============================================
+
+const FOOTER_LINKS = {
+  quickLinks: [
+    { to: "/learn", label: { fa: "مسیر یادگیری", en: "Learning Path" } },
+    { to: "/practice", label: { fa: "تمرین‌ها", en: "Practice" } },
+    { to: "/ai-tutor", label: { fa: "معلم هوش مصنوعی", en: "AI Tutor" } },
+    { to: "/dictionary", label: { fa: "دیکشنری", en: "Dictionary" } },
+  ],
+  resources: [
+    {
+      to: "/stories",
+      label: { fa: "داستان‌های آلمانی", en: "German Stories" },
+    },
+    {
+      to: "/scenarios",
+      label: { fa: "سناریوهای واقعی", en: "Real Scenarios" },
+    },
+    { to: "/mentors", label: { fa: "منتورهای بومی", en: "Native Mentors" } },
+    { to: "/blog", label: { fa: "وبلاگ آموزشی", en: "Blog" } },
+  ],
+  about: [
+    { to: "/about", label: { fa: "درباره ما", en: "About Us" } },
+    { to: "/contact", label: { fa: "تماس با ما", en: "Contact Us" } },
+    { to: "/faq", label: { fa: "سوالات متداول", en: "FAQ" } },
+    { to: "/support", label: { fa: "پشتیبانی", en: "Support" } },
+  ],
+  rules: [
+    { to: "/privacy", label: { fa: "حریم خصوصی", en: "Privacy Policy" } },
+    { to: "/terms", label: { fa: "شرایط استفاده", en: "Terms of Service" } },
+    { to: "/cookies", label: { fa: "سیاست کوکی", en: "Cookie Policy" } },
+    { to: "/disclaimer", label: { fa: "سلب مسئولیت", en: "Disclaimer" } },
+  ],
+};
+
+// ============================================
 // 📊 MainLayout Component
 // ============================================
 
@@ -95,10 +138,6 @@ const MainLayout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
-  // ============================================
-  // 🎯 Scroll to top button visibility
-  // ============================================
-
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
@@ -107,17 +146,9 @@ const MainLayout = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ============================================
-  // 🚫 Close mobile menu on route change
-  // ============================================
-
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
-
-  // ============================================
-  // 🛠️ Handlers
-  // ============================================
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -127,10 +158,6 @@ const MainLayout = () => {
     await logout();
     setMobileMenuOpen(false);
   };
-
-  // ============================================
-  // 🖼️ Render
-  // ============================================
 
   return (
     <div className="min-h-screen flex flex-col bg-neutral-50 dark:bg-neutral-950">
@@ -169,7 +196,6 @@ const MainLayout = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-1 sm:gap-2">
-            {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -181,7 +207,6 @@ const MainLayout = () => {
               </span>
             </button>
 
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -194,7 +219,6 @@ const MainLayout = () => {
               )}
             </button>
 
-            {/* Auth Buttons */}
             {isAuthenticated ? (
               <>
                 <Link to="/dashboard" className="hidden sm:block">
@@ -227,7 +251,6 @@ const MainLayout = () => {
               </div>
             )}
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -254,7 +277,6 @@ const MainLayout = () => {
               className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
               onClick={() => setMobileMenuOpen(false)}
             />
-
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -390,186 +412,149 @@ const MainLayout = () => {
         )}
       </AnimatePresence>
 
-      {/* ========== FOOTER ========== */}
+      {/* ========== FOOTER - 5 COLUMN ========== */}
       <Footer language={language} />
-      <Link
-        to="/about"
-        className="text-sm text-neutral-500 hover:text-primary-500 transition-colors"
-      >
-        {language === "fa" ? "درباره ما" : "About Us"}
-      </Link>
-      <Link
-        to="/support"
-        className="text-sm text-neutral-500 hover:text-primary-500 transition-colors"
-      >
-        {language === "fa" ? "پشتیبانی" : "Support"}
-      </Link>
     </div>
   );
 };
 
 // ============================================
-// 📋 Footer Component
+// 📋 Footer Component - 5 Columns
 // ============================================
 
 const Footer = ({ language }) => {
   const { isDark } = useThemeContext();
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = [
-    {
-      title: { fa: "دسترسی سریع", en: "Quick Links" },
-      items: [
-        { to: "/learn", label: { fa: "مسیر یادگیری", en: "Learning Path" } },
-        { to: "/practice", label: { fa: "تمرین‌ها", en: "Practice" } },
-        { to: "/ai-tutor", label: { fa: "معلم هوش مصنوعی", en: "AI Tutor" } },
-        { to: "/dictionary", label: { fa: "دیکشنری", en: "Dictionary" } },
-      ],
-    },
-    {
-      title: { fa: "منابع", en: "Resources" },
-      items: [
-        {
-          to: "/stories",
-          label: { fa: "داستان‌های آلمانی", en: "German Stories" },
-        },
-        {
-          to: "/scenarios",
-          label: { fa: "سناریوهای واقعی", en: "Real Scenarios" },
-        },
-        {
-          to: "/mentors",
-          label: { fa: "منتورهای بومی", en: "Native Mentors" },
-        },
-        { to: "/blog", label: { fa: "وبلاگ آموزشی", en: "Blog" } },
-      ],
-    },
-    {
-      title: { fa: "پشتیبانی", en: "Support" },
-      items: [
-        { to: "/faq", label: { fa: "سوالات متداول", en: "FAQ" } },
-        { to: "/contact", label: { fa: "تماس با ما", en: "Contact" } },
-        { to: "/privacy", label: { fa: "حریم خصوصی", en: "Privacy" } },
-        { to: "/terms", label: { fa: "شرایط استفاده", en: "Terms" } },
-      ],
-    },
-  ];
-
   return (
     <footer className="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop Footer */}
-        <div className="hidden md:block py-12 lg:py-16">
-          <div className="grid grid-cols-4 gap-8 lg:gap-12">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">L</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
-                    {language === "fa" ? "آکادمی یادگیری" : "Learning Academy"}
-                  </h3>
-                  <p className="text-xs text-neutral-500">
-                    {language === "fa"
-                      ? "یادگیری هوشمند آلمانی"
-                      : "Smart German Learning"}
-                  </p>
-                </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        {/* ✅ 5-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+          {/* ===== COLUMN 1: Learning Academy (Largest - 4 columns) ===== */}
+          <div className="md:col-span-4 lg:col-span-5">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">L</span>
               </div>
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4">
-                {language === "fa"
-                  ? "پلتفرم رایگان آموزش زبان آلمانی با تمرکز بر مکالمه واقعی، هوش مصنوعی و گیمیفیکیشن."
-                  : "A free German learning platform focused on real conversation, AI, and gamification."}
-              </p>
-              <div className="flex items-center gap-3">
-                {[
-                  { icon: Heart, href: "#" },
-                  { icon: Star, href: "#" },
-                  { icon: Users, href: "#" },
-                ].map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <a
-                      key={i}
-                      href={item.href}
-                      className="w-9 h-9 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-500 hover:bg-primary-100 hover:text-primary-500 dark:hover:bg-primary-900 dark:hover:text-primary-400 transition-colors"
-                      aria-label="Social media"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  );
-                })}
+              <div>
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+                  {language === "fa" ? "آکادمی یادگیری" : "Learning Academy"}
+                </h3>
+                <p className="text-xs text-neutral-500">
+                  {language === "fa"
+                    ? "یادگیری هوشمند آلمانی"
+                    : "Smart German Learning"}
+                </p>
               </div>
             </div>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4 max-w-md">
+              {language === "fa"
+                ? "پلتفرم رایگان آموزش زبان آلمانی با تمرکز بر مکالمه واقعی، هوش مصنوعی و گیمیفیکیشن."
+                : "A free German learning platform focused on real conversation, AI, and gamification."}
+            </p>
+            <div className="flex items-center gap-3">
+              {[
+                { icon: Heart, href: "#", color: "text-red-500" },
+                { icon: Star, href: "#", color: "text-amber-500" },
+                { icon: Users, href: "#", color: "text-blue-500" },
+                { icon: Globe, href: "#", color: "text-green-500" },
+              ].map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={i}
+                    href={item.href}
+                    className={`w-9 h-9 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-500 hover:bg-primary-100 hover:text-primary-500 dark:hover:bg-primary-900 dark:hover:text-primary-400 transition-colors ${item.color}`}
+                    aria-label="Social media"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
 
-            {footerLinks.map((column, idx) => (
-              <div key={idx}>
-                <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
-                  {column.title[language]}
-                </h4>
-                <ul className="space-y-2.5">
-                  {column.items.map((item, i) => (
-                    <li key={i}>
-                      <Link
-                        to={item.to}
-                        className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors"
-                      >
-                        {item.label[language]}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* ===== COLUMN 2: Quick Links (2 columns) ===== */}
+          <div className="md:col-span-2 lg:col-span-2">
+            <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+              {language === "fa" ? "دسترسی سریع" : "Quick Links"}
+            </h4>
+            <ul className="space-y-2.5">
+              {FOOTER_LINKS.quickLinks.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors"
+                  >
+                    {item.label[language]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ===== COLUMN 3: Resources (2 columns) ===== */}
+          <div className="md:col-span-2 lg:col-span-2">
+            <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+              {language === "fa" ? "منابع" : "Resources"}
+            </h4>
+            <ul className="space-y-2.5">
+              {FOOTER_LINKS.resources.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors"
+                  >
+                    {item.label[language]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ===== COLUMN 4: About Us (2 columns) ===== */}
+          <div className="md:col-span-2 lg:col-span-2">
+            <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+              {language === "fa" ? "درباره ما" : "About Us"}
+            </h4>
+            <ul className="space-y-2.5">
+              {FOOTER_LINKS.about.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors"
+                  >
+                    {item.label[language]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ===== COLUMN 5: Rules (2 columns but smaller - half width) ===== */}
+          <div className="md:col-span-2 lg:col-span-1">
+            <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+              {language === "fa" ? "قوانین" : "Rules"}
+            </h4>
+            <ul className="space-y-2.5">
+              {FOOTER_LINKS.rules.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary-500 transition-colors"
+                  >
+                    {item.label[language]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Mobile Footer */}
-        <div className="md:hidden py-6">
-          <div className="flex flex-col items-center justify-center gap-3 text-center">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-primary-500 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-xs">L</span>
-              </div>
-              <span className="text-sm text-neutral-500">
-                {language === "fa"
-                  ? `© ${currentYear} آکادمی یادگیری`
-                  : `© ${currentYear} Learning Academy`}
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-400">
-              <Link to="/" className="hover:text-neutral-600 transition-colors">
-                {language === "fa" ? "خانه" : "Home"}
-              </Link>
-              <span>•</span>
-              <Link
-                to="/learn"
-                className="hover:text-neutral-600 transition-colors"
-              >
-                {language === "fa" ? "یادگیری" : "Learn"}
-              </Link>
-              <span>•</span>
-              <Link
-                to="/login"
-                className="hover:text-neutral-600 transition-colors"
-              >
-                {language === "fa" ? "ورود" : "Login"}
-              </Link>
-              <span>•</span>
-              <Link
-                to="/privacy"
-                className="hover:text-neutral-600 transition-colors"
-              >
-                {language === "fa" ? "حریم خصوصی" : "Privacy"}
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-neutral-200 dark:border-neutral-800 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-400">
+        {/* ===== Bottom Bar ===== */}
+        <div className="mt-12 pt-6 border-t border-neutral-200 dark:border-neutral-800">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
             <p>
               {language === "fa"
                 ? `© ${currentYear} آکادمی یادگیری - تمام حقوق محفوظ است`
@@ -587,6 +572,12 @@ const Footer = ({ language }) => {
                 className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
               >
                 {language === "fa" ? "شرایط استفاده" : "Terms"}
+              </Link>
+              <Link
+                to="/contact"
+                className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+              >
+                {language === "fa" ? "تماس با ما" : "Contact"}
               </Link>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

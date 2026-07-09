@@ -3,8 +3,8 @@
  * Path: src/App.jsx
  * Description: Main application component with routing
  * Changes:
- * - ✅ FIXED: Home page is now public (no redirect to login)
- * - ✅ FIXED: Added About and Support pages
+ * - ✅ FIXED: About, Contact, FAQ, Privacy, Terms, Blog added
+ * - ✅ FIXED: Support page moved to /support
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
@@ -62,10 +62,16 @@ const NotificationsPage = lazy(
   () => import("./pages/Notifications/NotificationsPage"),
 );
 
-// ✅ NEW: About and Support pages
+// ✅ NEW: Public Pages
 const AboutPage = lazy(() => import("./pages/About/AboutPage"));
+const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
+const FAQPage = lazy(() => import("./pages/FAQ/FAQPage"));
+const PrivacyPage = lazy(() => import("./pages/Privacy/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/Terms/TermsPage"));
+const BlogPage = lazy(() => import("./pages/Blog/BlogPage"));
 const SupportPage = lazy(() => import("./pages/Support/SupportPage"));
-
+const DisclaimerPage = lazy(() => import("./pages/Disclaimer/DisclaimerPage"));
+const CookiesPage = lazy(() => import("./pages/Cookies/CookiesPage"));
 // Components
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -139,11 +145,18 @@ function App() {
                   <Routes>
                     {/* ========== PUBLIC ROUTES (No Auth Required) ========== */}
 
-                    {/* ✅ Home Page - Public (No redirect to login) */}
+                    {/* ✅ Main Layout - All public pages */}
                     <Route element={<MainLayout />}>
                       <Route path="/" element={<Home />} />
                       <Route path="/about" element={<AboutPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/faq" element={<FAQPage />} />
+                      <Route path="/privacy" element={<PrivacyPage />} />
+                      <Route path="/terms" element={<TermsPage />} />
+                      <Route path="/blog" element={<BlogPage />} />
                       <Route path="/support" element={<SupportPage />} />
+                      <Route path="/disclaimer" element={<DisclaimerPage />} />
+                      <Route path="/cookies" element={<CookiesPage />} />
                     </Route>
 
                     {/* ========== AUTH ROUTES ========== */}
