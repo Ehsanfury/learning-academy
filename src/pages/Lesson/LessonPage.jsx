@@ -901,56 +901,61 @@ const LessonPage = () => {
     );
   };
 
-const renderReview = (section) => {
-  const quiz = section.quiz || [];
+  const renderReview = (section) => {
+    const quiz = section.quiz || [];
 
-  if (quiz.length === 0) {
-    return <p className="text-neutral-500">هیچ سوالی برای مرور وجود ندارد.</p>;
-  }
+    if (quiz.length === 0) {
+      return (
+        <p className="text-neutral-500">هیچ سوالی برای مرور وجود ندارد.</p>
+      );
+    }
 
-  // ✅ Convert quiz questions to exercise format
-  const exerciseQuestions = quiz.map((q, idx) => ({
-    id: q.id || `review-${idx}`,
-    type: q.type || "multiple_choice",
-    question: {
-      fa: q.question?.fa || q.question || `سوال ${idx + 1}`,
-      en: q.question?.en || q.questionEn || `Question ${idx + 1}`,
-    },
-    options: q.options || [],
-    correct: q.correctIndex || 0,
-    explanation: q.explanation || "",
-  }));
+    // ✅ Convert quiz questions to exercise format
+    const exerciseQuestions = quiz.map((q, idx) => ({
+      id: q.id || `review-${idx}`,
+      type: q.type || "multiple_choice",
+      question: {
+        fa: q.question?.fa || q.question || `سوال ${idx + 1}`,
+        en: q.question?.en || q.questionEn || `Question ${idx + 1}`,
+      },
+      options: q.options || [],
+      correct: q.correctIndex || 0,
+      explanation: q.explanation || "",
+    }));
 
-  return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-          <ListChecks className="w-6 h-6 text-red-500" />
-          {getLocalized(section.titleObj || { fa: "📝 مرور", en: "📝 Review" })}
-        </h3>
-        <Badge variant="primary" size="sm" className="text-sm">
-          {exerciseQuestions.length} {getLocalized({ fa: "سوال", en: "questions" })}
-        </Badge>
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+            <ListChecks className="w-6 h-6 text-red-500" />
+            {getLocalized(
+              section.titleObj || { fa: "📝 مرور", en: "📝 Review" },
+            )}
+          </h3>
+          <Badge variant="primary" size="sm" className="text-sm">
+            {exerciseQuestions.length}{" "}
+            {getLocalized({ fa: "سوال", en: "questions" })}
+          </Badge>
+        </div>
+
+        <ExerciseEngine
+          exercise={{ questions: exerciseQuestions, xpReward: 10 }}
+          onComplete={(results) => {
+            const correct = results.correct || 0;
+            const total = results.total || exerciseQuestions.length;
+            const score = Math.round((correct / total) * 100);
+
+            if (score >= 70) {
+              toast.success(`✅ ${score}% از سوالات مرور صحیح بود!`);
+            } else {
+              toast.info(`💪 ${score}% - دوباره تلاش کنید!`);
+            }
+          }}
+          language={language}
+        />
       </div>
-
-      <ExerciseEngine
-        exercise={{ questions: exerciseQuestions, xpReward: 10 }}
-        onComplete={(results) => {
-          const correct = results.correct || 0;
-          const total = results.total || exerciseQuestions.length;
-          const score = Math.round((correct / total) * 100);
-
-          if (score >= 70) {
-            toast.success(`✅ ${score}% از سوالات مرور صحیح بود!`);
-          } else {
-            toast.info(`💪 ${score}% - دوباره تلاش کنید!`);
-          }
-        }}
-        language={language}
-      />
-    </div>
-  );
-};
+    );
+  };
 
   const renderAssessment = (section) => {
     return (

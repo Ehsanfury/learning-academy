@@ -1,492 +1,2937 @@
 {
-  "id": "a1-l12",
+  "id": "A1-L12",
+  "order": 12,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 12,
+  "unit": 4,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 60,
-  "difficulty": 2,
-  "prerequisites": [
-    "a1-l11"
-  ],
-  "nextLessonId": null,
-  "previousLessonId": "a1-l11",
   "title": {
-    "de": "Reise und Urlaub",
-    "fa": "سفر و تعطیلات",
-    "en": "Travel and Holidays"
+    "fa": "شغل و زندگی",
+    "en": "Profession and Life",
+    "de": "Beruf und Leben"
   },
-  "shortTitle": {
-    "de": "Reise und Urlaub",
-    "fa": "سفر و تعطیلات",
-    "en": "Travel and Holidays"
+  "subtitle": {
+    "fa": "مشاغل، ویژگی‌های شغلی، گرامر جنیتو، Präteritum haben، فعل راهبردی sollen، حروف اضافه vor/nach با داتیو",
+    "en": "Professions, job characteristics, Genitiv possessive, Präteritum of haben, modal verb sollen, prepositions vor/nach with Dative",
+    "de": "Berufe, Berufseigenschaften, Genitiv possessiv, Präteritum von haben, Modalverb sollen, Präpositionen vor/nach mit Dativ"
   },
   "description": {
-    "fa": "در این درس تمام آموخته‌ها را برای صحبت درباره سفر و تعطیلات ترکیب می‌کنید.",
-    "en": "In this lesson you will combine everything you have learned to talk about travel and holidays.",
-    "de": "In dieser Lektion kombinieren Sie alles Gelernte, um über Reisen und Urlaub zu sprechen."
+    "fa": "در این درس با واژگان مربوط به مشاغل و دنیای کار آشنا می‌شوید. فرم‌های مذکر و مؤنث مشاغل (Pilot/Pilotin, Koch/Köchin و غیره)، صفت‌های توصیف شغل (interessant, stressig, kreativ و غیره) و واژگان محیط کار (Arbeitsplatz, Gehalt, Ausbildung و غیره) را یاد می‌گیرید. گرامر شامل حالت جنیتو ملکی (Thomas' Frau, Marias Auto)، Präteritum فعل haben (ich hatte, du hattest)، فعل راهبردی sollen برای نصیحت، و حروف اضافه vor و nach با داتیو است. بر اساس Lektion 12 کتاب Starten Wir A1.",
+    "en": "In this lesson you will learn vocabulary related to professions and the world of work. You'll learn masculine and feminine forms of professions (Pilot/Pilotin, Koch/Köchin etc.), job description adjectives (interessant, stressig, kreativ etc.) and workplace vocabulary (Arbeitsplatz, Gehalt, Ausbildung etc.). Grammar covers the Genitiv possessive (Thomas' Frau, Marias Auto), the Präteritum of haben (ich hatte, du hattest), the modal verb sollen for advice, and the prepositions vor and nach with Dative. Based on Lektion 12 of Starten Wir A1.",
+    "de": "In dieser Lektion lernen Sie Wortschatz zu Berufen und der Arbeitswelt. Sie lernen männliche und weibliche Berufsformen (Pilot/Pilotin, Koch/Köchin usw.), Berufsadjektive (interessant, stressig, kreativ usw.) und Arbeitsplatzwortschatz (Arbeitsplatz, Gehalt, Ausbildung usw.). Die Grammatik umfasst den possessiven Genitiv (Thomas' Frau, Marias Auto), das Präteritum von haben (ich hatte, du hattest), das Modalverb sollen für Ratschläge und die Präpositionen vor und nach mit Dativ. Basierend auf Lektion 12 von Starten Wir A1."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 3,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ ترکیب زمان گذشته با افعال مودال",
-      "✅ صحبت درباره برنامه‌های سفر",
-      "✅ توصیف تجربیات گذشته",
-      "✅ گفتن خواسته‌ها و توانایی‌ها"
+      "نام بردن حداقل ۱۸ شغل به آلمانی با فرم مذکر و مؤنث",
+      "توصیف ویژگی‌های یک شغل با صفت‌های مناسب (interessant, stressig, kreativ, ...)",
+      "استفاده از واژگان محیط کار (Arbeitsplatz, Gehalt, Chef, Firma, ...)",
+      "ساختن حالت جنیتو ملکی برای نام‌ها (Marias Auto, Thomas' Frau)",
+      "صرف فعل haben در Präteritum (ich hatte, du hattest, er hatte, ...)",
+      "استفاده از فعل راهبردی sollen برای نصیحت دادن",
+      "استفاده از حروف اضافه vor و nach با داتیو (vor dem Kurs, nach der Arbeit)",
+      "صحبت کردن در مورد شغل رویایی و شرایط کاری"
+    ],
+    "en": [
+      "Name at least 18 professions in German with masculine and feminine forms",
+      "Describe job characteristics with appropriate adjectives (interessant, stressig, kreativ, ...)",
+      "Use workplace vocabulary (Arbeitsplatz, Gehalt, Chef, Firma, ...)",
+      "Form the Genitiv possessive with names (Marias Auto, Thomas' Frau)",
+      "Conjugate haben in the Präteritum (ich hatte, du hattest, er hatte, ...)",
+      "Use the modal verb sollen for giving advice",
+      "Use the prepositions vor and nach with Dative (vor dem Kurs, nach der Arbeit)",
+      "Talk about dream jobs and working conditions"
+    ],
+    "de": [
+      "Mindestens 18 Berufe auf Deutsch mit männlicher und weiblicher Form nennen",
+      "Berufseigenschaften mit passenden Adjektiven beschreiben (interessant, stressig, kreativ, ...)",
+      "Arbeitsplatzwortschatz verwenden (Arbeitsplatz, Gehalt, Chef, Firma, ...)",
+      "Den possessiven Genitiv bei Namen bilden (Marias Auto, Thomas' Frau)",
+      "Das Verb haben im Präteritum konjugieren (ich hatte, du hattest, er hatte, ...)",
+      "Das Modalverb sollen für Ratschläge verwenden",
+      "Die Präpositionen vor und nach mit Dativ verwenden (vor dem Kurs, nach der Arbeit)",
+      "Über den Traumberuf und Arbeitsbedingungen sprechen"
     ]
   },
-  "xpReward": 70,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
+  "requiredPreviousKnowledge": {
+    "fa": "درس‌های ۱ تا ۱۱ — آشنایی با چهار جنسیت اسم، حالت‌های nominativ و akkusativ و داتیو، افعال منظم و نامنظم، حالت ساده Präsens، فعل‌های راهبردی können و möchten و dürfen، ضمایر ملکی و آرتیکل‌های تعریف و عدم تعریف.",
+    "en": "Lessons 1-11 — Familiarity with the four noun genders, nominative, accusative and dative cases, regular and irregular verbs, present tense, modal verbs können, möchten and dürfen, possessive articles and definite/indefinite articles.",
+    "de": "Lektionen 1-11 — Vertrautheit mit den vier Nomengenera, Nominativ, Akkusativ und Dativ, regelmäßigen und unregelmäßigen Verben, Präsens, Modalverben können, möchten und dürfen, Possessivartikeln und bestimmten und unbestimmten Artikeln."
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "شغل رویایی شما چیست؟",
+      "en": "What Is Your Dream Job?",
+      "de": "Was ist dein Traumberuf?"
+    },
+    "content": {
+      "fa": "تصور کنید در یک مصاحبه شغلی هستید یا می‌خواهید شغل رویایی خود را توصیف کنید. در این درس با واژگان مشاغل و دنیای کار آشنا می‌شوید و می‌توانید راجع به شغل، شرایط کاری و هدف‌های حرفه‌ای خود صحبت کنید.\n\nشما فرم مذکر و مؤنث مشاغل، صفت‌های توصیف شغل، و واژگان مهم محیط کار را یاد می‌گیرید. از نظر گرامری، حالت جنیتو ملکی، زمان گذشته haben، فعل راهبردی sollen و حروف اضافه vor/nach را تمرین می‌کنید.\n\nبر اساس Lektion 12 کتاب Starten Wir A1 (Hueber Verlag)، این درس شما را برای مکالمات حرفه‌ای در سطح A1 آماده می‌کند.",
+      "en": "Imagine you're in a job interview or want to describe your dream job. In this lesson you'll learn profession and workplace vocabulary so you can talk about your job, working conditions and career goals.\n\nYou'll learn masculine and feminine forms of professions, job description adjectives and important workplace vocabulary. Grammatically, you'll practice the Genitiv possessive, the past tense of haben, the modal verb sollen and the prepositions vor/nach.\n\nBased on Lektion 12 of Starten Wir A1 (Hueber Verlag), this lesson prepares you for professional conversations at A1 level.",
+      "de": "Stell dir vor, du bist in einem Vorstellungsgespräch oder möchtest deinen Traumberuf beschreiben. In dieser Lektion lernst du Berufs- und Arbeitsweltwortschatz, sodass du über deinen Beruf, Arbeitsbedingungen und Karriereziele sprechen kannst.\n\nDu lernst männliche und weibliche Berufsformen, Berufsadjektive und wichtige Arbeitsplatzbegriffe. Grammatikalisch übst du den possessiven Genitiv, das Präteritum von haben, das Modalverb sollen und die Präpositionen vor/nach.\n\nBasierend auf Lektion 12 von Starten Wir A1 (Hueber Verlag) bereitet dich diese Lektion auf berufliche Gespräche auf A1-Niveau vor."
+    },
+    "imagePrompt": "A diverse group of professionals in a modern German office building, including a pilot, a cook, a programmer and a teacher, bright and inspiring atmosphere"
+  },
+  "vocabulary": [
     {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
+      "id": "voc-l12-pilot",
+      "de": "Pilot",
+      "article": "der",
+      "plural": "Piloten",
+      "ipa": "[piˈloːt]",
+      "fa": "خلبان (مرد)",
+      "en": "pilot (male)",
+      "example": {
+        "de": "Mein Vater ist Pilot bei der Lufthansa.",
+        "fa": "پدرم خلبان لوفت‌هانزا است.",
+        "en": "My father is a pilot at Lufthansa."
       },
-      "content": {
-        "fa": "به درس دوازدهم و آخرین درس سطح A1 خوش آمدید! 🌍\n\nدر این درس تمام آموخته‌ها را برای صحبت درباره سفر و تعطیلات ترکیب می‌کنید.\n\nدر این درس یاد می‌گیرید:\n• ترکیب زمان گذشته با افعال مودال\n• صحبت درباره برنامه‌های سفر\n• توصیف تجربیات گذشته\n• گفتن خواسته‌ها و توانایی‌ها",
-        "en": "Welcome to lesson 12, the final lesson of A1 level! 🌍\n\nIn this lesson you will combine everything you have learned to talk about travel and holidays.\n\nYou will learn:\n• Combining past tense with modal verbs\n• Talking about travel plans\n• Describing past experiences\n• Expressing wishes and abilities",
-        "de": "Willkommen zur zwölften und letzten Lektion des A1-Niveaus! 🌍\n\nIn dieser Lektion kombinieren Sie alles Gelernte, um über Reisen und Urlaub zu sprechen.\n\nSie lernen:\n• Kombination von Vergangenheitsform mit Modalverben\n• Über Reisepläne sprechen\n• Vergangene Erfahrungen beschreiben\n• Wünsche und Fähigkeiten ausdrücken"
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Pilotin. از زبان فرانسوی.",
+        "en": "Masculine noun. Feminine form: die Pilotin. From French.",
+        "de": "Maskulines Nomen. Feminine Form: die Pilotin. Aus dem Französischen."
       },
-      "id": "a1-l12-INTRO-001",
-      "order": 0
+      "commonMistakes": {
+        "fa": "فرم مؤنث Pilotin (با -in) است نه Pilota.",
+        "en": "The feminine form is Pilotin (with -in), not Pilota.",
+        "de": "Die feminine Form ist Pilotin (mit -in), nicht Pilota."
+      },
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
+      "id": "voc-l12-pilotin",
+      "de": "Pilotin",
+      "article": "die",
+      "plural": "Pilotinnen",
+      "ipa": "[pi.loˈtɪn]",
+      "fa": "خلبان (زن)",
+      "en": "pilot (female)",
+      "example": {
+        "de": "Valentina ist Pilotin. Sie fliegt nach Bangkok.",
+        "fa": "والنتینا خلبان است. او به بانکوک پرواز می‌کند.",
+        "en": "Valentina is a pilot. She flies to Bangkok."
       },
-      "words": [
-        {
-          "de": "die Reise",
-          "fa": "سفر",
-          "en": "trip/journey",
-          "gender": "die",
-          "plural": "die Reisen",
-          "icon": "✈️",
-          "example": {
-            "de": "Die Reise war schön.",
-            "fa": "سفر قشنگ بود.",
-            "en": "The trip was nice."
-          }
-        },
-        {
-          "de": "der Urlaub",
-          "fa": "تعطیلات",
-          "en": "holiday/vacation",
-          "gender": "der",
-          "plural": "die Urlaube",
-          "icon": "🏖️",
-          "example": {
-            "de": "Mein Urlaub war super.",
-            "fa": "تعطیلات من عالی بود.",
-            "en": "My vacation was great."
-          }
-        },
-        {
-          "de": "das Hotel",
-          "fa": "هتل",
-          "en": "hotel",
-          "gender": "das",
-          "plural": "die Hotels",
-          "icon": "🏨",
-          "example": {
-            "de": "Das Hotel ist sehr gut.",
-            "fa": "هتل خیلی خوب است.",
-            "en": "The hotel is very good."
-          }
-        },
-        {
-          "de": "das Meer",
-          "fa": "دریا",
-          "en": "sea",
-          "gender": "das",
-          "plural": "die Meere",
-          "icon": "🌊",
-          "example": {
-            "de": "Das Meer ist blau.",
-            "fa": "دریا آبی است.",
-            "en": "The sea is blue."
-          }
-        },
-        {
-          "de": "der Strand",
-          "fa": "ساحل",
-          "en": "beach",
-          "gender": "der",
-          "plural": "die Strände",
-          "icon": "🏖️",
-          "example": {
-            "de": "Der Strand ist sehr schön.",
-            "fa": "ساحل خیلی زیباست.",
-            "en": "The beach is very beautiful."
-          }
-        },
-        {
-          "de": "schön",
-          "fa": "زیبا",
-          "en": "beautiful",
-          "icon": "✨",
-          "example": {
-            "de": "Das Wetter ist schön.",
-            "fa": "هوا زیباست.",
-            "en": "The weather is nice."
-          }
-        }
-      ],
-      "id": "a1-l12-VOC-002",
-      "order": 1
+      "usageNotes": {
+        "fa": "اسم مؤنث. فرم مذکر: der Pilot.",
+        "en": "Feminine noun. Masculine form: der Pilot.",
+        "de": "Feminines Nomen. Maskuline Form: der Pilot."
+      },
+      "commonMistakes": {
+        "fa": "همیشه -in اضافه شود: Pilot + in = Pilotin.",
+        "en": "Always add -in: Pilot + in = Pilotin.",
+        "de": "Immer -in anhängen: Pilot + in = Pilotin."
+      },
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+      "id": "voc-l12-koch",
+      "de": "Koch",
+      "article": "der",
+      "plural": "Köche",
+      "ipa": "[kɔx]",
+      "fa": "آشپز (مرد)",
+      "en": "cook / chef (male)",
+      "example": {
+        "de": "Tim ist Koch in der Antarktis.",
+        "fa": "تیم آشپز در قطب جنوب است.",
+        "en": "Tim is a cook in Antarctica."
       },
-      "concept": {
-        "fa": "ترکیب زمان گذشته با افعال مودال",
-        "en": "Combining Past Tense with Modal Verbs",
-        "de": "Kombination von Vergangenheit mit Modalverben"
+      "usageNotes": {
+        "fa": "اسم مذکر. جمع Köche با umlaut. فرم مؤنث: die Köchin.",
+        "en": "Masculine noun. Plural Köche with umlaut. Feminine form: die Köchin.",
+        "de": "Maskulines Nomen. Plural Köche mit Umlaut. Feminine Form: die Köchin."
       },
-      "explanation": {
-        "fa": "📌 **ترکیب زمان گذشته با افعال مودال:**\n\nدر این درس یاد می‌گیرید که ترکیب کنید. هم از زمان گذشته برای گفتن اینکه کجا بوده‌اید استفاده کنید، و هم از افعال مودال برای گفتن اینکه چه کارهایی می‌خواهید انجام دهید.\n\n**مثال ترکیبی:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **نکته مهم:**\n\nبرای صحبت درباره برنامه‌های آینده از فعل möchten (می‌خواهم) استفاده می‌کنیم:\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **مرور زمان گذشته با sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen.",
-        "en": "📌 **Combining Past Tense with Modal Verbs:**\n\nIn this lesson you will learn to combine. Use the past tense to say where you have been, and modal verbs to say what you want to do.\n\n**Combined Example:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **Important Note:**\n\nTo talk about future plans, use möchten (would like to):\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **Review of Past Tense with sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen.",
-        "de": "📌 **Kombination von Vergangenheit mit Modalverben:**\n\nIn dieser Lektion lernen Sie zu kombinieren. Verwenden Sie die Vergangenheit, um zu sagen, wo Sie waren, und Modalverben, um zu sagen, was Sie tun möchten.\n\n**Kombiniertes Beispiel:**\n\n• Im Urlaub bin ich nach Italien gefahren. Ich möchte das Meer sehen.\n\n📌 **Wichtiger Hinweis:**\n\nUm über Zukunftspläne zu sprechen, verwendet man möchten:\n\n• Ich möchte im Sommer nach Deutschland reisen.\n\n📌 **Wiederholung der Vergangenheit mit sein:**\n\n• Ich bin gefahren.\n• Ich bin gegangen.\n• Ich bin gekommen."
+      "commonMistakes": {
+        "fa": "جمع Köche (با umlaut) است نه Kochs.",
+        "en": "The plural is Köche (with umlaut), not Kochs.",
+        "de": "Der Plural ist Köche (mit Umlaut), nicht Kochs."
       },
-      "examples": [
-        {
-          "de": "Im Urlaub bin ich nach Italien gefahren.",
-          "fa": "در تعطیلات به ایتالیا رفتم.",
-          "en": "On holiday I went to Italy."
-        },
-        {
-          "de": "Ich möchte das Meer sehen.",
-          "fa": "من می‌خواهم دریا را ببینم.",
-          "en": "I would like to see the sea."
-        },
-        {
-          "de": "Im Sommer möchte ich nach Deutschland reisen.",
-          "fa": "در تابستان می‌خواهم به آلمان سفر کنم.",
-          "en": "In summer I would like to travel to Germany."
-        },
-        {
-          "de": "Mein Urlaub war sehr schön.",
-          "fa": "تعطیلات من خیلی زیبا بود.",
-          "en": "My holiday was very nice."
-        },
-        {
-          "de": "Ich kann gut schwimmen.",
-          "fa": "من می‌توانم خوب شنا کنم.",
-          "en": "I can swim well."
-        }
-      ],
-      "id": "a1-l12-GRAM-003",
-      "order": 2
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: سفر به ایتالیا",
-        "en": "📖 Story: Trip to Italy",
-        "de": "📖 Geschichte: Reise nach Italien"
+      "id": "voc-l12-koechin",
+      "de": "Köchin",
+      "article": "die",
+      "plural": "Köchinnen",
+      "ipa": "[ˈkœçɪn]",
+      "fa": "آشپز (زن)",
+      "en": "cook / chef (female)",
+      "example": {
+        "de": "Sie möchte Köchin werden.",
+        "fa": "او می‌خواهد آشپز شود.",
+        "en": "She wants to become a chef."
       },
-      "text": {
-        "de": "Letztes Jahr war ich im Urlaub. Ich bin nach Italien gefahren. Ich war mit meiner Familie. Wir waren im Hotel. Das Hotel war sehr schön. Ich habe das Meer gesehen. Ich habe im Meer geschwommen. Ich habe italienisches Essen gegessen. Die Reise war wunderbar. Nächstes Jahr möchte ich nach Deutschland reisen.",
-        "fa": "سال گذشته در تعطیلات بودم. من به ایتالیا رفتم. با خانواده‌ام بودم. ما در هتل بودیم. هتل خیلی زیبا بود. من دریا را دیدم. در دریا شنا کردم. غذای ایتالیایی خوردم. سفر فوق‌العاده بود. سال آینده می‌خواهم به آلمان سفر کنم.",
-        "en": "Last year I was on holiday. I went to Italy. I was with my family. We were in a hotel. The hotel was very beautiful. I saw the sea. I swam in the sea. I ate Italian food. The trip was wonderful. Next year I would like to travel to Germany."
+      "usageNotes": {
+        "fa": "اسم مؤنث. از Koch با umlaut و -in ساخته شده.",
+        "en": "Feminine noun. Formed from Koch with umlaut and -in.",
+        "de": "Feminines Nomen. Aus Koch mit Umlaut und -in gebildet."
       },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "سال گذشته کجا رفتم؟",
-            "en": "Where did I go last year?",
-            "de": "Wohin bin ich letztes Jahr gefahren?"
-          },
-          "answer": {
-            "fa": "ایتالیا",
-            "en": "Italy",
-            "de": "Italien"
-          }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "سال آینده می‌خواهم کجا بروم؟",
-            "en": "Where do I want to go next year?",
-            "de": "Wohin möchte ich nächstes Jahr reisen?"
-          },
-          "answer": {
-            "fa": "آلمان",
-            "en": "Germany",
-            "de": "Deutschland"
-          }
-        }
-      ],
-      "id": "a1-l12-STORY-004",
-      "order": 3
+      "commonMistakes": {
+        "fa": "Köchin نه Kochin. umlaut (ö) ضروری است.",
+        "en": "It's Köchin, not Kochin. The umlaut (ö) is required.",
+        "de": "Es heißt Köchin, nicht Kochin. Der Umlaut (ö) ist erforderlich."
+      },
+      "difficulty": 2,
+      "frequency": 4
     },
     {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
+      "id": "voc-l12-journalist",
+      "de": "Journalist",
+      "article": "der",
+      "plural": "Journalisten",
+      "ipa": "[ʒuʁnaˈlɪst]",
+      "fa": "روزنامه‌نگار (مرد)",
+      "en": "journalist (male)",
+      "example": {
+        "de": "Der Journalist schreibt einen Artikel über Berufe.",
+        "fa": "روزنامه‌نگار مقاله‌ای درباره مشاغل می‌نویسد.",
+        "en": "The journalist writes an article about professions."
       },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "sentence_building",
-          "question": {
-            "fa": "کلمات را مرتب کنید: 'bin / nach / Italien / ich / gefahren / im / Urlaub'",
-            "en": "Arrange: 'bin / nach / Italien / ich / gefahren / im / Urlaub'",
-            "de": "Ordnen: 'bin / nach / Italien / ich / gefahren / im / Urlaub'"
-          },
-          "answer": "Im Urlaub bin ich nach Italien gefahren.",
-          "hint": {
-            "fa": "فعل کمکی در جایگاه دوم",
-            "en": "Auxiliary verb in second position",
-            "de": "Hilfsverb an zweiter Stelle"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'من می‌خواهم دریا را ببینم.'",
-            "en": "Translate: 'I would like to see the sea.'",
-            "de": "Übersetzen: 'Ich möchte das Meer sehen.'"
-          },
-          "answer": "Ich möchte das Meer sehen.",
-          "hint": {
-            "fa": "möchten + مصدر در آخر",
-            "en": "möchten + Infinitive at the end",
-            "de": "möchten + Infinitiv am Ende"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "fill_in",
-          "question": {
-            "fa": "جمله را کامل کن: 'Mein Urlaub ____ sehr schön.' (بودن - گذشته)",
-            "en": "Complete: 'Mein Urlaub ____ sehr schön.' (was)",
-            "de": "Vervollständigen: 'Mein Urlaub ____ sehr schön.' (war)"
-          },
-          "answer": "war",
-          "hint": {
-            "fa": "sein در گذشته → war",
-            "en": "sein in past → war",
-            "de": "sein in der Vergangenheit → war"
-          }
-        }
-      ],
-      "id": "a1-l12-EXER-005",
-      "order": 4
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Journalistin. از زبان فرانسوی.",
+        "en": "Masculine noun. Feminine form: die Journalistin. From French.",
+        "de": "Maskulines Nomen. Feminine Form: die Journalistin. Aus dem Französischen."
+      },
+      "commonMistakes": {
+        "fa": "'J' آلمانی مانند 'ی' انگلیسی تلفظ می‌شود: ژورنالیست.",
+        "en": "German 'J' is pronounced like English 'y': ژur-nah-list.",
+        "de": "Deutsches 'J' wird wie englisches 'y' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 3
     },
     {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
+      "id": "voc-l12-schauspieler",
+      "de": "Schauspieler",
+      "article": "der",
+      "plural": "Schauspieler",
+      "ipa": "[ˈʃaʊ̯ʃpiːlɐ]",
+      "fa": "بازیگر (مرد)",
+      "en": "actor (male)",
+      "example": {
+        "de": "Brad Pitt ist ein berühmter Schauspieler.",
+        "fa": "براد پیت یک بازیگر مشهور است.",
+        "en": "Brad Pitt is a famous actor."
       },
-      "cards": [
-        {
-          "de": "die Reise",
-          "fa": "سفر",
-          "en": "trip",
-          "icon": "✈️"
-        },
-        {
-          "de": "der Urlaub",
-          "fa": "تعطیلات",
-          "en": "holiday",
-          "icon": "🏖️"
-        },
-        {
-          "de": "das Hotel",
-          "fa": "هتل",
-          "en": "hotel",
-          "icon": "🏨"
-        },
-        {
-          "de": "das Meer",
-          "fa": "دریا",
-          "en": "sea",
-          "icon": "🌊"
-        },
-        {
-          "de": "der Strand",
-          "fa": "ساحل",
-          "en": "beach",
-          "icon": "🏖️"
-        },
-        {
-          "de": "schön",
-          "fa": "زیبا",
-          "en": "beautiful",
-          "icon": "✨"
-        },
-        {
-          "de": "Ich bin gefahren",
-          "fa": "من رفتم",
-          "en": "I went",
-          "icon": "🚗"
-        },
-        {
-          "de": "Ich möchte",
-          "fa": "من می‌خواهم",
-          "en": "I would like",
-          "icon": "💭"
-        }
-      ],
-      "id": "a1-l12-FLASH-006",
-      "order": 5
+      "usageNotes": {
+        "fa": "اسم مذکر. ترکیب spielen + Schau. فرم مؤنث: die Schauspielerin.",
+        "en": "Masculine noun. Compound of spielen + Schau. Feminine form: die Schauspielerin.",
+        "de": "Maskulines Nomen. Kompositum aus spielen + Schau. Feminine Form: die Schauspielerin."
+      },
+      "commonMistakes": {
+        "fa": "'sch' در آلمانی 'ش' تلفظ می‌شود، نه 'س' یا 'ک'.",
+        "en": "'sch' in German is pronounced 'sh', not 's' or 'k'.",
+        "de": "'sch' wird auf Deutsch 'sch' ausgesprochen, nicht 's' oder 'k'."
+      },
+      "difficulty": 2,
+      "frequency": 4
     },
     {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
+      "id": "voc-l12-lehrer",
+      "de": "Lehrer",
+      "article": "der",
+      "plural": "Lehrer",
+      "ipa": "[ˈleːʁɐ]",
+      "fa": "معلم (مرد)",
+      "en": "teacher (male)",
+      "example": {
+        "de": "Herr Müller ist Deutschlehrer.",
+        "fa": "آقای مولر معلم آلمانی است.",
+        "en": "Mr. Müller is a German teacher."
       },
-      "words": [
-        {
-          "word": "die Reise",
-          "phonetic": "/diː ˈʁaɪ̯zə/"
-        },
-        {
-          "word": "der Urlaub",
-          "phonetic": "/deːɐ̯ ˈuːɐ̯laʊ̯p/"
-        },
-        {
-          "word": "das Hotel",
-          "phonetic": "/das hoˈtɛl/"
-        },
-        {
-          "word": "das Meer",
-          "phonetic": "/das meːɐ̯/"
-        },
-        {
-          "word": "schön",
-          "phonetic": "/ʃøːn/"
-        }
-      ],
-      "id": "a1-l12-PRON-007",
-      "order": 6
+      "usageNotes": {
+        "fa": "اسم مذکر. مفرد و جمع یکسان. فرم مؤنث: die Lehrerin.",
+        "en": "Masculine noun. Singular and plural identical. Feminine form: die Lehrerin.",
+        "de": "Maskulines Nomen. Singular und Plural identisch. Feminine Form: die Lehrerin."
+      },
+      "commonMistakes": {
+        "fa": "جمع تغییر نمی‌کند: ein Lehrer, zwei Lehrer.",
+        "en": "The plural doesn't change: ein Lehrer, zwei Lehrer.",
+        "de": "Der Plural ändert sich nicht: ein Lehrer, zwei Lehrer."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
+      "id": "voc-l12-arzt",
+      "de": "Arzt",
+      "article": "der",
+      "plural": "Ärzte",
+      "ipa": "[aʁt͡st]",
+      "fa": "پزشک (مرد)",
+      "en": "doctor (male)",
+      "example": {
+        "de": "Der Arzt arbeitet im Krankenhaus.",
+        "fa": "پزشک در بیمارستان کار می‌کند.",
+        "en": "The doctor works in the hospital."
       },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich ____ nach Italien gefahren.' (گذشته با sein)",
-            "en": "Complete: 'Ich ____ nach Italien gefahren.' (past with sein)",
-            "de": "Vervollständigen: 'Ich ____ nach Italien gefahren.' (Vergangenheit mit sein)"
-          },
-          "answer": "bin",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich ____ das Meer sehen.' (می‌خواهم)",
-            "en": "Complete: 'Ich ____ das Meer sehen.' (would like)",
-            "de": "Vervollständigen: 'Ich ____ das Meer sehen.' (möchte)"
-          },
-          "answer": "möchte",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "کدام یک به معنای 'تعطیلات' است؟",
-            "en": "Which means 'holiday'?",
-            "de": "Welches bedeutet 'Urlaub'?"
-          },
-          "options": [
-            "die Reise",
-            "der Urlaub",
-            "das Hotel",
-            "das Meer"
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l12-QUIZ-008",
-      "order": 7
+      "usageNotes": {
+        "fa": "اسم مذکر. جمع Ärzte با umlaut و -e. فرم مؤنث: die Ärztin.",
+        "en": "Masculine noun. Plural Ärzte with umlaut and -e. Feminine form: die Ärztin.",
+        "de": "Maskulines Nomen. Plural Ärzte mit Umlaut und -e. Feminine Form: die Ärztin."
+      },
+      "commonMistakes": {
+        "fa": "جمع Ärzte (نه Arzt) است. فرم مؤنث Ärztin (نه Arztin).",
+        "en": "Plural is Ärzte (not Arzt). Feminine form is Ärztin (not Arztin).",
+        "de": "Plural ist Ärzte (nicht Arzt). Feminine Form ist Ärztin (nicht Arztin)."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
+      "id": "voc-l12-polizist",
+      "de": "Polizist",
+      "article": "der",
+      "plural": "Polizisten",
+      "ipa": "[poliˈtsɪst]",
+      "fa": "پلیس (مرد)",
+      "en": "police officer (male)",
+      "example": {
+        "de": "Der Polizist steht an der Kreuzung.",
+        "fa": "پلیس در تقاطع ایستاده است.",
+        "en": "The police officer is standing at the intersection."
       },
-      "whatYouLearned": {
-        "fa": [
-          "✅ ترکیب زمان گذشته با افعال مودال",
-          "✅ صحبت درباره برنامه‌های سفر",
-          "✅ توصیف تجربیات گذشته",
-          "✅ گفتن خواسته‌ها و توانایی‌ها"
-        ],
-        "en": [
-          "✅ Combining past tense with modal verbs",
-          "✅ Talking about travel plans",
-          "✅ Describing past experiences",
-          "✅ Expressing wishes and abilities"
-        ],
-        "de": [
-          "✅ Kombination von Vergangenheit mit Modalverben",
-          "✅ Über Reisepläne sprechen",
-          "✅ Vergangene Erfahrungen beschreiben",
-          "✅ Wünsche und Fähigkeiten ausdrücken"
-        ]
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Polizistin.",
+        "en": "Masculine noun. Feminine form: die Polizistin.",
+        "de": "Maskulines Nomen. Feminine Form: die Polizistin."
       },
-      "nextSteps": {
-        "fa": "🎉 تبریک! شما سطح A1 را با موفقیت کامل کردید!\n\n📚 مرحله بعد: شروع سطح A2\n\n💪 به تمرین ادامه دهید و مهارت‌های خود را تقویت کنید!",
-        "en": "🎉 Congratulations! You have successfully completed A1 level!\n\n📚 Next step: Start A2 level\n\n💪 Keep practicing and strengthen your skills!",
-        "de": "🎉 Herzlichen Glückwunsch! Sie haben das A1-Niveau erfolgreich abgeschlossen!\n\n📚 Nächster Schritt: Start A2-Niveau\n\n💪 Üben Sie weiter und stärken Sie Ihre Fähigkeiten!"
+      "commonMistakes": {
+        "fa": "'z' آلمانی 'تس' تلفظ می‌شود: پولیتسیست.",
+        "en": "German 'z' is pronounced 'ts': po-li-tsi-st.",
+        "de": "Deutsches 'z' wird 'ts' ausgesprochen."
       },
-      "id": "a1-l12-SUMM-009",
-      "order": 8
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-verkaeufer",
+      "de": "Verkäufer",
+      "article": "der",
+      "plural": "Verkäufer",
+      "ipa": "[fɛɐ̯ˈkɔʏ̯fɐ]",
+      "fa": "فروشنده (مرد)",
+      "en": "salesperson (male)",
+      "example": {
+        "de": "Der Verkäufer im Supermarkt ist sehr freundlich.",
+        "fa": "فروشنده در سوپرمارکت خیلی مهربان است.",
+        "en": "The salesperson in the supermarket is very friendly."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. از فعل verkaufen. فرم مؤنث: die Verkäuferin.",
+        "en": "Masculine noun. From the verb verkaufen. Feminine form: die Verkäuferin.",
+        "de": "Maskulines Nomen. Vom Verb verkaufen. Feminine Form: die Verkäuferin."
+      },
+      "commonMistakes": {
+        "fa": "'äu' مانند 'اوی' تلفظ شود.",
+        "en": "'äu' is pronounced like 'oy'.",
+        "de": "'äu' wird wie 'oi' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-manager",
+      "de": "Manager",
+      "article": "der",
+      "plural": "Manager",
+      "ipa": "[ˈmænɪdʒɐ]",
+      "fa": "مدیر (مرد)",
+      "en": "manager (male)",
+      "example": {
+        "de": "Der Manager verdient viel Geld.",
+        "fa": "مدیر پول زیادی درآمد دارد.",
+        "en": "The manager earns a lot of money."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. وام‌واژه از انگلیسی. فرم مؤنث: die Managerin.",
+        "en": "Masculine noun. Loanword from English. Feminine form: die Managerin.",
+        "de": "Maskulines Nomen. Lehnwort aus dem Englischen. Feminine Form: die Managerin."
+      },
+      "commonMistakes": {
+        "fa": "'g' انگلیسی مانند 'ج' و 'a' مانند 'اِ' تلفظ شود.",
+        "en": "'g' like English 'j' and 'a' like short 'e'.",
+        "de": "'g' wie englisches 'j' und 'a' wie kurzes 'e'."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-friseur",
+      "de": "Friseur",
+      "article": "der",
+      "plural": "Friseure",
+      "ipa": "[fʁiˈzøːʁ]",
+      "fa": "آرایشگر (مرد)",
+      "en": "hairdresser (male)",
+      "example": {
+        "de": "Der Friseur schneidet meine Haare.",
+        "fa": "آرایشگر موهایم را کوتاه می‌کند.",
+        "en": "The hairdresser cuts my hair."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. وام‌واژه از فرانسوی. فرم مؤنث: die Friseurin.",
+        "en": "Masculine noun. Loanword from French. Feminine form: die Friseurin.",
+        "de": "Maskulines Nomen. Lehnwort aus dem Französischen. Feminine Form: die Friseurin."
+      },
+      "commonMistakes": {
+        "fa": "'eu' در آلمانی 'اوی' تلفظ می‌شود: فری‌زُر.",
+        "en": "'eu' in German is pronounced 'oy': fri-zur.",
+        "de": "'eu' wird auf Deutsch 'oi' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-student",
+      "de": "Student",
+      "article": "der",
+      "plural": "Studenten",
+      "ipa": "[ʃtuˈdɛnt]",
+      "fa": "دانشجو (مرد)",
+      "en": "university student (male)",
+      "example": {
+        "de": "Der Student studiert an der Universität.",
+        "fa": "دانشجو در دانشگاه تحصیل می‌کند.",
+        "en": "The student studies at the university."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Studentin. Student فقط برای دانشگاه است (نه Schüler).",
+        "en": "Masculine noun. Feminine form: die Studentin. Student is only for university (not Schüler).",
+        "de": "Maskulines Nomen. Feminine Form: die Studentin. Student ist nur für die Universität (nicht Schüler)."
+      },
+      "commonMistakes": {
+        "fa": "Student (دانشجو) ≠ Schüler (شاگرد مدرسه). 'St' آلمانی 'شت' تلفظ می‌شود.",
+        "en": "Student (university) ≠ Schüler (school student). German 'St' is pronounced 'sht'.",
+        "de": "Student (Universität) ≠ Schüler (Schule). Deutsches 'St' wird 'scht' ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-krankenschwester",
+      "de": "Krankenschwester",
+      "article": "die",
+      "plural": "Krankenschwestern",
+      "ipa": "[ˈkʁaŋkənˌʃvɛstɐ]",
+      "fa": "پرستار",
+      "en": "nurse",
+      "example": {
+        "de": "Die Krankenschwester hilft den Patienten.",
+        "fa": "پرستار به بیماران کمک می‌کند.",
+        "en": "The nurse helps the patients."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. ترکیب krank + Schwester. فقط مؤنث دارد.",
+        "en": "Feminine noun. Compound of krank + Schwester. Only feminine.",
+        "de": "Feminines Nomen. Kompositum aus krank + Schwester. Nur feminin."
+      },
+      "commonMistakes": {
+        "fa": "این شغل فرم مذکر ندارد. همیشه die Krankenschwester.",
+        "en": "This profession has no masculine form. Always die Krankenschwester.",
+        "de": "Dieser Beruf hat keine maskuline Form. Immer die Krankenschwester."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-hausfrau",
+      "de": "Hausfrau",
+      "article": "die",
+      "plural": "Hausfrauen",
+      "ipa": "[ˈhaʊ̯sfʁaʊ̯]",
+      "fa": "خانه‌دار",
+      "en": "housewife",
+      "example": {
+        "de": "Meine Mutter war lange Zeit Hausfrau.",
+        "fa": "مادرم مدت‌ها خانه‌دار بود.",
+        "en": "My mother was a housewife for a long time."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. ترکیب Haus + Frau. فرم مذکر نادر است.",
+        "en": "Feminine noun. Compound of Haus + Frau. Masculine form is rare.",
+        "de": "Feminines Nomen. Kompositum aus Haus + Frau. Maskuline Form ist selten."
+      },
+      "commonMistakes": {
+        "fa": "'au' در آلمانی 'آو' تلفظ می‌شود: هاوس‌فراو.",
+        "en": "'au' in German is pronounced 'aw': haus-fraw.",
+        "de": "'au' wird auf Deutsch 'au' ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-trainer",
+      "de": "Trainer",
+      "article": "der",
+      "plural": "Trainer",
+      "ipa": "[ˈtʁeːnɐ]",
+      "fa": "مربی (مرد)",
+      "en": "trainer / coach (male)",
+      "example": {
+        "de": "Der Trainer arbeitet mit dem Team.",
+        "fa": "مربی با تیم کار می‌کند.",
+        "en": "The trainer works with the team."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. وام‌واژه از انگلیسی. فرم مؤنث: die Trainerin.",
+        "en": "Masculine noun. Loanword from English. Feminine form: die Trainerin.",
+        "de": "Maskulines Nomen. Lehnwort aus dem Englischen. Feminine Form: die Trainerin."
+      },
+      "commonMistakes": {
+        "fa": "فرم مؤنث Trainerin (با -in) است.",
+        "en": "The feminine form is Trainerin (with -in).",
+        "de": "Die feminine Form ist Trainerin (mit -in)."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-programmierer",
+      "de": "Programmierer",
+      "article": "der",
+      "plural": "Programmierer",
+      "ipa": "[pʁoɡʁaˈmiːʁɐ]",
+      "fa": "برنامه‌نویس (مرد)",
+      "en": "programmer (male)",
+      "example": {
+        "de": "Der Programmierer schreibt Code.",
+        "fa": "برنامه‌نویس کد می‌نویسد.",
+        "en": "The programmer writes code."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Programmiererin.",
+        "en": "Masculine noun. Feminine form: die Programmiererin.",
+        "de": "Maskulines Nomen. Feminine Form: die Programmiererin."
+      },
+      "commonMistakes": {
+        "fa": "فرم مؤنث: Programmier + erin = Programmiererin.",
+        "en": "Feminine form: Programmier + erin = Programmiererin.",
+        "de": "Feminine Form: Programmier + erin = Programmiererin."
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-architekt",
+      "de": "Architekt",
+      "article": "der",
+      "plural": "Architekten",
+      "ipa": "[aʁʃiˈtɛkt]",
+      "fa": "معمار (مرد)",
+      "en": "architect (male)",
+      "example": {
+        "de": "Der Architekt entwirft ein neues Büro.",
+        "fa": "معمار یک دفتر جدید طراحی می‌کند.",
+        "en": "The architect designs a new office."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. فرم مؤنث: die Architektin.",
+        "en": "Masculine noun. Feminine form: die Architektin.",
+        "de": "Maskulines Nomen. Feminine Form: die Architektin."
+      },
+      "commonMistakes": {
+        "fa": "'ch' مانند 'خ' آلمانی و 't' در آخر تلفظ می‌شود.",
+        "en": "'ch' like German 'ch' and 't' at the end is pronounced.",
+        "de": "'ch' wie deutsches 'ch' und das 't' am Ende wird ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-taxifahrer",
+      "de": "Taxifahrer",
+      "article": "der",
+      "plural": "Taxifahrer",
+      "ipa": "[ˈtaksiˌfaːʁɐ]",
+      "fa": "راننده تاکسی (مرد)",
+      "en": "taxi driver (male)",
+      "example": {
+        "de": "Der Taxifahrer fährt zum Flughafen.",
+        "fa": "راننده تاکسی به فرودگاه می‌رود.",
+        "en": "The taxi driver drives to the airport."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. ترکیب Taxi + Fahrer. فرم مؤنث: die Taxifahrerin.",
+        "en": "Masculine noun. Compound of Taxi + Fahrer. Feminine form: die Taxifahrerin.",
+        "de": "Maskulines Nomen. Kompositum aus Taxi + Fahrer. Feminine Form: die Taxifahrerin."
+      },
+      "commonMistakes": {
+        "fa": "فرم مؤنث Taxifahrerin (با -erin) است نه Taxifahrerin.",
+        "en": "Feminine form is Taxifahrerin (with -erin).",
+        "de": "Feminine Form ist Taxifahrerin (mit -erin)."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-fussballspieler",
+      "de": "Fußballspieler",
+      "article": "der",
+      "plural": "Fußballspieler",
+      "ipa": "[ˈfuːsbalˌʃpiːlɐ]",
+      "fa": "بازیکن فوتبال (مرد)",
+      "en": "football player (male)",
+      "example": {
+        "de": "Der Fußballspieler spielt in der Bundesliga.",
+        "fa": "بازیکن فوتبال در بوندسلیگا بازی می‌کند.",
+        "en": "The football player plays in the Bundesliga."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. ترکیب Fußball + Spieler. فرم مؤنث: die Fußballspielerin.",
+        "en": "Masculine noun. Compound of Fußball + Spieler. Feminine form: die Fußballspielerin.",
+        "de": "Maskulines Nomen. Kompositum aus Fußball + Spieler. Feminine Form: die Fußballspielerin."
+      },
+      "commonMistakes": {
+        "fa": "فرم مؤنث: Fußballspieler + in = Fußballspielerin.",
+        "en": "Feminine form: Fußballspieler + in = Fußballspielerin.",
+        "de": "Feminine Form: Fußballspieler + in = Fußballspielerin."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-beruf",
+      "de": "Beruf",
+      "article": "der",
+      "plural": "Berufe",
+      "ipa": "[bəˈʁuːf]",
+      "fa": "شغل / حرفه",
+      "en": "profession / job",
+      "example": {
+        "de": "Was ist dein Beruf?",
+        "fa": "شغل تو چیست؟",
+        "en": "What is your profession?"
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. یک کلمه پایه مهم.",
+        "en": "Masculine noun. A key basic word.",
+        "de": "Maskulines Nomen. Ein wichtiges Grundwort."
+      },
+      "commonMistakes": {
+        "fa": "'eu' در آلمانی 'اوی' تلفظ می‌شود: بِ‌روف.",
+        "en": "'eu' in German is pronounced 'oy': be-roof.",
+        "de": "'eu' wird auf Deutsch 'oi' ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-arbeitsplatz",
+      "de": "Arbeitsplatz",
+      "article": "der",
+      "plural": "Arbeitsplätze",
+      "ipa": "[ˈaʁbaɪ̯tsˌplat͡s]",
+      "fa": "محل کار",
+      "en": "workplace",
+      "example": {
+        "de": "Mein Arbeitsplatz ist im Büro.",
+        "fa": "محل کار من در دفتر است.",
+        "en": "My workplace is in the office."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. ترکیب Arbeit + Platz. جمع با umlaut و -e.",
+        "en": "Masculine noun. Compound of Arbeit + Platz. Plural with umlaut and -e.",
+        "de": "Maskulines Nomen. Kompositum aus Arbeit + Platz. Plural mit Umlaut und -e."
+      },
+      "commonMistakes": {
+        "fa": "جمع Arbeitsplätze با umlaut (ä) و -e.",
+        "en": "Plural is Arbeitsplätze with umlaut (ä) and -e.",
+        "de": "Plural ist Arbeitsplätze mit Umlaut (ä) und -e."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-gehalt",
+      "de": "Gehalt",
+      "article": "das",
+      "plural": "Gehälter",
+      "ipa": "[ɡəˈhalt]",
+      "fa": "حقوق /.salary",
+      "en": "salary",
+      "example": {
+        "de": "Das Gehalt ist sehr gut.",
+        "fa": "حقوق خیلی خوب است.",
+        "en": "The salary is very good."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. به معنای حقوق ماهانه.",
+        "en": "Neuter noun. Means monthly salary.",
+        "de": "Neutrales Nomen. Bedeutet monatliches Gehalt."
+      },
+      "commonMistakes": {
+        "fa": "article das است نه der. جمع Gehälter با umlaut و -er.",
+        "en": "Article is das, not der. Plural Gehälter with umlaut and -er.",
+        "de": "Artikel ist das, nicht der. Plural Gehälter mit Umlaut und -er."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-ausbildung",
+      "de": "Ausbildung",
+      "article": "die",
+      "plural": "Ausbildungen",
+      "ipa": "[ˈaʊ̯sbɪldʊŋ]",
+      "fa": "آموزش حرفه‌ای / تحصیلات",
+      "en": "vocational training / education",
+      "example": {
+        "de": "Er macht eine Ausbildung als Koch.",
+        "fa": "او آموزش حرفه‌ای آشپزی می‌بیند.",
+        "en": "He is doing vocational training as a cook."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. در آلمان بسیار رایج — سیستم Ausbildung جایگزین دانشگاه برای بسیاری از مشاغل است.",
+        "en": "Feminine noun. Very common in Germany — the Ausbildung system is an alternative to university for many professions.",
+        "de": "Feminines Nomen. Sehr häufig in Deutschland — das Ausbildungssystem ist eine Alternative zur Universität für viele Berufe."
+      },
+      "commonMistakes": {
+        "fa": "eine Ausbildung machen (نه haben).",
+        "en": "eine Ausbildung machen (not haben).",
+        "de": "eine Ausbildung machen (nicht haben)."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-verdienen",
+      "de": "verdienen",
+      "article": "",
+      "plural": "",
+      "ipa": "[fɛɐ̯ˈdiːʁən]",
+      "fa": "درآمد داشتن / به دست آوردن",
+      "en": "to earn",
+      "example": {
+        "de": "Sie verdient 5000 Euro im Monat.",
+        "fa": "او ماهی ۵۰۰۰ یورو درآمد دارد.",
+        "en": "She earns 5000 euros per month."
+      },
+      "usageNotes": {
+        "fa": "فعل. هم درآمد مالی و هم به معنای «سزاوار بودن» (این جایزه را verdienen).",
+        "en": "Verb. Both financial income and 'to deserve' (diese Auszeichnung verdienen).",
+        "de": "Verb. Sowohl finanzielles Einkommen als auch 'verdienen' (diese Auszeichnung verdienen)."
+      },
+      "commonMistakes": {
+        "fa": "'er' در آخر فعل دوم تلفظ می‌شود: فِردینِن.",
+        "en": "'er' at the end of the second syllable is pronounced: fer-dee-nen.",
+        "de": "'er' am Ende der zweiten Silbe wird ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-chef",
+      "de": "Chef",
+      "article": "der",
+      "plural": "Chefs",
+      "ipa": "[ʃɛf]",
+      "fa": "رئیس / مدیر",
+      "en": "boss / manager",
+      "example": {
+        "de": "Mein Chef ist sehr nett.",
+        "fa": "رئیس من خیلی مهربان است.",
+        "en": "My boss is very nice."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. وام‌واژه از فرانسوی. فرم مؤنث: die Chefin.",
+        "en": "Masculine noun. Loanword from French. Feminine form: die Chefin.",
+        "de": "Maskulines Nomen. Lehnwort aus dem Französischen. Feminine Form: die Chefin."
+      },
+      "commonMistakes": {
+        "fa": "'ch' در این کلمه 'ش' تلفظ می‌شود: شِف.",
+        "en": "'ch' in this word is pronounced 'sh': shef.",
+        "de": "'ch' in diesem Wort wird 'sch' ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-firma",
+      "de": "Firma",
+      "article": "die",
+      "plural": "Firmen",
+      "ipa": "[ˈfɪʁmɐ]",
+      "fa": "شرکت",
+      "en": "company / firm",
+      "example": {
+        "de": "Die Firma hat 200 Mitarbeiter.",
+        "fa": "شرکت ۲۰۰ کارمند دارد.",
+        "en": "The company has 200 employees."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث.",
+        "en": "Feminine noun.",
+        "de": "Feminines Nomen."
+      },
+      "commonMistakes": {
+        "fa": "article die است نه das.",
+        "en": "Article is die, not das.",
+        "de": "Artikel ist die, nicht das."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-buero",
+      "de": "Büro",
+      "article": "das",
+      "plural": "Büros",
+      "ipa": "[byˈʁoː]",
+      "fa": "دفتر",
+      "en": "office",
+      "example": {
+        "de": "Ich arbeite in einem Büro.",
+        "fa": "من در یک دفتر کار می‌کنم.",
+        "en": "I work in an office."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. وام‌واژه.",
+        "en": "Neuter noun. Loanword.",
+        "de": "Neutrales Nomen. Lehnwort."
+      },
+      "commonMistakes": {
+        "fa": "'ü' بین 'ای' و 'او' و 'ö' بین 'اُ' و 'اِ' تلفظ شود.",
+        "en": "'ü' between 'ee' and 'oo', 'ö' between 'er' and 'eh'.",
+        "de": "'ü' zwischen 'i' und 'u', 'ö' zwischen 'o' und 'e'."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-interessant",
+      "de": "interessant",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɪntəˈʁɛsant]",
+      "fa": "جالب /有意思",
+      "en": "interesting",
+      "example": {
+        "de": "Der Beruf ist sehr interessant.",
+        "fa": "این شغل خیلی جالب است.",
+        "en": "The job is very interesting."
+      },
+      "usageNotes": {
+        "fa": "صفت. همان‌طور که در فارسی و انگلیسی نیز استفاده می‌شود.",
+        "en": "Adjective. Used similarly in Persian and English.",
+        "de": "Adjektiv. Ähnlich verwendet wie im Persischen und Englischen."
+      },
+      "commonMistakes": {
+        "fa": "آلمانی همان‌ند انگلیسی: interessant.",
+        "en": "Same as English: interessant.",
+        "de": "Gleich wie im Englischen: interessant."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l12-sicher",
+      "de": "sicher",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈzɪçɐ]",
+      "fa": "امن / مطمئن",
+      "en": "safe / secure",
+      "example": {
+        "de": "Der Arbeitsplatz ist sicher.",
+        "fa": "محل کار امن است.",
+        "en": "The workplace is safe."
+      },
+      "usageNotes": {
+        "fa": "صفت. همچنین به معنای «قطعاً»: Das ist sicher so.",
+        "en": "Adjective. Also means 'certainly': Das ist sicher so.",
+        "de": "Adjektiv. Auch im Sinne von 'gewiss': Das ist sicher so."
+      },
+      "commonMistakes": {
+        "fa": "'s' آلمانی 'ز' تلفظ می‌شود: زی‌خِر.",
+        "en": "German 's' before 'i' is pronounced 'z': zi-chr.",
+        "de": "Deutsches 's' vor 'i' wird 'z' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l12-stressig",
+      "de": "stressig",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈʃtʁɛsɪç]",
+      "fa": "استرس‌زا",
+      "en": "stressful",
+      "example": {
+        "de": "Die Arbeit ist sehr stressig.",
+        "fa": "کار خیلی استرس‌زا است.",
+        "en": "The work is very stressful."
+      },
+      "usageNotes": {
+        "fa": "صفت. از انگلیسی stress + ig آلمانی.",
+        "en": "Adjective. From English stress + German -ig.",
+        "de": "Adjektiv. Aus Englisch stress + deutsch -ig."
+      },
+      "commonMistakes": {
+        "fa": "'st' آلمانی 'شت' و 'ig' 'ایش' تلفظ می‌شود: شتْرِسیش.",
+        "en": "German 'st' is 'sht' and 'ig' is 'ish': shtr-es-ish.",
+        "de": "Deutsches 'st' ist 'scht' und 'ig' ist 'isch'."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-kreativ",
+      "de": "kreativ",
+      "article": "",
+      "plural": "",
+      "ipa": "[kʁeaˈtiːf]",
+      "fa": "خلاقانه",
+      "en": "creative",
+      "example": {
+        "de": "Die Arbeit als Journalist ist kreativ.",
+        "fa": "کار به عنوان روزنامه‌نگار خلاقانه است.",
+        "en": "The work as a journalist is creative."
+      },
+      "usageNotes": {
+        "fa": "صفت.",
+        "en": "Adjective.",
+        "de": "Adjektiv."
+      },
+      "commonMistakes": {
+        "fa": "آلمانی: kreativ (با v آلمانی = f).",
+        "en": "German: kreativ (with German v = f).",
+        "de": "Deutsch: kreativ (mit deutschem v = f)."
+      },
+      "difficulty": 1,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-karriere",
+      "de": "Karriere",
+      "article": "die",
+      "plural": "Karrieren",
+      "ipa": "[kaʁiˈɛʁə]",
+      "fa": "موفقیت حرفه‌ای / карьера",
+      "en": "career",
+      "example": {
+        "de": "Sie möchte Karriere machen.",
+        "fa": "او می‌خواهد موفقیت حرفه‌ای کسب کند.",
+        "en": "She wants to make a career."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. وام‌واژه از فرانسوی. Karriere machen = موفقیت حرفه‌ای کسب کردن.",
+        "en": "Feminine noun. Loanword from French. Karriere machen = to build a career.",
+        "de": "Feminines Nomen. Lehnwort aus dem Französischen. Karriere machen = eine Karriere aufbauen."
+      },
+      "commonMistakes": {
+        "fa": "Karriere machen (نه haben) و article die است.",
+        "en": "Karriere machen (not haben) and article is die.",
+        "de": "Karriere machen (nicht haben) und Artikel ist die."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-burnout",
+      "de": "Burn-out",
+      "article": "der",
+      "plural": "Burn-outs",
+      "ipa": "[ˈbɜʁnaʊ̯t]",
+      "fa": "فرسودگی شغلی",
+      "en": "burnout",
+      "example": {
+        "de": "Viele Menschen haben Burn-out.",
+        "fa": "بسیاری از افراد دچار فرسودگی شغلی می‌شوند.",
+        "en": "Many people suffer from burnout."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. وام‌واژه بین‌المللی. einen Burn-out haben = دچار فرسودگی بودن.",
+        "en": "Masculine noun. International loanword. einen Burn-out haben = to have burnout.",
+        "de": "Maskulines Nomen. Internationales Lehnwort. Einen Burn-out haben = einen Burnout haben."
+      },
+      "commonMistakes": {
+        "fa": "article der است نه die.",
+        "en": "Article is der, not die.",
+        "de": "Artikel ist der, nicht die."
+      },
+      "difficulty": 3,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l12-auszeit",
+      "de": "Auszeit",
+      "article": "die",
+      "plural": "Auszeiten",
+      "ipa": "[ˈaʊ̯tsaɪ̯t]",
+      "fa": "فرصت استراحت / مرخصی",
+      "en": "time out / break",
+      "example": {
+        "de": "Ich brauche eine Auszeit.",
+        "fa": "من به یک فرصت استراحت نیاز دارم.",
+        "en": "I need a time out."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. ترکیب aus + Zeit.",
+        "en": "Feminine noun. Compound of aus + Zeit.",
+        "de": "Feminines Nomen. Kompositum aus aus + Zeit."
+      },
+      "commonMistakes": {
+        "fa": "eine Auszeit nehmen (نه machen).",
+        "en": "eine Auszeit nehmen (not machen).",
+        "de": "eine Auszeit nehmen (nicht machen)."
+      },
+      "difficulty": 2,
+      "frequency": 3
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-l12-genitiv-namen",
+        "title": {
+          "fa": "حالت جنیتو ملکی با نام‌ها (Genitiv bei Namen)",
+          "en": "Possessive Genitiv with Names",
+          "de": "Possessiver Genitiv bei Namen"
+        },
+        "concept": {
+          "fa": "برای بیان «ملکیت» با نام اشخاص، از حالت جنیتو (Genitiv) استفاده می‌شود. اگر نام با -s، -z، -x یا -ß تمام شود، فقط آپوستروف اضافه می‌شود (Thomas' Auto). در غیر این صورت، -s به نام اضافه می‌شود (Marias Bruder، Pauls Eltern).",
+          "en": "To express 'possession' with people's names, the Genitiv case is used. If a name ends in -s, -z, -x or -ß, only an apostrophe is added (Thomas' Auto). Otherwise, -s is added to the name (Marias Bruder, Pauls Eltern).",
+          "de": "Um 'Besitz' bei Personennamen auszudrücken, wird der Genitiv verwendet. Wenn ein Name auf -s, -z, -x oder -ß endet, wird nur ein Apostroph hinzugefügt (Thomas' Auto). Andernfalls wird -s an den Namen gehängt (Marias Bruder, Pauls Eltern)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "نام",
+            "قانون",
+            "جنیتو",
+            "معنی",
+            "Rule"
+          ],
+          "rows": [
+            [
+              "Maria",
+              "-s اضافه",
+              "Marias Auto",
+              "ماشین ماریا",
+              "Add -s"
+            ],
+            [
+              "Paul",
+              "-s اضافه",
+              "Pauls Eltern",
+              "والدین پل",
+              "Add -s"
+            ],
+            [
+              "Thomas",
+              "فقط آپوستروف",
+              "Thomas' Frau",
+              "زن توماس",
+              "Apostrophe only"
+            ],
+            [
+              "Hans",
+              "فقط آپوستروف",
+              "Hans' Hund",
+              "سگ هانس",
+              "Apostrophe only"
+            ],
+            [
+              "Max",
+              "فقط آپوستروف",
+              "Max' Schwester",
+              "خواهر ماکس",
+              "Apostrophe only"
+            ],
+            [
+              "Lisa",
+              "-s اضافه",
+              "Lisas Buch",
+              "کتاب لیزا",
+              "Add -s"
+            ],
+            [
+              "Klaus",
+              "فقط آپوستروف",
+              "Klaus' Chef",
+              "رئیس کلاوس",
+              "Apostrophe only"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Das ist Marias Buch.",
+            "persian": "داس ایست ماریاس بوخ.",
+            "analysis": "Maria + s → Marias (نام عادی + -s)"
+          },
+          {
+            "sentence": "Das ist Thomas' Auto.",
+            "persian": "داس ایست توماس آتو.",
+            "analysis": "Thomas + ' → Thomas' (نام با s فقط آپوستروف)"
+          },
+          {
+            "sentence": "Das sind Pauls Eltern.",
+            "persian": "داس زیند پولس ال‌تِرن.",
+            "analysis": "Paul + s → Pauls (جمع Eltern)"
+          },
+          {
+            "sentence": "Das ist Lisas Firma.",
+            "persian": "داس ایست لیزاس فرما.",
+            "analysis": "Lisa + s → Lisas (نام عادی + -s)"
+          }
+        ],
+        "note": {
+          "fa": "قانون ساده: نام‌های منتهی به s/z/x/ß فقط آپوستروف می‌گیرند. بقیه -s می‌گیرند. این جنیتو فقط برای نام اشخاص استفاده می‌شود، نه اسم‌های عادی.",
+          "en": "Simple rule: Names ending in s/z/x/ß get only an apostrophe. All others get -s. This Genitiv is only used with people's names, not regular nouns.",
+          "de": "Einfache Regel: Namen, die auf s/z/x/ß enden, bekommen nur ein Apostroph. Alle anderen bekommen -s. Dieser Genitiv wird nur bei Personennamen verwendet, nicht bei normalen Nomen."
+        }
+      },
+      {
+        "id": "gram-l12-praeteritum-haben",
+        "title": {
+          "fa": "زمان گذشته فعل haben (Präteritum von haben)",
+          "en": "Past Tense of haben (Präteritum)",
+          "de": "Präteritum von haben"
+        },
+        "concept": {
+          "fa": "فعل haben در زمان گذشته (Präteritum) صفت‌مند (stark) است. این فرم برای بیان داشتن در گذشته استفاده می‌شود. ویژگی اصلی: ich hatte (نه ich habte). du hattest با دو t نوشته می‌شود.",
+          "en": "The verb haben is irregular (stark) in the Präteritum (past tense). This form is used to express 'having' in the past. Key feature: ich hatte (not ich habte). du hattest is written with two t's.",
+          "de": "Das Verb haben ist unregelmäßig (stark) im Präteritum. Diese Form wird verwendet, um 'haben' in der Vergangenheit auszudrücken. Hauptmerkmal: ich hatte (nicht ich habte). du hattest wird mit zwei t geschrieben."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیرو",
+            "Präteritum",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "ich",
+              "hatte",
+              "من داشتم",
+              "I had"
+            ],
+            [
+              "du",
+              "hattest",
+              "تو داشتی",
+              "you had"
+            ],
+            [
+              "er/sie/es",
+              "hatte",
+              "او داشت",
+              "he/she/it had"
+            ],
+            [
+              "wir",
+              "hatten",
+              "ما داشتیم",
+              "we had"
+            ],
+            [
+              "ihr",
+              "hattet",
+              "شما داشتید",
+              "you (pl.) had"
+            ],
+            [
+              "sie/Sie",
+              "hatten",
+              "آنها/شما داشتند",
+              "they/you had"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Ich hatte einen guten Job.",
+            "persian": "آیخ هاتِه آینِن گوتِن یوب.",
+            "analysis": "ich hatte = من داشتم (Präteritum)"
+          },
+          {
+            "sentence": "Du hattest viel Stress.",
+            "persian": "دو هاتِست فیال اشتْرِس.",
+            "analysis": "du hattest = تو داشتی (دو t)"
+          },
+          {
+            "sentence": "Er hatte 80000 Euro Gehalt.",
+            "persian": "ئِر هاتِه آخت-تسِند اورو گِ-هالت.",
+            "analysis": "er hatte = او داشت"
+          },
+          {
+            "sentence": "Wir hatten keine Auszeit.",
+            "persian": "ویر هاتِن کاینِه آوس‌زایت.",
+            "analysis": "wir hatten = ما داشتیم"
+          },
+          {
+            "sentence": "Hattest du einen Chef?",
+            "persian": "هاتِست دو آینِن شِف؟",
+            "analysis": "hattest du = آیا تو داشتی؟ (سؤال)"
+          }
+        ],
+        "note": {
+          "fa": "فعل haben در Präteritum نامنظم است: a → a → a (بدون تغییر vowel). فقط du hattest / ihr hattet ویژه هستند (دو t). در مکالمه روزمره معمولاً Perfekt استفاده می‌شود (ich habe gehabt)، ولی Präteritum در نوشتن و روایت رایج‌تر است.",
+          "en": "The verb haben is irregular in the Präteritum: a → a → a (no vowel change). Only du hattest / ihr hattet are special (two t's). In everyday speech, Perfekt is more common (ich habe gehabt), but Präteritum is more common in writing and narration.",
+          "de": "Das Verb haben ist unregelmäßig im Präteritum: a → a → a (kein Vokalwechsel). Nur du hattest / ihr hattet sind besonders (zwei t). In der Alltagssprache wird meistens Perfekt verwendet (ich habe gehabt), aber Präteritum ist häufiger im Schreiben und Erzählen."
+        }
+      },
+      {
+        "id": "gram-l12-sollen",
+        "title": {
+          "fa": "فعل راهبردی sollen — نصیحت و توصیه",
+          "en": "Modal Verb sollen — Advice and Recommendation",
+          "de": "Modalverb sollen — Rat und Empfehlung"
+        },
+        "concept": {
+          "fa": "فعل sollen به معنای «باید (نصیحت)» یا «منظور این است که» است. تفاوت مهم با müssen: müssen = الزام شخصی یا خارجی (باید). sollen = نصیحت، توصیه یا دستور شخص ثالث (شاید باید). مثلاً: Der Arzt sagt, ich soll im Bett bleiben. (پزشک می‌گوید استراحت کنم.)",
+          "en": "The verb sollen means 'should (advice)' or 'it is intended that'. Important difference with müssen: müssen = personal or external obligation (must). sollen = advice, recommendation or order from a third party (should). E.g.: Der Arzt sagt, ich soll im Bett bleiben. (The doctor says I should stay in bed.)",
+          "de": "Das Verb sollen bedeutet 'sollen (Rat)' oder 'es ist vorgesehen'. Wichtiger Unterschied zu müssen: müssen = persönliche oder äußere Pflicht. sollen = Rat, Empfehlung oder Anweisung einer dritten Person. Z.B.: Der Arzt sagt, ich soll im Bett bleiben."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیرو",
+            "sollen",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "ich",
+              "soll",
+              "من باید (شاید)",
+              "I should"
+            ],
+            [
+              "du",
+              "sollst",
+              "تو باید (شاید)",
+              "you should"
+            ],
+            [
+              "er/sie/es",
+              "soll",
+              "او باید (شاید)",
+              "he/she/it should"
+            ],
+            [
+              "wir",
+              "sollen",
+              "ما باید (شاید)",
+              "we should"
+            ],
+            [
+              "ihr",
+              "sollt",
+              "شما باید (شاید)",
+              "you (pl.) should"
+            ],
+            [
+              "sie/Sie",
+              "sollen",
+              "آنها/شما باید (شاید)",
+              "they/you should"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Du sollst mehr schlafen.",
+            "persian": "دو شولست مِر شلا-فِن.",
+            "analysis": "sollst = نصیحت: باید بیشتر بخوابی"
+          },
+          {
+            "sentence": "Man soll nicht zu viel arbeiten.",
+            "persian": "مان شول نِشت تسو فیال آربایتِن.",
+            "analysis": "man soll = نباید (نصیحت عمومی)"
+          },
+          {
+            "sentence": "Der Arzt sagt, ich soll Tabletten nehmen.",
+            "persian": "دِر آرتست زاگت، آیخ شول تا-بِتِن نِ-مِن.",
+            "analysis": "soll = دستور شخص ثالث (پزشک)"
+          },
+          {
+            "sentence": "Soll ich den Job annehmen?",
+            "persian": "شول آیخ دِن یوب آن-نِ-مِن؟",
+            "analysis": "soll ich = آیا باید (نصیحت بخواهم)؟"
+          },
+          {
+            "sentence": "Ihr sollt pünktlich sein.",
+            "persian": "ایر شولت پونکت-لِش زاین.",
+            "analysis": "sollt = باید (دستور/توصیه جمع)"
+          }
+        ],
+        "note": {
+          "fa": "تمایز کلیدی: müssen = الزام قطعی (باید). sollen = توصیه یا دستور غیرمستقیم (شاید باید / گفته شده که باید). در مکالمه فارسی، «باید» هر دو را پوشش می‌دهد، ولی در آلمانی تفاوت مهمی دارند.",
+          "en": "Key distinction: müssen = absolute obligation (must). sollen = advice or indirect order (should / it's been said that one should). In Persian, 'باید' covers both, but in German they are importantly different.",
+          "de": "Wichtiger Unterschied: müssen = absolute Pflicht. sollen = Rat oder indirekte Anweisung. Im Persischen bedeutet 'باید' beides, aber im Deutschen sind sie wichtig unterschiedlich."
+        }
+      },
+      {
+        "id": "gram-l12-vor-nach-dativ",
+        "title": {
+          "fa": "حروف اضافه vor و nach با داتیو",
+          "en": "Prepositions vor and nach with Dative",
+          "de": "Präpositionen vor und nach mit Dativ"
+        },
+        "concept": {
+          "fa": "vor و nach هر دو حروف اضافه داتیو‌گیر هستند (Wechselpräpositionen). vor به معنای «قبل از» و nach به معنای «بعد از» است. مهم: vor + dem = vorm و nach + dem = nachm، ولی در آلمانی استاندارد معمولاً نوشته نمی‌شوند.",
+          "en": "vor and nach both take the dative case (Wechselpräpositionen). vor means 'before' and nach means 'after'. Note: vor + dem = vorm and nach + dem = nachm, but in standard German they are usually not written as contractions.",
+          "de": "vor und nach verlangen beide den Dativ (Wechselpräpositionen). vor bedeutet 'vor' und nach bedeutet 'nach'. Hinweis: vor + dem = vorm und nach + dem = nachm, aber im Standarddeutschen werden sie meist nicht als Kontraktionen geschrieben."
+        },
+        "conjugationTable": {
+          "headers": [
+            "حرف اضافه + آرتیکل",
+            "شکل کامل",
+            "مثال",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "vor + dem",
+              "vor dem",
+              "vor dem Kurs",
+              "قبل از کلاس",
+              "before the class"
+            ],
+            [
+              "vor + der",
+              "vor der",
+              "vor der Arbeit",
+              "قبل از کار",
+              "before work"
+            ],
+            [
+              "vor + dem",
+              "vor dem",
+              "vor dem Training",
+              "قبل از تمرین",
+              "before training"
+            ],
+            [
+              "vor + dem",
+              "vor dem",
+              "vor dem Essen",
+              "قبل از غذا",
+              "before the meal"
+            ],
+            [
+              "nach + dem",
+              "nach dem",
+              "nach dem Essen",
+              "بعد از غذا",
+              "after the meal"
+            ],
+            [
+              "nach + der",
+              "nach der",
+              "nach der Arbeit",
+              "بعد از کار",
+              "after work"
+            ],
+            [
+              "nach + dem",
+              "nach dem",
+              "nach dem Training",
+              "بعد از تمرین",
+              "after training"
+            ],
+            [
+              "nach + dem",
+              "nach dem",
+              "nach dem Kurs",
+              "بعد از کلاس",
+              "after the class"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Vor dem Kurs trinke ich Kaffee.",
+            "persian": "فور دِم کورس تْرین-کِه آیخ کافِه.",
+            "analysis": "vor dem = قبل از (Kurs خنثی → dem)"
+          },
+          {
+            "sentence": "Nach der Arbeit gehe ich ins Fitness-Studio.",
+            "persian": "ناخ دِر آربایت گِه آیخ اینس فیت-نِس اشتودی-و.",
+            "analysis": "nach der = بعد از (Arbeit مؤنث → der)"
+          },
+          {
+            "sentence": "Vor dem Training soll man aufwärmen.",
+            "persian": "فور دِم تْرای-نینگ شول مان اوف-وآرمِن.",
+            "analysis": "vor dem Training = قبل از تمرین"
+          },
+          {
+            "sentence": "Nach dem Essen gehe ich spazieren.",
+            "persian": "ناخ دِم اِسِن گِه آیخ شپاتسیرِن.",
+            "analysis": "nach dem = بعد از (Essen خنثی → dem)"
+          }
+        ],
+        "note": {
+          "fa": "توجه: vor و nach در هر مورد داتیو می‌خواهند. قبل از اسامیمعلق (بدون آرتیکل) از داتیو مستقیم استفاده می‌شود: vor dem Frühstück (قبل از صبحانه) ولی nach dem Frühstück (بعد از صبحانه).",
+          "en": "Note: vor and nach always take dative. Before noun phrases without articles, direct dative is used: vor dem Frühstück (before breakfast) and nach dem Frühstück (after breakfast).",
+          "de": "Hinweis: vor und nach verlangen immer Dativ. Vor Nomenphrasen ohne Artikel wird der direkte Dativ verwendet: vor dem Frühstück und nach dem Frühstück."
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-l12-ben-island",
+      "title": {
+        "fa": "دیالوگ ۱ — بن، نگهبان جزیره",
+        "en": "Dialogue 1 — Ben, the Island Caretaker",
+        "de": "Dialog 1 — Ben, der Inselbetreuer"
+      },
+      "characters": [
+        {
+          "name": "Interviewer",
+          "role": {
+            "fa": "مصاحبه‌گر",
+            "en": "Interviewer",
+            "de": "Interviewer"
+          }
+        },
+        {
+          "name": "Ben",
+          "role": {
+            "fa": "نگهبان جزیره",
+            "en": "Island Caretaker",
+            "de": "Inselbetreuer"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Interviewer",
+          "german": "Hallo Ben! Was ist dein Beruf?",
+          "persian": "هالو بِن! واس ایست داین بِروف؟",
+          "meaning": {
+            "fa": "سلام بن! شغل تو چیست؟",
+            "en": "Hello Ben! What is your profession?",
+            "de": "Hallo Ben! Was ist dein Beruf?"
+          }
+        },
+        {
+          "speaker": "Ben",
+          "german": "Ich bin Inselbetreuer in Australien.",
+          "persian": "آیخ بین این‌زِل-بِتْرِوئِر این اوس‌ترالیِن.",
+          "meaning": {
+            "fa": "من نگهبان جزیره در استرالیا هستم.",
+            "en": "I am an island caretaker in Australia.",
+            "de": "Ich bin Inselbetreuer in Australien."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Das klingt toll! Was machst du genau?",
+          "persian": "داس کینگت تُل! واس ماخست دو گِناو؟",
+          "meaning": {
+            "fa": "عالی به نظر می‌رسد! دقیقاً چه کار می‌کنی؟",
+            "en": "That sounds great! What exactly do you do?",
+            "de": "Das klingt toll! Was machst du genau?"
+          }
+        },
+        {
+          "speaker": "Ben",
+          "german": "Ich aktualisiere die Website, mache Fotos und schreibe einen Blog.",
+          "persian": "آیخ آکتوالیزیرِه دی وِب‌زایت، ماخِه فوتوس اوند شرایبِه آینِن بلاگ.",
+          "meaning": {
+            "fa": "وب‌سایت را به‌روز می‌کنم، عکس می‌گیرم و بلاگ می‌نویسم.",
+            "en": "I update the website, take photos and write a blog.",
+            "de": "Ich aktualisiere die Website, mache Fotos und schreibe einen Blog."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Wie viel verdienst du?",
+          "persian": "وی فیال فِردیست دو؟",
+          "meaning": {
+            "fa": "چقدر درآمد داری؟",
+            "en": "How much do you earn?",
+            "de": "Wie viel verdienst du?"
+          }
+        },
+        {
+          "speaker": "Ben",
+          "german": "Ich hatte 80000 Euro im Jahr!",
+          "persian": "آیخ هاتِه آخت-تسِند اورو ایم یار!",
+          "meaning": {
+            "fa": "من ۸۰۰۰۰ یورو در سال داشتم!",
+            "en": "I had 80000 euros per year!",
+            "de": "Ich hatte 80000 Euro im Jahr!"
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Und wie viele Stunden arbeitest du?",
+          "persian": "اوند وی فیله اشتوندِن آربایْتست دو؟",
+          "meaning": {
+            "fa": "و چند ساعت کار می‌کنی؟",
+            "en": "And how many hours do you work?",
+            "de": "Und wie viele Stunden arbeitest du?"
+          }
+        },
+        {
+          "speaker": "Ben",
+          "german": "Nur 12 Stunden im Monat! Es ist mein Traumjob.",
+          "persian": "نور تسولف اشتوندِن ایم مونات! اِس ایست ماین تْراوم‌یوب.",
+          "meaning": {
+            "fa": "فقط ۱۲ ساعت در ماه! شغل رویایی من است.",
+            "en": "Only 12 hours per month! It's my dream job.",
+            "de": "Nur 12 Stunden im Monat! Es ist mein Traumjob."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Das ist wirklich fantastisch!",
+          "persian": "داس ایست ویرکلیش فانتاستیش!",
+          "meaning": {
+            "fa": "این واقعاً فوق‌العاده است!",
+            "en": "That is truly fantastic!",
+            "de": "Das ist wirklich fantastisch!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialog-l12-valentina-pilot",
+      "title": {
+        "fa": "دیالوگ ۲ — والنتینا، خلبان لوفت‌هانزا",
+        "en": "Dialogue 2 — Valentina, the Lufthansa Pilot",
+        "de": "Dialog 2 — Valentina, die Lufthansa-Pilotin"
+      },
+      "characters": [
+        {
+          "name": "Interviewer",
+          "role": {
+            "fa": "مصاحبه‌گر",
+            "en": "Interviewer",
+            "de": "Interviewer"
+          }
+        },
+        {
+          "name": "Valentina",
+          "role": {
+            "fa": "خلبان لوفت‌هانزا",
+            "en": "Lufthansa Pilot",
+            "de": "Lufthansa-Pilotin"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Interviewer",
+          "german": "Frau Meier, Sie sind Pilotin bei der Lufthansa. Ist das Ihr Traumjob?",
+          "persian": "فرو مایر، زی زیند پایلو-تین بای دِر لوفتهانزا. ایست داس ایر تْراوم‌یوب؟",
+          "meaning": {
+            "fa": "خانم مایر، شما خلبان لوفت‌هانزا هستید. آیا شغل رویایی شماست؟",
+            "en": "Ms. Meier, you are a pilot at Lufthansa. Is that your dream job?",
+            "de": "Frau Meier, Sie sind Pilotin bei der Lufthansa. Ist das Ihr Traumjob?"
+          }
+        },
+        {
+          "speaker": "Valentina",
+          "german": "Ja, absolut! Ich fliege von Frankfurt nach Bangkok.",
+          "persian": "یا، آبزولوت! آیخ فلیگِه فون فرانکفورت ناخ بانکوک.",
+          "meaning": {
+            "fa": "بله، مطلقاً! از فرانکفورت به بانکوک پرواز می‌کنم.",
+            "en": "Yes, absolutely! I fly from Frankfurt to Bangkok.",
+            "de": "Ja, absolut! Ich fliege von Frankfurt nach Bangkok."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Haben Sie eine Familie?",
+          "persian": "هابِن زی آینِه فامیلیِه؟",
+          "meaning": {
+            "fa": "آیا خانواده دارید؟",
+            "en": "Do you have a family?",
+            "de": "Haben Sie eine Familie?"
+          }
+        },
+        {
+          "speaker": "Valentina",
+          "german": "Ja, ich habe einen dreijährigen Sohn.",
+          "persian": "یا، آیخ هابِه آینِن درای-یارین زون.",
+          "meaning": {
+            "fa": "بله، من یک پسر سه ساله دارم.",
+            "en": "Yes, I have a three-year-old son.",
+            "de": "Ja, ich habe einen dreijährigen Sohn."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Ist der Beruf stressig?",
+          "persian": "ایست دِر بِروف اشتْرِسیش؟",
+          "meaning": {
+            "fa": "آیا شغل استرس‌زاست؟",
+            "en": "Is the job stressful?",
+            "de": "Ist der Beruf stressig?"
+          }
+        },
+        {
+          "speaker": "Valentina",
+          "german": "Ja, manchmal schon. Die Arbeitszeiten sind unregelmäßig. Aber es ist mein Traumjob!",
+          "persian": "یا، مَن-مالن شوْن. دی آربایتس‌زایتن زیند اون‌رِگِل‌ماسیگ. آبِر اِس ایست ماین تْراوم‌یوب!",
+          "meaning": {
+            "fa": "بله، گاهی اوقات. ساعت‌های کاری نامنظم هستند. ولی شغل رویایی من است!",
+            "en": "Yes, sometimes. The working hours are irregular. But it's my dream job!",
+            "de": "Ja, manchmal schon. Die Arbeitszeiten sind unregelmäßig. Aber es ist mein Traumjob!"
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Verdienen Sie gut?",
+          "persian": "فِردیِن زی گوت؟",
+          "meaning": {
+            "fa": "درآمد خوبی دارید؟",
+            "en": "Do you earn well?",
+            "de": "Verdienen Sie gut?"
+          }
+        },
+        {
+          "speaker": "Valentina",
+          "german": "Ja, das Gehalt ist sehr gut. Man soll aber auch viel arbeiten.",
+          "persian": "یا، داس گِ-هالت ایست زِر گوت. مان شول آوخ فیال آربایتِن.",
+          "meaning": {
+            "fa": "بله، حقوق خیلی خوب است. ولی باید هم زیاد کار کرد.",
+            "en": "Yes, the salary is very good. But one should also work a lot.",
+            "de": "Ja, das Gehalt ist sehr gut. Man soll aber auch viel arbeiten."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialog-l12-tim-antarctic",
+      "title": {
+        "fa": "دیالوگ ۳ — تیم، آشپز قطب جنوب",
+        "en": "Dialogue 3 — Tim, the Cook in Antarctica",
+        "de": "Dialog 3 — Tim, der Koch in der Antarktis"
+      },
+      "characters": [
+        {
+          "name": "Interviewer",
+          "role": {
+            "fa": "مصاحبه‌گر",
+            "en": "Interviewer",
+            "de": "Interviewer"
+          }
+        },
+        {
+          "name": "Tim",
+          "role": {
+            "fa": "آشپز در قطب جنوب",
+            "en": "Cook in Antarctica",
+            "de": "Koch in der Antarktis"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Interviewer",
+          "german": "Tim, du bist Koch. Wo arbeitest du?",
+          "persian": "تیم، دو بینست کوخ. وو آربایْتست دو؟",
+          "meaning": {
+            "fa": "تیم، تو آشپزی. کجا کار می‌کنی؟",
+            "en": "Tim, you are a cook. Where do you work?",
+            "de": "Tim, du bist Koch. Wo arbeitest du?"
+          }
+        },
+        {
+          "speaker": "Tim",
+          "german": "Ich arbeite in der Antarktis!",
+          "persian": "آیخ آربایْتِه این دِر آنتارکتیس!",
+          "meaning": {
+            "fa": "من در قطب جنوب کار می‌کنم!",
+            "en": "I work in Antarctica!",
+            "de": "Ich arbeite in der Antarktis!"
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Wie viele Stunden arbeitest du am Tag?",
+          "persian": "وی فیله اشتوندِن آربایْتست دو آم تاگ؟",
+          "meaning": {
+            "fa": "چند ساعت در روز کار می‌کنی؟",
+            "en": "How many hours per day do you work?",
+            "de": "Wie viele Stunden arbeitest du am Tag?"
+          }
+        },
+        {
+          "speaker": "Tim",
+          "german": "Etwa 10 Stunden am Tag, 6 Tage in der Woche.",
+          "persian": "اِتْوا تسِن اشتوندِن آم تاگ، زکس تاگِه این دِر ووخِه.",
+          "meaning": {
+            "fa": "حدود ۱۰ ساعت در روز، ۶ روز در هفته.",
+            "en": "About 10 hours per day, 6 days a week.",
+            "de": "Etwa 10 Stunden am Tag, 6 Tage in der Woche."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Für wie viele Personen kochst du?",
+          "persian": "فور وی فیله پِرزونِن کوخست دو؟",
+          "meaning": {
+            "fa": "برای چند نفر آشپزی می‌کنی؟",
+            "en": "For how many people do you cook?",
+            "de": "Für wie viele Personen kochst du?"
+          }
+        },
+        {
+          "speaker": "Tim",
+          "german": "Für 240 Personen!",
+          "persian": "فور تسوای‌هون-dert-فیرتسیگ پِرزونِن!",
+          "meaning": {
+            "fa": "برای ۲۴۰ نفر!",
+            "en": "For 240 people!",
+            "de": "Für 240 Personen!"
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Und was machst du nach der Arbeit?",
+          "persian": "اوند واس ماخست دو ناخ دِر آربایت؟",
+          "meaning": {
+            "fa": "و بعد از کار چه می‌کنی؟",
+            "en": "And what do you do after work?",
+            "de": "Und was machst du nach der Arbeit?"
+          }
+        },
+        {
+          "speaker": "Tim",
+          "german": "Ich gehe ins Fitness-Studio und sehe Filme.",
+          "persian": "آیخ گِه اینس فیت-نِس اشتودی-و اوند زِهِه فیلمِه.",
+          "meaning": {
+            "fa": "به باشگاه فیتنس می‌روم و فیلم می‌بینم.",
+            "en": "I go to the fitness studio and watch films.",
+            "de": "Ich gehe ins Fitness-Studio und sehe Filme."
+          }
+        },
+        {
+          "speaker": "Interviewer",
+          "german": "Was möchtest du in der Zukunft werden?",
+          "persian": "VAS mö-شْتست دو این دِر تسو-کونفت وِردِن؟",
+          "meaning": {
+            "fa": "می‌خواهی در آینده چه شغلی داشته باشی؟",
+            "en": "What do you want to become in the future?",
+            "de": "Was möchtest du in der Zukunft werden?"
+          }
+        },
+        {
+          "speaker": "Tim",
+          "german": "Ich möchte Küchenchef werden!",
+          "persian": "آیخ mö-شْتِه کوشِن-شِف وِردِن!",
+          "meaning": {
+            "fa": "می‌خواهم سرآشپز شوم!",
+            "en": "I want to become a head chef!",
+            "de": "Ich möchte Küchenchef werden!"
+          }
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "زبان آلمانی یکی از مهم‌ترین زبان‌های اروپا و جهان است. حدود ۱۰۰ میلیون نفر آلمانی را زبان مادری خود می‌دانند و حدود ۲۰ میلیون نفر دیگر در حال یادگیری آن هستند. آلمانی زبان رسمی آلمان، اتریش، لیختن‌اشتاین و بخش بزرگی از سوئیس و لوکزامبورگ است.\n\nاهمیت اقتصادی زبان آلمانی بسیار بالا است. آلمان بزرگ‌ترین اقتصاد اروپا و چهارمین اقتصاد بزرگ جهان است. شرکت‌های بزرگ آلمانی مانند مرسدس بنز (Mercedes-Benz)، بوش (Bosch)، لوفتهانزا (Lufthansa)، زیمنس (Siemens)، ب‌ام‌و (BMW) و.sap (SAP) در سراسر جهان فعالیت دارند و آلمانی زبان کاری مهمی در این شرکت‌ها به شمار می‌رود. دانستن آلمانی فرصت‌های شغلی بسیاری را در این شرکت‌ها و همچنین در کشورهای آلمانی‌زبان فراهم می‌کند.\n\nیکی از جنبه‌های جالب زبان آلمانی، وجود واژگان بین‌المللی است. بسیاری از کلمات آلمانی وارد زبان‌های دیگر شده‌اند یا از زبان‌های دیگر وام گرفته شده‌اند. مثلاً E-Mail، T-Shirt، Smartphone، Internet، Computer و Manager واژگان بین‌المللی هستند که در آلمانی نیز به همین شکل استفاده می‌شوند.\n\nنکته مهم دیگری وجود واژگان هم‌صدا در زبان‌های مختلف است. «دوست واقعی» (guter Freund) این کلمات را در آلمانی و فارسی به اشتراک دارند: Finger (انگشت)، Hand (دست)، Name (نام)، Mutter (مادر)، Bruder (برادر). یادگیری این واژگان مشترک برای فارسی‌زبانان بسیار آسان‌تر است.\n\nاما مراقب «دشمنان کاذب» (falsche Freunde) باشید! این کلمات شبیه به هم به نظر می‌رسند ولی معنی متفاوتی دارند. معروف‌ترین مثال: Handy در آلمانی به معنای «تلفن همراه» است، نه «دستگاه مفید»! سایر مثال‌ها: Chef در آلمانی «رئیس» است (نه آشپز)، also در آلمانی «پس/بنابراین» است (نه «نیز»)، bekommen در آلمانی «دریافت کردن» است (نه «become» انگلیسی)، und Beach در آلمانی «ساحل» است (نه «beach» انگلیسی که ساحل است ولی تفاوتی ندارد). این دشمنان کاذب یکی از چالش‌های رایج یادگیری آلمانی هستند.\n\nدر فرهنگ آلمانی، شغل رویایی و تعادل کار و زندگی (Work-Life-Balance) موضوعات بسیار مهمی هستند. بسیاری از آلمانی‌ها به دنبال شغلی هستند که هم جالب و هم امن باشد. سیستم Ausbildung (آموزش حرفه‌ای) آلمان یکی از بهترین سیستم‌های آموزش شغلی در جهان است و جوانان می‌توانند در حین کار و یادگیری، حقوق دریافت کنند. این سیستم برای بسیاری از مشاغل فنی و حرفه‌ای جایگزینی عالی برای دانشگاه محسوب می‌شود.\n\nمفهوم Work-Life-Balance در آلمان بسیار جدی گرفته می‌شود. قانون کار آلمان حداقل ۲۴ روز مرخصی سالانه را تضمین می‌کند و بسیاری از شرکت‌ها حتی بیشتر از این را پیشنهاد می‌دهند. ساعات کاری معمولاً از دوشنبه تا جمعه، ۳۵ تا ۴۰ ساعت در هفته است. کار در آخر هفته (Sonntag) معمولاً ممنوع است مگر در مشاغل خاص مانند رستوران‌ها و بیمارستان‌ها.\n\nBurn-out (فرسودگی شغلی) موضوعی است که اخیراً در آلمان بسیار مورد توجه قرار گرفته است. بسیاری از شرکت‌ها برنامه‌هایی برای جلوگیری از فرسودگی کارکنان خود دارند، از جمله ساعات کاری انعطاف‌پذیر، امکان کار از راه دور و مشاوره روان‌شناختی. اصطلاح Auszeit (فرصت استراحت) نیز در سال‌های اخیر محبوبیت زیادی پیدا کرده و بسیاری از آلمانی‌ها وقتی برای استراحت و تجدید قوا در نظر می‌گیرند.\n\nدر نهایت، شروع کار (Berufsstart) در آلمان معمولاً با یک Ausbildung یا تحصیلات دانشگاهی همراه است. متوسط سن شروع کار تمام‌وقت حدود ۲۲ تا ۲۵ سال است. اما وقتی شروع می‌شود، امنیت شغلی (sicherer Arbeitsplatz) و حقوق مناسب از مزایای اصلی بازار کار آلمان هستند.",
+    "en": "The German language is one of the most important languages in Europe and the world. About 100 million people consider German their mother tongue, and about 20 million others are learning it. German is the official language of Germany, Austria, Liechtenstein and a large part of Switzerland and Luxembourg.\n\nThe economic importance of the German language is very high. Germany has the largest economy in Europe and the fourth-largest in the world. Major German companies such as Mercedes-Benz, Bosch, Lufthansa, Siemens, BMW and SAP operate worldwide, and German is an important working language in these companies. Knowing German opens up many career opportunities in these companies and in German-speaking countries.\n\nOne interesting aspect of the German language is the presence of international vocabulary. Many German words have entered other languages or been borrowed from other languages. For example, E-Mail, T-Shirt, Smartphone, Internet, Computer and Manager are international words used in German in the same form.\n\nAnother important point is the existence of cognates across different languages. German and Persian share these 'good friends': Finger (finger), Hand (hand), Name (name), Mutter (mother), Bruder (brother). Learning these shared words is much easier for Persian speakers.\n\nBut watch out for 'false friends' (falsche Freunde)! These words look similar but have different meanings. The most famous example: Handy in German means 'mobile phone', not 'handy device'! Other examples: Chef in German means 'boss' (not chef/cook), also in German means 'so/therefore' (not 'also'), bekommen in German means 'to receive' (not 'to become' like English), and Urlaub in German means 'holiday/vacation'. These false friends are one of the common challenges of learning German.\n\nIn German culture, dream jobs and work-life balance are very important topics. Many Germans seek a job that is both interesting and secure. The German Ausbildung (vocational training) system is one of the best vocational education systems in the world, allowing young people to earn a salary while learning and working. This system is an excellent alternative to university for many technical and professional careers.\n\nThe concept of Work-Life-Balance is taken very seriously in Germany. German labour law guarantees a minimum of 24 days of annual leave, and many companies offer even more. Working hours are typically Monday to Friday, 35 to 40 hours per week. Working on Sundays is generally prohibited except in specific professions like restaurants and hospitals.\n\nBurnout has received a lot of attention in Germany recently. Many companies have programmes to prevent employee burnout, including flexible working hours, remote work options and psychological counselling. The term Auszeit (time out) has also become very popular in recent years, with many Germans setting aside time for rest and rejuvenation.\n\nUltimately, starting a career (Berufsstart) in Germany usually involves an Ausbildung or university education. The average age for starting full-time work is about 22 to 25 years. But once started, job security (sicherer Arbeitsplatz) and good salary are key advantages of the German labour market.",
+    "de": "Die deutsche Sprache ist eine der wichtigsten Sprachen Europas und der Welt. Etwa 100 Millionen Menschen betrachten Deutsch als ihre Muttersprache, und etwa 20 Millionen weitere lernen es. Deutsch ist die Amtssprache in Deutschland, Österreich, Liechtenstein und einem großen Teil der Schweiz und Luxemburgs.\n\nDie wirtschaftliche Bedeutung der deutschen Sprache ist sehr hoch. Deutschland hat die größte Volkswirtschaft Europas und die viertgrößte der Welt. Große deutsche Unternehmen wie Mercedes-Benz, Bosch, Lufthansa, Siemens, BMW und SAP sind weltweit tätig, und Deutsch ist eine wichtige Arbeitssprache in diesen Unternehmen. Deutschkenntnisse eröffnen viele Karrieremöglichkeiten in diesen Unternehmen und in den deutschsprachigen Ländern.\n\nEin interessanter Aspekt der deutschen Sprache ist das Vorhandensein internationalen Wortschatzes. Viele deutsche Wörter sind in andere Sprachen eingegangen oder aus anderen Sprachen entlehnt. Zum Beispiel sind E-Mail, T-Shirt, Smartphone, Internet, Computer und Manager internationale Wörter, die im Deutschen in gleicher Form verwendet werden.\n\nEin weiterer wichtiger Punkt ist die Existenz von Gemeinsamkeiten zwischen verschiedenen Sprachen. Deutsch und Persisch teilen sich diese 'guten Freunde': Finger (Finger), Hand (Hand), Name (Name), Mutter (Mutter), Bruder (Bruder). Das Erlernen dieser gemeinsamen Wörter ist für Persischsprachige viel einfacher.\n\nAber Vorsicht vor 'falschen Freunden'! Diese Wörter sehen ähnlich aus, haben aber unterschiedliche Bedeutungen. Das berühmteste Beispiel: Handy bedeutet auf Deutsch 'Mobiltelefon', nicht 'handliches Gerät'! Weitere Beispiele: Chef bedeutet auf Deutsch 'Vorgesetzter' (nicht Koch), also bedeutet auf Deutsch 'also/sonst' (nicht 'auch'), bekommen bedeutet auf Deutsch 'erhalten' (nicht 'werden' wie im Englischen), und Urlaub bedeutet auf Deutsch 'Ferien/Urlaub'. Diese falschen Freunde sind eine der häufigsten Herausforderungen beim Deutschlernen.\n\nIn der deutschen Kultur sind Traumberufe und Work-Life-Balance sehr wichtige Themen. Viele Deutsche suchen einen Beruf, der sowohl interessant als auch sicher ist. Das deutsche Ausbildungssystem ist eines der besten Berufsbildungssysteme der Welt und ermöglicht es jungen Menschen, während des Lernens und Arbeitens ein Gehalt zu verdienen. Dieses System ist für viele technische und berufliche Laufbahnen eine hervorragende Alternative zur Universität.\n\nDas Konzept der Work-Life-Balance wird in Deutschland sehr ernst genommen. Das deutsche Arbeitsrecht garantiert mindestens 24 Tage Jahresurlaub, und viele Unternehmen bieten noch mehr an. Die Arbeitszeiten betragen in der Regel Montag bis Freitag, 35 bis 40 Stunden pro Woche. Arbeiten am Sonntag ist grundsätzlich verboten, außer in bestimmten Berufen wie Restaurants und Krankenhäusern.\n\nBurn-out hat in Deutschland in letzter Zeit viel Aufmerksamkeit erhalten. Viele Unternehmen haben Programme zur Vermeidung von Burn-out bei ihren Mitarbeitern, einschließlich flexibler Arbeitszeiten, Home-Office-Möglichkeiten und psychologischer Beratung. Der Begriff Auszeit ist in den letzten Jahren ebenfalls sehr populär geworden, und viele Deutsche planen bewusst Zeit für Erholung und Regeneration ein.\n\nLetztendlich beginnt der Berufsstart in Deutschland meist mit einer Ausbildung oder einem Studium. Das Durchschnittsalter für den Beginn einer Vollzeittätigkeit liegt bei etwa 22 bis 25 Jahren. Aber einmal begonnen, sind Arbeitsplatzsicherheit und gutes Gehalt wesentliche Vorteile des deutschen Arbeitsmarktes."
+  },
+  "exercises": {
+    "genitiv": [
+      {
+        "id": "ex-l12-gen-1",
+        "type": "choice",
+        "title": {
+          "fa": "حالت جنیتو ملکی — فرم صحیح را انتخاب کنید",
+          "en": "Possessive Genitiv — Choose the correct form",
+          "de": "Possessiver Genitiv — Wählen Sie die richtige Form"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فرم جنیتو صحیح نام را انتخاب کنید.",
+          "en": "For each sentence, choose the correct Genitiv form of the name.",
+          "de": "Wählen Sie für jeden Satz die richtige Genitivform des Namens."
+        },
+        "questions": [
+          {
+            "id": "gen-q1",
+            "situation": {
+              "fa": "Das ist ___ Auto. (Maria — ماشین ماریا)",
+              "en": "Das ist ___ Auto. (Maria's car)",
+              "de": "Das ist ___ Auto. (Marias Auto)"
+            },
+            "options": [
+              "Marias",
+              "Maria's",
+              "Maria",
+              "Mariens"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Maria به s/z/x/ß تمام نمی‌شود → Marias (اضافه -s).",
+              "en": "Maria doesn't end in s/z/x/ß → Marias (add -s).",
+              "de": "Maria endet nicht auf s/z/x/ß → Marias (-s hinzufügen)."
+            }
+          },
+          {
+            "id": "gen-q2",
+            "situation": {
+              "fa": "Das ist ___ Frau. (Thomas — زن توماس)",
+              "en": "Das ist ___ Frau. (Thomas' wife)",
+              "de": "Das ist ___ Frau. (Thomas' Frau)"
+            },
+            "options": [
+              "Thomas's",
+              "Thomass",
+              "Thomas'",
+              "Thomasen"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Thomas به s تمام می‌شود → فقط آپوستروف: Thomas'.",
+              "en": "Thomas ends in s → apostrophe only: Thomas'.",
+              "de": "Thomas endet auf s → nur Apostroph: Thomas'."
+            }
+          },
+          {
+            "id": "gen-q3",
+            "situation": {
+              "fa": "Das sind ___ Eltern. (Paul — والدین پل)",
+              "en": "Das sind ___ Eltern. (Paul's parents)",
+              "de": "Das sind ___ Eltern. (Pauls Eltern)"
+            },
+            "options": [
+              "Pauls",
+              "Paul's",
+              "Paul",
+              "Paulens"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Paul به s/z/x/ß تمام نمی‌شود → Pauls (اضافه -s).",
+              "en": "Paul doesn't end in s/z/x/ß → Pauls (add -s).",
+              "de": "Paul endet nicht auf s/z/x/ß → Pauls (-s hinzufügen)."
+            }
+          },
+          {
+            "id": "gen-q4",
+            "situation": {
+              "fa": "Das ist ___ Hund. (Hans — سگ هانس)",
+              "en": "Das ist ___ Hund. (Hans' dog)",
+              "de": "Das ist ___ Hund. (Hans' Hund)"
+            },
+            "options": [
+              "Hanss",
+              "Hans's",
+              "Hans'",
+              "Hansens"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Hans به s تمام می‌شود → فقط آپوستروف: Hans'.",
+              "en": "Hans ends in s → apostrophe only: Hans'.",
+              "de": "Hans endet auf s → nur Apostroph: Hans'."
+            }
+          },
+          {
+            "id": "gen-q5",
+            "situation": {
+              "fa": "Das ist ___ Buch. (Lisa — کتاب لیزا)",
+              "en": "Das ist ___ Buch. (Lisa's book)",
+              "de": "Das ist ___ Buch. (Lisas Buch)"
+            },
+            "options": [
+              "Lisa's",
+              "Lisas",
+              "Lisa",
+              "Lisaen"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Lisa به s/z/x/ß تمام نمی‌شود → Lisas (اضافه -s).",
+              "en": "Lisa doesn't end in s/z/x/ß → Lisas (add -s).",
+              "de": "Lisa endet nicht auf s/z/x/ß → Lisas (-s hinzufügen)."
+            }
+          }
+        ]
+      }
+    ],
+    "praeteritum_haben": [
+      {
+        "id": "ex-l12-hab-1",
+        "type": "choice",
+        "title": {
+          "fa": "Präteritum haben — فرم صحیح را انتخاب کنید",
+          "en": "Präteritum haben — Choose the correct form",
+          "de": "Präteritum haben — Wählen Sie die richtige Form"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فرم صحیح Präteritum haben را انتخاب کنید.",
+          "en": "For each sentence, choose the correct Präteritum form of haben.",
+          "de": "Wählen Sie für jeden Satz die richtige Präteritum-Form von haben."
+        },
+        "questions": [
+          {
+            "id": "hab-q1",
+            "situation": {
+              "fa": "Ich ___ einen guten Job. (من داشتم)",
+              "en": "Ich ___ einen guten Job. (I had)",
+              "de": "Ich ___ einen guten Job. (ich hatte)"
+            },
+            "options": [
+              "habe",
+              "hatte",
+              "habte",
+              "haben"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Präteritum ich hatte (نامنظم: hatte نه habte).",
+              "en": "Präteritum ich hatte (irregular: hatte, not habte).",
+              "de": "Präteritum ich hatte (unregelmäßig: hatte, nicht habte)."
+            }
+          },
+          {
+            "id": "hab-q2",
+            "situation": {
+              "fa": "Du ___ viel Stress. (تو داشتی)",
+              "en": "Du ___ viel Stress. (you had)",
+              "de": "Du ___ viel Stress. (du hattest)"
+            },
+            "options": [
+              "hatte",
+              "hattest",
+              "habtest",
+              "hast"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Präteritum du hattest (دو t).",
+              "en": "Präteritum du hattest (two t's).",
+              "de": "Präteritum du hattest (zwei t)."
+            }
+          },
+          {
+            "id": "hab-q3",
+            "situation": {
+              "fa": "Er ___ 80000 Euro Gehalt. (او داشت)",
+              "en": "Er ___ 80000 Euro Gehalt. (he had)",
+              "de": "Er ___ 80000 Euro Gehalt. (er hatte)"
+            },
+            "options": [
+              "hattest",
+              "hatten",
+              "hatte",
+              "hat"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "Präteritum er/sie/es hatte.",
+              "en": "Präteritum er/sie/es hatte.",
+              "de": "Präteritum er/sie/es hatte."
+            }
+          },
+          {
+            "id": "hab-q4",
+            "situation": {
+              "fa": "Wir ___ keine Auszeit. (ما نداشتیم)",
+              "en": "Wir ___ keine Auszeit. (we didn't have)",
+              "de": "Wir ___ keine Auszeit. (wir hatten)"
+            },
+            "options": [
+              "haben",
+              "hatten",
+              "hatte",
+              "hat"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Präteritum wir hatten.",
+              "en": "Präteritum wir hatten.",
+              "de": "Präteritum wir hatten."
+            }
+          },
+          {
+            "id": "hab-q5",
+            "situation": {
+              "fa": "___ ihr einen Chef? (آیا شما داشتید؟)",
+              "en": "___ ihr einen Chef? (did you have?)",
+              "de": "___ ihr einen Chef? (hattet ihr)"
+            },
+            "options": [
+              "Hatten",
+              "Hattet",
+              "Habt",
+              "Habten"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "سؤال: Hatten ihr ...? (فعل در ابتدا).",
+              "en": "Question: Hatten ihr ...? (verb first).",
+              "de": "Frage: Hatten ihr ...? (Verb am Anfang)."
+            }
+          }
+        ]
+      }
+    ],
+    "sollen": [
+      {
+        "id": "ex-l12-sol-1",
+        "type": "choice",
+        "title": {
+          "fa": "فعل راهبردی sollen — فرم صحیح را انتخاب کنید",
+          "en": "Modal Verb sollen — Choose the correct form",
+          "de": "Modalverb sollen — Wählen Sie die richtige Form"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فرم صحیح sollen را انتخاب کنید.",
+          "en": "For each sentence, choose the correct form of sollen.",
+          "de": "Wählen Sie für jeden Satz die richtige Form von sollen."
+        },
+        "questions": [
+          {
+            "id": "sol-q1",
+            "situation": {
+              "fa": "Du ___ mehr schlafen. (باید بیشتر بخوابی — نصیحت)",
+              "en": "Du ___ mehr schlafen. (you should sleep more — advice)",
+              "de": "Du ___ mehr schlafen. (du sollst)"
+            },
+            "options": [
+              "sollst",
+              "soll",
+              "solltest",
+              "musst"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "sollst = نصیحت به دو (du).",
+              "en": "sollst = advice to you (du).",
+              "de": "sollst = Rat an dich (du)."
+            }
+          },
+          {
+            "id": "sol-q2",
+            "situation": {
+              "fa": "Man ___ nicht zu viel arbeiten. (نباید زیاد کار کرد — توصیه عمومی)",
+              "en": "Man ___ nicht zu viel arbeiten. (one shouldn't work too much — general advice)",
+              "de": "Man ___ nicht zu viel arbeiten. (man soll)"
+            },
+            "options": [
+              "darf",
+              "muss",
+              "soll",
+              "kann"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "soll = توصیه عمومی با man.",
+              "en": "soll = general advice with man.",
+              "de": "soll = allgemeiner Rat mit man."
+            }
+          },
+          {
+            "id": "sol-q3",
+            "situation": {
+              "fa": "Der Arzt sagt, ich ___ im Bett bleiben. (پزشک می‌گوید استراحت کنم)",
+              "en": "Der Arzt sagt, ich ___ im Bett bleiben. (doctor says I should rest)",
+              "de": "Der Arzt sagt, ich ___ im Bett bleiben. (ich soll)"
+            },
+            "options": [
+              "muss",
+              "soll",
+              "darf",
+              "kann"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "soll = دستور غیرمستقیم از شخص ثالث (پزشک).",
+              "en": "soll = indirect order from a third party (doctor).",
+              "de": "soll = indirekte Anweisung einer dritten Person (Arzt)."
+            }
+          },
+          {
+            "id": "sol-q4",
+            "situation": {
+              "fa": "___ ich den Job annehmen? (آیا باید این شغل را بپذیرم؟)",
+              "en": "___ ich den Job annehmen? (should I accept the job?)",
+              "de": "___ ich den Job annehmen? (soll ich)"
+            },
+            "options": [
+              "Soll",
+              "Muss",
+              "Darf",
+              "Kann"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Soll ich ...? = آیا باید...؟ (درخواست نصیحت).",
+              "en": "Soll ich ...? = Should I...? (asking for advice).",
+              "de": "Soll ich ...? = Soll ich...? (Rat fragen)."
+            }
+          },
+          {
+            "id": "sol-q5",
+            "situation": {
+              "fa": "Ihr ___ pünktlich sein. (شما باید وقت‌شناس باشید)",
+              "en": "Ihr ___ pünktlich sein. (you should be on time)",
+              "de": "Ihr ___ pünktlich sein. (ihr sollt)"
+            },
+            "options": [
+              "sollt",
+              "soll",
+              "sollen",
+              "müsst"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "sollt = نصیحت به جمع دوستانه (ihr).",
+              "en": "sollt = advice to informal plural (ihr).",
+              "de": "sollt = Rat an die informelle Pluralform (ihr)."
+            }
+          }
+        ]
+      }
+    ],
+    "vor_nach": [
+      {
+        "id": "ex-l12-vn-1",
+        "type": "choice",
+        "title": {
+          "fa": "vor / nach + آرتیکل داتیو — فرم صحیح را انتخاب کنید",
+          "en": "vor / nach + dative article — Choose the correct form",
+          "de": "vor / nach + Dativartikel — Wählen Sie die richtige Form"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فرم صحیح حرف اضافه + آرتیکل را انتخاب کنید.",
+          "en": "For each sentence, choose the correct preposition + article form.",
+          "de": "Wählen Sie für jeden Satz die richtige Präposition + Artikel-Form."
+        },
+        "questions": [
+          {
+            "id": "vn-q1",
+            "situation": {
+              "fa": "___ dem Kurs trinke ich Kaffee. (قبل از کلاس)",
+              "en": "___ dem Kurs trinke ich Kaffee. (before the class)",
+              "de": "___ dem Kurs trinke ich Kaffee. (vor dem Kurs)"
+            },
+            "options": [
+              "Nach",
+              "Vor",
+              "Zu",
+              "Bei"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "vor dem = قبل از (Kurs خنثی → dem).",
+              "en": "vor dem = before (Kurs is neuter → dem).",
+              "de": "vor dem = vor (Kurs ist Neutrum → dem)."
+            }
+          },
+          {
+            "id": "vn-q2",
+            "situation": {
+              "fa": "___ der Arbeit gehe ich nach Hause. (بعد از کار)",
+              "en": "___ der Arbeit gehe ich nach Hause. (after work)",
+              "de": "___ der Arbeit gehe ich nach Hause. (nach der Arbeit)"
+            },
+            "options": [
+              "Vor",
+              "Nach",
+              "Zu",
+              "Bei"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "nach der = بعد از (Arbeit مؤنث → der).",
+              "en": "nach der = after (Arbeit is feminine → der).",
+              "de": "nach der = nach (Arbeit ist feminin → der)."
+            }
+          },
+          {
+            "id": "vn-q3",
+            "situation": {
+              "fa": "___ dem Essen gehen wir spazieren. (بعد از غذا)",
+              "en": "___ dem Essen gehen wir spazieren. (after the meal)",
+              "de": "___ dem Essen gehen wir spazieren. (nach dem Essen)"
+            },
+            "options": [
+              "Vor",
+              "Nach",
+              "Zu",
+              "In"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "nach dem = بعد از (Essen خنثی → dem).",
+              "en": "nach dem = after (Essen is neuter → dem).",
+              "de": "nach dem = nach (Essen ist Neutrum → dem)."
+            }
+          },
+          {
+            "id": "vn-q4",
+            "situation": {
+              "fa": "___ dem Training soll man aufwärmen. (قبل از تمرین)",
+              "en": "___ dem Training soll man aufwärmen. (before training)",
+              "de": "___ dem Training soll man aufwärmen. (vor dem Training)"
+            },
+            "options": [
+              "Nach",
+              "Vor",
+              "Bei",
+              "Im"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "vor dem = قبل از (Training خنثی → dem).",
+              "en": "vor dem = before (Training is neuter → dem).",
+              "de": "vor dem = vor (Training ist Neutrum → dem)."
+            }
+          },
+          {
+            "id": "vn-q5",
+            "situation": {
+              "fa": "___ dem Unterricht esse ich. (قبل از کلاس درس)",
+              "en": "___ dem Unterricht esse ich. (before the lesson)",
+              "de": "___ dem Unterricht esse ich. (vor dem Unterricht)"
+            },
+            "options": [
+              "Nach",
+              "Vor",
+              "Bis",
+              "Seit"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "vor dem = قبل از (Unterricht مذکر → dem).",
+              "en": "vor dem = before (Unterricht is masculine → dem).",
+              "de": "vor dem = vor (Unterricht ist maskulin → dem)."
+            }
+          }
+        ]
+      }
+    ],
+    "profession_gender": [
+      {
+        "id": "ex-l12-pg-1",
+        "type": "choice",
+        "title": {
+          "fa": "مشاغل — فرم مؤنث صحیح را انتخاب کنید",
+          "en": "Professions — Choose the correct feminine form",
+          "de": "Berufe — Wählen Sie die richtige feminine Form"
+        },
+        "instructions": {
+          "fa": "برای هر شغل مذکر، فرم مؤنث صحیح را انتخاب کنید.",
+          "en": "For each masculine profession, choose the correct feminine form.",
+          "de": "Wählen Sie für jeden männlichen Beruf die richtige feminine Form."
+        },
+        "questions": [
+          {
+            "id": "pg-q1",
+            "situation": {
+              "fa": "der Pilot → die ___",
+              "en": "der Pilot → die ___",
+              "de": "der Pilot → die ___"
+            },
+            "options": [
+              "Pilota",
+              "Pilotin",
+              "Pilotin",
+              "Piloten"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Pilot + in = Pilotin. اضافه کردن -in.",
+              "en": "Pilot + in = Pilotin. Add -in.",
+              "de": "Pilot + in = Pilotin. -in anhängen."
+            }
+          },
+          {
+            "id": "pg-q2",
+            "situation": {
+              "fa": "der Koch → die ___",
+              "en": "der Koch → die ___",
+              "de": "der Koch → die ___"
+            },
+            "options": [
+              "Kochin",
+              "Köchin",
+              "Köchin",
+              "Kochin"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Koch → Köchin (umlaut ö + in). املای صحیح: Köchin.",
+              "en": "Koch → Köchin (umlaut ö + in). Correct spelling: Köchin.",
+              "de": "Koch → Köchin (Umlaut ö + in). Richtige Schreibweise: Köchin."
+            }
+          },
+          {
+            "id": "pg-q3",
+            "situation": {
+              "fa": "der Lehrer → die ___",
+              "en": "der Lehrer → die ___",
+              "de": "der Lehrer → die ___"
+            },
+            "options": [
+              "Lehrerin",
+              "Lehrerin",
+              "Lehrerin",
+              "Lehrerin"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Lehrer + in = Lehrerin.",
+              "en": "Lehrer + in = Lehrerin.",
+              "de": "Lehrer + in = Lehrerin."
+            }
+          },
+          {
+            "id": "pg-q4",
+            "situation": {
+              "fa": "der Arzt → die ___",
+              "en": "der Arzt → die ___",
+              "de": "der Arzt → die ___"
+            },
+            "options": [
+              "Arztin",
+              "Ärztin",
+              "Arztin",
+              "Ärztin"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Arzt → Ärztin (umlaut ä + in). املای صحیح: Ärztin.",
+              "en": "Arzt → Ärztin (umlaut ä + in). Correct spelling: Ärztin.",
+              "de": "Arzt → Ärztin (Umlaut ä + in). Richtige Schreibweise: Ärztin."
+            }
+          },
+          {
+            "id": "pg-q5",
+            "situation": {
+              "fa": "der Programmierer → die ___",
+              "en": "der Programmierer → die ___",
+              "de": "der Programmierer → die ___"
+            },
+            "options": [
+              "Programmiererin",
+              "Programmiererin",
+              "Programmiererin",
+              "Programmiererin"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Programmierer + in = Programmiererin.",
+              "en": "Programmierer + in = Programmiererin.",
+              "de": "Programmierer + in = Programmiererin."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۱۲",
+      "en": "Lesson 12 Review",
+      "de": "Lektion 12 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-l12-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فرم جنیتو صحیح «Thomas» چیست؟ Das ist ___ Auto.",
+          "en": "What is the correct Genitiv of 'Thomas'? Das ist ___ Auto.",
+          "de": "Wie lautet der richtige Genitiv von 'Thomas'? Das ist ___ Auto."
+        },
+        "options": [
+          "Thomass",
+          "Thomas'",
+          "Thomas's",
+          "Thomasen"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "Präteritum «du haben» چیست؟",
+          "en": "What is the Präteritum of 'du haben'?",
+          "de": "Wie lautet das Präteritum von 'du haben'?"
+        },
+        "options": [
+          "du habtest",
+          "du hattest",
+          "du hat",
+          "du habt"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فرم مؤنث «der Koch» چیست؟",
+          "en": "What is the feminine form of 'der Koch'?",
+          "de": "Wie lautet die feminine Form von 'der Koch'?"
+        },
+        "options": [
+          "Kochin",
+          "Köchin",
+          "Köchin",
+          "Kochfrau"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام جمله صحیح است؟ «___ der Arbeit gehe ich nach Hause.»",
+          "en": "Which sentence is correct? '___ der Arbeit gehe ich nach Hause.'",
+          "de": "Welcher Satz ist richtig? '___ der Arbeit gehe ich nach Hause.'"
+        },
+        "options": [
+          "Vor der",
+          "Nach der",
+          "Nach dem",
+          "Vor dem"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "«Du sollst mehr schlafen» به چه معناست؟",
+          "en": "What does 'Du sollst mehr schlafen' mean?",
+          "de": "Was bedeutet 'Du sollst mehr schlafen'?"
+        },
+        "options": [
+          "تو مجبوری بیشتر بخوابی.",
+          "تو باید بیشتر بخوابی (نصیحت).",
+          "تو می‌خواهی بیشتر بخوابی.",
+          "تو خوابیده بودی."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q6",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام کلمه به معنای «حقوق» است؟",
+          "en": "Which word means 'salary'?",
+          "de": "Welches Wort bedeutet 'Gehalt'?"
+        },
+        "options": [
+          "Beruf",
+          "Gehalt",
+          "Ausbildung",
+          "Karriere"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q7",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "«Handy» در آلمانی به چه معناست؟",
+          "en": "What does 'Handy' mean in German?",
+          "de": "Was bedeutet 'Handy' auf Deutsch?"
+        },
+        "options": [
+          "کاربردی",
+          "تلفن همراه",
+          "ابزار",
+          "دست‌ورزی"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l12-q8",
+        "type": "true_false",
+        "question": {
+          "fa": "«Marias Auto» به معنای «ماشین ماریا» است.",
+          "en": "'Marias Auto' means 'Maria's car'.",
+          "de": "'Marias Auto' bedeutet 'Marias Auto'."
+        },
+        "answer": true,
+        "explanation": {
+          "fa": "Maria + s = Marias. ماشینِ ماریا.",
+          "en": "Maria + s = Marias. Maria's car.",
+          "de": "Maria + s = Marias. Marias Auto."
+        }
+      },
+      {
+        "id": "rev-l12-q9",
+        "type": "true_false",
+        "question": {
+          "fa": "«Wir hatten keine Auszeit» به معنای «ما فرصت استراحت نداشتیم» است.",
+          "en": "'Wir hatten keine Auszeit' means 'We had no time out'.",
+          "de": "'Wir hatten keine Auszeit' bedeutet 'Wir hatten keine Auszeit'."
+        },
+        "answer": true,
+        "explanation": {
+          "fa": "Präteritum: wir hatten = ما داشتیم. keine Auszeit = هیچ فرصت استراحتی.",
+          "en": "Präteritum: wir hatten = we had. keine Auszeit = no time out.",
+          "de": "Präteritum: wir hatten = wir hatten. keine Auszeit = keine Auszeit."
+        }
+      },
+      {
+        "id": "rev-l12-q10",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام شغل فقط مؤنث دارد؟",
+          "en": "Which profession only has a feminine form?",
+          "de": "Welcher Beruf hat nur eine feminine Form?"
+        },
+        "options": [
+          "Koch",
+          "Pilot",
+          "Krankenschwester",
+          "Programmierer"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۱۲",
+      "en": "Lesson 12 Final Assessment",
+      "de": "Lektion 12 Abschlussbewertung"
+    },
+    "totalQuestions": 20,
+    "passingScore": 70,
+    "sections": {
+      "professions_vocab": {
+        "count": 4,
+        "questions": []
+      },
+      "workplace_vocab": {
+        "count": 3,
+        "questions": []
+      },
+      "job_adjectives": {
+        "count": 2,
+        "questions": []
+      },
+      "genitiv": {
+        "count": 3,
+        "questions": []
+      },
+      "praeteritum_haben": {
+        "count": 3,
+        "questions": []
+      },
+      "sollen": {
+        "count": 2,
+        "questions": []
+      },
+      "vor_nach": {
+        "count": 2,
+        "questions": []
+      },
+      "profession_gender": {
+        "count": 1,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید حداقل ۱۸ شغل را با فرم مذکر و مؤنث به آلمانی نام ببرید؟",
+        "آیا صفت‌های توصیف شغل (interessant, stressig, kreativ, sicher, langweilig, spannend, nützlich) را بلدید؟",
+        "آیا واژگان محیط کار (Arbeitsplatz, Gehalt, Chef, Firma, Büro, Ausbildung, Karriere) را می‌شناسید؟",
+        "آیا حالت جنیتو ملکی با نام‌ها را درست می‌سازید؟ (Marias Auto, Thomas' Frau)",
+        "آیا Präteritum haben را درست صرف می‌کنید؟ (ich hatte, du hattest, er hatte, ...)",
+        "آیا تفاوت بین müssen و sollen را می‌دانید؟",
+        "آیا حروف اضافه vor و nach را با آرتیکل داتیو درست استفاده می‌کنید؟",
+        "آیا می‌توانید شغل رویایی خود را به آلمانی توصیف کنید؟",
+        "آیا دشمنان کاذب (falsche Freunde) آلمانی را می‌شناسید؟ (Handy, Chef, bekommen)",
+        "آیا می‌توانید یک مکالمه ساده درباره مشاغل داشته باشید؟"
+      ],
+      "en": [
+        "Can you name at least 18 professions with masculine and feminine forms in German?",
+        "Do you know job description adjectives (interessant, stressig, kreativ, sicher, langweilig, spannend, nützlich)?",
+        "Do you know workplace vocabulary (Arbeitsplatz, Gehalt, Chef, Firma, Büro, Ausbildung, Karriere)?",
+        "Can you correctly form the possessive Genitiv with names? (Marias Auto, Thomas' Frau)",
+        "Can you correctly conjugate haben in the Präteritum? (ich hatte, du hattest, er hatte, ...)",
+        "Do you know the difference between müssen and sollen?",
+        "Can you correctly use the prepositions vor and nach with dative articles?",
+        "Can you describe your dream job in German?",
+        "Do you know German false friends? (Handy, Chef, bekommen)",
+        "Can you have a simple conversation about professions?"
+      ],
+      "de": [
+        "Können Sie mindestens 18 Berufe mit männlicher und weiblicher Form auf Deutsch nennen?",
+        "Kennen Sie Berufsadjektive (interessant, stressig, kreativ, sicher, langweilig, spannend, nützlich)?",
+        "Kennen Sie Arbeitsplatzwortschatz (Arbeitsplatz, Gehalt, Chef, Firma, Büro, Ausbildung, Karriere)?",
+        "Können Sie den possessiven Genitiv bei Namen richtig bilden? (Marias Auto, Thomas' Frau)",
+        "Können Sie haben im Präteritum richtig konjugieren? (ich hatte, du hattest, er hatte, ...)",
+        "Kennen Sie den Unterschied zwischen müssen und sollen?",
+        "Verwenden Sie die Präpositionen vor und nach mit Dativartikeln richtig?",
+        "Können Sie Ihren Traumberuf auf Deutsch beschreiben?",
+        "Kennen Sie deutsche falsche Freunde? (Handy, Chef, bekommen)",
+        "Können Sie ein einfaches Gespräch über Berufe führen?"
+      ]
+    }
+  },
+  "cheatSheet": {
+    "professions": [
+      {
+        "de": "der Pilot / die Pilotin",
+        "fa": "خلبان",
+        "en": "pilot"
+      },
+      {
+        "de": "der Koch / die Köchin",
+        "fa": "آشپز",
+        "en": "cook / chef"
+      },
+      {
+        "de": "der Journalist / die Journalistin",
+        "fa": "روزنامه‌نگار",
+        "en": "journalist"
+      },
+      {
+        "de": "der Schauspieler / die Schauspielerin",
+        "fa": "بازیگر",
+        "en": "actor"
+      },
+      {
+        "de": "der Lehrer / die Lehrerin",
+        "fa": "معلم",
+        "en": "teacher"
+      },
+      {
+        "de": "der Arzt / die Ärztin",
+        "fa": "پزشک",
+        "en": "doctor"
+      },
+      {
+        "de": "der Polizist / die Polizistin",
+        "fa": "پلیس",
+        "en": "police officer"
+      },
+      {
+        "de": "der Verkäufer / die Verkäuferin",
+        "fa": "فروشنده",
+        "en": "salesperson"
+      },
+      {
+        "de": "der Manager / die Managerin",
+        "fa": "مدیر",
+        "en": "manager"
+      },
+      {
+        "de": "der Friseur / die Friseurin",
+        "fa": "آرایشگر",
+        "en": "hairdresser"
+      },
+      {
+        "de": "der Student / die Studentin",
+        "fa": "دانشجو",
+        "en": "university student"
+      },
+      {
+        "de": "die Krankenschwester",
+        "fa": "پرستار",
+        "en": "nurse"
+      },
+      {
+        "de": "die Hausfrau",
+        "fa": "خانه‌دار",
+        "en": "housewife"
+      },
+      {
+        "de": "der Trainer / die Trainerin",
+        "fa": "مربی",
+        "en": "trainer / coach"
+      },
+      {
+        "de": "der Programmierer / die Programmiererin",
+        "fa": "برنامه‌نویس",
+        "en": "programmer"
+      },
+      {
+        "de": "der Architekt / die Architektin",
+        "fa": "معمار",
+        "en": "architect"
+      },
+      {
+        "de": "der Taxifahrer / die Taxifahrerin",
+        "fa": "راننده تاکسی",
+        "en": "taxi driver"
+      },
+      {
+        "de": "der Fußballspieler / die Fußballspielerin",
+        "fa": "بازیکن فوتبال",
+        "en": "football player"
+      }
+    ],
+    "grammar": {
+      "genitiv_rules": [
+        {
+          "title": {
+            "fa": "نام‌های عادی",
+            "en": "Regular names",
+            "de": "Reguläre Namen"
+          },
+          "summary": {
+            "fa": "Maria → Marias, Paul → Pauls, Lisa → Lisas (اضافه -s)",
+            "en": "Maria → Marias, Paul → Pauls, Lisa → Lisas (add -s)",
+            "de": "Maria → Marias, Paul → Pauls, Lisa → Lisas (-s hinzufügen)"
+          }
+        },
+        {
+          "title": {
+            "fa": "نام‌های منتهی به s/z/x/ß",
+            "en": "Names ending in s/z/x/ß",
+            "de": "Namen auf s/z/x/ß"
+          },
+          "summary": {
+            "fa": "Thomas → Thomas', Hans → Hans', Max → Max' (فقط آپوستروف)",
+            "en": "Thomas → Thomas', Hans → Hans', Max → Max' (apostrophe only)",
+            "de": "Thomas → Thomas', Hans → Hans', Max → Max' (nur Apostroph)"
+          }
+        }
+      ],
+      "praeteritum_haben": [
+        {
+          "de": "ich hatte",
+          "fa": "من داشتم",
+          "en": "I had"
+        },
+        {
+          "de": "du hattest",
+          "fa": "تو داشتی",
+          "en": "you had"
+        },
+        {
+          "de": "er/sie/es hatte",
+          "fa": "او داشت",
+          "en": "he/she/it had"
+        },
+        {
+          "de": "wir hatten",
+          "fa": "ما داشتیم",
+          "en": "we had"
+        },
+        {
+          "de": "ihr hattet",
+          "fa": "شما داشتید",
+          "en": "you (pl.) had"
+        },
+        {
+          "de": "sie/Sie hatten",
+          "fa": "آنها/شما داشتند",
+          "en": "they/you had"
+        }
+      ],
+      "sollen_conjugation": [
+        {
+          "de": "ich soll",
+          "fa": "من باید (شاید)",
+          "en": "I should"
+        },
+        {
+          "de": "du sollst",
+          "fa": "تو باید (شاید)",
+          "en": "you should"
+        },
+        {
+          "de": "er/sie/es soll",
+          "fa": "او باید (شاید)",
+          "en": "he/she/it should"
+        },
+        {
+          "de": "wir sollen",
+          "fa": "ما باید (شاید)",
+          "en": "we should"
+        },
+        {
+          "de": "ihr sollt",
+          "fa": "شما باید (شاید)",
+          "en": "you (pl.) should"
+        },
+        {
+          "de": "sie/Sie sollen",
+          "fa": "آنها/شما باید (شاید)",
+          "en": "they/you should"
+        }
+      ],
+      "muessen_vs_sollen": [
+        {
+          "title": {
+            "fa": "müssen = باید (الزام قطعی)",
+            "en": "müssen = must (absolute obligation)",
+            "de": "müssen = müssen (absolute Pflicht)"
+          },
+          "summary": {
+            "fa": "Ich muss arbeiten. = من باید کار کنم (مجبورم).",
+            "en": "Ich muss arbeiten. = I must work (obliged to).",
+            "de": "Ich muss arbeiten. = Ich muss arbeiten (gezwungen)."
+          }
+        },
+        {
+          "title": {
+            "fa": "sollen = باید (نصیحت/توصیه)",
+            "en": "sollen = should (advice/recommendation)",
+            "de": "sollen = sollen (Rat/Empfehlung)"
+          },
+          "summary": {
+            "fa": "Ich soll arbeiten. = گفته شده که کار کنم.",
+            "en": "Ich soll arbeiten. = I've been told to work.",
+            "de": "Ich soll arbeiten. = Man hat mir gesagt, ich soll arbeiten."
+          }
+        }
+      ],
+      "vor_nach": [
+        {
+          "de": "vor dem Kurs",
+          "fa": "قبل از کلاس",
+          "en": "before the class"
+        },
+        {
+          "de": "vor der Arbeit",
+          "fa": "قبل از کار",
+          "en": "before work"
+        },
+        {
+          "de": "vor dem Training",
+          "fa": "قبل از تمرین",
+          "en": "before training"
+        },
+        {
+          "de": "nach dem Essen",
+          "fa": "بعد از غذا",
+          "en": "after the meal"
+        },
+        {
+          "de": "nach der Arbeit",
+          "fa": "بعد از کار",
+          "en": "after work"
+        },
+        {
+          "de": "nach dem Training",
+          "fa": "بعد از تمرین",
+          "en": "after training"
+        }
+      ]
+    },
+    "phrases": [
+      {
+        "de": "Was ist dein Beruf?",
+        "fa": "شغل تو چیست؟",
+        "en": "What is your profession?"
+      },
+      {
+        "de": "Ich bin Koch / Pilotin / Lehrer.",
+        "fa": "من آشپز / خلبان / معلم هستم.",
+        "en": "I am a cook / pilot / teacher."
+      },
+      {
+        "de": "Der Beruf ist interessant / stressig / kreativ.",
+        "fa": "شغل جالب / استرس‌زا / خلاقانه است.",
+        "en": "The job is interesting / stressful / creative."
+      },
+      {
+        "de": "Ich verdiene 5000 Euro im Monat.",
+        "fa": "من ماهی ۵۰۰۰ یورو درآمد دارم.",
+        "en": "I earn 5000 euros per month."
+      },
+      {
+        "de": "Die Arbeitszeit ist lang.",
+        "fa": "ساعت کاری طولانی است.",
+        "en": "The working hours are long."
+      },
+      {
+        "de": "Es ist mein Traumjob.",
+        "fa": "شغل رویایی من است.",
+        "en": "It's my dream job."
+      },
+      {
+        "de": "Ich möchte Karriere machen.",
+        "fa": "می‌خواهم موفقیت حرفه‌ای کسب کنم.",
+        "en": "I want to build a career."
+      },
+      {
+        "de": "Ich habe eine Ausbildung als Programmierer.",
+        "fa": "من آموزش حرفه‌ای برنامه‌نویسی دیده‌ام.",
+        "en": "I have vocational training as a programmer."
+      },
+      {
+        "de": "Man soll nicht zu viel arbeiten.",
+        "fa": "نباید زیاد کار کرد.",
+        "en": "One shouldn't work too much."
+      },
+      {
+        "de": "Vor dem Frühstück trinke ich Kaffee.",
+        "fa": "قبل از صبحانه قهوه می‌نوشم.",
+        "en": "I drink coffee before breakfast."
+      }
+    ],
+    "false_friends": [
+      {
+        "de": "Handy = Mobiltelefon",
+        "fa": "Handy ≠ دستی/مفید",
+        "en": "Handy ≠ handy"
+      },
+      {
+        "de": "Chef = Vorgesetzter",
+        "fa": "Chef ≠ سرآشپز",
+        "en": "Chef ≠ chef (cook)"
+      },
+      {
+        "de": "bekommen = erhalten",
+        "fa": "bekommen ≠ شدن",
+        "en": "bekommen ≠ to become"
+      },
+      {
+        "de": "also = also/daher",
+        "fa": "also ≠ همچنین",
+        "en": "also ≠ also"
+      }
+    ]
+  },
+  "metadata": {
+    "createdAt": "2026-07-15",
+    "updatedAt": "2026-07-15",
+    "version": "2.0.0",
+    "author": "German Academy Team (based on Starten Wir A1, Hueber)",
+    "status": "published",
+    "tags": [
+      "berufe",
+      "professions",
+      "genitiv",
+      "praeteritum-haben",
+      "sollen",
+      "vor-nach",
+      "arbeitswelt",
+      "traumberuf",
+      "work-life-balance",
+      "falsche-freunde",
+      "A1"
+    ],
+    "difficulty": 3,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04",
+      "A1-L05",
+      "A1-L06",
+      "A1-L07",
+      "A1-L08",
+      "A1-L09",
+      "A1-L10",
+      "A1-L11"
+    ],
+    "source": "Starten Wir A1 Kursbuch, Lektion 12 (Beruf und Leben), Hueber Verlag"
+  }
 }

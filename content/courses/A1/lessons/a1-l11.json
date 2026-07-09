@@ -1,484 +1,3132 @@
 {
-  "id": "a1-l11",
+  "id": "A1-L11",
+  "order": 11,
   "level": "A1",
-  "unit": 1,
-  "lessonNumber": 11,
+  "unit": 4,
   "version": "2.0.0",
   "status": "published",
-  "lastUpdated": "2026-06-26",
-  "estimatedTime": 55,
-  "difficulty": 2,
-  "prerequisites": [
-    "a1-l10"
-  ],
-  "nextLessonId": "a1-l12",
-  "previousLessonId": "a1-l10",
   "title": {
-    "de": "Was kannst du?",
-    "fa": "چه کاری می‌توانی انجام دهی؟",
-    "en": "What can you do?"
+    "fa": "آیا تو سالم و فعال هستی؟ — بدن، ورزش و سلامتی",
+    "en": "Are You Fit? — Body, Sports and Health",
+    "de": "Bist du fit? — Körper, Sport und Gesundheit"
   },
-  "shortTitle": {
-    "de": "Was kannst du?",
-    "fa": "چه کاری می‌توانی؟",
-    "en": "What can you do?"
+  "subtitle": {
+    "fa": "اجزای بدن، انواع ورزش، ضمایر داتیو، فعل dürfen، حروف اضافه bei/zu و مصارف فرمانی",
+    "en": "Body parts, sports, dative pronouns, the verb dürfen, prepositions bei/zu and imperative forms",
+    "de": "Körperteile, Sportarten, Dativpronomen, das Verb dürfen, Präpositionen bei/zu und Imperativformen"
   },
   "description": {
-    "fa": "در این درس با افعال مودال (können, müssen, dürfen) برای بیان توانایی، اجازه و اجبار آشنا می‌شوید.",
-    "en": "In this lesson you will learn modal verbs (können, müssen, dürfen) to express ability, permission and obligation.",
-    "de": "In dieser Lektion lernen Sie Modalverben (können, müssen, dürfen) um Fähigkeit, Erlaubnis und Verpflichtung auszudrücken."
+    "fa": "در این درس با اجزای بدن، انواع ورزش و واژگان مربوط به سلامتی و بیماری آشنا می‌شوید. گرامر شامل ضمایر شخصی داتیو (mir/dir/ihm/ihr)، صیغه فرمانی (ihr فرم)، ضمایر ملکی unser/euer/ihr، فعل راهبردی dürfen (اجازه) و حروف اضافه bei و zu با داتیو است. بر اساس Lektion 11 کتاب Starten Wir A1.",
+    "en": "In this lesson you will learn body parts, types of sports and health/illness vocabulary. Grammar covers dative personal pronouns (mir/dir/ihm/ihr), the imperative (ihr form), possessive articles unser/euer/ihr, the modal verb dürfen (permission) and the prepositions bei and zu with dative. Based on Lektion 11 of Starten Wir A1.",
+    "de": "In dieser Lektion lernen Sie Körperteile, Sportarten und Gesundheits-/Krankheitswortschatz. Die Grammatik umfasst Dativpersonalpronomen (mir/dir/ihm/ihr), den Imperativ (ihr-Form), Possessivartikel unser/euer/ihr, das Modalverb dürfen (Erlaubnis) und die Präpositionen bei und zu mit Dativ. Basierend auf Lektion 11 von Starten Wir A1."
   },
+  "estimatedMinutes": 120,
+  "xpReward": 100,
+  "perfectBonusXP": 40,
+  "difficulty": 3,
+  "cefr": "A1.2",
   "learningObjectives": {
     "fa": [
-      "✅ افعال مودال (können, müssen, dürfen)",
-      "✅ ساختار جمله با افعال مودال",
-      "✅ گفتن چه کاری می‌توانید، باید یا اجازه دارید انجام دهید"
+      "نام بردن اجزای بدن به آلمانی (der Kopf, das Auge, der Arm, das Bein, der Fuß, ...)",
+      "معرفی انواع ورزش (Fußball, Tennis, Schwimmen, Yoga, ...)",
+      "استفاده از ضمایر شخصی داتیو بعد از افعال gefallen, gehören, danken, schmecken, helfen",
+      "ساختن صیغه فرمانی برای du, ihr و Sie",
+      "استفاده از ضمایر ملکی unser, euer, ihr",
+      "صرف فعل راهبردی dürfen و بیان اجازه و ممنوعیت",
+      "استفاده از حروف اضافه bei و zu با داتیو (beim Arzt, zum Training, zur Schule)",
+      "توضیح دادن درد و علائم بیماری (Mein Bein tut weh. Ich habe Fieber.)",
+      "تمایز بین müssen و dürfen در بیان الزام و ممنوعیت"
+    ],
+    "en": [
+      "Name body parts in German (der Kopf, das Auge, der Arm, das Bein, der Fuß, ...)",
+      "Name types of sports (Fußball, Tennis, Schwimmen, Yoga, ...)",
+      "Use dative personal pronouns after verbs gefallen, gehören, danken, schmecken, helfen",
+      "Form the imperative for du, ihr and Sie",
+      "Use possessive articles unser, euer, ihr",
+      "Conjugate the modal verb dürfen and express permission and prohibition",
+      "Use prepositions bei and zu with dative (beim Arzt, zum Training, zur Schule)",
+      "Explain pain and illness symptoms (Mein Bein tut weh. Ich habe Fieber.)",
+      "Distinguish between müssen and dürfen for obligation and prohibition"
+    ],
+    "de": [
+      "Körperteile auf Deutsch nennen (der Kopf, das Auge, der Arm, das Bein, der Fuß, ...)",
+      "Sportarten nennen (Fußball, Tennis, Schwimmen, Yoga, ...)",
+      "Dativpersonalpronomen nach den Verben gefallen, gehören, danken, schmecken, helfen verwenden",
+      "Den Imperativ für du, ihr und Sie bilden",
+      "Possessivartikel unser, euer, ihr verwenden",
+      "Das Modalverb dürfen konjugieren und Erlaubnis und Verbot ausdrücken",
+      "Präpositionen bei und zu mit Dativ verwenden (beim Arzt, zum Training, zur Schule)",
+      "Schmerzen und Krankheitssymptome beschreiben (Mein Bein tut weh. Ich habe Fieber.)",
+      "Zwischen müssen und dürfen für Pflicht und Verbot unterscheiden"
     ]
   },
-  "xpReward": 60,
-  "perfectBonusXP": 25,
-  "completionBonusXP": 75,
-  "cefr": "A1.1",
-  "goetheChapter": "Kapitel 1",
-  "tags": [],
-  "skills": [
-    "listening",
-    "speaking",
-    "reading",
-    "writing"
-  ],
-  "examRelevance": [
-    "Goethe-A1",
-    "TELC-A1",
-    "ÖSD-A1"
-  ],
-  "sections": [
+  "requiredPreviousKnowledge": {
+    "fa": "درس‌های ۱ تا ۱۰ — آشنایی با ضمایر شخصی nominativ و akkusativ، افعال منظم و نامنظم، حالت ساده، ضمایر ملکی mein/dein/sein/ihr، حروف اضافه در، فعل‌های راهبردی können و möchten.",
+    "en": "Lessons 1-10 — Familiarity with nominative and accusative personal pronouns, regular and irregular verbs, present tense, possessive articles mein/dein/sein/ihr, prepositions, and modal verbs können and möchten.",
+    "de": "Lektionen 1-10 — Vertrautheit mit Nominativ- und Akkusativpersonalpronomen, regelmäßigen und unregelmäßigen Verben, Präsens, Possessivartikeln mein/dein/sein/ihr, Präpositionen und Modalverben können und möchten."
+  },
+  "lessonIntroduction": {
+    "title": {
+      "fa": "بدن سالم، روح سالم",
+      "en": "A Healthy Body, A Healthy Mind",
+      "de": "Gesunder Körper, gesunder Geist"
+    },
+    "content": {
+      "fa": "تصور کنید در یک باشگاه فیتنس هستید و می‌خواهید در یک کلاس ورزشی ثبت‌نام کنید. یا بیمار شده‌اید و باید به پزشک مراجعه کنید. این درس به شما کمک می‌کند تا در هر دو موقعیت راحت صحبت کنید.\n\nدر این درس، شما با اجزای بدن، انواع ورزش، واژگان بیماری و سلامتی آشنا می‌شوید. از نظر گرامری، ضمایر داتیو، فعل dürfen، حروف اضافه bei/zu و صیغه فرمانی را یاد می‌گیرید.\n\nبر اساس Lektion 11 کتاب Starten Wir A1 (Hueber Verlag)، این درس شما را برای مکالمات مربوط به سلامتی و ورزش آماده می‌کند.",
+      "en": "Imagine you're at a fitness studio and want to sign up for an exercise class. Or you've fallen ill and need to visit the doctor. This lesson helps you communicate confidently in both situations.\n\nIn this lesson you will learn body parts, types of sports, and health/illness vocabulary. Grammatically, you'll learn dative pronouns, the verb dürfen, prepositions bei/zu and the imperative.\n\nBased on Lektion 11 of Starten Wir A1 (Hueber Verlag), this lesson prepares you for conversations about health and sports.",
+      "de": "Stell dir vor, du bist im Fitnessstudio und möchtest dich für einen Kurs anmelden. Oder du bist krank geworden und musst zum Arzt gehen. Diese Lektion hilft dir, in beiden Situationen sicher zu kommunizieren.\n\nIn dieser Lektion lernst du Körperteile, Sportarten und Gesundheits-/Krankheitswortschatz. Grammatikalisch lernst du Dativpronomen, das Verb dürfen, die Präpositionen bei/zu und den Imperativ.\n\nBasierend auf Lektion 11 von Starten Wir A1 (Hueber Verlag) bereitet dich diese Lektion auf Gespräche über Gesundheit und Sport vor."
+    },
+    "imagePrompt": "A modern fitness studio in Germany with people doing yoga and step aerobics, bright and motivating atmosphere"
+  },
+  "vocabulary": [
     {
-      "type": "introduction",
-      "title": {
-        "fa": "🌟 مقدمه",
-        "en": "🌟 Introduction",
-        "de": "🌟 Einleitung"
+      "id": "voc-l11-kopf",
+      "de": "Kopf",
+      "article": "der",
+      "plural": "Köpfe",
+      "ipa": "[kɔpf]",
+      "fa": "سر",
+      "en": "head",
+      "example": {
+        "de": "Mein Kopf tut weh.",
+        "fa": "سرم درد می‌کند.",
+        "en": "My head hurts."
       },
-      "content": {
-        "fa": "به درس یازدهم خوش آمدید! 💪\n\nدر این درس با افعال مودال آشنا می‌شوید.\n\nدر این درس یاد می‌گیرید:\n• افعال مودال (können, müssen, dürfen)\n• ساختار جمله با افعال مودال\n• چگونه بگویید چه کاری می‌توانید، باید یا اجازه دارید انجام دهید",
-        "en": "Welcome to lesson 11! 💪\n\nIn this lesson you will learn modal verbs.\n\nYou will learn:\n• Modal verbs (können, müssen, dürfen)\n• Sentence structure with modal verbs\n• How to say what you can, must or are allowed to do",
-        "de": "Willkommen zur elften Lektion! 💪\n\nIn dieser Lektion lernen Sie Modalverben.\n\nSie lernen:\n• Modalverben (können, müssen, dürfen)\n• Satzstruktur mit Modalverben\n• Wie man sagt, was Sie können, müssen oder dürfen"
+      "usageNotes": {
+        "fa": "اسم مذکر. جمع آن با umlaut: Köpfe.",
+        "en": "Masculine noun. Plural with umlaut: Köpfe.",
+        "de": "Maskulines Nomen. Plural mit Umlaut: Köpfe."
       },
-      "id": "a1-l11-INTRO-001",
-      "order": 0
+      "commonMistakes": {
+        "fa": "جمع Köpfe است نه Köpfe (umlaut را فراموش نکنید).",
+        "en": "The plural is Köpfe with umlaut, not Köpfe without it.",
+        "de": "Der Plural ist Köpfe mit Umlaut."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "vocabulary",
-      "title": {
-        "fa": "📖 گنجینه لغات",
-        "en": "📖 Vocabulary",
-        "de": "📖 Wortschatz"
+      "id": "voc-l11-auge",
+      "de": "Auge",
+      "article": "das",
+      "plural": "Augen",
+      "ipa": "[ˈaʊ̯ɡə]",
+      "fa": "چشم",
+      "en": "eye",
+      "example": {
+        "de": "Ich habe blaue Augen.",
+        "fa": "من چشم‌های آبی دارم.",
+        "en": "I have blue eyes."
       },
-      "words": [
-        {
-          "de": "können",
-          "fa": "توانستن / قادر بودن",
-          "en": "can / to be able to",
-          "icon": "💪",
-          "example": {
-            "de": "Ich kann gut schwimmen.",
-            "fa": "من می‌توانم خوب شنا کنم.",
-            "en": "I can swim well."
-          }
-        },
-        {
-          "de": "müssen",
-          "fa": "مجبور بودن",
-          "en": "must / to have to",
-          "icon": "⚠️",
-          "example": {
-            "de": "Ich muss Deutsch lernen.",
-            "fa": "من باید آلمانی یاد بگیرم.",
-            "en": "I must learn German."
-          }
-        },
-        {
-          "de": "dürfen",
-          "fa": "اجازه داشتن",
-          "en": "may / to be allowed to",
-          "icon": "✅",
-          "example": {
-            "de": "Darf ich hereinkommen?",
-            "fa": "آیا می‌توانم بیایم داخل؟",
-            "en": "May I come in?"
-          }
-        },
-        {
-          "de": "schwimmen",
-          "fa": "شنا کردن",
-          "en": "to swim",
-          "icon": "🏊",
-          "example": {
-            "de": "Ich kann schwimmen.",
-            "fa": "من می‌توانم شنا کنم.",
-            "en": "I can swim."
-          }
-        },
-        {
-          "de": "singen",
-          "fa": "آواز خواندن",
-          "en": "to sing",
-          "icon": "🎤",
-          "example": {
-            "de": "Sie kann gut singen.",
-            "fa": "او می‌تواند خوب آواز بخواند.",
-            "en": "She can sing well."
-          }
-        },
-        {
-          "de": "tanzen",
-          "fa": "رقصیدن",
-          "en": "to dance",
-          "icon": "💃",
-          "example": {
-            "de": "Ich kann tanzen.",
-            "fa": "من می‌توانم برقصم.",
-            "en": "I can dance."
-          }
-        }
-      ],
-      "id": "a1-l11-VOC-002",
-      "order": 1
+      "usageNotes": {
+        "fa": "اسم خنثی. معمولاً جمع به کار می‌رود (die Augen).",
+        "en": "Neuter noun. Often used in plural (die Augen).",
+        "de": "Neutrales Nomen. Oft im Plural verwendet (die Augen)."
+      },
+      "commonMistakes": {
+        "fa": " artikel das است نه der.",
+        "en": "The article is das, not der.",
+        "de": "Der Artikel ist das, nicht der."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "grammar",
-      "title": {
-        "fa": "📝 کپسول گرامر",
-        "en": "📝 Grammar Capsule",
-        "de": "📝 Grammatik-Kapsel"
+      "id": "voc-l11-ohr",
+      "de": "Ohr",
+      "article": "das",
+      "plural": "Ohren",
+      "ipa": "[oːɐ̯]",
+      "fa": "گوش",
+      "en": "ear",
+      "example": {
+        "de": "Mein rechtes Ohr tut weh.",
+        "fa": "گوش راست‌ام درد می‌کند.",
+        "en": "My right ear hurts."
       },
-      "concept": {
-        "fa": "افعال مودال (Modalverben)",
-        "en": "Modal Verbs",
-        "de": "Modalverben"
+      "usageNotes": {
+        "fa": "اسم خنثی. معمولاً جمع به کار می‌رود.",
+        "en": "Neuter noun. Usually used in plural.",
+        "de": "Neutrales Nomen. Meist im Plural verwendet."
       },
-      "explanation": {
-        "fa": "📌 **ساختار افعال مودال:**\n\nافعال مودال مانند 'پیشرو' عمل می‌کنند. آن‌ها جایگاه دوم را می‌گیرند و فعل اصلی را به انتهای جمله می‌فرستند (به صورت مصدر/Infinitiv).\n\n**Modalverb (صرف شده) + ... + Hauptverb (مصدر در آخر)**\n\n📌 **صرف فعل können (توانستن):**\n\n• ich kann\n• du kannst\n• er/sie/es kann\n• wir können\n• ihr könnt\n• sie/Sie können\n\n📌 **صرف فعل müssen (مجبور بودن):**\n\n• ich muss\n• du musst\n• er/sie/es muss\n• wir müssen\n• ihr müsst\n• sie/Sie müssen\n\n📌 **صرف فعل dürfen (اجازه داشتن):**\n\n• ich darf\n• du darfst\n• er/sie/es darf\n• wir dürfen\n• ihr dürft\n• sie/Sie dürfen",
-        "en": "📌 **Structure of Modal Verbs:**\n\nModal verbs act like 'leaders'. They take the second position and send the main verb to the end of the sentence (as Infinitive).\n\n**Modalverb (conjugated) + ... + Hauptverb (Infinitive at the end)**\n\n📌 **Conjugation of können (can):**\n\n• ich kann\n• du kannst\n• er/sie/es kann\n• wir können\n• ihr könnt\n• sie/Sie können\n\n📌 **Conjugation of müssen (must):**\n\n• ich muss\n• du musst\n• er/sie/es muss\n• wir müssen\n• ihr müsst\n• sie/Sie müssen\n\n📌 **Conjugation of dürfen (may):**\n\n• ich darf\n• du darfst\n• er/sie/es darf\n• wir dürfen\n• ihr dürft\n• sie/Sie dürfen",
-        "de": "📌 **Struktur der Modalverben:**\n\nModalverben fungieren wie 'Führer'. Sie nehmen die zweite Position ein und schicken das Hauptverb ans Ende des Satzes (als Infinitiv).\n\n**Modalverb (konjugiert) + ... + Hauptverb (Infinitiv am Ende)**\n\n📌 **Konjugation von können:**\n\n• ich kann\n• du kannst\n• er/sie/es kann\n• wir können\n• ihr könnt\n• sie/Sie können\n\n📌 **Konjugation von müssen:**\n\n• ich muss\n• du musst\n• er/sie/es muss\n• wir müssen\n• ihr müsst\n• sie/Sie müssen\n\n📌 **Konjugation von dürfen:**\n\n• ich darf\n• du darfst\n• er/sie/es darf\n• wir dürfen\n• ihr dürft\n• sie/Sie dürfen"
+      "commonMistakes": {
+        "fa": "'oh' بلند و 'r' غُرّی تلفظ شود.",
+        "en": "Pronounce long 'oh' and uvular 'r'.",
+        "de": "Langes 'oh' und uvulares 'r' aussprechen."
       },
-      "examples": [
-        {
-          "de": "Ich kann gut schwimmen.",
-          "fa": "من می‌توانم خوب شنا کنم.",
-          "en": "I can swim well."
-        },
-        {
-          "de": "Du musst Deutsch lernen.",
-          "fa": "تو باید آلمانی یاد بگیری.",
-          "en": "You must learn German."
-        },
-        {
-          "de": "Darf ich hereinkommen?",
-          "fa": "آیا می‌توانم بیایم داخل؟",
-          "en": "May I come in?"
-        },
-        {
-          "de": "Sie kann sehr gut singen.",
-          "fa": "او می‌تواند خیلی خوب آواز بخواند.",
-          "en": "She can sing very well."
-        },
-        {
-          "de": "Wir müssen arbeiten.",
-          "fa": "ما باید کار کنیم.",
-          "en": "We must work."
-        }
-      ],
-      "id": "a1-l11-GRAM-003",
-      "order": 2
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "story",
-      "title": {
-        "fa": "📖 داستان: توانایی‌ها",
-        "en": "📖 Story: Abilities",
-        "de": "📖 Geschichte: Fähigkeiten"
+      "id": "voc-l11-nase",
+      "de": "Nase",
+      "article": "die",
+      "plural": "Nasen",
+      "ipa": "[ˈnaːzə]",
+      "fa": "بینی",
+      "en": "nose",
+      "example": {
+        "de": "Ich habe Schnupfen. Meine Nase ist verstopft.",
+        "fa": "سرماخورده‌ام. بینی‌ام گرفته است.",
+        "en": "I have a cold. My nose is stuffed."
       },
-      "text": {
-        "de": "Ich kann schwimmen. Ich kann auch tanzen. Aber ich kann nicht singen. Meine Freundin Anna kann sehr gut singen. Sie kann auch Klavier spielen. Ich muss Deutsch lernen. Ich darf heute Abend ausgehen. Das ist mein Leben.",
-        "fa": "من می‌توانم شنا کنم. من می‌توانم همچنین برقصم. اما نمی‌توانم آواز بخوانم. دوست من آنا می‌تواند خیلی خوب آواز بخواند. او می‌تواند همچنین پیانو بزند. من باید آلمانی یاد بگیرم. من اجازه دارم امشب بیرون بروم. این زندگی من است.",
-        "en": "I can swim. I can also dance. But I cannot sing. My friend Anna can sing very well. She can also play piano. I must learn German. I am allowed to go out tonight. This is my life."
+      "usageNotes": {
+        "fa": "اسم مؤنث.",
+        "en": "Feminine noun.",
+        "de": "Feminines Nomen."
       },
-      "questions": [
-        {
-          "id": "story_q1",
-          "question": {
-            "fa": "چه کاری نمی‌توانم انجام دهم؟",
-            "en": "What can I not do?",
-            "de": "Was kann ich nicht?"
-          },
-          "answer": {
-            "fa": "آواز خواندن",
-            "en": "Sing",
-            "de": "Singen"
-          }
-        },
-        {
-          "id": "story_q2",
-          "question": {
-            "fa": "آنا چه کاری می‌تواند انجام دهد؟",
-            "en": "What can Anna do?",
-            "de": "Was kann Anna?"
-          },
-          "answer": {
-            "fa": "آواز خواندن و پیانو زدن",
-            "en": "Sing and play piano",
-            "de": "Singen und Klavier spielen"
-          }
-        }
-      ],
-      "id": "a1-l11-STORY-004",
-      "order": 3
+      "commonMistakes": {
+        "fa": "article die است نه das.",
+        "en": "Article is die, not das.",
+        "de": "Artikel ist die, nicht das."
+      },
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "exercises",
-      "title": {
-        "fa": "🏋️ کارگاه تمرین",
-        "en": "🏋️ Exercises",
-        "de": "🏋️ Übungen"
+      "id": "voc-l11-mund",
+      "de": "Mund",
+      "article": "der",
+      "plural": "Münder",
+      "ipa": "[mʊnt]",
+      "fa": "دهان",
+      "en": "mouth",
+      "example": {
+        "de": "Öffnen Sie bitte den Mund!",
+        "fa": "لطفاً دهانتان را باز کنید!",
+        "en": "Please open your mouth!"
       },
-      "questions": [
-        {
-          "id": "ex1",
-          "type": "sentence_building",
-          "question": {
-            "fa": "کلمات را مرتب کنید: 'kann / ich / singen / gut'",
-            "en": "Arrange: 'kann / ich / singen / gut'",
-            "de": "Ordnen: 'kann / ich / singen / gut'"
-          },
-          "answer": "Ich kann gut singen.",
-          "hint": {
-            "fa": "فعل مودال در جایگاه دوم",
-            "en": "Modal verb in second position",
-            "de": "Modalverb an zweiter Stelle"
-          }
-        },
-        {
-          "id": "ex2",
-          "type": "fill_in",
-          "question": {
-            "fa": "جای خالی: Du ________ (können) Deutsch sprechen.",
-            "en": "Fill in: Du ________ (können) Deutsch sprechen.",
-            "de": "Füllen Sie: Du ________ (können) Deutsch sprechen."
-          },
-          "answer": "kannst",
-          "hint": {
-            "fa": "du → kannst",
-            "en": "du → kannst",
-            "de": "du → kannst"
-          }
-        },
-        {
-          "id": "ex3",
-          "type": "translation",
-          "question": {
-            "fa": "جمله را ترجمه کنید: 'او (مذکر) باید کار کند.'",
-            "en": "Translate: 'He must work.'",
-            "de": "Übersetzen: 'Er muss arbeiten.'"
-          },
-          "answer": "Er muss arbeiten.",
-          "hint": {
-            "fa": "müssen + arbeiten",
-            "en": "müssen + arbeiten",
-            "de": "müssen + arbeiten"
-          }
-        }
-      ],
-      "id": "a1-l11-EXER-005",
-      "order": 4
+      "usageNotes": {
+        "fa": "اسم مذکر. جمع آن Münder با umlaut.",
+        "en": "Masculine noun. Plural is Münder with umlaut.",
+        "de": "Maskulines Nomen. Plural ist Münder mit Umlaut."
+      },
+      "commonMistakes": {
+        "fa": "'u' کوتاه و 'nd' با هم تلفظ شود.",
+        "en": "'u' is short and 'nd' pronounced together.",
+        "de": "'u' ist kurz und 'nd' wird zusammen ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "flashcards",
-      "title": {
-        "fa": "🃏 فلش‌کارت‌های درس",
-        "en": "🃏 Lesson Flashcards",
-        "de": "🃏 Lernkarten der Lektion"
+      "id": "voc-l11-arm",
+      "de": "Arm",
+      "article": "der",
+      "plural": "Arme",
+      "ipa": "[aʁm]",
+      "fa": "بازو",
+      "en": "arm",
+      "example": {
+        "de": "Hebt die Arme!",
+        "fa": "بازوها را بالا ببرید!",
+        "en": "Raise your arms!"
       },
-      "cards": [
-        {
-          "de": "können",
-          "fa": "توانستن",
-          "en": "can",
-          "icon": "💪"
-        },
-        {
-          "de": "müssen",
-          "fa": "مجبور بودن",
-          "en": "must",
-          "icon": "⚠️"
-        },
-        {
-          "de": "dürfen",
-          "fa": "اجازه داشتن",
-          "en": "may",
-          "icon": "✅"
-        },
-        {
-          "de": "schwimmen",
-          "fa": "شنا کردن",
-          "en": "to swim",
-          "icon": "🏊"
-        },
-        {
-          "de": "singen",
-          "fa": "آواز خواندن",
-          "en": "to sing",
-          "icon": "🎤"
-        },
-        {
-          "de": "tanzen",
-          "fa": "رقصیدن",
-          "en": "to dance",
-          "icon": "💃"
-        },
-        {
-          "de": "Ich kann",
-          "fa": "من می‌توانم",
-          "en": "I can",
-          "icon": "👍"
-        },
-        {
-          "de": "Ich muss",
-          "fa": "من باید",
-          "en": "I must",
-          "icon": "👎"
-        },
-        {
-          "de": "Ich darf",
-          "fa": "من اجازه دارم",
-          "en": "I may",
-          "icon": "✋"
-        }
-      ],
-      "id": "a1-l11-FLASH-006",
-      "order": 5
+      "usageNotes": {
+        "fa": "اسم مذکر.",
+        "en": "Masculine noun.",
+        "de": "Maskulines Nomen."
+      },
+      "commonMistakes": {
+        "fa": "هم‌معنی 'arm' انگلیسی (فقیر) نیست — در آلمانی 'arm' یعنی بازو.",
+        "en": "Not the same as English 'arm' (poor) — in German 'arm' means the body part.",
+        "de": "Nicht gleich wie englisch 'arm' (arm) — auf Deutsch heißt 'Arm' der Körperteil."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "pronunciation",
-      "title": {
-        "fa": "🎤 تمرین تلفظ",
-        "en": "🎤 Pronunciation Practice",
-        "de": "🎤 Ausspracheübung"
+      "id": "voc-l11-hand",
+      "de": "Hand",
+      "article": "die",
+      "plural": "Hände",
+      "ipa": "[hant]",
+      "fa": "دست",
+      "en": "hand",
+      "example": {
+        "de": "Wasch dir die Hände!",
+        "fa": "دست‌هایت را بشوی!",
+        "en": "Wash your hands!"
       },
-      "words": [
-        {
-          "word": "können",
-          "phonetic": "/ˈkœnən/"
-        },
-        {
-          "word": "müssen",
-          "phonetic": "/ˈmʏsn̩/"
-        },
-        {
-          "word": "dürfen",
-          "phonetic": "/ˈdʏʁfn̩/"
-        },
-        {
-          "word": "schwimmen",
-          "phonetic": "/ˈʃvɪmən/"
-        },
-        {
-          "word": "singen",
-          "phonetic": "/ˈzɪŋən/"
-        }
-      ],
-      "id": "a1-l11-PRON-007",
-      "order": 6
+      "usageNotes": {
+        "fa": "اسم مؤنث. جمع Hände با umlaut و -e.",
+        "en": "Feminine noun. Plural Hände with umlaut and -e.",
+        "de": "Feminines Nomen. Plural Hände mit Umlaut und -e."
+      },
+      "commonMistakes": {
+        "fa": "'h' در ابتدای کلمه آلمانی تلفظ می‌شود.",
+        "en": "'h' at the beginning of German words is pronounced.",
+        "de": "'h' am Anfang deutscher Wörter wird ausgesprochen."
+      },
+      "difficulty": 1,
+      "frequency": 5
     },
     {
-      "type": "quiz",
-      "title": {
-        "fa": "📝 آزمون پایان درس",
-        "en": "📝 End of Lesson Quiz",
-        "de": "📝 Quiz zum Lektionsende"
+      "id": "voc-l11-finger",
+      "de": "Finger",
+      "article": "der",
+      "plural": "Finger",
+      "ipa": "[ˈfɪŋɐ]",
+      "fa": "انگشت",
+      "en": "finger",
+      "example": {
+        "de": "Mein Finger ist gebrochen.",
+        "fa": "انگشتم شکسته است.",
+        "en": "My finger is broken."
       },
-      "passingScore": 80,
-      "questions": [
-        {
-          "id": "qz1",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Ich ________ gut singen.' (können)",
-            "en": "Complete: 'Ich ________ gut singen.' (können)",
-            "de": "Vervollständigen: 'Ich ________ gut singen.' (können)"
-          },
-          "answer": "kann",
-          "xpBonus": 10
-        },
-        {
-          "id": "qz2",
-          "type": "multiple_choice",
-          "text": {
-            "fa": "کدام یک به معنای 'مجبور بودن' است؟",
-            "en": "Which one means 'must'?",
-            "de": "Welches bedeutet 'müssen'?"
-          },
-          "options": [
-            "können",
-            "müssen",
-            "dürfen",
-            "wollen"
-          ],
-          "correctIndex": 1,
-          "xpBonus": 10
-        },
-        {
-          "id": "qz3",
-          "type": "fill_in",
-          "text": {
-            "fa": "جمله را کامل کن: 'Du ________ Deutsch lernen.' (مجبور)",
-            "en": "Complete: 'Du ________ Deutsch lernen.' (must)",
-            "de": "Vervollständigen: 'Du ________ Deutsch lernen.' (müssen)"
-          },
-          "answer": "musst",
-          "xpBonus": 10
-        }
-      ],
-      "id": "a1-l11-QUIZ-008",
-      "order": 7
+      "usageNotes": {
+        "fa": "اسم مذکر. مفرد و جمع یکسان.",
+        "en": "Masculine noun. Singular and plural identical.",
+        "de": "Maskulines Nomen. Singular und Plural identisch."
+      },
+      "commonMistakes": {
+        "fa": "جمع تغییر نمی‌کند: ein Finger, zwei Finger.",
+        "en": "Plural doesn't change: ein Finger, zwei Finger.",
+        "de": "Plural ändert sich nicht: ein Finger, zwei Finger."
+      },
+      "difficulty": 1,
+      "frequency": 4
     },
     {
-      "type": "summary",
-      "title": {
-        "fa": "📋 خلاصه درس",
-        "en": "📋 Lesson Summary",
-        "de": "📋 Zusammenfassung"
+      "id": "voc-l11-bauch",
+      "de": "Bauch",
+      "article": "der",
+      "plural": "Bäuche",
+      "ipa": "[baʊ̯x]",
+      "fa": "شکم",
+      "en": "stomach / belly",
+      "example": {
+        "de": "Mein Bauch tut weh.",
+        "fa": "شکمم درد می‌کند.",
+        "en": "My stomach hurts."
       },
-      "whatYouLearned": {
-        "fa": [
-          "✅ افعال مودال (können, müssen, dürfen)",
-          "✅ ساختار جمله با افعال مودال",
-          "✅ گفتن چه کاری می‌توانید، باید یا اجازه دارید انجام دهید"
-        ],
-        "en": [
-          "✅ Modal verbs (können, müssen, dürfen)",
-          "✅ Sentence structure with modal verbs",
-          "✅ Saying what you can, must or are allowed to do"
-        ],
-        "de": [
-          "✅ Modalverben (können, müssen, dürfen)",
-          "✅ Satzstruktur mit Modalverben",
-          "✅ Sagen, was Sie können, müssen oder dürfen"
-        ]
+      "usageNotes": {
+        "fa": "اسم مذکر. 'auch' (نیز) را با Bauch اشتباه نگیرید.",
+        "en": "Masculine noun. Don't confuse with 'auch' (also).",
+        "de": "Maskulines Nomen. Nicht mit 'auch' verwechseln."
       },
-      "nextSteps": {
-        "fa": "📚 در درس آخر (Reise und Urlaub) تمام آموخته‌ها را برای صحبت درباره سفر و تعطیلات ترکیب می‌کنید.",
-        "en": "📚 In the final lesson (Reise und Urlaub) you will combine everything to talk about travel and holidays.",
-        "de": "📚 In der letzten Lektion (Reise und Urlaub) kombinieren Sie alles, um über Reisen und Urlaub zu sprechen."
+      "commonMistakes": {
+        "fa": "'ch' در آخر مانند 'خ' آلمانی تلفظ شود.",
+        "en": "'ch' at the end is pronounced like German 'ch'.",
+        "de": "'ch' am Ende wird wie deutsches 'ch' ausgesprochen."
       },
-      "id": "a1-l11-SUMM-009",
-      "order": 8
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-bein",
+      "de": "Bein",
+      "article": "das",
+      "plural": "Beine",
+      "ipa": "[baɪ̯n]",
+      "fa": "پا (ساق پا)",
+      "en": "leg",
+      "example": {
+        "de": "Mein Bein tut weh.",
+        "fa": "پایم درد می‌کند.",
+        "en": "My leg hurts."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. Bein فقط ساق و ران است. کل پا = der Fuß + das Bein.",
+        "en": "Neuter noun. Bein is only the lower/upper leg. The whole leg = der Fuß + das Bein.",
+        "de": "Neutrales Nomen. Bein ist nur Ober- und Unterschenkel."
+      },
+      "commonMistakes": {
+        "fa": "Bein ≠ پا به معنای کامل. برای 'پا' کامل از Fuß + Bein استفاده کنید.",
+        "en": "Bein ≠ the whole foot/leg. For 'leg' completely, use Fuß + Bein.",
+        "de": "Bein ≠ das ganze Bein mit Fuß."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-fuss",
+      "de": "Fuß",
+      "article": "der",
+      "plural": "Füße",
+      "ipa": "[fuːs]",
+      "fa": "پا (قدم)",
+      "en": "foot",
+      "example": {
+        "de": "Mein linker Fuß tut weh.",
+        "fa": "پای چپم درد می‌کند.",
+        "en": "My left foot hurts."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. جمع Füße با umlaut و change ß→ß.",
+        "en": "Masculine noun. Plural Füße with umlaut.",
+        "de": "Maskulines Nomen. Plural Füße mit Umlaut."
+      },
+      "commonMistakes": {
+        "fa": "'ß' مانند 'س' کشیده تلفظ شود. جمع: Füße.",
+        "en": "'ß' pronounced like long 's'. Plural: Füße.",
+        "de": "'ß' wie langes 's'. Plural: Füße."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-knie",
+      "de": "Knie",
+      "article": "das",
+      "plural": "Knie",
+      "ipa": "[kniː]",
+      "fa": "زانو",
+      "en": "knee",
+      "example": {
+        "de": "Mein Knie tut weh beim Joggen.",
+        "fa": "زانوم هنگام دویدن درد می‌کند.",
+        "en": "My knee hurts when jogging."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. مفرد و جمع یکسان.",
+        "en": "Neuter noun. Singular and plural identical.",
+        "de": "Neutrales Nomen. Singular und Plural identisch."
+      },
+      "commonMistakes": {
+        "fa": "'K' آلمانی و 'ie' مانند 'ای' کشیده تلفظ شود.",
+        "en": "Pronounce German 'K' and long 'ie'.",
+        "de": "Deutsches 'K' und langes 'ie' aussprechen."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l11-schulter",
+      "de": "Schulter",
+      "article": "die",
+      "plural": "Schultern",
+      "ipa": "[ˈʃʊltɐ]",
+      "fa": "شانه",
+      "en": "shoulder",
+      "example": {
+        "de": "Die Schultern sind entspannt.",
+        "fa": "شانه‌ها آرام هستند.",
+        "en": "The shoulders are relaxed."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث.",
+        "en": "Feminine noun.",
+        "de": "Feminines Nomen."
+      },
+      "commonMistakes": {
+        "fa": "'sch' در ابتدا 'ش' تلفظ می‌شود.",
+        "en": "'sch' at the start is pronounced 'sh'.",
+        "de": "'sch' am Anfang wird 'sch' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l11-ruecken",
+      "de": "Rücken",
+      "article": "der",
+      "plural": "Rücken",
+      "ipa": "[ˈʁʏkən]",
+      "fa": "کمر / پشت",
+      "en": "back (body)",
+      "example": {
+        "de": "Mein Rücken tut weh.",
+        "fa": "کمرم درد می‌کند.",
+        "en": "My back hurts."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. مفرد و جمع یکسان.",
+        "en": "Masculine noun. Singular and plural identical.",
+        "de": "Maskulines Nomen. Singular und Plural identisch."
+      },
+      "commonMistakes": {
+        "fa": "'ü' بین 'ای' و 'او' تلفظ شود.",
+        "en": "'ü' pronounced between 'ee' and 'oo'.",
+        "de": "'ü' zwischen 'i' und 'u' aussprechen."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-haar",
+      "de": "Haar",
+      "article": "das",
+      "plural": "Haare",
+      "ipa": "[haːɐ̯]",
+      "fa": "مو",
+      "en": "hair",
+      "example": {
+        "de": "Sie hat lange Haare.",
+        "fa": "او موهای بلندی دارد.",
+        "en": "She has long hair."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. مفرد (das Haar = تک مو) و جمع (die Haare = موها).",
+        "en": "Neuter noun. Singular (das Haar = single hair) and plural (die Haare = hair).",
+        "de": "Neutrales Nomen. Singular (das Haar) und Plural (die Haare)."
+      },
+      "commonMistakes": {
+        "fa": "برای موهای سر معمولاً جمع Haare استفاده می‌شود.",
+        "en": "For head hair, usually the plural Haare is used.",
+        "de": "Für Kopfhaare wird meist der Plural Haare verwendet."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-fussball",
+      "de": "Fußball",
+      "article": "der",
+      "plural": "—",
+      "ipa": "[ˈfuːsbal]",
+      "fa": "فوتبال",
+      "en": "football / soccer",
+      "example": {
+        "de": "Fußball ist mein Lieblingssport.",
+        "fa": "فوتبال ورزش مورد علاقه من است.",
+        "en": "Football is my favourite sport."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. محبوب‌ترین ورزش در آلمان.",
+        "en": "Masculine noun. Most popular sport in Germany.",
+        "de": "Maskulines Nomen. Beliebteste Sportart in Deutschland."
+      },
+      "commonMistakes": {
+        "fa": "Fußball در آلمان = soccer (نه American football).",
+        "en": "Fußball in Germany = soccer (not American football).",
+        "de": "Fußball in Deutschland = Soccer (nicht American Football)."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-schwimmen",
+      "de": "Schwimmen",
+      "article": "das",
+      "plural": "—",
+      "ipa": "[ˈʃvɪmən]",
+      "fa": "شنا",
+      "en": "swimming",
+      "example": {
+        "de": "Ich gehe gerne schwimmen.",
+        "fa": "من دوست دارم شنا بروم.",
+        "en": "I like going swimming."
+      },
+      "usageNotes": {
+        "fa": "هم اسم ورزش (das Schwimmen) و هم فعل (schwimmen).",
+        "en": "Both a sport noun (das Schwimmen) and a verb (schwimmen).",
+        "de": "Sowohl Sportnomen (das Schwimmen) als auch Verb (schwimmen)."
+      },
+      "commonMistakes": {
+        "fa": "'schw' مانند 'شو' تلفظ شود.",
+        "en": "'schw' pronounced like 'shv'.",
+        "de": "'schw' wie 'schv' aussprechen."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-yoga",
+      "de": "Yoga",
+      "article": "das",
+      "plural": "—",
+      "ipa": "[ˈjoːɡa]",
+      "fa": "یوگا",
+      "en": "yoga",
+      "example": {
+        "de": "Gefällt dir der Yogakurs?",
+        "fa": "آیا کلاس یوگا را دوست داری؟",
+        "en": "Do you like the yoga class?"
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. از زبان سانسکریت.",
+        "en": "Neuter noun. From Sanskrit.",
+        "de": "Neutrales Nomen. Aus dem Sanskrit."
+      },
+      "commonMistakes": {
+        "fa": "article das است نه die.",
+        "en": "Article is das, not die.",
+        "de": "Artikel ist das, nicht die."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-joggen",
+      "de": "Joggen",
+      "article": "das",
+      "plural": "—",
+      "ipa": "[ˈdʒɔɡən]",
+      "fa": "دویدن / جاگینگ",
+      "en": "jogging",
+      "example": {
+        "de": "Ich jogge jeden Morgen.",
+        "fa": "من هر صبح می‌دوم.",
+        "en": "I jog every morning."
+      },
+      "usageNotes": {
+        "fa": "اسم و فعل. با 'J' آلمانی (ی) تلفظ شود.",
+        "en": "Noun and verb. Pronounced with German 'J' (y sound).",
+        "de": "Nomen und Verb. Mit deutschem 'J' (y-Laut) aussprechen."
+      },
+      "commonMistakes": {
+        "fa": "'J' آلمانی مانند 'ی' انگلیسی تلفظ شود.",
+        "en": "German 'J' pronounced like English 'y'.",
+        "de": "Deutsches 'J' wie englisches 'y' aussprechen."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-fieber",
+      "de": "Fieber",
+      "article": "das",
+      "plural": "—",
+      "ipa": "[ˈfiːbɐ]",
+      "fa": "تب",
+      "en": "fever",
+      "example": {
+        "de": "Ich habe Fieber.",
+        "fa": "من تب دارم.",
+        "en": "I have a fever."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. با haben استفاده می‌شود: Ich habe Fieber.",
+        "en": "Neuter noun. Used with haben: Ich habe Fieber.",
+        "de": "Neutrales Nomen. Wird mit haben verwendet: Ich habe Fieber."
+      },
+      "commonMistakes": {
+        "fa": "'ie' مانند 'ای' کشیده تلفظ شود.",
+        "en": "'ie' pronounced like long 'ee'.",
+        "de": "'ie' wie langes 'ie' aussprechen."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-husten",
+      "de": "Husten",
+      "article": "der",
+      "plural": "—",
+      "ipa": "[ˈhuːstən]",
+      "fa": "سرفه",
+      "en": "cough",
+      "example": {
+        "de": "Ich habe Husten.",
+        "fa": "من سرفه دارم.",
+        "en": "I have a cough."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. با haben استفاده می‌شود: Ich habe Husten.",
+        "en": "Masculine noun. Used with haben: Ich habe Husten.",
+        "de": "Maskulines Nomen. Wird mit haben verwendet: Ich habe Husten."
+      },
+      "commonMistakes": {
+        "fa": "'hu' با 'u' کوتاه تلفظ شود.",
+        "en": "'hu' with short 'u'.",
+        "de": "'hu' mit kurzem 'u' aussprechen."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-schnupfen",
+      "de": "Schnupfen",
+      "article": "der",
+      "plural": "—",
+      "ipa": "[ˈʃnʊpfən]",
+      "fa": "سرماخوردگی (آبریزش بینی)",
+      "en": "cold (runny nose)",
+      "example": {
+        "de": "Ich habe Schnupfen.",
+        "fa": "من سرماخورده‌ام.",
+        "en": "I have a cold."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. با haben: Ich habe Schnupfen.",
+        "en": "Masculine noun. With haben: Ich habe Schnupfen.",
+        "de": "Maskulines Nomen. Mit haben: Ich habe Schnupfen."
+      },
+      "commonMistakes": {
+        "fa": "'sch' مانند 'ش' و 'pf' مانند 'پف' تلفظ شود.",
+        "en": "'sch' like 'sh' and 'pf' like 'pf'.",
+        "de": "'sch' wie 'sch' und 'pf' wie 'pf' aussprechen."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-arzt",
+      "de": "Arzt",
+      "article": "der",
+      "plural": "Ärzte",
+      "ipa": "[aʁt͡st]",
+      "fa": "پزشک (مرد)",
+      "en": "doctor (male)",
+      "example": {
+        "de": "Ich gehe zum Arzt.",
+        "fa": "من به پزشک می‌روم.",
+        "en": "I am going to the doctor."
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. برای پزشک زن: die Ärztin.",
+        "en": "Masculine noun. For female doctor: die Ärztin.",
+        "de": "Maskulines Nomen. Für Ärztin: die Ärztin."
+      },
+      "commonMistakes": {
+        "fa": "جمع Ärzte با umlaut و -e. beim Arzt = bei dem Arzt.",
+        "en": "Plural Ärzte with umlaut and -e. beim Arzt = bei dem Arzt.",
+        "de": "Plural Ärzte mit Umlaut und -e. beim Arzt = bei dem Arzt."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-wehtun",
+      "de": "wehtun",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈveːtuːən]",
+      "fa": "درد کردن",
+      "en": "to hurt / to ache",
+      "example": {
+        "de": "Mein Bein tut weh.",
+        "fa": "پایم درد می‌کند.",
+        "en": "My leg hurts."
+      },
+      "usageNotes": {
+        "fa": "فعل جداشدنی: tut ... weh. موضوع در nominativ و جزء بدن در dativ.",
+        "en": "Separable verb: tut ... weh. Subject in nominative, body part in dative.",
+        "de": "Trennbares Verb: tut ... weh. Subjekt im Nominativ, Körperteil im Dativ."
+      },
+      "commonMistakes": {
+        "fa": "ساختار: [جزء بدن dativ] tut [شخص nominativ] weh.",
+        "en": "Structure: [body part dative] tut [person nominative] weh.",
+        "de": "Struktur: [Körperteil Dativ] tut [Person Nominativ] weh."
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-krank",
+      "de": "krank",
+      "article": "",
+      "plural": "",
+      "ipa": "[kʁaŋk]",
+      "fa": "بیمار",
+      "en": "sick / ill",
+      "example": {
+        "de": "Ich bin krank.",
+        "fa": "من بیمارم.",
+        "en": "I am sick."
+      },
+      "usageNotes": {
+        "fa": "صفت. با sein استفاده می‌شود: Ich bin krank.",
+        "en": "Adjective. Used with sein: Ich bin krank.",
+        "de": "Adjektiv. Wird mit sein verwendet: Ich bin krank."
+      },
+      "commonMistakes": {
+        "fa": "متضاد: gesund (سالم).",
+        "en": "Opposite: gesund (healthy).",
+        "de": "Gegenteil: gesund (gesund)."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-gesund",
+      "de": "gesund",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡəˈzʊnt]",
+      "fa": "سالم",
+      "en": "healthy",
+      "example": {
+        "de": "Bist du fit und gesund?",
+        "fa": "آیا تو سالم و فعال هستی؟",
+        "en": "Are you fit and healthy?"
+      },
+      "usageNotes": {
+        "fa": "صفت. متضاد krank.",
+        "en": "Adjective. Opposite of krank.",
+        "de": "Adjektiv. Gegenteil von krank."
+      },
+      "commonMistakes": {
+        "fa": "Gesundheit (سلامتی) اسم مربوطه.",
+        "en": "Related noun: Gesundheit (health).",
+        "de": "Zugehöriges Nomen: Gesundheit."
+      },
+      "difficulty": 1,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-danken",
+      "de": "danken",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈdaŋkən]",
+      "fa": "تشکر کردن",
+      "en": "to thank",
+      "example": {
+        "de": "Ich danke dir.",
+        "fa": "از تو ممنونم.",
+        "en": "I thank you."
+      },
+      "usageNotes": {
+        "fa": "فعل + داتیو: Ich danke dir/Ihnen.",
+        "en": "Verb + dative: Ich danke dir/Ihnen.",
+        "de": "Verb + Dativ: Ich danke dir/Ihnen."
+      },
+      "commonMistakes": {
+        "fa": "بعد از danken داتیو بیاید، نه akkusativ.",
+        "en": "After danken use dative, not accusative.",
+        "de": "Nach danken Dativ verwenden, nicht Akkusativ."
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-gefallen",
+      "de": "gefallen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɡəˈfalən]",
+      "fa": "خوش آمدن / پسندیدن",
+      "en": "to please / to like",
+      "example": {
+        "de": "Das gefällt mir.",
+        "fa": "این به من خوش می‌آید.",
+        "en": "I like that. (lit: That pleases me.)"
+      },
+      "usageNotes": {
+        "fa": "فعل + داتیو. ساختار معکوس: شیء gefällt شخص (داتیو).",
+        "en": "Verb + dative. Reversed structure: thing gefällt person (dative).",
+        "de": "Verb + Dativ. Umgekehrte Struktur: Ding gefällt Person (Dativ)."
+      },
+      "commonMistakes": {
+        "fa": "نگویید 'Ich gefalle das' — بگویید 'Das gefällt mir.'",
+        "en": "Don't say 'Ich gefalle das' — say 'Das gefällt mir.'",
+        "de": "Sagen Sie nicht 'Ich gefalle das' — sagen Sie 'Das gefällt mir.'"
+      },
+      "difficulty": 3,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-helfen",
+      "de": "helfen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ˈhɛlfən]",
+      "fa": "کمک کردن",
+      "en": "to help",
+      "example": {
+        "de": "Kann ich dir helfen?",
+        "fa": "می‌توانم به تو کمک کنم؟",
+        "en": "Can I help you?"
+      },
+      "usageNotes": {
+        "fa": "فعل + داتیو: Ich helfe dir.",
+        "en": "Verb + dative: Ich helfe dir.",
+        "de": "Verb + Dativ: Ich helfe dir."
+      },
+      "commonMistakes": {
+        "fa": "بعد از helfen داتیو بیاید.",
+        "en": "After helfen use dative.",
+        "de": "Nach helfen Dativ verwenden."
+      },
+      "difficulty": 2,
+      "frequency": 5
+    },
+    {
+      "id": "voc-l11-training",
+      "de": "Training",
+      "article": "das",
+      "plural": "Trainings",
+      "ipa": "[ˈtʁeːnɪŋ]",
+      "fa": "تمرین (ورزشی)",
+      "en": "training / workout",
+      "example": {
+        "de": "Ich habe heute Training.",
+        "fa": "من امروز تمرین دارم.",
+        "en": "I have training today."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. beim Training = bei dem Training.",
+        "en": "Neuter noun. beim Training = bei dem Training.",
+        "de": "Neutrales Nomen. beim Training = bei dem Training."
+      },
+      "commonMistakes": {
+        "fa": "حرف اضافه bei + dem = beim.",
+        "en": "Preposition bei + dem = beim.",
+        "de": "Präposition bei + dem = beim."
+      },
+      "difficulty": 1,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-fitnessstudio",
+      "de": "Fitness-Studio",
+      "article": "das",
+      "plural": "Fitness-Studios",
+      "ipa": "[ˈfɪtnəs ˌʃtuːdi̯oː]",
+      "fa": "باشگاه فیتنس",
+      "en": "fitness studio / gym",
+      "example": {
+        "de": "Ich gehe ins Fitness-Studio.",
+        "fa": "من به باشگاه فیتنس می‌روم.",
+        "en": "I go to the fitness studio."
+      },
+      "usageNotes": {
+        "fa": "اسم خنثی. ترکیب.",
+        "en": "Neuter noun. Compound word.",
+        "de": "Neutrales Nomen. Kompositum."
+      },
+      "commonMistakes": {
+        "fa": "ins Fitness-Studio = in das Fitness-Studio.",
+        "en": "ins Fitness-Studio = in das Fitness-Studio.",
+        "de": "ins Fitness-Studio = in das Fitness-Studio."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-lieblingssport",
+      "de": "Lieblingssport",
+      "article": "der",
+      "plural": "—",
+      "ipa": "[ˈliːplɪŋsʃpɔʁt]",
+      "fa": "ورزش مورد علاقه",
+      "en": "favourite sport",
+      "example": {
+        "de": "Was ist dein Lieblingssport?",
+        "fa": "ورزش مورد علاقه‌ات چیست؟",
+        "en": "What is your favourite sport?"
+      },
+      "usageNotes": {
+        "fa": "اسم مذکر. ترکیب Liebling + Sport.",
+        "en": "Masculine noun. Compound: Liebling + Sport.",
+        "de": "Maskulines Nomen. Kompositum: Liebling + Sport."
+      },
+      "commonMistakes": {
+        "fa": "article der (همان Sports) است.",
+        "en": "Article is der (same as Sport).",
+        "de": "Artikel ist der (wie Sport)."
+      },
+      "difficulty": 2,
+      "frequency": 3
+    },
+    {
+      "id": "voc-l11-tablette",
+      "de": "Tablette",
+      "article": "die",
+      "plural": "Tabletten",
+      "ipa": "[taˈblɛtə]",
+      "fa": "قرص",
+      "en": "tablet / pill",
+      "example": {
+        "de": "Sie müssen Tabletten nehmen.",
+        "fa": "شما باید قرص بخورید.",
+        "en": "You have to take tablets."
+      },
+      "usageNotes": {
+        "fa": "اسم مؤنث. جمع Tabletten با -n.",
+        "en": "Feminine noun. Plural Tabletten with -n.",
+        "de": "Feminines Nomen. Plural Tabletten mit -n."
+      },
+      "commonMistakes": {
+        "fa": "'b' در آلمانی تلفظ می‌شود (نه بی‌صدا مانند انگلیسی).",
+        "en": "'b' in German is pronounced (not silent like English).",
+        "de": "'b' wird auf Deutsch ausgesprochen (nicht stumm wie im Englischen)."
+      },
+      "difficulty": 2,
+      "frequency": 4
+    },
+    {
+      "id": "voc-l11-entspannen",
+      "de": "entspannen",
+      "article": "",
+      "plural": "",
+      "ipa": "[ɛntˈʃpanən]",
+      "fa": "آرام شدن / ریلکس کردن",
+      "en": "to relax",
+      "example": {
+        "de": "Seid entspannt!",
+        "fa": "آرام باشید!",
+        "en": "Be relaxed!"
+      },
+      "usageNotes": {
+        "fa": "فعل. صیغه فرمانی ihr: Seid entspannt!",
+        "en": "Verb. Imperative ihr: Seid entspannt!",
+        "de": "Verb. Imperativ ihr: Seid entspannt!"
+      },
+      "commonMistakes": {
+        "fa": "'ent' در ابتدای کلمه 'اِنت' تلفظ می‌شود.",
+        "en": "'ent' at the start is pronounced 'ent'.",
+        "de": "'ent' am Anfang wird 'ent' ausgesprochen."
+      },
+      "difficulty": 2,
+      "frequency": 3
     }
   ],
-  "totalSections": 9,
-  "totalQuestions": 0,
-  "totalVocabulary": 0,
-  "isActive": true,
-  "exportable": true
+  "grammar": {
+    "topics": [
+      {
+        "id": "gram-l11-dativ-pronomen",
+        "title": {
+          "fa": "ضمایر شخصی داتیو (Personalpronomen im Dativ)",
+          "en": "Dative Personal Pronouns",
+          "de": "Personalpronomen im Dativ"
+        },
+        "concept": {
+          "fa": "بعد از افعالی مانند gefallen, gehören, danken, schmecken و helfen، ضمیر شخصی باید در حالت داتیو قرار بگیرد. داتیو معمولاً «به کسی» یا «برای کسی» را نشان می‌دهد.",
+          "en": "After verbs like gefallen, gehören, danken, schmecken and helfen, the personal pronoun must be in the dative case. Dative typically indicates 'to someone' or 'for someone'.",
+          "de": "Nach Verben wie gefallen, gehören, danken, schmecken und helfen muss das Personalpronomen im Dativ stehen. Der Dativ gibt meist 'wem' an."
+        },
+        "conjugationTable": {
+          "headers": [
+            "Nominativ",
+            "Dativ",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "ich",
+              "mir",
+              "به من / مرا",
+              "to me"
+            ],
+            [
+              "du",
+              "dir",
+              "به تو / ترا",
+              "to you (inf.)"
+            ],
+            [
+              "er",
+              "ihm",
+              "به او (مرد)",
+              "to him"
+            ],
+            [
+              "sie",
+              "ihr",
+              "به او (زن)",
+              "to her"
+            ],
+            [
+              "es",
+              "ihm",
+              "به آن",
+              "to it"
+            ],
+            [
+              "wir",
+              "uns",
+              "به ما / ما را",
+              "to us"
+            ],
+            [
+              "ihr",
+              "euch",
+              "به شما (جمع)",
+              "to you (pl.)"
+            ],
+            [
+              "sie",
+              "ihnen",
+              "به آنها",
+              "to them"
+            ],
+            [
+              "Sie",
+              "Ihnen",
+              "به شما (رسمی)",
+              "to you (form.)"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Das gefällt mir.",
+            "persian": "داس گِ-فالت میر.",
+            "analysis": "mir = dativ von ich"
+          },
+          {
+            "sentence": "Kann ich dir helfen?",
+            "persian": "کان آیخ دیر هِل-فِن؟",
+            "analysis": "dir = dativ von du"
+          },
+          {
+            "sentence": "Ich danke Ihnen.",
+            "persian": "آین دان-کِه این-نِن.",
+            "analysis": "Ihnen = dativ von Sie (formell)"
+          },
+          {
+            "sentence": "Das gehört ihm.",
+            "persian": "داس گِ-هört ایم.",
+            "analysis": "ihm = dativ von er"
+          },
+          {
+            "sentence": "Der Tee schmeckt uns gut.",
+            "persian": "دِر تِه شمِکت اونس گوت.",
+            "analysis": "uns = dativ von wir"
+          }
+        ],
+        "note": {
+          "fa": "مهم: این افعال همیشه داتیو می‌خواهند: gefallen (خوش آمدن)، gehören (متعلق بودن)، danken (تشکر کردن)، schmecken (طعم دادن)، helfen (کمک کردن).",
+          "en": "Important: These verbs always take dative: gefallen (to please), gehören (to belong to), danken (to thank), schmecken (to taste good to), helfen (to help).",
+          "de": "Wichtig: Diese Verben verlangen immer den Dativ: gefallen, gehören, danken, schmecken, helfen."
+        }
+      },
+      {
+        "id": "gram-l11-imperativ-ihr",
+        "title": {
+          "fa": "صیغه فرمانی — فرم‌های du, ihr و Sie",
+          "en": "Imperative — du, ihr and Sie forms",
+          "de": "Imperativ — du-, ihr- und Sie-Form"
+        },
+        "concept": {
+          "fa": "صیغه فرمانی برای دستور دادن، توصیه یا درخواست استفاده می‌شود. سه فرم اصلی وجود دارد: du (بدون pronoun)، ihr (بدون pronoun) و Sie (با pronoun).",
+          "en": "The imperative is used for giving commands, advice or requests. There are three main forms: du (without pronoun), ihr (without pronoun) and Sie (with pronoun).",
+          "de": "Der Imperativ wird für Befehle, Ratschläge oder Bitten verwendet. Es gibt drei Hauptformen: du (ohne Pronomen), ihr (ohne Pronomen) und Sie (mit Pronomen)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "Infinitiv",
+            "du-Imperativ",
+            "ihr-Imperativ",
+            "Sie-Imperativ",
+            "فارسی"
+          ],
+          "rows": [
+            [
+              "gehen",
+              "Geh!",
+              "Geht!",
+              "Gehen Sie!",
+              "برو! / بروید!"
+            ],
+            [
+              "lesen",
+              "Lies!",
+              "Lest!",
+              "Lesen Sie!",
+              "بخوان! / بخوانید!"
+            ],
+            [
+              "aufstehen",
+              "Steh auf!",
+              "Steht auf!",
+              "Stehen Sie auf!",
+              "بلند شو! / بلند شوید!"
+            ],
+            [
+              "einatmen",
+              "Atme ein!",
+              "Atmet ein!",
+              "Atmen Sie ein!",
+              "نفس بکش! / نفس بکشید!"
+            ],
+            [
+              "sein",
+              "Sei entspannt!",
+              "Seid entspannt!",
+              "Seien Sie entspannt!",
+              "آرام باش! / آرام باشید!"
+            ],
+            [
+              "öffnen",
+              "Öffne!",
+              "Öffnet!",
+              "Öffnen Sie!",
+              "باز کن! / باز کنید!"
+            ],
+            [
+              "nehmen",
+              "Nimm!",
+              "Nehmt!",
+              "Nehmen Sie!",
+              "بگیر! / بگیرید!"
+            ],
+            [
+              "heben",
+              "Heb!",
+              "Hebt!",
+              "Heben Sie!",
+              "بالا ببر! / بالا ببرید!"
+            ],
+            [
+              "legen",
+              "Leg!",
+              "Legt!",
+              "Legen Sie!",
+              "بگذار! / بگذارید!"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Seid entspannt!",
+            "persian": "زایت اِنت-شپانت!",
+            "analysis": "ihr-Imperativ von sein → Seid"
+          },
+          {
+            "sentence": "Legt den Kopf nach rechts.",
+            "persian": "لِگت دِن کُپف ناخت رِشتس.",
+            "analysis": "ihr-Imperativ von legen → Legt"
+          },
+          {
+            "sentence": "Hebt das Bein!",
+            "persian": "هِبت داس باین!",
+            "analysis": "ihr-Imperativ von heben → Hebt"
+          },
+          {
+            "sentence": "Öffnen Sie bitte den Mund!",
+            "persian": "اوف-نِن زی بیتِه دِن مونت!",
+            "analysis": "Sie-Imperativ von öffnen → Öffnen Sie"
+          }
+        ],
+        "note": {
+          "fa": "در فرم ihr و Sie، صیغه فرمانی دقیقاً مانند حالت ساده (Präsens) است. فقط در فرم du ممکن است تغییرات جزئی وجود داشته باشد (مثلاً lies به جای du liest).",
+          "en": "In the ihr and Sie forms, the imperative is exactly like the present tense. Only in the du form might there be minor changes (e.g. lies instead of du liest).",
+          "de": "In der ihr- und Sie-Form ist der Imperativ genau wie das Präsens. Nur in der du-Form kann es kleine Änderungen geben (z.B. lies statt du liest)."
+        }
+      },
+      {
+        "id": "gram-l11-possessiv-unser-euer",
+        "title": {
+          "fa": "ضمایر ملکی unser, euer و ihr (مال ما، مال شما، مال آنها)",
+          "en": "Possessive Articles unser, euer and ihr (our, your pl., their)",
+          "de": "Possessivartikel unser, euer und ihr"
+        },
+        "concept": {
+          "fa": "در درس‌های قبلی mein/dein/sein/ihr را یاد گرفتید. حالا ضمایر ملکی جمع: unser (مال ما)، euer (مال شما - جمع دوستانه) و ihr (مال آنها) را یاد می‌گیرید.",
+          "en": "You previously learned mein/dein/sein/ihr. Now you'll learn plural possessive articles: unser (our), euer (your - informal plural) and ihr (their).",
+          "de": "Sie haben bereits mein/dein/sein/ihr gelernt. Jetzt lernen Sie die Plural-Possessivartikel: unser (unser), euer (euer) und ihr (ihr)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "مذکر (der)",
+            "خنثی (das)",
+            "مؤنث (die)",
+            "جمع (die)"
+          ],
+          "rows": [
+            [
+              "wir → unser",
+              "unser",
+              "unser",
+              "unsere",
+              "unsere"
+            ],
+            [
+              "ihr → euer",
+              "euer",
+              "euer",
+              "eure",
+              "eure"
+            ],
+            [
+              "sie → ihr",
+              "ihr",
+              "ihr",
+              "ihre",
+              "ihre"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Unser Training beginnt um 18 Uhr.",
+            "persian": "اون-زِر تْرای-نینگ بِ-گینت اوم اَخت-تسِن اور.",
+            "analysis": "unser Training = تمرین ما (خنثی)"
+          },
+          {
+            "sentence": "Ist das euer Fitness-Studio?",
+            "persian": "ایست داس اوی-ر فیت-نِس اشتودی-و؟",
+            "analysis": "euer Fitness-Studio = باشگاه شما (خنثی)"
+          },
+          {
+            "sentence": "Ihre Kinder sind sehr sportlich.",
+            "persian": "ای-رِه کین-دِر زیند زِر شپورت-لِش.",
+            "analysis": "Ihre Kinder = بچه‌های آنها (جمع)"
+          },
+          {
+            "sentence": "Das ist unsere neue Ärztin.",
+            "persian": "داس ایست اون-زِ-رِه نوی-ه اِرشت-ین.",
+            "analysis": "unsere Ärztin = پزشک زن ما (مؤنث)"
+          }
+        ],
+        "note": {
+          "fa": "توجه: euer در مؤنث و جمع eure می‌شود (یک e حذف می‌شود). ihr (مال آنها) را با ihr (به او - داتیو مؤنث) اشتباه نگیرید — بافتار مشخص‌کننده است.",
+          "en": "Note: euer becomes eure in feminine and plural (one 'e' is dropped). Don't confuse ihr (their) with ihr (to her - dative feminine) — context makes it clear.",
+          "de": "Hinweis: euer wird im Feminin und Plural zu eure (ein 'e' entfällt). Verwechseln Sie ihr (ihr) nicht mit ihr (ihr Dativ) — der Kontext klärt das."
+        }
+      },
+      {
+        "id": "gram-l11-duerfen",
+        "title": {
+          "fa": "فعل راهبردی dürfen — اجازه و ممنوعیت",
+          "en": "Modal Verb dürfen — Permission and Prohibition",
+          "de": "Modalverb dürfen — Erlaubnis und Verbot"
+        },
+        "concept": {
+          "fa": "فعل dürfen به معنای «اجازه داشتن» است. صرف منفی آن (nicht dürfen) به معنای «ممنوعیت» است. تفاوت مهم با müssen: müssen = باید (الزام)، dürfen = می‌توانی (اجازه). nicht dürfen = نباید (ممنوع).",
+          "en": "The verb dürfen means 'to be allowed to'. Its negative form (nicht dürfen) means 'prohibited'. Important difference with müssen: müssen = must (obligation), dürfen = may (permission). nicht dürfen = must not (prohibition).",
+          "de": "Das Verb dürfen bedeutet 'erlaubt sein'. Seine Verneinung (nicht dürfen) bedeutet 'verboten sein'. Wichtiger Unterschied zu müssen: müssen = müssen (Pflicht), dürfen = dürfen (Erlaubnis). nicht dürfen = nicht dürfen (Verbot)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "ضمیر",
+            "dürfen",
+            "نفی (nicht dürfen)",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "ich",
+              "darf",
+              "darf nicht",
+              "اجازه دارم / نباید",
+              "may / must not"
+            ],
+            [
+              "du",
+              "darfst",
+              "darfst nicht",
+              "اجازه داری / نباید",
+              "may / must not"
+            ],
+            [
+              "er/sie/es",
+              "darf",
+              "darf nicht",
+              "اجازه دارد / نباید",
+              "may / must not"
+            ],
+            [
+              "wir",
+              "dürfen",
+              "dürfen nicht",
+              "اجازه داریم / نباید",
+              "may / must not"
+            ],
+            [
+              "ihr",
+              "dürft",
+              "dürft nicht",
+              "اجازه دارید / نباید",
+              "may / must not"
+            ],
+            [
+              "sie/Sie",
+              "dürfen",
+              "dürfen nicht",
+              "اجازه دارند / نباید",
+              "may / must not"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Darf ich hier rauchen?",
+            "persian": "دارف آیخ هیر راو-خِن؟",
+            "analysis": "darf = اجازه دارم"
+          },
+          {
+            "sentence": "Hier dürfen Sie nicht rauchen!",
+            "persian": "هیر دورفِن زی نِشت راو-خِن!",
+            "analysis": "dürfen nicht = ممنوع است"
+          },
+          {
+            "sentence": "Du darfst nicht arbeiten. Du bist krank!",
+            "persian": "دو دارفست نِشت آربایتِن. دو بینست کرانک!",
+            "analysis": "darfst nicht = نباید"
+          },
+          {
+            "sentence": "Dürfen wir Sport machen?",
+            "persian": "دورفِن ویر شپورت ماخِن؟",
+            "analysis": "dürfen = آیا اجازه داریم؟"
+          },
+          {
+            "sentence": "Nein, Sie dürfen keinen Sport machen!",
+            "persian": "ناین، زی دورفِن کاینِن شپورت ماخِن!",
+            "analysis": "dürfen keinen Sport = ورزش نباید بکنید"
+          }
+        ],
+        "note": {
+          "fa": "تمایز کلیدی: «Du musst nicht arbeiten» = لازم نیست کار کنی (اختیاری). «Du darfst nicht arbeiten» = حق نداری کار کنی (ممنوع). این تفاوت بسیار مهم است!",
+          "en": "Key distinction: 'Du musst nicht arbeiten' = you don't have to work (optional). 'Du darfst nicht arbeiten' = you must not work (prohibited). This difference is very important!",
+          "de": "Wichtiger Unterschied: 'Du musst nicht arbeiten' = du musst nicht arbeiten (optional). 'Du darfst nicht arbeiten' = du darfst nicht arbeiten (verboten). Dieser Unterschied ist sehr wichtig!"
+        }
+      },
+      {
+        "id": "gram-l11-bei-zu-dativ",
+        "title": {
+          "fa": "حروف اضافه bei و zu با داتیو",
+          "en": "Prepositions bei and zu with Dative",
+          "de": "Präpositionen bei und zu mit Dativ"
+        },
+        "concept": {
+          "fa": "bei و zu هر دو حروف اضافه داتیو‌گیر هستند. bei به معنای «نزد / در / هنگام» و zu به معنای «به / برای» است.bei + dem = beim و zu + dem = zum و zu + der = zur.",
+          "en": "bei and zu both take the dative case. bei means 'at / by / during' and zu means 'to / for'. bei + dem = beim and zu + dem = zum and zu + der = zur.",
+          "de": "bei und zu verlangen beide den Dativ. bei bedeutet 'bei / an / während' und zu bedeutet 'zu / nach'. bei + dem = beim und zu + dem = zum und zu + der = zur."
+        },
+        "conjugationTable": {
+          "headers": [
+            "حرف اضافه + آرتیکل",
+            "شکل فشرد",
+            "مثال",
+            "فارسی",
+            "English"
+          ],
+          "rows": [
+            [
+              "bei + dem",
+              "beim",
+              "beim Arzt",
+              "نزد پزشک",
+              "at the doctor's"
+            ],
+            [
+              "bei + dem",
+              "beim",
+              "beim Training",
+              "هنگام تمرین",
+              "at training"
+            ],
+            [
+              "bei + der",
+              "bei der",
+              "bei der Ärztin",
+              "نزد پزشک زن",
+              "at the (female) doctor's"
+            ],
+            [
+              "bei + dem",
+              "beim",
+              "beim Sport",
+              "هنگام ورزش",
+              "during sports"
+            ],
+            [
+              "zu + dem",
+              "zum",
+              "zum Arzt",
+              "به پزشک",
+              "to the doctor"
+            ],
+            [
+              "zu + dem",
+              "zum",
+              "zum Rathaus",
+              "به شهرداری",
+              "to the town hall"
+            ],
+            [
+              "zu + der",
+              "zur",
+              "zur Schule",
+              "به مدرسه",
+              "to school"
+            ],
+            [
+              "zu + der",
+              "zur",
+              "zur Arbeit",
+              "به سر کار",
+              "to work"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Ich bin beim Arzt.",
+            "persian": "آین بین بایم آرتست.",
+            "analysis": "beim = bei dem → bei + Dativ"
+          },
+          {
+            "sentence": "Geh zum Arzt!",
+            "persian": "گه تسوم آرتست!",
+            "analysis": "zum = zu dem → zu + Dativ"
+          },
+          {
+            "sentence": "Sie geht zur Schule.",
+            "persian": "زی گیت تسور شولِه.",
+            "analysis": "zur = zu der → zu + Dativ (feminin)"
+          },
+          {
+            "sentence": "Beim Training trinke ich viel Wasser.",
+            "persian": "بایم تْرای-نینگ تْرین-کِه آیخ فیال واسِر.",
+            "analysis": "beim = bei dem Training"
+          }
+        ],
+        "note": {
+          "fa": "فرم‌های فشرد مهم: beim = bei dem، zum = zu dem، zur = zu der. این‌ها بسیار رایج هستند و باید حفظ شوند.",
+          "en": "Important contractions: beim = bei dem, zum = zu dem, zur = zu der. These are very common and must be memorized.",
+          "de": "Wichtige Kontraktionen: beim = bei dem, zum = zu dem, zur = zu der. Diese sind sehr häufig und müssen auswendig gelernt werden."
+        }
+      },
+      {
+        "id": "gram-l11-muessen-duerfen",
+        "title": {
+          "fa": "تمایز müssen و dürfen — الزام در برابر اجازه",
+          "en": "Distinguishing müssen and dürfen — Obligation vs. Permission",
+          "de": "Unterschied müssen und dürfen — Pflicht vs. Erlaubnis"
+        },
+        "concept": {
+          "fa": "müssen به معنای «باید» (الزام) و dürfen به معنای «مجاز بودن» (اجازه) است. نفی آن‌ها متفاوت است: nicht müssen = لازم نیست (اختیاری) ولی nicht dürfen = ممنوع است.",
+          "en": "müssen means 'must' (obligation) and dürfen means 'may' (permission). Their negations differ: nicht müssen = don't have to (optional) but nicht dürfen = must not (prohibited).",
+          "de": "müssen bedeutet 'müssen' (Pflicht) und dürfen bedeutet 'dürfen' (Erlaubnis). Ihre Verneinungen unterscheiden sich: nicht müssen = nicht müssen (optional), aber nicht dürfen = nicht dürfen (verboten)."
+        },
+        "conjugationTable": {
+          "headers": [
+            "جمله",
+            "معنی فارسی",
+            "English meaning",
+            "نوع"
+          ],
+          "rows": [
+            [
+              "Du musst arbeiten.",
+              "تو باید کار کنی.",
+              "You must work.",
+              "الزام (müssen)"
+            ],
+            [
+              "Du musst nicht arbeiten.",
+              "تو لازم نیست کار کنی.",
+              "You don't have to work.",
+              "الزام نفی (nicht müssen)"
+            ],
+            [
+              "Du darfst arbeiten.",
+              "تو اجازه داری کار کنی.",
+              "You may work.",
+              "اجازه (dürfen)"
+            ],
+            [
+              "Du darfst nicht arbeiten.",
+              "تو حق نداری کار کنی.",
+              "You must not work.",
+              "ممنوعیت (nicht dürfen)"
+            ]
+          ]
+        },
+        "examples": [
+          {
+            "sentence": "Sie müssen Tabletten nehmen.",
+            "persian": "زی مو-سِن تا-بِتِن نِ-مِن.",
+            "analysis": "müssen = باید (دستور پزشک)"
+          },
+          {
+            "sentence": "Sie dürfen keinen Sport machen!",
+            "persian": "زی دور-فِن کای-نِن شپورت ماخِن!",
+            "analysis": "dürfen nicht = ممنوع است"
+          },
+          {
+            "sentence": "Auch Rauchen ist verboten!",
+            "persian": "آوخ راو-خِن ایست فِر-بوتِن!",
+            "analysis": "ist verboten = ممنوع است (جایگزین برای darfst nicht)"
+          }
+        ],
+        "note": {
+          "fa": "نکته کلیدی: «ist verboten» هم معادل «darf man nicht» است. مثلاً 'Rauchen ist verboten' = 'Man darf nicht rauchen'.",
+          "en": "Key point: 'ist verboten' is equivalent to 'darf man nicht'. E.g. 'Rauchen ist verboten' = 'Man darf nicht rauchen'.",
+          "de": "Wichtiger Punkt: 'ist verboten' ist gleichbedeutend mit 'darf man nicht'. Z.B. 'Rauchen ist verboten' = 'Man darf nicht rauchen'."
+        }
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "dialog-l11-sport-preferences",
+      "title": {
+        "fa": "دیالوگ ۱ — صحبت در مورد ورزش و برنامه‌های تلویزیونی",
+        "en": "Dialogue 1 — Talking about Sports and TV Programs",
+        "de": "Dialog 1 — Über Sport und Fernsehprogramme sprechen"
+      },
+      "characters": [
+        {
+          "name": "Person A",
+          "role": {
+            "fa": "شخص اول",
+            "en": "Person A",
+            "de": "Person A"
+          }
+        },
+        {
+          "name": "Person B",
+          "role": {
+            "fa": "شخص دوم",
+            "en": "Person B",
+            "de": "Person B"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Person A",
+          "german": "Sag mal, gefällt dir der Yogakurs?",
+          "persian": "زاگ مال، گِ-فالت دیر دِر یو-گا-کورس؟",
+          "meaning": {
+            "fa": "بگو ببینم، آیا کلاس یوگا را دوست داری؟",
+            "en": "Tell me, do you like the yoga class?",
+            "de": "Sag mal, gefällt dir der Yogakurs?"
+          }
+        },
+        {
+          "speaker": "Person B",
+          "german": "Nein, eigentlich nicht. Und dir?",
+          "persian": "ناین، آی-گِنتلِش نِشت. اوند دیر؟",
+          "meaning": {
+            "fa": "نه، واقعاً نه. و تو؟",
+            "en": "No, not really. And you?",
+            "de": "Nein, eigentlich nicht. Und dir?"
+          }
+        },
+        {
+          "speaker": "Person A",
+          "german": "Mir auch nicht!",
+          "persian": "میر آوخ نِشت!",
+          "meaning": {
+            "fa": "من هم نه!",
+            "en": "Me neither!",
+            "de": "Mir auch nicht!"
+          }
+        },
+        {
+          "speaker": "Person A",
+          "german": "Sag mal, gefällt dir die Sportschau?",
+          "persian": "زاگ مال، گِ-فالت دیر دی شپورت-شاو؟",
+          "meaning": {
+            "fa": "بگو ببینم، برنامه ورزشی را دوست داری؟",
+            "en": "Tell me, do you like the sports show?",
+            "de": "Sag mal, gefällt dir die Sportschau?"
+          }
+        },
+        {
+          "speaker": "Person B",
+          "german": "Ja, sehr. Und dir?",
+          "persian": "یا، زِر. اوند دیر؟",
+          "meaning": {
+            "fa": "بله، خیلی. و تو؟",
+            "en": "Yes, very much. And you?",
+            "de": "Ja, sehr. Und dir?"
+          }
+        },
+        {
+          "speaker": "Person A",
+          "german": "Mir auch!",
+          "persian": "میر آوخ!",
+          "meaning": {
+            "fa": "من هم!",
+            "en": "Me too!",
+            "de": "Mir auch!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialog-l11-emma-fitness",
+      "title": {
+        "fa": "دیالوگ ۲ — اِما در باشگاه فیتنس",
+        "en": "Dialogue 2 — Emma at the Fitness Studio",
+        "de": "Dialog 2 — Emma im Fitness-Studio"
+      },
+      "characters": [
+        {
+          "name": "Emma",
+          "role": {
+            "fa": "شاگرد (اِما)",
+            "en": "Student (Emma)",
+            "de": "Kursteilnehmerin (Emma)"
+          }
+        },
+        {
+          "name": "Trainer",
+          "role": {
+            "fa": "مربی",
+            "en": "Trainer",
+            "de": "Trainer"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Emma",
+          "german": "Entschuldigung, wo ist heute Step?",
+          "persian": "اِنت-شول-دی-گونگ، وو ایست هویتِه اشتِپ؟",
+          "meaning": {
+            "fa": "ببخشید، کلاس استپ امروز کجاست؟",
+            "en": "Excuse me, where is Step today?",
+            "de": "Entschuldigung, wo ist heute Step?"
+          }
+        },
+        {
+          "speaker": "Trainer",
+          "german": "Step ist in Raum 2.",
+          "persian": "اشتِپ ایست این رائوم تسوای.",
+          "meaning": {
+            "fa": "استپ در اتاق ۲ است.",
+            "en": "Step is in room 2.",
+            "de": "Step ist in Raum 2."
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Ah, danke!",
+          "persian": "آه، دان-کِه!",
+          "meaning": {
+            "fa": "آه، ممنون!",
+            "en": "Ah, thanks!",
+            "de": "Ah, danke!"
+          }
+        },
+        {
+          "speaker": "Trainer",
+          "german": "Kann ich dir helfen?",
+          "persian": "کان آیخ دیر هِل-فِن؟",
+          "meaning": {
+            "fa": "می‌توانم کمکت کنم؟",
+            "en": "Can I help you?",
+            "de": "Kann ich dir helfen?"
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Ja, ich suche den Kurs.",
+          "persian": "یا، آیخ زو-خِه دِن کورس.",
+          "meaning": {
+            "fa": "بله، دنبال کلاس می‌گردم.",
+            "en": "Yes, I'm looking for the class.",
+            "de": "Ja, ich suche den Kurs."
+          }
+        },
+        {
+          "speaker": "Trainer",
+          "german": "Gerne. Gefällt dir der Kurs?",
+          "persian": "گِرنِه. گِ-فالت دیر دِر کورس؟",
+          "meaning": {
+            "fa": "با کمال میل. آیا کلاس را دوست داری؟",
+            "en": "Gladly. Do you like the class?",
+            "de": "Gerne. Gefällt dir der Kurs?"
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Ja, sehr.",
+          "persian": "یا، زِر.",
+          "meaning": {
+            "fa": "بله، خیلی.",
+            "en": "Yes, very much.",
+            "de": "Ja, sehr."
+          }
+        },
+        {
+          "speaker": "Trainer",
+          "german": "Und was meint dein Freund?",
+          "persian": "اوند واس ماینت داین فروی-نت؟",
+          "meaning": {
+            "fa": "و دوست‌پسرت چی می‌گوید؟",
+            "en": "And what does your boyfriend think?",
+            "de": "Und was meint dein Freund?"
+          }
+        },
+        {
+          "speaker": "Emma",
+          "german": "Ihm gefällt's auch.",
+          "persian": "ایم گِ-فالتس آوخ.",
+          "meaning": {
+            "fa": "او هم خوشش می‌آید.",
+            "en": "He likes it too.",
+            "de": "Ihm gefällt's auch."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialog-l11-doctor",
+      "title": {
+        "fa": "دیالوگ ۳ — نزد پزشک",
+        "en": "Dialogue 3 — At the Doctor's Office",
+        "de": "Dialog 3 — Beim Arzt"
+      },
+      "characters": [
+        {
+          "name": "Arzt",
+          "role": {
+            "fa": "پزشک",
+            "en": "Doctor",
+            "de": "Arzt"
+          }
+        },
+        {
+          "name": "Frau Hehl",
+          "role": {
+            "fa": "خانم هِل (بیمار)",
+            "en": "Mrs. Hehl (Patient)",
+            "de": "Frau Hehl (Patientin)"
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Arzt",
+          "german": "Guten Morgen, Frau Hehl. Wie geht es Ihnen?",
+          "persian": "گو-تِن مور-گِن، فرو هایل. وی گیت اِس این-نِن؟",
+          "meaning": {
+            "fa": "صبح بخیر خانم هِل. حال شما چطور است؟",
+            "en": "Good morning, Mrs. Hehl. How are you?",
+            "de": "Guten Morgen, Frau Hehl. Wie geht es Ihnen?"
+          }
+        },
+        {
+          "speaker": "Frau Hehl",
+          "german": "Ach, nicht so gut. Ich habe Fieber und Husten.",
+          "persian": "آخ، نِشت زو گوت. آیخ هابِه فی-بِر اوند هوستِن.",
+          "meaning": {
+            "fa": "آخ، خیلی خوب نیست. تب و سرفه دارم.",
+            "en": "Oh, not so good. I have a fever and a cough.",
+            "de": "Ach, nicht so gut. Ich habe Fieber und Husten."
+          }
+        },
+        {
+          "speaker": "Arzt",
+          "german": "Seit wann?",
+          "persian": "زایت وان؟",
+          "meaning": {
+            "fa": "از کی؟",
+            "en": "Since when?",
+            "de": "Seit wann?"
+          }
+        },
+        {
+          "speaker": "Frau Hehl",
+          "german": "Seit gestern.",
+          "persian": "زایت گِ-ستِرن.",
+          "meaning": {
+            "fa": "از دیروز.",
+            "en": "Since yesterday.",
+            "de": "Seit gestern."
+          }
+        },
+        {
+          "speaker": "Arzt",
+          "german": "Darf ich mal sehen? Öffnen Sie bitte den Mund. Sagen Sie Ah...",
+          "persian": "دارف آیخ مال زِ-ئِن؟ اوف-نِن زی بیتِه دِن مونت. زاگِن زی آه...",
+          "meaning": {
+            "fa": "می‌توانم نگاه کنم؟ لطفاً دهانتان را باز کنید. بگویید آه...",
+            "en": "May I take a look? Please open your mouth. Say Ah...",
+            "de": "Darf ich mal sehen? Öffnen Sie bitte den Mund. Sagen Sie Ah..."
+          }
+        },
+        {
+          "speaker": "Frau Hehl",
+          "german": "Aaaah!",
+          "persian": "آآآه!",
+          "meaning": {
+            "fa": "آآآه!",
+            "en": "Aaaah!",
+            "de": "Aaaah!"
+          }
+        },
+        {
+          "speaker": "Arzt",
+          "german": "Na, das sieht nicht gut aus! Also, Sie müssen Tabletten nehmen.",
+          "persian": "نا، داس زیت نِشت گوت آوس! آ-لو، زی مو-سِن تا-بِتِن نِ-مِن.",
+          "meaning": {
+            "fa": "خب، این خیلی خوب به نظر نمی‌رسد! پس، شما باید قرص بخورید.",
+            "en": "Well, that doesn't look good! So, you need to take tablets.",
+            "de": "Na, das sieht nicht gut aus! Also, Sie müssen Tabletten nehmen."
+          }
+        },
+        {
+          "speaker": "Arzt",
+          "german": "Und Sie müssen viel trinken. Tee oder Wasser. Und leicht essen.",
+          "persian": "اوند زی مو-سِن فیال تْرین-کِن. تِه اودِر واسِر. اوند لایخت اِسِن.",
+          "meaning": {
+            "fa": "و باید زیاد آب بنوشید. چای یا آب. و غذای سبک بخورید.",
+            "en": "And you need to drink a lot. Tea or water. And eat light meals.",
+            "de": "Und Sie müssen viel trinken. Tee oder Wasser. Und leicht essen."
+          }
+        },
+        {
+          "speaker": "Frau Hehl",
+          "german": "Ja, gut. Danke. Und darf ich Sport machen?",
+          "persian": "یا، گوت. دان-کِه. اوند دارف آیخ شپورت ماخِن؟",
+          "meaning": {
+            "fa": "بله، خوب است. ممنون. آیا می‌توانم ورزش کنم؟",
+            "en": "Yes, okay. Thanks. And may I do sports?",
+            "de": "Ja, gut. Danke. Und darf ich Sport machen?"
+          }
+        },
+        {
+          "speaker": "Arzt",
+          "german": "Nein. Kein Sport! Kein Stress! Auch Rauchen ist verboten!",
+          "persian": "ناین. کاین شپورت! کاین اشتْرِس! آوخ راو-خِن ایست فِر-بوتِن!",
+          "meaning": {
+            "fa": "نه. هیچ ورزشی! هیچ استرسی! سیگار کشیدن هم ممنوع است!",
+            "en": "No. No sports! No stress! Smoking is also forbidden!",
+            "de": "Nein. Kein Sport! Kein Stress! Auch Rauchen ist verboten!"
+          }
+        },
+        {
+          "speaker": "Frau Hehl",
+          "german": "Oh!",
+          "persian": "او!",
+          "meaning": {
+            "fa": "او!",
+            "en": "Oh!",
+            "de": "Oh!"
+          }
+        }
+      ]
+    }
+  ],
+  "cultureNotes": {
+    "fa": "ورزش در کشورهای آلمانی‌زبان نقش بسیار مهمی در زندگی روزمره دارد. در آلمان، فوتبال محبوب‌ترین ورزش است و حدود ۳۵ درصد مردم آن را تماشا می‌کنند. برنامه‌های ورزشی مانند Sportschau (شبکه ARD) و das aktuelle Sportstudio (شبکه ZDF) هر هفته میلیون‌ها بیننده دارند. Bundesliga (لیگ برتر فوتبال آلمان) یکی از معروف‌ترین لیگ‌های جهان است و تیم‌هایی مانند بایرن مونیخ، بروسیا دورتموند و شالکه ۰۴ طرفداران بسیاری در سراسر جهان دارند.\n\nدر اتریش، ورزش‌های زمستانی محبوبیت خاصی دارند. Ski alpin (اسکی روی یخ) و Skispringen (اسکی پرش) در صدر قرار دارند و فوتبال تنها در رتبه سوم است. این به دلیل کوه‌های آلپ و زمستان‌های سرد اتریش طبیعی است. بسیاری از اتریشی‌ها از کودکی اسکی یاد می‌گیرند.\n\nدر سوئیس نیز اسکی (Ski alpin) بسیار محبوب است. علاوه بر این، Eisstockschießen (بولینگ روی یخ) و Schwingen (کشتی سنتی سوئیسی) ورزش‌های محبوبی هستند. Tennis و Jogging نیز در هر سه کشور طرفداران بسیاری دارند.\n\nنکته جالب فرهنگی: در آلمان، ورزش‌های باشگاهی (Vereinssport) بسیار رایج هستند. بسیاری از افراد در Vereine (انجمن‌ها) عضو می‌شوند و علاوه بر ورزش، فعالیت‌های اجتماعی نیز انجام می‌دهند. حدود ۲۷ میلیون نفر در آلمان عضو یک Sportverein هستند.\n\nدر مورد سلامتی و درمان سرماخوردگی، فرهنگ‌های مختلف روش‌های خاص خود را دارند. در کره جنوبی، مصرف ویتامین C و غذاهای تخمیری مانند Kimchi (شبیه به ترشی کلم آلمانی — Sauerkraut) توصیه می‌شود. در فرانسه، نوشیدن آب فراوان و خواب کافی بهترین راه درمان است. در آفریقای جنوبی، مردم معمولاً آنتی‌بیوتیک مصرف نمی‌کنند و اجازه می‌دهند بدن خودش با ویروس مبارزه کند. در اسپانیا، مصرف زیاد میوه، به‌ویژه پرتقال و لیمو، توصیه می‌شود. در سوئیس، چای با عسل و لیمو و استراحت بهترین درمان است. و در آمریکا، سوپ مرغ مانند دستور پخت مادربزرگ بهترین داروی سرماخوردگی محسوب می‌شود!\n\nنکته مهم: در آلمان، برای مراجعه به پزشک معمولاً باید قبلاً تلفنی وقت بگیرید (einen Termin machen). سیستم بیمه سلامت آلمان (Krankenversicherung) برای همه افراد اجباری است و هزینه‌های پزشکی را پوشش می‌دهد.",
+    "en": "Sports play a very important role in daily life in German-speaking countries. In Germany, football is the most popular sport, with about 35% of the population watching it. Sports programs like Sportschau (ARD network) and das aktuelle Sportstudio (ZDF network) attract millions of viewers every week. The Bundesliga (German Football League) is one of the most famous leagues in the world, and teams like Bayern Munich, Borussia Dortmund and Schalke 04 have fans all over the world.\n\nIn Austria, winter sports are particularly popular. Ski alpin (alpine skiing) and Skispringen (ski jumping) are at the top, with football only in third place. This is natural given Austria's Alpine mountains and cold winters. Many Austrians learn to ski from childhood.\n\nIn Switzerland, too, skiing (Ski alpin) is very popular. In addition, Eisstockschießen (ice stock sport) and Schwingen (traditional Swiss wrestling) are popular sports. Tennis and jogging also have many fans in all three countries.\n\nAn interesting cultural note: In Germany, club sports (Vereinssport) are very common. Many people join Vereine (clubs/associations) and, besides sports, also engage in social activities. About 27 million people in Germany are members of a Sportverein.\n\nRegarding health and treating colds, different cultures have their own special methods. In South Korea, consuming Vitamin C and fermented foods like Kimchi (similar to German Sauerkraut) is recommended. In France, drinking plenty of water and getting enough sleep is considered the best remedy. In South Africa, people usually don't take antibiotics and let the body fight the virus itself. In Spain, consuming lots of fruit, especially oranges and lemons, is recommended. In Switzerland, tea with honey and lemon plus rest is the best treatment. And in the USA, chicken soup like grandma's recipe is considered the best cold medicine!\n\nImportant note: In Germany, you usually need to make an appointment by phone (einen Termin machen) before visiting a doctor. Germany's health insurance system (Krankenversicherung) is mandatory for everyone and covers medical costs.",
+    "de": "Sport spielt im Alltag in den deutschsprachigen Ländern eine sehr wichtige Rolle. In Deutschland ist Fußball die beliebteste Sportart, etwa 35% der Bevölkerung schauen ihn sich an. Sportsendungen wie die Sportschau (ARD) und das aktuelle Sportstudio (ZDF) erreichen wöchentlich Millionen von Zuschauern. Die Bundesliga ist eine der bekanntesten Ligen der Welt, und Teams wie Bayern München, Borussia Dortmund und Schalke 04 haben Fans auf der ganzen Welt.\n\nIn Österreich sind Wintersportarten besonders beliebt. Ski alpin und Skispringen stehen an der Spitze, Fußball liegt nur auf Platz drei. Das ist angesichts der Alpen und der kalten Winter in Österreich natürlich. Viele Österreicher lernen vom Kindesalter an skifahren.\n\nAuch in der Schweiz ist Skifahren (Ski alpin) sehr beliebt. Daneben sind Eisstockschießen und Schwingen (Schweizer Ringen) populäre Sportarten. Tennis und Jogging haben in allen drei Ländern viele Anhänger.\n\nEine interessante kulturelle Besonderheit: In Deutschland sind Vereinssportarten sehr weit verbreitet. Viele Menschen treten Vereinen bei und betreiben neben dem Sport auch soziale Aktivitäten. Etwa 27 Millionen Menschen in Deutschland sind in einem Sportverein organisiert.\n\nWas Gesundheit und die Behandlung von Erkältungen betrifft, haben verschiedene Kulturen ihre eigenen besonderen Methoden. In Südkorea wird der Konsum von Vitamin C und fermentierten Lebensmitteln wie Kimchi (ähnlich wie deutsches Sauerkraut) empfohlen. In Frankreich gilt viel Wasser trinken und ausreichend Schlaf als bestes Mittel. In Südafrika nehmen die Menschen meist keine Antibiotika und lassen den Körper selbst gegen das Virus kämpfen. In Spanien wird der Verzehr von viel Obst, besonders Orangen und Zitronen, empfohlen. In der Schweiz ist Tee mit Honig und Zitrone plus Ruhe die beste Behandlung. Und in den USA gilt Hühnersuppe nach Großmutters Rezept als das beste Erkältungsmittel!\n\nWichtiger Hinweis: In Deutschland muss man in der Regel vorher telefonisch einen Termin vereinbaren (einen Termin machen), bevor man zum Arzt geht. Das deutsche Krankenversicherungssystem ist für alle obligatorisch und deckt die medizinischen Kosten."
+  },
+  "exercises": {
+    "dativ_pronomen": [
+      {
+        "id": "ex-l11-dat-1",
+        "type": "choice",
+        "title": {
+          "fa": "ضمیر داتیو صحیح را انتخاب کنید",
+          "en": "Choose the correct dative pronoun",
+          "de": "Wählen Sie das richtige Dativpronomen"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، ضمیر داتیو درست را انتخاب کنید.",
+          "en": "For each sentence, choose the correct dative pronoun.",
+          "de": "Wählen Sie für jeden Satz das richtige Dativpronomen."
+        },
+        "questions": [
+          {
+            "id": "dat-q1",
+            "situation": {
+              "fa": "Das gefällt ___. (من)",
+              "en": "Das gefällt ___. (me)",
+              "de": "Das gefällt ___. (mir)"
+            },
+            "options": [
+              "mich",
+              "mir",
+              "mir",
+              "mich"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "gefallen + داتیو → mir (داتیو ich).",
+              "en": "gefallen + dative → mir (dative of ich).",
+              "de": "gefallen + Dativ → mir (Dativ von ich)."
+            }
+          },
+          {
+            "id": "dat-q2",
+            "situation": {
+              "fa": "Kann ich ___ helfen? (تو)",
+              "en": "Kann ich ___ helfen? (you informal)",
+              "de": "Kann ich ___ helfen? (dir)"
+            },
+            "options": [
+              "dich",
+              "dir",
+              "dir",
+              "dich"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "helfen + داتیو → dir (داتیو du).",
+              "en": "helfen + dative → dir (dative of du).",
+              "de": "helfen + Dativ → dir (Dativ von du)."
+            }
+          },
+          {
+            "id": "dat-q3",
+            "situation": {
+              "fa": "Ich danke ___. (شما — رسمی)",
+              "en": "Ich danke ___. (you formal)",
+              "de": "Ich danke ___. (Ihnen)"
+            },
+            "options": [
+              "Sie",
+              "Ihnen",
+              "Sie",
+              "Ihnen"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "danken + داتیو → Ihnen (داتیو Sie رسمی).",
+              "en": "danken + dative → Ihnen (dative of formal Sie).",
+              "de": "danken + Dativ → Ihnen (Dativ von formellem Sie)."
+            }
+          },
+          {
+            "id": "dat-q4",
+            "situation": {
+              "fa": "Das gehört ___. (او — مرد)",
+              "en": "Das gehört ___. (him)",
+              "de": "Das gehört ___. (ihm)"
+            },
+            "options": [
+              "ihn",
+              "ihm",
+              "ihn",
+              "ihm"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "gehören + داتیو → ihm (داتیو er).",
+              "en": "gehören + dative → ihm (dative of er).",
+              "de": "gehören + Dativ → ihm (Dativ von er)."
+            }
+          },
+          {
+            "id": "dat-q5",
+            "situation": {
+              "fa": "Der Tee schmeckt ___. (ما)",
+              "en": "Der Tee schmeckt ___. (us)",
+              "de": "Der Tee schmeckt ___. (uns)"
+            },
+            "options": [
+              "uns",
+              "uns",
+              "wir",
+              "wir"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "schmecken + داتیو → uns (داتیو wir).",
+              "en": "schmecken + dative → uns (dative of wir).",
+              "de": "schmecken + Dativ → uns (Dativ von wir)."
+            }
+          }
+        ]
+      }
+    ],
+    "imperativ": [
+      {
+        "id": "ex-l11-imp-1",
+        "type": "choice",
+        "title": {
+          "fa": "صیغه فرمانی — فرم درست را انتخاب کنید",
+          "en": "Imperative — Choose the correct form",
+          "de": "Imperativ — Wählen Sie die richtige Form"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فرم فرمانی صحیح را انتخاب کنید.",
+          "en": "For each sentence, choose the correct imperative form.",
+          "de": "Wählen Sie für jeden Satz die richtige Imperativform."
+        },
+        "questions": [
+          {
+            "id": "imp-q1",
+            "situation": {
+              "fa": "___ entspannt! (شما — جمع دوستانه)",
+              "en": "___ entspannt! (you — informal plural)",
+              "de": "___ entspannt! (ihr)"
+            },
+            "options": [
+              "Sei",
+              "Seid",
+              "Seien Sie",
+              "Seht"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "فرم ihr از sein → Seid.",
+              "en": "ihr form of sein → Seid.",
+              "de": "ihr-Form von sein → Seid."
+            }
+          },
+          {
+            "id": "imp-q2",
+            "situation": {
+              "fa": "___ den Kopf nach rechts. (شما — رسمی)",
+              "en": "___ den Kopf nach rechts. (you — formal)",
+              "de": "___ den Kopf nach rechts. (Sie)"
+            },
+            "options": [
+              "Leg",
+              "Legt",
+              "Legen Sie",
+              "Legt ihr"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "فرم Sie از legen → Legen Sie.",
+              "en": "Sie form of legen → Legen Sie.",
+              "de": "Sie-Form von legen → Legen Sie."
+            }
+          },
+          {
+            "id": "imp-q3",
+            "situation": {
+              "fa": "___ das Bein! (شما — جمع دوستانه)",
+              "en": "___ das Bein! (you — informal plural)",
+              "de": "___ das Bein! (ihr)"
+            },
+            "options": [
+              "Heb",
+              "Hebt",
+              "Heben Sie",
+              "Hebe"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "فرم ihr از heben → Hebt.",
+              "en": "ihr form of heben → Hebt.",
+              "de": "ihr-Form von heben → Hebt."
+            }
+          },
+          {
+            "id": "imp-q4",
+            "situation": {
+              "fa": "___ bitte den Mund! (شما — رسمی)",
+              "en": "___ bitte den Mund! (you — formal)",
+              "de": "___ bitte den Mund! (Sie)"
+            },
+            "options": [
+              "Öffne",
+              "Öffnet",
+              "Öffnen Sie",
+              "Öffnst"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "فرم Sie از öffnen → Öffnen Sie.",
+              "en": "Sie form of öffnen → Öffnen Sie.",
+              "de": "Sie-Form von öffnen → Öffnen Sie."
+            }
+          }
+        ]
+      }
+    ],
+    "duerfen_muessen": [
+      {
+        "id": "ex-l11-dm-1",
+        "type": "choice",
+        "title": {
+          "fa": "dürfen یا müssen؟",
+          "en": "dürfen or müssen?",
+          "de": "dürfen oder müssen?"
+        },
+        "instructions": {
+          "fa": "برای هر جمله، فعل مناسب (dürfen یا müssen) را انتخاب کنید.",
+          "en": "For each sentence, choose the appropriate verb (dürfen or müssen).",
+          "de": "Wählen Sie für jeden Satz das passende Verb (dürfen oder müssen)."
+        },
+        "questions": [
+          {
+            "id": "dm-q1",
+            "situation": {
+              "fa": "Du bist krank. Du ___ nicht arbeiten. (ممنوع)",
+              "en": "You are sick. You ___ not work. (prohibited)",
+              "de": "Du bist krank. Du ___ nicht arbeiten."
+            },
+            "options": [
+              "darfst",
+              "musst",
+              "kannst",
+              "sollst"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "ممنوعیت = darfst nicht.",
+              "en": "Prohibition = darfst nicht.",
+              "de": "Verbot = darfst nicht."
+            }
+          },
+          {
+            "id": "dm-q2",
+            "situation": {
+              "fa": "Der Arzt sagt: Sie ___ Tabletten nehmen. (الزام)",
+              "en": "The doctor says: You ___ take tablets. (obligation)",
+              "de": "Der Arzt sagt: Sie ___ Tabletten nehmen."
+            },
+            "options": [
+              "dürfen",
+              "können",
+              "müssen",
+              "wollen"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "الزام پزشکی = müssen.",
+              "en": "Medical obligation = müssen.",
+              "de": "Ärztliche Pflicht = müssen."
+            }
+          },
+          {
+            "id": "dm-q3",
+            "situation": {
+              "fa": "Hier ___ man nicht rauchen. (ممنوع)",
+              "en": "One ___ not smoke here. (prohibited)",
+              "de": "Hier ___ man nicht rauchen."
+            },
+            "options": [
+              "muss",
+              "darf",
+              "kann",
+              "soll"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "ممنوعیت = darf nicht.",
+              "en": "Prohibition = darf nicht.",
+              "de": "Verbot = darf nicht."
+            }
+          },
+          {
+            "id": "dm-q4",
+            "situation": {
+              "fa": "Ich ___ heute zum Arzt gehen. (الزام)",
+              "en": "I ___ go to the doctor today. (obligation)",
+              "de": "Ich ___ heute zum Arzt gehen."
+            },
+            "options": [
+              "darf",
+              "kann",
+              "will",
+              "muss"
+            ],
+            "correctIndex": 3,
+            "explanation": {
+              "fa": "الزام شخصی = muss.",
+              "en": "Personal obligation = muss.",
+              "de": "Persönliche Pflicht = muss."
+            }
+          },
+          {
+            "id": "dm-q5",
+            "situation": {
+              "fa": "Du ___ nicht arbeiten. Es ist Sonntag. (لازم نیست)",
+              "en": "You ___ not work. It's Sunday. (don't have to)",
+              "de": "Du ___ nicht arbeiten. Es ist Sonntag."
+            },
+            "options": [
+              "darfst",
+              "musst",
+              "kannst",
+              "sollst"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "لازم نیست = musst nicht (اختیاری، نه ممنوع).",
+              "en": "Don't have to = musst nicht (optional, not prohibited).",
+              "de": "Nicht müssen = musst nicht (optional, nicht verboten)."
+            }
+          }
+        ]
+      }
+    ],
+    "bei_zu": [
+      {
+        "id": "ex-l11-bz-1",
+        "type": "choice",
+        "title": {
+          "fa": "bei یا zu + آرتیکل صحیح؟",
+          "en": "bei or zu + correct article?",
+          "de": "bei oder zu + richtiger Artikel?"
+        },
+        "instructions": {
+          "fa": "شکل صحیح حرف اضافه + آرتیکل را انتخاب کنید.",
+          "en": "Choose the correct preposition + article form.",
+          "de": "Wählen Sie die richtige Präposition + Artikel-Form."
+        },
+        "questions": [
+          {
+            "id": "bz-q1",
+            "situation": {
+              "fa": "Ich gehe ___ Arzt. (به پزشک)",
+              "en": "I go ___ doctor. (to the doctor)",
+              "de": "Ich gehe ___ Arzt."
+            },
+            "options": [
+              "beim",
+              "zum",
+              "zur",
+              "ins"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "zu + dem = zum. هدایت به مکان: zum Arzt.",
+              "en": "zu + dem = zum. Direction to a place: zum Arzt.",
+              "de": "zu + dem = zum. Richtung zu einem Ort: zum Arzt."
+            }
+          },
+          {
+            "id": "bz-q2",
+            "situation": {
+              "fa": "Sie ist ___ Ärztin. (نزد پزشک زن)",
+              "en": "She is ___ (female) doctor. (at the doctor's)",
+              "de": "Sie ist ___ Ärztin."
+            },
+            "options": [
+              "zum",
+              "zur",
+              "beim",
+              "bei der"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "zu + der = zur. مؤنث: zur Ärztin.",
+              "en": "zu + der = zur. Feminine: zur Ärztin.",
+              "de": "zu + der = zur. Feminin: zur Ärztin."
+            }
+          },
+          {
+            "id": "bz-q3",
+            "situation": {
+              "fa": "___ Training trinke ich viel Wasser. (هنگام تمرین)",
+              "en": "___ Training trinke ich viel Wasser. (during training)",
+              "de": "___ Training trinke ich viel Wasser."
+            },
+            "options": [
+              "Zum",
+              "Zur",
+              "Beim",
+              "Bei der"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "bei + dem = beim. خنثی: beim Training.",
+              "en": "bei + dem = beim. Neuter: beim Training.",
+              "de": "bei + dem = beim. Neutrum: beim Training."
+            }
+          },
+          {
+            "id": "bz-q4",
+            "situation": {
+              "fa": "Die Kinder gehen ___ Schule. (به مدرسه)",
+              "en": "The children go ___ school. (to school)",
+              "de": "Die Kinder gehen ___ Schule."
+            },
+            "options": [
+              "zum",
+              "zur",
+              "beim",
+              "ins"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "zu + der = zur. Schule مؤنث: zur Schule.",
+              "en": "zu + der = zur. Schule is feminine: zur Schule.",
+              "de": "zu + der = zur. Schule ist feminin: zur Schule."
+            }
+          },
+          {
+            "id": "bz-q5",
+            "situation": {
+              "fa": "Wir sind ___ Sport. (هنگام ورزش)",
+              "en": "We are ___ sports. (during sports)",
+              "de": "Wir sind ___ Sport."
+            },
+            "options": [
+              "zum",
+              "zur",
+              "beim",
+              "im"
+            ],
+            "correctIndex": 2,
+            "explanation": {
+              "fa": "bei + dem = beim. خنثی: beim Sport.",
+              "en": "bei + dem = beim. Neuter: beim Sport.",
+              "de": "bei + dem = beim. Neutrum: beim Sport."
+            }
+          }
+        ]
+      }
+    ],
+    "possessiv_unser": [
+      {
+        "id": "ex-l11-pos-1",
+        "type": "choice",
+        "title": {
+          "fa": "ضمایر ملکی — unser, euer, ihr",
+          "en": "Possessive Articles — unser, euer, ihr",
+          "de": "Possessivartikel — unser, euer, ihr"
+        },
+        "instructions": {
+          "fa": "ضمیر ملکی صحیح را برای هر جمله انتخاب کنید.",
+          "en": "Choose the correct possessive article for each sentence.",
+          "de": "Wählen Sie den richtigen Possessivartikel für jeden Satz."
+        },
+        "questions": [
+          {
+            "id": "pos-q1",
+            "situation": {
+              "fa": "Das ist ___ Training. (تمرین ما)",
+              "en": "Das ist ___ Training. (our training)",
+              "de": "Das ist ___ Training."
+            },
+            "options": [
+              "unser",
+              "unsere",
+              "euer",
+              "ihre"
+            ],
+            "correctIndex": 0,
+            "explanation": {
+              "fa": "Training خنثی (das) → unser.",
+              "en": "Training is neuter (das) → unser.",
+              "de": "Training ist Neutrum (das) → unser."
+            }
+          },
+          {
+            "id": "pos-q2",
+            "situation": {
+              "fa": "Ist das ___ Fitness-Studio? (باشگاه شما — جمع)",
+              "en": "Is that ___ fitness studio? (your — plural)",
+              "de": "Ist das ___ Fitness-Studio?"
+            },
+            "options": [
+              "eure",
+              "euer",
+              "unsere",
+              "ihre"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Fitness-Studio خنثی (das) + ihr (جمع) → euer.",
+              "en": "Fitness-Studio is neuter (das) + ihr (pl.) → euer.",
+              "de": "Fitness-Studio ist Neutrum (das) + ihr (Pl.) → euer."
+            }
+          },
+          {
+            "id": "pos-q3",
+            "situation": {
+              "fa": "___ Kinder sind sehr sportlich. (بچه‌های آنها)",
+              "en": "___ children are very athletic. (their)",
+              "de": "___ Kinder sind sehr sportlich."
+            },
+            "options": [
+              "Unser",
+              "Euer",
+              "Ihr",
+              "Ihre"
+            ],
+            "correctIndex": 3,
+            "explanation": {
+              "fa": "Kinder جمع (die) + sie (شخص سوم جمع) → ihre.",
+              "en": "Kinder is plural (die) + sie (3rd pl.) → ihre.",
+              "de": "Kinder ist Plural (die) + sie (3. Pl.) → ihre."
+            }
+          },
+          {
+            "id": "pos-q4",
+            "situation": {
+              "fa": "Das ist ___ neue Ärztin. (پزشک زن جدید ما)",
+              "en": "That is ___ new (female) doctor. (our)",
+              "de": "Das ist ___ neue Ärztin."
+            },
+            "options": [
+              "unser",
+              "unsere",
+              "unseren",
+              "eure"
+            ],
+            "correctIndex": 1,
+            "explanation": {
+              "fa": "Ärztin مؤنث (die) + wir → unsere.",
+              "en": "Ärztin is feminine (die) + wir → unsere.",
+              "de": "Ärztin ist feminin (die) + wir → unsere."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "title": {
+      "fa": "مرور درس ۱۱",
+      "en": "Lesson 11 Review",
+      "de": "Lektion 11 Überprüfung"
+    },
+    "quiz": [
+      {
+        "id": "rev-l11-q1",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام ضمیر داتیو صحیح است؟ Das gefällt ___ sehr gut.",
+          "en": "Which dative pronoun is correct? Das gefällt ___ sehr gut.",
+          "de": "Welches Dativpronomen ist richtig? Das gefällt ___ sehr gut."
+        },
+        "options": [
+          "mich",
+          "mir",
+          "ich",
+          "mein"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l11-q2",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "فرم فرمانی ihr از sein چیست؟ ___ entspannt!",
+          "en": "What is the ihr imperative of sein? ___ entspannt!",
+          "de": "Wie lautet der Imperativ (ihr) von sein? ___ entspannt!"
+        },
+        "options": [
+          "Sei",
+          "Seid",
+          "Seien Sie",
+          "Seht"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l11-q3",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "«Du darfst nicht arbeiten» به چه معناست؟",
+          "en": "What does 'Du darfst nicht arbeiten' mean?",
+          "de": "Was bedeutet 'Du darfst nicht arbeiten'?"
+        },
+        "options": [
+          "تو لازم نیست کار کنی.",
+          "تو حق نداری کار کنی.",
+          "تو می‌توانی کار نکنی.",
+          "تو می‌خواهی کار نکنی."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l11-q4",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "beim = ___",
+          "en": "beim = ___",
+          "de": "beim = ___"
+        },
+        "options": [
+          "bei das",
+          "bei dem",
+          "bei der",
+          "bei den"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l11-q5",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام کلمه به معنای «تب» است؟",
+          "en": "Which word means 'fever'?",
+          "de": "Welches Wort bedeutet 'Fieber'?"
+        },
+        "options": [
+          "Husten",
+          "Schnupfen",
+          "Fieber",
+          "Krankheit"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "rev-l11-q6",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "«Ich gehe ___ Arzt.» — کدام حرف اضافه صحیح است؟",
+          "en": "'Ich gehe ___ Arzt.' — Which preposition is correct?",
+          "de": "'Ich gehe ___ Arzt.' — Welche Präposition ist richtig?"
+        },
+        "options": [
+          "beim",
+          "zum",
+          "zur",
+          "im"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "rev-l11-q7",
+        "type": "true_false",
+        "question": {
+          "fa": "«Ihr Training» به معنای «تمرین آنها» است.",
+          "en": "'Ihr Training' means 'their training'.",
+          "de": "'Ihr Training' bedeutet 'ihr Training'."
+        },
+        "answer": true,
+        "explanation": {
+          "fa": "ihr (ضمایر ملکی شخص سوم جمع) + Training (خنثی) = ihr Training.",
+          "en": "ihr (3rd person plural possessive) + Training (neuter) = ihr Training.",
+          "de": "ihr (Possessivartikel 3. Person Plural) + Training (Neutrum) = ihr Training."
+        }
+      },
+      {
+        "id": "rev-l11-q8",
+        "type": "true_false",
+        "question": {
+          "fa": "«Du musst nicht arbeiten» یعنی «تو حق نداری کار کنی».",
+          "en": "'Du musst nicht arbeiten' means 'You must not work'.",
+          "de": "'Du musst nicht arbeiten' bedeutet 'Du darfst nicht arbeiten'."
+        },
+        "answer": false,
+        "explanation": {
+          "fa": "«Du musst nicht arbeiten» = لازم نیست کار کنی (اختیاری). «Du darfst nicht arbeiten» = حق نداری کار کنی (ممنوع).",
+          "en": "'Du musst nicht arbeiten' = you don't have to work (optional). 'Du darfst nicht arbeiten' = you must not work (prohibited).",
+          "de": "'Du musst nicht arbeiten' = du musst nicht arbeiten (optional). 'Du darfst nicht arbeiten' = du darfst nicht arbeiten (verboten)."
+        }
+      },
+      {
+        "id": "rev-l11-q9",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "جمع «der Fuß» چیست؟",
+          "en": "What is the plural of 'der Fuß'?",
+          "de": "Was ist der Plural von 'der Fuß'?"
+        },
+        "options": [
+          "Füße",
+          "Füsse",
+          "Füßes",
+          "Fussen"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "rev-l11-q10",
+        "type": "multiple_choice",
+        "question": {
+          "fa": "کدام فعل همیشه داتیو می‌خواهد؟",
+          "en": "Which verb always takes the dative?",
+          "de": "Welches Verb verlangt immer den Dativ?"
+        },
+        "options": [
+          "haben",
+          "gefallen",
+          "sein",
+          "werden"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "assessment": {
+    "title": {
+      "fa": "آزمون پایان درس ۱۱",
+      "en": "Lesson 11 Final Assessment",
+      "de": "Lektion 11 Abschlussbewertung"
+    },
+    "totalQuestions": 20,
+    "passingScore": 70,
+    "sections": {
+      "body_parts_vocab": {
+        "count": 3,
+        "questions": []
+      },
+      "sports_vocab": {
+        "count": 2,
+        "questions": []
+      },
+      "health_vocab": {
+        "count": 3,
+        "questions": []
+      },
+      "dativ_pronouns": {
+        "count": 3,
+        "questions": []
+      },
+      "imperativ": {
+        "count": 2,
+        "questions": []
+      },
+      "duerfen": {
+        "count": 3,
+        "questions": []
+      },
+      "bei_zu": {
+        "count": 2,
+        "questions": []
+      },
+      "possessivartikel": {
+        "count": 2,
+        "questions": []
+      }
+    },
+    "selfEvaluation": {
+      "fa": [
+        "آیا می‌توانید حداقل ۱۰ جزء بدن را به آلمانی نام ببرید؟",
+        "آیا حداقل ۵ ورزش را به آلمانی می‌گویید؟",
+        "آیا واژگان بیماری (Fieber, Husten, Schnupfen, wehtun) را بلدید؟",
+        "آیا ضمایر داتیو (mir, dir, ihm, ihr, uns, euch, ihnen, Ihnen) را درست استفاده می‌کنید؟",
+        "آیا فرم فرمانی du, ihr و Sie را می‌سازید؟",
+        "آیا ضمایر ملکی unser, euer, ihr را در چهار جنسیت صرف می‌کنید؟",
+        "آیا تفاوت dürfen و müssen و نفی آن‌ها را می‌دانید؟",
+        "آیا beim, zum و zur را درست استفاده می‌کنید؟",
+        "آیا می‌توانید درد و علائم بیماری را توضیح دهید؟",
+        "آیا می‌توانید یک مکالمه ساده نزد پزشک یا در باشگاه داشته باشید؟"
+      ],
+      "en": [
+        "Can you name at least 10 body parts in German?",
+        "Can you name at least 5 sports in German?",
+        "Do you know illness vocabulary (Fieber, Husten, Schnupfen, wehtun)?",
+        "Can you correctly use dative pronouns (mir, dir, ihm, ihr, uns, euch, ihnen, Ihnen)?",
+        "Can you form the imperative for du, ihr and Sie?",
+        "Can you decline possessive articles unser, euer, ihr in all four genders?",
+        "Do you know the difference between dürfen and müssen and their negations?",
+        "Can you correctly use beim, zum and zur?",
+        "Can you explain pain and illness symptoms?",
+        "Can you have a simple conversation at the doctor's or at a fitness studio?"
+      ],
+      "de": [
+        "Können Sie mindestens 10 Körperteile auf Deutsch nennen?",
+        "Können Sie mindestens 5 Sportarten auf Deutsch nennen?",
+        "Kennen Sie den Krankheitswortschatz (Fieber, Husten, Schnupfen, wehtun)?",
+        "Verwenden Sie Dativpronomen (mir, dir, ihm, ihr, uns, euch, ihnen, Ihnen) richtig?",
+        "Können Sie den Imperativ für du, ihr und Sie bilden?",
+        "Können Sie Possessivartikel unser, euer, ihr in allen vier Genera deklinieren?",
+        "Kennen Sie den Unterschied zwischen dürfen und müssen und ihren Verneinungen?",
+        "Verwenden Sie beim, zum und zur richtig?",
+        "Können Sie Schmerzen und Krankheitssymptome beschreiben?",
+        "Können Sie ein einfaches Gespräch beim Arzt oder im Fitnessstudio führen?"
+      ]
+    }
+  },
+  "cheatSheet": {
+    "body_parts": [
+      {
+        "de": "der Kopf",
+        "fa": "سر",
+        "en": "head"
+      },
+      {
+        "de": "das Auge (die Augen)",
+        "fa": "چشم",
+        "en": "eye (eyes)"
+      },
+      {
+        "de": "das Ohr (die Ohren)",
+        "fa": "گوش",
+        "en": "ear (ears)"
+      },
+      {
+        "de": "die Nase",
+        "fa": "بینی",
+        "en": "nose"
+      },
+      {
+        "de": "der Mund",
+        "fa": "دهان",
+        "en": "mouth"
+      },
+      {
+        "de": "der Arm (die Arme)",
+        "fa": "بازو",
+        "en": "arm"
+      },
+      {
+        "de": "die Hand (die Hände)",
+        "fa": "دست",
+        "en": "hand"
+      },
+      {
+        "de": "der Finger",
+        "fa": "انگشت",
+        "en": "finger"
+      },
+      {
+        "de": "der Bauch",
+        "fa": "شکم",
+        "en": "stomach"
+      },
+      {
+        "de": "das Bein (die Beine)",
+        "fa": "پا (ساق)",
+        "en": "leg"
+      },
+      {
+        "de": "der Fuß (die Füße)",
+        "fa": "پا (قدم)",
+        "en": "foot"
+      },
+      {
+        "de": "das Knie (die Knie)",
+        "fa": "زانو",
+        "en": "knee"
+      },
+      {
+        "de": "die Schulter (die Schultern)",
+        "fa": "شانه",
+        "en": "shoulder"
+      },
+      {
+        "de": "der Rücken",
+        "fa": "کمر / پشت",
+        "en": "back"
+      },
+      {
+        "de": "das Haar (die Haare)",
+        "fa": "مو",
+        "en": "hair"
+      }
+    ],
+    "sports": [
+      {
+        "de": "der Fußball",
+        "fa": "فوتبال",
+        "en": "football"
+      },
+      {
+        "de": "das Tennis",
+        "fa": "تنیس",
+        "en": "tennis"
+      },
+      {
+        "de": "das Basketball",
+        "fa": "بسکتبال",
+        "en": "basketball"
+      },
+      {
+        "de": "das Schwimmen",
+        "fa": "شنا",
+        "en": "swimming"
+      },
+      {
+        "de": "das Joggen",
+        "fa": "دویدن",
+        "en": "jogging"
+      },
+      {
+        "de": "das Yoga",
+        "fa": "یوگا",
+        "en": "yoga"
+      },
+      {
+        "de": "das Pilates",
+        "fa": "پیلاتس",
+        "en": "Pilates"
+      },
+      {
+        "de": "das Skifahren",
+        "fa": "اسکی",
+        "en": "skiing"
+      },
+      {
+        "de": "das Radfahren",
+        "fa": "دوچرخه‌سواری",
+        "en": "cycling"
+      },
+      {
+        "de": "der Lieblingssport",
+        "fa": "ورزش مورد علاقه",
+        "en": "favourite sport"
+      }
+    ],
+    "health_words": [
+      {
+        "de": "der Schnupfen",
+        "fa": "سرماخوردگی",
+        "en": "cold (runny nose)"
+      },
+      {
+        "de": "der Husten",
+        "fa": "سرفه",
+        "en": "cough"
+      },
+      {
+        "de": "das Fieber",
+        "fa": "تب",
+        "en": "fever"
+      },
+      {
+        "de": "krank",
+        "fa": "بیمار",
+        "en": "sick"
+      },
+      {
+        "de": "gesund",
+        "fa": "سالم",
+        "en": "healthy"
+      },
+      {
+        "de": "der Arzt / die Ärztin",
+        "fa": "پزشک",
+        "en": "doctor"
+      },
+      {
+        "de": "die Tablette",
+        "fa": "قرص",
+        "en": "tablet"
+      },
+      {
+        "de": "das Antibiotikum",
+        "fa": "آنتی‌بیوتیک",
+        "en": "antibiotic"
+      },
+      {
+        "de": "der Virus",
+        "fa": "ویروس",
+        "en": "virus"
+      },
+      {
+        "de": "… tut weh",
+        "fa": "… درد می‌کند",
+        "en": "… hurts"
+      }
+    ],
+    "dativ_pronouns": [
+      {
+        "de": "mir (ich)",
+        "fa": "به من",
+        "en": "to me"
+      },
+      {
+        "de": "dir (du)",
+        "fa": "به تو",
+        "en": "to you (inf.)"
+      },
+      {
+        "de": "ihm (er/es)",
+        "fa": "به او (مرد/آن)",
+        "en": "to him/it"
+      },
+      {
+        "de": "ihr (sie)",
+        "fa": "به او (زن)",
+        "en": "to her"
+      },
+      {
+        "de": "uns (wir)",
+        "fa": "به ما",
+        "en": "to us"
+      },
+      {
+        "de": "euch (ihr)",
+        "fa": "به شما (جمع)",
+        "en": "to you (pl.)"
+      },
+      {
+        "de": "ihnen (sie)",
+        "fa": "به آنها",
+        "en": "to them"
+      },
+      {
+        "de": "Ihnen (Sie)",
+        "fa": "به شما (رسمی)",
+        "en": "to you (form.)"
+      }
+    ],
+    "imperativ_forms": [
+      {
+        "title": {
+          "fa": "فرم du",
+          "en": "du form",
+          "de": "du-Form"
+        },
+        "summary": {
+          "fa": "حذف -st: du gehst → Geh!",
+          "en": "Remove -st: du gehst → Geh!",
+          "de": "-st entfernen: du gehst → Geh!"
+        }
+      },
+      {
+        "title": {
+          "fa": "فرم ihr",
+          "en": "ihr form",
+          "de": "ihr-Form"
+        },
+        "summary": {
+          "fa": "مثل Präsens: ihr geht → Geht!",
+          "en": "Like present: ihr geht → Geht!",
+          "de": "Wie Präsens: ihr geht → Geht!"
+        }
+      },
+      {
+        "title": {
+          "fa": "فرم Sie",
+          "en": "Sie form",
+          "de": "Sie-Form"
+        },
+        "summary": {
+          "fa": "فعل + Sie: Sie gehen → Gehen Sie!",
+          "en": "Verb + Sie: Sie gehen → Gehen Sie!",
+          "de": "Verb + Sie: Sie gehen → Gehen Sie!"
+        }
+      }
+    ],
+    "duerfen_conjugation": [
+      {
+        "de": "ich darf",
+        "fa": "من اجازه دارم",
+        "en": "I may"
+      },
+      {
+        "de": "du darfst",
+        "fa": "تو اجازه داری",
+        "en": "you may (inf.)"
+      },
+      {
+        "de": "er/sie/es darf",
+        "fa": "او اجازه دارد",
+        "en": "he/she/it may"
+      },
+      {
+        "de": "wir dürfen",
+        "fa": "ما اجازه داریم",
+        "en": "we may"
+      },
+      {
+        "de": "ihr dürft",
+        "fa": "شما اجازه دارید",
+        "en": "you may (pl.)"
+      },
+      {
+        "de": "sie/Sie dürfen",
+        "fa": "آنها/شما اجازه دارند",
+        "en": "they/you may"
+      }
+    ],
+    "prepositions": [
+      {
+        "de": "beim Arzt",
+        "fa": "نزد پزشک",
+        "en": "at the doctor's"
+      },
+      {
+        "de": "beim Training",
+        "fa": "هنگام تمرین",
+        "en": "at training"
+      },
+      {
+        "de": "zum Arzt",
+        "fa": "به پزشک",
+        "en": "to the doctor"
+      },
+      {
+        "de": "zum Rathaus",
+        "fa": "به شهرداری",
+        "en": "to the town hall"
+      },
+      {
+        "de": "zur Schule",
+        "fa": "به مدرسه",
+        "en": "to school"
+      },
+      {
+        "de": "zur Arbeit",
+        "fa": "به سر کار",
+        "en": "to work"
+      }
+    ],
+    "muessen_vs_duerfen": [
+      {
+        "title": {
+          "fa": "müssen = باید (الزام)",
+          "en": "müssen = must (obligation)",
+          "de": "müssen = müssen (Pflicht)"
+        },
+        "summary": {
+          "fa": "Du musst arbeiten. = تو باید کار کنی.",
+          "en": "Du musst arbeiten. = You must work.",
+          "de": "Du musst arbeiten. = Du musst arbeiten."
+        }
+      },
+      {
+        "title": {
+          "fa": "nicht müssen = لازم نیست",
+          "en": "nicht müssen = don't have to",
+          "de": "nicht müssen = nicht müssen"
+        },
+        "summary": {
+          "fa": "Du musst nicht arbeiten. = لازم نیست کار کنی.",
+          "en": "Du musst nicht arbeiten. = You don't have to work.",
+          "de": "Du musst nicht arbeiten. = Du musst nicht arbeiten."
+        }
+      },
+      {
+        "title": {
+          "fa": "nicht dürfen = ممنوع است",
+          "en": "nicht dürfen = must not (prohibited)",
+          "de": "nicht dürfen = nicht dürfen (verboten)"
+        },
+        "summary": {
+          "fa": "Du darfst nicht arbeiten. = حق نداری کار کنی.",
+          "en": "Du darfst nicht arbeiten. = You must not work.",
+          "de": "Du darfst nicht arbeiten. = Du darfst nicht arbeiten."
+        }
+      }
+    ],
+    "key_phrases": [
+      {
+        "de": "Mein Bein tut weh.",
+        "fa": "پایم درد می‌کند.",
+        "en": "My leg hurts."
+      },
+      {
+        "de": "Ich habe Fieber und Husten.",
+        "fa": "من تب و سرفه دارم.",
+        "en": "I have a fever and a cough."
+      },
+      {
+        "de": "Seit wann haben Sie das?",
+        "fa": "از کی این را دارید؟",
+        "en": "Since when do you have this?"
+      },
+      {
+        "de": "Sie müssen Tabletten nehmen.",
+        "fa": "شما باید قرص بخورید.",
+        "en": "You have to take tablets."
+      },
+      {
+        "de": "Darf ich Sport machen?",
+        "fa": "آیا می‌توانم ورزش کنم؟",
+        "en": "May I do sports?"
+      },
+      {
+        "de": "Rauchen ist verboten!",
+        "fa": "سیگار کشیدن ممنوع است!",
+        "en": "Smoking is forbidden!"
+      },
+      {
+        "de": "Was ist dein Lieblingssport?",
+        "fa": "ورزش مورد علاقه‌ات چیست؟",
+        "en": "What is your favourite sport?"
+      },
+      {
+        "de": "Ich gehe jeden Tag joggen.",
+        "fa": "من هر روز می‌دوم.",
+        "en": "I go jogging every day."
+      }
+    ]
+  },
+  "metadata": {
+    "createdAt": "2026-07-15",
+    "updatedAt": "2026-07-15",
+    "version": "2.0.0",
+    "author": "German Academy Team (based on Starten Wir A1, Hueber)",
+    "status": "published",
+    "tags": [
+      "body-parts",
+      "sports",
+      "health",
+      "illness",
+      "dativ-pronouns",
+      "imperativ",
+      "possessivartikel",
+      "duerfen",
+      "bei-zu",
+      "mussen-vs-duerfen",
+      "A1"
+    ],
+    "difficulty": 3,
+    "prerequisites": [
+      "A1-L01",
+      "A1-L02",
+      "A1-L03",
+      "A1-L04",
+      "A1-L05",
+      "A1-L06",
+      "A1-L07",
+      "A1-L08",
+      "A1-L09",
+      "A1-L10"
+    ],
+    "source": "Starten Wir A1 Kursbuch, Lektion 11 (Bist du fit?), Seiten 122-133, Hueber Verlag"
+  }
 }
