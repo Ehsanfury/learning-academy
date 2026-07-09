@@ -2,12 +2,12 @@
  * DashboardPage.jsx
  * Path: src/pages/Dashboard/DashboardPage.jsx
  * Description: Dashboard page with real data from API
- * Version: 5.5 - Added About & Support to user dropdown menu
+ * Version: 6.0 - Full user menu with About & Support + Real API data
  * Changes:
  * - ✅ FIXED: Added About and Support/Contact to user dropdown menu
+ * - ✅ FIXED: Connected weekly activity to real API
+ * - ✅ FIXED: Connected achievements to real API
  * - ✅ FIXED: CardHeader, CardBody, CardFooter imports added
- * - ✅ FIXED: lessonsData.find is not a function
- * - ✅ FIXED: Better error handling for API responses
  */
 
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -40,6 +40,7 @@ import {
   Settings,
   LogOut,
   LayoutDashboard,
+  ChevronRight,
 } from "lucide-react";
 import XPCard from "../../components/XPCard";
 import AchievementCard from "../../components/AchievementCard";
@@ -149,11 +150,9 @@ function DashboardPage() {
   const [recentLessons, setRecentLessons] = useState([]);
   const [achievements, setAchievements] = useState([]);
   const [nextLesson, setNextLesson] = useState(null);
-  const [weeklyActivity, setWeeklyActivity] = useState(
-    Array.from({ length: 7 }, (_, i) => ({ day: i + 1, xp: 0 })),
-  );
+  const [weeklyActivity, setWeeklyActivity] = useState([]);
 
-  // ✅ User menu items with About & Support (پایین تر از پروفایل و تنظیمات)
+  // ✅ User menu items with About & Support (like MainLayout)
   const userMenuItems = useMemo(
     () => [
       {
@@ -172,23 +171,18 @@ function DashboardPage() {
         icon: Settings,
       },
       {
-        path: "/learn",
-        label: { fa: "مسیر یادگیری", en: "Learning Path" },
-        icon: BookOpen,
-      },
-      {
         type: "divider",
       },
-      // ✅ NEW: About Us (پایین تر از تنظیمات)
+      // ✅ NEW: About Us (like MainLayout)
       {
         path: "/about",
         label: { fa: "درباره ما", en: "About Us" },
         icon: Info,
       },
-      // ✅ NEW: Support / Contact Us (پایین تر از درباره ما)
+      // ✅ NEW: Support / Contact Us (like MainLayout)
       {
         path: "/contact",
-        label: { fa: "ارتباط با پشتیبانی", en: "Support" },
+        label: { fa: "ارتباط با پشتیبانی", en: "Contact Us" },
         icon: Headphones,
       },
       {
@@ -212,6 +206,7 @@ function DashboardPage() {
       setLoading(true);
       setError(null);
 
+      // 1. دریافت درس‌ها
       const lessonsRes = await lessonApi.getAllLessons({ limit: 50 });
 
       let lessonsData = [];
@@ -235,10 +230,10 @@ function DashboardPage() {
       }
 
       if (!Array.isArray(lessonsData)) {
-        console.warn("⚠️ lessonsData is not an array:", lessonsData);
         lessonsData = [];
       }
 
+      // 2. دریافت آمار
       try {
         const statsRes = await api.get("/lessons/stats");
         const statsData =
@@ -257,6 +252,7 @@ function DashboardPage() {
         debug.warn("⚠️ Could not fetch stats:", e);
       }
 
+      // 3. پیدا کردن درس بعدی
       if (Array.isArray(lessonsData) && lessonsData.length > 0) {
         const next = lessonsData.find(
           (l) => !l.progress || l.progress.status === "not_started",
@@ -268,6 +264,7 @@ function DashboardPage() {
         setRecentLessons([]);
       }
 
+      // 4. ✅ دریافت دستاوردها از API واقعی
       try {
         const achRes = await api.get("/achievements");
         const achData = achRes?.data?.data || achRes?.data || [];
@@ -277,12 +274,39 @@ function DashboardPage() {
         setAchievements([]);
       }
 
-      setWeeklyActivity(
-        Array.from({ length: 7 }, (_, i) => ({
-          day: i + 1,
-          xp: Math.floor(Math.random() * 50) + 10,
-        })),
-      );
+      // 5. ✅ دریافت فعالیت هفتگی از API واقعی
+      try {
+        const activityRes = await api.get("/progress/daily-stats?days=7");
+        const activityData = activityRes?.data?.data || activityRes?.data || [];
+
+        if (Array.isArray(activityData) && activityData.length > 0) {
+          setWeeklyActivity(activityData);
+        } else {
+          // Fallback to empty data
+          setWeeklyActivity(
+            Array.from({ length: 7 }, (_, i) => ({
+              day: i + 1,
+              date: new Date(Date.now() - (6 - i) * 86400000)
+                .toISOString()
+                .split("T")[0],
+              count: 0,
+              xp: 0,
+            })),
+          );
+        }
+      } catch (e) {
+        debug.warn("⚠️ Could not fetch weekly activity:", e);
+        setWeeklyActivity(
+          Array.from({ length: 7 }, (_, i) => ({
+            day: i + 1,
+            date: new Date(Date.now() - (6 - i) * 86400000)
+              .toISOString()
+              .split("T")[0],
+            count: 0,
+            xp: 0,
+          })),
+        );
+      }
 
       setRetryCount(0);
     } catch (error) {
@@ -352,7 +376,7 @@ function DashboardPage() {
   );
 
   const maxXP = useMemo(
-    () => Math.max(...weeklyActivity.map((d) => d.xp), 1),
+    () => Math.max(...weeklyActivity.map((d) => d.xp || 0), 1),
     [weeklyActivity],
   );
 
@@ -492,7 +516,7 @@ function DashboardPage() {
           </p>
         </div>
 
-        {/* ✅ User Dropdown Menu with About & Support (پایین تر از پروفایل و تنظیمات) */}
+        {/* ✅ User Dropdown Menu with About & Support (like MainLayout) */}
         <div className="relative">
           <button
             onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -505,7 +529,7 @@ function DashboardPage() {
             <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hidden sm:block">
               {user?.name?.split(" ")[0] || "User"}
             </span>
-            <ChevronLeft className="w-4 h-4 text-neutral-400" />
+            <ChevronRight className="w-4 h-4 text-neutral-400" />
           </button>
 
           {/* Dropdown */}
@@ -642,19 +666,33 @@ function DashboardPage() {
             </div>
 
             <div className="flex items-end justify-between gap-1 h-20">
-              {weeklyActivity.map((day, index) => (
-                <div key={index} className="flex flex-col items-center flex-1">
-                  <motion.div
-                    className="w-full bg-primary-200 dark:bg-primary-800 rounded-t-md"
-                    initial={{ height: 0 }}
-                    animate={{ height: `${(day.xp / maxXP) * 60}px` }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  />
-                  <span className="text-2xs text-neutral-400 mt-1">
-                    {weekDays[language][index]}
-                  </span>
+              {weeklyActivity.length > 0 ? (
+                weeklyActivity.slice(0, 7).map((day, index) => {
+                  const xpValue = day.xp || day.count || 0;
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col items-center flex-1"
+                    >
+                      <motion.div
+                        className="w-full bg-primary-200 dark:bg-primary-800 rounded-t-md"
+                        initial={{ height: 0 }}
+                        animate={{ height: `${(xpValue / maxXP) * 60}px` }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                      />
+                      <span className="text-2xs text-neutral-400 mt-1">
+                        {weekDays[language][index]}
+                      </span>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="w-full text-center text-neutral-400 text-xs">
+                  {language === "fa"
+                    ? "هیچ فعالیتی این هفته ثبت نشده"
+                    : "No activity this week"}
                 </div>
-              ))}
+              )}
             </div>
           </Card>
         </motion.div>
