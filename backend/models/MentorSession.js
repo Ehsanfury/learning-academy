@@ -1,7 +1,7 @@
 /**
  * MentorSession.js
- * German Academy
- Mentoring sessions model
+ * Path: backend/models/MentorSession.js
+ * Description: Mentor session model
  */
 
 import { DataTypes } from "sequelize";
@@ -17,7 +17,7 @@ const MentorSession = sequelize.define(
       allowNull: false,
     },
     mentorId: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING(50), // ✅ Changed from UUID to STRING(50)
       allowNull: false,
       field: "mentor_id",
     },
@@ -37,7 +37,7 @@ const MentorSession = sequelize.define(
       field: "end_time",
     },
     status: {
-      type: DataTypes.ENUM("pending", "active", "completed", "cancelled"),
+      type: DataTypes.ENUM("pending", "confirmed", "completed", "cancelled"),
       defaultValue: "pending",
     },
     paymentStatus: {
@@ -65,6 +65,16 @@ const MentorSession = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
     tableName: "mentor_sessions",
@@ -73,22 +83,18 @@ const MentorSession = sequelize.define(
     indexes: [
       {
         fields: ["mentor_id"],
-        name: "idx_sessions_mentor",
+        name: "idx_mentor_sessions_mentor",
       },
       {
         fields: ["student_id"],
-        name: "idx_sessions_student",
+        name: "idx_mentor_sessions_student",
       },
       {
         fields: ["status"],
-        name: "idx_sessions_status",
-      },
-      {
-        fields: ["start_time"],
-        name: "idx_sessions_start_time",
+        name: "idx_mentor_sessions_status",
       },
     ],
-  },
+  }
 );
 
 export default MentorSession;

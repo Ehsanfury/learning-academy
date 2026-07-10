@@ -1,7 +1,7 @@
 /**
  * mentorRoutes.js
- * German Academy
- Mentors routes
+ * Path: backend/routes/mentorRoutes.js
+ * Description: Mentors routes
  */
 
 import express from "express";
@@ -17,41 +17,23 @@ import {
   completeSession,
   getMentorStats,
   updateMentorProfile,
+  updateMentor,
 } from "../controllers/mentorController.js";
 
 const router = express.Router();
 
-// TODO: Translate - TODO: Translate - همه مسیرها نیاز به احراز هویت دارند
 router.use(authenticate);
 
-// Register as mentor
 router.post("/register", registerAsMentor);
-
-// Get mentors list
 router.get("/", getMentors);
-
-// Profile
 router.get("/profile", getMyMentorProfile);
-
-// Update mentor profile
 router.put("/profile", updateMentorProfile);
-
-// Get mentor statistics
 router.get("/stats", getMentorStats);
-
-// Get my sessions
 router.get("/my-sessions", getMySessions);
-
-// Get mentor details
 router.get("/:id", getMentorById);
-
-// Book session with mentor
+router.put("/:id", updateMentor);
 router.post("/:id/book", bookSession);
-
-// Approve or cancel session (for mentor)
 router.put("/sessions/:id/status", updateSessionStatus);
-
-// Complete session and submit feedback
 router.put("/sessions/:id/complete", completeSession);
 
 export default router;

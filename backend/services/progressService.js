@@ -2,21 +2,55 @@
  * progressService.js
  * Path: backend/services/progressService.js
  * Description: Progress tracking service
- * Version: 2.1 - FIXED: Column name compatibility
- * Changes:
- * - ✅ FIXED: completedAt → completed_at (snake_case)
- * - ✅ FIXED: Updated all queries to use correct column names
- * - ✅ FIXED: getDailyActivity now works properly
+ * Version: 2.2 - ADDED: getAllProgress method
  */
 
 import { Op } from "sequelize";
 import { Lesson, LessonProgress, User } from "../models/index.js";
-import lessonRepository from "../repositories/lessonRepository.js";
-import progressRepository from "../repositories/progressRepository.js";
 import userService from "./userService.js";
 import logger from "../config/logger.js";
 
 class ProgressService {
+  /**
+   * ✅ NEW: Get all progress for a user with pagination
+   */
+  async getAllProgress(userId, limit = 50, offset = 0) {
+    try {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
+
+      const { rows: progress, count: total } = await LessonProgress.findAndCountAll({
+        where: { userId },
+        limit,
+        offset,
+        order: [["updatedAt", "DESC"]],
+        include: [
+          {
+            model: Lesson,
+            as: "progressLesson",
+            attributes: ["id", "title", "level", "lessonNumber", "xpReward", "totalSections"],
+          },
+        ],
+      });
+
+      return {
+        progress,
+        total,
+        limit,
+        offset,
+      };
+    } catch (error) {
+      logger.error(`❌ Error in getAllProgress:`, error);
+      return {
+        progress: [],
+        total: 0,
+        limit,
+        offset,
+      };
+    }
+  }
+
   /**
    * Get user progress summary
    */
@@ -79,7 +113,6 @@ class ProgressService {
 
   /**
    * Get user progress with lesson details
-   * ✅ FIXED: N+1 Query - all lessons fetched in one query
    */
   async getUserProgressWithLessons(userId, limit = 50, offset = 0) {
     try {
@@ -87,7 +120,6 @@ class ProgressService {
         throw new Error("User ID is required");
       }
 
-      // Get progress records
       const progress = await LessonProgress.findAll({
         where: { userId },
         limit,
@@ -103,10 +135,8 @@ class ProgressService {
         };
       }
 
-      // ✅ FIXED: Get all lesson IDs
       const lessonIds = progress.map((p) => p.lessonId);
 
-      // ✅ FIXED: One query for all lessons
       const lessons = await Lesson.findAll({
         where: {
           id: { [Op.in]: lessonIds },
@@ -115,13 +145,11 @@ class ProgressService {
         attributes: ["id", "title", "level", "lessonNumber", "xpReward"],
       });
 
-      // Create map for quick lookup
       const lessonMap = {};
       lessons.forEach((lesson) => {
         lessonMap[lesson.id] = lesson.toJSON();
       });
 
-      // Enrich progress with lesson data
       const enrichedProgress = progress.map((p) => {
         const data = p.toJSON();
         data.lesson = lessonMap[p.lessonId] || null;
@@ -164,7 +192,7 @@ class ProgressService {
           status: "not_started",
           score: 0,
           xpEarned: 0,
-          completedAt: null,
+          completed_at: null,
         };
       }
 
@@ -224,10 +252,9 @@ class ProgressService {
         score,
         xpEarned,
         answers,
-        completedAt: new Date(),
+        completed_at: new Date(),
       });
 
-      // Add XP to user
       if (xpEarned > 0) {
         await userService.addXP(userId, xpEarned, "lesson_completion");
       }
@@ -241,7 +268,6 @@ class ProgressService {
 
   /**
    * Get user's daily activity
-   * ✅ FIXED: Using snake_case column names
    */
   async getDailyActivity(userId, days = 7) {
     try {
@@ -252,7 +278,6 @@ class ProgressService {
       const date = new Date();
       date.setDate(date.getDate() - days);
 
-      // ✅ FIXED: Use snake_case column names (completed_at)
       const activities = await LessonProgress.findAll({
         where: {
           userId,
@@ -315,7 +340,7 @@ class ProgressService {
           include: [
             {
               model: Lesson,
-              as: "lesson",
+              as: "progressLesson",
               where: { level },
               required: true,
             },
@@ -394,18 +419,14 @@ class ProgressService {
         const diffDays = Math.floor((today - lastActive) / (1000 * 60 * 60 * 24));
 
         if (diffDays === 0) {
-          // Already active today, do nothing
           return { streak, longestStreak };
         } else if (diffDays === 1) {
-          // Consecutive day
           streak += 1;
         } else {
-          // Gap in streak, reset to 1
           streak = 1;
         }
       }
 
-      // Update longest streak
       if (streak > longestStreak) {
         longestStreak = streak;
       }

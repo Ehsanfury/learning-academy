@@ -2,16 +2,17 @@
  * storiesController.js
  * Path: backend/controllers/storiesController.js
  * Description: Stories management controller
- * Version: 4.0 - Using storyService
+ * Version: 5.0 - Complete with all CRUD operations
  * Changes:
+ * - ✅ Added createStory, updateStory, deleteStory
  * - ✅ Using storyService for all operations
- * - ✅ Proper error handling
  * - ✅ Mock data fallback
+ * - ✅ Proper error handling
  */
 
 import storyService from "../services/storyService.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
-import { NotFoundError, ValidationError, UnauthorizedError } from "../errors/index.js";
+import { NotFoundError, ValidationError } from "../errors/index.js";
 import logger from "../config/logger.js";
 
 // ============================================
@@ -22,7 +23,11 @@ const MOCK_STORIES = [
   {
     id: "story-1",
     level: "A1",
-    title: { fa: "داستان کوتاه آلمانی", en: "Short German Story", de: "Kurze Deutsche Geschichte" },
+    title: {
+      fa: "داستان کوتاه آلمانی",
+      en: "Short German Story",
+      de: "Kurze Deutsche Geschichte",
+    },
     description: {
       fa: "یک داستان کوتاه و جذاب برای شروع",
       en: "A short and interesting story to start",
@@ -42,13 +47,32 @@ const MOCK_STORIES = [
         fa: "من از آلمان هستم.",
         vocabulary: [{ de: "kommen aus", fa: "آمدن از" }],
       },
+      {
+        de: "Ich wohne in Berlin.",
+        fa: "من در برلین زندگی می‌کنم.",
+        vocabulary: [{ de: "wohnen", fa: "زندگی کردن" }],
+      },
     ],
     quiz: [
       {
         id: "q1",
-        question: "اسم شخص چیست؟",
+        question: {
+          fa: "اسم شخص چیست؟",
+          en: "What is the person's name?",
+          de: "Wie heißt die Person?",
+        },
         options: ["Anna", "Maria", "Lisa", "Sarah"],
-        correct: "Anna",
+        correct: 0,
+      },
+      {
+        id: "q2",
+        question: {
+          fa: "او از کجا می‌آید؟",
+          en: "Where does she come from?",
+          de: "Woher kommt sie?",
+        },
+        options: ["آلمان", "اتریش", "سوئیس", "هلند"],
+        correct: 0,
       },
     ],
   },
@@ -126,7 +150,7 @@ export const getStories = asyncHandler(async (req, res) => {
 });
 
 /**
- * Get a single story
+ * Get a single story by ID
  * GET /api/stories/:id
  */
 export const getStory = asyncHandler(async (req, res) => {
@@ -160,6 +184,93 @@ export const getStory = asyncHandler(async (req, res) => {
 });
 
 /**
+ * Create a new story
+ * POST /api/stories
+ */
+export const createStory = asyncHandler(async (req, res) => {
+  const data = req.body;
+
+  logger.info(`📝 Creating new story: ${data.title?.en || data.id}`);
+
+  // Validate required fields
+  if (!data.id) {
+    throw new ValidationError({
+      message: "Story ID is required",
+      details: [{ field: "id", message: "Story ID is required" }],
+    });
+  }
+
+  if (!data.title) {
+    throw new ValidationError({
+      message: "Story title is required",
+      details: [{ field: "title", message: "Story title is required" }],
+    });
+  }
+
+  const story = await storyService.createStory(data);
+
+  res.status(201).json({
+    success: true,
+    message: "Story created successfully",
+    data: story,
+  });
+});
+
+/**
+ * Update a story
+ * PUT /api/stories/:id
+ */
+export const updateStory = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  logger.info(`📝 Updating story: ${id}`);
+
+  // Check if story exists
+  const existing = await storyService.getStory(id);
+  if (!existing) {
+    throw new NotFoundError({
+      message: "Story not found",
+      resource: { model: "Story", id },
+    });
+  }
+
+  const story = await storyService.updateStory(id, data);
+
+  res.json({
+    success: true,
+    message: "Story updated successfully",
+    data: story,
+  });
+});
+
+/**
+ * Delete a story
+ * DELETE /api/stories/:id
+ */
+export const deleteStory = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  logger.info(`🗑️ Deleting story: ${id}`);
+
+  // Check if story exists
+  const existing = await storyService.getStory(id);
+  if (!existing) {
+    throw new NotFoundError({
+      message: "Story not found",
+      resource: { model: "Story", id },
+    });
+  }
+
+  await storyService.deleteStory(id);
+
+  res.json({
+    success: true,
+    message: "Story deleted successfully",
+  });
+});
+
+/**
  * Start a story
  * POST /api/stories/:id/start
  */
@@ -168,6 +279,15 @@ export const startStory = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   logger.info(`📚 Starting story: ${id} for user: ${userId}`);
+
+  // Check if story exists
+  const story = await storyService.getStory(id);
+  if (!story) {
+    throw new NotFoundError({
+      message: "Story not found",
+      resource: { model: "Story", id },
+    });
+  }
 
   const progress = await storyService.startStory(userId, id);
 
@@ -188,6 +308,16 @@ export const updateStoryProgress = asyncHandler(async (req, res) => {
   const { progress, status } = req.body;
 
   logger.info(`📚 Updating story progress: ${id} for user: ${userId}`);
+
+  if (progress === undefined && status === undefined) {
+    throw new ValidationError({
+      message: "Progress or status is required",
+      details: [
+        { field: "progress", message: "Progress or status is required" },
+        { field: "status", message: "Progress or status is required" },
+      ],
+    });
+  }
 
   const result = await storyService.updateProgress(userId, id, { progress, status });
 
@@ -218,6 +348,9 @@ export const getStoryProgress = asyncHandler(async (req, res) => {
 export default {
   getStories,
   getStory,
+  createStory,
+  updateStory,
+  deleteStory,
   startStory,
   updateStoryProgress,
   getStoryProgress,

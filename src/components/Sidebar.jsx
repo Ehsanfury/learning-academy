@@ -4,7 +4,8 @@
  * نوار کناری داشبورد
  * Changes:
  * - ✅ Added "About Us" and "Contact Support" to bottomItems
- * - ✅ Added Info and Headphones icons
+ * - ✅ Added "Admin Panel" for admin users
+ * - ✅ Added Shield icon
  */
 
 import { useState } from "react";
@@ -34,6 +35,7 @@ import {
   Flame,
   Info,
   Headphones,
+  Shield,
 } from "lucide-react";
 
 const menuItems = [
@@ -85,7 +87,7 @@ const menuItems = [
   },
 ];
 
-// ✅ NEW: Added About Us and Contact Support
+// ✅ Added About Us, Contact Support, and Admin Panel
 const bottomItems = [
   {
     path: "/profile",
@@ -234,6 +236,28 @@ function Sidebar() {
         {/* Bottom Section */}
         <div className="border-t border-neutral-200 dark:border-neutral-800 p-2">
           <div className="space-y-1">
+            {/* ✅ Admin Panel - فقط برای ادمین‌ها */}
+            {user?.role === "admin" && (
+              <NavLink
+                to="/admin"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 ${
+                    isActive
+                      ? "bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400"
+                      : "text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950"
+                  }`
+                }
+                title={isCollapsed ? "پنل مدیریت" : undefined}
+              >
+                <Shield className="w-5 h-5 flex-shrink-0" />
+                {!isCollapsed && (
+                  <span className="text-sm font-medium">
+                    {language === "fa" ? "پنل مدیریت" : "Admin Panel"}
+                  </span>
+                )}
+              </NavLink>
+            )}
+
             {bottomItems.map((item) => {
               const isActive = location.pathname === item.path;
               const Icon = item.icon;

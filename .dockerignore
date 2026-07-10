@@ -1,0 +1,12 @@
+node_modules
+.git
+.env
+.env.*
+*.log
+logs/
+coverage/
+.nyc_output/
+.vscode/
+.idea/
+*.md
+!.env.example

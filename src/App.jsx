@@ -18,7 +18,12 @@ import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 import LessonLayout from "./layouts/LessonLayout";
-
+import AdminLayout from "./layouts/AdminLayout.jsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import AdminLessons from "./pages/Admin/AdminLessons.jsx";
+import AdminExercises from "./pages/Admin/AdminExercises.jsx";
+import AdminUsers from "./pages/Admin/AdminUsers.jsx";
+import AdminAchievements from "./pages/Admin/AdminAchievements.jsx";
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -259,6 +264,16 @@ function App() {
                       }
                     >
                       <Route path="/admin/*" element={<Admin />} />
+                    </Route>
+                    <Route path="/admin" element={<AdminLayout />}>
+                      <Route index element={<AdminDashboard />} />
+                      <Route path="users" element={<AdminUsers />} />
+                      <Route path="lessons" element={<AdminLessons />} />
+                      <Route path="exercises" element={<AdminExercises />} />
+                      <Route
+                        path="achievements"
+                        element={<AdminAchievements />}
+                      />
                     </Route>
 
                     {/* ========================================================= */}

@@ -3,9 +3,9 @@
  * Path: backend/models/Mentor.js
  * Description: Mentor model for mentors who teach
  * Changes:
+ * - ✅ FIXED: Changed ID type from UUID to STRING(50) for custom IDs
  * - ✅ FIXED: Proper JSONB defaults with Sequelize.literal
  * - ✅ FIXED: Added indexes for performance
- * - ✅ FIXED: Removed TODO comments
  */
 
 import { DataTypes, Sequelize } from "sequelize";
@@ -15,8 +15,7 @@ const Mentor = sequelize.define(
   "Mentor",
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING(50), // ✅ Changed from UUID to STRING
       primaryKey: true,
       allowNull: false,
     },
@@ -28,6 +27,10 @@ const Mentor = sequelize.define(
     level: {
       type: DataTypes.ENUM("A1", "A2", "B1", "B2", "C1", "C2"),
       allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
     },
     hourlyRate: {
       type: DataTypes.DECIMAL(10, 2),

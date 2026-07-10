@@ -132,7 +132,6 @@ const AdminDashboard = () => {
   // ============================================
   // 🖼️ Render Functions
   // ============================================
-
   const renderStatCard = (title, value, Icon, color, subtitle = null) => (
     <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
       <div className="flex items-center justify-between">
@@ -145,9 +144,12 @@ const AdminDashboard = () => {
             <p className="text-xs text-neutral-400 mt-1">{subtitle}</p>
           )}
         </div>
-        <div className={`p-3 rounded-xl ${color}`}>
-          <Icon className="w-5 h-5 text-white" />
-        </div>
+        {/* ✅ FIXED: Check if Icon exists before rendering */}
+        {Icon && (
+          <div className={`p-3 rounded-xl ${color}`}>
+            <Icon className="w-5 h-5 text-white" />
+          </div>
+        )}
       </div>
     </div>
   );

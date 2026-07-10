@@ -1,351 +1,220 @@
 /**
- * scenarioController.js
- * Path: backend/controllers/scenarioController.js
- * Description: Scenario controller for handling scenario API requests
+ * scenariosController.js
+ * Path: backend/controllers/scenariosController.js
+ * Description: Scenario controller using scenarioService
  */
 
-import { Scenario, ScenarioSession } from "../models/index.js";
+import scenarioService from "../services/scenarioService.js";
+import { asyncHandler } from "../middlewares/errorHandler.js";
+import { NotFoundError, ValidationError } from "../errors/index.js";
 import logger from "../config/logger.js";
 
 /**
- * دریافت همه سناریوها
+ * Get all scenarios
  * GET /api/scenarios
  */
-export const getScenarios = async (req, res) => {
-  try {
-    const scenarios = await Scenario.findAll({
-      where: { isActive: true },
-      order: [["level", "ASC"]],
-    });
+export const getScenarios = asyncHandler(async (req, res) => {
+  const { level, limit = 20, offset = 0 } = req.query;
 
-    res.json({
-      success: true,
-      data: scenarios,
-    });
-  } catch (error) {
-    logger.error("Error getting scenarios:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error getting scenarios",
-    });
-  }
-};
+  logger.info(`📚 Getting scenarios`);
+
+  const result = await scenarioService.getScenarios({ level, limit, offset });
+
+  res.json({
+    success: true,
+    data: result.scenarios,
+    total: result.total,
+    pagination: {
+      limit: parseInt(limit),
+      offset: parseInt(offset),
+      total: result.total,
+    },
+  });
+});
 
 /**
- * دریافت سناریو با ID
+ * Get scenario by ID
  * GET /api/scenarios/:id
  */
-export const getScenarioById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const scenario = await Scenario.findByPk(id);
+export const getScenarioById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
 
-    if (!scenario) {
-      return res.status(404).json({
-        success: false,
-        message: "Scenario not found",
-      });
-    }
+  const scenario = await scenarioService.getScenarioById(id);
 
-    res.json({
-      success: true,
-      data: scenario,
-    });
-  } catch (error) {
-    logger.error("Error getting scenario:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error getting scenario",
+  if (!scenario) {
+    throw new NotFoundError({
+      message: "Scenario not found",
+      resource: { model: "Scenario", id },
     });
   }
-};
+
+  res.json({
+    success: true,
+    data: scenario,
+  });
+});
 
 /**
- * شروع سناریو
+ * Create a new scenario (admin)
+ * POST /api/scenarios
+ */
+export const createScenario = asyncHandler(async (req, res) => {
+  const data = req.body;
+
+  logger.info(`📝 Creating new scenario: ${data.title?.en || data.id}`);
+
+  if (!data.id) {
+    throw new ValidationError({
+      message: "Scenario ID is required",
+      details: [{ field: "id", message: "Scenario ID is required" }],
+    });
+  }
+
+  const scenario = await scenarioService.createScenario(data);
+
+  res.status(201).json({
+    success: true,
+    message: "Scenario created successfully",
+    data: scenario,
+  });
+});
+
+/**
+ * Update scenario (admin)
+ * PUT /api/scenarios/:id
+ */
+export const updateScenario = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  const scenario = await scenarioService.updateScenario(id, data);
+
+  if (!scenario) {
+    throw new NotFoundError({
+      message: "Scenario not found",
+      resource: { model: "Scenario", id },
+    });
+  }
+
+  res.json({
+    success: true,
+    message: "Scenario updated successfully",
+    data: scenario,
+  });
+});
+
+/**
+ * Delete scenario (admin)
+ * DELETE /api/scenarios/:id
+ */
+export const deleteScenario = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const result = await scenarioService.deleteScenario(id);
+
+  if (!result) {
+    throw new NotFoundError({
+      message: "Scenario not found",
+      resource: { model: "Scenario", id },
+    });
+  }
+
+  res.json({
+    success: true,
+    message: "Scenario deleted successfully",
+  });
+});
+
+/**
+ * Start a scenario
  * POST /api/scenarios/:id/start
  */
-export const startScenario = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const userId = req.user?.id;
+export const startScenario = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated",
-      });
-    }
+  logger.info(`🎯 Starting scenario: ${id} for user: ${userId}`);
 
-    const scenario = await Scenario.findByPk(id);
-    if (!scenario) {
-      return res.status(404).json({
-        success: false,
-        message: "Scenario not found",
-      });
-    }
+  const result = await scenarioService.startScenario(userId, id);
 
-    // بررسی是否存在 جلسه فعال
-    const existingSession = await ScenarioSession.findOne({
-      where: {
-        userId,
-        scenarioId: id,
-        status: "in_progress",
-      },
-    });
-
-    if (existingSession) {
-      return res.json({
-        success: true,
-        data: {
-          session: existingSession,
-          scenario,
-          currentStep: 0,
-          totalSteps: scenario.steps?.length || 0,
-          isExisting: true,
-        },
-      });
-    }
-
-    const session = await ScenarioSession.create({
-      userId,
-      scenarioId: id,
-      sessionId: `session_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
-      status: "in_progress",
-      startedAt: new Date(),
-    });
-
-    res.json({
-      success: true,
-      data: {
-        session,
-        scenario,
-        currentStep: 0,
-        totalSteps: scenario.steps?.length || 0,
-        isExisting: false,
-      },
-    });
-  } catch (error) {
-    logger.error("Error starting scenario:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error starting scenario",
-    });
-  }
-};
+  res.json({
+    success: true,
+    data: {
+      session: result.session,
+      scenario: result.scenario,
+      currentStep: 0,
+      totalSteps: result.scenario.steps?.length || 0,
+      isExisting: result.isExisting,
+    },
+  });
+});
 
 /**
- * ارسال پاسخ مرحله
+ * Submit step answer
  * POST /api/scenarios/:id/step
  */
-export const submitStep = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const userId = req.user?.id;
-    const { stepIndex, answer } = req.body;
+export const submitStep = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
+  const { stepIndex, answer } = req.body;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated",
-      });
-    }
-
-    if (stepIndex === undefined || answer === undefined) {
-      return res.status(400).json({
-        success: false,
-        message: "stepIndex and answer are required",
-      });
-    }
-
-    const session = await ScenarioSession.findOne({
-      where: {
-        userId,
-        scenarioId: id,
-        status: "in_progress",
-      },
-    });
-
-    if (!session) {
-      return res.status(404).json({
-        success: false,
-        message: "Session not found or already completed",
-      });
-    }
-
-    const scenario = await Scenario.findByPk(id);
-    if (!scenario) {
-      return res.status(404).json({
-        success: false,
-        message: "Scenario not found",
-      });
-    }
-
-    const steps = scenario.steps || [];
-    const currentStep = steps[stepIndex];
-
-    if (!currentStep) {
-      return res.status(400).json({
-        success: false,
-        message: "Step not found",
-      });
-    }
-
-    // بررسی پاسخ
-    let isCorrect = false;
-    let correctAnswer = null;
-
-    if (currentStep.options && Array.isArray(currentStep.options)) {
-      const selectedOption = currentStep.options.find((opt) => opt.id === answer);
-      if (selectedOption) {
-        isCorrect = selectedOption.isCorrect === true;
-        correctAnswer = currentStep.options.find((opt) => opt.isCorrect === true);
-      }
-    }
-
-    const isLastStep = stepIndex >= steps.length - 1;
-
-    let response = {
-      success: true,
-      data: {
-        isCorrect,
-        isLastStep,
-        currentStep: stepIndex,
-        totalSteps: steps.length,
-        feedback: isCorrect
-          ? currentStep.correctFeedback || { fa: "✅ درست!", en: "✅ Correct!", de: "✅ Richtig!" }
-          : currentStep.wrongFeedback || {
-              fa: "❌ اشتباه، دوباره تلاش کنید",
-              en: "❌ Wrong, try again",
-              de: "❌ Falsch, versuchen Sie es erneut",
-            },
-      },
-    };
-
-    if (isCorrect && isLastStep) {
-      // تکمیل سناریو
-      await session.update({
-        status: "completed",
-        completedAt: new Date(),
-        xpEarned: scenario.xpReward || 50,
-      });
-
-      response.data.completed = true;
-      response.data.xpEarned = scenario.xpReward || 50;
-      response.data.message = {
-        fa: `🎉 سناریو با موفقیت کامل شد! ${scenario.xpReward || 50} XP دریافت کردید.`,
-        en: `🎉 Scenario completed successfully! You earned ${scenario.xpReward || 50} XP.`,
-        de: `🎉 Szenario erfolgreich abgeschlossen! Sie haben ${scenario.xpReward || 50} XP erhalten.`,
-      };
-    }
-
-    if (isCorrect) {
-      // ذخیره پیشرفت در metadata
-      const metadata = session.metadata || {};
-      if (!metadata.completedSteps) {
-        metadata.completedSteps = [];
-      }
-      if (!metadata.completedSteps.includes(stepIndex)) {
-        metadata.completedSteps.push(stepIndex);
-      }
-      await session.update({ metadata });
-    }
-
-    res.json(response);
-  } catch (error) {
-    logger.error("Error submitting step:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error submitting step",
+  if (stepIndex === undefined || answer === undefined) {
+    throw new ValidationError({
+      message: "stepIndex and answer are required",
+      details: [
+        { field: "stepIndex", message: "stepIndex is required" },
+        { field: "answer", message: "answer is required" },
+      ],
     });
   }
-};
+
+  const result = await scenarioService.submitStep(userId, id, stepIndex, answer);
+
+  res.json({
+    success: true,
+    data: result,
+  });
+});
 
 /**
- * دریافت پیشرفت سناریو
+ * Get scenario progress
  * GET /api/scenarios/:id/progress
  */
-export const getScenarioProgress = async (req, res) => {
-  try {
-    const userId = req.user?.id;
-    const { id } = req.params;
+export const getScenarioProgress = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated",
-      });
-    }
+  const progress = await scenarioService.getProgress(userId, id);
 
-    const sessions = await ScenarioSession.findAll({
-      where: {
-        userId,
-        scenarioId: id,
-      },
-      order: [["createdAt", "DESC"]],
-    });
-
-    const activeSession = sessions.find((s) => s.status === "in_progress");
-    const completedSessions = sessions.filter((s) => s.status === "completed");
-
-    res.json({
-      success: true,
-      data: {
-        totalSessions: sessions.length,
-        completedSessions: completedSessions.length,
-        activeSession: activeSession || null,
-        lastSession: sessions[0] || null,
-        totalXP: completedSessions.reduce((sum, s) => sum + (s.xpEarned || 0), 0),
-      },
-    });
-  } catch (error) {
-    logger.error("Error getting scenario progress:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error getting scenario progress",
-    });
-  }
-};
+  res.json({
+    success: true,
+    data: progress,
+  });
+});
 
 /**
- * دریافت آمار کلی سناریوها برای کاربر
+ * Get scenario stats
  * GET /api/scenarios/stats
  */
-export const getScenarioStats = async (req, res) => {
-  try {
-    const userId = req.user?.id;
+export const getScenarioStats = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated",
-      });
-    }
+  const stats = await scenarioService.getStats(userId);
 
-    const totalScenarios = await Scenario.count({ where: { isActive: true } });
+  res.json({
+    success: true,
+    data: stats,
+  });
+});
 
-    const sessions = await ScenarioSession.findAll({
-      where: { userId },
-    });
-
-    const completed = sessions.filter((s) => s.status === "completed").length;
-    const inProgress = sessions.filter((s) => s.status === "in_progress").length;
-    const totalXP = sessions.reduce((sum, s) => sum + (s.xpEarned || 0), 0);
-
-    res.json({
-      success: true,
-      data: {
-        totalScenarios,
-        completed,
-        inProgress,
-        totalXP,
-        completionRate: totalScenarios > 0 ? Math.round((completed / totalScenarios) * 100) : 0,
-      },
-    });
-  } catch (error) {
-    logger.error("Error getting scenario stats:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error getting scenario stats",
-    });
-  }
+export default {
+  getScenarios,
+  getScenarioById,
+  createScenario,
+  updateScenario,
+  deleteScenario,
+  startScenario,
+  submitStep,
+  getScenarioProgress,
+  getScenarioStats,
 };

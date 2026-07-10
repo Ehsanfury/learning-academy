@@ -2,10 +2,6 @@
  * mentorController.js
  * Path: backend/controllers/mentorController.js
  * Description: Mentor management controller
- * Changes:
- * - ✅ Using mentorService for all operations
- * - ✅ Mock data fallback
- * - ✅ Proper error handling
  */
 
 import mentorService from "../services/mentorService.js";
@@ -13,10 +9,6 @@ import { asyncHandler } from "../middlewares/errorHandler.js";
 import { ValidationError, NotFoundError, UnauthorizedError } from "../errors/index.js";
 import logger from "../config/logger.js";
 
-/**
- * Register as mentor
- * POST /api/mentors/register
- */
 export const registerAsMentor = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const data = req.body;
@@ -30,10 +22,6 @@ export const registerAsMentor = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get mentors list
- * GET /api/mentors
- */
 export const getMentors = asyncHandler(async (req, res) => {
   const { level, language, limit = 20, offset = 0 } = req.query;
 
@@ -54,10 +42,28 @@ export const getMentors = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get mentor details
- * GET /api/mentors/:id
- */
+export const updateMentor = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  logger.info(`📝 Updating mentor: ${id}`);
+
+  const mentor = await mentorService.updateMentorById(id, data);
+
+  if (!mentor) {
+    throw new NotFoundError({
+      message: "Mentor not found",
+      resource: { model: "Mentor", id },
+    });
+  }
+
+  res.json({
+    success: true,
+    message: "Mentor updated successfully",
+    data: mentor,
+  });
+});
+
 export const getMentorById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
@@ -76,10 +82,6 @@ export const getMentorById = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get current user mentor profile
- * GET /api/mentors/profile
- */
 export const getMyMentorProfile = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -98,10 +100,6 @@ export const getMyMentorProfile = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Book session with mentor
- * POST /api/mentors/:id/book
- */
 export const bookSession = asyncHandler(async (req, res) => {
   const studentId = req.user.id;
   const { id: mentorId } = req.params;
@@ -126,10 +124,6 @@ export const bookSession = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get my sessions
- * GET /api/mentors/my-sessions
- */
 export const getMySessions = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { role = "student" } = req.query;
@@ -142,10 +136,6 @@ export const getMySessions = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Approve or cancel session (for mentor)
- * PUT /api/mentors/sessions/:id/status
- */
 export const updateSessionStatus = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { id: sessionId } = req.params;
@@ -175,10 +165,6 @@ export const updateSessionStatus = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Complete session and submit feedback
- * PUT /api/mentors/sessions/:id/complete
- */
 export const completeSession = asyncHandler(async (req, res) => {
   const studentId = req.user.id;
   const { id: sessionId } = req.params;
@@ -200,10 +186,6 @@ export const completeSession = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get mentor statistics
- * GET /api/mentors/stats
- */
 export const getMentorStats = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -223,10 +205,6 @@ export const getMentorStats = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Update mentor profile
- * PUT /api/mentors/profile
- */
 export const updateMentorProfile = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const data = req.body;
@@ -239,3 +217,17 @@ export const updateMentorProfile = asyncHandler(async (req, res) => {
     data: mentor,
   });
 });
+
+export default {
+  registerAsMentor,
+  getMentors,
+  updateMentor,
+  getMentorById,
+  getMyMentorProfile,
+  bookSession,
+  getMySessions,
+  updateSessionStatus,
+  completeSession,
+  getMentorStats,
+  updateMentorProfile,
+};

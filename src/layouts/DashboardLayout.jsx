@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import Sidebar from '@components/Sidebar';
-import Navbar from '@components/Navbar';
-import BottomNav from '@components/BottomNav';
+import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
+import Sidebar from "@components/Sidebar";
+import Navbar from "@components/Navbar";
+import BottomNav from "@components/BottomNav";
 
 function DashboardLayout() {
   return (

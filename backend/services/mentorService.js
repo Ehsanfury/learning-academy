@@ -2,75 +2,13 @@
  * mentorService.js
  * Path: backend/services/mentorService.js
  * Description: Mentor service for managing mentors and sessions
- * Changes:
- * - ✅ FIXED: getUserSessions with proper associations
- * - ✅ FIXED: Mock data fallback when database empty
- * - ✅ FIXED: Proper error handling
  */
 
 import { Op } from "sequelize";
 import { Mentor, MentorSession, User } from "../models/index.js";
 import logger from "../config/logger.js";
 
-// ============================================
-// 📊 Mock Data
-// ============================================
-
-const MOCK_MENTORS = [
-  {
-    id: "mentor-1",
-    userId: "user-1",
-    level: "A1",
-    hourlyRate: 15,
-    isVerified: true,
-    rating: 4.8,
-    totalStudents: 25,
-    languages: ["fa", "de", "en"],
-    specializations: ["مکالمه", "گرامر", "تلفظ"],
-    bio: {
-      fa: "مدرس با تجربه زبان آلمانی با ۵ سال سابقه تدریس",
-      en: "Experienced German teacher with 5 years of teaching experience",
-      de: "Erfahrener Deutschlehrer mit 5 Jahren Unterrichtserfahrung",
-    },
-    isActive: true,
-    user: {
-      name: "آنا اشمیت",
-      email: "anna@example.com",
-      avatar: null,
-    },
-  },
-  {
-    id: "mentor-2",
-    userId: "user-2",
-    level: "B1",
-    hourlyRate: 20,
-    isVerified: true,
-    rating: 4.9,
-    totalStudents: 40,
-    languages: ["fa", "de"],
-    specializations: ["آزمون گوته", "مکالمه", "نوشتار"],
-    bio: {
-      fa: "متخصص آموزش آلمانی برای آزمون‌های گوته و آمادگی مهاجرت",
-      en: "Specialist in German education for Goethe exams and migration preparation",
-      de: "Spezialist für Deutschunterricht für Goethe-Prüfungen und Migrationsvorbereitung",
-    },
-    isActive: true,
-    user: {
-      name: "توماس وبر",
-      email: "thomas@example.com",
-      avatar: null,
-    },
-  },
-];
-
-// ============================================
-// 📊 MentorService Class
-// ============================================
-
 class MentorService {
-  /**
-   * Get all mentors with filters
-   */
   async getMentors({ level, language, limit = 20, offset = 0 }) {
     try {
       const where = { isActive: true };
@@ -90,14 +28,6 @@ class MentorService {
         order: [["rating", "DESC"]],
       });
 
-      if (rows.length === 0) {
-        return {
-          mentors: MOCK_MENTORS,
-          total: MOCK_MENTORS.length,
-          isMock: true,
-        };
-      }
-
       const mentors = rows.map((mentor) => ({
         ...mentor.toJSON(),
         user: mentor.mentorUser,
@@ -111,17 +41,48 @@ class MentorService {
     } catch (error) {
       logger.error(`❌ Error in getMentors:`, error);
       return {
-        mentors: MOCK_MENTORS,
-        total: MOCK_MENTORS.length,
+        mentors: [],
+        total: 0,
         isMock: true,
         error: error.message,
       };
     }
   }
 
-  /**
-   * Get mentor by ID
-   */
+  async updateMentorById(mentorId, data) {
+    try {
+      const mentor = await Mentor.findByPk(mentorId);
+      if (!mentor) return null;
+
+      const allowedFields = [
+        "name",
+        "level",
+        "hourlyRate",
+        "languages",
+        "specializations",
+        "bio",
+        "isVerified",
+        "isActive",
+        "rating",
+        "totalStudents",
+      ];
+      const updateData = {};
+
+      allowedFields.forEach((field) => {
+        if (data[field] !== undefined) {
+          updateData[field] = data[field];
+        }
+      });
+
+      await mentor.update(updateData);
+      logger.info(`✅ Mentor updated: ${mentorId}`);
+      return mentor;
+    } catch (error) {
+      logger.error(`❌ Error in updateMentorById:`, error);
+      throw error;
+    }
+  }
+
   async getMentorById(mentorId) {
     try {
       const mentor = await Mentor.findByPk(mentorId, {
@@ -134,9 +95,7 @@ class MentorService {
         ],
       });
 
-      if (!mentor) {
-        return MOCK_MENTORS.find((m) => m.id === mentorId) || null;
-      }
+      if (!mentor) return null;
 
       return {
         ...mentor.toJSON(),
@@ -144,13 +103,10 @@ class MentorService {
       };
     } catch (error) {
       logger.error(`❌ Error in getMentorById:`, error);
-      return MOCK_MENTORS.find((m) => m.id === mentorId) || null;
+      return null;
     }
   }
 
-  /**
-   * Get mentor by user ID
-   */
   async getMentorByUserId(userId) {
     try {
       const mentor = await Mentor.findOne({
@@ -171,12 +127,9 @@ class MentorService {
     }
   }
 
-  /**
-   * Register as mentor
-   */
   async registerAsMentor(userId, data) {
     try {
-      const { level, hourlyRate, languages, specializations, bio } = data;
+      const { id, level, hourlyRate, languages, specializations, bio } = data;
 
       const existing = await this.getMentorByUserId(userId);
       if (existing) {
@@ -184,8 +137,10 @@ class MentorService {
       }
 
       const mentor = await Mentor.create({
+        id: id || `mentor-${Date.now()}`,
         userId,
         level,
+        name: data.name || "Mentor",
         hourlyRate: hourlyRate || 15,
         languages: languages || ["fa", "de"],
         specializations: specializations || [],
@@ -200,9 +155,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Book a session
-   */
   async bookSession(studentId, mentorId, startTime, endTime) {
     try {
       const mentor = await Mentor.findByPk(mentorId);
@@ -210,18 +162,13 @@ class MentorService {
         throw new Error("Mentor not found");
       }
 
-      // Check availability
       const existing = await MentorSession.findOne({
         where: {
           mentorId,
           status: { [Op.in]: ["pending", "confirmed"] },
           [Op.or]: [
-            {
-              startTime: { [Op.between]: [startTime, endTime] },
-            },
-            {
-              endTime: { [Op.between]: [startTime, endTime] },
-            },
+            { startTime: { [Op.between]: [startTime, endTime] } },
+            { endTime: { [Op.between]: [startTime, endTime] } },
           ],
         },
       });
@@ -236,6 +183,7 @@ class MentorService {
         startTime,
         endTime,
         status: "pending",
+        price: mentor.hourlyRate,
       });
 
       return session;
@@ -245,9 +193,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Get user sessions
-   */
   async getUserSessions(userId, role = "student") {
     try {
       let where = {};
@@ -296,9 +241,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Update session status
-   */
   async updateSessionStatus(sessionId, status, mentorId) {
     try {
       const session = await MentorSession.findOne({
@@ -317,9 +259,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Complete session with review
-   */
   async completeSession(sessionId, studentId, review, rating) {
     try {
       const session = await MentorSession.findOne({
@@ -336,7 +275,6 @@ class MentorService {
         rating,
       });
 
-      // Update mentor rating
       const mentor = await Mentor.findByPk(session.mentorId);
       if (mentor) {
         const allSessions = await MentorSession.findAll({
@@ -365,9 +303,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Get mentor stats
-   */
   async getMentorStats(mentorId) {
     try {
       const mentor = await Mentor.findByPk(mentorId);
@@ -385,15 +320,13 @@ class MentorService {
         where: { mentorId },
       });
 
-      const stats = {
+      return {
         totalSessions: sessions.length,
         completedSessions: sessions.filter((s) => s.status === "completed").length,
         pendingSessions: sessions.filter((s) => s.status === "pending").length,
         averageRating: mentor.rating || 0,
         totalStudents: mentor.totalStudents || 0,
       };
-
-      return stats;
     } catch (error) {
       logger.error(`❌ Error in getMentorStats:`, error);
       return {
@@ -406,9 +339,6 @@ class MentorService {
     }
   }
 
-  /**
-   * Update mentor profile
-   */
   async updateMentorProfile(userId, data) {
     try {
       const mentor = await this.getMentorByUserId(userId);

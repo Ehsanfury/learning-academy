@@ -31,20 +31,20 @@ export const getProgress = asyncHandler(async (req, res) => {
 
   logInfo("📊 [Controller] Getting all progress", { userId, limit, offset });
 
-  const result = await progressService.getAllProgress(userId, parseInt(limit), parseInt(offset));
+  const progress = await progressService.getAllProgress(userId, parseInt(limit), parseInt(offset));
 
   logInfo("✅ [Controller] Progress fetched successfully", {
     userId,
-    count: result.progress?.length || 0,
-    total: result.total || 0,
+    count: progress.progress?.length || 0,
+    total: progress.total || 0,
   });
 
   res.json({
     success: true,
-    data: result.progress || [],
-    total: result.total || 0,
-    limit: result.limit || parseInt(limit),
-    offset: result.offset || parseInt(offset),
+    data: progress.progress || [],
+    total: progress.total || 0,
+    limit: progress.limit || parseInt(limit),
+    offset: progress.offset || parseInt(offset),
   });
 });
 

@@ -51,7 +51,7 @@ import scenariosRoutes from "./routes/scenariosRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import journeyRoutes from "./routes/journeyRoutes.js";
-
+import adminRoutes from "./routes/adminRoutes.js";
 // Socket Handler
 import setupSocket from "./socketHandler.js";
 
@@ -308,7 +308,7 @@ app.get("/", (req, res) => {
 // ============================================
 
 app.use("/api/auth", authRoutes);
-app.use("/api/journey", authenticate, trackActivity, journeyRoutes);
+
 // ============================================
 // 🔐 PROTECTED ROUTES
 // ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)
@@ -326,11 +326,12 @@ app.use("/api/mentors", trackActivity, mentorRoutes);
 app.use("/api/vocabulary", trackActivity, vocabularyRoutes);
 app.use("/api/levels", trackActivity, levelRoutes);
 app.use("/api/exercises", trackActivity, exerciseRoutes);
-app.use("/api/stories", trackActivity, storiesRoutes);
-app.use("/api/scenarios", trackActivity, scenariosRoutes);
+app.use("/api/stories", authenticate, trackActivity, storiesRoutes);
+app.use("/api/scenarios", authenticate, trackActivity, scenariosRoutes);
 app.use("/api/notifications", trackActivity, notificationRoutes);
 app.use("/api/analytics", trackActivity, analyticsRoutes);
-
+app.use("/api/journey", authenticate, trackActivity, journeyRoutes);
+app.use("/api/admin", adminRoutes);
 // ============================================
 // 📚 API Documentation
 // ============================================

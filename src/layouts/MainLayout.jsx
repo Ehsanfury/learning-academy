@@ -3,12 +3,11 @@
  * Path: src/layouts/MainLayout.jsx
  * Description: Main layout with responsive navbar and mobile support
  * Project: Learning Academy
- * Version: 3.2 - PUBLIC LAYOUT - NO REDIRECT TO LOGIN
+ * Version: 3.3 - Added Admin Panel to user dropdown
  * Changes:
+ * - ✅ FIXED: Added Admin Panel to user dropdown for admin users
  * - ✅ FIXED: This layout is PUBLIC - does NOT redirect to login
  * - ✅ FIXED: Added About & Support to user dropdown menu
- * - ✅ FIXED: 5-column footer with proper sizing
- * - ✅ FIXED: MainLayout is now completely public
  */
 
 import React, { useState, useEffect } from "react";
@@ -165,12 +164,6 @@ const MainLayout = () => {
   };
 
   // ============================================
-  // ✅ IMPORTANT: MainLayout is PUBLIC
-  // ============================================
-  // This layout does NOT redirect to login.
-  // Only the PrivateRoute component handles authentication.
-
-  // ============================================
   // 📊 User Dropdown Menu Items
   // ============================================
 
@@ -185,6 +178,16 @@ const MainLayout = () => {
       label: { fa: "تنظیمات", en: "Settings" },
       icon: Settings,
     },
+    // ✅ Admin Panel - فقط برای ادمین‌ها
+    ...(user?.role === "admin"
+      ? [
+          {
+            path: "/admin",
+            label: { fa: "پنل مدیریت", en: "Admin Panel" },
+            icon: Shield,
+          },
+        ]
+      : []),
     {
       path: "/about",
       label: { fa: "درباره ما", en: "About Us" },
@@ -449,7 +452,23 @@ const MainLayout = () => {
 
                 <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
 
-                {/* ✅ Mobile: About & Support/Contact */}
+                {/* ✅ Admin Panel - فقط برای ادمین‌ها */}
+                {user?.role === "admin" && (
+                  <>
+                    <Link
+                      to="/admin"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950 transition"
+                    >
+                      <Shield className="w-5 h-5" />
+                      <span>
+                        {language === "fa" ? "پنل مدیریت" : "Admin Panel"}
+                      </span>
+                    </Link>
+                    <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
+                  </>
+                )}
+
                 <Link
                   to="/about"
                   onClick={() => setMobileMenuOpen(false)}

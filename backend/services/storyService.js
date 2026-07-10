@@ -2,9 +2,10 @@
  * storyService.js
  * Path: backend/services/storyService.js
  * Description: Story service for interactive stories
+ * Version: 3.0 - Complete with all CRUD operations
  * Changes:
- * - ✅ New file created
- * - ✅ CRUD operations for stories
+ * - ✅ Added createStory, updateStory, deleteStory
+ * - ✅ Complete CRUD operations
  * - ✅ Progress tracking
  * - ✅ XP awarding
  */
@@ -17,6 +18,9 @@ import userService from "./userService.js";
 class StoryService {
   /**
    * Get all stories with user progress
+   * @param {string} userId - User ID
+   * @param {Object} filters - Filters (level, limit, offset)
+   * @returns {Object} Stories with pagination
    */
   async getStories(userId, filters = {}) {
     try {
@@ -87,6 +91,9 @@ class StoryService {
 
   /**
    * Get story by ID with user progress
+   * @param {string} storyId - Story ID
+   * @param {string} userId - User ID
+   * @returns {Object} Story with progress
    */
   async getStory(storyId, userId) {
     try {
@@ -118,7 +125,70 @@ class StoryService {
   }
 
   /**
+   * Create a new story
+   * @param {Object} data - Story data
+   * @returns {Object} Created story
+   */
+  async createStory(data) {
+    try {
+      const story = await Story.create(data);
+      logger.info(`✅ Story created: ${story.id}`);
+      return story;
+    } catch (error) {
+      logger.error(`❌ Error in createStory:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Update a story
+   * @param {string} storyId - Story ID
+   * @param {Object} data - Updated data
+   * @returns {Object} Updated story
+   */
+  async updateStory(storyId, data) {
+    try {
+      const story = await Story.findByPk(storyId);
+      if (!story) return null;
+
+      await story.update(data);
+      logger.info(`✅ Story updated: ${storyId}`);
+      return story;
+    } catch (error) {
+      logger.error(`❌ Error in updateStory:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Delete a story
+   * @param {string} storyId - Story ID
+   * @returns {Object} Result
+   */
+  async deleteStory(storyId) {
+    try {
+      const story = await Story.findByPk(storyId);
+      if (!story) return null;
+
+      // Delete all progress records for this story
+      await StoryProgress.destroy({
+        where: { storyId },
+      });
+
+      await story.destroy();
+      logger.info(`🗑️ Story deleted: ${storyId}`);
+      return { success: true };
+    } catch (error) {
+      logger.error(`❌ Error in deleteStory:`, error);
+      throw error;
+    }
+  }
+
+  /**
    * Start a story
+   * @param {string} userId - User ID
+   * @param {string} storyId - Story ID
+   * @returns {Object} Story progress
    */
   async startStory(userId, storyId) {
     try {
@@ -144,6 +214,10 @@ class StoryService {
 
   /**
    * Update story progress
+   * @param {string} userId - User ID
+   * @param {string} storyId - Story ID
+   * @param {Object} data - Progress data (progress, status)
+   * @returns {Object} Updated progress with XP
    */
   async updateProgress(userId, storyId, data) {
     try {
@@ -160,7 +234,7 @@ class StoryService {
       const isCompleted = status === "completed" && storyProgress.status !== "completed";
 
       await storyProgress.update({
-        progress: progress || storyProgress.progress,
+        progress: progress !== undefined ? progress : storyProgress.progress,
         status: status || storyProgress.status,
         completedAt: isCompleted ? new Date() : storyProgress.completedAt,
       });
@@ -171,6 +245,7 @@ class StoryService {
         const story = await Story.findByPk(storyId);
         xpEarned = story?.xpReward || 30;
         await userService.addXP(userId, xpEarned, "story_completion");
+        logger.info(`🏆 User ${userId} earned ${xpEarned} XP from story ${storyId}`);
       }
 
       return {
@@ -186,6 +261,9 @@ class StoryService {
 
   /**
    * Get story progress
+   * @param {string} userId - User ID
+   * @param {string} storyId - Story ID
+   * @returns {Object} Story progress
    */
   async getProgress(userId, storyId) {
     try {
