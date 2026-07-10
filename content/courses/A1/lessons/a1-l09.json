@@ -3,7 +3,7 @@
   "order": 9,
   "level": "A1",
   "unit": 9,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Unter Freunden - با دوستان",
@@ -137,14 +137,14 @@
   },
   "pronunciationGuide": {
     "title": {
-      "fa": "راهنمای تلفظ",
-      "en": "Pronunciation Guide",
-      "de": "Ausspracheführer"
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
     },
     "layers": {
       "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی. این درس روی تلفظ کلمات بازار و رستوران تمرکز می‌کند.",
-      "en": "Three layers. This lesson focuses on market and restaurant vocabulary.",
-      "de": "Drei Schichten."
+      "en": "Three layers: Persian, IPA, physical. This lesson focuses on market and restaurant vocabulary.",
+      "de": "Drei Schichten. Diese Lektion konzentriert sich auf Markt- und Restaurantvokabular."
     },
     "sounds": [
       {
@@ -711,9 +711,7 @@
       "de": "sich verabreden",
       "article": "",
       "plural": "",
-      "ipa": [
-        "zɪç fɛɐ̯ˈʔaːbʁeːdn̩"
-      ],
+      "ipa": "[zɪç fɛɐ̯ˈʔaːbʁeːdn̩]",
       "fa": "قرار گذاشتن",
       "en": "to make an appointment",
       "example": {
@@ -802,49 +800,14 @@
           "de": "wollen drückt Wollen aus. Satzklammer: wollen in Position 2, Hauptverb am Ende."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "wollen",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "wollen", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "will",
-              "ویل",
-              "من می‌خواهم"
-            ],
-            [
-              "du",
-              "willst",
-              "ویلست",
-              "تو می‌خواهی"
-            ],
-            [
-              "er/sie/es",
-              "will",
-              "ویل",
-              "او می‌خواهد"
-            ],
-            [
-              "wir",
-              "wollen",
-              "وو-لِن",
-              "ما می‌خواهیم"
-            ],
-            [
-              "ihr",
-              "wollt",
-              "وولت",
-              "شما می‌خواهید"
-            ],
-            [
-              "sie/Sie",
-              "wollen",
-              "وو-لِن",
-              "آن‌ها/شما می‌خواهند"
-            ]
+            ["ich", "will", "ویل", "من می‌خواهم"],
+            ["du", "willst", "ویلست", "تو می‌خواهی"],
+            ["er/sie/es", "will", "ویل", "او می‌خواهد"],
+            ["wir", "wollen", "وو-لِن", "ما می‌خواهیم"],
+            ["ihr", "wollt", "وولت", "شما می‌خواهید"],
+            ["sie/Sie", "wollen", "وو-لِن", "آن‌ها/شما می‌خواهند"]
           ]
         },
         "pattern": {
@@ -866,49 +829,14 @@
           "de": "mögen drückt Mögen aus. Vokalwechsel: e → i."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "mögen",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "mögen", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "mag",
-              "ماگ",
-              "من دوست دارم"
-            ],
-            [
-              "du",
-              "magst",
-              "ماگست",
-              "تو دوست داری"
-            ],
-            [
-              "er/sie/es",
-              "mag",
-              "ماگ",
-              "او دوست دارد"
-            ],
-            [
-              "wir",
-              "mögen",
-              "مو-گِن",
-              "ما دوست داریم"
-            ],
-            [
-              "ihr",
-              "mögt",
-              "موگت",
-              "شما دوست دارید"
-            ],
-            [
-              "sie/Sie",
-              "mögen",
-              "مو-گِن",
-              "آن‌ها/شما دوست دارند"
-            ]
+            ["ich", "mag", "ماگ", "من دوست دارم"],
+            ["du", "magst", "ماگست", "تو دوست داری"],
+            ["er/sie/es", "mag", "ماگ", "او دوست دارد"],
+            ["wir", "mögen", "مو-گِن", "ما دوست داریم"],
+            ["ihr", "mögt", "موگت", "شما دوست دارید"],
+            ["sie/Sie", "mögen", "مو-گِن", "آن‌ها/شما دوست دارند"]
           ]
         },
         "pattern": {
@@ -930,43 +858,18 @@
           "de": "Im Deutschen können zwei Nomen ein Kompositum bilden. Der Artikel kommt vom letzten Nomen."
         },
         "conjugationTable": {
-          "headers": [
-            "Nomen 1",
-            "Nomen 2",
-            "Kompositum",
-            "مثال"
-          ],
+          "headers": ["Nomen 1", "Nomen 2", "Kompositum", "مثال"],
           "rows": [
-            [
-              "das Foto",
-              "der Apparat",
-              "der Fotoapparat",
-              "دوربین عکاسی"
-            ],
+            ["das Foto", "der Apparat", "der Fotoapparat", "دوربین عکاسی"],
             [
               "die Musik",
               "das Instrument",
               "das Musikinstrument",
               "ساز موسیقی"
             ],
-            [
-              "der Kaffee",
-              "die Maschine",
-              "die Kaffeemaschine",
-              "ماشین قهوه"
-            ],
-            [
-              "die Hand",
-              "die Tasche",
-              "die Handtasche",
-              "کیف دستی"
-            ],
-            [
-              "das Buch",
-              "das Geschäft",
-              "das Buchgeschäft",
-              "کتابفروشی"
-            ]
+            ["der Kaffee", "die Maschine", "die Kaffeemaschine", "ماشین قهوه"],
+            ["die Hand", "die Tasche", "die Handtasche", "کیف دستی"],
+            ["das Buch", "das Geschäft", "das Buchgeschäft", "کتابفروشی"]
           ]
         },
         "pattern": {
@@ -988,12 +891,7 @@
           "de": "denn gibt einen Grund, oder gibt eine Wahl. Ändern die Wortstellung nicht."
         },
         "conjugationTable": {
-          "headers": [
-            "حرف ربط",
-            "معنی",
-            "مثال",
-            "ترجمه"
-          ],
+          "headers": ["حرف ربط", "معنی", "مثال", "ترجمه"],
           "rows": [
             [
               "denn",
@@ -1028,31 +926,11 @@
           "de": "Um zu sagen, wie viele etwas tun: alle, viele, wenige."
         },
         "conjugationTable": {
-          "headers": [
-            "کلمه",
-            "تلفظ",
-            "معنی",
-            "مثال"
-          ],
+          "headers": ["کلمه", "تلفظ", "معنی", "مثال"],
           "rows": [
-            [
-              "alle",
-              "آ-لِه",
-              "همه",
-              "Alle schlafen lange."
-            ],
-            [
-              "viele",
-              "فی-لِه",
-              "بسیاری",
-              "Viele gehen ins Kino."
-            ],
-            [
-              "wenige",
-              "وِ-نی-گِه",
-              "چند نفر",
-              "Wenige machen Sport."
-            ]
+            ["alle", "آ-لِه", "همه", "Alle schlafen lange."],
+            ["viele", "فی-لِه", "بسیاری", "Viele gehen ins Kino."],
+            ["wenige", "وِ-نی-گِه", "چند نفر", "Wenige machen Sport."]
           ]
         },
         "pattern": {
@@ -1281,17 +1159,16 @@
               "en": "You can sit on it",
               "de": "Man kann darauf sitzen"
             },
-            "options": [
-              "Möbel",
-              "Buch",
-              "Glas",
-              "Tasche"
-            ],
+            "options": {
+              "fa": ["مبلمان", "کتاب", "لیوان", "کیف"],
+              "en": ["Furniture", "Book", "Glass", "Bag"],
+              "de": ["Möbel", "Buch", "Glas", "Tasche"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Möbel = مبلمان",
               "en": "Möbel = furniture",
-              "de": "Möbel"
+              "de": "Möbel = Möbel"
             }
           },
           {
@@ -1301,17 +1178,16 @@
               "en": "You can read it",
               "de": "Man kann es lesen"
             },
-            "options": [
-              "Tasche",
-              "Buch",
-              "Glas",
-              "Möbel"
-            ],
+            "options": {
+              "fa": ["کیف", "کتاب", "لیوان", "مبلمان"],
+              "en": ["Bag", "Book", "Glass", "Furniture"],
+              "de": ["Tasche", "Buch", "Glas", "Möbel"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Buch = کتاب",
               "en": "Buch = book",
-              "de": "Buch"
+              "de": "Buch = Buch"
             }
           },
           {
@@ -1321,17 +1197,16 @@
               "en": "You can drink water from it",
               "de": "Man kann daraus trinken"
             },
-            "options": [
-              "Möbel",
-              "Buch",
-              "Glas",
-              "Tasche"
-            ],
+            "options": {
+              "fa": ["مبلمان", "کتاب", "لیوان", "کیف"],
+              "en": ["Furniture", "Book", "Glass", "Bag"],
+              "de": ["Möbel", "Buch", "Glas", "Tasche"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Glas = لیوان",
               "en": "Glas = glass",
-              "de": "Glas"
+              "de": "Glas = Glas"
             }
           },
           {
@@ -1341,17 +1216,16 @@
               "en": "You can put things in it",
               "de": "Man kann Dinge hineinlegen"
             },
-            "options": [
-              "Glas",
-              "Tasche",
-              "Buch",
-              "Möbel"
-            ],
+            "options": {
+              "fa": ["لیوان", "کیف", "کتاب", "مبلمان"],
+              "en": ["Glass", "Bag", "Book", "Furniture"],
+              "de": ["Glas", "Tasche", "Buch", "Möbel"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Tasche = کیف",
               "en": "Tasche = bag",
-              "de": "Tasche"
+              "de": "Tasche = Tasche"
             }
           }
         ]
@@ -1374,27 +1248,47 @@
         "questions": [
           {
             "id": "w1-q1",
-            "prompt": "Ich ___ auf den Flohmarkt gehen. (wollen)",
+            "prompt": {
+              "fa": "Ich ___ auf den Flohmarkt gehen. (wollen)",
+              "en": "Ich ___ auf den Flohmarkt gehen. (wollen)",
+              "de": "Ich ___ auf den Flohmarkt gehen. (wollen)"
+            },
             "placeholder": "will"
           },
           {
             "id": "w1-q2",
-            "prompt": "Du ___ ins Kino gehen. (wollen)",
+            "prompt": {
+              "fa": "Du ___ ins Kino gehen. (wollen)",
+              "en": "Du ___ ins Kino gehen. (wollen)",
+              "de": "Du ___ ins Kino gehen. (wollen)"
+            },
             "placeholder": "willst"
           },
           {
             "id": "w1-q3",
-            "prompt": "Wir ___ am Sonntag essen gehen. (wollen)",
+            "prompt": {
+              "fa": "Wir ___ am Sonntag essen gehen. (wollen)",
+              "en": "Wir ___ am Sonntag essen gehen. (wollen)",
+              "de": "Wir ___ am Sonntag essen gehen. (wollen)"
+            },
             "placeholder": "wollen"
           },
           {
             "id": "w1-q4",
-            "prompt": "Er ___ einen Salat essen. (wollen)",
+            "prompt": {
+              "fa": "Er ___ einen Salat essen. (wollen)",
+              "en": "Er ___ einen Salat essen. (wollen)",
+              "de": "Er ___ einen Salat essen. (wollen)"
+            },
             "placeholder": "will"
           },
           {
             "id": "w1-q5",
-            "prompt": "Ihr ___ ins Restaurant gehen. (wollen)",
+            "prompt": {
+              "fa": "Ihr ___ ins Restaurant gehen. (wollen)",
+              "en": "Ihr ___ ins Restaurant gehen. (wollen)",
+              "de": "Ihr ___ ins Restaurant gehen. (wollen)"
+            },
             "placeholder": "wollt"
           }
         ]
@@ -1475,67 +1369,64 @@
         "instructions": {
           "fa": "شکل درست فعل mögen را انتخاب کنید.",
           "en": "Choose the correct form of mögen.",
-          "de": "Wählen Sie die richtige Form."
+          "de": "Wählen Sie die richtige Form von mögen."
         },
         "questions": [
           {
             "id": "m1-q1",
             "situation": {
               "fa": "Ich ___ keinen Fisch. (mag/mögen)",
-              "en": "Ich ___ no fish.",
-              "de": "Ich ___ keinen Fisch."
+              "en": "Ich ___ keinen Fisch. (mag/mögen)",
+              "de": "Ich ___ keinen Fisch. (mag/mögen)"
             },
-            "options": [
-              "mag",
-              "mögen",
-              "magst",
-              "mögt"
-            ],
+            "options": {
+              "fa": ["mag", "mögen", "magst", "mögt"],
+              "en": ["mag", "mögen", "magst", "mögt"],
+              "de": ["mag", "mögen", "magst", "mögt"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "ich mag (تغییر مصوت: e → a در ich)",
               "en": "ich mag (vowel change)",
-              "de": "ich mag"
+              "de": "ich mag (Vokalwechsel)"
             }
           },
           {
             "id": "m1-q2",
             "situation": {
               "fa": "Wir ___ Pizza. (mag/mögen)",
-              "en": "We ___ pizza.",
-              "de": "Wir ___ Pizza."
+              "en": "Wir ___ Pizza. (mag/mögen)",
+              "de": "Wir ___ Pizza. (mag/mögen)"
             },
-            "options": [
-              "mag",
-              "mögen",
-              "magst",
-              "mögt"
-            ],
+            "options": {
+              "fa": ["mag", "mögen", "magst", "mögt"],
+              "en": ["mag", "mögen", "magst", "mögt"],
+              "de": ["mag", "mögen", "magst", "mögt"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "wir mögen (جمع بدون تغییر)",
               "en": "wir mögen (plural)",
-              "de": "wir mögen"
+              "de": "wir mögen (Plural)"
             }
           },
           {
             "id": "m1-q3",
             "situation": {
               "fa": "Er ___ Fleisch. (mag/mögen)",
-              "en": "He ___ meat.",
-              "de": "Er ___ Fleisch."
+              "en": "Er ___ Fleisch. (mag/mögen)",
+              "de": "Er ___ Fleisch. (mag/mögen)"
             },
-            "options": [
-              "mag",
-              "mögen",
-              "magst",
-              "mögt"
-            ],
+            "options": {
+              "fa": ["mag", "mögen", "magst", "mögt"],
+              "en": ["mag", "mögen", "magst", "mögt"],
+              "de": ["mag", "mögen", "magst", "mögt"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "er mag (تغییر مصوت در er/sie/es)",
-              "en": "er mag",
-              "de": "er mag"
+              "en": "er mag (vowel change in er/sie/es)",
+              "de": "er mag (Vokalwechsel in er/sie/es)"
             }
           }
         ]
@@ -1548,12 +1439,12 @@
         "title": {
           "fa": "تمرین ۵: تلفظ کلمات بازار و رستوران",
           "en": "Exercise 5: Pronouncing Market and Restaurant Words",
-          "de": "Übung 5: Aussprache"
+          "de": "Übung 5: Aussprache - Markt und Restaurant"
         },
         "instructions": {
           "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
-          "en": "Pronounce the following words.",
-          "de": "Sprechen Sie die Wörter aus."
+          "en": "Pronounce the following words aloud.",
+          "de": "Sprechen Sie die folgenden Wörter laut aus."
         },
         "words": [
           {
@@ -1619,7 +1510,7 @@
     "title": {
       "fa": "مرور درس ۹",
       "en": "Lesson 9 Review",
-      "de": "Lektion 9"
+      "de": "Lektion 9 Überprüfung"
     },
     "quiz": [
       {
@@ -1630,17 +1521,16 @@
           "en": "How is wollen conjugated with ich?",
           "de": "Wie wird wollen mit ich konjugiert?"
         },
-        "options": [
-          "ich wolle",
-          "ich will",
-          "ich wollen",
-          "ich wollt"
-        ],
+        "options": {
+          "fa": ["ich wolle", "ich will", "ich wollen", "ich wollt"],
+          "en": ["ich wolle", "ich will", "ich wollen", "ich wollt"],
+          "de": ["ich wolle", "ich will", "ich wollen", "ich wollt"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "ich will (بدون پایانه در ich!)",
-          "en": "ich will (no ending!)",
-          "de": "ich will"
+          "en": "ich will (no ending in ich!)",
+          "de": "ich will (keine Endung bei ich!)"
         }
       },
       {
@@ -1651,17 +1541,31 @@
           "en": "What does 'Ich mag keinen Fisch' mean?",
           "de": "Was bedeutet 'Ich mag keinen Fisch'?"
         },
-        "options": [
-          "من ماهی دوست دارم",
-          "من ماهی دوست ندارم",
-          "من ماهی می‌خورم",
-          "من ماهی ندارم"
-        ],
+        "options": {
+          "fa": [
+            "من ماهی دوست دارم",
+            "من ماهی دوست ندارم",
+            "من ماهی می‌خورم",
+            "من ماهی ندارم"
+          ],
+          "en": [
+            "I like fish",
+            "I don't like fish",
+            "I eat fish",
+            "I don't have fish"
+          ],
+          "de": [
+            "Ich mag Fisch",
+            "Ich mag keinen Fisch",
+            "Ich esse Fisch",
+            "Ich habe keinen Fisch"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "mögen + Akkusativ منفی: keinen Fisch = ماهی دوست ندارم",
-          "en": "mögen + negative accusative",
-          "de": "mögen + Akkusativ negativ"
+          "en": "mögen + negative accusative: keinen Fisch = I don't like fish",
+          "de": "mögen + negativer Akkusativ: keinen Fisch = ich mag keinen Fisch"
         }
       },
       {
@@ -1672,17 +1576,16 @@
           "en": "Who asks 'Was darf's denn sein?'",
           "de": "Wer fragt 'Was darf's denn sein?'"
         },
-        "options": [
-          "مشتری",
-          "گارسون",
-          "آشپز",
-          "مدیر"
-        ],
+        "options": {
+          "fa": ["مشتری", "گارسون", "آشپز", "مدیر"],
+          "en": ["Customer", "Waiter", "Chef", "Manager"],
+          "de": ["Kunde", "Kellner", "Koch", "Manager"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "این عبارت را گارسون (Kellner) می‌پرسد",
           "en": "The waiter asks this",
-          "de": "Der Kellner fragt"
+          "de": "Der Kellner fragt das"
         }
       },
       {
@@ -1693,12 +1596,11 @@
           "en": "What article does 'die Hand + der Apparat' get?",
           "de": "Welchen Artikel bekommt 'die Hand + der Apparat'?"
         },
-        "options": [
-          "die",
-          "der",
-          "das",
-          "keinen"
-        ],
+        "options": {
+          "fa": ["die", "der", "das", "keinen"],
+          "en": ["die", "der", "das", "keinen"],
+          "de": ["die", "der", "das", "keinen"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "کلمه‌ی مرکب حرف تعریف کلمه‌ی دوم را می‌گیرد: der Handapparat",
@@ -1714,17 +1616,16 @@
           "en": "Which conjunction gives a reason?",
           "de": "Welche Konjunktion gibt einen Grund?"
         },
-        "options": [
-          "und",
-          "aber",
-          "denn",
-          "oder"
-        ],
+        "options": {
+          "fa": ["und", "aber", "denn", "oder"],
+          "en": ["und", "aber", "denn", "oder"],
+          "de": ["und", "aber", "denn", "oder"]
+        },
         "correctIndex": 2,
         "explanation": {
           "fa": "denn = زیرا (دلیل)",
-          "en": "denn = because",
-          "de": "denn = denn"
+          "en": "denn = because (reason)",
+          "de": "denn = denn (Grund)"
         }
       }
     ]
@@ -1732,8 +1633,8 @@
   "assessment": {
     "title": {
       "fa": "آزمون پایان درس ۹",
-      "en": "Lesson 9 Assessment",
-      "de": "Lektion 9"
+      "en": "Lesson 9 Final Assessment",
+      "de": "Lektion 9 Abschlussbewertung"
     },
     "totalQuestions": 15,
     "passingScore": 70,
@@ -1972,8 +1873,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-09",
-    "updatedAt": "2026-07-09",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [

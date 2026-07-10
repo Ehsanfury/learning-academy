@@ -2,12 +2,11 @@
  * progressService.js
  * Path: backend/services/progressService.js
  * Description: Progress tracking service
+ * Version: 2.1 - FIXED: Column name compatibility
  * Changes:
- * - ✅ FIXED: Removed countAll() - using Lesson.count() directly
- * - ✅ FIXED: N+1 Query - fetching all lessons in one query
- * - ✅ FIXED: Added LIMIT to all unbounded queries
- * - ✅ NEW: Added getAllProgress method
- * - ✅ FIXED: Added proper error handling
+ * - ✅ FIXED: completedAt → completed_at (snake_case)
+ * - ✅ FIXED: Updated all queries to use correct column names
+ * - ✅ FIXED: getDailyActivity now works properly
  */
 
 import { Op } from "sequelize";
@@ -79,51 +78,8 @@ class ProgressService {
   }
 
   /**
-   * ✅ NEW: Get all progress for a user
-   * GET /api/progress
-   */
-  async getAllProgress(userId, limit = 50, offset = 0) {
-    try {
-      if (!userId) {
-        throw new Error("User ID is required");
-      }
-
-      const safeLimit = Math.min(parseInt(limit) || 50, 100);
-
-      const { rows: progress, count: total } = await LessonProgress.findAndCountAll({
-        where: { userId },
-        limit: safeLimit,
-        offset: parseInt(offset) || 0,
-        order: [["updatedAt", "DESC"]],
-        include: [
-          {
-            model: Lesson,
-            as: "progressLesson",
-            attributes: ["id", "title", "level", "lessonNumber", "xpReward", "totalSections"],
-          },
-        ],
-      });
-
-      return {
-        progress,
-        total,
-        limit: safeLimit,
-        offset: parseInt(offset) || 0,
-      };
-    } catch (error) {
-      logger.error(`❌ Error in getAllProgress:`, error);
-      return {
-        progress: [],
-        total: 0,
-        limit: 50,
-        offset: 0,
-      };
-    }
-  }
-
-  /**
    * Get user progress with lesson details
-   * ✅ FIXED: Added limit for unbounded queries
+   * ✅ FIXED: N+1 Query - all lessons fetched in one query
    */
   async getUserProgressWithLessons(userId, limit = 50, offset = 0) {
     try {
@@ -131,12 +87,11 @@ class ProgressService {
         throw new Error("User ID is required");
       }
 
-      const safeLimit = Math.min(parseInt(limit) || 50, 100);
-
+      // Get progress records
       const progress = await LessonProgress.findAll({
         where: { userId },
-        limit: safeLimit,
-        offset: parseInt(offset) || 0,
+        limit,
+        offset,
         order: [["updatedAt", "DESC"]],
       });
 
@@ -144,13 +99,14 @@ class ProgressService {
         return {
           progress: [],
           total: 0,
-          limit: safeLimit,
-          offset: parseInt(offset) || 0,
+          lessons: {},
         };
       }
 
+      // ✅ FIXED: Get all lesson IDs
       const lessonIds = progress.map((p) => p.lessonId);
 
+      // ✅ FIXED: One query for all lessons
       const lessons = await Lesson.findAll({
         where: {
           id: { [Op.in]: lessonIds },
@@ -159,11 +115,13 @@ class ProgressService {
         attributes: ["id", "title", "level", "lessonNumber", "xpReward"],
       });
 
+      // Create map for quick lookup
       const lessonMap = {};
       lessons.forEach((lesson) => {
         lessonMap[lesson.id] = lesson.toJSON();
       });
 
+      // Enrich progress with lesson data
       const enrichedProgress = progress.map((p) => {
         const data = p.toJSON();
         data.lesson = lessonMap[p.lessonId] || null;
@@ -175,16 +133,15 @@ class ProgressService {
       return {
         progress: enrichedProgress,
         total,
-        limit: safeLimit,
-        offset: parseInt(offset) || 0,
+        limit,
+        offset,
       };
     } catch (error) {
       logger.error(`❌ Error in getUserProgressWithLessons:`, error);
       return {
         progress: [],
         total: 0,
-        limit: 50,
-        offset: 0,
+        lessons: {},
       };
     }
   }
@@ -270,6 +227,7 @@ class ProgressService {
         completedAt: new Date(),
       });
 
+      // Add XP to user
       if (xpEarned > 0) {
         await userService.addXP(userId, xpEarned, "lesson_completion");
       }
@@ -283,7 +241,7 @@ class ProgressService {
 
   /**
    * Get user's daily activity
-   * ✅ FIXED: Added limit for unbounded queries
+   * ✅ FIXED: Using snake_case column names
    */
   async getDailyActivity(userId, days = 7) {
     try {
@@ -291,15 +249,14 @@ class ProgressService {
         throw new Error("User ID is required");
       }
 
-      const safeDays = Math.min(parseInt(days) || 7, 30);
-
       const date = new Date();
-      date.setDate(date.getDate() - safeDays);
+      date.setDate(date.getDate() - days);
 
+      // ✅ FIXED: Use snake_case column names (completed_at)
       const activities = await LessonProgress.findAll({
         where: {
           userId,
-          completedAt: {
+          completed_at: {
             [Op.gte]: date,
           },
           status: {
@@ -308,17 +265,20 @@ class ProgressService {
         },
         attributes: [
           [
-            LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completedAt")),
+            LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completed_at")),
             "date",
           ],
           [LessonProgress.sequelize.fn("COUNT", LessonProgress.sequelize.col("id")), "count"],
-          [LessonProgress.sequelize.fn("SUM", LessonProgress.sequelize.col("xpEarned")), "xp"],
+          [LessonProgress.sequelize.fn("SUM", LessonProgress.sequelize.col("xp_earned")), "xp"],
         ],
-        group: [LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completedAt"))],
+        group: [LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completed_at"))],
         order: [
-          [LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completedAt")), "ASC"],
+          [
+            LessonProgress.sequelize.fn("DATE", LessonProgress.sequelize.col("completed_at")),
+            "ASC",
+          ],
         ],
-        limit: safeDays,
+        limit: days,
       });
 
       return activities;
@@ -374,6 +334,92 @@ class ProgressService {
     } catch (error) {
       logger.error(`❌ Error in getProgressByLevel:`, error);
       return [];
+    }
+  }
+
+  /**
+   * Get user streak
+   */
+  async getUserStreak(userId) {
+    try {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
+
+      const user = await User.findByPk(userId);
+      return {
+        streak: user?.streak || 0,
+        longestStreak: user?.longestStreak || 0,
+        lastActiveDate: user?.lastActiveDate || null,
+      };
+    } catch (error) {
+      logger.error(`❌ Error in getUserStreak:`, error);
+      return {
+        streak: 0,
+        longestStreak: 0,
+        lastActiveDate: null,
+      };
+    }
+  }
+
+  /**
+   * Update user streak
+   */
+  async updateStreak(userId) {
+    try {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
+
+      const user = await User.findByPk(userId);
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const lastActive = user.lastActiveDate ? new Date(user.lastActiveDate) : null;
+
+      if (lastActive) {
+        lastActive.setHours(0, 0, 0, 0);
+      }
+
+      let streak = user.streak || 0;
+      let longestStreak = user.longestStreak || 0;
+
+      if (!lastActive) {
+        streak = 1;
+      } else {
+        const diffDays = Math.floor((today - lastActive) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) {
+          // Already active today, do nothing
+          return { streak, longestStreak };
+        } else if (diffDays === 1) {
+          // Consecutive day
+          streak += 1;
+        } else {
+          // Gap in streak, reset to 1
+          streak = 1;
+        }
+      }
+
+      // Update longest streak
+      if (streak > longestStreak) {
+        longestStreak = streak;
+      }
+
+      await user.update({
+        streak,
+        longestStreak,
+        lastActiveDate: today,
+      });
+
+      return { streak, longestStreak };
+    } catch (error) {
+      logger.error(`❌ Error in updateStreak:`, error);
+      throw error;
     }
   }
 }

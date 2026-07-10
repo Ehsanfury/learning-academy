@@ -3,7 +3,7 @@
   "order": 5,
   "level": "A1",
   "unit": 5,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Freizeit - اوقات فراغت",
@@ -823,49 +823,14 @@
           "de": "Modalverben wie können drücken Fähigkeit aus. Das Modalverb wird in Position 2 konjugiert, und das Hauptverb geht als Infinitiv ans Satzende. Diese Struktur heißt Satzklammer."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "können",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "können", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "kann",
-              "کان",
-              "من می‌توانم"
-            ],
-            [
-              "du",
-              "kannst",
-              "کانست",
-              "تو می‌توانی"
-            ],
-            [
-              "er/sie/es",
-              "kann",
-              "کان",
-              "او می‌تواند"
-            ],
-            [
-              "wir",
-              "können",
-              "کو-نِن",
-              "ما می‌توانیم"
-            ],
-            [
-              "ihr",
-              "könnt",
-              "کونت",
-              "شما می‌توانید"
-            ],
-            [
-              "sie/Sie",
-              "können",
-              "کو-نِن",
-              "آن‌ها/شما می‌توانند"
-            ]
+            ["ich", "kann", "کان", "من می‌توانم"],
+            ["du", "kannst", "کانست", "تو می‌توانی"],
+            ["er/sie/es", "kann", "کان", "او می‌تواند"],
+            ["wir", "können", "کو-نِن", "ما می‌توانیم"],
+            ["ihr", "könnt", "کونت", "شما می‌توانید"],
+            ["sie/Sie", "können", "کو-نِن", "آن‌ها/شما می‌توانند"]
           ]
         },
         "pattern": {
@@ -887,49 +852,14 @@
           "de": "Das Verb müssen drückt Verpflichtung aus. Wie können, verwendet es die Satzklammer."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "müssen",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "müssen", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "muss",
-              "موس",
-              "من باید"
-            ],
-            [
-              "du",
-              "musst",
-              "موست",
-              "تو باید"
-            ],
-            [
-              "er/sie/es",
-              "muss",
-              "موس",
-              "او باید"
-            ],
-            [
-              "wir",
-              "müssen",
-              "مو-سِن",
-              "ما باید"
-            ],
-            [
-              "ihr",
-              "müsst",
-              "موایت",
-              "شما باید"
-            ],
-            [
-              "sie/Sie",
-              "müssen",
-              "مو-سِن",
-              "آن‌ها/شما باید"
-            ]
+            ["ich", "muss", "موس", "من باید"],
+            ["du", "musst", "موست", "تو باید"],
+            ["er/sie/es", "muss", "موس", "او باید"],
+            ["wir", "müssen", "مو-سِن", "ما باید"],
+            ["ihr", "müsst", "موایت", "شما باید"],
+            ["sie/Sie", "müssen", "مو-سِن", "آن‌ها/شما باید"]
           ]
         },
         "pattern": {
@@ -951,39 +881,11 @@
           "de": "Einige deutsche Verben haben Vokalwechsel in du und er/sie/es."
         },
         "conjugationTable": {
-          "headers": [
-            "فعل",
-            "ich",
-            "du",
-            "er/sie",
-            "تغییر",
-            "معنی"
-          ],
+          "headers": ["فعل", "ich", "du", "er/sie", "تغییر", "معنی"],
           "rows": [
-            [
-              "treffen",
-              "treffe",
-              "triffst",
-              "trifft",
-              "e → i",
-              "ملاقات کردن"
-            ],
-            [
-              "fahren",
-              "fahre",
-              "fährst",
-              "fährt",
-              "a → ä",
-              "سواری کردن"
-            ],
-            [
-              "lesen",
-              "lese",
-              "liest",
-              "liest",
-              "e → ie",
-              "خواندن"
-            ],
+            ["treffen", "treffe", "triffst", "trifft", "e → i", "ملاقات کردن"],
+            ["fahren", "fahre", "fährst", "fährt", "a → ä", "سواری کردن"],
+            ["lesen", "lese", "liest", "liest", "e → ie", "خواندن"],
             [
               "fernsehen",
               "sehe fern",
@@ -1021,37 +923,12 @@
           "de": "Wenn 'in' für eine Richtung verwendet wird, steht es mit Akkusativ. Maskulin: in den, neutral: ins (= in + das), feminin: in die."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "حرف تعریف",
-            "in + Akkusativ",
-            "مثال"
-          ],
+          "headers": ["جنسیت", "حرف تعریف", "in + Akkusativ", "مثال"],
           "rows": [
-            [
-              "مذکر",
-              "der",
-              "in den",
-              "Ich gehe in den Park."
-            ],
-            [
-              "خنثی",
-              "das",
-              "ins (= in das)",
-              "Ich gehe ins Kino."
-            ],
-            [
-              "مؤنث",
-              "die",
-              "in die",
-              "Ich gehe in die Stadt."
-            ],
-            [
-              "جمع",
-              "die",
-              "in die",
-              "Ich gehe in die Clubs."
-            ]
+            ["مذکر", "der", "in den", "Ich gehe in den Park."],
+            ["خنثی", "das", "ins (= in das)", "Ich gehe ins Kino."],
+            ["مؤنث", "die", "in die", "Ich gehe in die Stadt."],
+            ["جمع", "die", "in die", "Ich gehe in die Clubs."]
           ]
         },
         "pattern": {
@@ -1073,47 +950,15 @@
           "de": "Im Deutschen werden Tage und Monate großgeschrieben. Für 'an Tag X' verwendet man 'am': am Montag, am Samstag."
         },
         "conjugationTable": {
-          "headers": [
-            "روز هفته",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["روز هفته", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "Montag",
-              "مون-تاک",
-              "دوشنبه"
-            ],
-            [
-              "Dienstag",
-              "دینس-تاک",
-              "سه‌شنبه"
-            ],
-            [
-              "Mittwoch",
-              "میت-ووخ",
-              "چهارشنبه"
-            ],
-            [
-              "Donnerstag",
-              "دون-رز-تاک",
-              "پنجشنبه"
-            ],
-            [
-              "Freitag",
-              "فرای-تاک",
-              "جمعه"
-            ],
-            [
-              "Samstag",
-              "زامس-تاک",
-              "شنبه"
-            ],
-            [
-              "Sonntag",
-              "زون-تاک",
-              "یکشنبه"
-            ]
+            ["Montag", "مون-تاک", "دوشنبه"],
+            ["Dienstag", "دینس-تاک", "سه‌شنبه"],
+            ["Mittwoch", "میت-ووخ", "چهارشنبه"],
+            ["Donnerstag", "دون-رز-تاک", "پنجشنبه"],
+            ["Freitag", "فرای-تاک", "جمعه"],
+            ["Samstag", "زامس-تاک", "شنبه"],
+            ["Sonntag", "زون-تاک", "یکشنبه"]
           ]
         },
         "pattern": {
@@ -1321,9 +1166,9 @@
           "de": "Übung 1: Hobbys kategorisieren"
         },
         "instructions": {
-          "fa": "برای هر فعالیت، دسته‌بندی درست را انتخاب کنید: Sport، Musik،放松.",
-          "en": "For each activity, choose the correct category.",
-          "de": "Wählen Sie die richtige Kategorie."
+          "fa": "برای هر فعالیت، دسته‌بندی درست را انتخاب کنید: Sport، Musik، Relax.",
+          "en": "For each activity, choose the correct category: Sport, Music, Relaxation.",
+          "de": "Wählen Sie für jede Aktivität die richtige Kategorie: Sport, Musik, Entspannung."
         },
         "questions": [
           {
@@ -1333,11 +1178,11 @@
               "en": "jogging",
               "de": "joggen"
             },
-            "options": [
-              "Sport",
-              "Musik",
-              "Entspannung"
-            ],
+            "options": {
+              "fa": ["ورزش", "موسیقی", "استراحت"],
+              "en": ["Sport", "Music", "Relaxation"],
+              "de": ["Sport", "Musik", "Entspannung"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "joggen یک فعالیت ورزشی است.",
@@ -1352,11 +1197,11 @@
               "en": "playing piano",
               "de": "Klavier spielen"
             },
-            "options": [
-              "Sport",
-              "Musik",
-              "Entspannung"
-            ],
+            "options": {
+              "fa": ["ورزش", "موسیقی", "استراحت"],
+              "en": ["Sport", "Music", "Relaxation"],
+              "de": ["Sport", "Musik", "Entspannung"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Klavier spielen یک فعالیت موسیقایی است.",
@@ -1371,11 +1216,11 @@
               "en": "watching TV",
               "de": "fernsehen"
             },
-            "options": [
-              "Sport",
-              "Musik",
-              "Entspannung"
-            ],
+            "options": {
+              "fa": ["ورزش", "موسیقی", "استراحت"],
+              "en": ["Sport", "Music", "Relaxation"],
+              "de": ["Sport", "Musik", "Entspannung"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "fernsehen یک فعالیت استراحت است.",
@@ -1390,11 +1235,11 @@
               "en": "swimming",
               "de": "schwimmen"
             },
-            "options": [
-              "Sport",
-              "Musik",
-              "Entspannung"
-            ],
+            "options": {
+              "fa": ["ورزش", "موسیقی", "استراحت"],
+              "en": ["Sport", "Music", "Relaxation"],
+              "de": ["Sport", "Musik", "Entspannung"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "schwimmen یک فعالیت ورزشی است.",
@@ -1411,43 +1256,67 @@
         "type": "fill_in",
         "title": {
           "fa": "تمرین ۲: فعل‌های Modal (können و müssen)",
-          "en": "Exercise 2: Modal Verbs",
-          "de": "Übung 2: Modalverben"
+          "en": "Exercise 2: Modal Verbs (können and müssen)",
+          "de": "Übung 2: Modalverben (können und müssen)"
         },
         "instructions": {
           "fa": "فعل Modal درست را در شکل درست قرار دهید. فراموش نکنید فعل اصلی در انتها می‌آید!",
           "en": "Conjugate the modal verb correctly. Main verb goes at the end!",
-          "de": "Konjugieren Sie das Modalverb richtig."
+          "de": "Konjugieren Sie das Modalverb richtig. Hauptverb am Ende!"
         },
         "questions": [
           {
             "id": "m1-q1",
-            "prompt": "Ich ___ schwimmen. (können)",
+            "prompt": {
+              "fa": "Ich ___ schwimmen. (können)",
+              "en": "Ich ___ schwimmen. (können)",
+              "de": "Ich ___ schwimmen. (können)"
+            },
             "placeholder": "kann"
           },
           {
             "id": "m1-q2",
-            "prompt": "Du ___ sehr gut kochen. (können)",
+            "prompt": {
+              "fa": "Du ___ sehr gut kochen. (können)",
+              "en": "Du ___ sehr gut kochen. (können)",
+              "de": "Du ___ sehr gut kochen. (können)"
+            },
             "placeholder": "kannst"
           },
           {
             "id": "m1-q3",
-            "prompt": "Wir ___ am Samstag ins Kino gehen. (können)",
+            "prompt": {
+              "fa": "Wir ___ am Samstag ins Kino gehen. (können)",
+              "en": "Wir ___ am Samstag ins Kino gehen. (können)",
+              "de": "Wir ___ am Samstag ins Kino gehen. (können)"
+            },
             "placeholder": "können"
           },
           {
             "id": "m1-q4",
-            "prompt": "Ich ___ am Sonntag arbeiten. (müssen)",
+            "prompt": {
+              "fa": "Ich ___ am Sonntag arbeiten. (müssen)",
+              "en": "Ich ___ am Sonntag arbeiten. (müssen)",
+              "de": "Ich ___ am Sonntag arbeiten. (müssen)"
+            },
             "placeholder": "muss"
           },
           {
             "id": "m1-q5",
-            "prompt": "Du ___ einkaufen. (müssen)",
+            "prompt": {
+              "fa": "Du ___ einkaufen. (müssen)",
+              "en": "Du ___ einkaufen. (müssen)",
+              "de": "Du ___ einkaufen. (müssen)"
+            },
             "placeholder": "musst"
           },
           {
             "id": "m1-q6",
-            "prompt": "Er ___ wandern. (können)",
+            "prompt": {
+              "fa": "Er ___ wandern. (können)",
+              "en": "Er ___ wandern. (können)",
+              "de": "Er ___ wandern. (können)"
+            },
             "placeholder": "kann"
           }
         ]
@@ -1535,15 +1404,14 @@
             "id": "v1-q1",
             "situation": {
               "fa": "du ___ Freunde (treffen)",
-              "en": "du ___ Freunde (treffen)",
+              "en": "du ___ friends (treffen)",
               "de": "du ___ Freunde (treffen)"
             },
-            "options": [
-              "treffst",
-              "triffst",
-              "treffen",
-              "triffst"
-            ],
+            "options": {
+              "fa": ["treffst", "triffst", "treffen", "triffst"],
+              "en": ["treffst", "triffst", "treffen", "triffst"],
+              "de": ["treffst", "triffst", "treffen", "triffst"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "treffen: e → i. du triffst",
@@ -1555,15 +1423,14 @@
             "id": "v1-q2",
             "situation": {
               "fa": "du ___ Rad (fahren)",
-              "en": "du ___ Rad (fahren)",
+              "en": "du ___ bike (fahren)",
               "de": "du ___ Rad (fahren)"
             },
-            "options": [
-              "fahrst",
-              "fährst",
-              "fahren",
-              "fähren"
-            ],
+            "options": {
+              "fa": ["fahrst", "fährst", "fahren", "fähren"],
+              "en": ["fahrst", "fährst", "fahren", "fähren"],
+              "de": ["fahrst", "fährst", "fahren", "fähren"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "fahren: a → ä. du fährst",
@@ -1578,12 +1445,11 @@
               "en": "du ___ books (lesen)",
               "de": "du ___ Bücher (lesen)"
             },
-            "options": [
-              "lesest",
-              "liest",
-              "lest",
-              "lesen"
-            ],
+            "options": {
+              "fa": ["lesest", "liest", "lest", "lesen"],
+              "en": ["lesest", "liest", "lest", "lesen"],
+              "de": ["lesest", "liest", "lest", "lesen"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "lesen: e → ie. du liest",
@@ -1683,12 +1549,26 @@
           "en": "What does 'Was machst du in der Freizeit?' mean?",
           "de": "Was bedeutet 'Was machst du in der Freizeit?'?"
         },
-        "options": [
-          "کجا ساکنی؟",
-          "در اوقات فراغت چه می‌کنی؟",
-          "شغلت چیست؟",
-          "کی بیدار می‌شوی؟"
-        ],
+        "options": {
+          "fa": [
+            "کجا ساکنی؟",
+            "در اوقات فراغت چه می‌کنی؟",
+            "شغلت چیست؟",
+            "کی بیدار می‌شوی؟"
+          ],
+          "en": [
+            "Where do you live?",
+            "What do you do in your free time?",
+            "What is your profession?",
+            "When do you get up?"
+          ],
+          "de": [
+            "Wo wohnst du?",
+            "Was machst du in deiner Freizeit?",
+            "Was ist dein Beruf?",
+            "Wann stehst du auf?"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Freizeit = اوقات فراغت",
@@ -1704,12 +1584,11 @@
           "en": "How is 'können' conjugated with 'ich'?",
           "de": "Wie wird 'können' mit 'ich' konjugiert?"
         },
-        "options": [
-          "ich können",
-          "ich kann",
-          "ich könnt",
-          "ich kanne"
-        ],
+        "options": {
+          "fa": ["ich können", "ich kann", "ich könnt", "ich kanne"],
+          "en": ["ich können", "ich kann", "ich könnt", "ich kanne"],
+          "de": ["ich können", "ich kann", "ich könnt", "ich kanne"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "ich kann (فعل Modal: بدون پایانه در ich!)",
@@ -1725,12 +1604,26 @@
           "en": "Which sentence is correct? (Satzklammer)",
           "de": "Welcher Satz ist richtig? (Satzklammer)"
         },
-        "options": [
-          "Ich kann schwimme.",
-          "Ich kann schwimmen.",
-          "Ich kann schwimmst.",
-          "Ich schwimmen kann."
-        ],
+        "options": {
+          "fa": [
+            "Ich kann schwimme.",
+            "Ich kann schwimmen.",
+            "Ich kann schwimmst.",
+            "Ich schwimmen kann."
+          ],
+          "en": [
+            "Ich kann schwimme.",
+            "Ich kann schwimmen.",
+            "Ich kann schwimmst.",
+            "Ich schwimmen kann."
+          ],
+          "de": [
+            "Ich kann schwimme.",
+            "Ich kann schwimmen.",
+            "Ich kann schwimmst.",
+            "Ich schwimmen kann."
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Satzklammer: kann ... schwimmen (مصدر در انتها)",
@@ -1746,12 +1639,11 @@
           "en": "How is 'treffen' conjugated with 'du'?",
           "de": "Wie wird 'treffen' mit 'du' konjugiert?"
         },
-        "options": [
-          "du treffst",
-          "du triffst",
-          "du treffen",
-          "du triffst"
-        ],
+        "options": {
+          "fa": ["du treffst", "du triffst", "du treffen", "du triffst"],
+          "en": ["du treffst", "du triffst", "du treffen", "du triffst"],
+          "de": ["du treffst", "du triffst", "du treffen", "du triffst"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "تغییر مصوت: e → i. du triffst",
@@ -1767,12 +1659,21 @@
           "en": "What does 'ins Kino gehen' mean?",
           "de": "Was bedeutet 'ins Kino gehen'?"
         },
-        "options": [
-          "در سینما بودن",
-          "به سینما رفتن",
-          "سینما ساختن",
-          "سینما دیدن"
-        ],
+        "options": {
+          "fa": ["در سینما بودن", "به سینما رفتن", "سینما ساختن", "سینما دیدن"],
+          "en": [
+            "Being in the cinema",
+            "Going to the cinema",
+            "Building a cinema",
+            "Watching a cinema"
+          ],
+          "de": [
+            "Im Kino sein",
+            "Ins Kino gehen",
+            "Ein Kino bauen",
+            "Ein Kino sehen"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "'ins' = in + das (جهت). یعنی حرکت به سمت سینما.",
@@ -1859,54 +1760,18 @@
     "pronouns": [],
     "duVsSie": [],
     "hobbies": [
-      {
-        "de": "Sport machen",
-        "fa": "ورزش کردن"
-      },
-      {
-        "de": "Musik hören",
-        "fa": "موسیقی گوش دادن"
-      },
-      {
-        "de": "fernsehen",
-        "fa": "تلویزیون دیدن"
-      },
-      {
-        "de": "Freunde treffen",
-        "fa": "ملاقات دوستان"
-      },
-      {
-        "de": "Rad fahren",
-        "fa": "دوچرخه سواری"
-      },
-      {
-        "de": "lesen",
-        "fa": "خواندن"
-      },
-      {
-        "de": "ins Kino gehen",
-        "fa": "به سینما رفتن"
-      },
-      {
-        "de": "ins Fitness-Studio gehen",
-        "fa": "به باشگاه رفتن"
-      },
-      {
-        "de": "einkaufen",
-        "fa": "خرید کردن"
-      },
-      {
-        "de": "feiern",
-        "fa": "جشن گرفتن"
-      },
-      {
-        "de": "schwimmen",
-        "fa": "شنا کردن"
-      },
-      {
-        "de": "wandern",
-        "fa": "کوهپیمایی"
-      }
+      { "de": "Sport machen", "fa": "ورزش کردن" },
+      { "de": "Musik hören", "fa": "موسیقی گوش دادن" },
+      { "de": "fernsehen", "fa": "تلویزیون دیدن" },
+      { "de": "Freunde treffen", "fa": "ملاقات دوستان" },
+      { "de": "Rad fahren", "fa": "دوچرخه سواری" },
+      { "de": "lesen", "fa": "خواندن" },
+      { "de": "ins Kino gehen", "fa": "به سینما رفتن" },
+      { "de": "ins Fitness-Studio gehen", "fa": "به باشگاه رفتن" },
+      { "de": "einkaufen", "fa": "خرید کردن" },
+      { "de": "feiern", "fa": "جشن گرفتن" },
+      { "de": "schwimmen", "fa": "شنا کردن" },
+      { "de": "wandern", "fa": "کوهپیمایی" }
     ],
     "modalVerbs": [
       {
@@ -1975,34 +1840,13 @@
       }
     ],
     "daysOfWeek": [
-      {
-        "de": "Montag",
-        "fa": "دوشنبه"
-      },
-      {
-        "de": "Dienstag",
-        "fa": "سه‌شنبه"
-      },
-      {
-        "de": "Mittwoch",
-        "fa": "چهارشنبه"
-      },
-      {
-        "de": "Donnerstag",
-        "fa": "پنجشنبه"
-      },
-      {
-        "de": "Freitag",
-        "fa": "جمعه"
-      },
-      {
-        "de": "Samstag",
-        "fa": "شنبه"
-      },
-      {
-        "de": "Sonntag",
-        "fa": "یکشنبه"
-      }
+      { "de": "Montag", "fa": "دوشنبه" },
+      { "de": "Dienstag", "fa": "سه‌شنبه" },
+      { "de": "Mittwoch", "fa": "چهارشنبه" },
+      { "de": "Donnerstag", "fa": "پنجشنبه" },
+      { "de": "Freitag", "fa": "جمعه" },
+      { "de": "Samstag", "fa": "شنبه" },
+      { "de": "Sonntag", "fa": "یکشنبه" }
     ],
     "keyPhrases": [
       {
@@ -2064,8 +1908,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-08",
-    "updatedAt": "2026-07-08",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [
@@ -2081,11 +1925,6 @@
       "A1"
     ],
     "difficulty": 2,
-    "prerequisites": [
-      "A1-L01",
-      "A1-L02",
-      "A1-L03",
-      "A1-L04"
-    ]
+    "prerequisites": ["A1-L01", "A1-L02", "A1-L03", "A1-L04"]
   }
 }

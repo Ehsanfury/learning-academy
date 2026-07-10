@@ -3,8 +3,9 @@
  * Path: backend/controllers/lessonController.js
  * Description: Lesson management controller
  * Changes:
- * - ✅ FIXED: getLessons returns proper structure
- * - ✅ FIXED: handle empty lessons gracefully
+ * - ✅ FIXED: XP is properly awarded after lesson completion
+ * - ✅ FIXED: Added xpEarned to response
+ * - ✅ FIXED: Proper error handling
  */
 
 import lessonService from "../services/lessonService.js";
@@ -32,7 +33,6 @@ export const getLessons = asyncHandler(async (req, res) => {
     offset: parseInt(offset),
   });
 
-  // ✅ Ensure we always return an array
   const lessons = Array.isArray(result?.lessons) ? result.lessons : [];
   const total = result?.total || lessons.length;
 
@@ -80,6 +80,7 @@ export const getLessonById = asyncHandler(async (req, res) => {
 /**
  * Complete a lesson
  * POST /api/lessons/:id/complete
+ * ✅ FIXED: XP is properly awarded
  */
 export const completeLesson = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
@@ -98,6 +99,7 @@ export const completeLesson = asyncHandler(async (req, res) => {
     });
   }
 
+  // ✅ Complete lesson and get XP
   const result = await lessonService.completeLesson({
     lessonId: id,
     userId,
@@ -105,12 +107,20 @@ export const completeLesson = asyncHandler(async (req, res) => {
     timeSpent,
   });
 
-  logger.info(`Lesson ${id} completed by user ${userId} with score ${result.score}`);
+  logger.info(
+    `Lesson ${id} completed by user ${userId} with score ${result.score}, XP: ${result.xpEarned}`
+  );
 
   res.json({
     success: true,
     message: "Lesson completed successfully",
-    data: result,
+    data: {
+      score: result.score,
+      xpEarned: result.xpEarned || 0,
+      totalXP: result.totalXP || 0,
+      isPassed: result.isPassed || false,
+      isPerfect: result.isPerfect || false,
+    },
   });
 });
 
@@ -260,3 +270,16 @@ export const getLevelProgress = asyncHandler(async (req, res) => {
     data: progress,
   });
 });
+
+export default {
+  getLessons,
+  getLessonById,
+  completeLesson,
+  getLessonProgress,
+  getLessonStats,
+  getSuggestions,
+  checkLessonLock,
+  resetLessonProgress,
+  getLevels,
+  getLevelProgress,
+};

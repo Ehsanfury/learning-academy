@@ -3,7 +3,7 @@
   "order": 8,
   "level": "A1",
   "unit": 8,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Unterwegs - در راه",
@@ -148,14 +148,14 @@
   },
   "pronunciationGuide": {
     "title": {
-      "fa": "راهنمای تلفظ",
-      "en": "Pronunciation Guide",
-      "de": "Ausspracheführer"
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
     },
     "layers": {
       "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی. این درس روی تلفظ وسایل نقلیه تمرکز می‌کند.",
-      "en": "Three layers. This lesson focuses on transportation vocabulary pronunciation.",
-      "de": "Drei Schichten."
+      "en": "Three layers: Persian, IPA, physical. This lesson focuses on transportation vocabulary pronunciation.",
+      "de": "Drei Schichten. Diese Lektion konzentriert sich auf Verkehrsmittel-Aussprache."
     },
     "sounds": [
       {
@@ -816,13 +816,7 @@
           "de": "Für Verkehrsmittel verwenden Sie mit + Dativ: mit dem Bus, mit der U-Bahn."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "Nominativ",
-            "Dativ",
-            "mit + Dativ",
-            "مثال"
-          ],
+          "headers": ["جنسیت", "Nominativ", "Dativ", "mit + Dativ", "مثال"],
           "rows": [
             [
               "مذکر",
@@ -880,70 +874,16 @@
           "de": "Wenn ein Pronomen das direkte Objekt ist, steht es im Akkusativ."
         },
         "conjugationTable": {
-          "headers": [
-            "Nominativ",
-            "Akkusativ",
-            "تلفظ فارسی",
-            "معنی",
-            "مثال"
-          ],
+          "headers": ["Nominativ", "Akkusativ", "تلفظ فارسی", "معنی", "مثال"],
           "rows": [
-            [
-              "ich",
-              "mich",
-              "میخ",
-              "مرا",
-              "Holst du mich ab?"
-            ],
-            [
-              "du",
-              "dich",
-              "دیخ",
-              "تورا",
-              "Ich sehe dich."
-            ],
-            [
-              "er",
-              "ihn",
-              "این",
-              "او را (مرد)",
-              "Ich sehe ihn."
-            ],
-            [
-              "sie",
-              "sie",
-              "زی",
-              "او را (زن)",
-              "Ich sehe sie."
-            ],
-            [
-              "es",
-              "es",
-              "اِس",
-              "آن را",
-              "Ich nehme es."
-            ],
-            [
-              "wir",
-              "uns",
-              "اونس",
-              "ما را",
-              "Ich sehe uns."
-            ],
-            [
-              "ihr",
-              "euch",
-              "اویخ",
-              "شما را (جمع)",
-              "Ich sehe euch."
-            ],
-            [
-              "sie/Sie",
-              "sie/Sie",
-              "زی",
-              "آن‌ها/شما را",
-              "Ich sehe sie."
-            ]
+            ["ich", "mich", "میخ", "مرا", "Holst du mich ab?"],
+            ["du", "dich", "دیخ", "تورا", "Ich sehe dich."],
+            ["er", "ihn", "این", "او را (مرد)", "Ich sehe ihn."],
+            ["sie", "sie", "زی", "او را (زن)", "Ich sehe sie."],
+            ["es", "es", "اِس", "آن را", "Ich nehme es."],
+            ["wir", "uns", "اونس", "ما را", "Ich sehe uns."],
+            ["ihr", "euch", "اویخ", "شما را (جمع)", "Ich sehe euch."],
+            ["sie/Sie", "sie/Sie", "زی", "آن‌ها/شما را", "Ich sehe sie."]
           ]
         },
         "pattern": {
@@ -965,12 +905,7 @@
           "de": "und und aber verbinden Sätze. und fügt hinzu, aber zeigt Gegensatz."
         },
         "conjugationTable": {
-          "headers": [
-            "حرف ربط",
-            "معنی",
-            "مثال",
-            "ترجمه"
-          ],
+          "headers": ["حرف ربط", "معنی", "مثال", "ترجمه"],
           "rows": [
             [
               "und",
@@ -1272,17 +1207,16 @@
               "en": "It flies in the sky",
               "de": "Es fliegt"
             },
-            "options": [
-              "der Bus",
-              "das Flugzeug",
-              "das Fahrrad",
-              "die U-Bahn"
-            ],
+            "options": {
+              "fa": ["اتوبوس", "هواپیما", "دوچرخه", "مترو"],
+              "en": ["Bus", "Airplane", "Bicycle", "Subway"],
+              "de": ["Bus", "Flugzeug", "Fahrrad", "U-Bahn"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Flugzeug = هواپیما",
               "en": "Flugzeug = airplane",
-              "de": "Flugzeug"
+              "de": "Flugzeug = Flugzeug"
             }
           },
           {
@@ -1292,17 +1226,16 @@
               "en": "It goes underground",
               "de": "Es fährt unterirdisch"
             },
-            "options": [
-              "die U-Bahn",
-              "das Auto",
-              "das Taxi",
-              "der Zug"
-            ],
+            "options": {
+              "fa": ["مترو", "ماشین", "تاکسی", "قطار"],
+              "en": ["Subway", "Car", "Taxi", "Train"],
+              "de": ["U-Bahn", "Auto", "Taxi", "Zug"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "U-Bahn = مترو (Untergrund-Bahn)",
-              "en": "U-Bahn = subway",
-              "de": "U-Bahn"
+              "en": "U-Bahn = subway (underground train)",
+              "de": "U-Bahn = U-Bahn"
             }
           },
           {
@@ -1312,17 +1245,16 @@
               "en": "Two wheels, moves with pedals",
               "de": "Zwei Räder, Pedale"
             },
-            "options": [
-              "der Bus",
-              "das Motorrad",
-              "das Fahrrad",
-              "die Straßenbahn"
-            ],
+            "options": {
+              "fa": ["اتوبوس", "موتورسیکلت", "دوچرخه", "تراموا"],
+              "en": ["Bus", "Motorcycle", "Bicycle", "Tram"],
+              "de": ["Bus", "Motorrad", "Fahrrad", "Straßenbahn"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Fahrrad = دوچرخه",
               "en": "Fahrrad = bicycle",
-              "de": "Fahrrad"
+              "de": "Fahrrad = Fahrrad"
             }
           },
           {
@@ -1330,19 +1262,18 @@
             "situation": {
               "fa": "روی ریل می‌رود و مسافران زیادی دارد",
               "en": "Runs on rails, many passengers",
-              "de": "Fährt auf Schienen"
+              "de": "Fährt auf Schienen, viele Passagiere"
             },
-            "options": [
-              "das Auto",
-              "das Taxi",
-              "der Zug",
-              "das Fahrrad"
-            ],
+            "options": {
+              "fa": ["ماشین", "تاکسی", "قطار", "دوچرخه"],
+              "en": ["Car", "Taxi", "Train", "Bicycle"],
+              "de": ["Auto", "Taxi", "Zug", "Fahrrad"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Zug = قطار",
               "en": "Zug = train",
-              "de": "Zug"
+              "de": "Zug = Zug"
             }
           }
         ]
@@ -1360,37 +1291,61 @@
         "instructions": {
           "fa": "حرف تعریف درست در Dativ را با mit پر کنید.",
           "en": "Fill in the correct dative article with mit.",
-          "de": "Füllen Sie mit dem richtigen Dativartikel aus."
+          "de": "Füllen Sie den richtigen Dativartikel mit mit ein."
         },
         "questions": [
           {
             "id": "m1-q1",
-            "prompt": "Ich fahre mit ___ Bus. (مذکر)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ Bus. (مذکر)",
+              "en": "Ich fahre mit ___ Bus. (masculine)",
+              "de": "Ich fahre mit ___ Bus. (maskulin)"
+            },
             "placeholder": "dem"
           },
           {
             "id": "m1-q2",
-            "prompt": "Ich fahre mit ___ U-Bahn. (مؤنث)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ U-Bahn. (مؤنث)",
+              "en": "Ich fahre mit ___ U-Bahn. (feminine)",
+              "de": "Ich fahre mit ___ U-Bahn. (feminin)"
+            },
             "placeholder": "der"
           },
           {
             "id": "m1-q3",
-            "prompt": "Ich fahre mit ___ Auto. (خنثی)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ Auto. (خنثی)",
+              "en": "Ich fahre mit ___ Auto. (neuter)",
+              "de": "Ich fahre mit ___ Auto. (neutral)"
+            },
             "placeholder": "dem"
           },
           {
             "id": "m1-q4",
-            "prompt": "Ich fahre mit ___ Straßenbahn. (مؤنث)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ Straßenbahn. (مؤنث)",
+              "en": "Ich fahre mit ___ Straßenbahn. (feminine)",
+              "de": "Ich fahre mit ___ Straßenbahn. (feminin)"
+            },
             "placeholder": "der"
           },
           {
             "id": "m1-q5",
-            "prompt": "Ich fahre mit ___ Zug. (مذکر)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ Zug. (مذکر)",
+              "en": "Ich fahre mit ___ Zug. (masculine)",
+              "de": "Ich fahre mit ___ Zug. (maskulin)"
+            },
             "placeholder": "dem"
           },
           {
             "id": "m1-q6",
-            "prompt": "Ich fahre mit ___ Fahrrad. (خنثی)",
+            "prompt": {
+              "fa": "Ich fahre mit ___ Fahrrad. (خنثی)",
+              "en": "Ich fahre mit ___ Fahrrad. (neuter)",
+              "de": "Ich fahre mit ___ Fahrrad. (neutral)"
+            },
             "placeholder": "dem"
           }
         ]
@@ -1441,7 +1396,7 @@
                 "meaning": {
                   "fa": "و چطور به دانشگاه می‌روی؟",
                   "en": "And how do you get to university?",
-                  "de": "Wie kommst du zur Uni?"
+                  "de": "Und wie kommst du zur Uni?"
                 }
               },
               {
@@ -1481,17 +1436,16 @@
               "en": "I see ___ (you).",
               "de": "Ich sehe ___ (du)."
             },
-            "options": [
-              "du",
-              "dich",
-              "dir",
-              "dein"
-            ],
+            "options": {
+              "fa": ["du", "dich", "dir", "dein"],
+              "en": ["du", "dich", "dir", "dein"],
+              "de": ["du", "dich", "dir", "dein"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "du → dich در Akkusativ",
               "en": "du → dich in accusative",
-              "de": "du → dich"
+              "de": "du → dich im Akkusativ"
             }
           },
           {
@@ -1501,17 +1455,16 @@
               "en": "Are you picking ___ up? (me)",
               "de": "Holst du ___ ab? (ich)"
             },
-            "options": [
-              "ich",
-              "mich",
-              "mir",
-              "mein"
-            ],
+            "options": {
+              "fa": ["ich", "mich", "mir", "mein"],
+              "en": ["ich", "mich", "mir", "mein"],
+              "de": ["ich", "mich", "mir", "mein"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "ich → mich در Akkusativ",
               "en": "ich → mich in accusative",
-              "de": "ich → mich"
+              "de": "ich → mich im Akkusativ"
             }
           },
           {
@@ -1521,17 +1474,16 @@
               "en": "I see ___ (him).",
               "de": "Ich sehe ___ (er)."
             },
-            "options": [
-              "er",
-              "ihn",
-              "ihm",
-              "sein"
-            ],
+            "options": {
+              "fa": ["er", "ihn", "ihm", "sein"],
+              "en": ["er", "ihn", "ihm", "sein"],
+              "de": ["er", "ihn", "ihm", "sein"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "er → ihn در Akkusativ",
               "en": "er → ihn in accusative",
-              "de": "er → ihn"
+              "de": "er → ihn im Akkusativ"
             }
           }
         ]
@@ -1548,8 +1500,8 @@
         },
         "instructions": {
           "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
-          "en": "Pronounce the following words.",
-          "de": "Sprechen Sie die Wörter aus."
+          "en": "Pronounce the following words aloud.",
+          "de": "Sprechen Sie die folgenden Wörter laut aus."
         },
         "words": [
           {
@@ -1626,17 +1578,31 @@
           "en": "What does 'Ich fahre mit der U-Bahn' mean?",
           "de": "Was bedeutet 'Ich fahre mit der U-Bahn'?"
         },
-        "options": [
-          "من با اتوبوس می‌روم",
-          "من با مترو می‌روم",
-          "من پیاده می‌روم",
-          "من با ماشین می‌روم"
-        ],
+        "options": {
+          "fa": [
+            "من با اتوبوس می‌روم",
+            "من با مترو می‌روم",
+            "من پیاده می‌روم",
+            "من با ماشین می‌روم"
+          ],
+          "en": [
+            "I go by bus",
+            "I go by subway",
+            "I go on foot",
+            "I go by car"
+          ],
+          "de": [
+            "Ich fahre mit dem Bus",
+            "Ich fahre mit der U-Bahn",
+            "Ich gehe zu Fuß",
+            "Ich fahre mit dem Auto"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "mit der U-Bahn = با مترو (mit + Dativ مؤنث)",
           "en": "mit der U-Bahn = by subway (mit + dative feminine)",
-          "de": "mit der U-Bahn"
+          "de": "mit der U-Bahn = mit der U-Bahn (mit + Dativ feminin)"
         }
       },
       {
@@ -1647,17 +1613,16 @@
           "en": "What is the accusative pronoun for 'ich'?",
           "de": "Wie lautet das Akkusativpronomen für 'ich'?"
         },
-        "options": [
-          "ich",
-          "mich",
-          "mir",
-          "mein"
-        ],
+        "options": {
+          "fa": ["ich", "mich", "mir", "mein"],
+          "en": ["ich", "mich", "mir", "mein"],
+          "de": ["ich", "mich", "mir", "mein"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "ich → mich در Akkusativ",
           "en": "ich → mich in accusative",
-          "de": "ich → mich"
+          "de": "ich → mich im Akkusativ"
         }
       },
       {
@@ -1666,14 +1631,13 @@
         "question": {
           "fa": "'mit dem Bus' — 'dem' در چه حالتی است؟",
           "en": "'mit dem Bus' — what case is 'dem'?",
-          "de": "'mit dem Bus' — welcher Kasus?"
+          "de": "'mit dem Bus' — welcher Kasus ist 'dem'?"
         },
-        "options": [
-          "Nominativ",
-          "Akkusativ",
-          "Dativ",
-          "Genitiv"
-        ],
+        "options": {
+          "fa": ["Nominativ", "Akkusativ", "Dativ", "Genitiv"],
+          "en": ["Nominative", "Accusative", "Dative", "Genitive"],
+          "de": ["Nominativ", "Akkusativ", "Dativ", "Genitiv"]
+        },
         "correctIndex": 2,
         "explanation": {
           "fa": "mit همیشه با Dativ می‌آید",
@@ -1689,17 +1653,31 @@
           "en": "What does 'Ich nehme den ICE' mean?",
           "de": "Was bedeutet 'Ich nehme den ICE'?"
         },
-        "options": [
-          "من قطار ICE را انتخاب می‌کنم",
-          "من قطار می‌فروشم",
-          "من قطار می‌سازم",
-          "من قطار ندارم"
-        ],
+        "options": {
+          "fa": [
+            "من قطار ICE را انتخاب می‌کنم",
+            "من قطار می‌فروشم",
+            "من قطار می‌سازم",
+            "من قطار ندارم"
+          ],
+          "en": [
+            "I take the ICE train",
+            "I sell the train",
+            "I build a train",
+            "I don't have a train"
+          ],
+          "de": [
+            "Ich nehme den ICE",
+            "Ich verkaufe den Zug",
+            "Ich baue einen Zug",
+            "Ich habe keinen Zug"
+          ]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "nehmen + Akkusativ: den ICE (der → den)",
           "en": "nehmen + accusative: den ICE (der → den)",
-          "de": "Ich nehme den ICE."
+          "de": "nehmen + Akkusativ: den ICE (der → den)"
         }
       },
       {
@@ -1710,17 +1688,16 @@
           "en": "Which conjunction expresses contrast?",
           "de": "Welche Konjunktion zeigt Gegensatz?"
         },
-        "options": [
-          "und",
-          "aber",
-          "oder",
-          "denn"
-        ],
+        "options": {
+          "fa": ["und", "aber", "oder", "denn"],
+          "en": ["und", "aber", "oder", "denn"],
+          "de": ["und", "aber", "oder", "denn"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "aber = اما (تضاد)",
           "en": "aber = but (contrast)",
-          "de": "aber = aber"
+          "de": "aber = aber (Gegensatz)"
         }
       }
     ]
@@ -1728,8 +1705,8 @@
   "assessment": {
     "title": {
       "fa": "آزمون پایان درس ۸",
-      "en": "Lesson 8 Assessment",
-      "de": "Lektion 8"
+      "en": "Lesson 8 Final Assessment",
+      "de": "Lektion 8 Abschlussbewertung"
     },
     "totalQuestions": 15,
     "passingScore": 70,
@@ -1989,8 +1966,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-09",
-    "updatedAt": "2026-07-09",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [

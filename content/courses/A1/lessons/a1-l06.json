@@ -3,7 +3,7 @@
   "order": 6,
   "level": "A1",
   "unit": 6,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Meine Stadt, meine Wohnung - شهر من، آپارتمان من",
@@ -55,11 +55,7 @@
     ]
   },
   "requiredPreviousKnowledge": {
-    "fa": [
-      "تسلط بر درس ۱-۵",
-      "آشنایی با Akkusativ",
-      "آشنایی با فعل‌های Modal"
-    ],
+    "fa": ["تسلط بر درس ۱-۵", "آشنایی با Akkusativ", "آشنایی با فعل‌های Modal"],
     "en": [
       "Mastery of Lessons 1-5",
       "Familiarity with accusative",
@@ -120,8 +116,8 @@
   "lessonIntroduction": {
     "title": {
       "fa": "به درس ششم خوش آمدید — Meine Stadt, meine Wohnung!",
-      "en": "Welcome to Lesson 6!",
-      "de": "Willkommen zu Lektion 6!"
+      "en": "Welcome to Lesson 6 — My City, My Apartment!",
+      "de": "Willkommen zu Lektion 6 — Meine Stadt, meine Wohnung!"
     },
     "content": {
       "fa": "تصور کنید به‌دنبال آپارتمان می‌گردید. باید بپرسید: Wo wohnst du? و Was gibt es in der Nähe? این درس به شما کمک می‌کند تا درباره‌ی شهر و خانه‌تان صحبت کنید.",
@@ -132,9 +128,9 @@
   },
   "pronunciationGuide": {
     "title": {
-      "fa": "راهنمای تلفظ",
-      "en": "Pronunciation Guide",
-      "de": "Ausspracheführer"
+      "fa": "راهنمای تلفظ - سیستم دوزبانه",
+      "en": "Pronunciation Guide - Bilingual System",
+      "de": "Ausspracheführer - Zweisprachiges System"
     },
     "layers": {
       "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی",
@@ -772,21 +768,9 @@
           "de": "in für Ort → Dativ. im = in+dem."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "Nominativ",
-            "Dativ",
-            "in+Dativ",
-            "مثال"
-          ],
+          "headers": ["جنسیت", "Nominativ", "Dativ", "in+Dativ", "مثال"],
           "rows": [
-            [
-              "مذکر",
-              "der Park",
-              "dem",
-              "im Park",
-              "Ich bin im Park."
-            ],
+            ["مذکر", "der Park", "dem", "im Park", "Ich bin im Park."],
             [
               "مؤنث",
               "die Stadt",
@@ -794,13 +778,7 @@
               "in der Stadt",
               "Ich wohne in der Stadt."
             ],
-            [
-              "خنثی",
-              "das Haus",
-              "dem",
-              "im Haus",
-              "Ich bin im Haus."
-            ],
+            ["خنثی", "das Haus", "dem", "im Haus", "Ich bin im Haus."],
             [
               "ثابت",
               "das Land",
@@ -829,37 +807,12 @@
           "de": "es gibt = es gibt. Immer mit Akkusativ."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "es gibt+Akk",
-            "مثال",
-            "معنی"
-          ],
+          "headers": ["جنسیت", "es gibt+Akk", "مثال", "معنی"],
           "rows": [
-            [
-              "مذکر",
-              "einen",
-              "Es gibt einen Bahnhof.",
-              "ایستگاهی هست."
-            ],
-            [
-              "مؤنث",
-              "eine",
-              "Es gibt eine Kirche.",
-              "کلیسایی هست."
-            ],
-            [
-              "خنثی",
-              "ein",
-              "Es gibt ein Kino.",
-              "سینمایی هست."
-            ],
-            [
-              "جمع",
-              "—",
-              "Es gibt Geschäfte.",
-              "مغازه‌هایی هست."
-            ]
+            ["مذکر", "einen", "Es gibt einen Bahnhof.", "ایستگاهی هست."],
+            ["مؤنث", "eine", "Es gibt eine Kirche.", "کلیسایی هست."],
+            ["خنثی", "ein", "Es gibt ein Kino.", "سینمایی هست."],
+            ["جمع", "—", "Es gibt Geschäfte.", "مغازه‌هایی هست."]
           ]
         },
         "pattern": {
@@ -881,22 +834,10 @@
           "de": "Negative Frage → doch = Negation zurückweisen!"
         },
         "conjugationTable": {
-          "headers": [
-            "سوال",
-            "پاسخ",
-            "معنی"
-          ],
+          "headers": ["سوال", "پاسخ", "معنی"],
           "rows": [
-            [
-              "Ist Berlin nicht schön?",
-              "Doch!",
-              "چرا! زیباست!"
-            ],
-            [
-              "Ist Berlin nicht schön?",
-              "Nein.",
-              "خیر، زیبا نیست."
-            ],
+            ["Ist Berlin nicht schön?", "Doch!", "چرا! زیباست!"],
+            ["Ist Berlin nicht schön?", "Nein.", "خیر، زیبا نیست."],
             [
               "Schlafe ich nicht auf der Couch?",
               "Doch!",
@@ -923,49 +864,14 @@
           "de": "Adjektive vor Nomen oder nach sein."
         },
         "conjugationTable": {
-          "headers": [
-            "صفت",
-            "تلفظ",
-            "معنی",
-            "متضاد"
-          ],
+          "headers": ["صفت", "تلفظ", "معنی", "متضاد"],
           "rows": [
-            [
-              "schön",
-              "شون",
-              "زیبا",
-              "hässlich"
-            ],
-            [
-              "ruhig",
-              "رو-ایخ",
-              "آرام",
-              "laut"
-            ],
-            [
-              "teuer",
-              "توی-ر",
-              "گران",
-              "billig"
-            ],
-            [
-              "alt",
-              "آلت",
-              "قدیمی",
-              "neu"
-            ],
-            [
-              "interessant",
-              "این-تِ-رِ-سانت",
-              "جالب",
-              "langweilig"
-            ],
-            [
-              "groß",
-              "گرو-س",
-              "بزرگ",
-              "klein"
-            ]
+            ["schön", "شون", "زیبا", "hässlich"],
+            ["ruhig", "رو-ایخ", "آرام", "laut"],
+            ["teuer", "توی-ر", "گران", "billig"],
+            ["alt", "آلت", "قدیمی", "neu"],
+            ["interessant", "این-تِ-رِ-سانت", "جالب", "langweilig"],
+            ["groß", "گرو-س", "بزرگ", "klein"]
           ]
         },
         "pattern": {
@@ -1180,12 +1086,12 @@
         "title": {
           "fa": "تمرین ۱: مکان‌های شهر",
           "en": "Exercise 1: City Places",
-          "de": "Übung 1"
+          "de": "Übung 1: Stadtörter"
         },
         "instructions": {
           "fa": "مکان درست را انتخاب کنید.",
           "en": "Choose the correct place.",
-          "de": "Wählen Sie."
+          "de": "Wählen Sie den richtigen Ort."
         },
         "questions": [
           {
@@ -1195,17 +1101,16 @@
               "en": "Trains come here",
               "de": "Züge kommen hier"
             },
-            "options": [
-              "Bahnhof",
-              "Kino",
-              "Kirche",
-              "Krankenhaus"
-            ],
+            "options": {
+              "fa": ["ایستگاه قطار", "سینما", "کلیسا", "بیمارستان"],
+              "en": ["Train station", "Cinema", "Church", "Hospital"],
+              "de": ["Bahnhof", "Kino", "Kirche", "Krankenhaus"]
+            },
             "correctIndex": 0,
             "explanation": {
-              "fa": "Bahnhof = ایستگاه",
-              "en": "Bahnhof = station",
-              "de": "Bahnhof"
+              "fa": "Bahnhof = ایستگاه قطار",
+              "en": "Bahnhof = train station",
+              "de": "Bahnhof = Bahnhof"
             }
           },
           {
@@ -1213,19 +1118,18 @@
             "situation": {
               "fa": "اینجا فیلم نشان می‌دهند",
               "en": "Films are shown here",
-              "de": "Filme hier"
+              "de": "Filme werden hier gezeigt"
             },
-            "options": [
-              "Restaurant",
-              "Kino",
-              "Geschäft",
-              "Bad"
-            ],
+            "options": {
+              "fa": ["رستوران", "سینما", "مغازه", "حمام"],
+              "en": ["Restaurant", "Cinema", "Shop", "Bathroom"],
+              "de": ["Restaurant", "Kino", "Geschäft", "Bad"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Kino = سینما",
               "en": "Kino = cinema",
-              "de": "Kino"
+              "de": "Kino = Kino"
             }
           },
           {
@@ -1233,19 +1137,18 @@
             "situation": {
               "fa": "اینجا بیماران درمان می‌شوند",
               "en": "Patients are treated here",
-              "de": "Patienten hier"
+              "de": "Patienten werden hier behandelt"
             },
-            "options": [
-              "Kino",
-              "Kirche",
-              "Krankenhaus",
-              "Bahnhof"
-            ],
+            "options": {
+              "fa": ["سینما", "کلیسا", "بیمارستان", "ایستگاه قطار"],
+              "en": ["Cinema", "Church", "Hospital", "Train station"],
+              "de": ["Kino", "Kirche", "Krankenhaus", "Bahnhof"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Krankenhaus = بیمارستان",
               "en": "Krankenhaus = hospital",
-              "de": "Krankenhaus"
+              "de": "Krankenhaus = Krankenhaus"
             }
           }
         ]
@@ -1257,38 +1160,58 @@
         "type": "fill_in",
         "title": {
           "fa": "تمرین ۲: es gibt + Akkusativ",
-          "en": "Exercise 2: es gibt + Acc",
-          "de": "Übung 2"
+          "en": "Exercise 2: es gibt + Accusative",
+          "de": "Übung 2: es gibt + Akkusativ"
         },
         "instructions": {
           "fa": "حرف تعریف درست را پر کنید.",
           "en": "Fill in the correct article.",
-          "de": "Füllen Sie aus."
+          "de": "Füllen Sie den richtigen Artikel ein."
         },
         "questions": [
           {
             "id": "e1-q1",
-            "prompt": "Es gibt ___ Bahnhof. (مذکر)",
+            "prompt": {
+              "fa": "Es gibt ___ Bahnhof. (مذکر)",
+              "en": "Es gibt ___ Bahnhof. (masculine)",
+              "de": "Es gibt ___ Bahnhof. (maskulin)"
+            },
             "placeholder": "einen"
           },
           {
             "id": "e1-q2",
-            "prompt": "Es gibt ___ Kirche. (مؤنث)",
+            "prompt": {
+              "fa": "Es gibt ___ Kirche. (مؤنث)",
+              "en": "Es gibt ___ Kirche. (feminine)",
+              "de": "Es gibt ___ Kirche. (feminin)"
+            },
             "placeholder": "eine"
           },
           {
             "id": "e1-q3",
-            "prompt": "Es gibt ___ Kino. (خنثی)",
+            "prompt": {
+              "fa": "Es gibt ___ Kino. (خنثی)",
+              "en": "Es gibt ___ Kino. (neuter)",
+              "de": "Es gibt ___ Kino. (neutral)"
+            },
             "placeholder": "ein"
           },
           {
             "id": "e1-q4",
-            "prompt": "Es gibt ___ Geschäfte. (جمع)",
+            "prompt": {
+              "fa": "Es gibt ___ Geschäfte. (جمع)",
+              "en": "Es gibt ___ Geschäfte. (plural)",
+              "de": "Es gibt ___ Geschäfte. (Plural)"
+            },
             "placeholder": "—"
           },
           {
             "id": "e1-q5",
-            "prompt": "Es gibt ___ Kino. (منفی)",
+            "prompt": {
+              "fa": "Es gibt ___ Kino. (منفی)",
+              "en": "Es gibt ___ Kino. (negative)",
+              "de": "Es gibt ___ Kino. (negativ)"
+            },
             "placeholder": "kein"
           }
         ]
@@ -1301,7 +1224,7 @@
         "title": {
           "fa": "تمرین ۳: توصیف آپارتمان",
           "en": "Exercise 3: Describe Apartment",
-          "de": "Übung 3"
+          "de": "Übung 3: Wohnung beschreiben"
         },
         "scenarios": [
           {
@@ -1309,7 +1232,7 @@
             "title": {
               "fa": "سناریو: توصیف خانه",
               "en": "Scenario: Describe Home",
-              "de": "Szene"
+              "de": "Szene: Zuhause beschreiben"
             },
             "lines": [
               {
@@ -1364,12 +1287,12 @@
         "title": {
           "fa": "تمرین ۴: ja، nein یا doch؟",
           "en": "Exercise 4: ja, nein or doch?",
-          "de": "Übung 4"
+          "de": "Übung 4: ja, nein oder doch?"
         },
         "instructions": {
           "fa": "به سوالات منفی پاسخ دهید.",
           "en": "Answer negative questions.",
-          "de": "Antworten Sie."
+          "de": "Beantworten Sie negative Fragen."
         },
         "questions": [
           {
@@ -1377,18 +1300,18 @@
             "situation": {
               "fa": "Ist Berlin nicht schön? (برلین زیباست)",
               "en": "Isn't Berlin beautiful? (It is)",
-              "de": "Ist Berlin nicht schön?"
+              "de": "Ist Berlin nicht schön? (Ja)"
             },
-            "options": [
-              "ja",
-              "nein",
-              "doch"
-            ],
+            "options": {
+              "fa": ["ja", "nein", "doch"],
+              "en": ["yes", "no", "doch"],
+              "de": ["ja", "nein", "doch"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "doch! رد منفی",
-              "en": "doch!",
-              "de": "doch!"
+              "en": "doch! rejecting the negative",
+              "de": "doch! die Negation zurückweisen"
             }
           },
           {
@@ -1396,18 +1319,18 @@
             "situation": {
               "fa": "Ist Berlin nicht schön? (زیبا نیست)",
               "en": "Isn't Berlin beautiful? (It isn't)",
-              "de": "Ist Berlin nicht schön?"
+              "de": "Ist Berlin nicht schön? (Nein)"
             },
-            "options": [
-              "ja",
-              "nein",
-              "doch"
-            ],
+            "options": {
+              "fa": ["ja", "nein", "doch"],
+              "en": ["yes", "no", "doch"],
+              "de": ["ja", "nein", "doch"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "nein. موافقت با منفی",
-              "en": "nein",
-              "de": "nein"
+              "en": "nein. agreeing with the negative",
+              "de": "nein. der Negation zustimmen"
             }
           },
           {
@@ -1415,18 +1338,18 @@
             "situation": {
               "fa": "Schlafe ich nicht auf der Couch? (بله، روی مبل)",
               "en": "Aren't I on the couch? (You are)",
-              "de": "Schlafe ich nicht?"
+              "de": "Schlafe ich nicht auf der Couch? (Doch)"
             },
-            "options": [
-              "ja",
-              "nein",
-              "doch"
-            ],
+            "options": {
+              "fa": ["ja", "nein", "doch"],
+              "en": ["yes", "no", "doch"],
+              "de": ["ja", "nein", "doch"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "doch! بله!",
-              "en": "doch!",
-              "de": "doch!"
+              "en": "doch! Yes!",
+              "de": "doch! Ja!"
             }
           }
         ]
@@ -1438,13 +1361,13 @@
         "type": "pronunciation",
         "title": {
           "fa": "تمرین ۵: تلفظ شهر و مبلمان",
-          "en": "Exercise 5: Pronunciation",
-          "de": "Übung 5"
+          "en": "Exercise 5: Pronunciation - City and Furniture",
+          "de": "Übung 5: Aussprache - Stadt und Möbel"
         },
         "instructions": {
           "fa": "کلمات را بلند بگویید.",
-          "en": "Pronounce the words.",
-          "de": "Sprechen Sie."
+          "en": "Pronounce the words aloud.",
+          "de": "Sprechen Sie die Wörter laut aus."
         },
         "words": [
           {
@@ -1490,7 +1413,7 @@
         ],
         "focus": {
           "fa": "توجه: r غُرّی • ch نرم بعد i (Kirche) • ch نرم بعد ü (Küche) • ü • au (Couch) • eu (teuer)",
-          "en": "Pay attention to: uvular r • soft ch • ü • au • eu",
+          "en": "Pay attention to: uvular r • soft ch after i (Kirche) • soft ch after ü (Küche) • ü • au (Couch) • eu (teuer)",
           "de": "Achten Sie auf: r • ch • ü • au • eu"
         }
       }
@@ -1500,7 +1423,7 @@
     "title": {
       "fa": "مرور درس ۶",
       "en": "Lesson 6 Review",
-      "de": "Lektion 6"
+      "de": "Lektion 6 Überprüfung"
     },
     "quiz": [
       {
@@ -1511,17 +1434,21 @@
           "en": "What does 'auf dem Land' mean?",
           "de": "Was bedeutet 'auf dem Land'?"
         },
-        "options": [
-          "در شهر",
-          "در روستا",
-          "در آپارتمان",
-          "در هتل"
-        ],
+        "options": {
+          "fa": ["در شهر", "در روستا", "در آپارتمان", "در هتل"],
+          "en": [
+            "in the city",
+            "in the countryside",
+            "in the apartment",
+            "in the hotel"
+          ],
+          "de": ["in der Stadt", "auf dem Land", "in der Wohnung", "im Hotel"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "auf dem Land = در روستا",
-          "en": "countryside",
-          "de": "auf dem Land"
+          "en": "auf dem Land = in the countryside",
+          "de": "auf dem Land = auf dem Land"
         }
       },
       {
@@ -1529,20 +1456,19 @@
         "type": "multiple_choice",
         "question": {
           "fa": "بعد از es gibt چه حالتی؟",
-          "en": "What case after es gibt?",
-          "de": "Welcher Kasus nach es gibt?"
+          "en": "What case follows es gibt?",
+          "de": "Welcher Kasus folgt es gibt?"
         },
-        "options": [
-          "Nominativ",
-          "Akkusativ",
-          "Dativ",
-          "Genitiv"
-        ],
+        "options": {
+          "fa": ["Nominativ", "Akkusativ", "Dativ", "Genitiv"],
+          "en": ["Nominative", "Accusative", "Dative", "Genitive"],
+          "de": ["Nominativ", "Akkusativ", "Dativ", "Genitiv"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "es gibt + Akkusativ",
-          "en": "accusative",
-          "de": "Akkusativ"
+          "en": "es gibt + accusative",
+          "de": "es gibt + Akkusativ"
         }
       },
       {
@@ -1551,19 +1477,18 @@
         "question": {
           "fa": "Ist Berlin nicht schön? (زیباست) → پاسخ؟",
           "en": "Isn't Berlin beautiful? (It is) → answer?",
-          "de": "Antwort?"
+          "de": "Ist Berlin nicht schön? (Ist sie) → Antwort?"
         },
-        "options": [
-          "ja",
-          "nein",
-          "doch",
-          "vielleicht"
-        ],
+        "options": {
+          "fa": ["ja", "nein", "doch", "vielleicht"],
+          "en": ["yes", "no", "doch", "maybe"],
+          "de": ["ja", "nein", "doch", "vielleicht"]
+        },
         "correctIndex": 2,
         "explanation": {
           "fa": "doch! رد منفی",
-          "en": "doch!",
-          "de": "doch!"
+          "en": "doch! rejecting the negative",
+          "de": "doch! die Negation zurückweisen"
         }
       },
       {
@@ -1572,19 +1497,33 @@
         "question": {
           "fa": "کدام درست است؟ (مکان)",
           "en": "Which is correct? (location)",
-          "de": "Welcher ist richtig?"
+          "de": "Welcher ist richtig? (Ort)"
         },
-        "options": [
-          "Ich bin in den Park.",
-          "Ich bin im Park.",
-          "Ich bin in das Park.",
-          "Ich bin in die Park."
-        ],
+        "options": {
+          "fa": [
+            "Ich bin in den Park.",
+            "Ich bin im Park.",
+            "Ich bin in das Park.",
+            "Ich bin in die Park."
+          ],
+          "en": [
+            "Ich bin in den Park.",
+            "Ich bin im Park.",
+            "Ich bin in das Park.",
+            "Ich bin in die Park."
+          ],
+          "de": [
+            "Ich bin in den Park.",
+            "Ich bin im Park.",
+            "Ich bin in das Park.",
+            "Ich bin in die Park."
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "مکان → in+Dativ: im Park",
-          "en": "location → in+dative",
-          "de": "im Park"
+          "en": "location → in+dative: im Park",
+          "de": "Ort → in+Dativ: im Park"
         }
       },
       {
@@ -1593,28 +1532,27 @@
         "question": {
           "fa": "der Kühlschrank = ?",
           "en": "der Kühlschrank = ?",
-          "de": "der Kühlschrank?"
+          "de": "der Kühlschrank = ?"
         },
-        "options": [
-          "کمد",
-          "یخچال",
-          "تخت",
-          "چراغ"
-        ],
+        "options": {
+          "fa": ["کمد", "یخچال", "تخت", "چراغ"],
+          "en": ["closet", "refrigerator", "bed", "lamp"],
+          "de": ["Schrank", "Kühlschrank", "Bett", "Lampe"]
+        },
         "correctIndex": 1,
         "explanation": {
-          "fa": "یخچال",
-          "en": "refrigerator",
-          "de": "Kühlschrank"
+          "fa": "یخچال = Kühlschrank",
+          "en": "Kühlschrank = refrigerator",
+          "de": "Kühlschrank = Kühlschrank"
         }
       }
     ]
   },
   "assessment": {
     "title": {
-      "fa": "آزمون درس ۶",
-      "en": "Lesson 6 Assessment",
-      "de": "Lektion 6"
+      "fa": "آزمون پایان درس ۶",
+      "en": "Lesson 6 Final Assessment",
+      "de": "Lektion 6 Abschlussbewertung"
     },
     "totalQuestions": 15,
     "passingScore": 70,
@@ -1653,7 +1591,7 @@
         "I know city places",
         "I know rooms and furniture",
         "I know in+dative",
-        "I know es gibt+acc",
+        "I know es gibt+accusative",
         "I know doch",
         "I can describe city/countryside"
       ],
@@ -1661,9 +1599,9 @@
         "Ich kenne Stadtörter",
         "Ich kenne Zimmer und Möbel",
         "Ich kenne in+Dativ",
-        "Ich kenne es gibt+Akk",
+        "Ich kenne es gibt+Akkusativ",
         "Ich kenne doch",
-        "Ich kann beschreiben"
+        "Ich kann Stadt/Land beschreiben"
       ]
     },
     "recommendations": {
@@ -1863,8 +1801,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-09",
-    "updatedAt": "2026-07-09",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [
@@ -1878,12 +1816,6 @@
       "A1"
     ],
     "difficulty": 3,
-    "prerequisites": [
-      "A1-L01",
-      "A1-L02",
-      "A1-L03",
-      "A1-L04",
-      "A1-L05"
-    ]
+    "prerequisites": ["A1-L01", "A1-L02", "A1-L03", "A1-L04", "A1-L05"]
   }
 }

@@ -50,6 +50,7 @@ import storiesRoutes from "./routes/storiesRoutes.js";
 import scenariosRoutes from "./routes/scenariosRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
+import journeyRoutes from "./routes/journeyRoutes.js";
 
 // Socket Handler
 import setupSocket from "./socketHandler.js";
@@ -307,7 +308,7 @@ app.get("/", (req, res) => {
 // ============================================
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/journey", authenticate, trackActivity, journeyRoutes);
 // ============================================
 // 🔐 PROTECTED ROUTES
 // ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)

@@ -3,7 +3,7 @@
   "order": 7,
   "level": "A1",
   "unit": 7,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Wie, wo und wann? - چطور، کجا و کِی؟",
@@ -141,7 +141,7 @@
     "title": {
       "fa": "راهنمای تلفظ - سیستم دوزبانه",
       "en": "Pronunciation Guide - Bilingual System",
-      "de": "Ausspracheführer"
+      "de": "Ausspracheführer - Zweisprachiges System"
     },
     "layers": {
       "fa": "سه لایه: تلفظ فارسی، IPA، توصیف فیزیکی. این درس روی تلفظ کلمات آب‌وهوا و اعداد ترتیبی تمرکز می‌کند.",
@@ -812,35 +812,11 @@
           "de": "Das Perfekt ist die wichtigste Vergangenheitsform im gesprochenen Deutsch."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "haben",
-            "Partizip II",
-            "مثال کامل",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "haben", "Partizip II", "مثال کامل", "معنی"],
           "rows": [
-            [
-              "ich",
-              "habe",
-              "geregnet",
-              "Ich habe gegessen.",
-              "من خوردم"
-            ],
-            [
-              "du",
-              "hast",
-              "geregnet",
-              "Du hast gearbeitet.",
-              "تو کار کردی"
-            ],
-            [
-              "er/sie",
-              "hat",
-              "geregnet",
-              "Es hat geregnet.",
-              "باران بارید"
-            ],
+            ["ich", "habe", "geregnet", "Ich habe gegessen.", "من خوردم"],
+            ["du", "hast", "geregnet", "Du hast gearbeitet.", "تو کار کردی"],
+            ["er/sie", "hat", "geregnet", "Es hat geregnet.", "باران بارید"],
             [
               "wir",
               "haben",
@@ -848,13 +824,7 @@
               "Wir haben gespielt.",
               "ما بازی کردیم"
             ],
-            [
-              "ihr",
-              "habt",
-              "geregnet",
-              "Ihr habt gemacht.",
-              "شما کردید"
-            ],
+            ["ihr", "habt", "geregnet", "Ihr habt gemacht.", "شما کردید"],
             [
               "sie/Sie",
               "haben",
@@ -883,49 +853,14 @@
           "de": "Das Präteritum von sein wird auch in der Umgangssprache verwendet."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "Präteritum sein",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "Präteritum sein", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "war",
-              "وار",
-              "من بودم"
-            ],
-            [
-              "du",
-              "warst",
-              "وارست",
-              "تو بودی"
-            ],
-            [
-              "er/sie/es",
-              "war",
-              "وار",
-              "او بود"
-            ],
-            [
-              "wir",
-              "waren",
-              "وا-رِن",
-              "ما بودیم"
-            ],
-            [
-              "ihr",
-              "wart",
-              "وارت",
-              "شما بودید"
-            ],
-            [
-              "sie/Sie",
-              "waren",
-              "وا-رِن",
-              "آن‌ها/شما بودند"
-            ]
+            ["ich", "war", "وار", "من بودم"],
+            ["du", "warst", "وارست", "تو بودی"],
+            ["er/sie/es", "war", "وار", "او بود"],
+            ["wir", "waren", "وا-رِن", "ما بودیم"],
+            ["ihr", "wart", "وارت", "شما بودید"],
+            ["sie/Sie", "waren", "وا-رِن", "آن‌ها/شما بودند"]
           ]
         },
         "pattern": {
@@ -947,49 +882,14 @@
           "de": "Für das Datum verwenden Sie 'am' + Ordinalzahl + Monat."
         },
         "conjugationTable": {
-          "headers": [
-            "عدد",
-            "آلمانی",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["عدد", "آلمانی", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "1.",
-              "am ersten",
-              "ام اِر-ستِن",
-              "اول"
-            ],
-            [
-              "2.",
-              "am zweiten",
-              "ام تسوای-تِن",
-              "دوم"
-            ],
-            [
-              "3.",
-              "am dritten",
-              "ام دریت-تِن",
-              "سوم"
-            ],
-            [
-              "4.",
-              "am vierten",
-              "ام فیر-تِن",
-              "چهارم"
-            ],
-            [
-              "5.",
-              "am fünften",
-              "ام فونف-تِن",
-              "پنجم"
-            ],
-            [
-              "10.",
-              "am zehnten",
-              "ام تسِن-تِن",
-              "دهم"
-            ],
+            ["1.", "am ersten", "ام اِر-ستِن", "اول"],
+            ["2.", "am zweiten", "ام تسوای-تِن", "دوم"],
+            ["3.", "am dritten", "ام دریت-تِن", "سوم"],
+            ["4.", "am vierten", "ام فیر-تِن", "چهارم"],
+            ["5.", "am fünften", "ام فونف-تِن", "پنجم"],
+            ["10.", "am zehnten", "ام تسِن-تِن", "دهم"],
             [
               "21.",
               "am einundzwanzigsten",
@@ -1017,49 +917,13 @@
           "de": "Für Orte verwenden Sie in/auf + Dativ."
         },
         "conjugationTable": {
-          "headers": [
-            "حرف اضافه",
-            "جنسیت",
-            "Dativ",
-            "مثال",
-            "معنی"
-          ],
+          "headers": ["حرف اضافه", "جنسیت", "Dativ", "مثال", "معنی"],
           "rows": [
-            [
-              "in",
-              "مذکر",
-              "in dem → im",
-              "im Norden",
-              "در شمال"
-            ],
-            [
-              "in",
-              "خنثی",
-              "in dem → im",
-              "im Krankenhaus",
-              "در بیمارستان"
-            ],
-            [
-              "in",
-              "مؤنث",
-              "in der",
-              "in der U-Bahn",
-              "در مترو"
-            ],
-            [
-              "auf",
-              "مذکر",
-              "auf dem",
-              "auf dem Flughafen",
-              "در فرودگاه"
-            ],
-            [
-              "auf",
-              "خنثی",
-              "auf dem",
-              "auf dem Bett",
-              "روی تخت"
-            ]
+            ["in", "مذکر", "in dem → im", "im Norden", "در شمال"],
+            ["in", "خنثی", "in dem → im", "im Krankenhaus", "در بیمارستان"],
+            ["in", "مؤنث", "in der", "in der U-Bahn", "در مترو"],
+            ["auf", "مذکر", "auf dem", "auf dem Flughafen", "در فرودگاه"],
+            ["auf", "خنثی", "auf dem", "auf dem Bett", "روی تخت"]
           ]
         },
         "pattern": {
@@ -1231,7 +1095,7 @@
         {
           "speaker": "Fabio",
           "german": "Ich bin am 15. März 1996 geboren. Und du?",
-          "persian": "ایخ بین ام فونf-تِن مِرتس نوی-نْتسِن-هون-دِرت-زِخس-اوند-نوی-تسیخ گِ-بو-رِن. اوند دو؟",
+          "persian": "ایخ بین ام فونف-تِن مِرتس نوی-نْتسِن-هون-دِرت-زِخس-اوند-نوی-تسیخ گِ-بو-رِن. اوند دو؟",
           "meaning": {
             "fa": "من ۱۵ مارس ۱۹۹۶ متولد شدم. و تو؟",
             "en": "I was born on March 15, 1996. And you?",
@@ -1321,12 +1185,26 @@
               "en": "Sun shines and it's hot",
               "de": "Sonne scheint, heiß"
             },
-            "options": [
-              "sonnig und warm",
-              "bewölkt und kalt",
-              "es schneit",
-              "es regnet"
-            ],
+            "options": {
+              "fa": [
+                "آفتابی و گرم",
+                "ابری و سرد",
+                "برف می‌بارد",
+                "باران می‌بارد"
+              ],
+              "en": [
+                "Sunny and warm",
+                "Cloudy and cold",
+                "It snows",
+                "It rains"
+              ],
+              "de": [
+                "sonnig und warm",
+                "bewölkt und kalt",
+                "es schneit",
+                "es regnet"
+              ]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "sonnig = آفتابی، warm = گرم",
@@ -1341,12 +1219,11 @@
               "en": "Sky is cloudy and it rains",
               "de": "Bewölkt und Regen"
             },
-            "options": [
-              "sonnig",
-              "bewölkt und es regnet",
-              "heiß",
-              "schneit"
-            ],
+            "options": {
+              "fa": ["آفتابی", "ابری و بارانی", "داغ", "برفی"],
+              "en": ["Sunny", "Cloudy and rainy", "Hot", "Snowy"],
+              "de": ["sonnig", "bewölkt und es regnet", "heiß", "schneit"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "bewölkt = ابری، es regnet = باران می‌بارد",
@@ -1361,12 +1238,16 @@
               "en": "White flakes fall and it's very cold",
               "de": "Weiß fällt, sehr kalt"
             },
-            "options": [
-              "es regnet",
-              "es schneit und es ist kalt",
-              "sonnig",
-              "warm"
-            ],
+            "options": {
+              "fa": ["بارانی", "برفی و سرد", "آفتابی", "گرم"],
+              "en": ["Rainy", "Snowy and cold", "Sunny", "Warm"],
+              "de": [
+                "es regnet",
+                "es schneit und es ist kalt",
+                "sonnig",
+                "warm"
+              ]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "es schneit = برف می‌بارد، kalt = سرد",
@@ -1381,12 +1262,11 @@
               "en": "It's very hot, 35 degrees!",
               "de": "Sehr heiß, 35 Grad!"
             },
-            "options": [
-              "kalt",
-              "kühl",
-              "heiß",
-              "bewölkt"
-            ],
+            "options": {
+              "fa": ["سرد", "خنک", "داغ", "ابری"],
+              "en": ["Cold", "Cool", "Hot", "Cloudy"],
+              "de": ["kalt", "kühl", "heiß", "bewölkt"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "heiß = داغ",
@@ -1414,27 +1294,47 @@
         "questions": [
           {
             "id": "p1-q1",
-            "prompt": "Es ___ gestern ___. (regnen) → Es ___ ___.",
+            "prompt": {
+              "fa": "Es ___ gestern ___. (regnen)",
+              "en": "Es ___ gestern ___. (regnen)",
+              "de": "Es ___ gestern ___. (regnen)"
+            },
             "placeholder": "hat geregnet"
           },
           {
             "id": "p1-q2",
-            "prompt": "Es ___ am Nachmittag ___. (schneien) → Es ___ ___.",
+            "prompt": {
+              "fa": "Es ___ am Nachmittag ___. (schneien)",
+              "en": "Es ___ am Nachmittag ___. (schneien)",
+              "de": "Es ___ am Nachmittag ___. (schneien)"
+            },
             "placeholder": "hat geschneit"
           },
           {
             "id": "p1-q3",
-            "prompt": "Wir ___ Fußball ___. (spielen) → Wir ___ ___.",
+            "prompt": {
+              "fa": "Wir ___ Fußball ___. (spielen)",
+              "en": "Wir ___ Fußball ___. (spielen)",
+              "de": "Wir ___ Fußball ___. (spielen)"
+            },
             "placeholder": "haben gespielt"
           },
           {
             "id": "p1-q4",
-            "prompt": "Ich ___ eine Pizza ___. (essen) → Ich ___ ___.",
+            "prompt": {
+              "fa": "Ich ___ eine Pizza ___. (essen)",
+              "en": "Ich ___ eine Pizza ___. (essen)",
+              "de": "Ich ___ eine Pizza ___. (essen)"
+            },
             "placeholder": "habe gegessen"
           },
           {
             "id": "p1-q5",
-            "prompt": "Es ___ heute nicht ___. (regnen, negativ) → Es ___ nicht ___.",
+            "prompt": {
+              "fa": "Es ___ heute nicht ___. (regnen, negativ)",
+              "en": "Es ___ heute nicht ___. (regnen, negative)",
+              "de": "Es ___ heute nicht ___. (regnen, negativ)"
+            },
             "placeholder": "hat geregnet"
           }
         ]
@@ -1509,13 +1409,13 @@
         "type": "match_situation",
         "title": {
           "fa": "تمرین ۴: war یا waren؟ (Präteritum sein)",
-          "en": "Exercise 4: war or waren?",
-          "de": "Übung 4: war oder waren?"
+          "en": "Exercise 4: war or waren? (Präteritum of sein)",
+          "de": "Übung 4: war oder waren? (Präteritum von sein)"
         },
         "instructions": {
           "fa": "شکل درست فعل sein در گذشته را انتخاب کنید.",
           "en": "Choose the correct past form of sein.",
-          "de": "Wählen Sie die richtige Vergangenheitsform."
+          "de": "Wählen Sie die richtige Vergangenheitsform von sein."
         },
         "questions": [
           {
@@ -1525,12 +1425,11 @@
               "en": "Ich ___ in Berlin.",
               "de": "Ich ___ in Berlin."
             },
-            "options": [
-              "war",
-              "waren",
-              "warst",
-              "wart"
-            ],
+            "options": {
+              "fa": ["war", "waren", "warst", "wart"],
+              "en": ["war", "waren", "warst", "wart"],
+              "de": ["war", "waren", "warst", "wart"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "ich war (اول شخص مفرد)",
@@ -1545,12 +1444,11 @@
               "en": "Wir ___ im Kino.",
               "de": "Wir ___ im Kino."
             },
-            "options": [
-              "war",
-              "waren",
-              "warst",
-              "wart"
-            ],
+            "options": {
+              "fa": ["war", "waren", "warst", "wart"],
+              "en": ["war", "waren", "warst", "wart"],
+              "de": ["war", "waren", "warst", "wart"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "wir waren (اول شخص جمع)",
@@ -1565,12 +1463,11 @@
               "en": "Es ___ kalt.",
               "de": "Es ___ kalt."
             },
-            "options": [
-              "war",
-              "waren",
-              "warst",
-              "wart"
-            ],
+            "options": {
+              "fa": ["war", "waren", "warst", "wart"],
+              "en": ["war", "waren", "warst", "wart"],
+              "de": ["war", "waren", "warst", "wart"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "es war (سوم شخص مفرد)",
@@ -1592,8 +1489,8 @@
         },
         "instructions": {
           "fa": "کلمات زیر را با تلفظ فارسی بلند بگویید.",
-          "en": "Pronounce the following words.",
-          "de": "Sprechen Sie die Wörter aus."
+          "en": "Pronounce the following words aloud.",
+          "de": "Sprechen Sie die folgenden Wörter laut aus."
         },
         "words": [
           {
@@ -1638,7 +1535,7 @@
           }
         ],
         "focus": {
-          "fa": "توجه: 'r' غُرّی (regnen, warm, war, geboren) • 'sch' مثل ش (schneit) • 'ei' کشیده (schneit) • 'ö' در bewölkt • 'W' مثل و در war/warm • 'v' مثل ف در vorbe",
+          "fa": "توجه: 'r' غُرّی (regnen, warm, war, geboren) • 'sch' مثل ش (schneit) • 'ei' کشیده (schneit) • 'ö' در bewölkt • 'W' مثل و در war/warm • 'v' مثل ف در vorbei",
           "en": "Pay attention to: uvular 'r' • 'sch' like sh • long 'ei' • 'ö' in bewölkt • 'W' like v • 'v' like f",
           "de": "Achten Sie auf: r • sch • ei • ö • W • v"
         }
@@ -1660,17 +1557,31 @@
           "en": "What does 'Es hat geregnet' mean?",
           "de": "Was bedeutet 'Es hat geregnet'?"
         },
-        "options": [
-          "باران می‌بارد",
-          "باران بارید",
-          "باران نمی‌بارد",
-          "باران نمی‌بارید"
-        ],
+        "options": {
+          "fa": [
+            "باران می‌بارد",
+            "باران بارید",
+            "باران نمی‌بارد",
+            "باران نمی‌بارید"
+          ],
+          "en": [
+            "It is raining",
+            "It rained",
+            "It isn't raining",
+            "It didn't rain"
+          ],
+          "de": [
+            "Es regnet",
+            "Es hat geregnet",
+            "Es regnet nicht",
+            "Es hat nicht geregnet"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Perfekt: hat geregnet = باران بارید",
           "en": "Perfekt: hat geregnet = it rained",
-          "de": "Perfekt"
+          "de": "Perfekt: hat geregnet"
         }
       },
       {
@@ -1678,20 +1589,19 @@
         "type": "multiple_choice",
         "question": {
           "fa": "فعل sein در 'ich' در Präteritum چگونه می‌شود؟",
-          "en": "How is sein in 'ich' in Präteritum?",
+          "en": "How is sein with 'ich' in Präteritum?",
           "de": "Wie ist sein bei 'ich' im Präteritum?"
         },
-        "options": [
-          "ich bin",
-          "ich war",
-          "ich habe",
-          "ich waren"
-        ],
+        "options": {
+          "fa": ["ich bin", "ich war", "ich habe", "ich waren"],
+          "en": ["ich bin", "ich war", "ich habe", "ich waren"],
+          "de": ["ich bin", "ich war", "ich habe", "ich waren"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "ich war (Präteritum sein)",
-          "en": "ich war",
-          "de": "ich war"
+          "en": "ich war (Präteritum of sein)",
+          "de": "ich war (Präteritum von sein)"
         }
       },
       {
@@ -1702,12 +1612,11 @@
           "en": "What does 'am 5. Mai' mean?",
           "de": "Was bedeutet 'am 5. Mai'?"
         },
-        "options": [
-          "۵ مه",
-          "۱۵ مه",
-          "۵۰ مه",
-          "۵ ماه"
-        ],
+        "options": {
+          "fa": ["۵ مه", "۱۵ مه", "۵۰ مه", "۵ ماه"],
+          "en": ["May 5th", "May 15th", "May 50th", "5 months"],
+          "de": ["5. Mai", "15. Mai", "50. Mai", "5 Monate"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "am fünften Mai = ۵ مه",
@@ -1723,12 +1632,11 @@
           "en": "What does 'bewölkt' mean?",
           "de": "Was bedeutet 'bewölkt'?"
         },
-        "options": [
-          "آفتابی",
-          "ابری",
-          "بارانی",
-          "برفی"
-        ],
+        "options": {
+          "fa": ["آفتابی", "ابری", "بارانی", "برفی"],
+          "en": ["Sunny", "Cloudy", "Rainy", "Snowy"],
+          "de": ["sonnig", "bewölkt", "regnerisch", "schneig"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "bewölkt = ابری",
@@ -1742,14 +1650,28 @@
         "question": {
           "fa": "کدام جمله درست است؟ (Perfekt)",
           "en": "Which sentence is correct? (Perfekt)",
-          "de": "Welcher Satz ist richtig?"
+          "de": "Welcher Satz ist richtig? (Perfekt)"
         },
-        "options": [
-          "Es hat schneit.",
-          "Es hat geschneit.",
-          "Es haben geschneit.",
-          "Es hat schneien."
-        ],
+        "options": {
+          "fa": [
+            "Es hat schneit.",
+            "Es hat geschneit.",
+            "Es haben geschneit.",
+            "Es hat schneien."
+          ],
+          "en": [
+            "Es hat schneit.",
+            "Es hat geschneit.",
+            "Es haben geschneit.",
+            "Es hat schneien."
+          ],
+          "de": [
+            "Es hat schneit.",
+            "Es hat geschneit.",
+            "Es haben geschneit.",
+            "Es hat schneien."
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Perfekt: hat + ge + stem + -t = hat geschneit",
@@ -1762,8 +1684,8 @@
   "assessment": {
     "title": {
       "fa": "آزمون پایان درس ۷",
-      "en": "Lesson 7 Assessment",
-      "de": "Lektion 7"
+      "en": "Lesson 7 Final Assessment",
+      "de": "Lektion 7 Abschlussbewertung"
     },
     "totalQuestions": 15,
     "passingScore": 70,
@@ -1801,7 +1723,7 @@
       "en": [
         "Can you describe weather?",
         "Do you know Perfekt with haben?",
-        "Do you know Präteritum sein?",
+        "Do you know Präteritum of sein?",
         "Can you say dates?",
         "Can you say years?",
         "Can you talk about the past?"
@@ -1809,7 +1731,7 @@
       "de": [
         "Können Sie Wetter beschreiben?",
         "Kennen Sie Perfekt mit haben?",
-        "Kennen Sie Präteritum sein?",
+        "Kennen Sie Präteritum von sein?",
         "Können Sie Datum sagen?",
         "Können Sie Jahre sagen?",
         "Können Sie über Vergangenheit sprechen?"
@@ -2053,8 +1975,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-09",
-    "updatedAt": "2026-07-09",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [

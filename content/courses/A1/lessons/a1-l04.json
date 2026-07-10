@@ -3,7 +3,7 @@
   "order": 4,
   "level": "A1",
   "unit": 4,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Mein Leben - زندگی من",
@@ -656,7 +656,7 @@
       "en": "to start",
       "example": {
         "de": "Der Kurs fängt um acht an.",
-        "fa": "کلاس ساعت هفت شروع می‌شود.",
+        "fa": "کلاس ساعت هشت شروع می‌شود.",
         "en": "The class starts at eight."
       },
       "usageNotes": {
@@ -740,13 +740,7 @@
           "de": "Einige deutsche Verben bestehen aus Präfix + Verb. Bei der Konjugation trennt sich das Präfix und ans Satzende."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "aufstehen",
-            "anfangen",
-            "einkaufen",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "aufstehen", "anfangen", "einkaufen", "معنی"],
           "rows": [
             [
               "ich",
@@ -811,12 +805,7 @@
           "de": "Wenn ein Nomen das direkte Objekt ist, steht es im Akkusativ. Nur der maskuline Artikel ändert sich: der → den."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "Nominativ",
-            "Akkusativ",
-            "مثال"
-          ],
+          "headers": ["جنسیت", "Nominativ", "Akkusativ", "مثال"],
           "rows": [
             [
               "مذکر",
@@ -824,24 +813,9 @@
               "den/einen/keinen",
               "Ich habe einen Laptop."
             ],
-            [
-              "مؤنث",
-              "die/eine/keine",
-              "die/eine/keine",
-              "Ich habe eine Maus."
-            ],
-            [
-              "خنثی",
-              "das/ein/kein",
-              "das/ein/kein",
-              "Ich habe ein Büro."
-            ],
-            [
-              "جمع",
-              "die/—/keine",
-              "die/—/keine",
-              "Ich habe keine Kinder."
-            ]
+            ["مؤنث", "die/eine/keine", "die/eine/keine", "Ich habe eine Maus."],
+            ["خنثی", "das/ein/kein", "das/ein/kein", "Ich habe ein Büro."],
+            ["جمع", "die/—/keine", "die/—/keine", "Ich habe keine Kinder."]
           ]
         },
         "pattern": {
@@ -870,29 +844,19 @@
             "معنی"
           ],
           "rows": [
-            [
-              "07:00",
-              "sieben Uhr",
-              "sieben",
-              "هفت"
-            ],
+            ["07:00", "sieben Uhr", "sieben", "هفت"],
             [
               "07:15",
               "sieben Uhr fünfzehn",
               "Viertel nach sieben",
               "یک ربع بعد از هفت"
             ],
-            [
-              "07:30",
-              "sieben Uhr dreißig",
-              "halb acht",
-              "نیمه هشت (=۷:۳۰)"
-            ],
+            ["07:30", "sieben Uhr dreißig", "halb acht", "نیمه هشت (=۷:۳۰)"],
             [
               "07:45",
               "sieben Uhr fünfundvierzig",
               "Viertel vor acht",
-              "یک ربع به هفت"
+              "یک ربع به هشت"
             ],
             [
               "14:15",
@@ -921,49 +885,14 @@
           "de": "nehmen hat Vokalwechsel: e → i in du und er/sie."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "آلمانی",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "آلمانی", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "ich nehme",
-              "ایخ نِ-مِه",
-              "من می‌گیرم"
-            ],
-            [
-              "du",
-              "du nimmst",
-              "دو نیمست",
-              "تو می‌گیری"
-            ],
-            [
-              "er/sie/es",
-              "er/sie/es nimmt",
-              "اِر/زی نیمت",
-              "او می‌گیرد"
-            ],
-            [
-              "wir",
-              "wir nehmen",
-              "ویر نِ-مِن",
-              "ما می‌گیریم"
-            ],
-            [
-              "ihr",
-              "ihr nehmt",
-              "ایر نِمت",
-              "شما می‌گیرید"
-            ],
-            [
-              "sie/Sie",
-              "sie/Sie nehmen",
-              "زی نِ-مِن",
-              "آن‌ها/شما می‌گیرند"
-            ]
+            ["ich", "ich nehme", "ایخ نِ-مِه", "من می‌گیرم"],
+            ["du", "du nimmst", "دو نیمست", "تو می‌گیری"],
+            ["er/sie/es", "er/sie/es nimmt", "اِر/زی نیمت", "او می‌گیرد"],
+            ["wir", "wir nehmen", "ویر نِ-مِن", "ما می‌گیریم"],
+            ["ihr", "ihr nehmt", "ایر نِمت", "شما می‌گیرید"],
+            ["sie/Sie", "sie/Sie nehmen", "زی نِ-مِن", "آن‌ها/شما می‌گیرند"]
           ]
         },
         "pattern": {
@@ -1198,12 +1127,11 @@
               "en": "This person cooks for children",
               "de": "Diese Person kocht für Kinder"
             },
-            "options": [
-              "Koch",
-              "Arzt",
-              "Friseur",
-              "Manager"
-            ],
+            "options": {
+              "fa": ["آشپز", "پزشک", "آرایشگر", "مدیر"],
+              "en": ["Cook", "Doctor", "Hairdresser", "Manager"],
+              "de": ["Koch", "Arzt", "Friseur", "Manager"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Koch = آشپز",
@@ -1218,12 +1146,11 @@
               "en": "This person cuts hair",
               "de": "Diese Person schneidet Haare"
             },
-            "options": [
-              "Arzt",
-              "Friseur",
-              "Ingenieur",
-              "Koch"
-            ],
+            "options": {
+              "fa": ["پزشک", "آرایشگر", "مهندس", "آشپز"],
+              "en": ["Doctor", "Hairdresser", "Engineer", "Cook"],
+              "de": ["Arzt", "Friseur", "Ingenieur", "Koch"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Friseur = آرایشگر",
@@ -1238,12 +1165,11 @@
               "en": "This person works in a hospital",
               "de": "Diese Person arbeitet im Krankenhaus"
             },
-            "options": [
-              "Manager",
-              "Koch",
-              "Arzt",
-              "Friseur"
-            ],
+            "options": {
+              "fa": ["مدیر", "آشپز", "پزشک", "آرایشگر"],
+              "en": ["Manager", "Cook", "Doctor", "Hairdresser"],
+              "de": ["Manager", "Koch", "Arzt", "Friseur"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Arzt = پزشک",
@@ -1258,12 +1184,11 @@
               "en": "This person works in a company",
               "de": "Diese Person arbeitet in einer Firma"
             },
-            "options": [
-              "Ingenieur",
-              "Manager",
-              "Koch",
-              "Friseur"
-            ],
+            "options": {
+              "fa": ["مهندس", "مدیر", "آشپز", "آرایشگر"],
+              "en": ["Engineer", "Manager", "Cook", "Hairdresser"],
+              "de": ["Ingenieur", "Manager", "Koch", "Friseur"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Manager = مدیر",
@@ -1291,27 +1216,47 @@
         "questions": [
           {
             "id": "v1-q1",
-            "prompt": "Ich ___ um sieben Uhr ___. (aufstehen)",
+            "prompt": {
+              "fa": "Ich ___ um sieben Uhr ___. (aufstehen)",
+              "en": "Ich ___ um sieben Uhr ___. (aufstehen)",
+              "de": "Ich ___ um sieben Uhr ___. (aufstehen)"
+            },
             "placeholder": "stehe ... auf"
           },
           {
             "id": "v1-q2",
-            "prompt": "Du ___ um sechs Uhr ___. (aufstehen)",
+            "prompt": {
+              "fa": "Du ___ um sechs Uhr ___. (aufstehen)",
+              "en": "Du ___ um sechs Uhr ___. (aufstehen)",
+              "de": "Du ___ um sechs Uhr ___. (aufstehen)"
+            },
             "placeholder": "stehst ... auf"
           },
           {
             "id": "v1-q3",
-            "prompt": "Der Kurs ___ um acht ___. (anfangen)",
+            "prompt": {
+              "fa": "Der Kurs ___ um acht ___. (anfangen)",
+              "en": "Der Kurs ___ um acht ___. (anfangen)",
+              "de": "Der Kurs ___ um acht ___. (anfangen)"
+            },
             "placeholder": "fängt ... an"
           },
           {
             "id": "v1-q4",
-            "prompt": "Wir ___ bei ALDI ___. (einkaufen)",
+            "prompt": {
+              "fa": "Wir ___ bei ALDI ___. (einkaufen)",
+              "en": "Wir ___ bei ALDI ___. (einkaufen)",
+              "de": "Wir ___ bei ALDI ___. (einkaufen)"
+            },
             "placeholder": "kaufen ... ein"
           },
           {
             "id": "v1-q5",
-            "prompt": "Ich ___ den Tarif XL ___. (nehmen)",
+            "prompt": {
+              "fa": "Ich ___ den Tarif XL ___. (nehmen)",
+              "en": "Ich ___ den Tarif XL ___. (nehmen)",
+              "de": "Ich ___ den Tarif XL ___. (nehmen)"
+            },
             "placeholder": "nehme"
           }
         ]
@@ -1399,14 +1344,14 @@
             "id": "a1-q1",
             "situation": {
               "fa": "Ich habe ___ Laptop. (مذکر)",
-              "en": "Ich have ___ Laptop. (masculine)",
+              "en": "I have ___ Laptop. (masculine)",
               "de": "Ich habe ___ Laptop. (maskulin)"
             },
-            "options": [
-              "den",
-              "die",
-              "das"
-            ],
+            "options": {
+              "fa": ["den", "die", "das"],
+              "en": ["den", "die", "das"],
+              "de": ["den", "die", "das"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "مذکر: der → den",
@@ -1418,14 +1363,14 @@
             "id": "a1-q2",
             "situation": {
               "fa": "Ich habe ___ Maus. (مؤنث)",
-              "en": "Ich have ___ Maus. (feminine)",
+              "en": "I have ___ Maus. (feminine)",
               "de": "Ich habe ___ Maus. (feminin)"
             },
-            "options": [
-              "den",
-              "die",
-              "das"
-            ],
+            "options": {
+              "fa": ["den", "die", "das"],
+              "en": ["den", "die", "das"],
+              "de": ["den", "die", "das"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "مؤنث: die → die",
@@ -1437,14 +1382,14 @@
             "id": "a1-q3",
             "situation": {
               "fa": "Ich habe ___ Büro. (خنثی)",
-              "en": "Ich have ___ Büro. (neuter)",
+              "en": "I have ___ Büro. (neuter)",
               "de": "Ich habe ___ Büro. (neutral)"
             },
-            "options": [
-              "den",
-              "die",
-              "das"
-            ],
+            "options": {
+              "fa": ["den", "die", "das"],
+              "en": ["den", "die", "das"],
+              "de": ["den", "die", "das"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "خنثی: das → das",
@@ -1534,12 +1479,21 @@
           "en": "What does 'Was bist du von Beruf?' mean?",
           "de": "Was bedeutet 'Was bist du von Beruf?'?"
         },
-        "options": [
-          "اسمت چیست؟",
-          "شغلت چیست؟",
-          "کجا ساکنی؟",
-          "کی بیدار می‌شوی؟"
-        ],
+        "options": {
+          "fa": ["اسمت چیست؟", "شغلت چیست؟", "کجا ساکنی؟", "کی بیدار می‌شوی؟"],
+          "en": [
+            "What's your name?",
+            "What's your profession?",
+            "Where do you live?",
+            "When do you get up?"
+          ],
+          "de": [
+            "Wie heißt du?",
+            "Was ist dein Beruf?",
+            "Wo wohnst du?",
+            "Wann stehst du auf?"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "'von Beruf sein' یعنی 'شغلاً بودن'",
@@ -1555,12 +1509,11 @@
           "en": "How is 'aufstehen' conjugated with 'ich'?",
           "de": "Wie wird 'aufstehen' mit 'ich' konjugiert?"
         },
-        "options": [
-          "ich aufstehe",
-          "ich stehe auf",
-          "ich aufstehen",
-          "ich stehe"
-        ],
+        "options": {
+          "fa": ["ich aufstehe", "ich stehe auf", "ich aufstehen", "ich stehe"],
+          "en": ["ich aufstehe", "ich stehe auf", "ich aufstehen", "ich stehe"],
+          "de": ["ich aufstehe", "ich stehe auf", "ich aufstehen", "ich stehe"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "فعل جداشونده: Ich stehe ... auf",
@@ -1576,12 +1529,11 @@
           "en": "What does 'halb acht' mean?",
           "de": "Was bedeutet 'halb acht'?"
         },
-        "options": [
-          "۸:۳۰",
-          "۷:۳۰",
-          "۸:۰۰",
-          "۷:۰۰"
-        ],
+        "options": {
+          "fa": ["۸:۳۰", "۷:۳۰", "۸:۰۰", "۷:۰۰"],
+          "en": ["8:30", "7:30", "8:00", "7:00"],
+          "de": ["8:30", "7:30", "8:00", "7:00"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "'halb acht' یعنی ۷:۳۰!",
@@ -1597,12 +1549,11 @@
           "en": "In accusative, how does 'der Laptop' change?",
           "de": "Wie ändert sich 'der Laptop' im Akkusativ?"
         },
-        "options": [
-          "den Laptop",
-          "die Laptop",
-          "das Laptop",
-          "des Laptop"
-        ],
+        "options": {
+          "fa": ["den Laptop", "die Laptop", "das Laptop", "des Laptop"],
+          "en": ["den Laptop", "die Laptop", "das Laptop", "des Laptop"],
+          "de": ["den Laptop", "die Laptop", "das Laptop", "des Laptop"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "مذکر: der → den",
@@ -1618,12 +1569,11 @@
           "en": "How is 'nehmen' conjugated with 'du'?",
           "de": "Wie wird 'nehmen' mit 'du' konjugiert?"
         },
-        "options": [
-          "du nehmst",
-          "du nimmst",
-          "du nimmt",
-          "du nehmen"
-        ],
+        "options": {
+          "fa": ["du nehmst", "du nimmst", "du nimmt", "du nehmen"],
+          "en": ["du nehmst", "du nimmst", "du nimmt", "du nehmen"],
+          "de": ["du nehmst", "du nimmst", "du nimmt", "du nehmen"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "تغییر مصوت: e → i. du nimmst",
@@ -1849,8 +1799,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-08",
-    "updatedAt": "2026-07-08",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [
@@ -1863,10 +1813,6 @@
       "A1"
     ],
     "difficulty": 2,
-    "prerequisites": [
-      "A1-L01",
-      "A1-L02",
-      "A1-L03"
-    ]
+    "prerequisites": ["A1-L01", "A1-L02", "A1-L03"]
   }
 }

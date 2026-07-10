@@ -2,16 +2,11 @@
  * achievementService.js
  * Path: backend/services/achievementService.js
  * Description: Achievement management service
- * Version: 2.1 - Fixed UserAchievement association
- * Changes:
- * - ✅ FIXED: Added proper include with 'achievement' alias
- * - ✅ FIXED: getAllAchievementsWithStatus now correctly fetches achievement details
- * - ✅ FIXED: getUserAchievements with proper association
- * - ✅ FIXED: getUnviewedAchievements with proper association
+ * Version: 2.3 - FIXED: Achievement awarding
  */
 
 import { Achievement, UserAchievement, User } from "../models/index.js";
-import { NotFoundError, ValidationError } from "../errors/index.js";
+import { NotFoundError } from "../errors/index.js";
 import logger from "../config/logger.js";
 import sequelize from "../config/db.js";
 
@@ -20,10 +15,6 @@ class AchievementService {
   // 📊 Get Achievements
   // ============================================
 
-  /**
-   * Get all achievements with status for user
-   * ✅ FIXED: Added proper include with 'achievement' alias
-   */
   async getAllAchievementsWithStatus(userId) {
     try {
       const allAchievements = await Achievement.findAll({
@@ -61,10 +52,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Get user earned achievements
-   * ✅ FIXED: Added proper include with 'achievement' alias
-   */
   async getUserAchievements(userId) {
     try {
       const userAchievements = await UserAchievement.findAll({
@@ -93,10 +80,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Get unviewed achievements
-   * ✅ FIXED: Added proper include with 'achievement' alias
-   */
   async getUnviewedAchievements(userId) {
     try {
       const userAchievements = await UserAchievement.findAll({
@@ -127,9 +110,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Get a specific achievement by ID
-   */
   async getAchievementById(achievementId) {
     try {
       const achievement = await Achievement.findByPk(achievementId);
@@ -147,9 +127,6 @@ class AchievementService {
   // 📊 Achievement Stats
   // ============================================
 
-  /**
-   * Get achievement statistics for a user
-   */
   async getAchievementStats(userId) {
     try {
       const total = await Achievement.count({ where: { isActive: true } });
@@ -171,9 +148,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Get global achievement statistics
-   */
   async getGlobalStats() {
     try {
       const total = await Achievement.count({ where: { isActive: true } });
@@ -227,9 +201,6 @@ class AchievementService {
   // 🔄 Achievement Actions
   // ============================================
 
-  /**
-   * Mark achievement as viewed
-   */
   async markAsViewed(userId, achievementId) {
     try {
       const userAchievement = await UserAchievement.findOne({
@@ -254,9 +225,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Mark all achievements as viewed
-   */
   async markAllAsViewed(userId) {
     try {
       const result = await UserAchievement.update(
@@ -281,9 +249,6 @@ class AchievementService {
   // 🏆 Award Achievements
   // ============================================
 
-  /**
-   * Award an achievement to a user
-   */
   async awardAchievement(userId, achievementName, source = "manual") {
     try {
       const achievement = await Achievement.findOne({
@@ -344,7 +309,7 @@ class AchievementService {
   }
 
   /**
-   * Check and award achievements based on user activity
+   * ✅ FIXED: Check and award achievements based on user activity
    */
   async checkAndAwardAchievements(userId, event, data = {}) {
     try {
@@ -364,26 +329,112 @@ class AchievementService {
         (await UserAchievement.findAll({ where: { userId } })).map((ua) => ua.achievementId)
       );
 
+      // Count completed lessons
+      const { LessonProgress } = await import("../models/index.js");
+      const { Op } = await import("sequelize");
+
+      const completedLessons = await LessonProgress.count({
+        where: {
+          userId,
+          status: {
+            [Op.in]: ["completed", "perfect"],
+          },
+        },
+      });
+
+      const perfectLessons = await LessonProgress.count({
+        where: {
+          userId,
+          status: "perfect",
+        },
+      });
+
       const userStats = {
-        lessonsCompleted: await this.countUserLessons(userId, "completed"),
-        perfectLessons: await this.countUserLessons(userId, "perfect"),
+        lessonsCompleted: completedLessons,
+        perfectLessons: perfectLessons,
         streak: user.streak || 0,
         totalXP: user.xp || 0,
         wordsLearned: await this.countUserWords(userId),
         aiConversations: await this.countAIConversations(userId),
       };
 
+      logger.info(`🔍 Checking achievements for user ${userId}`, {
+        event,
+        stats: userStats,
+        earnedCount: earnedIds.size,
+      });
+
       // Check each achievement condition
       for (const achievement of achievements) {
         // Skip if already earned
-        if (earnedIds.has(achievement.id)) continue;
+        if (earnedIds.has(achievement.id)) {
+          logger.info(`⏭️ Achievement ${achievement.name} already earned`);
+          continue;
+        }
 
         const condition = achievement.condition;
-        const shouldAward = this.checkCondition(condition, userStats, event, data);
+        let shouldAward = false;
+
+        // ✅ FIXED: Check condition properly
+        if (condition && condition.type) {
+          switch (condition.type) {
+            case "lessons_completed":
+              shouldAward = userStats.lessonsCompleted >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: lessons=${userStats.lessonsCompleted}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "perfect_lessons":
+              shouldAward = userStats.perfectLessons >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: perfect=${userStats.perfectLessons}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "streak":
+              shouldAward = userStats.streak >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: streak=${userStats.streak}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "total_xp":
+              shouldAward = userStats.totalXP >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: xp=${userStats.totalXP}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "words_learned":
+              shouldAward = userStats.wordsLearned >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: words=${userStats.wordsLearned}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "ai_conversations":
+              shouldAward = userStats.aiConversations >= condition.target;
+              logger.info(
+                `📊 ${achievement.name}: ai=${userStats.aiConversations}, target=${condition.target}, result=${shouldAward}`
+              );
+              break;
+            case "event":
+              shouldAward = event === condition.event;
+              logger.info(
+                `📊 ${achievement.name}: event=${event}, target=${condition.event}, result=${shouldAward}`
+              );
+              break;
+            default:
+              shouldAward = false;
+          }
+        }
 
         if (shouldAward) {
-          const result = await this.awardAchievement(userId, achievement.name);
-          awarded.push(result);
+          try {
+            const result = await this.awardAchievement(userId, achievement.name);
+            if (result.success) {
+              awarded.push(result);
+              logger.info(`🏆 Achievement ${achievement.name} awarded to user ${userId}`);
+            }
+          } catch (awardError) {
+            logger.error(`❌ Failed to award achievement ${achievement.name}:`, awardError);
+          }
         }
       }
 
@@ -402,49 +453,6 @@ class AchievementService {
   // 🛠️ Helper Methods
   // ============================================
 
-  /**
-   * Check if achievement condition is met
-   */
-  checkCondition(condition, userStats, event, data) {
-    if (!condition || !condition.type) return false;
-
-    switch (condition.type) {
-      case "lessons_completed":
-        return userStats.lessonsCompleted >= condition.target;
-      case "perfect_lessons":
-        return userStats.perfectLessons >= condition.target;
-      case "streak":
-        return userStats.streak >= condition.target;
-      case "total_xp":
-        return userStats.totalXP >= condition.target;
-      case "words_learned":
-        return userStats.wordsLearned >= condition.target;
-      case "ai_conversations":
-        return userStats.aiConversations >= condition.target;
-      case "event":
-        return event === condition.event;
-      default:
-        return false;
-    }
-  }
-
-  /**
-   * Count user's completed/perfect lessons
-   */
-  async countUserLessons(userId, status) {
-    const { LessonProgress } = await import("../models/index.js");
-    const count = await LessonProgress.count({
-      where: {
-        userId,
-        status: status,
-      },
-    });
-    return count;
-  }
-
-  /**
-   * Count user's learned words
-   */
   async countUserWords(userId) {
     const { WordProgress } = await import("../models/index.js");
     const count = await WordProgress.count({
@@ -453,9 +461,6 @@ class AchievementService {
     return count;
   }
 
-  /**
-   * Count AI conversations
-   */
   async countAIConversations(userId) {
     const { AIConversation } = await import("../models/index.js");
     const count = await AIConversation.count({
@@ -471,9 +476,6 @@ class AchievementService {
   // 📋 Admin Methods
   // ============================================
 
-  /**
-   * Create a new achievement (admin)
-   */
   async createAchievement(data) {
     try {
       const achievement = await Achievement.create(data);
@@ -485,9 +487,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Update an achievement (admin)
-   */
   async updateAchievement(achievementId, data) {
     try {
       const achievement = await Achievement.findByPk(achievementId);
@@ -504,9 +503,6 @@ class AchievementService {
     }
   }
 
-  /**
-   * Delete an achievement (admin)
-   */
   async deleteAchievement(achievementId) {
     try {
       const achievement = await Achievement.findByPk(achievementId);
@@ -514,7 +510,6 @@ class AchievementService {
         throw new NotFoundError(`Achievement ${achievementId} not found`);
       }
 
-      // Delete all user achievements for this achievement
       await UserAchievement.destroy({
         where: { achievementId },
       });
@@ -528,10 +523,6 @@ class AchievementService {
     }
   }
 }
-
-// ============================================
-// 📤 Export
-// ============================================
 
 const achievementService = new AchievementService();
 export default achievementService;

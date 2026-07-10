@@ -845,28 +845,10 @@
           "de": "Das Verb essen hat einen Vokalwechsel. In du und er/sie/es Formen ändert sich 'e' zu 'i': essen → isst."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "آلمانی",
-            "تلفظ فارسی",
-            "IPA",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "آلمانی", "تلفظ فارسی", "IPA", "معنی"],
           "rows": [
-            [
-              "ich",
-              "ich esse",
-              "ایخ اِسِه",
-              "[ɪç ˈɛsə]",
-              "من می‌خورم"
-            ],
-            [
-              "du",
-              "du isst",
-              "دو ایست",
-              "[duː ɪst]",
-              "تو می‌خوری"
-            ],
+            ["ich", "ich esse", "ایخ اِسِه", "[ɪç ˈɛsə]", "من می‌خورم"],
+            ["du", "du isst", "دو ایست", "[duː ɪst]", "تو می‌خوری"],
             [
               "er/sie/es",
               "er/sie/es isst",
@@ -874,20 +856,8 @@
               "[eːɐ̯/ziː/ɛs ɪst]",
               "او می‌خورد"
             ],
-            [
-              "wir",
-              "wir essen",
-              "ویر اِ-سِن",
-              "[viːɐ̯ ˈɛsn̩]",
-              "ما می‌خوریم"
-            ],
-            [
-              "ihr",
-              "ihr esst",
-              "ایر اِست",
-              "[iːɐ̯ ɛst]",
-              "شما می‌خورید"
-            ],
+            ["wir", "wir essen", "ویر اِ-سِن", "[viːɐ̯ ˈɛsn̩]", "ما می‌خوریم"],
+            ["ihr", "ihr esst", "ایر اِست", "[iːɐ̯ ɛst]", "شما می‌خورید"],
             [
               "sie/Sie",
               "sie/Sie essen",
@@ -916,28 +886,10 @@
           "de": "Das Verb haben ist eines der wichtigsten deutschen Verben. Es wird für Besitz und in zusammengesetzten Zeiten verwendet."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "آلمانی",
-            "تلفظ فارسی",
-            "IPA",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "آلمانی", "تلفظ فارسی", "IPA", "معنی"],
           "rows": [
-            [
-              "ich",
-              "ich habe",
-              "ایخ ها-بِه",
-              "[ɪç ˈhaːbə]",
-              "من دارم"
-            ],
-            [
-              "du",
-              "du hast",
-              "دو هاست",
-              "[duː hast]",
-              "تو داری"
-            ],
+            ["ich", "ich habe", "ایخ ها-بِه", "[ɪç ˈhaːbə]", "من دارم"],
+            ["du", "du hast", "دو هاست", "[duː hast]", "تو داری"],
             [
               "er/sie/es",
               "er/sie/es hat",
@@ -945,20 +897,8 @@
               "[eːɐ̯/ziː/ɛs hat]",
               "او دارد"
             ],
-            [
-              "wir",
-              "wir haben",
-              "ویر ها-بِن",
-              "[viːɐ̯ ˈhaːbn̩]",
-              "ما داریم"
-            ],
-            [
-              "ihr",
-              "ihr habt",
-              "ایر هابت",
-              "[iːɐ̯ hapt]",
-              "شما دارید"
-            ],
+            ["wir", "wir haben", "ویر ها-بِن", "[viːɐ̯ ˈhaːbn̩]", "ما داریم"],
+            ["ihr", "ihr habt", "ایر هابت", "[iːɐ̯ hapt]", "شما دارید"],
             [
               "sie/Sie",
               "sie/Sie haben",
@@ -987,55 +927,20 @@
           "de": "Deutsch hat mehrere Pluralendungen: -e, -(e)n, -er, -s. Manche Nomen bekommen auch einen Umlaut."
         },
         "pluralTable": {
-          "headers": [
-            "پایانه جمع",
-            "مثال مفرد",
-            "مثال جمع",
-            "معنی"
-          ],
+          "headers": ["پایانه جمع", "مثال مفرد", "مثال جمع", "معنی"],
           "rows": [
-            [
-              "-e (با Umlaut)",
-              "der Apfel",
-              "die Äpfel",
-              "سیب/سیب‌ها"
-            ],
-            [
-              "-e",
-              "das Brot",
-              "die Brote",
-              "نان/نان‌ها"
-            ],
-            [
-              "-(e)n",
-              "die Tomate",
-              "die Tomaten",
-              "گوجه/گوجه‌ها"
-            ],
+            ["-e (با Umlaut)", "der Apfel", "die Äpfel", "سیب/سیب‌ها"],
+            ["-e", "das Brot", "die Brote", "نان/نان‌ها"],
+            ["-(e)n", "die Tomate", "die Tomaten", "گوجه/گوجه‌ها"],
             [
               "-(e)n",
               "die Kartoffel",
               "die Kartoffeln",
               "سیب زمینی/سیب زمینی‌ها"
             ],
-            [
-              "-er (با Umlaut)",
-              "das Kind",
-              "die Kinder",
-              "کودک/کودکان"
-            ],
-            [
-              "-s",
-              "das Auto",
-              "die Autos",
-              "ماشین/ماشین‌ها"
-            ],
-            [
-              "بدون تغییر",
-              "das Wasser",
-              "die Wasser",
-              "آب/آب‌ها"
-            ]
+            ["-er (با Umlaut)", "das Kind", "die Kinder", "کودک/کودکان"],
+            ["-s", "das Auto", "die Autos", "ماشین/ماشین‌ها"],
+            ["بدون تغییر", "das Wasser", "die Wasser", "آب/آب‌ها"]
           ]
         },
         "pattern": {
@@ -1303,11 +1208,11 @@
               "en": "Apple",
               "de": "Apfel"
             },
-            "options": [
-              "Obst",
-              "Gemüse",
-              "Getränke"
-            ],
+            "options": {
+              "fa": ["میوه", "سبزی", "نوشیدنی"],
+              "en": ["Fruit", "Vegetable", "Drinks"],
+              "de": ["Obst", "Gemüse", "Getränke"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Apfel میوه است.",
@@ -1322,11 +1227,11 @@
               "en": "Tomato",
               "de": "Tomate"
             },
-            "options": [
-              "Obst",
-              "Gemüse",
-              "Getränke"
-            ],
+            "options": {
+              "fa": ["میوه", "سبزی", "نوشیدنی"],
+              "en": ["Fruit", "Vegetable", "Drinks"],
+              "de": ["Obst", "Gemüse", "Getränke"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "Tomate سبزی است.",
@@ -1341,11 +1246,11 @@
               "en": "Water",
               "de": "Wasser"
             },
-            "options": [
-              "Obst",
-              "Gemüse",
-              "Getränke"
-            ],
+            "options": {
+              "fa": ["میوه", "سبزی", "نوشیدنی"],
+              "en": ["Fruit", "Vegetable", "Drinks"],
+              "de": ["Obst", "Gemüse", "Getränke"]
+            },
             "correctIndex": 2,
             "explanation": {
               "fa": "Wasser نوشیدنی است.",
@@ -1360,11 +1265,11 @@
               "en": "Banana",
               "de": "Banane"
             },
-            "options": [
-              "Obst",
-              "Gemüse",
-              "Getränke"
-            ],
+            "options": {
+              "fa": ["میوه", "سبزی", "نوشیدنی"],
+              "en": ["Fruit", "Vegetable", "Drinks"],
+              "de": ["Obst", "Gemüse", "Getränke"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Banane میوه است.",
@@ -1392,42 +1297,74 @@
         "questions": [
           {
             "id": "v1-q1",
-            "prompt": "Ich ___ einen Apfel. (essen)",
+            "prompt": {
+              "fa": "Ich ___ einen Apfel. (essen)",
+              "en": "Ich ___ einen Apfel. (essen)",
+              "de": "Ich ___ einen Apfel. (essen)"
+            },
             "placeholder": "esse"
           },
           {
             "id": "v1-q2",
-            "prompt": "Du ___ eine Banane. (essen)",
+            "prompt": {
+              "fa": "Du ___ eine Banane. (essen)",
+              "en": "Du ___ eine Banane. (essen)",
+              "de": "Du ___ eine Banane. (essen)"
+            },
             "placeholder": "isst"
           },
           {
             "id": "v1-q3",
-            "prompt": "Er ___ Fleisch. (essen)",
+            "prompt": {
+              "fa": "Er ___ Fleisch. (essen)",
+              "en": "Er ___ Fleisch. (essen)",
+              "de": "Er ___ Fleisch. (essen)"
+            },
             "placeholder": "isst"
           },
           {
             "id": "v1-q4",
-            "prompt": "Wir ___ Tomaten. (essen)",
+            "prompt": {
+              "fa": "Wir ___ Tomaten. (essen)",
+              "en": "Wir ___ Tomaten. (essen)",
+              "de": "Wir ___ Tomaten. (essen)"
+            },
             "placeholder": "essen"
           },
           {
             "id": "v1-q5",
-            "prompt": "Ich ___ einen Apfel. (haben)",
+            "prompt": {
+              "fa": "Ich ___ einen Apfel. (haben)",
+              "en": "Ich ___ einen Apfel. (haben)",
+              "de": "Ich ___ einen Apfel. (haben)"
+            },
             "placeholder": "habe"
           },
           {
             "id": "v1-q6",
-            "prompt": "Du ___ eine Banane. (haben)",
+            "prompt": {
+              "fa": "Du ___ eine Banane. (haben)",
+              "en": "Du ___ eine Banane. (haben)",
+              "de": "Du ___ eine Banane. (haben)"
+            },
             "placeholder": "hast"
           },
           {
             "id": "v1-q7",
-            "prompt": "Er ___ Fleisch. (haben)",
+            "prompt": {
+              "fa": "Er ___ Fleisch. (haben)",
+              "en": "Er ___ Fleisch. (haben)",
+              "de": "Er ___ Fleisch. (haben)"
+            },
             "placeholder": "hat"
           },
           {
             "id": "v1-q8",
-            "prompt": "Wir ___ Tomaten. (haben)",
+            "prompt": {
+              "fa": "Wir ___ Tomaten. (haben)",
+              "en": "Wir ___ Tomaten. (haben)",
+              "de": "Wir ___ Tomaten. (haben)"
+            },
             "placeholder": "haben"
           }
         ]
@@ -1568,10 +1505,11 @@
               "en": "You speak with the waiter in a restaurant",
               "de": "Sie sprechen mit dem Kellner im Restaurant"
             },
-            "options": [
-              "du",
-              "Sie"
-            ],
+            "options": {
+              "fa": ["du", "Sie"],
+              "en": ["du", "Sie"],
+              "de": ["du", "Sie"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "با گارسون باید 'Sie' استفاده کنید (رسمی).",
@@ -1586,10 +1524,11 @@
               "en": "You talk with a friend about food in a café",
               "de": "Sie sprechen mit einem Freund über Essen im Café"
             },
-            "options": [
-              "du",
-              "Sie"
-            ],
+            "options": {
+              "fa": ["du", "Sie"],
+              "en": ["du", "Sie"],
+              "de": ["du", "Sie"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "با دوست 'du' استفاده می‌کنید (دوستانه).",
@@ -1604,10 +1543,11 @@
               "en": "You ask the shopkeeper for the price in a supermarket",
               "de": "Sie fragen den Verkäufer nach dem Preis im Supermarkt"
             },
-            "options": [
-              "du",
-              "Sie"
-            ],
+            "options": {
+              "fa": ["du", "Sie"],
+              "en": ["du", "Sie"],
+              "de": ["du", "Sie"]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "با فروشنده غریبه 'Sie' استفاده می‌کنید.",
@@ -1697,12 +1637,11 @@
           "en": "What does 'der Apfel' mean?",
           "de": "Was bedeutet 'der Apfel'?"
         },
-        "options": [
-          "سیب",
-          "موز",
-          "پرتقال",
-          "گوجه"
-        ],
+        "options": {
+          "fa": ["سیب", "موز", "پرتقال", "گوجه"],
+          "en": ["Apple", "Banana", "Orange", "Tomato"],
+          "de": ["Apfel", "Banane", "Orange", "Tomate"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "'der Apfel' به معنی سیب است.",
@@ -1718,12 +1657,11 @@
           "en": "What is the plural of 'die Tomate'?",
           "de": "Was ist der Plural von 'die Tomate'?"
         },
-        "options": [
-          "Tomaten",
-          "Tomate",
-          "Tomates",
-          "Tomati"
-        ],
+        "options": {
+          "fa": ["Tomaten", "Tomate", "Tomates", "Tomati"],
+          "en": ["Tomaten", "Tomate", "Tomates", "Tomati"],
+          "de": ["Tomaten", "Tomate", "Tomates", "Tomati"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "جمع با -n ساخته می‌شود: Tomaten.",
@@ -1739,12 +1677,11 @@
           "en": "How is 'essen' conjugated with 'ich'?",
           "de": "Wie wird 'essen' mit 'ich' konjugiert?"
         },
-        "options": [
-          "ich esse",
-          "ich isst",
-          "ich ess",
-          "ich essen"
-        ],
+        "options": {
+          "fa": ["ich esse", "ich isst", "ich ess", "ich essen"],
+          "en": ["ich esse", "ich isst", "ich ess", "ich essen"],
+          "de": ["ich esse", "ich isst", "ich ess", "ich essen"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "ich + esse (بدون تغییر مصوت در ich).",
@@ -1760,12 +1697,11 @@
           "en": "How is 'essen' conjugated with 'du'?",
           "de": "Wie wird 'essen' mit 'du' konjugiert?"
         },
-        "options": [
-          "du esse",
-          "du isst",
-          "du essst",
-          "du est"
-        ],
+        "options": {
+          "fa": ["du esse", "du isst", "du essst", "du est"],
+          "en": ["du esse", "du isst", "du essst", "du est"],
+          "de": ["du esse", "du isst", "du essst", "du est"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "du + isst (با تغییر مصوت: e → i).",
@@ -1781,12 +1717,11 @@
           "en": "Which word is used without an article?",
           "de": "Welches Wort wird ohne Artikel verwendet?"
         },
-        "options": [
-          "Wasser",
-          "der Apfel",
-          "die Tomate",
-          "das Brot"
-        ],
+        "options": {
+          "fa": ["Wasser", "der Apfel", "die Tomate", "das Brot"],
+          "en": ["Wasser", "der Apfel", "die Tomate", "das Brot"],
+          "de": ["Wasser", "der Apfel", "die Tomate", "das Brot"]
+        },
         "correctIndex": 0,
         "explanation": {
           "fa": "Wasser (آب) معمولاً بدون حرف تعریف استفاده می‌شود: Ich trinke Wasser.",
@@ -1849,7 +1784,7 @@
         "Can you conjugate haben in all persons?",
         "Can you form plurals with different endings?",
         "Can you name colors and assign them to foods?",
-        "Can you express your food pronunciation?"
+        "Can you express your food preferences?"
       ],
       "de": [
         "Können Sie Hauptlebensmittel auf Deutsch nennen?",
@@ -1880,39 +1815,19 @@
     "foodCategories": [
       {
         "category": "Obst (میوه)",
-        "items": [
-          "der Apfel",
-          "die Banane",
-          "die Orange",
-          "die Zitrone"
-        ]
+        "items": ["der Apfel", "die Banane", "die Orange", "die Zitrone"]
       },
       {
         "category": "Gemüse (سبزی)",
-        "items": [
-          "die Tomate",
-          "die Möhre",
-          "die Kartoffel"
-        ]
+        "items": ["die Tomate", "die Möhre", "die Kartoffel"]
       },
       {
         "category": "Getränke (نوشیدنی)",
-        "items": [
-          "das Wasser",
-          "die Milch",
-          "der Kaffee",
-          "der Orangensaft"
-        ]
+        "items": ["das Wasser", "die Milch", "der Kaffee", "der Orangensaft"]
       },
       {
         "category": "Sonstiges (سایر)",
-        "items": [
-          "das Brot",
-          "das Fleisch",
-          "das Ei",
-          "der Käse",
-          "der Reis"
-        ]
+        "items": ["das Brot", "das Fleisch", "das Ei", "der Käse", "der Reis"]
       }
     ],
     "colors": [
@@ -2050,13 +1965,13 @@
   },
   "lessonSummary": {
     "fa": "در درس ۳، شما با واژگان مواد غذایی (میوه، سبزی، نوشیدنی)، رنگ‌ها، و گرامر مهم آشنا شدید. شما یاد گرفتید فعل‌های essen و haben را صرف کنید، جمع اسامی را با پایانه‌های مختلف بسازید، و از حرف تعریف صفر استفاده کنید. همچنین یاد گرفتید چگونه ترجیحات غذایی خود را بیان کنید و در سوپرمارکت یا رستوران خرید کنید.",
-    "en": "In Lesson 3, you learned food vocabulary (fruits, vegetables, drinks), colors, and important grammar. You learned to conjugate essen and haben, form plurals with different endings, and use the zero article. You also learned to express food pronunciation and shop in supermarkets or restaurants.",
+    "en": "In Lesson 3, you learned food vocabulary (fruits, vegetables, drinks), colors, and important grammar. You learned to conjugate essen and haben, form plurals with different endings, and use the zero article. You also learned to express food preferences and shop in supermarkets or restaurants.",
     "de": "In Lektion 3 haben Sie Lebensmitttelvokabular (Obst, Gemüse, Getränke), Farben und wichtige Grammatik gelernt. Sie haben gelernt, essen und haben zu konjugieren, Plurale mit verschiedenen Endungen zu bilden, und den Nullartikel zu verwenden. Sie haben auch gelernt, Essensvorlieben auszudrücken und in Supermärkten oder Restaurants einzukaufen."
   },
   "metadata": {
     "createdAt": "2026-07-07",
-    "updatedAt": "2026-07-07",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [
@@ -2070,9 +1985,6 @@
       "A1"
     ],
     "difficulty": 2,
-    "prerequisites": [
-      "A1-L01",
-      "A1-L02"
-    ]
+    "prerequisites": ["A1-L01", "A1-L02"]
   }
 }

@@ -3,11 +3,11 @@
   "order": 10,
   "level": "A1",
   "unit": 10,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "status": "published",
   "title": {
     "fa": "Ich war noch nie... - هنوز هرگز نبودم...",
-    "en": "I Was Never... ",
+    "en": "I Was Never...",
     "de": "Ich war noch nie..."
   },
   "subtitle": {
@@ -789,49 +789,14 @@
           "de": "Konjunktiv II mit würde für Wünsche und höfliche Bitten."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "würde",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "würde", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "würde",
-              "وور-دِه",
-              "می‌خواستم"
-            ],
-            [
-              "du",
-              "würdest",
-              "وور-دِست",
-              "می‌خواستی"
-            ],
-            [
-              "er/sie/es",
-              "würde",
-              "وور-دِه",
-              "می‌خواست"
-            ],
-            [
-              "wir",
-              "würden",
-              "وور-دِن",
-              "می‌خواستیم"
-            ],
-            [
-              "ihr",
-              "würdet",
-              "وور-دِت",
-              "می‌خواستید"
-            ],
-            [
-              "sie/Sie",
-              "würden",
-              "وور-دِن",
-              "می‌خواستند"
-            ]
+            ["ich", "würde", "وور-دِه", "می‌خواستم"],
+            ["du", "würdest", "وور-دِست", "می‌خواستی"],
+            ["er/sie/es", "würde", "وور-دِه", "می‌خواست"],
+            ["wir", "würden", "وور-دِن", "می‌خواستیم"],
+            ["ihr", "würdet", "وور-دِت", "می‌خواستید"],
+            ["sie/Sie", "würden", "وور-دِن", "می‌خواستند"]
           ]
         },
         "pattern": {
@@ -853,49 +818,14 @@
           "de": "Für die Vergangenheit von sein im Perfekt: ich bin gewesen."
         },
         "conjugationTable": {
-          "headers": [
-            "ضمیر",
-            "sein (Perfekt)",
-            "تلفظ فارسی",
-            "معنی"
-          ],
+          "headers": ["ضمیر", "sein (Perfekt)", "تلفظ فارسی", "معنی"],
           "rows": [
-            [
-              "ich",
-              "bin gewesen",
-              "بین گِ-وِ-زِن",
-              "من بوده‌ام"
-            ],
-            [
-              "du",
-              "bist gewesen",
-              "بیست گِ-وِ-زِن",
-              "تو بوده‌ای"
-            ],
-            [
-              "er/sie/es",
-              "ist gewesen",
-              "ایست گِ-وِ-زِن",
-              "او بوده"
-            ],
-            [
-              "wir",
-              "sind gewesen",
-              "زیند گِ-وِ-زِن",
-              "ما بوده‌ایم"
-            ],
-            [
-              "ihr",
-              "seid gewesen",
-              "زاید گِ-وِ-زِن",
-              "شما بوده‌اید"
-            ],
-            [
-              "sie/Sie",
-              "sind gewesen",
-              "زیند گِ-وِ-زِن",
-              "آن‌ها/شما بوده‌اند"
-            ]
+            ["ich", "bin gewesen", "بین گِ-وِ-زِن", "من بوده‌ام"],
+            ["du", "bist gewesen", "بیست گِ-وِ-زِن", "تو بوده‌ای"],
+            ["er/sie/es", "ist gewesen", "ایست گِ-وِ-زِن", "او بوده"],
+            ["wir", "sind gewesen", "زیند گِ-وِ-زِن", "ما بوده‌ایم"],
+            ["ihr", "seid gewesen", "زاید گِ-وِ-زِن", "شما بوده‌اید"],
+            ["sie/Sie", "sind gewesen", "زیند گِ-وِ-زِن", "آن‌ها/شما بوده‌اند"]
           ]
         },
         "pattern": {
@@ -917,37 +847,12 @@
           "de": "welch- fragt 'which?'. Stimmt mit dem Genus überein."
         },
         "conjugationTable": {
-          "headers": [
-            "جنسیت",
-            "welch- (Nominativ)",
-            "مثال",
-            "معنی"
-          ],
+          "headers": ["جنسیت", "welch- (Nominativ)", "مثال", "معنی"],
           "rows": [
-            [
-              "مذکر",
-              "welcher",
-              "Welcher Monat fehlt?",
-              "کدام ماه غایب است؟"
-            ],
-            [
-              "خنثی",
-              "welches",
-              "Welches Land fehlt?",
-              "کدام کشور غایب است؟"
-            ],
-            [
-              "مؤنث",
-              "welche",
-              "Welche Stadt fehlt?",
-              "کدام شهر غایب است؟"
-            ],
-            [
-              "جمع",
-              "welche",
-              "Welche Länder?",
-              "کدام کشورها؟"
-            ]
+            ["مذکر", "welcher", "Welcher Monat fehlt?", "کدام ماه غایب است؟"],
+            ["خنثی", "welches", "Welches Land fehlt?", "کدام کشور غایب است؟"],
+            ["مؤنث", "welche", "Welche Stadt fehlt?", "کدام شهر غایب است؟"],
+            ["جمع", "welche", "Welche Länder?", "کدام کشورها؟"]
           ]
         },
         "pattern": {
@@ -969,43 +874,13 @@
           "de": "Für Reiseziele: nach (Stadt/Land ohne Artikel), in/auf (Insel mit Dativ/Akkusativ)."
         },
         "conjugationTable": {
-          "headers": [
-            "مقصد",
-            "حرف اضافه",
-            "مثال",
-            "معنی"
-          ],
+          "headers": ["مقصد", "حرف اضافه", "مثال", "معنی"],
           "rows": [
-            [
-              "شهر",
-              "nach",
-              "nach Paris",
-              "به پاریس"
-            ],
-            [
-              "کشور",
-              "nach",
-              "nach Italien",
-              "به ایتالیا"
-            ],
-            [
-              "جزیره",
-              "auf / in",
-              "auf Sylt / in Sylt",
-              "در Sylt"
-            ],
-            [
-              "کشور با حرف تعریف",
-              "in",
-              "in die Schweiz",
-              "به سوئیس"
-            ],
-            [
-              "مکان با حرف تعریف",
-              "in",
-              "in die Berge",
-              "به کوهستان"
-            ]
+            ["شهر", "nach", "nach Paris", "به پاریس"],
+            ["کشور", "nach", "nach Italien", "به ایتالیا"],
+            ["جزیره", "auf / in", "auf Sylt / in Sylt", "در Sylt"],
+            ["کشور با حرف تعریف", "in", "in die Schweiz", "به سوئیس"],
+            ["مکان با حرف تعریف", "in", "in die Berge", "به کوهستان"]
           ]
         },
         "pattern": {
@@ -1027,49 +902,14 @@
           "de": "Einige Verben bilden das Perfekt mit sein: Bewegungsverben, sein, Zustandswechsel."
         },
         "conjugationTable": {
-          "headers": [
-            "فعل",
-            "Perfekt با",
-            "مثال",
-            "معنی"
-          ],
+          "headers": ["فعل", "Perfekt با", "مثال", "معنی"],
           "rows": [
-            [
-              "gehen (رفتن)",
-              "sein",
-              "Ich bin gegangen.",
-              "من رفتم"
-            ],
-            [
-              "fahren (سواری)",
-              "sein",
-              "Ich bin gefahren.",
-              "من سواری کردم"
-            ],
-            [
-              "kommen (آمدن)",
-              "sein",
-              "Ich bin gekommen.",
-              "من آمدم"
-            ],
-            [
-              "sein (بودن)",
-              "sein",
-              "Ich bin gewesen.",
-              "من بوده‌ام"
-            ],
-            [
-              "schwimmen (شنا)",
-              "sein",
-              "Ich bin geschwommen.",
-              "من شنا کردم"
-            ],
-            [
-              "essen (خوردن)",
-              "haben",
-              "Ich habe gegessen.",
-              "من خوردم"
-            ]
+            ["gehen (رفتن)", "sein", "Ich bin gegangen.", "من رفتم"],
+            ["fahren (سواری)", "sein", "Ich bin gefahren.", "من سواری کردم"],
+            ["kommen (آمدن)", "sein", "Ich bin gekommen.", "من آمدم"],
+            ["sein (بودن)", "sein", "Ich bin gewesen.", "من بوده‌ام"],
+            ["schwimmen (شنا)", "sein", "Ich bin geschwommen.", "من شنا کردم"],
+            ["essen (خوردن)", "haben", "Ich habe gegessen.", "من خوردم"]
           ]
         },
         "pattern": {
@@ -1299,12 +1139,26 @@
               "en": "In summer — what do you do?",
               "de": "Im Sommer"
             },
-            "options": [
-              "schwimmen und an den Strand gehen",
-              "schneien und kalt",
-              "Skifahren",
-              "Laub färbt sich"
-            ],
+            "options": {
+              "fa": [
+                "شنا کردن و به ساحل رفتن",
+                "برف و سرما",
+                "اسکی",
+                "برگ‌ها تغییر رنگ می‌دهند"
+              ],
+              "en": [
+                "swim and go to the beach",
+                "snow and cold",
+                "skiing",
+                "leaves change color"
+              ],
+              "de": [
+                "schwimmen und an den Strand gehen",
+                "Schnee und Kälte",
+                "Skifahren",
+                "Blätter verfärben sich"
+              ]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "تابستان: شنا و ساحل",
@@ -1319,12 +1173,21 @@
               "en": "In winter — where do you go?",
               "de": "Im Winter"
             },
-            "options": [
-              "an den Strand",
-              "in die Berge — Skifahren",
-              "nach Italien",
-              "schwimmen"
-            ],
+            "options": {
+              "fa": ["به ساحل", "به کوهستان — اسکی", "به ایتالیا", "شنا"],
+              "en": [
+                "to the beach",
+                "to the mountains — skiing",
+                "to Italy",
+                "swimming"
+              ],
+              "de": [
+                "an den Strand",
+                "in die Berge — Skifahren",
+                "nach Italien",
+                "schwimmen"
+              ]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "زمستان: کوهستان و اسکی",
@@ -1339,12 +1202,26 @@
               "en": "In spring — how's the weather?",
               "de": "Im Frühling"
             },
-            "options": [
-              "sehr kalt und Schnee",
-              "warm und Blumen blühen",
-              "sehr heiß",
-              "Sturm und Regen"
-            ],
+            "options": {
+              "fa": [
+                "خیلی سرد و برفی",
+                "گرم و گل‌ها شکوفا می‌شوند",
+                "خیلی داغ",
+                "طوفان و باران"
+              ],
+              "en": [
+                "very cold and snowy",
+                "warm and flowers bloom",
+                "very hot",
+                "storm and rain"
+              ],
+              "de": [
+                "sehr kalt und Schnee",
+                "warm und Blumen blühen",
+                "sehr heiß",
+                "Sturm und Regen"
+              ]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "بهار: گرم و شکوفه‌ها",
@@ -1359,12 +1236,26 @@
               "en": "In autumn — what do you see?",
               "de": "Im Herbst"
             },
-            "options": [
-              "Schnee überall",
-              "Blätter fallen",
-              "Blumen blühen",
-              "sehr heiß"
-            ],
+            "options": {
+              "fa": [
+                "برف همه جا",
+                "برگ‌ها می‌ریزند",
+                "گل‌ها شکوفا می‌شوند",
+                "خیلی داغ"
+              ],
+              "en": [
+                "snow everywhere",
+                "leaves fall",
+                "flowers bloom",
+                "very hot"
+              ],
+              "de": [
+                "Schnee überall",
+                "Blätter fallen",
+                "Blumen blühen",
+                "sehr heiß"
+              ]
+            },
             "correctIndex": 1,
             "explanation": {
               "fa": "پاییز: برگ‌ها می‌ریزند",
@@ -1392,27 +1283,47 @@
         "questions": [
           {
             "id": "w1-q1",
-            "prompt": "Ich ___ gerne nach Paris fahren. (würde)",
+            "prompt": {
+              "fa": "Ich ___ gerne nach Paris fahren. (würde)",
+              "en": "Ich ___ gerne nach Paris fahren. (würde)",
+              "de": "Ich ___ gerne nach Paris fahren. (würde)"
+            },
             "placeholder": "würde"
           },
           {
             "id": "w1-q2",
-            "prompt": "Du ___ gerne nach Italien fahren. (würde)",
+            "prompt": {
+              "fa": "Du ___ gerne nach Italien fahren. (würde)",
+              "en": "Du ___ gerne nach Italien fahren. (würde)",
+              "de": "Du ___ gerne nach Italien fahren. (würde)"
+            },
             "placeholder": "würdest"
           },
           {
             "id": "w1-q3",
-            "prompt": "Wir ___ gerne auf Sylt übernachten. (würde)",
+            "prompt": {
+              "fa": "Wir ___ gerne auf Sylt übernachten. (würde)",
+              "en": "Wir ___ gerne auf Sylt übernachten. (würde)",
+              "de": "Wir ___ gerne auf Sylt übernachten. (würde)"
+            },
             "placeholder": "würden"
           },
           {
             "id": "w1-q4",
-            "prompt": "Er ___ gerne schwimmen. (würde)",
+            "prompt": {
+              "fa": "Er ___ gerne schwimmen. (würde)",
+              "en": "Er ___ gerne schwimmen. (würde)",
+              "de": "Er ___ gerne schwimmen. (würde)"
+            },
             "placeholder": "würde"
           },
           {
             "id": "w1-q5",
-            "prompt": "Ihr ___ gerne in die Berge fahren. (würde)",
+            "prompt": {
+              "fa": "Ihr ___ gerne in die Berge fahren. (würde)",
+              "en": "Ihr ___ gerne in die Berge fahren. (würde)",
+              "de": "Ihr ___ gerne in die Berge fahren. (würde)"
+            },
             "placeholder": "würdet"
           }
         ]
@@ -1503,12 +1414,11 @@
               "en": "Ich ___ in Paris ___.",
               "de": "Ich ___ in Paris ___."
             },
-            "options": [
-              "bin gewesen",
-              "habe gewesen",
-              "war gewesen",
-              "bin war"
-            ],
+            "options": {
+              "fa": ["bin gewesen", "habe gewesen", "war gewesen", "bin war"],
+              "en": ["bin gewesen", "habe gewesen", "war gewesen", "bin war"],
+              "de": ["bin gewesen", "habe gewesen", "war gewesen", "bin war"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Perfekt sein: bin gewesen (همیشه با sein!)",
@@ -1523,12 +1433,26 @@
               "en": "We ___ in Berlin ___.",
               "de": "Wir ___ in Berlin ___."
             },
-            "options": [
-              "sind gewesen",
-              "haben gewesen",
-              "waren gewesen",
-              "sind war"
-            ],
+            "options": {
+              "fa": [
+                "sind gewesen",
+                "haben gewesen",
+                "waren gewesen",
+                "sind war"
+              ],
+              "en": [
+                "sind gewesen",
+                "haben gewesen",
+                "waren gewesen",
+                "sind war"
+              ],
+              "de": [
+                "sind gewesen",
+                "haben gewesen",
+                "waren gewesen",
+                "sind war"
+              ]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Perfekt sein: sind gewesen",
@@ -1543,12 +1467,11 @@
               "en": "He ___ on Sylt ___.",
               "de": "Er ___ auf Sylt ___."
             },
-            "options": [
-              "ist gewesen",
-              "hat gewesen",
-              "war gewesen",
-              "ist war"
-            ],
+            "options": {
+              "fa": ["ist gewesen", "hat gewesen", "war gewesen", "ist war"],
+              "en": ["ist gewesen", "hat gewesen", "war gewesen", "ist war"],
+              "de": ["ist gewesen", "hat gewesen", "war gewesen", "ist war"]
+            },
             "correctIndex": 0,
             "explanation": {
               "fa": "Perfekt sein: ist gewesen",
@@ -1648,12 +1571,26 @@
           "en": "What does 'Ich würde gerne nach Paris fahren' mean?",
           "de": "Was bedeutet das?"
         },
-        "options": [
-          "من به پاریس می‌روم",
-          "دوست دارم به پاریس بروم",
-          "من در پاریس بودم",
-          "من به پاریس نمی‌روم"
-        ],
+        "options": {
+          "fa": [
+            "من به پاریس می‌روم",
+            "دوست دارم به پاریس بروم",
+            "من در پاریس بودم",
+            "من به پاریس نمی‌روم"
+          ],
+          "en": [
+            "I go to Paris",
+            "I would like to go to Paris",
+            "I was in Paris",
+            "I don't go to Paris"
+          ],
+          "de": [
+            "Ich fahre nach Paris",
+            "Ich würde gerne nach Paris fahren",
+            "Ich war in Paris",
+            "Ich fahre nicht nach Paris"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Konjunktiv II: würde + gern + infinitiv = دوست دارم",
@@ -1669,12 +1606,26 @@
           "en": "How is Perfekt of sein with 'ich'?",
           "de": "Wie ist Perfekt von sein bei ich?"
         },
-        "options": [
-          "ich habe gewesen",
-          "ich bin gewesen",
-          "ich war gewesen",
-          "ich ist gewesen"
-        ],
+        "options": {
+          "fa": [
+            "ich habe gewesen",
+            "ich bin gewesen",
+            "ich war gewesen",
+            "ich ist gewesen"
+          ],
+          "en": [
+            "ich habe gewesen",
+            "ich bin gewesen",
+            "ich war gewesen",
+            "ich ist gewesen"
+          ],
+          "de": [
+            "ich habe gewesen",
+            "ich bin gewesen",
+            "ich war gewesen",
+            "ich ist gewesen"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "Perfekt sein: ich bin gewesen (همیشه با sein!)",
@@ -1690,12 +1641,11 @@
           "en": "'nach Italien fahren' — which preposition?",
           "de": "Welche Präposition?"
         },
-        "options": [
-          "in",
-          "nach",
-          "auf",
-          "zu"
-        ],
+        "options": {
+          "fa": ["in", "nach", "auf", "zu"],
+          "en": ["in", "nach", "auf", "zu"],
+          "de": ["in", "nach", "auf", "zu"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "nach + کشور (بدون حرف تعریف)",
@@ -1711,12 +1661,11 @@
           "en": "'welcher Monat?' — which gender?",
           "de": "Welches Genus?"
         },
-        "options": [
-          "مؤنث",
-          "مذکر",
-          "خنثی",
-          "جمع"
-        ],
+        "options": {
+          "fa": ["مؤنث", "مذکر", "خنثی", "جمع"],
+          "en": ["feminine", "masculine", "neuter", "plural"],
+          "de": ["feminin", "maskulin", "neutrum", "Plural"]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "welcher = مذکر (der Monat)",
@@ -1732,12 +1681,26 @@
           "en": "What does 'Ich war noch nie in Rom' mean?",
           "de": "Was bedeutet das?"
         },
-        "options": [
-          "من در رم بودم",
-          "من هنوز هرگز در رم نبودم",
-          "من به رم می‌روم",
-          "من در رم ساکنم"
-        ],
+        "options": {
+          "fa": [
+            "من در رم بودم",
+            "من هنوز هرگز در رم نبودم",
+            "من به رم می‌روم",
+            "من در رم ساکنم"
+          ],
+          "en": [
+            "I was in Rome",
+            "I was never in Rome",
+            "I'm going to Rome",
+            "I live in Rome"
+          ],
+          "de": [
+            "Ich war in Rom",
+            "Ich war noch nie in Rom",
+            "Ich fahre nach Rom",
+            "Ich wohne in Rom"
+          ]
+        },
         "correctIndex": 1,
         "explanation": {
           "fa": "noch nie = هنوز هرگز",
@@ -2032,8 +1995,8 @@
   },
   "metadata": {
     "createdAt": "2026-07-09",
-    "updatedAt": "2026-07-09",
-    "version": "2.0.0",
+    "updatedAt": "2026-07-10",
+    "version": "2.1.0",
     "author": "German Academy Team",
     "status": "published",
     "tags": [
