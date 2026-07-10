@@ -3,9 +3,9 @@
  * Path: src/context/AuthContext.jsx
  * Description: Authentication context for user state management
  * Changes:
- * - ✅ Created new file
- * - ✅ Added useAuth hook
- * - ✅ Fixed exports
+ * - ✅ FIXED: Check token validity before setting authenticated
+ * - ✅ FIXED: Redirect to login only if token is invalid
+ * - ✅ FIXED: Home page remains public
  */
 
 import React, {
@@ -32,17 +32,33 @@ export const AuthProvider = ({ children }) => {
       try {
         const token = storage.getToken();
         if (token) {
-          const response = await authApi.getMe();
-          if (response.success && response.data.user) {
-            setUser(response.data.user);
-            setIsAuthenticated(true);
-          } else {
+          // ✅ FIXED: Verify token before setting authenticated
+          try {
+            const response = await authApi.getMe();
+            if (response.success && response.data.user) {
+              setUser(response.data.user);
+              setIsAuthenticated(true);
+              debug.log("✅ User authenticated:", response.data.user.email);
+            } else {
+              // Token is invalid or expired
+              debug.warn("⚠️ Token invalid, clearing auth");
+              storage.clearAuth();
+              setIsAuthenticated(false);
+            }
+          } catch (error) {
+            // API call failed - token might be expired
+            debug.warn("⚠️ Auth check failed:", error.message);
             storage.clearAuth();
+            setIsAuthenticated(false);
           }
+        } else {
+          // No token found
+          setIsAuthenticated(false);
         }
       } catch (error) {
         debug.error("Failed to load user:", error);
         storage.clearAuth();
+        setIsAuthenticated(false);
       } finally {
         setIsLoading(false);
       }
@@ -97,7 +113,6 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = useCallback((updatedUser) => {
     setUser(updatedUser);
-    // Update storage if needed
     const currentUser = storage.getUser();
     if (currentUser) {
       storage.setUser({ ...currentUser, ...updatedUser });

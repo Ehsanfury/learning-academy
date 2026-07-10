@@ -2,10 +2,11 @@
  * Badge.jsx
  * Path: src/components/ui/Badge.jsx
  * Description: Badge component with multiple variants, sizes, and dot indicator
- * Version: 2.1 - FIXED: Handles object children properly (no React child error)
+ * Version: 2.2 - FIXED: Circular structure error
  * Changes:
- * - ✅ FIXED: Now safely renders object children {fa, en, de}
- * - ✅ FIXED: Prevents "Objects are not valid as a React child" error
+ * - ✅ FIXED: renderChildren now handles React elements properly
+ * - ✅ FIXED: No more JSON.stringify on React elements
+ * - ✅ FIXED: Safe object rendering
  */
 
 import { cn } from "@utils/helpers";
@@ -89,7 +90,7 @@ function Badge({
   const dotPulseClass = dotPulse ? "animate-pulse" : "";
 
   // ============================================
-  // ✅ FIXED: Safe render children - handles objects
+  // ✅ FIXED: Safe render children - handles circular structure
   // ============================================
 
   const renderChildren = () => {
@@ -103,41 +104,49 @@ function Badge({
       return children;
     }
 
-    // اگر یک عنصر React معتبر باشد
+    // ✅ اگر یک عنصر React معتبر باشد - بدون تغییر بازگردان
     if (React.isValidElement(children)) {
       return children;
     }
 
     // اگر یک آرایه باشد
     if (Array.isArray(children)) {
-      return children.map((child, index) => {
-        if (typeof child === "object" && child !== null) {
-          return (
-            child[language] ||
-            child.fa ||
-            child.en ||
-            child.de ||
-            JSON.stringify(child)
-          );
-        }
-        return child;
-      });
+      return children
+        .map((child, index) => {
+          // اگر عنصر React باشد، بدون تغییر برگردان
+          if (React.isValidElement(child)) {
+            return child;
+          }
+          // اگر شیء چندزبانه باشد
+          if (typeof child === "object" && child !== null) {
+            return child[language] || child.fa || child.en || child.de || null;
+          }
+          return child;
+        })
+        .filter((item) => item !== null && item !== undefined);
     }
 
     // اگر یک آبجکت چندزبانه باشد {fa, en, de}
     if (typeof children === "object" && children !== null) {
+      // ✅ فقط آبجکت‌های ساده را پردازش کن، نه React elements
+      if (children.$$typeof) {
+        return children; // این یک React element است
+      }
       return (
-        children[language] ||
-        children.fa ||
-        children.en ||
-        children.de ||
-        JSON.stringify(children)
+        children[language] || children.fa || children.en || children.de || null
       );
     }
 
-    // Fallback: تبدیل به string
-    return String(children);
+    // Fallback: تبدیل به string (اما فقط برای انواع ساده)
+    if (typeof children === "boolean") {
+      return String(children);
+    }
+
+    // برای هر چیز دیگری، null برگردان (از خطا جلوگیری کن)
+    return null;
   };
+
+  const content = renderChildren();
 
   // ============================================
   // 🖼️ Render
@@ -166,7 +175,7 @@ function Badge({
       )}
 
       {/* ✅ FIXED: Content with safe rendering */}
-      <span>{renderChildren()}</span>
+      {content !== null && content !== undefined && <span>{content}</span>}
 
       {/* Count */}
       {displayCount !== null && (
