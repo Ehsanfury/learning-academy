@@ -3,10 +3,10 @@
  * Path: backend/models/index.js
  * Description: Central export for all models
  * Changes:
- * - ✅ FIXED: Changed 'notifications' alias to 'userNotifications' to avoid collision
- * - ✅ FIXED: Changed 'users' alias to 'notificationUsers' to avoid collision
- * - ✅ FIXED: Added proper Notification ↔ UserNotification associations
- * - ✅ FIXED: All aliases are unique
+ * - ✅ ADDED: Ticket model
+ * - ✅ ADDED: PageView model
+ * - ✅ ADDED: SystemSetting model
+ * - ✅ ADDED: All associations for new models
  */
 
 import User from "./User.js";
@@ -28,50 +28,87 @@ import XPHistory from "./XPHistory.js";
 import UserRefreshToken from "./UserRefreshToken.js";
 import Exercise from "./Exercise.js";
 import ScenarioSession from "./ScenarioSession.js";
+// ✅ NEW MODELS
+import Ticket from "./Ticket.js";
+import PageView from "./PageView.js";
+import SystemSetting from "./SystemSetting.js";
 
 // ============================================
-// 📊 Associations (ALL ALIASES ARE UNIQUE)
+// 📊 Associations
 // ============================================
 
 // ============================================
-// ✅ User ↔ Notification (through UserNotification)
-// ✅ FIXED: Changed aliases to avoid collision with 'notifications' attribute
+// User ↔ Ticket
+// ============================================
+User.hasMany(Ticket, {
+  foreignKey: "userId",
+  as: "tickets",
+});
+Ticket.belongsTo(User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+// ============================================
+// User ↔ PageView
+// ============================================
+User.hasMany(PageView, {
+  foreignKey: "userId",
+  as: "pageViews",
+});
+PageView.belongsTo(User, {
+  foreignKey: "userId",
+  as: "pageViewUser",
+});
+
+// ============================================
+// User ↔ SystemSetting (updatedBy)
+// ============================================
+SystemSetting.belongsTo(User, {
+  foreignKey: "updatedBy",
+  as: "updatedByUser",
+});
+User.hasMany(SystemSetting, {
+  foreignKey: "updatedBy",
+  as: "systemSettings",
+});
+
+// ============================================
+// User ↔ Notification (through UserNotification)
 // ============================================
 User.belongsToMany(Notification, {
   through: UserNotification,
   foreignKey: "userId",
   otherKey: "notificationId",
-  as: "userNotificationList", // ✅ Changed from 'notifications'
+  as: "userNotificationList",
 });
 
 Notification.belongsToMany(User, {
   through: UserNotification,
   foreignKey: "notificationId",
   otherKey: "userId",
-  as: "notificationUserList", // ✅ Changed from 'users'
+  as: "notificationUserList",
 });
 
 // ============================================
-// ✅ Notification ↔ UserNotification
+// Notification ↔ UserNotification
 // ============================================
 Notification.hasMany(UserNotification, {
   foreignKey: "notificationId",
   as: "userNotificationEntries",
 });
-
 UserNotification.belongsTo(Notification, {
   foreignKey: "notificationId",
   as: "notification",
 });
 
 // ============================================
-// ✅ User ↔ UserNotification
+// User ↔ UserNotification
 // ============================================
 User.hasMany(UserNotification, {
   foreignKey: "userId",
   as: "userNotificationEntries",
 });
-
 UserNotification.belongsTo(User, {
   foreignKey: "userId",
   as: "user",
@@ -86,7 +123,6 @@ User.belongsToMany(Achievement, {
   otherKey: "achievementId",
   as: "achievements",
 });
-
 Achievement.belongsToMany(User, {
   through: UserAchievement,
   foreignKey: "achievementId",
@@ -101,7 +137,6 @@ UserAchievement.belongsTo(Achievement, {
   foreignKey: "achievementId",
   as: "achievement",
 });
-
 Achievement.hasMany(UserAchievement, {
   foreignKey: "achievementId",
   as: "userAchievements",
@@ -114,7 +149,6 @@ UserAchievement.belongsTo(User, {
   foreignKey: "userId",
   as: "user",
 });
-
 User.hasMany(UserAchievement, {
   foreignKey: "userId",
   as: "userAchievementEntries",
@@ -312,6 +346,9 @@ export {
   UserRefreshToken,
   Exercise,
   ScenarioSession,
+  Ticket,
+  PageView,
+  SystemSetting,
 };
 
 // ============================================
@@ -338,4 +375,7 @@ export default {
   UserRefreshToken,
   Exercise,
   ScenarioSession,
+  Ticket,
+  PageView,
+  SystemSetting,
 };

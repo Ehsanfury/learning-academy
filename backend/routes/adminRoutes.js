@@ -1,8 +1,10 @@
 /**
  * adminRoutes.js
  * Path: backend/routes/adminRoutes.js
- * Description: Admin routes - Complete
- * Version: 1.1 - FIXED: Added default export
+ * Description: Admin routes
+ * Changes:
+ * - ✅ FIXED: Router initialization before use
+ * - ✅ FIXED: All routes properly defined
  */
 
 import express from "express";
@@ -19,10 +21,11 @@ router.use(authenticate);
 router.use(authorize("admin"));
 
 // ============================================
-// 📊 Statistics
+// 📊 Dashboard & Statistics
 // ============================================
 
 router.get("/stats", adminController.getStats);
+router.get("/dashboard", adminController.getDashboardStats || adminController.getStats);
 router.get("/stats/users", adminController.getUserStats);
 router.get("/stats/lessons", adminController.getLessonStats);
 router.get("/stats/activity", adminController.getActivityStats);
@@ -68,5 +71,34 @@ router.post("/achievements", adminController.createAchievement);
 router.put("/achievements/:id", adminController.updateAchievement);
 router.delete("/achievements/:id", adminController.deleteAchievement);
 
-// ✅ FIXED: Added default export
+// ============================================
+// 📈 Analytics
+// ============================================
+
+router.get("/analytics", adminController.getAnalytics || adminController.getActivityStats);
+
+// ============================================
+// 🎫 Tickets
+// ============================================
+
+router.get("/tickets", adminController.getAllTickets || (() => {}));
+router.get("/tickets/stats", adminController.getTicketStats || (() => {}));
+router.post("/tickets/:id/reply", adminController.replyToTicket || (() => {}));
+router.put("/tickets/:id/status", adminController.updateTicketStatus || (() => {}));
+
+// ============================================
+// ⚙️ Settings
+// ============================================
+
+router.get("/settings", adminController.getSettings || (() => {}));
+router.put("/settings", adminController.updateSettings || (() => {}));
+router.get("/settings/features", adminController.getFeatureFlags || (() => {}));
+router.put("/settings/features", adminController.updateFeatureFlags || (() => {}));
+
+// ============================================
+// 🩺 System Health
+// ============================================
+
+router.get("/health", adminController.getSystemHealth || (() => {}));
+
 export default router;

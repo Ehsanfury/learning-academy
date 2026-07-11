@@ -24,7 +24,7 @@ class ProgressService {
         where: { userId },
         limit,
         offset,
-        order: [["updatedAt", "DESC"]],
+        order: [["updated_at", "DESC"]],
         include: [
           {
             model: Lesson,
@@ -124,7 +124,7 @@ class ProgressService {
         where: { userId },
         limit,
         offset,
-        order: [["updatedAt", "DESC"]],
+        order: [["updated_at", "DESC"]],
       });
 
       if (progress.length === 0) {

@@ -3,14 +3,16 @@
  * Path: backend/controllers/dictionaryController.js
  * Description: Dictionary and vocabulary management controller
  * Changes:
- * - ✅ FIXED: getDictionary returns all words
- * - ✅ FIXED: Proper response structure
- * - ✅ FIXED: Added getWord and removeWord exports
+ * - ✅ FIXED: getWord searches by id OR de (case insensitive)
+ * - ✅ FIXED: Proper error handling
+ * - ✅ FIXED: Special routes excluded from getWord
  */
 
 import dictionaryService from "../services/dictionaryService.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import { ValidationError, NotFoundError } from "../errors/index.js";
+import { Vocabulary } from "../models/index.js";
+import { Op } from "sequelize";
 import logger from "../config/logger.js";
 
 /**
@@ -45,11 +47,11 @@ export const getDictionary = asyncHandler(async (req, res) => {
 });
 
 /**
- * Get word by ID
- * GET /api/dictionary/word/:id
- * Alias: getWord
+ * Get word by ID or DE (case insensitive)
+ * ✅ FIXED: Searches both id and de field
+ * GET /api/dictionary/:id
  */
-export const getWordById = asyncHandler(async (req, res) => {
+export const getWord = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
   const { id } = req.params;
 
@@ -60,11 +62,29 @@ export const getWordById = asyncHandler(async (req, res) => {
     });
   }
 
-  const word = await dictionaryService.getWordById(id, userId);
+  // Skip special routes
+  if (id === "saved" || id === "search" || id === "categories") {
+    throw new NotFoundError({
+      message: `Word with id "${id}" not found`,
+    });
+  }
+
+  // ✅ FIXED: Try to find by id first, then by de (case insensitive)
+  let word = await Vocabulary.findByPk(id);
+
+  if (!word) {
+    // Try to find by 'de' field (case insensitive)
+    word = await Vocabulary.findOne({
+      where: {
+        de: { [Op.iLike]: id },
+        isActive: true,
+      },
+    });
+  }
 
   if (!word) {
     throw new NotFoundError({
-      message: `Word with id "${id}" not found`,
+      message: `Word with id or de "${id}" not found`,
       resource: { model: "Vocabulary", id },
     });
   }
@@ -74,9 +94,6 @@ export const getWordById = asyncHandler(async (req, res) => {
     data: word,
   });
 });
-
-// ✅ Alias for getWordById
-export const getWord = getWordById;
 
 /**
  * Search words
@@ -100,6 +117,7 @@ export const searchWords = asyncHandler(async (req, res) => {
     category,
     limit: parseInt(limit),
     offset: parseInt(offset),
+    userId,
   });
 
   res.json({
@@ -128,11 +146,11 @@ export const getCategories = asyncHandler(async (req, res) => {
 
 /**
  * Save word to user's saved list
- * POST /api/dictionary/saved-words
+ * POST /api/dictionary/saved
  */
 export const saveWord = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
-  const { wordId } = req.body;
+  let { wordId } = req.body;
 
   if (!userId) {
     throw new ValidationError({
@@ -148,6 +166,19 @@ export const saveWord = asyncHandler(async (req, res) => {
     });
   }
 
+  // ✅ FIXED: If wordId doesn't start with 'voc-', try to find by de
+  if (!wordId.startsWith("voc-")) {
+    const word = await Vocabulary.findOne({
+      where: {
+        de: { [Op.iLike]: wordId },
+        isActive: true,
+      },
+    });
+    if (word) {
+      wordId = word.id;
+    }
+  }
+
   const result = await dictionaryService.saveWord(userId, wordId);
 
   res.json({
@@ -159,12 +190,11 @@ export const saveWord = asyncHandler(async (req, res) => {
 
 /**
  * Remove saved word
- * DELETE /api/dictionary/saved-words/:id
- * Alias: removeWord
+ * DELETE /api/dictionary/saved/:id
  */
-export const removeSavedWord = asyncHandler(async (req, res) => {
+export const removeWord = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
-  const { id } = req.params;
+  let { id } = req.params;
 
   if (!userId) {
     throw new ValidationError({
@@ -180,6 +210,19 @@ export const removeSavedWord = asyncHandler(async (req, res) => {
     });
   }
 
+  // ✅ FIXED: If id doesn't start with 'voc-', try to find by de
+  if (!id.startsWith("voc-")) {
+    const word = await Vocabulary.findOne({
+      where: {
+        de: { [Op.iLike]: id },
+        isActive: true,
+      },
+    });
+    if (word) {
+      id = word.id;
+    }
+  }
+
   await dictionaryService.removeSavedWord(userId, id);
 
   res.json({
@@ -188,12 +231,9 @@ export const removeSavedWord = asyncHandler(async (req, res) => {
   });
 });
 
-// ✅ Alias for removeSavedWord
-export const removeWord = removeSavedWord;
-
 /**
  * Get saved words for user
- * GET /api/dictionary/saved-words
+ * GET /api/dictionary/saved
  */
 export const getSavedWords = asyncHandler(async (req, res) => {
   const userId = req.user?.id;

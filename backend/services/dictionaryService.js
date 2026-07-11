@@ -7,6 +7,7 @@
  * - ✅ FIXED: Proper pagination and filtering
  * - ✅ FIXED: Returns actual data from database
  * - ✅ FIXED: WordProgress query with proper type handling
+ * - ✅ FIXED: searchWords includes userId parameter
  */
 
 import { Op } from "sequelize";
@@ -54,7 +55,6 @@ class DictionaryService {
       if (userId && words.length > 0) {
         const wordIds = words.map((w) => w.id);
 
-        // ✅ FIXED: Use raw query to avoid UUID casting issues
         try {
           const progress = await WordProgress.findAll({
             where: {
@@ -67,7 +67,6 @@ class DictionaryService {
           });
         } catch (error) {
           logger.warn(`⚠️ Could not fetch progress for words: ${error.message}`);
-          // Continue without progress
         }
       }
 
@@ -107,11 +106,12 @@ class DictionaryService {
   }
 
   /**
-   * Search words (alias for getAllWords with search)
+   * Search words
+   * ✅ FIXED: Added userId parameter
    */
-  async searchWords(query, { level, category, limit = 20, offset = 0 }) {
+  async searchWords(query, { level, category, limit = 20, offset = 0, userId = null }) {
     return this.getAllWords({
-      userId: null,
+      userId,
       level,
       category,
       search: query,
@@ -160,11 +160,12 @@ class DictionaryService {
         where: { isActive: true },
         group: ["category"],
         order: [[sequelize.fn("COUNT", sequelize.col("id")), "DESC"]],
+        raw: true,
       });
 
       return categories.map((c) => ({
         name: c.category || "general",
-        count: parseInt(c.get("count")),
+        count: parseInt(c.count || 0),
       }));
     } catch (error) {
       logger.error("❌ Error in getCategories:", error);

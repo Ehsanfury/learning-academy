@@ -6,6 +6,8 @@
  * - ✅ FIXED: Home page is now PUBLIC and accessible without login
  * - ✅ FIXED: MainLayout does NOT redirect to login
  * - ✅ FIXED: Only /dashboard and protected routes require auth
+ * - ✅ ADDED: AdminPage route with full admin panel
+ * - ✅ ADDED: Lazy loading for admin pages
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
@@ -18,12 +20,7 @@ import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 import LessonLayout from "./layouts/LessonLayout";
-import AdminLayout from "./layouts/AdminLayout.jsx";
-import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
-import AdminLessons from "./pages/Admin/AdminLessons.jsx";
-import AdminExercises from "./pages/Admin/AdminExercises.jsx";
-import AdminUsers from "./pages/Admin/AdminUsers.jsx";
-import AdminAchievements from "./pages/Admin/AdminAchievements.jsx";
+
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -32,6 +29,7 @@ import { LanguageProvider } from "./context/LanguageContext";
 // Route Guards
 import PrivateRoute from "./router/PrivateRoute";
 import PublicRoute from "./router/PublicRoute";
+import AdminRoute from "./router/AdminRoute";
 
 // UI Components
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -61,12 +59,14 @@ const Achievements = lazy(
 const Leaderboard = lazy(() => import("./pages/Leaderboard/LeaderboardPage"));
 const Review = lazy(() => import("./pages/Review/ReviewPage"));
 const Exercise = lazy(() => import("./pages/Exercise/ExercisePage"));
-const Admin = lazy(() => import("./pages/Admin/AdminDashboard"));
 const NotFoundPage = lazy(() => import("./pages/NotFound/NotFoundPage"));
 const VocabularyPage = lazy(() => import("./pages/Vocabulary/VocabularyPage"));
 const NotificationsPage = lazy(
   () => import("./pages/Notifications/NotificationsPage"),
 );
+
+// ✅ Admin Pages
+const AdminPage = lazy(() => import("./pages/Admin/AdminPage"));
 
 // ✅ Public Pages
 const AboutPage = lazy(() => import("./pages/About/AboutPage"));
@@ -98,24 +98,6 @@ const LoadingFallback = () => (
     <LoadingSpinner size="lg" />
   </div>
 );
-
-// ============================================
-// 🔐 Admin Route Guard
-// ============================================
-
-const AdminRoute = ({ children }) => {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <LoadingFallback />;
-  }
-
-  if (!user || user.role !== "admin") {
-    return <Navigate to="/dashboard" replace />;
-  }
-
-  return children;
-};
 
 // ============================================
 // 📱 App Component
@@ -255,26 +237,11 @@ function App() {
                       <Route path="/exercise/:type" element={<Exercise />} />
                     </Route>
 
-                    {/* ✅ Admin Routes - Protected + Admin Role */}
-                    <Route
-                      element={
-                        <AdminRoute>
-                          <DashboardLayout />
-                        </AdminRoute>
-                      }
-                    >
-                      <Route path="/admin/*" element={<Admin />} />
-                    </Route>
-                    <Route path="/admin" element={<AdminLayout />}>
-                      <Route index element={<AdminDashboard />} />
-                      <Route path="users" element={<AdminUsers />} />
-                      <Route path="lessons" element={<AdminLessons />} />
-                      <Route path="exercises" element={<AdminExercises />} />
-                      <Route
-                        path="achievements"
-                        element={<AdminAchievements />}
-                      />
-                    </Route>
+                    {/* ========================================================= */}
+                    {/* 🛡️ ADMIN ROUTES - Admin Only */}
+                    {/* ========================================================= */}
+
+                    <Route path="/admin/*" element={<AdminPage />} />
 
                     {/* ========================================================= */}
                     {/* ❌ 404 Not Found */}

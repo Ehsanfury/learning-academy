@@ -3,14 +3,7 @@
  * Path: backend/controllers/authController.js
  * Description: Authentication controller
  * Changes:
- * - ✅ Fixed: validateLogin/validateRegister return { valid, data, ... } — now correctly accessing .data
- * - ✅ Fixed: resetPassword validator field name mismatch (newPassword vs password)
- * - ✅ Using authService for all auth operations
- * - ✅ Proper error handling with custom errors
- * - ✅ Refresh token in httpOnly cookie
- * - ✅ Rate limiting applied
- * - ✅ Input validation
- * - ✅ Proper response structure
+ * - ✅ FIXED: Refresh token now passes req to authService
  */
 
 import authService from "../services/authService.js";
@@ -42,12 +35,7 @@ const getCookieOptions = (req) => {
 // 📝 Controllers
 // ============================================
 
-/**
- * Register a new user
- * POST /api/auth/register
- */
 export const register = asyncHandler(async (req, res) => {
-  // Validate input
   const validation = validateRegister(req.body);
   if (!validation.valid) {
     throw new ValidationError({
@@ -57,13 +45,10 @@ export const register = asyncHandler(async (req, res) => {
   }
   const validatedData = validation.data;
 
-  // Register user
   const result = await authService.register(validatedData);
 
-  // Set refresh token cookie
   res.cookie("refreshToken", result.refreshToken, getCookieOptions(req));
 
-  // Remove refresh token from response body
   delete result.refreshToken;
 
   logger.info(`User registered: ${result.user.email}`, { userId: result.user.id });
@@ -75,12 +60,7 @@ export const register = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Login user
- * POST /api/auth/login
- */
 export const login = asyncHandler(async (req, res) => {
-  // Validate input
   const validation = validateLogin(req.body);
   if (!validation.valid) {
     throw new ValidationError({
@@ -90,13 +70,10 @@ export const login = asyncHandler(async (req, res) => {
   }
   const validatedData = validation.data;
 
-  // Login user
   const result = await authService.login(validatedData.email, validatedData.password, req);
 
-  // Set refresh token cookie
   res.cookie("refreshToken", result.refreshToken, getCookieOptions(req));
 
-  // Remove refresh token from response body
   delete result.refreshToken;
 
   logger.info(`User logged in: ${result.user.email}`, { userId: result.user.id });
@@ -108,42 +85,34 @@ export const login = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Refresh access token
- * POST /api/auth/refresh-token
- */
 export const refreshToken = asyncHandler(async (req, res) => {
-  // Get refresh token from cookie
-  const refreshToken = req.cookies?.refreshToken;
+  const refreshToken = req.body.refreshToken || req.cookies?.refreshToken;
 
   if (!refreshToken) {
-    throw new UnauthorizedError("Refresh token not found");
+    throw new ValidationError({
+      message: "Refresh token is required",
+      details: [{ field: "refreshToken", message: "Refresh token is required" }],
+    });
   }
 
-  // Refresh access token
   const result = await authService.refreshAccessToken(refreshToken, req);
 
-  logger.info("Access token refreshed", { userId: result.user?.id });
+  res.cookie("refreshToken", result.refreshToken, getCookieOptions(req));
 
   res.json({
     success: true,
-    message: "Token refreshed successfully",
-    data: result,
+    data: {
+      accessToken: result.accessToken,
+    },
   });
 });
 
-/**
- * Logout user
- * POST /api/auth/logout
- */
 export const logout = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
   const refreshToken = req.cookies?.refreshToken;
 
-  // Logout user
   await authService.logout(userId, refreshToken);
 
-  // Clear refresh token cookie
   res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -159,10 +128,6 @@ export const logout = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get current user
- * GET /api/auth/me
- */
 export const getMe = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -178,10 +143,6 @@ export const getMe = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Forgot password
- * POST /api/auth/forgot-password
- */
 export const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
@@ -194,21 +155,15 @@ export const forgotPassword = asyncHandler(async (req, res) => {
 
   await authService.forgotPassword(email);
 
-  // Always return success (don't reveal if user exists)
   res.json({
     success: true,
     message: "If an account exists with this email, you will receive a password reset link",
   });
 });
 
-/**
- * Reset password
- * POST /api/auth/reset-password
- */
 export const resetPassword = asyncHandler(async (req, res) => {
   const { token, newPassword } = req.body;
 
-  // Validate input — validator expects { token, password }
   const validation = validateResetPassword({ token, password: newPassword });
   if (!validation.valid) {
     throw new ValidationError({
@@ -228,10 +183,6 @@ export const resetPassword = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Change password (authenticated)
- * POST /api/auth/change-password
- */
 export const changePassword = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
   const { currentPassword, newPassword } = req.body;
@@ -260,10 +211,6 @@ export const changePassword = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Verify email
- * GET /api/auth/verify-email
- */
 export const verifyEmail = asyncHandler(async (req, res) => {
   const { token } = req.query;
 
@@ -282,10 +229,6 @@ export const verifyEmail = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Resend verification email
- * POST /api/auth/resend-verification
- */
 export const resendVerification = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 

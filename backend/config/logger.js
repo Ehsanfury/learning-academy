@@ -6,6 +6,7 @@
  * - ✅ FIXED: Removed dependency on config (to avoid circular reference)
  * - ✅ FIXED: Using process.env directly
  * - ✅ FIXED: Removed duplicate exports
+ * - ✅ FIXED: Added safe level check to prevent undefined errors
  */
 
 import winston from "winston";
@@ -32,7 +33,9 @@ const customFormat = winston.format.combine(
   winston.format.errors({ stack: true }),
   winston.format.splat(),
   winston.format.printf(({ level, message, timestamp, requestId, userId, ...meta }) => {
-    let logEntry = `${timestamp} [${level.toUpperCase()}]`;
+    // ✅ FIXED: Safe level check
+    const levelStr = (level || 'INFO').toUpperCase();
+    let logEntry = `${timestamp} [${levelStr}]`;
 
     if (requestId) {
       logEntry += ` [${requestId}]`;
@@ -62,7 +65,9 @@ const consoleFormat = winston.format.combine(
     format: "YYYY-MM-DD HH:mm:ss.SSS",
   }),
   winston.format.printf(({ level, message, timestamp, requestId, userId, ...meta }) => {
-    let logEntry = `${timestamp} ${level}`;
+    // ✅ FIXED: Safe level check
+    const levelStr = (level || 'INFO').toUpperCase();
+    let logEntry = `${timestamp} ${levelStr}`;
 
     if (requestId) {
       logEntry += ` [${requestId}]`;

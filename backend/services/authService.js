@@ -26,9 +26,6 @@ class AuthService {
   // 🔑 Token Management
   // ============================================
 
-  /**
-   * Generate access token
-   */
   generateAccessToken(user) {
     return jwt.sign(
       {
@@ -41,9 +38,6 @@ class AuthService {
     );
   }
 
-  /**
-   * Generate refresh token (hashed before storage)
-   */
   async generateRefreshToken(user) {
     const refreshToken = crypto.randomBytes(64).toString("hex");
     const hashedToken = await bcrypt.hash(refreshToken, 10);
@@ -57,9 +51,6 @@ class AuthService {
     return refreshToken;
   }
 
-  /**
-   * Validate refresh token
-   */
   async validateRefreshToken(userId, refreshToken) {
     const tokens = await UserRefreshToken.findAll({
       where: {
@@ -80,16 +71,10 @@ class AuthService {
     return null;
   }
 
-  /**
-   * Revoke refresh token
-   */
   async revokeRefreshToken(tokenId) {
     await UserRefreshToken.update({ isRevoked: true }, { where: { id: tokenId } });
   }
 
-  /**
-   * Revoke all refresh tokens for user
-   */
   async revokeAllRefreshTokens(userId) {
     await UserRefreshToken.update({ isRevoked: true }, { where: { userId } });
   }
@@ -98,9 +83,6 @@ class AuthService {
   // 🔐 Authentication
   // ============================================
 
-  /**
-   * Login user
-   */
   async login(email, password, req) {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -128,13 +110,9 @@ class AuthService {
     };
   }
 
-  /**
-   * Register new user
-   */
   async register(userData) {
     const { email, password, name, username } = userData;
 
-    // Check if user exists
     const existingUser = await User.findOne({
       where: {
         [Op.or]: [{ email }, { username }],
@@ -145,7 +123,6 @@ class AuthService {
       throw new AppError("User already exists", 409);
     }
 
-    // Create user - password hashed by model hook
     const user = await User.create({
       email,
       password,
@@ -170,9 +147,6 @@ class AuthService {
     };
   }
 
-  /**
-   * Logout user
-   */
   async logout(userId, refreshToken) {
     if (refreshToken && userId) {
       const tokenRecord = await UserRefreshToken.findOne({
@@ -193,67 +167,92 @@ class AuthService {
     return { success: true };
   }
 
-  /**
-   * Refresh access token
-   * ✅ FIXED: Now revokes old token and generates new one (Token Rotation)
-   */
   async refreshAccessToken(refreshToken, req) {
-    if (!refreshToken) {
-      throw new UnauthorizedError("Refresh token required");
-    }
+    try {
+      if (!refreshToken) {
+        throw new UnauthorizedError("Refresh token required");
+      }
 
-    // Get user from request
-    const userId = req.user?.id;
-    if (!userId) {
-      throw new UnauthorizedError("User not authenticated");
-    }
+      let userId = req?.user?.id;
 
-    // Find valid token
-    const tokenRecord = await UserRefreshToken.findOne({
-      where: {
-        userId,
-        isRevoked: false,
-        expiresAt: { [Op.gt]: new Date() },
-      },
-      include: [
-        {
-          model: User,
-          as: "user",
+      if (!userId) {
+        const tokenRecord = await UserRefreshToken.findOne({
+          where: {
+            token: refreshToken,
+            isRevoked: false,
+            expiresAt: { [Op.gt]: new Date() },
+          },
+          include: [
+            {
+              model: User,
+              as: "user",
+            },
+          ],
+        });
+
+        if (!tokenRecord) {
+          throw new UnauthorizedError("Invalid refresh token");
+        }
+
+        userId = tokenRecord.userId;
+        const user = tokenRecord.user;
+
+        if (!user) {
+          throw new UnauthorizedError("User not found");
+        }
+
+        await tokenRecord.update({ isRevoked: true });
+
+        const newAccessToken = this.generateAccessToken(user);
+        const newRefreshToken = await this.generateRefreshToken(user);
+
+        logger.info(`Token refreshed for user: ${user.email}`);
+
+        return {
+          accessToken: newAccessToken,
+          refreshToken: newRefreshToken,
+        };
+      }
+
+      const user = await User.findByPk(userId);
+      if (!user) {
+        throw new UnauthorizedError("User not found");
+      }
+
+      const tokenRecord = await UserRefreshToken.findOne({
+        where: {
+          userId: userId,
+          isRevoked: false,
+          expiresAt: { [Op.gt]: new Date() },
         },
-      ],
-    });
+      });
 
-    if (!tokenRecord) {
-      throw new UnauthorizedError("Invalid refresh token");
+      if (!tokenRecord) {
+        throw new UnauthorizedError("Invalid refresh token");
+      }
+
+      const isValid = await bcrypt.compare(refreshToken, tokenRecord.token);
+      if (!isValid) {
+        throw new UnauthorizedError("Invalid refresh token");
+      }
+
+      await tokenRecord.update({ isRevoked: true });
+
+      const newAccessToken = this.generateAccessToken(user);
+      const newRefreshToken = await this.generateRefreshToken(user);
+
+      logger.info(`Token refreshed for user: ${user.email} (old token revoked)`);
+
+      return {
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
+      };
+    } catch (error) {
+      logger.error(`❌ Error in refreshAccessToken:`, error);
+      throw error;
     }
-
-    const isValid = await bcrypt.compare(refreshToken, tokenRecord.token);
-    if (!isValid) {
-      throw new UnauthorizedError("Invalid refresh token");
-    }
-
-    const user = tokenRecord.user;
-
-    // ✅ FIXED: Revoke old token (Token Rotation)
-    await tokenRecord.update({ isRevoked: true });
-
-    // ✅ FIXED: Generate new refresh token
-    const newRefreshToken = await this.generateRefreshToken(user);
-
-    // Generate new access token
-    const newAccessToken = this.generateAccessToken(user);
-
-    logger.info(`Token refreshed for user: ${user.email} (old token revoked)`);
-
-    return {
-      accessToken: newAccessToken,
-      refreshToken: newRefreshToken,
-    };
   }
 
-  /**
-   * Get user profile
-   */
   async getUserProfile(userId) {
     const user = await User.findByPk(userId, {
       attributes: {
@@ -278,9 +277,6 @@ class AuthService {
   // 📧 Email Verification
   // ============================================
 
-  /**
-   * Verify email with token
-   */
   async verifyEmail(token) {
     const user = await User.findOne({
       where: {
@@ -302,9 +298,6 @@ class AuthService {
     return { success: true };
   }
 
-  /**
-   * Resend verification email
-   */
   async resendVerificationEmail(userId) {
     const user = await User.findByPk(userId);
     if (!user) {
@@ -331,13 +324,9 @@ class AuthService {
   // 🔑 Password Management
   // ============================================
 
-  /**
-   * Forgot password - generate reset token
-   */
   async forgotPassword(email) {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      // Don't reveal if user exists for security
       return { success: true };
     }
 
@@ -353,10 +342,6 @@ class AuthService {
     return { success: true };
   }
 
-  /**
-   * Reset password with token
-   * ✅ FIXED: Now properly validates token with user lookup
-   */
   async resetPassword(token, newPassword) {
     try {
       if (!token || !newPassword) {
@@ -365,7 +350,6 @@ class AuthService {
         });
       }
 
-      // ✅ FIXED: Find user with matching reset token
       const user = await User.findOne({
         where: {
           resetPasswordToken: token,
@@ -379,17 +363,14 @@ class AuthService {
         });
       }
 
-      // Hash new password
       const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-      // Update user and clear reset fields
       await user.update({
         password: hashedPassword,
         resetPasswordToken: null,
         resetPasswordExpires: null,
       });
 
-      // Invalidate all refresh tokens
       await UserRefreshToken.destroy({
         where: { userId: user.id },
       });
@@ -403,9 +384,6 @@ class AuthService {
     }
   }
 
-  /**
-   * Change password (authenticated)
-   */
   async changePassword(userId, currentPassword, newPassword) {
     const user = await User.findByPk(userId);
     if (!user) {

@@ -3,8 +3,8 @@
  * Path: backend/routes/dictionaryRoutes.js
  * Description: Dictionary routes
  * Changes:
- * - ✅ FIXED: / route now uses getDictionary
- * - ✅ FIXED: All routes properly defined
+ * - ✅ FIXED: Order of routes (specific before generic)
+ * - ✅ FIXED: /saved before /:id
  */
 
 import express from "express";
@@ -21,29 +21,14 @@ import {
 
 const router = express.Router();
 
-// ============================================
-// 📖 Dictionary Routes
-// ============================================
+router.use(authenticate);
 
-// GET / - returns all words (✅ FIXED)
-router.get("/", authenticate, getDictionary);
-
-// GET /search - search words
-router.get("/search", authenticate, searchWords);
-
-// GET /categories - get categories
-router.get("/categories", authenticate, getCategories);
-
-// GET /word/:id - get word by id
-router.get("/word/:id", authenticate, getWord);
-
-// GET /saved-words - get saved words
-router.get("/saved-words", authenticate, getSavedWords);
-
-// POST /saved-words - save word
-router.post("/saved-words", authenticate, saveWord);
-
-// DELETE /saved-words/:id - remove saved word
-router.delete("/saved-words/:id", authenticate, removeWord);
+router.get("/", getDictionary);
+router.get("/search", searchWords);
+router.get("/categories", getCategories);
+router.get("/saved", getSavedWords);
+router.post("/saved", saveWord);
+router.delete("/saved/:id", removeWord);
+router.get("/:id", getWord);
 
 export default router;

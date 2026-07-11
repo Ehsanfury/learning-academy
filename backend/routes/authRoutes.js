@@ -34,49 +34,29 @@ const router = express.Router();
 // 🔐 Public Routes (No Auth Required)
 // ============================================
 
-// Register with rate limiting
 router.post("/register", registerLimiter, register);
-
-// Login with rate limiting
 router.post("/login", authLimiter, login);
-
-// ✅ FIXED: Refresh token with rate limiting
 router.post("/refresh", authLimiter, refreshToken);
 router.post("/refresh-token", authLimiter, refreshToken);
-
-// ✅ FIXED: Forgot password with rate limiting
 router.post("/forgot-password", authLimiter, forgotPassword);
-
-// ✅ FIXED: Reset password with rate limiting
 router.post("/reset-password", authLimiter, resetPassword);
-
-// Verify email (no rate limit needed)
 router.get("/verify-email", verifyEmail);
 
 // ============================================
 // 🔒 Protected Routes (Auth Required)
 // ============================================
 
-// All routes below require authentication
 router.use(authenticate);
 
-// Get current user
 router.get("/me", getMe);
-
-// Change password
 router.post("/change-password", changePassword);
-
-// Logout
 router.post("/logout", logout);
-
-// Resend verification
 router.post("/resend-verification", resendVerification);
 
 // ============================================
 // 👑 Admin Routes
 // ============================================
 
-// Admin stats
 router.get(
   "/admin/stats",
   authorize("admin"),
@@ -92,7 +72,6 @@ router.get(
   })
 );
 
-// Admin - Get all users
 router.get(
   "/admin/users",
   authorize("admin"),
@@ -119,7 +98,6 @@ router.get(
   })
 );
 
-// Admin - Update user role
 router.put(
   "/admin/users/:userId/role",
   authorize("admin"),
@@ -143,7 +121,6 @@ router.put(
   })
 );
 
-// Admin - Delete user
 router.delete(
   "/admin/users/:userId",
   authorize("admin"),

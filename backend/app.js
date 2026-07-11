@@ -3,13 +3,9 @@
  * Learning Academy
  * فایل اصلی Express Application
  * Changes:
- * - ✅ FIXED: rateLimiter import (default import)
- * - ✅ FIXED: All middleware imports validated
- * - ✅ FIXED: Double Authentication removed (authenticate only in routes)
- * - ✅ FIXED: Added notificationRoutes and analyticsRoutes
- * - ✅ FIXED: Removed duplicate SIGTERM handlers (only in server.js)
- * - ✅ FIXED: Removed console.log in production
- * - ✅ FIXED: Changed alter: false to alter: true in development
+ * - ✅ ADDED: adminRoutes for admin panel
+ * - ✅ ADDED: ticketRoutes for support tickets
+ * - ✅ ADDED: trackPageView middleware
  */
 
 import express from "express";
@@ -32,6 +28,7 @@ import rateLimiter from "./middlewares/rateLimiter.js";
 import { trackActivity } from "./middlewares/activityMiddleware.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 import { authenticate } from "./middlewares/authMiddleware.js";
+import { trackPageView } from "./middlewares/pageViewMiddleware.js";
 
 // Routes
 import authRoutes from "./routes/authRoutes.js";
@@ -52,6 +49,8 @@ import notificationRoutes from "./routes/notificationRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import journeyRoutes from "./routes/journeyRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import ticketRoutes from "./routes/ticketRoutes.js";
+
 // Socket Handler
 import setupSocket from "./socketHandler.js";
 
@@ -76,6 +75,9 @@ import {
   UserRefreshToken,
   Exercise,
   ScenarioSession,
+  Ticket,
+  PageView,
+  SystemSetting,
 } from "./models/index.js";
 
 // ============================================
@@ -94,6 +96,11 @@ if (config.isDevelopment) {
   );
   console.log("  - levelRoutes:", typeof levelRoutes === "function" ? "✅ function" : "❌ missing");
   console.log("  - rateLimiter:", typeof rateLimiter === "function" ? "✅ function" : "❌ missing");
+  console.log(
+    "  - trackPageView:",
+    typeof trackPageView === "function" ? "✅ function" : "❌ missing"
+  );
+  console.log("  - adminRoutes:", typeof adminRoutes === "function" ? "✅ function" : "❌ missing");
 }
 
 // ============================================
@@ -232,6 +239,12 @@ app.use(cookieParser());
 app.use("/api", rateLimiter);
 
 // ============================================
+// 📊 Page View Tracking (Admin Analytics)
+// ============================================
+
+app.use(trackPageView);
+
+// ============================================
 // 🏥 Health Check
 // ============================================
 
@@ -298,6 +311,7 @@ app.get("/", (req, res) => {
       scenarios: "/api/scenarios",
       notifications: "/api/notifications",
       analytics: "/api/analytics",
+      tickets: "/api/tickets",
     },
     documentation: "/api/docs",
   });
@@ -311,8 +325,6 @@ app.use("/api/auth", authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
-// ✅ FIXED: Removed authenticate from app.js (Double Authentication fix)
-// authenticate is only applied inside individual route files
 // ============================================
 
 app.use("/api/users", trackActivity, userRoutes);
@@ -331,7 +343,19 @@ app.use("/api/scenarios", authenticate, trackActivity, scenariosRoutes);
 app.use("/api/notifications", trackActivity, notificationRoutes);
 app.use("/api/analytics", trackActivity, analyticsRoutes);
 app.use("/api/journey", authenticate, trackActivity, journeyRoutes);
+
+// ============================================
+// 🎫 TICKET ROUTES (Protected)
+// ============================================
+
+app.use("/api/tickets", authenticate, ticketRoutes);
+
+// ============================================
+// 👑 ADMIN ROUTES (Admin Only)
+// ============================================
+
 app.use("/api/admin", adminRoutes);
+
 // ============================================
 // 📚 API Documentation
 // ============================================
@@ -425,6 +449,34 @@ app.get("/api/docs", (req, res) => {
         methods: ["POST /event", "GET /stats", "GET /weekly-activity", "GET /insights"],
         description: "Analytics endpoints",
       },
+      {
+        path: "/api/tickets",
+        methods: ["POST /", "GET /", "GET /:id", "PUT /:id/close", "PUT /:id/rate"],
+        description: "Support ticket endpoints",
+      },
+      {
+        path: "/api/admin",
+        methods: [
+          "GET /dashboard",
+          "GET /users",
+          "GET /users/:id",
+          "PUT /users/:id",
+          "DELETE /users/:id",
+          "PUT /users/:id/role",
+          "PUT /users/:id/status",
+          "GET /lessons",
+          "POST /lessons",
+          "PUT /lessons/:id",
+          "DELETE /lessons/:id",
+          "GET /analytics",
+          "GET /tickets",
+          "POST /tickets/:id/reply",
+          "GET /settings",
+          "PUT /settings",
+          "GET /health",
+        ],
+        description: "Admin panel endpoints",
+      },
     ],
   });
 });
@@ -448,8 +500,7 @@ export const initializeDatabase = async () => {
     }
 
     if (config.isDevelopment) {
-      // ✅ FIXED: Changed alter: false to alter: true for development
-      await sequelize.sync({ alter: true });
+      await sequelize.sync({ alter: false, force: false });
       logInfo("✅ Database synced successfully (development mode)");
     } else {
       logInfo("✅ Database connection verified (production mode)");
@@ -485,6 +536,13 @@ export const initializeDatabase = async () => {
     if (achievementCount === 0 && Achievement.seedDefaults) {
       await Achievement.seedDefaults();
       logInfo("✅ Default achievements seeded");
+    }
+
+    // ✅ Seed default system settings
+    const settingsCount = await SystemSetting.count();
+    if (settingsCount === 0 && SystemSetting.seedDefaults) {
+      await SystemSetting.seedDefaults();
+      logInfo("✅ Default system settings seeded");
     }
 
     logInfo("✅ Database initialization completed successfully");
@@ -543,10 +601,6 @@ export const shutdown = async () => {
     logError("❌ Error during shutdown", error);
   }
 };
-
-// ============================================
-// ❌ SIGTERM/SIGINT handled ONLY in server.js
-// ============================================
 
 // ============================================
 // 📤 Exports
