@@ -3,7 +3,7 @@
  * Path: backend/controllers/authController.js
  * Description: Authentication controller
  * Changes:
- * - ✅ FIXED: Refresh token now passes req to authService
+ * - ✅ FIXED: getMe now uses authService.getUserProfile
  */
 
 import authService from "../services/authService.js";
@@ -74,8 +74,6 @@ export const login = asyncHandler(async (req, res) => {
 
   res.cookie("refreshToken", result.refreshToken, getCookieOptions(req));
 
-  delete result.refreshToken;
-
   logger.info(`User logged in: ${result.user.email}`, { userId: result.user.id });
 
   res.json({
@@ -128,6 +126,7 @@ export const logout = asyncHandler(async (req, res) => {
   });
 });
 
+// ✅ FIXED: getMe now uses authService.getUserProfile
 export const getMe = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 

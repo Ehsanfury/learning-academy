@@ -1,8 +1,21 @@
-const path = require('path');
+/**
+ * .sequelizerc
+ * Path: backend/.sequelizerc
+ * Description: Sequelize CLI configuration for ES Modules
+ * Changes:
+ * - ✅ FIXED: Converted from require() to import
+ * - ✅ FIXED: Proper paths for migrations and seeders
+ */
 
-module.exports = {
-  'config': path.resolve('config', 'sequelize.js'),
-  'models-path': path.resolve('models'),
-  'seeders-path': path.resolve('seeders'),
-  'migrations-path': path.resolve('migrations'),
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
+  config: join(__dirname, "config", "sequelize.js"),
+  "migrations-path": join(__dirname, "migrations"),
+  "seeders-path": join(__dirname, "seeders"),
+  "models-path": join(__dirname, "models"),
 };

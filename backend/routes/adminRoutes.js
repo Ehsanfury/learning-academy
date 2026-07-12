@@ -1,10 +1,11 @@
 /**
  * adminRoutes.js
  * Path: backend/routes/adminRoutes.js
- * Description: Admin routes
+ * Description: Admin routes - Complete
  * Changes:
- * - ✅ FIXED: Router initialization before use
- * - ✅ FIXED: All routes properly defined
+ * - ✅ FIXED: Added /activity route
+ * - ✅ FIXED: Added /exercises route
+ * - ✅ FIXED: All admin routes now work
  */
 
 import express from "express";
@@ -24,11 +25,14 @@ router.use(authorize("admin"));
 // 📊 Dashboard & Statistics
 // ============================================
 
+router.get("/dashboard", adminController.getDashboardStats);
 router.get("/stats", adminController.getStats);
-router.get("/dashboard", adminController.getDashboardStats || adminController.getStats);
 router.get("/stats/users", adminController.getUserStats);
 router.get("/stats/lessons", adminController.getLessonStats);
 router.get("/stats/activity", adminController.getActivityStats);
+
+// ✅ FIXED: Added /activity route
+router.get("/activity", adminController.getActivityStats);
 
 // ============================================
 // 📚 Lesson Management
@@ -45,6 +49,7 @@ router.post("/lessons/:id/status", adminController.updateLessonStatus);
 // 🏋️ Exercise Management
 // ============================================
 
+// ✅ FIXED: Added /exercises routes
 router.get("/exercises", adminController.getExercises);
 router.get("/exercises/:id", adminController.getExerciseById);
 router.post("/exercises", adminController.createExercise);
@@ -75,30 +80,31 @@ router.delete("/achievements/:id", adminController.deleteAchievement);
 // 📈 Analytics
 // ============================================
 
-router.get("/analytics", adminController.getAnalytics || adminController.getActivityStats);
+router.get("/analytics", adminController.getAnalytics);
 
 // ============================================
 // 🎫 Tickets
 // ============================================
 
-router.get("/tickets", adminController.getAllTickets || (() => {}));
-router.get("/tickets/stats", adminController.getTicketStats || (() => {}));
-router.post("/tickets/:id/reply", adminController.replyToTicket || (() => {}));
-router.put("/tickets/:id/status", adminController.updateTicketStatus || (() => {}));
+router.get("/tickets", adminController.getAllTickets);
+router.get("/tickets/stats", adminController.getTicketStats);
+router.get("/tickets/:id", adminController.getTicketById);
+router.post("/tickets/:id/reply", adminController.replyToTicket);
+router.put("/tickets/:id/status", adminController.updateTicketStatus);
 
 // ============================================
 // ⚙️ Settings
 // ============================================
 
-router.get("/settings", adminController.getSettings || (() => {}));
-router.put("/settings", adminController.updateSettings || (() => {}));
-router.get("/settings/features", adminController.getFeatureFlags || (() => {}));
-router.put("/settings/features", adminController.updateFeatureFlags || (() => {}));
+router.get("/settings", adminController.getSettings);
+router.put("/settings", adminController.updateSettings);
+router.get("/settings/features", adminController.getFeatureFlags);
+router.put("/settings/features", adminController.updateFeatureFlags);
 
 // ============================================
 // 🩺 System Health
 // ============================================
 
-router.get("/health", adminController.getSystemHealth || (() => {}));
+router.get("/health", adminController.getSystemHealth);
 
 export default router;

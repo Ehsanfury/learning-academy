@@ -3,6 +3,9 @@
  * Learning Academy
  * فایل اصلی Express Application
  * Changes:
+ * - ✅ FIXED: aiLimiter properly connected to AI routes
+ * - ✅ FIXED: All rate limiters imported and used correctly
+ * - ✅ FIXED: Proper middleware order
  * - ✅ ADDED: adminRoutes for admin panel
  * - ✅ ADDED: ticketRoutes for support tickets
  * - ✅ ADDED: trackPageView middleware
@@ -24,7 +27,13 @@ import config, { isAIConfigured, isGeminiConfigured } from "./config/env.js";
 import { logInfo, logError } from "./config/logger.js";
 
 // Middlewares
-import rateLimiter from "./middlewares/rateLimiter.js";
+import rateLimiter, {
+  authLimiter,
+  registerLimiter,
+  storiesLimiter,
+  aiLimiter,
+  strictLimiter,
+} from "./middlewares/rateLimiter.js";
 import { trackActivity } from "./middlewares/activityMiddleware.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 import { authenticate } from "./middlewares/authMiddleware.js";
@@ -101,6 +110,7 @@ if (config.isDevelopment) {
     typeof trackPageView === "function" ? "✅ function" : "❌ missing"
   );
   console.log("  - adminRoutes:", typeof adminRoutes === "function" ? "✅ function" : "❌ missing");
+  console.log("  - aiLimiter:", typeof aiLimiter === "function" ? "✅ function" : "❌ missing");
 }
 
 // ============================================
@@ -183,6 +193,12 @@ const io = new Server(httpServer, {
 setupSocket(io);
 
 // ============================================
+// 🛡️ Trust Proxy (for rate limiting behind nginx)
+// ============================================
+
+app.set("trust proxy", 1);
+
+// ============================================
 // 🛡️ Middlewares
 // ============================================
 
@@ -236,6 +252,7 @@ app.use(cookieParser());
 // 🚦 Rate Limiting
 // ============================================
 
+// General rate limiter for all API routes
 app.use("/api", rateLimiter);
 
 // ============================================
@@ -318,10 +335,10 @@ app.get("/", (req, res) => {
 });
 
 // ============================================
-// 🔐 AUTH ROUTES (Public)
+// 🔐 AUTH ROUTES (Public with rate limiting)
 // ============================================
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authLimiter, authRoutes);
 
 // ============================================
 // 🔐 PROTECTED ROUTES
@@ -331,14 +348,17 @@ app.use("/api/users", trackActivity, userRoutes);
 app.use("/api/lessons", trackActivity, lessonRoutes);
 app.use("/api/progress", trackActivity, progressRoutes);
 app.use("/api/dictionary", trackActivity, dictionaryRoutes);
-app.use("/api/ai", trackActivity, aiRoutes);
+
+// ✅ FIXED: AI routes now have their own rate limiter
+app.use("/api/ai", aiLimiter, trackActivity, aiRoutes);
+
 app.use("/api/review", trackActivity, spacedRepetitionRoutes);
 app.use("/api/achievements", trackActivity, achievementRoutes);
 app.use("/api/mentors", trackActivity, mentorRoutes);
 app.use("/api/vocabulary", trackActivity, vocabularyRoutes);
 app.use("/api/levels", trackActivity, levelRoutes);
 app.use("/api/exercises", trackActivity, exerciseRoutes);
-app.use("/api/stories", authenticate, trackActivity, storiesRoutes);
+app.use("/api/stories", authenticate, trackActivity, storiesLimiter, storiesRoutes);
 app.use("/api/scenarios", authenticate, trackActivity, scenariosRoutes);
 app.use("/api/notifications", trackActivity, notificationRoutes);
 app.use("/api/analytics", trackActivity, analyticsRoutes);

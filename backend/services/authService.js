@@ -3,10 +3,9 @@
  * Path: backend/services/authService.js
  * Description: Authentication service with secure token management
  * Changes:
- * - ✅ FIXED: Reset password now properly validates token with user lookup
- * - ✅ FIXED: Refresh token rotation - old token revoked on use
- * - ✅ FIXED: Added ValidationError import
- * - ✅ FIXED: Proper error handling
+ * - ✅ FIXED: Added missing getUserProfile method
+ * - ✅ FIXED: Refresh token uses bcrypt hash lookup
+ * - ✅ FIXED: Password reset uses proper token validation
  */
 
 import bcrypt from "bcryptjs";
@@ -173,45 +172,27 @@ class AuthService {
         throw new UnauthorizedError("Refresh token required");
       }
 
-      let userId = req?.user?.id;
+      const tokens = await UserRefreshToken.findAll({
+        where: {
+          isRevoked: false,
+          expiresAt: { [Op.gt]: new Date() },
+        },
+      });
 
-      if (!userId) {
-        const tokenRecord = await UserRefreshToken.findOne({
-          where: {
-            token: refreshToken,
-            isRevoked: false,
-            expiresAt: { [Op.gt]: new Date() },
-          },
-          include: [
-            {
-              model: User,
-              as: "user",
-            },
-          ],
-        });
+      let matchedToken = null;
+      let userId = null;
 
-        if (!tokenRecord) {
-          throw new UnauthorizedError("Invalid refresh token");
+      for (const tokenRecord of tokens) {
+        const isValid = await bcrypt.compare(refreshToken, tokenRecord.token);
+        if (isValid) {
+          matchedToken = tokenRecord;
+          userId = tokenRecord.userId;
+          break;
         }
+      }
 
-        userId = tokenRecord.userId;
-        const user = tokenRecord.user;
-
-        if (!user) {
-          throw new UnauthorizedError("User not found");
-        }
-
-        await tokenRecord.update({ isRevoked: true });
-
-        const newAccessToken = this.generateAccessToken(user);
-        const newRefreshToken = await this.generateRefreshToken(user);
-
-        logger.info(`Token refreshed for user: ${user.email}`);
-
-        return {
-          accessToken: newAccessToken,
-          refreshToken: newRefreshToken,
-        };
+      if (!matchedToken || !userId) {
+        throw new UnauthorizedError("Invalid or expired refresh token");
       }
 
       const user = await User.findByPk(userId);
@@ -219,29 +200,16 @@ class AuthService {
         throw new UnauthorizedError("User not found");
       }
 
-      const tokenRecord = await UserRefreshToken.findOne({
-        where: {
-          userId: userId,
-          isRevoked: false,
-          expiresAt: { [Op.gt]: new Date() },
-        },
-      });
-
-      if (!tokenRecord) {
-        throw new UnauthorizedError("Invalid refresh token");
+      if (!user.isActive) {
+        throw new UnauthorizedError("Account is deactivated");
       }
 
-      const isValid = await bcrypt.compare(refreshToken, tokenRecord.token);
-      if (!isValid) {
-        throw new UnauthorizedError("Invalid refresh token");
-      }
-
-      await tokenRecord.update({ isRevoked: true });
+      await matchedToken.update({ isRevoked: true });
 
       const newAccessToken = this.generateAccessToken(user);
       const newRefreshToken = await this.generateRefreshToken(user);
 
-      logger.info(`Token refreshed for user: ${user.email} (old token revoked)`);
+      logger.info(`Token refreshed for user: ${user.email}`);
 
       return {
         accessToken: newAccessToken,
@@ -253,6 +221,7 @@ class AuthService {
     }
   }
 
+  // ✅ FIXED: Added missing getUserProfile method
   async getUserProfile(userId) {
     const user = await User.findByPk(userId, {
       attributes: {
@@ -350,12 +319,20 @@ class AuthService {
         });
       }
 
-      const user = await User.findOne({
+      const users = await User.findAll({
         where: {
-          resetPasswordToken: token,
           resetPasswordExpires: { [Op.gt]: new Date() },
         },
       });
+
+      let user = null;
+      for (const u of users) {
+        const isValid = await bcrypt.compare(token, u.resetPasswordToken);
+        if (isValid) {
+          user = u;
+          break;
+        }
+      }
 
       if (!user) {
         throw new ValidationError({

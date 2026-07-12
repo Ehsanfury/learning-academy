@@ -3,9 +3,8 @@
  * Path: src/context/AuthContext.jsx
  * Description: Authentication context for user state management
  * Changes:
- * - ✅ FIXED: Check token validity before setting authenticated
- * - ✅ FIXED: Redirect to login only if token is invalid
- * - ✅ FIXED: Home page remains public
+ * - ✅ FIXED: Added debug logs for token storage
+ * - ✅ FIXED: Better role handling
  */
 
 import React, {
@@ -31,28 +30,37 @@ export const AuthProvider = ({ children }) => {
     const loadUser = async () => {
       try {
         const token = storage.getToken();
+        debug.log("🔐 Token check:", {
+          hasToken: !!token,
+          token: token?.substring(0, 20) + "...",
+        });
+
         if (token) {
-          // ✅ FIXED: Verify token before setting authenticated
           try {
             const response = await authApi.getMe();
-            if (response.success && response.data.user) {
-              setUser(response.data.user);
+            debug.log("✅ Auth response:", response);
+
+            if (response.success && response.data?.user) {
+              const userData = response.data.user;
+              setUser(userData);
               setIsAuthenticated(true);
-              debug.log("✅ User authenticated:", response.data.user.email);
+              // ✅ Save user to storage
+              storage.setUser(userData);
+              debug.log(
+                `✅ User authenticated: ${userData.email} (role: ${userData.role})`,
+              );
             } else {
-              // Token is invalid or expired
               debug.warn("⚠️ Token invalid, clearing auth");
               storage.clearAuth();
               setIsAuthenticated(false);
             }
           } catch (error) {
-            // API call failed - token might be expired
             debug.warn("⚠️ Auth check failed:", error.message);
             storage.clearAuth();
             setIsAuthenticated(false);
           }
         } else {
-          // No token found
+          debug.log("🔐 No token found");
           setIsAuthenticated(false);
         }
       } catch (error) {
@@ -70,15 +78,30 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback(async (email, password) => {
     try {
       const response = await authApi.login(email, password);
+      debug.log("🔄 Login response:", response);
+
       if (response.success) {
         const { user, accessToken } = response.data;
+
+        // ✅ Save auth with both keys
         storage.setAuth({ accessToken, user });
+
+        // ✅ Verify saved
+        const savedToken = storage.getToken();
+        debug.log("✅ Token saved:", {
+          hasToken: !!savedToken,
+          token: savedToken?.substring(0, 20) + "...",
+          userRole: user?.role,
+        });
+
         setUser(user);
         setIsAuthenticated(true);
+        debug.log(`✅ Login successful: ${user.email} (role: ${user.role})`);
         return { success: true, user };
       }
       return { success: false, error: response.message };
     } catch (error) {
+      debug.error("Login error:", error);
       return { success: false, error: error.message };
     }
   }, []);
@@ -91,6 +114,7 @@ export const AuthProvider = ({ children }) => {
         storage.setAuth({ accessToken, user });
         setUser(user);
         setIsAuthenticated(true);
+        debug.log(`✅ Register successful: ${user.email} (role: ${user.role})`);
         return { success: true, user };
       }
       return { success: false, error: response.message };
@@ -113,10 +137,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = useCallback((updatedUser) => {
     setUser(updatedUser);
-    const currentUser = storage.getUser();
-    if (currentUser) {
-      storage.setUser({ ...currentUser, ...updatedUser });
-    }
+    storage.setUser(updatedUser);
   }, []);
 
   const value = {
@@ -133,7 +154,6 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// ✅ Main hook for using auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

@@ -1,6 +1,10 @@
 /**
  * SystemSetting.js
- * German Academy — تنظیمات سیستم قابل تغییر از پنل ادمین
+ * Path: backend/models/SystemSetting.js
+ * Description: System settings model
+ * Changes:
+ * - ✅ FIXED: Removed ENUM type (use STRING instead)
+ * - ✅ FIXED: category is now STRING with validation
  */
 
 import { DataTypes } from "sequelize";
@@ -10,9 +14,9 @@ const SystemSetting = sequelize.define(
   "SystemSetting",
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
     },
     key: {
       type: DataTypes.STRING(100),
@@ -28,16 +32,9 @@ const SystemSetting = sequelize.define(
       defaultValue: {},
     },
     category: {
-      type: DataTypes.ENUM(
-        "general",
-        "features",
-        "limits",
-        "ai",
-        "email",
-        "payment",
-        "seo",
-        "maintenance"
-      ),
+      // ✅ FIXED: Use STRING instead of ENUM to avoid migration issues
+      type: DataTypes.STRING(50),
+      allowNull: true,
       defaultValue: "general",
     },
     description: {
@@ -60,13 +57,14 @@ const SystemSetting = sequelize.define(
     timestamps: true,
     underscored: true,
     indexes: [
+      { fields: ["key"], unique: true },
       { fields: ["category"], name: "idx_settings_category" },
       { fields: ["is_public"], name: "idx_settings_public" },
     ],
   }
 );
 
-// تنظیمات پیش‌فرض
+// ✅ Seed default settings
 SystemSetting.seedDefaults = async function () {
   const defaults = [
     {
@@ -81,6 +79,13 @@ SystemSetting.seedDefaults = async function () {
       value: { fa: "پلتفرم رایگان آموزش زبان آلمانی", en: "Free German learning platform" },
       category: "general",
       description: "توضیحات سایت",
+      isPublic: true,
+    },
+    {
+      key: "contact_email",
+      value: "support@german-academy.com",
+      category: "general",
+      description: "ایمیل پشتیبانی",
       isPublic: true,
     },
     {
@@ -102,67 +107,70 @@ SystemSetting.seedDefaults = async function () {
       value: true,
       category: "features",
       description: "فعال بودن معلم هوش مصنوعی",
+      isPublic: true,
     },
     {
       key: "enable_mentors",
       value: true,
       category: "features",
       description: "فعال بودن سیستم منتور",
+      isPublic: true,
     },
     {
       key: "enable_stories",
       value: true,
       category: "features",
       description: "فعال بودن داستان‌ها",
+      isPublic: true,
     },
     {
       key: "enable_scenarios",
       value: true,
       category: "features",
       description: "فعال بودن سناریوها",
+      isPublic: true,
     },
     {
       key: "enable_leaderboard",
       value: true,
       category: "features",
       description: "فعال بودن جدول رتبه‌بندی",
+      isPublic: true,
     },
     {
       key: "max_lessons_per_day",
       value: 20,
       category: "limits",
       description: "حداکثر درس در روز",
+      isPublic: false,
     },
     {
       key: "ai_daily_limit",
       value: 50,
       category: "limits",
       description: "حداکثر مکالمه AI در روز",
+      isPublic: false,
     },
     {
       key: "ai_model",
       value: "gpt-3.5-turbo",
       category: "ai",
       description: "مدل AI",
+      isPublic: false,
     },
     {
       key: "ai_max_tokens",
       value: 2048,
       category: "ai",
       description: "حداکثر توکن AI",
+      isPublic: false,
     },
     {
       key: "ai_temperature",
       value: 0.7,
       category: "ai",
       description: "دمای AI",
-    },
-    {
-      key: "contact_email",
-      value: "support@german-academy.com",
-      category: "general",
-      description: "ایمیل پشتیبانی",
-      isPublic: true,
+      isPublic: false,
     },
   ];
 

@@ -2,12 +2,6 @@
  * userController.js
  * Path: backend/controllers/userController.js
  * Description: User management controller
- * Changes:
- * - ✅ Added getSettings and updateSettings
- * - ✅ Using userService for all user operations
- * - ✅ Proper error handling
- * - ✅ Input validation
- * - ✅ Proper response structure
  */
 
 import userService from "../services/userService.js";
@@ -20,10 +14,6 @@ import logger from "../config/logger.js";
 // 📝 Controllers
 // ============================================
 
-/**
- * Get user profile
- * GET /api/users/profile
- */
 export const getProfile = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -39,10 +29,6 @@ export const getProfile = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Update user profile
- * PUT /api/users/profile
- */
 export const updateProfile = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -63,10 +49,6 @@ export const updateProfile = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get user stats
- * GET /api/users/stats
- */
 export const getStats = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -82,10 +64,6 @@ export const getStats = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get user streak
- * GET /api/users/streak
- */
 export const getStreak = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -105,10 +83,6 @@ export const getStreak = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get user achievements
- * GET /api/users/achievements
- */
 export const getAchievements = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -124,10 +98,6 @@ export const getAchievements = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get user recent activity
- * GET /api/users/activity
- */
 export const getRecentActivity = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
   const limit = parseInt(req.query.limit) || 10;
@@ -144,10 +114,6 @@ export const getRecentActivity = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get leaderboard
- * GET /api/users/leaderboard
- */
 export const getLeaderboard = asyncHandler(async (req, res) => {
   const { type = "xp", limit = 10, page = 1 } = req.query;
 
@@ -162,10 +128,6 @@ export const getLeaderboard = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get user rank
- * GET /api/users/rank
- */
 export const getUserRank = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
   const { type = "xp" } = req.query;
@@ -182,10 +144,6 @@ export const getUserRank = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Search users
- * GET /api/users/search
- */
 export const searchUsers = asyncHandler(async (req, res) => {
   const { q, limit = 10 } = req.query;
 
@@ -204,10 +162,6 @@ export const searchUsers = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * ✅ FIXED: Get user settings
- * GET /api/users/settings
- */
 export const getSettings = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -235,10 +189,6 @@ export const getSettings = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * ✅ FIXED: Update user settings
- * PUT /api/users/settings
- */
 export const updateSettings = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 
@@ -276,10 +226,6 @@ export const updateSettings = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Delete user account
- * DELETE /api/users/account
- */
 export const deleteAccount = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
 

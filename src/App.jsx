@@ -240,8 +240,14 @@ function App() {
                     {/* ========================================================= */}
                     {/* 🛡️ ADMIN ROUTES - Admin Only */}
                     {/* ========================================================= */}
-
-                    <Route path="/admin/*" element={<AdminPage />} />
+                    <Route
+                      path="/admin/*"
+                      element={
+                        <AdminRoute>
+                          <AdminPage />
+                        </AdminRoute>
+                      }
+                    />
 
                     {/* ========================================================= */}
                     {/* ❌ 404 Not Found */}

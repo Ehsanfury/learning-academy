@@ -3,24 +3,20 @@
  * Path: src/utils/storage.js
  * Description: Storage utilities with secure token management
  * Changes:
- * - ✅ Added getRefreshToken() method for compatibility
- * - ✅ But it returns null (refresh token is in httpOnly cookie)
- * - ✅ Fixed all storage methods
- * - ✅ Added missing STORAGE_KEYS exports
- * - ✅ NEW: Added useSessionStorage flag for session persistence
+ * - ✅ FIXED: Added backward compatibility for 'token' key
+ * - ✅ FIXED: Both 'token' and 'access_token' work
+ * - ✅ FIXED: Added debug logs
  */
 
 const STORAGE_KEYS = {
   ACCESS_TOKEN: "access_token",
+  TOKEN: "token", // ✅ Backward compatibility
   USER: "user",
   THEME: "theme",
   LANGUAGE: "german_academy_language",
 };
 
-// ✅ NEW: Choose persistence type
-// true = sessionStorage (cleared when browser closed)
-// false = localStorage (persistent)
-const USE_SESSION_STORAGE = false; // ✅ Default: persistent (like now)
+const USE_SESSION_STORAGE = false;
 
 const getStorage = () => {
   return USE_SESSION_STORAGE ? sessionStorage : localStorage;
@@ -32,31 +28,42 @@ export const storage = {
   // ============================================
 
   getToken: () => {
-    return getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN);
+    // ✅ Try both keys for backward compatibility
+    const token =
+      getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN) ||
+      getStorage().getItem(STORAGE_KEYS.TOKEN);
+
+    // ✅ Sync both keys if needed
+    if (token) {
+      getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
+      getStorage().setItem(STORAGE_KEYS.TOKEN, token);
+    }
+
+    return token;
   },
 
   setToken: (token) => {
     if (token) {
+      // ✅ Save to both keys for compatibility
       getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
+      getStorage().setItem(STORAGE_KEYS.TOKEN, token);
     } else {
       getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+      getStorage().removeItem(STORAGE_KEYS.TOKEN);
     }
   },
 
   removeToken: () => {
     getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+    getStorage().removeItem(STORAGE_KEYS.TOKEN);
   },
 
-  // ✅ FIXED: Added getRefreshToken() method
   getRefreshToken: () => {
-    // ❌ Refresh token is NOT stored in localStorage
-    // It's stored in httpOnly cookie for security
     return null;
   },
 
   setRefreshToken: (token) => {
-    // ❌ Refresh token should NOT be stored in localStorage
-    // This is a no-op for security
+    // No-op for security
   },
 
   // ============================================
@@ -102,15 +109,27 @@ export const storage = {
 
   setAuth: ({ accessToken, user }) => {
     if (accessToken) {
+      // ✅ Save to both keys
       getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
+      getStorage().setItem(STORAGE_KEYS.TOKEN, accessToken);
     }
     if (user) {
       getStorage().setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     }
+
+    // ✅ Debug log
+    console.log("🔐 Auth saved:", {
+      hasToken: !!accessToken,
+      hasUser: !!user,
+      userRole: user?.role,
+      tokenKey: STORAGE_KEYS.ACCESS_TOKEN,
+      tokenExists: !!getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN),
+    });
   },
 
   clearAuth: () => {
     getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+    getStorage().removeItem(STORAGE_KEYS.TOKEN);
     getStorage().removeItem(STORAGE_KEYS.USER);
   },
 

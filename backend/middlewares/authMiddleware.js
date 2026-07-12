@@ -3,10 +3,9 @@
  * Path: backend/middlewares/authMiddleware.js
  * Description: Authentication middleware
  * Changes:
- * - ✅ FIXED: Using jwt directly instead of verifyAccessToken (to avoid missing file)
+ * - ✅ FIXED: Using jwt directly instead of verifyAccessToken
  * - ✅ Fixed 401 errors being returned as 500
  * - ✅ Proper error handling for expired/invalid tokens
- * - ✅ Removed error message leakage
  */
 
 import jwt from "jsonwebtoken";
@@ -35,11 +34,9 @@ const verifyAccessToken = (token) => {
 
 /**
  * Authenticate middleware
- * ✅ FIXED: Returns 401 for token errors, not 500
  */
 export const authenticate = async (req, res, next) => {
   try {
-    // Get token from header
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({
@@ -50,19 +47,16 @@ export const authenticate = async (req, res, next) => {
 
     const token = authHeader.split(" ")[1];
 
-    // ✅ Verify token (throws UnauthorizedError on failure)
     let decoded;
     try {
       decoded = verifyAccessToken(token);
     } catch (error) {
-      // ✅ FIXED: Return 401 for token errors
       return res.status(401).json({
         success: false,
         message: error.message || "Invalid token",
       });
     }
 
-    // Get user from database
     const user = await User.findByPk(decoded.id, {
       attributes: { exclude: ["password", "refreshToken"] },
     });
@@ -81,11 +75,9 @@ export const authenticate = async (req, res, next) => {
       });
     }
 
-    // Attach user to request
     req.user = user;
     next();
   } catch (error) {
-    // ✅ FIXED: Catch-all returns 401 for auth errors, not 500
     logger.error("Authentication error:", error);
     return res.status(401).json({
       success: false,

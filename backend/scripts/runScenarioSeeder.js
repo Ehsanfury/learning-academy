@@ -2,10 +2,12 @@
  * runScenarioSeeder.js
  * Path: backend/scripts/runScenarioSeeder.js
  * Description: Run the scenario seeder
+ * Changes:
+ * - ✅ FIXED: Removed sequelize.sync() - use migrations instead
+ * - ✅ FIXED: Better error handling
  */
 
 import sequelize from "../config/db.js";
-import seedScenarios from "../seeders/ScenarioSeeder.js";
 
 async function run() {
   console.log("\n🚀 ========================================");
@@ -16,9 +18,11 @@ async function run() {
     await sequelize.authenticate();
     console.log("✅ Database connected successfully\n");
 
-    await sequelize.sync({ alter: true });
-    console.log("✅ Models synced\n");
+    // ✅ FIXED: Don't use sync with alter - use migrations instead
+    console.log("ℹ️  Using existing database schema (run migrations first)");
 
+    // Import seeder dynamically
+    const { default: seedScenarios } = await import("../seeders/ScenarioSeeder.js");
     await seedScenarios();
 
     console.log("\n✅ ========================================");

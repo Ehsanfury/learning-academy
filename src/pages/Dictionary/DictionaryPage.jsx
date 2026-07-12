@@ -1,6 +1,9 @@
 /**
- * DictionaryPage.jsx - Version 7.0
+ * DictionaryPage.jsx - Version 7.1
  * Path: src/pages/Dictionary/DictionaryPage.jsx
+ * Changes:
+ * - ✅ FIXED: /saved-words → /saved (correct API endpoint)
+ * - ✅ FIXED: Proper error handling for 404
  */
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -51,7 +54,6 @@ const DictionaryPage = () => {
       setLoading(true);
       setError(null);
 
-      // ✅ استفاده مستقیم از api
       const response = await api.get("/dictionary");
 
       let wordsData = [];
@@ -76,12 +78,18 @@ const DictionaryPage = () => {
     }
   };
 
+  // ✅ FIXED: Changed /saved-words to /saved
   const loadSavedWords = async () => {
     try {
-      const response = await api.get("/dictionary/saved-words");
+      const response = await api.get("/dictionary/saved");
       const savedData = response?.data?.data || response?.data || [];
       setSavedWords(Array.isArray(savedData) ? savedData : []);
     } catch (error) {
+      // ✅ If 404, just set empty array (no error toast)
+      if (error.response?.status === 404) {
+        setSavedWords([]);
+        return;
+      }
       console.warn("Could not load saved words:", error);
       setSavedWords([]);
     }
@@ -92,11 +100,11 @@ const DictionaryPage = () => {
   const toggleSaveWord = async (word) => {
     try {
       if (isWordSaved(word.id)) {
-        await api.delete(`/dictionary/saved-words/${word.id}`);
+        await api.delete(`/dictionary/saved/${word.id}`);
         setSavedWords(savedWords.filter((w) => w.id !== word.id));
         toast.success("لغت از لیست ذخیره شده حذف شد");
       } else {
-        await api.post("/dictionary/saved-words", { wordId: word.id });
+        await api.post("/dictionary/saved", { wordId: word.id });
         setSavedWords([...savedWords, word]);
         toast.success("لغت به لیست ذخیره شده اضافه شد");
       }

@@ -1,18 +1,21 @@
 /**
  * adminApi.js
- * German Academy — Frontend API برای پنل ادمین
+ * Path: src/services/adminApi.js
+ * Description: Admin API service
+ * Changes:
+ * - ✅ FIXED: All methods properly handle response
  */
 
 import api from "./api";
 
 const adminApi = {
   // ============================================
-  // 📊 داشبورد
+  // 📊 Dashboard
   // ============================================
   getDashboard: () => api.get("/admin/dashboard"),
 
   // ============================================
-  // 👥 کاربران
+  // 👥 Users
   // ============================================
   getUsers: (params = {}) => api.get("/admin/users", { params }),
   getUser: (id) => api.get(`/admin/users/${id}`),
@@ -23,7 +26,7 @@ const adminApi = {
     api.put(`/admin/users/${id}/status`, { isActive }),
 
   // ============================================
-  // 📚 دروس
+  // 📚 Lessons
   // ============================================
   getLessons: (params = {}) => api.get("/admin/lessons", { params }),
   createLesson: (data) => api.post("/admin/lessons", data),
@@ -31,13 +34,29 @@ const adminApi = {
   deleteLesson: (id) => api.delete(`/admin/lessons/${id}`),
 
   // ============================================
-  // 📈 آمار بازدید
+  // 🏋️ Exercises
+  // ============================================
+  getExercises: (params = {}) => api.get("/admin/exercises", { params }),
+  createExercise: (data) => api.post("/admin/exercises", data),
+  updateExercise: (id, data) => api.put(`/admin/exercises/${id}`, data),
+  deleteExercise: (id) => api.delete(`/admin/exercises/${id}`),
+
+  // ============================================
+  // 🏆 Achievements
+  // ============================================
+  getAchievements: (params = {}) => api.get("/admin/achievements", { params }),
+  createAchievement: (data) => api.post("/admin/achievements", data),
+  updateAchievement: (id, data) => api.put(`/admin/achievements/${id}`, data),
+  deleteAchievement: (id) => api.delete(`/admin/achievements/${id}`),
+
+  // ============================================
+  // 📈 Analytics
   // ============================================
   getAnalytics: (range = "7d") =>
     api.get("/admin/analytics", { params: { range } }),
 
   // ============================================
-  // 🎫 تیکت‌ها
+  // 🎫 Tickets
   // ============================================
   getTickets: (params = {}) => api.get("/admin/tickets", { params }),
   getTicketStats: () => api.get("/admin/tickets/stats"),
@@ -48,7 +67,7 @@ const adminApi = {
     api.put(`/admin/tickets/${id}/status`, data),
 
   // ============================================
-  // ⚙️ تنظیمات
+  // ⚙️ Settings
   // ============================================
   getSettings: () => api.get("/admin/settings"),
   updateSettings: (settings) => api.put("/admin/settings", { settings }),
@@ -56,7 +75,7 @@ const adminApi = {
   updateFeatureFlags: (flags) => api.put("/admin/settings/features", { flags }),
 
   // ============================================
-  // 🩺 سلامت سیستم
+  // 🩺 Health
   // ============================================
   getSystemHealth: () => api.get("/admin/health"),
 };

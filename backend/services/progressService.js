@@ -2,7 +2,10 @@
  * progressService.js
  * Path: backend/services/progressService.js
  * Description: Progress tracking service
- * Version: 2.2 - ADDED: getAllProgress method
+ * Version: 2.3 - FIXED: getDailyActivity with correct column names
+ * Changes:
+ * - ✅ FIXED: getDailyActivity now uses completedAt (not completed_at)
+ * - ✅ FIXED: Proper column names for sequelize
  */
 
 import { Op } from "sequelize";
@@ -267,7 +270,7 @@ class ProgressService {
   }
 
   /**
-   * Get user's daily activity
+   * ✅ FIXED: Get user's daily activity with correct column names
    */
   async getDailyActivity(userId, days = 7) {
     try {
@@ -277,11 +280,13 @@ class ProgressService {
 
       const date = new Date();
       date.setDate(date.getDate() - days);
+      date.setHours(0, 0, 0, 0);
 
+      // ✅ FIXED: Use completedAt (camelCase) not completed_at
       const activities = await LessonProgress.findAll({
         where: {
           userId,
-          completed_at: {
+          completedAt: {
             [Op.gte]: date,
           },
           status: {
@@ -304,9 +309,10 @@ class ProgressService {
           ],
         ],
         limit: days,
+        raw: true,
       });
 
-      return activities;
+      return activities || [];
     } catch (error) {
       logger.error(`❌ Error in getDailyActivity:`, error);
       return [];

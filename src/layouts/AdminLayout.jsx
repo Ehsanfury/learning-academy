@@ -2,10 +2,13 @@
  * AdminLayout.jsx
  * Path: src/layouts/AdminLayout.jsx
  * Description: Admin panel layout with sidebar
+ * Changes:
+ * - ✅ FIXED: Uses children prop (not Outlet)
+ * - ✅ FIXED: All admin pages render correctly
  */
 
 import React, { useState } from "react";
-import { Link, useLocation, Outlet, Navigate } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLanguageContext } from "../context/LanguageContext";
 import {
@@ -23,17 +26,20 @@ import {
   ChevronRight,
   GraduationCap,
   Home,
+  Ticket,
 } from "lucide-react";
 import { cn } from "../utils/helpers";
 
-const AdminLayout = () => {
+const AdminLayout = ({ children }) => {
   const { user, logout } = useAuth();
   const { language } = useLanguageContext();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Check admin access
+  console.log("🔐 AdminLayout rendered, user role:", user?.role);
+
+  // ✅ Check admin access
   if (!user || user.role !== "admin") {
     return <Navigate to="/dashboard" replace />;
   }
@@ -43,6 +49,7 @@ const AdminLayout = () => {
       path: "/admin",
       icon: LayoutDashboard,
       label: { fa: "داشبورد", en: "Dashboard" },
+      exact: true,
     },
     {
       path: "/admin/users",
@@ -69,11 +76,21 @@ const AdminLayout = () => {
       icon: BarChart3,
       label: { fa: "آمار", en: "Statistics" },
     },
+    {
+      path: "/admin/tickets",
+      icon: Ticket,
+      label: { fa: "تیکت‌ها", en: "Tickets" },
+    },
+    {
+      path: "/admin/settings",
+      icon: Settings,
+      label: { fa: "تنظیمات", en: "Settings" },
+    },
   ];
 
-  const isActive = (path) => {
-    if (path === "/admin") {
-      return location.pathname === "/admin";
+  const isActive = (path, exact = false) => {
+    if (exact) {
+      return location.pathname === path;
     }
     return location.pathname.startsWith(path);
   };
@@ -136,7 +153,7 @@ const AdminLayout = () => {
         <nav className="p-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const active = isActive(item.path);
+            const active = isActive(item.path, item.exact);
             return (
               <Link
                 key={item.path}
@@ -213,7 +230,7 @@ const AdminLayout = () => {
           <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const active = isActive(item.path);
+              const active = isActive(item.path, item.exact);
               return (
                 <Link
                   key={item.path}
@@ -279,7 +296,8 @@ const AdminLayout = () => {
         )}
       >
         <div className="p-4 lg:p-8">
-          <Outlet />
+          {/* ✅ Render children (Routes) */}
+          {children}
         </div>
       </main>
     </div>

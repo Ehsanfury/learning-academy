@@ -1,33 +1,20 @@
 /**
  * db.js
  * Path: backend/config/db.js
- * Description: Database configuration
- * Changes:
- * - ✅ FIXED: Added test database support
- * - ✅ FIXED: Proper property names (name, user instead of database, username)
- * - ✅ FIXED: NODE_ENV=test uses mydb_test
+ * Description: Database configuration with migration support
  */
 
 import { Sequelize } from "sequelize";
 import config from "./env.js";
 import logger from "./logger.js";
 
-// ============================================
-// 📊 Database Configuration
-// ============================================
-
-// ✅ برای تست، از دیتابیس جداگانه استفاده کنید
 const getDatabaseName = () => {
-  // اگر در محیط تست هستیم، از دیتابیس تست استفاده کن
   if (process.env.NODE_ENV === "test") {
-    const testDbName = config.db.name + "_test";
-    logger.info(`🧪 Using test database: ${testDbName}`);
-    return testDbName;
+    return config.db.name + "_test";
   }
   return config.db.name;
 };
 
-// SSL configuration
 const sslConfig = config.db.ssl || {};
 const isSSLEnabled = sslConfig.enabled || process.env.NODE_ENV === "production";
 

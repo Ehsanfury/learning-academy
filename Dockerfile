@@ -32,7 +32,9 @@ WORKDIR /app
 
 # Install production dependencies
 COPY --from=backend-builder /app/backend/node_modules ./backend/node_modules
-COPY --from=backend-builder /app/backend . ./backend/
+
+# ✅ FIXED: Correct copy syntax - only one destination
+COPY --from=backend-builder /app/backend ./backend/
 
 # Copy frontend build
 COPY --from=frontend-builder /app/dist ./frontend

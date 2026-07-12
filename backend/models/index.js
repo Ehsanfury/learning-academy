@@ -3,12 +3,11 @@
  * Path: backend/models/index.js
  * Description: Central export for all models
  * Changes:
- * - ✅ ADDED: Ticket model
- * - ✅ ADDED: PageView model
- * - ✅ ADDED: SystemSetting model
- * - ✅ ADDED: All associations for new models
+ * - ✅ FIXED: SystemSetting properly exported
+ * - ✅ FIXED: All associations
  */
 
+import sequelize from "../config/db.js";
 import User from "./User.js";
 import Lesson from "./Lesson.js";
 import LessonProgress from "./LessonProgress.js";
@@ -28,7 +27,6 @@ import XPHistory from "./XPHistory.js";
 import UserRefreshToken from "./UserRefreshToken.js";
 import Exercise from "./Exercise.js";
 import ScenarioSession from "./ScenarioSession.js";
-// ✅ NEW MODELS
 import Ticket from "./Ticket.js";
 import PageView from "./PageView.js";
 import SystemSetting from "./SystemSetting.js";
@@ -37,9 +35,7 @@ import SystemSetting from "./SystemSetting.js";
 // 📊 Associations
 // ============================================
 
-// ============================================
 // User ↔ Ticket
-// ============================================
 User.hasMany(Ticket, {
   foreignKey: "userId",
   as: "tickets",
@@ -49,9 +45,7 @@ Ticket.belongsTo(User, {
   as: "user",
 });
 
-// ============================================
 // User ↔ PageView
-// ============================================
 User.hasMany(PageView, {
   foreignKey: "userId",
   as: "pageViews",
@@ -61,9 +55,7 @@ PageView.belongsTo(User, {
   as: "pageViewUser",
 });
 
-// ============================================
-// User ↔ SystemSetting (updatedBy)
-// ============================================
+// User ↔ SystemSetting
 SystemSetting.belongsTo(User, {
   foreignKey: "updatedBy",
   as: "updatedByUser",
@@ -73,16 +65,13 @@ User.hasMany(SystemSetting, {
   as: "systemSettings",
 });
 
-// ============================================
 // User ↔ Notification (through UserNotification)
-// ============================================
 User.belongsToMany(Notification, {
   through: UserNotification,
   foreignKey: "userId",
   otherKey: "notificationId",
   as: "userNotificationList",
 });
-
 Notification.belongsToMany(User, {
   through: UserNotification,
   foreignKey: "notificationId",
@@ -90,9 +79,7 @@ Notification.belongsToMany(User, {
   as: "notificationUserList",
 });
 
-// ============================================
 // Notification ↔ UserNotification
-// ============================================
 Notification.hasMany(UserNotification, {
   foreignKey: "notificationId",
   as: "userNotificationEntries",
@@ -102,9 +89,7 @@ UserNotification.belongsTo(Notification, {
   as: "notification",
 });
 
-// ============================================
 // User ↔ UserNotification
-// ============================================
 User.hasMany(UserNotification, {
   foreignKey: "userId",
   as: "userNotificationEntries",
@@ -114,9 +99,7 @@ UserNotification.belongsTo(User, {
   as: "user",
 });
 
-// ============================================
 // User ↔ Achievement (through UserAchievement)
-// ============================================
 User.belongsToMany(Achievement, {
   through: UserAchievement,
   foreignKey: "userId",
@@ -130,9 +113,7 @@ Achievement.belongsToMany(User, {
   as: "users",
 });
 
-// ============================================
 // UserAchievement ↔ Achievement
-// ============================================
 UserAchievement.belongsTo(Achievement, {
   foreignKey: "achievementId",
   as: "achievement",
@@ -142,9 +123,7 @@ Achievement.hasMany(UserAchievement, {
   as: "userAchievements",
 });
 
-// ============================================
 // UserAchievement ↔ User
-// ============================================
 UserAchievement.belongsTo(User, {
   foreignKey: "userId",
   as: "user",
@@ -154,9 +133,7 @@ User.hasMany(UserAchievement, {
   as: "userAchievementEntries",
 });
 
-// ============================================
 // User ↔ Exercise
-// ============================================
 User.hasMany(Exercise, {
   foreignKey: "userId",
   as: "userExercises",
@@ -166,9 +143,7 @@ Exercise.belongsTo(User, {
   as: "exerciseOwner",
 });
 
-// ============================================
 // User ↔ ScenarioSession
-// ============================================
 User.hasMany(ScenarioSession, {
   foreignKey: "userId",
   as: "userScenarioSessions",
@@ -178,9 +153,7 @@ ScenarioSession.belongsTo(User, {
   as: "scenarioSessionUser",
 });
 
-// ============================================
 // User ↔ LessonProgress
-// ============================================
 User.hasMany(LessonProgress, {
   foreignKey: "userId",
   as: "userLessonProgresses",
@@ -190,9 +163,7 @@ LessonProgress.belongsTo(User, {
   as: "lessonProgressUser",
 });
 
-// ============================================
 // Lesson ↔ LessonProgress
-// ============================================
 Lesson.hasMany(LessonProgress, {
   foreignKey: "lessonId",
   as: "lessonProgresses",
@@ -202,9 +173,7 @@ LessonProgress.belongsTo(Lesson, {
   as: "progressLesson",
 });
 
-// ============================================
 // User ↔ WordProgress
-// ============================================
 User.hasMany(WordProgress, {
   foreignKey: "userId",
   as: "userWordProgresses",
@@ -214,9 +183,7 @@ WordProgress.belongsTo(User, {
   as: "wordProgressUser",
 });
 
-// ============================================
 // WordProgress ↔ Vocabulary
-// ============================================
 WordProgress.belongsTo(Vocabulary, {
   foreignKey: "wordId",
   as: "vocabulary",
@@ -226,9 +193,7 @@ Vocabulary.hasMany(WordProgress, {
   as: "progresses",
 });
 
-// ============================================
 // User ↔ AIConversation
-// ============================================
 User.hasMany(AIConversation, {
   foreignKey: "userId",
   as: "userAIConversations",
@@ -238,9 +203,7 @@ AIConversation.belongsTo(User, {
   as: "aiConversationUser",
 });
 
-// ============================================
 // User ↔ Mentor
-// ============================================
 User.hasOne(Mentor, {
   foreignKey: "userId",
   as: "userMentor",
@@ -250,9 +213,7 @@ Mentor.belongsTo(User, {
   as: "mentorUser",
 });
 
-// ============================================
 // Mentor ↔ MentorSession
-// ============================================
 Mentor.hasMany(MentorSession, {
   foreignKey: "mentorId",
   as: "mentorSessions",
@@ -262,9 +223,7 @@ MentorSession.belongsTo(Mentor, {
   as: "sessionMentor",
 });
 
-// ============================================
 // User ↔ MentorSession (as student)
-// ============================================
 User.hasMany(MentorSession, {
   foreignKey: "studentId",
   as: "userStudentSessions",
@@ -274,9 +233,7 @@ MentorSession.belongsTo(User, {
   as: "studentUser",
 });
 
-// ============================================
 // User ↔ StoryProgress
-// ============================================
 User.hasMany(StoryProgress, {
   foreignKey: "userId",
   as: "userStoryProgresses",
@@ -286,9 +243,7 @@ StoryProgress.belongsTo(User, {
   as: "storyProgressUser",
 });
 
-// ============================================
 // Story ↔ StoryProgress
-// ============================================
 Story.hasMany(StoryProgress, {
   foreignKey: "storyId",
   as: "storyProgresses",
@@ -298,9 +253,7 @@ StoryProgress.belongsTo(Story, {
   as: "progressStory",
 });
 
-// ============================================
 // User ↔ XPHistory
-// ============================================
 User.hasMany(XPHistory, {
   foreignKey: "userId",
   as: "userXPHistories",
@@ -310,9 +263,7 @@ XPHistory.belongsTo(User, {
   as: "xpHistoryUser",
 });
 
-// ============================================
 // User ↔ UserRefreshToken
-// ============================================
 User.hasMany(UserRefreshToken, {
   foreignKey: "userId",
   as: "userRefreshTokens",
@@ -327,6 +278,7 @@ UserRefreshToken.belongsTo(User, {
 // ============================================
 
 export {
+  sequelize,
   User,
   Lesson,
   LessonProgress,
@@ -356,6 +308,7 @@ export {
 // ============================================
 
 export default {
+  sequelize,
   User,
   Lesson,
   LessonProgress,

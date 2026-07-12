@@ -1,13 +1,18 @@
 /**
  * AdminTicketsPage.jsx
- * مدیریت تیکت‌های پشتیبانی
+ * Path: src/pages/Admin/AdminTicketsPage.jsx
+ * Description: مدیریت تیکت‌های پشتیبانی
+ * Changes:
+ * - ✅ FIXED: tickets.map is not a function - proper data unwrapping
+ * - ✅ FIXED: Error handling for API responses
  */
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import adminApi from "../../services/adminApi";
-import { Search, Send, AlertCircle, CheckCircle, Clock } from "lucide-react";
+import { Search, Send, AlertCircle, CheckCircle, Clock, X } from "lucide-react";
 import { useLanguageContext } from "../../context/LanguageContext";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function AdminTicketsPage() {
   const { language } = useLanguageContext();
@@ -32,10 +37,23 @@ function AdminTicketsPage() {
       if (filterStatus) params.status = filterStatus;
       if (filterPriority) params.priority = filterPriority;
       if (search) params.search = search;
+
       const response = await adminApi.getTickets(params);
-      setTickets(response.data || []);
+
+      // ✅ FIXED: Proper data unwrapping
+      let ticketsData = [];
+      if (response?.data?.data) {
+        ticketsData = response.data.data;
+      } else if (Array.isArray(response?.data)) {
+        ticketsData = response.data;
+      } else if (Array.isArray(response)) {
+        ticketsData = response;
+      }
+
+      setTickets(Array.isArray(ticketsData) ? ticketsData : []);
     } catch (err) {
       console.error("Failed to load tickets:", err);
+      setTickets([]);
     } finally {
       setLoading(false);
     }
@@ -44,9 +62,12 @@ function AdminTicketsPage() {
   const loadStats = async () => {
     try {
       const response = await adminApi.getTicketStats();
-      setStats(response.data);
+      // ✅ FIXED: Proper data unwrapping
+      const statsData = response?.data?.data || response?.data || {};
+      setStats(statsData);
     } catch (err) {
       console.error("Failed to load stats:", err);
+      setStats(null);
     }
   };
 
@@ -74,22 +95,30 @@ function AdminTicketsPage() {
   };
 
   const priorityColors = {
-    urgent: "bg-danger-500",
-    high: "bg-warning-500",
-    medium: "bg-primary-500",
-    low: "bg-neutral-400",
+    urgent: "bg-red-500",
+    high: "bg-orange-500",
+    medium: "bg-blue-500",
+    low: "bg-gray-400",
   };
 
   const statusColors = {
-    open: "bg-danger-100 text-danger-600 dark:bg-danger-900/30 dark:text-danger-400",
+    open: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400",
     pending:
-      "bg-warning-100 text-warning-600 dark:bg-warning-900/30 dark:text-warning-400",
+      "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400",
     answered:
-      "bg-success-100 text-success-600 dark:bg-success-900/30 dark:text-success-400",
+      "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
     resolved:
-      "bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400",
-    closed: "bg-neutral-100 text-neutral-500 dark:bg-neutral-800",
+      "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+    closed: "bg-gray-100 text-gray-500 dark:bg-gray-800",
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -99,11 +128,11 @@ function AdminTicketsPage() {
         </h2>
         {stats && (
           <div className="flex gap-2">
-            <span className="text-xs px-3 py-1 rounded-full bg-danger-100 text-danger-600 dark:bg-danger-900/30 dark:text-danger-400">
+            <span className="text-xs px-3 py-1 rounded-full bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">
               {stats.unresolved || 0}{" "}
               {language === "fa" ? "حل‌نشده" : "Unresolved"}
             </span>
-            <span className="text-xs px-3 py-1 rounded-full bg-neutral-100 text-neutral-500 dark:bg-neutral-800">
+            <span className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800">
               {stats.total || 0} {language === "fa" ? "کل" : "Total"}
             </span>
           </div>
@@ -118,12 +147,12 @@ function AdminTicketsPage() {
           }
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 min-w-[200px] px-4 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white"
+          className="flex-1 min-w-[200px] px-4 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:outline-none"
         />
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white"
+          className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:outline-none"
         >
           <option value="">
             {language === "fa" ? "همه وضعیت‌ها" : "All status"}
@@ -137,7 +166,7 @@ function AdminTicketsPage() {
         <select
           value={filterPriority}
           onChange={(e) => setFilterPriority(e.target.value)}
-          className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white"
+          className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:outline-none"
         >
           <option value="">
             {language === "fa" ? "همه اولویت‌ها" : "All priority"}
@@ -150,9 +179,7 @@ function AdminTicketsPage() {
       </div>
 
       <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
-        {loading ? (
-          <div className="text-center py-8 text-neutral-400">Loading...</div>
-        ) : tickets.length === 0 ? (
+        {tickets.length === 0 ? (
           <div className="text-center py-8 text-neutral-400">
             {language === "fa" ? "تیکتی وجود ندارد" : "No tickets"}
           </div>
@@ -161,36 +188,36 @@ function AdminTicketsPage() {
             {tickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="p-4 hover:bg-neutral-50 dark:hover:bg-neutral-800/30 cursor-pointer"
+                className="p-4 hover:bg-neutral-50 dark:hover:bg-neutral-800/30 cursor-pointer transition"
                 onClick={() => setSelectedTicket(ticket)}
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className={`w-2 h-2 rounded-full mt-2 ${priorityColors[ticket.priority]}`}
+                    className={`w-2 h-2 rounded-full mt-2 ${priorityColors[ticket.priority] || "bg-gray-400"}`}
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-medium text-neutral-900 dark:text-white text-sm">
-                        {ticket.subject}
+                        {ticket.subject || "بدون موضوع"}
                       </span>
                       <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${statusColors[ticket.status]}`}
+                        className={`text-xs px-2 py-0.5 rounded-full ${statusColors[ticket.status] || "bg-gray-100 text-gray-500"}`}
                       >
-                        {ticket.status}
+                        {ticket.status || "open"}
                       </span>
                     </div>
                     <p className="text-xs text-neutral-400 truncate">
-                      {ticket.message}
+                      {ticket.message || ""}
                     </p>
                     <div className="flex items-center gap-3 mt-1">
                       <span className="text-xs text-neutral-400">
-                        {ticket.user?.name}
+                        {ticket.user?.name || "کاربر"}
                       </span>
                       <span className="text-xs text-neutral-400">
-                        {ticket.user?.email}
+                        {ticket.user?.email || ""}
                       </span>
                       <span className="text-xs text-neutral-400">
-                        {ticket.category}
+                        {ticket.category || "general"}
                       </span>
                     </div>
                   </div>
@@ -201,6 +228,7 @@ function AdminTicketsPage() {
         )}
       </div>
 
+      {/* Ticket Detail Modal */}
       {selectedTicket && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
@@ -214,40 +242,44 @@ function AdminTicketsPage() {
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
-                {selectedTicket.subject}
+                {selectedTicket.subject || "بدون موضوع"}
               </h3>
-              <span
-                className={`text-xs px-2 py-1 rounded-full ${statusColors[selectedTicket.status]}`}
+              <button
+                onClick={() => setSelectedTicket(null)}
+                className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
               >
-                {selectedTicket.status}
-              </span>
+                <X className="w-5 h-5 text-neutral-500" />
+              </button>
             </div>
 
             <div className="space-y-3 mb-4">
               <div className="text-xs text-neutral-400">
                 <span>
-                  From: {selectedTicket.user?.name} (
-                  {selectedTicket.user?.email})
+                  از: {selectedTicket.user?.name || "کاربر"} (
+                  {selectedTicket.user?.email || ""})
                 </span>
                 <br />
-                <span>Category: {selectedTicket.category}</span> |{" "}
-                <span>Priority: {selectedTicket.priority}</span>
+                <span>دسته: {selectedTicket.category || "general"}</span> |{" "}
+                <span>اولویت: {selectedTicket.priority || "medium"}</span>
                 <br />
                 <span>
-                  Date: {new Date(selectedTicket.createdAt).toLocaleString()}
+                  تاریخ:{" "}
+                  {selectedTicket.createdAt
+                    ? new Date(selectedTicket.createdAt).toLocaleString()
+                    : ""}
                 </span>
               </div>
 
               <div className="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
                 <p className="text-sm text-neutral-700 dark:text-neutral-300">
-                  {selectedTicket.message}
+                  {selectedTicket.message || ""}
                 </p>
               </div>
 
               {selectedTicket.adminReply && (
                 <div className="p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800">
                   <p className="text-xs text-primary-500 font-medium mb-1">
-                    Admin Reply:
+                    پاسخ ادمین:
                   </p>
                   <p className="text-sm text-neutral-700 dark:text-neutral-300">
                     {selectedTicket.adminReply}
@@ -264,31 +296,33 @@ function AdminTicketsPage() {
                   language === "fa" ? "پاسخ به کاربر..." : "Reply to user..."
                 }
                 rows={4}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white resize-none"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white resize-none focus:ring-2 focus:ring-primary-500 focus:outline-none"
               />
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() =>
                     handleStatusChange(selectedTicket.id, "resolved")
                   }
-                  className="px-3 py-2 text-xs rounded-lg bg-success-100 text-success-600 dark:bg-success-900/30 dark:text-success-400"
+                  className="px-3 py-2 text-xs rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 hover:bg-green-200 transition"
                 >
-                  <CheckCircle className="w-3 h-3 inline mr-1" /> Mark Resolved
+                  <CheckCircle className="w-3 h-3 inline mr-1" />
+                  {language === "fa" ? "حل شد" : "Resolve"}
                 </button>
                 <button
                   onClick={() =>
                     handleStatusChange(selectedTicket.id, "closed")
                   }
-                  className="px-3 py-2 text-xs rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500"
+                  className="px-3 py-2 text-xs rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:bg-gray-200 transition"
                 >
-                  Close
+                  <X className="w-3 h-3 inline mr-1" />
+                  {language === "fa" ? "بستن" : "Close"}
                 </button>
                 <button
                   onClick={handleReply}
                   disabled={!reply.trim()}
-                  className="flex-1 px-4 py-2 text-sm rounded-lg bg-primary-500 text-white disabled:opacity-30 flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-2 text-sm rounded-lg bg-primary-500 text-white disabled:opacity-50 flex items-center justify-center gap-2 hover:bg-primary-600 transition"
                 >
-                  <Send className="w-4 h-4" />{" "}
+                  <Send className="w-4 h-4" />
                   {language === "fa" ? "ارسال پاسخ" : "Send Reply"}
                 </button>
               </div>

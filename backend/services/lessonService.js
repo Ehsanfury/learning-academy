@@ -4,9 +4,9 @@
  * Description: Lesson management service
  * Changes:
  * - ✅ FIXED: XP is properly awarded on lesson completion
+ * - ✅ FIXED: calculateScore now requires questions to award XP
  * - ✅ FIXED: Added Achievement check on lesson completion
  * - ✅ FIXED: Added Streak logging on lesson completion
- * - ✅ FIXED: Better error handling
  */
 
 import { Op } from "sequelize";
@@ -185,7 +185,7 @@ class LessonService {
   }
 
   // ============================================
-  // ✅ Complete Lesson - FIXED: XP + Achievement + Streak
+  // ✅ Complete Lesson
   // ============================================
 
   async completeLesson({ lessonId, userId, answers, timeSpent = 0 }) {
@@ -196,9 +196,12 @@ class LessonService {
         throw new Error("Lesson not found");
       }
 
-      // Calculate score
+      // ✅ FIXED: Calculate score with proper question counting
       const score = this.calculateScore(lesson, answers);
-      const xpEarned = score >= 70 ? lesson.xpReward || 50 : 0;
+
+      // ✅ FIXED: Only award XP if there are actual questions and score >= 70
+      const hasQuestions = this.hasQuestions(lesson);
+      const xpEarned = hasQuestions && score >= 70 ? lesson.xpReward || 50 : 0;
 
       // Update or create progress
       const [progress, created] = await LessonProgress.findOrCreate({
@@ -228,7 +231,7 @@ class LessonService {
 
       let totalXP = 0;
 
-      // ✅ Add XP to user
+      // ✅ Add XP to user (only if earned)
       if (xpEarned > 0) {
         const xpResult = await userService.addXP(userId, xpEarned, "lesson_completion");
         totalXP = xpResult.xp || 0;
@@ -237,7 +240,7 @@ class LessonService {
           `✅ User ${userId} earned ${xpEarned} XP from lesson ${lessonId} (total: ${totalXP})`
         );
 
-        // ✅ NEW: Check and award achievements (non-blocking)
+        // Check and award achievements
         try {
           const achievementResult = await achievementService.checkAndAwardAchievements(
             userId,
@@ -257,7 +260,7 @@ class LessonService {
           logger.error(`❌ Achievement check failed: ${achievementError.message}`);
         }
 
-        // ✅ NEW: Log daily activity for streak (non-blocking)
+        // Log daily activity for streak
         try {
           const streakResult = await streakService.logDailyActivity(userId, "lesson_completed");
           logger.info(`📊 User ${userId} streak updated: ${streakResult.streak || 0} days`);
@@ -273,6 +276,7 @@ class LessonService {
         totalXP: totalXP,
         isPerfect: score === 100,
         isPassed: score >= 70,
+        hasQuestions: hasQuestions,
         progress,
       };
     } catch (error) {
@@ -285,6 +289,25 @@ class LessonService {
   // 🛠️ Helper Methods
   // ============================================
 
+  /**
+   * ✅ FIXED: Check if lesson has any questions
+   */
+  hasQuestions(lesson) {
+    const sections = lesson.sections || [];
+    let totalQuestions = 0;
+
+    sections.forEach((section) => {
+      if (section.questions) {
+        totalQuestions += section.questions.length;
+      }
+    });
+
+    return totalQuestions > 0;
+  }
+
+  /**
+   * ✅ FIXED: Calculate score with proper question counting
+   */
   calculateScore(lesson, answers) {
     const sections = lesson.sections || [];
     let totalQuestions = 0;
@@ -308,7 +331,8 @@ class LessonService {
       }
     });
 
-    if (totalQuestions === 0) return 100;
+    // ✅ FIXED: If no questions, return 0 (no XP awarded)
+    if (totalQuestions === 0) return 0;
     return Math.round((correctAnswers / totalQuestions) * 100);
   }
 
