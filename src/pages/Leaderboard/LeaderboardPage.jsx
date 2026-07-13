@@ -12,7 +12,8 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
-import { FixedSizeList as List } from "react-window";
+// Note: react-window v2 changed its API (List instead of FixedSizeList).
+// For simplicity and to avoid API mismatch, we render the leaderboard directly.
 import { Trophy, Medal, Star, TrendingUp, Users } from "lucide-react";
 import api from "@services/api";
 import LoadingSpinner from "../../components/LoadingSpinner";
@@ -187,17 +188,19 @@ const LeaderboardPage = () => {
         ))}
       </div>
 
-      {/* Leaderboard list with virtualization */}
+      {/* Leaderboard list — direct render (replaces react-window virtualization) */}
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
         {leaderboard.length > 0 ? (
-          <List
-            height={Math.min(leaderboard.length * ITEM_HEIGHT, 500)}
-            itemCount={leaderboard.length}
-            itemSize={ITEM_HEIGHT}
-            width="100%"
-          >
-            {Row}
-          </List>
+          <div>
+            {leaderboard.map((entry, index) => (
+              <Row
+                key={entry.id || index}
+                index={index}
+                data={{ items: leaderboard }}
+                style={{}}
+              />
+            ))}
+          </div>
         ) : (
           <div className="py-12 text-center text-gray-500">
             No users found on the leaderboard.

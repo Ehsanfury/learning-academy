@@ -1,311 +1,337 @@
 /**
- * AdminSettingsPage.jsx
- * تنظیمات سیستم — feature flags، عمومی، AI
+ * AdminAnalyticsPage.jsx
+ * Path: src/pages/Admin/AdminAnalyticsPage.jsx
+ * Description: آمار بازدید سایت - صفحات پرطرفدار، دستگاه‌ها، مرورگرها
+ * Changes:
+ * - ✅ FIXED: 500 error handling
+ * - ✅ FIXED: Objects are not valid as React child
  */
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import adminApi from "../../services/adminApi";
-import { Save, ToggleLeft, ToggleRight } from "lucide-react";
+import { getLocalizedText } from "../../utils/i18n";
+import {
+  Eye,
+  Users,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Globe,
+  Loader2,
+} from "lucide-react";
 import { useLanguageContext } from "../../context/LanguageContext";
+import toast from "react-hot-toast";
 
-function AdminSettingsPage() {
+function AdminAnalyticsPage() {
   const { language } = useLanguageContext();
-  const [settings, setSettings] = useState(null);
-  const [flags, setFlags] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
+  const [range, setRange] = useState("7d");
 
   useEffect(() => {
-    loadSettings();
-  }, []);
+    loadAnalytics();
+  }, [range]);
 
-  const loadSettings = async () => {
+  const loadAnalytics = async () => {
     try {
       setLoading(true);
-      const [settingsRes, flagsRes] = await Promise.all([
-        adminApi.getSettings(),
-        adminApi.getFeatureFlags(),
-      ]);
-      setSettings(settingsRes.data);
-      setFlags(flagsRes.data);
+      const response = await adminApi.getAnalytics(range);
+      const responseData = response?.data?.data || response?.data || {};
+      setData(responseData);
     } catch (err) {
-      console.error("Failed to load settings:", err);
+      console.error("Failed to load analytics:", err);
+      toast.error("خطا در بارگذاری آمار بازدید");
+      // داده‌های خالی برای نمایش
+      const days = parseInt(range.replace("d", ""), 10) || 7;
+      const emptyDailyViews = [];
+      for (let i = days - 1; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        emptyDailyViews.push({
+          date: date.toISOString().split("T")[0],
+          views: 0,
+          uniqueVisitors: 0,
+        });
+      }
+      setData({
+        totalViews: 0,
+        uniqueVisitors: 0,
+        memberVisitors: 0,
+        guestVisitors: 0,
+        dailyViews: emptyDailyViews,
+        topPages: [],
+        deviceStats: [
+          { device: "desktop", count: 0 },
+          { device: "mobile", count: 0 },
+          { device: "tablet", count: 0 },
+          { device: "other", count: 0 },
+        ],
+        browserStats: [],
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSaveSettings = async () => {
-    try {
-      setSaving(true);
-      await adminApi.updateSettings(settings);
-      alert(language === "fa" ? "تنظیمات ذخیره شد" : "Settings saved");
-    } catch (err) {
-      console.error("Failed to save settings:", err);
-    } finally {
-      setSaving(false);
+  const getLocalized = (value) => {
+    if (!value) return "";
+    if (typeof value === "string") return value;
+    if (typeof value === "object") {
+      return getLocalizedText(value, language, "");
     }
+    return String(value);
   };
 
-  const handleToggleFlag = async (key, currentValue) => {
-    const newFlags = { ...flags, [key]: !currentValue };
-    setFlags(newFlags);
-    try {
-      await adminApi.updateFeatureFlags(newFlags);
-    } catch (err) {
-      console.error("Failed to update flag:", err);
-      setFlags(flags);
-    }
-  };
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <Loader2 className="w-8 h-8 animate-spin text-primary-500" />
+      </div>
+    );
+  }
 
-  if (loading)
-    return <div className="text-center py-12 text-neutral-500">Loading...</div>;
-  if (!settings) return null;
+  if (!data) return null;
 
-  const featureFlagKeys = [
-    {
-      key: "enable_registration",
-      label: { fa: "ثبت‌نام", en: "Registration" },
-    },
-    { key: "enable_ai_tutor", label: { fa: "معلم AI", en: "AI Tutor" } },
-    { key: "enable_mentors", label: { fa: "منتورها", en: "Mentors" } },
-    { key: "enable_stories", label: { fa: "داستان‌ها", en: "Stories" } },
-    { key: "enable_scenarios", label: { fa: "سناریوها", en: "Scenarios" } },
-    {
-      key: "enable_leaderboard",
-      label: { fa: "جدول رتبه‌بندی", en: "Leaderboard" },
-    },
+  const ranges = [
+    { value: "24h", label: { fa: "۲۴ ساعت", en: "24 hours" } },
+    { value: "7d", label: { fa: "۷ روز", en: "7 days" } },
+    { value: "30d", label: { fa: "۳۰ روز", en: "30 days" } },
+    { value: "90d", label: { fa: "۹۰ روز", en: "90 days" } },
+    { value: "1y", label: { fa: "۱ سال", en: "1 year" } },
   ];
+
+  const deviceIcons = {
+    desktop: Monitor,
+    mobile: Smartphone,
+    tablet: Tablet,
+    other: Globe,
+  };
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-white">
-          {language === "fa" ? "تنظیمات سیستم" : "System Settings"}
-        </h2>
-        <button
-          onClick={handleSaveSettings}
-          disabled={saving}
-          className="px-4 py-2 text-sm rounded-lg bg-primary-500 text-white flex items-center gap-2 disabled:opacity-50"
-        >
-          <Save className="w-4 h-4" />{" "}
-          {saving ? "..." : language === "fa" ? "ذخیره" : "Save"}
-        </button>
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h2 className="text-xl font-bold text-neutral-900 dark:text-white">
+            {language === "fa" ? "📊 آمار بازدید سایت" : "📊 Site Analytics"}
+          </h2>
+          <p className="text-sm text-neutral-500">
+            {language === "fa"
+              ? "آمار بازدید، دستگاه‌ها و صفحات پرطرفدار"
+              : "Visitor statistics, devices and top pages"}
+          </p>
+        </div>
+        <div className="flex gap-1 flex-wrap">
+          {ranges.map((r) => (
+            <button
+              key={r.value}
+              onClick={() => setRange(r.value)}
+              className={`px-3 py-1.5 text-xs rounded-lg transition ${
+                range === r.value
+                  ? "bg-primary-500 text-white"
+                  : "bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+              }`}
+            >
+              {getLocalized(r.label)}
+            </button>
+          ))}
+        </div>
       </div>
 
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+          <Eye className="w-5 h-5 text-primary-500 mb-2" />
+          <p className="text-2xl font-bold text-neutral-900 dark:text-white">
+            {data.totalViews || 0}
+          </p>
+          <p className="text-xs text-neutral-500 mt-1">
+            {language === "fa" ? "کل بازدید" : "Total Views"}
+          </p>
+        </div>
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+          <Users className="w-5 h-5 text-green-500 mb-2" />
+          <p className="text-2xl font-bold text-neutral-900 dark:text-white">
+            {data.uniqueVisitors || 0}
+          </p>
+          <p className="text-xs text-neutral-500 mt-1">
+            {language === "fa" ? "بازدیدکننده یکتا" : "Unique Visitors"}
+          </p>
+        </div>
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+          <Users className="w-5 h-5 text-purple-500 mb-2" />
+          <p className="text-2xl font-bold text-neutral-900 dark:text-white">
+            {data.memberVisitors || 0}
+          </p>
+          <p className="text-xs text-neutral-500 mt-1">
+            {language === "fa" ? "اعضا" : "Members"}
+          </p>
+        </div>
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+          <Globe className="w-5 h-5 text-amber-500 mb-2" />
+          <p className="text-2xl font-bold text-neutral-900 dark:text-white">
+            {data.guestVisitors || 0}
+          </p>
+          <p className="text-xs text-neutral-500 mt-1">
+            {language === "fa" ? "مهمان" : "Guests"}
+          </p>
+        </div>
+      </div>
+
+      {/* Daily Views Chart */}
       <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
         <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
-          {language === "fa" ? "قابلیت‌ها (Feature Flags)" : "Feature Flags"}
+          {language === "fa" ? "📈 بازدید روزانه" : "📈 Daily Views"}
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {featureFlagKeys.map((flag) => {
-            const value = flags?.[flag.key];
+        <div className="flex items-end gap-1 h-40">
+          {(data.dailyViews || []).map((day, i) => {
+            const maxValue = Math.max(
+              ...(data.dailyViews || []).map((d) => parseInt(d.views) || 0),
+              1,
+            );
+            const height = Math.max(
+              ((parseInt(day.views) || 0) / maxValue) * 100,
+              2,
+            );
             return (
-              <button
-                key={flag.key}
-                onClick={() => handleToggleFlag(flag.key, value)}
-                className={`flex items-center gap-2 p-3 rounded-lg border ${value ? "border-success-300 bg-success-50 dark:bg-success-900/20" : "border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50"}`}
-              >
-                {value ? (
-                  <ToggleRight className="w-6 h-6 text-success-500" />
-                ) : (
-                  <ToggleLeft className="w-6 h-6 text-neutral-400" />
-                )}
-                <span
-                  className={`text-sm ${value ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}
+              <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                <div
+                  className="w-full bg-neutral-100 dark:bg-neutral-800 rounded-t flex items-end"
+                  style={{ height: "100%" }}
                 >
-                  {flag.label[language]}
+                  <motion.div
+                    initial={{ height: 0 }}
+                    animate={{ height: `${height}%` }}
+                    transition={{ delay: i * 0.05 }}
+                    className="bg-primary-500 rounded-t w-full"
+                  />
+                </div>
+                <span className="text-2xs text-neutral-400">
+                  {day.date
+                    ? new Date(day.date).toLocaleDateString(
+                        language === "fa" ? "fa-IR" : "en-US",
+                        { weekday: "short" },
+                      )
+                    : ""}
                 </span>
-              </button>
+              </div>
             );
           })}
         </div>
+        {data.dailyViews?.every((d) => d.views === 0) && (
+          <p className="text-center text-xs text-neutral-400 mt-2">
+            {language === "fa"
+              ? "هنوز داده‌ای برای نمایش وجود ندارد"
+              : "No data available yet"}
+          </p>
+        )}
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-        <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
-          {language === "fa" ? "تنظیمات عمومی" : "General Settings"}
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Site Name (FA)
-            </label>
-            <input
-              type="text"
-              value={settings.site_name?.value?.fa || ""}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  site_name: {
-                    ...settings.site_name,
-                    value: { ...settings.site_name?.value, fa: e.target.value },
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Site Name (EN)
-            </label>
-            <input
-              type="text"
-              value={settings.site_name?.value?.en || ""}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  site_name: {
-                    ...settings.site_name,
-                    value: { ...settings.site_name?.value, en: e.target.value },
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Contact Email
-            </label>
-            <input
-              type="email"
-              value={settings.contact_email?.value || ""}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  contact_email: {
-                    ...settings.contact_email,
-                    value: e.target.value,
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Max Lessons Per Day
-            </label>
-            <input
-              type="number"
-              value={settings.max_lessons_per_day?.value || 20}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  max_lessons_per_day: {
-                    ...settings.max_lessons_per_day,
-                    value: parseInt(e.target.value),
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-        <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
-          {language === "fa" ? "تنظیمات هوش مصنوعی" : "AI Settings"}
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">Model</label>
-            <input
-              type="text"
-              value={settings.ai_model?.value || "gpt-3.5-turbo"}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  ai_model: { ...settings.ai_model, value: e.target.value },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Max Tokens
-            </label>
-            <input
-              type="number"
-              value={settings.ai_max_tokens?.value || 2048}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  ai_max_tokens: {
-                    ...settings.ai_max_tokens,
-                    value: parseInt(e.target.value),
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="text-xs text-neutral-500 block mb-1">
-              Temperature
-            </label>
-            <input
-              type="number"
-              step="0.1"
-              min="0"
-              max="2"
-              value={settings.ai_temperature?.value || 0.7}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  ai_temperature: {
-                    ...settings.ai_temperature,
-                    value: parseFloat(e.target.value),
-                  },
-                })
-              }
-              className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-        <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
-          {language === "fa" ? "حالت نگهداری" : "Maintenance Mode"}
-        </h3>
-        <button
-          onClick={() => {
-            const newValue = !settings.maintenance_mode?.value;
-            setSettings({
-              ...settings,
-              maintenance_mode: {
-                ...settings.maintenance_mode,
-                value: newValue,
-              },
-            });
-          }}
-          className={`flex items-center gap-2 p-3 rounded-lg border ${settings.maintenance_mode?.value ? "border-danger-300 bg-danger-50 dark:bg-danger-900/20" : "border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50"}`}
-        >
-          {settings.maintenance_mode?.value ? (
-            <ToggleRight className="w-6 h-6 text-danger-500" />
+      {/* Top Pages & Devices */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
+          <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
+            {language === "fa" ? "📄 صفحات پرطرفدار" : "📄 Top Pages"}
+          </h3>
+          {data.topPages?.length === 0 ? (
+            <p className="text-sm text-neutral-400">
+              {language === "fa"
+                ? "هیچ داده‌ای موجود نیست"
+                : "No data available"}
+            </p>
           ) : (
-            <ToggleLeft className="w-6 h-6 text-neutral-400" />
+            <div className="space-y-2">
+              {(data.topPages || []).slice(0, 10).map((page, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-xs text-neutral-400 w-6">#{i + 1}</span>
+                  <span className="text-sm text-neutral-700 dark:text-neutral-300 flex-1 truncate">
+                    {page.path || "/"}
+                  </span>
+                  <span className="text-sm font-medium text-primary-500">
+                    {page.views || 0}
+                  </span>
+                </div>
+              ))}
+            </div>
           )}
-          <span
-            className={`text-sm ${settings.maintenance_mode?.value ? "text-danger-600 dark:text-danger-400" : "text-neutral-400"}`}
-          >
-            {settings.maintenance_mode?.value
-              ? language === "fa"
-                ? "سایت در حالت نگهداری است"
-                : "Maintenance mode is ON"
-              : language === "fa"
-                ? "سایت فعال است"
-                : "Site is active"}
-          </span>
-        </button>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
+          <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
+            {language === "fa" ? "📱 دستگاه‌ها" : "📱 Devices"}
+          </h3>
+          {data.deviceStats?.length === 0 ||
+          data.deviceStats?.every((d) => d.count === 0) ? (
+            <p className="text-sm text-neutral-400">
+              {language === "fa"
+                ? "هیچ داده‌ای موجود نیست"
+                : "No data available"}
+            </p>
+          ) : (
+            <div className="space-y-3">
+              {(data.deviceStats || []).map((device) => {
+                const Icon = deviceIcons[device.device] || Globe;
+                const total =
+                  (data.deviceStats || []).reduce(
+                    (sum, d) => sum + parseInt(d.count || 0),
+                    0,
+                  ) || 1;
+                const percentage = Math.max(
+                  (parseInt(device.count || 0) / total) * 100,
+                  0,
+                );
+                return (
+                  <div key={device.device} className="flex items-center gap-3">
+                    <Icon className="w-4 h-4 text-neutral-400" />
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300 w-20 capitalize">
+                      {device.device || "other"}
+                    </span>
+                    <div className="flex-1 bg-neutral-100 dark:bg-neutral-800 rounded-full h-4 overflow-hidden">
+                      <div
+                        className="bg-primary-500 h-full transition-all duration-500"
+                        style={{ width: `${Math.min(percentage, 100)}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-neutral-400 w-16 text-right">
+                      {device.count || 0} ({Math.round(percentage)}%)
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Browsers */}
+      <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
+        <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-4">
+          {language === "fa" ? "🌐 مرورگرها" : "🌐 Browsers"}
+        </h3>
+        {data.browserStats?.length === 0 ? (
+          <p className="text-sm text-neutral-400">
+            {language === "fa" ? "هیچ داده‌ای موجود نیست" : "No data available"}
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {(data.browserStats || []).map((browser) => (
+              <div
+                key={browser.browser}
+                className="text-center p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50"
+              >
+                <p className="text-lg font-bold text-neutral-900 dark:text-white">
+                  {browser.count || 0}
+                </p>
+                <p className="text-xs text-neutral-400">
+                  {browser.browser || "Unknown"}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default AdminSettingsPage;
+export default AdminAnalyticsPage;

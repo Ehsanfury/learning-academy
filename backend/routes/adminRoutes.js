@@ -64,7 +64,29 @@ router.get("/users", adminController.getUsers);
 router.get("/users/:id", adminController.getUserById);
 router.put("/users/:id", adminController.updateUser);
 router.put("/users/:id/role", adminController.updateUserRole);
+router.put("/users/:id/status", adminController.updateUserStatus);
 router.delete("/users/:id", adminController.deleteUser);
+
+// ============================================
+// 👨‍🏫 Mentor Management
+// ============================================
+
+router.get("/mentors", adminController.getMentors);
+router.put("/mentors/:id/verify", adminController.verifyMentor);
+
+// ============================================
+// 🔔 Notifications (Broadcast)
+// ============================================
+
+router.get("/notifications", adminController.getNotifications);
+router.post("/notifications", adminController.createNotification);
+router.delete("/notifications/:id", adminController.deleteNotification);
+
+// ============================================
+// 📋 System Logs
+// ============================================
+
+router.get("/logs", adminController.getLogs);
 
 // ============================================
 // 🏆 Achievement Management

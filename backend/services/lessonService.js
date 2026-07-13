@@ -352,7 +352,35 @@ class LessonService {
   }
 
   async checkLessonLock(userId, lessonId) {
-    return { locked: false };
+    try {
+      const lesson = await Lesson.findByPk(lessonId);
+      if (!lesson) return { locked: true, reason: "Lesson not found" };
+      if (!lesson.isActive || lesson.status !== "published") {
+        return { locked: true, reason: "Lesson not available" };
+      }
+      const prerequisites = lesson.prerequisites || [];
+      if (prerequisites.length === 0) return { locked: false };
+
+      const completedPrereqs = await LessonProgress.count({
+        where: {
+          userId,
+          lessonId: { [Op.in]: prerequisites },
+          status: { [Op.in]: ["completed", "perfect"] },
+        },
+      });
+
+      if (completedPrereqs < prerequisites.length) {
+        return {
+          locked: true,
+          reason: "Complete prerequisite lessons first",
+          remainingPrerequisites: prerequisites.length - completedPrereqs,
+        };
+      }
+      return { locked: false };
+    } catch (error) {
+      logger.error(`❌ Error in checkLessonLock:`, error);
+      return { locked: false }; // fail open
+    }
   }
 
   async resetLessonProgress(userId, lessonId) {
@@ -367,20 +395,37 @@ class LessonService {
 
   async getLevels(userId) {
     const levels = ["A1", "A2", "B1", "B2", "C1", "C2"];
-    return levels.map((level) => ({
-      id: level,
-      name: level,
-      progress: 0,
-    }));
+    const result = [];
+    for (const level of levels) {
+      const totalLessons = await Lesson.count({
+        where: { level, isActive: true },
+      });
+      const completedLessons = await LessonProgress.count({
+        where: {
+          userId,
+          status: { [Op.in]: ["completed", "perfect"] },
+        },
+        include: [{ model: Lesson, as: "progressLesson", where: { level }, attributes: [] }],
+      });
+      const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+      result.push({ id: level, name: level, progress, totalLessons, completedLessons });
+    }
+    return result;
   }
 
   async getLevelProgress(userId, level) {
-    return {
-      level,
-      progress: 0,
-      totalLessons: 0,
-      completedLessons: 0,
-    };
+    const totalLessons = await Lesson.count({
+      where: { level, isActive: true },
+    });
+    const completedLessons = await LessonProgress.count({
+      where: {
+        userId,
+        status: { [Op.in]: ["completed", "perfect"] },
+      },
+      include: [{ model: Lesson, as: "progressLesson", where: { level }, attributes: [] }],
+    });
+    const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+    return { level, progress, totalLessons, completedLessons };
   }
 }
 

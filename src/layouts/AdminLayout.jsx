@@ -27,6 +27,9 @@ import {
   GraduationCap,
   Home,
   Ticket,
+  Bell,
+  ScrollText,
+  UserCheck,
 } from "lucide-react";
 import { cn } from "../utils/helpers";
 
@@ -72,14 +75,34 @@ const AdminLayout = ({ children }) => {
       label: { fa: "دستاوردها", en: "Achievements" },
     },
     {
+      path: "/admin/mentors",
+      icon: UserCheck,
+      label: { fa: "منتورها", en: "Mentors" },
+    },
+    {
+      path: "/admin/analytics",
+      icon: BarChart3,
+      label: { fa: "آمار بازدید", en: "Analytics" },
+    },
+    {
       path: "/admin/stats",
       icon: BarChart3,
-      label: { fa: "آمار", en: "Statistics" },
+      label: { fa: "آمار سیستم", en: "Statistics" },
     },
     {
       path: "/admin/tickets",
       icon: Ticket,
       label: { fa: "تیکت‌ها", en: "Tickets" },
+    },
+    {
+      path: "/admin/notifications",
+      icon: Bell,
+      label: { fa: "اعلان‌ها", en: "Notifications" },
+    },
+    {
+      path: "/admin/logs",
+      icon: ScrollText,
+      label: { fa: "لاگ‌ها", en: "Logs" },
     },
     {
       path: "/admin/settings",

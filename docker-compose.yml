@@ -3,9 +3,9 @@ services:
     image: postgres:17
     container_name: learning-academy-db
     environment:
-      POSTGRES_USER: german_user
-      POSTGRES_PASSWORD: german_password
-      POSTGRES_DB: german_academy
+      POSTGRES_USER: ${DB_USER:-german_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-german_password}
+      POSTGRES_DB: ${DB_NAME:-german_academy}
     ports:
       - "5432:5432"
     volumes:
@@ -14,11 +14,20 @@ services:
       - learning-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U german_user -d german_academy"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DB_USER:-german_user} -d ${DB_NAME:-german_academy}",
+        ]
       interval: 5s
       timeout: 10s
       retries: 10
       start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   backend:
     build:
@@ -26,16 +35,38 @@ services:
       dockerfile: Dockerfile
     container_name: learning-academy-backend
     ports:
-      - "5002:5001"
+      - "5001:5001"
     env_file:
       - .env.production
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_USER: ${DB_USER:-german_user}
+      DB_PASSWORD: ${DB_PASSWORD:-german_password}
+      DB_NAME: ${DB_NAME:-german_academy}
     depends_on:
       postgres:
         condition: service_healthy
     networks:
       - learning-network
     restart: unless-stopped
-    command: sh -c "sleep 10 && node server.js"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://localhost:5001/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)})",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   postgres_data:

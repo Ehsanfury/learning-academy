@@ -21,6 +21,10 @@ const AdminAchievements = lazy(() => import("./AdminAchievements"));
 const AdminStats = lazy(() => import("./AdminDashboard"));
 const AdminTickets = lazy(() => import("./AdminTicketsPage"));
 const AdminSettings = lazy(() => import("./AdminSettingsPage"));
+const AdminAnalytics = lazy(() => import("./AdminAnalyticsPage"));
+const AdminLogs = lazy(() => import("./AdminLogsPage"));
+const AdminMentors = lazy(() => import("./AdminMentorsPage"));
+const AdminNotifications = lazy(() => import("./AdminNotificationsPage"));
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -43,6 +47,11 @@ function AdminPage() {
           <Route path="stats" element={<AdminStats />} />
           <Route path="tickets" element={<AdminTickets />} />
           <Route path="settings" element={<AdminSettings />} />
+          <Route path="analytics" element={<AdminAnalytics />} />
+          <Route path="logs" element={<AdminLogs />} />
+          <Route path="mentors" element={<AdminMentors />} />
+          <Route path="notifications" element={<AdminNotifications />} />
+          <Route path="*" element={<AdminDashboard />} />
         </Routes>
       </Suspense>
     </AdminLayout>

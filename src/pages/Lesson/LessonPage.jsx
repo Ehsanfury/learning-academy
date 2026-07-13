@@ -8,7 +8,7 @@
  * - ✅ FIXED: Better error handling for exercise extraction
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@context/AuthContext";
@@ -155,6 +155,7 @@ const LessonPage = () => {
   const { language } = useLanguageContext();
 
   const [lesson, setLesson] = useState(null);
+  const lessonStartTimeRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
@@ -187,6 +188,7 @@ const LessonPage = () => {
       if (lessonData) {
         setLesson(lessonData);
         setActiveSectionIndex(0);
+        lessonStartTimeRef.current = Date.now();
       } else {
         setError("درس یافت نشد");
       }
@@ -250,29 +252,47 @@ const LessonPage = () => {
     setIsCompleting(true);
 
     try {
-      // ✅ FIXED: Use the lesson id from params
+      // Calculate time spent from lesson start
+      const timeSpent = lessonStartTimeRef.current
+        ? Math.round((Date.now() - lessonStartTimeRef.current) / 1000)
+        : 0;
+
+      // Send answers + timeSpent. The backend's calculateScore() will
+      // compute the actual score from answers — DO NOT hardcode it here.
       const response = await api.post(`/lessons/${id}/complete`, {
         answers: answers,
-        timeSpent: 0,
-        score: 100,
+        timeSpent: timeSpent,
       });
 
       if (response.data?.success) {
         setCompleted(true);
         setShowCompletion(true);
 
-        const xpEarned =
-          response.data?.data?.xpEarned || lesson?.xpReward || 50;
-        toast.success(`🎉 درس کامل شد! +${xpEarned} XP`);
+        const xpEarned = response.data?.data?.xpEarned || 0;
+        const score = response.data?.data?.score;
+        if (xpEarned > 0) {
+          toast.success(
+            `🎉 درس کامل شد! +${xpEarned} XP${score !== undefined ? ` (${score}%)` : ""}`,
+          );
+        } else {
+          toast.info(`درس کامل شد. برای کسب XP باید حداقل ۷۰٪ امتیاز بگیرید.`);
+        }
 
         // ✅ Refresh user data to update XP
         if (user?.id) {
           try {
             const profileResponse = await api.get("/users/profile");
             if (profileResponse.data?.success) {
-              // Update user context or localStorage if needed
               const userData = profileResponse.data.data;
-              // Trigger a refresh of the dashboard data
+              if (userData) {
+                try {
+                  const stored = JSON.parse(
+                    localStorage.getItem("user") || "{}",
+                  );
+                  const merged = { ...stored, ...userData };
+                  localStorage.setItem("user", JSON.stringify(merged));
+                } catch (e) {}
+              }
             }
           } catch (e) {
             // Ignore profile refresh error

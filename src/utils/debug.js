@@ -6,7 +6,8 @@
  * - L29: Replaces console.log with controlled debug logging
  */
 
-const isDevelopment = process.env.NODE_ENV === "development";
+// Vite exposes env via import.meta.env (process.env.NODE_ENV is NOT available in browser code)
+const isDevelopment = import.meta.env?.DEV ?? false;
 
 export const debug = {
   log: (...args) => {

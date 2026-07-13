@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,6 +37,7 @@ const LoginPage = () => {
   const { language } = useLanguageContext();
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -62,7 +63,9 @@ const LoginPage = () => {
         toast.success(
           language === "fa" ? "✅ ورود موفق!" : "✅ Login successful!",
         );
-        navigate("/dashboard");
+        // Redirect to the page the user was trying to access, or dashboard
+        const from = location.state?.from?.pathname || "/dashboard";
+        navigate(from, { replace: true });
       } else {
         toast.error(result.error || "Login failed");
       }

@@ -2,14 +2,14 @@
    📱 German Academy - Global Styles
    ============================================ */
 
+/* ========== IMPORTS (must come before @tailwind) ========== */
+@import "./variables.css";
+@import "./animations.css";
+
 /* ========== TAILWIND ========== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ========== IMPORTS ========== */
-@import "./variables.css";
-@import "./animations.css";
 
 /* ============================================
    📱 CSS Variables
@@ -160,12 +160,17 @@ body {
   line-height: var(--line-height-normal);
   color: var(--color-neutral-900);
   background-color: var(--color-neutral-50);
-  direction: rtl;
+  /* Direction is controlled by <html dir="rtl|ltr">, set by LanguageContext */
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* When LTR is active, use Inter font as primary */
+html[dir="ltr"] body {
+  font-family: var(--font-english), var(--font-persian);
 }
 
 .dark body {

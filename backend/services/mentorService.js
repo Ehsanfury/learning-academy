@@ -177,13 +177,18 @@ class MentorService {
         throw new Error("Time slot is not available");
       }
 
+      // Calculate price based on session duration (hourly rate × hours)
+      const durationMs = new Date(endTime).getTime() - new Date(startTime).getTime();
+      const durationHours = durationMs / (1000 * 60 * 60);
+      const sessionPrice = Math.round((mentor.hourlyRate * durationHours) * 100) / 100;
+
       const session = await MentorSession.create({
         mentorId,
         studentId,
         startTime,
         endTime,
         status: "pending",
-        price: mentor.hourlyRate,
+        price: sessionPrice,
       });
 
       return session;
