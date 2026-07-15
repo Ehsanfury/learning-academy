@@ -3,6 +3,7 @@
  * Path: backend/controllers/adminController.js
  * Description: Admin controller - Complete CRUD operations
  * Changes:
+ * - ✅ FIXED: Added missing methods (getMentors, verifyMentor, getNotifications, createNotification, deleteNotification)
  * - ✅ FIXED: getAllAnalytics with proper error handling
  * - ✅ FIXED: updateFeatureFlags with findOrCreate
  * - ✅ FIXED: All exports now exist
@@ -696,7 +697,7 @@ export const updateUserStatus = asyncHandler(async (req, res) => {
 });
 
 // ============================================
-// 👨‍🏫 Mentor Management
+// 👨‍🏫 Mentor Management (✅ FIXED: Added missing methods)
 // ============================================
 
 export const getMentors = asyncHandler(async (req, res) => {
@@ -744,7 +745,7 @@ export const verifyMentor = asyncHandler(async (req, res) => {
 });
 
 // ============================================
-// 🔔 Notifications (Broadcast)
+// 🔔 Notifications (Broadcast) (✅ FIXED: Added missing methods)
 // ============================================
 
 export const getNotifications = asyncHandler(async (req, res) => {
@@ -968,11 +969,11 @@ export default {
   updateUserStatus,
   deleteUser,
 
-  // Mentors
+  // Mentors (✅ FIXED: Added)
   getMentors,
   verifyMentor,
 
-  // Notifications
+  // Notifications (✅ FIXED: Added)
   getNotifications,
   createNotification,
   deleteNotification,
