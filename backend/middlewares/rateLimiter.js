@@ -3,17 +3,17 @@
  * Path: backend/middlewares/rateLimiter.js
  * Description: Rate limiting middleware
  * Changes:
- * - ✅ FIXED: Dynamic retryAfter based on actual windowMs
- * - ✅ FIXED: Added aiLimiter for AI endpoints
- * - ✅ FIXED: All handlers properly respond with 429
- * - ✅ FIXED: Removed duplicate declarations
+ * - ✅ FIXED: Higher limits for development environment
  */
 
 import rateLimit from "express-rate-limit";
 
+// ✅ افزایش محدودیت در محیط توسعه
+const isDevelopment = process.env.NODE_ENV !== "production";
+
 export const generalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: isDevelopment ? 1000 : 100, // ✅ 1000 درخواست در توسعه
   message: {
     success: false,
     message: "Too many requests, please try again later.",
@@ -33,7 +33,7 @@ export const generalLimiter = rateLimit({
 
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: process.env.NODE_ENV === "production" ? 5 : 100,
+  max: isDevelopment ? 50 : 5, // ✅ 50 درخواست در توسعه
   message: {
     success: false,
     message: "Too many login attempts, please try again later.",
@@ -53,7 +53,7 @@ export const authLimiter = rateLimit({
 
 export const registerLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: isDevelopment ? 50 : 5,
   message: {
     success: false,
     message: "Too many registration attempts, please try again later.",
@@ -73,7 +73,7 @@ export const registerLimiter = rateLimit({
 
 export const storiesLimiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 30,
+  max: isDevelopment ? 100 : 30,
   message: {
     success: false,
     message: "Too many requests to stories, please slow down.",
@@ -92,7 +92,7 @@ export const storiesLimiter = rateLimit({
 
 export const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 20,
+  max: isDevelopment ? 50 : 20,
   message: {
     success: false,
     message: "Too many AI requests, please wait a moment.",
@@ -111,7 +111,7 @@ export const aiLimiter = rateLimit({
 
 export const strictLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 30,
+  max: isDevelopment ? 200 : 30,
   message: {
     success: false,
     message: "Too many requests, please slow down.",
@@ -131,7 +131,7 @@ export const strictLimiter = rateLimit({
 
 export const apiLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  max: 1000,
+  max: isDevelopment ? 5000 : 1000,
   message: {
     success: false,
     message: "API rate limit exceeded. Please try again later.",

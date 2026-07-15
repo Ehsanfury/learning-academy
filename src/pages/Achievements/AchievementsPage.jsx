@@ -120,7 +120,16 @@ const AchievementsPage = () => {
       setError(null);
 
       const response = await api.get("/achievements");
-      const achievementsData = response?.data?.data || response?.data || [];
+      const rawData = response?.data?.data || response?.data || [];
+
+      // Backend returns `earned` (boolean), but UI expects `isEarned`.
+      // Normalize the field name for all achievements.
+      const achievementsData = (Array.isArray(rawData) ? rawData : []).map(
+        (a) => ({
+          ...a,
+          isEarned: a.earned ?? a.isEarned ?? false,
+        }),
+      );
 
       setAchievements(achievementsData);
 

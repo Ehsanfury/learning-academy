@@ -208,9 +208,12 @@ const ProfilePage = () => {
       try {
         const achRes = await api.get("/achievements");
         const achData = achRes?.data?.data || achRes?.data || [];
-        setAchievements(
-          Array.isArray(achData) ? achData.filter((a) => a.isEarned) : [],
-        );
+        // Normalize: backend returns `earned`, UI expects `isEarned`
+        const normalized = (Array.isArray(achData) ? achData : []).map((a) => ({
+          ...a,
+          isEarned: a.earned ?? a.isEarned ?? false,
+        }));
+        setAchievements(normalized.filter((a) => a.isEarned));
       } catch (e) {
         console.warn("Could not fetch achievements:", e);
         setAchievements([]);

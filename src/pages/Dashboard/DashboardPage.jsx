@@ -58,6 +58,36 @@ import Skeleton from "../../components/ui/Skeleton";
 import Button from "../../components/ui/Button";
 
 // ============================================
+// 📊 Level Thresholds (matches backend xpService.js)
+// ============================================
+const LEVEL_THRESHOLDS = [
+  { level: 1, minXP: 0, maxXP: 99 },
+  { level: 2, minXP: 100, maxXP: 249 },
+  { level: 3, minXP: 250, maxXP: 499 },
+  { level: 4, minXP: 500, maxXP: 999 },
+  { level: 5, minXP: 1000, maxXP: 1999 },
+  { level: 6, minXP: 2000, maxXP: 3499 },
+  { level: 7, minXP: 3500, maxXP: 4999 },
+  { level: 8, minXP: 5000, maxXP: 7499 },
+  { level: 9, minXP: 7500, maxXP: 9999 },
+  { level: 10, minXP: 10000, maxXP: Infinity },
+];
+
+// Returns XP threshold required to reach the NEXT level after `currentLevel`
+const getNextLevelXP = (currentLevel) => {
+  const next = LEVEL_THRESHOLDS.find(
+    (t) => t.level === (currentLevel || 1) + 1,
+  );
+  return next ? next.minXP : (currentLevel || 1) * 1000;
+};
+
+// Returns current level's min XP threshold (for proper progress calculation)
+const getCurrentLevelXP = (currentLevel) => {
+  const cur = LEVEL_THRESHOLDS.find((t) => t.level === (currentLevel || 1));
+  return cur ? cur.minXP : 0;
+};
+
+// ============================================
 // 📊 Skeleton Components
 // ============================================
 
@@ -233,23 +263,60 @@ function DashboardPage() {
         lessonsData = [];
       }
 
-      // 2. دریافت آمار
+      // 2. دریافت آمار کاربر (XP, level, streak, dailyGoal از /users/stats)
       try {
-        const statsRes = await api.get("/lessons/stats");
-        const statsData =
-          statsRes?.data?.data || statsRes?.data || statsRes || {};
+        const [userStatsRes, lessonStatsRes] = await Promise.all([
+          api.get("/users/stats"),
+          api.get("/lessons/stats"),
+        ]);
+
+        const userData = userStatsRes?.data?.data || userStatsRes?.data || {};
+        const lessonData =
+          lessonStatsRes?.data?.data || lessonStatsRes?.data || {};
+
+        // Get today's XP from XPHistory (sum of XP earned today)
+        let todayXP = 0;
+        try {
+          const todayRes = await api.get("/progress/daily-stats?days=1");
+          const todayData = todayRes?.data?.data || [];
+          if (Array.isArray(todayData) && todayData.length > 0) {
+            // Today's entry — find today's date
+            const today = new Date().toISOString().split("T")[0];
+            const todayEntry = todayData.find(
+              (d) => d.date === today || d.date?.startsWith?.(today),
+            );
+            if (todayEntry) todayXP = parseInt(todayEntry.xp, 10) || 0;
+          }
+        } catch (e) {
+          debug.warn("⚠️ Could not fetch today XP:", e);
+        }
+
         setStats((prev) => ({
           ...prev,
-          completedLessons: statsData.completedLessons || 0,
-          totalLessons: statsData.totalLessons || lessonsData.length,
-          xp: statsData.xp || user?.xp || 0,
-          level: statsData.level || user?.level || 1,
-          streak: statsData.streak || user?.streak || 0,
-          todayXP: statsData.todayXP || 0,
-          dailyGoal: statsData.dailyGoal || 50,
+          // From /users/stats — the authoritative source for user XP/level
+          xp: userData.xp ?? user?.xp ?? 0,
+          level: userData.level ?? user?.level ?? 1,
+          streak: userData.streak ?? user?.streak ?? 0,
+          dailyGoal: userData.dailyGoal ?? 50,
+          // From /lessons/stats — lesson completion counts
+          completedLessons: lessonData.completedLessons || 0,
+          totalLessons: lessonData.totalLessons || lessonsData.length,
+          // Today's progress
+          todayXP,
+          // Calculate next level threshold from level
+          nextLevelXP: getNextLevelXP(userData.level ?? user?.level ?? 1),
         }));
       } catch (e) {
         debug.warn("⚠️ Could not fetch stats:", e);
+        // Fallback to user data from AuthContext
+        setStats((prev) => ({
+          ...prev,
+          xp: user?.xp || 0,
+          level: user?.level || 1,
+          streak: user?.streak || 0,
+          dailyGoal: 50,
+          nextLevelXP: getNextLevelXP(user?.level || 1),
+        }));
       }
 
       // 3. پیدا کردن درس بعدی
@@ -268,7 +335,16 @@ function DashboardPage() {
       try {
         const achRes = await api.get("/achievements");
         const achData = achRes?.data?.data || achRes?.data || [];
-        setAchievements(Array.isArray(achData) ? achData.slice(0, 4) : []);
+        // Backend returns `earned` (boolean), but AchievementCard expects `isEarned`.
+        // Normalize the field name for all achievements.
+        const normalized = (Array.isArray(achData) ? achData : []).map((a) => ({
+          ...a,
+          isEarned: a.earned ?? a.isEarned ?? false,
+        }));
+        // Show earned achievements first, then locked ones (up to 4 total)
+        const earned = normalized.filter((a) => a.isEarned);
+        const locked = normalized.filter((a) => !a.isEarned);
+        setAchievements([...earned, ...locked].slice(0, 4));
       } catch (e) {
         debug.warn("⚠️ Could not fetch achievements:", e);
         setAchievements([]);
@@ -279,32 +355,48 @@ function DashboardPage() {
         const activityRes = await api.get("/progress/daily-stats?days=7");
         const activityData = activityRes?.data?.data || activityRes?.data || [];
 
-        if (Array.isArray(activityData) && activityData.length > 0) {
-          setWeeklyActivity(activityData);
-        } else {
-          // Fallback to empty data
-          setWeeklyActivity(
-            Array.from({ length: 7 }, (_, i) => ({
-              day: i + 1,
-              date: new Date(Date.now() - (6 - i) * 86400000)
-                .toISOString()
-                .split("T")[0],
-              count: 0,
-              xp: 0,
-            })),
-          );
+        // Build a 7-day window ending today, filling missing days with 0 XP.
+        // The backend returns only days with activity; we need all 7 days
+        // aligned to actual weekdays so the chart shows correctly.
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const activityMap = {};
+        if (Array.isArray(activityData)) {
+          activityData.forEach((d) => {
+            if (d.date) activityMap[d.date] = d;
+          });
         }
+
+        const fullWeek = Array.from({ length: 7 }, (_, i) => {
+          const date = new Date(today);
+          date.setDate(date.getDate() - (6 - i));
+          const dateStr = date.toISOString().split("T")[0];
+          const match = activityMap[dateStr];
+          return {
+            date: dateStr,
+            day: i + 1,
+            count: match ? parseInt(match.count, 10) || 0 : 0,
+            xp: match ? parseInt(match.xp, 10) || 0 : 0,
+          };
+        });
+
+        setWeeklyActivity(fullWeek);
       } catch (e) {
         debug.warn("⚠️ Could not fetch weekly activity:", e);
+        // Fallback: 7 empty days ending today
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
         setWeeklyActivity(
-          Array.from({ length: 7 }, (_, i) => ({
-            day: i + 1,
-            date: new Date(Date.now() - (6 - i) * 86400000)
-              .toISOString()
-              .split("T")[0],
-            count: 0,
-            xp: 0,
-          })),
+          Array.from({ length: 7 }, (_, i) => {
+            const date = new Date(today);
+            date.setDate(date.getDate() - (6 - i));
+            return {
+              date: date.toISOString().split("T")[0],
+              day: i + 1,
+              count: 0,
+              xp: 0,
+            };
+          }),
         );
       }
 
@@ -669,17 +761,28 @@ function DashboardPage() {
               {weeklyActivity.length > 0 ? (
                 weeklyActivity.slice(0, 7).map((day, index) => {
                   const xpValue = day.xp || day.count || 0;
+                  // Min height of 4px when there's any activity so the bar is visible,
+                  // otherwise 0 (so empty days don't show a phantom bar)
+                  const barHeight =
+                    xpValue > 0 ? Math.max((xpValue / maxXP) * 60, 4) : 0;
                   return (
                     <div
                       key={index}
                       className="flex flex-col items-center flex-1"
+                      title={`${day.date}: ${xpValue} XP`}
                     >
-                      <motion.div
-                        className="w-full bg-primary-200 dark:bg-primary-800 rounded-t-md"
-                        initial={{ height: 0 }}
-                        animate={{ height: `${(xpValue / maxXP) * 60}px` }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                      />
+                      {xpValue > 0 ? (
+                        <motion.div
+                          className="w-full bg-primary-500 dark:bg-primary-400 rounded-t-md"
+                          initial={{ height: 0 }}
+                          animate={{ height: `${barHeight}px` }}
+                          transition={{ duration: 0.6, delay: index * 0.1 }}
+                        />
+                      ) : (
+                        <div className="w-full">
+                          <div className="w-1 h-1 mx-auto bg-neutral-300 dark:bg-neutral-700 rounded-full" />
+                        </div>
+                      )}
                       <span className="text-2xs text-neutral-400 mt-1">
                         {weekDays[language][index]}
                       </span>

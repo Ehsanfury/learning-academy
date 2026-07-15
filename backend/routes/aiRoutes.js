@@ -8,6 +8,7 @@
 
 import express from "express";
 import { authenticate } from "../middlewares/authMiddleware.js";
+import { aiLimiter } from "../middlewares/rateLimiter.js";
 import {
   chat,
   correctGrammar,
@@ -25,8 +26,9 @@ import {
 
 const router = express.Router();
 
-// همه مسیرها نیاز به احراز هویت دارند
+// All routes require auth + AI rate limit (20 req/min per user) to protect AI bills
 router.use(authenticate);
+router.use(aiLimiter);
 
 // چت عمومی
 router.post("/chat", chat);

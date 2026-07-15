@@ -140,6 +140,25 @@ export const AuthProvider = ({ children }) => {
     storage.setUser(updatedUser);
   }, []);
 
+  // Refresh user data from backend (after XP changes, profile updates, etc.)
+  // This re-fetches /auth/me and updates the AuthContext state so all
+  // components using useAuth() see fresh data (xp, level, streak, etc.)
+  const refreshUser = useCallback(async () => {
+    try {
+      const response = await authApi.getMe();
+      if (response.success && response.data?.user) {
+        const userData = response.data.user;
+        setUser(userData);
+        storage.setUser(userData);
+        debug.log(`✅ User refreshed: ${userData.email}`);
+        return userData;
+      }
+    } catch (error) {
+      debug.error("Failed to refresh user:", error);
+    }
+    return null;
+  }, []);
+
   const value = {
     user,
     setUser,
@@ -149,6 +168,7 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     updateUser,
+    refreshUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

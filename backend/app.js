@@ -519,12 +519,14 @@ export const initializeDatabase = async () => {
       throw new Error("Database connection failed");
     }
 
-    if (config.isDevelopment) {
+    // Sync schema in both dev and prod (safe mode: no alter, no force).
+    // Set DB_SYNC=false to disable (e.g., when using migrations only).
+    const shouldSync = process.env.DB_SYNC !== "false";
+    if (shouldSync) {
       await sequelize.sync({ alter: false, force: false });
-      logInfo("✅ Database synced successfully (development mode)");
+      logInfo(`✅ Database synced (${config.nodeEnv} mode)`);
     } else {
-      logInfo("✅ Database connection verified (production mode)");
-      logInfo("ℹ️ Schema changes should be applied via migrations in production");
+      logInfo("✅ Database connection verified (sync disabled via DB_SYNC=false)");
     }
 
     const adminEmail = config.admin?.email || "admin@german-academy.com";
@@ -536,7 +538,9 @@ export const initializeDatabase = async () => {
       const adminPassword = config.admin?.password;
       if (!adminPassword) {
         logInfo("⚠️ ADMIN_PASSWORD is not set in .env — Admin user creation skipped.");
-      } else if (config.isDevelopment || !adminPassword.includes("admin")) {
+      } else {
+        // The production-readiness guard already blocks default admin passwords.
+        // Create the admin user if ADMIN_PASSWORD is set.
         await User.create({
           name: "Admin",
           email: adminEmail,

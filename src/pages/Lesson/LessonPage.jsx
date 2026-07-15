@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@context/AuthContext";
 import { useLanguageContext } from "@context/LanguageContext";
 import api from "@services/api";
+import debug from "@utils/debug";
 import {
   ArrowLeft,
   CheckCircle,
@@ -151,7 +152,7 @@ const SECTION_CONFIG = {
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const { language } = useLanguageContext();
 
   const [lesson, setLesson] = useState(null);
@@ -278,24 +279,14 @@ const LessonPage = () => {
           toast.info(`درس کامل شد. برای کسب XP باید حداقل ۷۰٪ امتیاز بگیرید.`);
         }
 
-        // ✅ Refresh user data to update XP
-        if (user?.id) {
+        // ✅ Refresh user data to update XP, level, streak in AuthContext
+        // This makes the dashboard show fresh data immediately after lesson completion.
+        if (user?.id && typeof refreshUser === "function") {
           try {
-            const profileResponse = await api.get("/users/profile");
-            if (profileResponse.data?.success) {
-              const userData = profileResponse.data.data;
-              if (userData) {
-                try {
-                  const stored = JSON.parse(
-                    localStorage.getItem("user") || "{}",
-                  );
-                  const merged = { ...stored, ...userData };
-                  localStorage.setItem("user", JSON.stringify(merged));
-                } catch (e) {}
-              }
-            }
+            await refreshUser();
           } catch (e) {
-            // Ignore profile refresh error
+            // Non-critical — the lesson completion itself succeeded
+            debug.warn("Could not refresh user after lesson completion:", e);
           }
         }
       } else {
