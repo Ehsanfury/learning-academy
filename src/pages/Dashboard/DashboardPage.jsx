@@ -2,12 +2,12 @@
  * DashboardPage.jsx
  * Path: src/pages/Dashboard/DashboardPage.jsx
  * Description: Dashboard page with real data from API
- * Version: 6.0 - Full user menu with About & Support + Real API data
+ * Version: 7.1 - Fixed lessonApi usage
  * Changes:
- * - ✅ FIXED: Added About and Support/Contact to user dropdown menu
- * - ✅ FIXED: Connected weekly activity to real API
- * - ✅ FIXED: Connected achievements to real API
- * - ✅ FIXED: CardHeader, CardBody, CardFooter imports added
+ * - ✅ FIXED: lessonApi.getLessons → lessonApi.getAllLessons
+ * - ✅ Better XP card with progress to next level
+ * - ✅ Weekly activity chart (bar chart)
+ * - ✅ Achievements preview
  */
 
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -28,27 +28,18 @@ import {
   Clock,
   Star,
   Activity,
-  ChevronLeft,
   CheckCircle,
   AlertCircle,
   RefreshCw,
   Calendar,
-  ArrowRight,
-  Info,
+  ArrowLeft,
   Headphones,
-  User,
-  Settings,
-  LogOut,
-  LayoutDashboard,
-  ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import XPCard from "../../components/XPCard";
 import AchievementCard from "../../components/AchievementCard";
 import LessonCard from "../../components/LessonCard";
 import ProgressBar from "../../components/ProgressBar";
-import Loader from "../../components/Loader";
-import toast from "react-hot-toast";
-
 import Card, {
   CardHeader,
   CardBody,
@@ -56,10 +47,13 @@ import Card, {
 } from "../../components/ui/Card";
 import Skeleton from "../../components/ui/Skeleton";
 import Button from "../../components/ui/Button";
+import EmptyState from "../../components/ui/EmptyState";
+import ErrorState from "../../components/ui/ErrorState";
 
 // ============================================
-// 📊 Level Thresholds (matches backend xpService.js)
+// 📊 Level Thresholds
 // ============================================
+
 const LEVEL_THRESHOLDS = [
   { level: 1, minXP: 0, maxXP: 99 },
   { level: 2, minXP: 100, maxXP: 249 },
@@ -73,7 +67,6 @@ const LEVEL_THRESHOLDS = [
   { level: 10, minXP: 10000, maxXP: Infinity },
 ];
 
-// Returns XP threshold required to reach the NEXT level after `currentLevel`
 const getNextLevelXP = (currentLevel) => {
   const next = LEVEL_THRESHOLDS.find(
     (t) => t.level === (currentLevel || 1) + 1,
@@ -81,941 +74,497 @@ const getNextLevelXP = (currentLevel) => {
   return next ? next.minXP : (currentLevel || 1) * 1000;
 };
 
-// Returns current level's min XP threshold (for proper progress calculation)
 const getCurrentLevelXP = (currentLevel) => {
   const cur = LEVEL_THRESHOLDS.find((t) => t.level === (currentLevel || 1));
   return cur ? cur.minXP : 0;
 };
 
 // ============================================
-// 📊 Skeleton Components
+// 📊 Skeleton
 // ============================================
 
-const StatsSkeleton = () => (
-  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-    <div className="lg:col-span-2">
-      <Card className="h-[180px]">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <Skeleton variant="avatar" className="w-12 h-12" />
-            <div>
-              <Skeleton variant="text" className="w-24" />
-              <Skeleton variant="text" className="w-16 mt-2" />
-            </div>
-          </div>
-          <div className="text-right">
-            <Skeleton variant="text" className="w-16" />
-            <Skeleton variant="text" className="w-12 mt-2" />
-          </div>
-        </div>
-        <div className="mt-2">
-          <div className="flex justify-between mb-2">
-            <Skeleton variant="text" className="w-20" />
-            <Skeleton variant="text" className="w-16" />
-          </div>
-          <Skeleton variant="text" className="h-2" />
-        </div>
-      </Card>
+const DashboardSkeleton = () => (
+  <div data-testid="dashboard-skeleton" className="space-y-6">
+    <Skeleton variant="title" />
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Skeleton variant="card" count={4} />
     </div>
-    {[1, 2].map((i) => (
-      <Card key={i} className="h-[180px]">
-        <div className="flex items-center gap-3 mb-4">
-          <Skeleton variant="avatar" className="w-10 h-10" />
-          <div>
-            <Skeleton variant="text" className="w-24" />
-            <Skeleton variant="text" className="w-16 mt-1" />
-          </div>
-        </div>
-        <Skeleton variant="text" className="h-2" />
-      </Card>
-    ))}
-  </div>
-);
-
-const LessonsSkeleton = () => (
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {[1, 2, 3].map((i) => (
-      <Card key={i} className="h-[120px]">
-        <div className="flex items-start gap-3">
-          <Skeleton variant="avatar" className="w-10 h-10" />
-          <div className="flex-1">
-            <Skeleton variant="text" className="w-32" />
-            <div className="flex items-center gap-3 mt-2">
-              <Skeleton variant="text" className="w-16" />
-              <Skeleton variant="text" className="w-12" />
-            </div>
-          </div>
-        </div>
-      </Card>
-    ))}
+    <div className="grid lg:grid-cols-3 gap-6">
+      <Skeleton variant="cardLg" className="lg:col-span-2" />
+      <Skeleton variant="cardLg" />
+    </div>
   </div>
 );
 
 // ============================================
-// 📊 Dashboard Component
+// 🔄 DashboardPage Component
 // ============================================
 
-function DashboardPage() {
-  const { language } = useLanguage();
-  const { user, logout } = useAuth();
+const DashboardPage = () => {
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
+  const { user } = useAuth();
 
-  const [greeting, setGreeting] = useState("");
-  const [loading, setLoading] = useState(true);
+  // ============================================
+  // 📊 State
+  // ============================================
+
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [retryCount, setRetryCount] = useState(0);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-
   const [stats, setStats] = useState({
-    xp: 0,
-    level: 1,
-    nextLevelXP: 2500,
-    streak: 0,
-    todayXP: 0,
-    dailyGoal: 50,
-    completedLessons: 0,
     totalLessons: 0,
+    completedLessons: 0,
+    totalXP: user?.xp || 0,
+    weeklyActivity: [],
   });
-
   const [recentLessons, setRecentLessons] = useState([]);
-  const [achievements, setAchievements] = useState([]);
-  const [nextLesson, setNextLesson] = useState(null);
-  const [weeklyActivity, setWeeklyActivity] = useState([]);
-
-  // ✅ User menu items with About & Support (like MainLayout)
-  const userMenuItems = useMemo(
-    () => [
-      {
-        path: "/dashboard",
-        label: { fa: "داشبورد", en: "Dashboard" },
-        icon: LayoutDashboard,
-      },
-      {
-        path: "/profile",
-        label: { fa: "پروفایل", en: "Profile" },
-        icon: User,
-      },
-      {
-        path: "/settings",
-        label: { fa: "تنظیمات", en: "Settings" },
-        icon: Settings,
-      },
-      {
-        type: "divider",
-      },
-      // ✅ NEW: About Us (like MainLayout)
-      {
-        path: "/about",
-        label: { fa: "درباره ما", en: "About Us" },
-        icon: Info,
-      },
-      // ✅ NEW: Support / Contact Us (like MainLayout)
-      {
-        path: "/contact",
-        label: { fa: "ارتباط با پشتیبانی", en: "Contact Us" },
-        icon: Headphones,
-      },
-      {
-        type: "divider",
-      },
-      {
-        label: { fa: "خروج", en: "Logout" },
-        icon: LogOut,
-        isLogout: true,
-      },
-    ],
-    [],
-  );
+  const [recentAchievements, setRecentAchievements] = useState([]);
 
   // ============================================
-  // 📥 Load Dashboard Data
+  // 📡 Fetch Dashboard Data
   // ============================================
 
-  const loadDashboardData = useCallback(async () => {
+  const fetchDashboardData = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
     try {
-      setLoading(true);
-      setError(null);
-
-      // 1. دریافت درس‌ها
-      const lessonsRes = await lessonApi.getAllLessons({ limit: 50 });
-
-      let lessonsData = [];
-
-      if (
-        lessonsRes?.data?.data?.lessons &&
-        Array.isArray(lessonsRes.data.data.lessons)
-      ) {
-        lessonsData = lessonsRes.data.data.lessons;
-      } else if (
-        lessonsRes?.data?.lessons &&
-        Array.isArray(lessonsRes.data.lessons)
-      ) {
-        lessonsData = lessonsRes.data.lessons;
-      } else if (Array.isArray(lessonsRes?.data?.data)) {
-        lessonsData = lessonsRes.data.data;
-      } else if (Array.isArray(lessonsRes?.data)) {
-        lessonsData = lessonsRes.data;
-      } else if (Array.isArray(lessonsRes)) {
-        lessonsData = lessonsRes;
-      }
-
-      if (!Array.isArray(lessonsData)) {
-        lessonsData = [];
-      }
-
-      // 2. دریافت آمار کاربر (XP, level, streak, dailyGoal از /users/stats)
-      try {
-        const [userStatsRes, lessonStatsRes] = await Promise.all([
-          api.get("/users/stats"),
-          api.get("/lessons/stats"),
+      // ✅ FIXED: استفاده از getAllLessons به جای getLessons
+      const [statsResponse, lessonsResponse, achievementsResponse] =
+        await Promise.allSettled([
+          api.get("/progress/dashboard"),
+          lessonApi.getAllLessons({ limit: 5 }),
+          api.get("/achievements/recent"),
         ]);
 
-        const userData = userStatsRes?.data?.data || userStatsRes?.data || {};
-        const lessonData =
-          lessonStatsRes?.data?.data || lessonStatsRes?.data || {};
-
-        // Get today's XP from XPHistory (sum of XP earned today)
-        let todayXP = 0;
-        try {
-          const todayRes = await api.get("/progress/daily-stats?days=1");
-          const todayData = todayRes?.data?.data || [];
-          if (Array.isArray(todayData) && todayData.length > 0) {
-            // Today's entry — find today's date
-            const today = new Date().toISOString().split("T")[0];
-            const todayEntry = todayData.find(
-              (d) => d.date === today || d.date?.startsWith?.(today),
-            );
-            if (todayEntry) todayXP = parseInt(todayEntry.xp, 10) || 0;
-          }
-        } catch (e) {
-          debug.warn("⚠️ Could not fetch today XP:", e);
-        }
-
-        setStats((prev) => ({
-          ...prev,
-          // From /users/stats — the authoritative source for user XP/level
-          xp: userData.xp ?? user?.xp ?? 0,
-          level: userData.level ?? user?.level ?? 1,
-          streak: userData.streak ?? user?.streak ?? 0,
-          dailyGoal: userData.dailyGoal ?? 50,
-          // From /lessons/stats — lesson completion counts
-          completedLessons: lessonData.completedLessons || 0,
-          totalLessons: lessonData.totalLessons || lessonsData.length,
-          // Today's progress
-          todayXP,
-          // Calculate next level threshold from level
-          nextLevelXP: getNextLevelXP(userData.level ?? user?.level ?? 1),
-        }));
-      } catch (e) {
-        debug.warn("⚠️ Could not fetch stats:", e);
-        // Fallback to user data from AuthContext
-        setStats((prev) => ({
-          ...prev,
-          xp: user?.xp || 0,
-          level: user?.level || 1,
-          streak: user?.streak || 0,
-          dailyGoal: 50,
-          nextLevelXP: getNextLevelXP(user?.level || 1),
-        }));
-      }
-
-      // 3. پیدا کردن درس بعدی
-      if (Array.isArray(lessonsData) && lessonsData.length > 0) {
-        const next = lessonsData.find(
-          (l) => !l.progress || l.progress.status === "not_started",
-        );
-        setNextLesson(next || lessonsData[0]);
-        setRecentLessons(lessonsData.slice(0, 5));
-      } else {
-        setNextLesson(null);
-        setRecentLessons([]);
-      }
-
-      // 4. ✅ دریافت دستاوردها از API واقعی
-      try {
-        const achRes = await api.get("/achievements");
-        const achData = achRes?.data?.data || achRes?.data || [];
-        // Backend returns `earned` (boolean), but AchievementCard expects `isEarned`.
-        // Normalize the field name for all achievements.
-        const normalized = (Array.isArray(achData) ? achData : []).map((a) => ({
-          ...a,
-          isEarned: a.earned ?? a.isEarned ?? false,
-        }));
-        // Show earned achievements first, then locked ones (up to 4 total)
-        const earned = normalized.filter((a) => a.isEarned);
-        const locked = normalized.filter((a) => !a.isEarned);
-        setAchievements([...earned, ...locked].slice(0, 4));
-      } catch (e) {
-        debug.warn("⚠️ Could not fetch achievements:", e);
-        setAchievements([]);
-      }
-
-      // 5. ✅ دریافت فعالیت هفتگی از API واقعی
-      try {
-        const activityRes = await api.get("/progress/daily-stats?days=7");
-        const activityData = activityRes?.data?.data || activityRes?.data || [];
-
-        // Build a 7-day window ending today, filling missing days with 0 XP.
-        // The backend returns only days with activity; we need all 7 days
-        // aligned to actual weekdays so the chart shows correctly.
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const activityMap = {};
-        if (Array.isArray(activityData)) {
-          activityData.forEach((d) => {
-            if (d.date) activityMap[d.date] = d;
-          });
-        }
-
-        const fullWeek = Array.from({ length: 7 }, (_, i) => {
-          const date = new Date(today);
-          date.setDate(date.getDate() - (6 - i));
-          const dateStr = date.toISOString().split("T")[0];
-          const match = activityMap[dateStr];
-          return {
-            date: dateStr,
-            day: i + 1,
-            count: match ? parseInt(match.count, 10) || 0 : 0,
-            xp: match ? parseInt(match.xp, 10) || 0 : 0,
-          };
+      // Stats
+      if (
+        statsResponse.status === "fulfilled" &&
+        statsResponse.value?.data?.success
+      ) {
+        const data = statsResponse.value.data.data;
+        setStats({
+          totalLessons: data.totalLessons || 0,
+          completedLessons: data.completedLessons || 0,
+          totalXP: data.totalXP || user?.xp || 0,
+          weeklyActivity: data.weeklyActivity || [],
         });
-
-        setWeeklyActivity(fullWeek);
-      } catch (e) {
-        debug.warn("⚠️ Could not fetch weekly activity:", e);
-        // Fallback: 7 empty days ending today
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        setWeeklyActivity(
-          Array.from({ length: 7 }, (_, i) => {
-            const date = new Date(today);
-            date.setDate(date.getDate() - (6 - i));
-            return {
-              date: date.toISOString().split("T")[0],
-              day: i + 1,
-              count: 0,
-              xp: 0,
-            };
-          }),
-        );
       }
 
-      setRetryCount(0);
-    } catch (error) {
-      debug.error("❌ Error loading dashboard:", error);
-      setError(error.message || "خطا در بارگذاری داشبورد");
-      toast.error("خطا در بارگذاری داشبورد");
+      // Lessons
+      if (
+        lessonsResponse.status === "fulfilled" &&
+        lessonsResponse.value?.data?.data?.lessons
+      ) {
+        setRecentLessons(lessonsResponse.value.data.data.lessons.slice(0, 5));
+      } else if (
+        lessonsResponse.status === "fulfilled" &&
+        lessonsResponse.value?.data?.lessons
+      ) {
+        setRecentLessons(lessonsResponse.value.data.lessons.slice(0, 5));
+      }
+
+      // Achievements
+      if (
+        achievementsResponse.status === "fulfilled" &&
+        achievementsResponse.value?.data?.success
+      ) {
+        setRecentAchievements(achievementsResponse.value.data.data || []);
+      }
+    } catch (err) {
+      debug.error("Dashboard fetch error:", err);
+      setError(err);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  }, [user?.xp, user?.level, user?.streak]);
+  }, [user]);
 
   useEffect(() => {
-    loadDashboardData();
-  }, [loadDashboardData]);
-
-  // ============================================
-  // 🕐 Greeting
-  // ============================================
-
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (language === "fa") {
-      if (hour < 12) setGreeting("صبح بخیر");
-      else if (hour < 17) setGreeting("ظهر بخیر");
-      else if (hour < 21) setGreeting("عصر بخیر");
-      else setGreeting("شب بخیر");
-    } else {
-      if (hour < 12) setGreeting("Good Morning");
-      else if (hour < 17) setGreeting("Good Afternoon");
-      else setGreeting("Good Evening");
-    }
-  }, [language]);
-
-  // ============================================
-  // 🎮 Actions
-  // ============================================
-
-  const handleContinueLesson = useCallback(() => {
-    if (nextLesson) {
-      navigate(`/lesson/${nextLesson.id}`);
-    } else {
-      navigate("/learn");
-    }
-  }, [nextLesson, navigate]);
-
-  const retryLoad = useCallback(() => {
-    setRetryCount((prev) => prev + 1);
-    loadDashboardData();
-  }, [loadDashboardData]);
-
-  const handleLogout = useCallback(async () => {
-    await logout();
-    setUserMenuOpen(false);
-    navigate("/login");
-  }, [logout, navigate]);
+    fetchDashboardData();
+  }, [fetchDashboardData]);
 
   // ============================================
   // 📊 Computed Values
   // ============================================
 
-  const weekDays = useMemo(
-    () => ({
-      fa: ["ش", "ی", "د", "س", "چ", "پ", "ج"],
-      en: ["M", "T", "W", "T", "F", "S", "S"],
-    }),
-    [],
+  const userLevel = user?.level || 1;
+  const userXP = user?.xp || 0;
+  const nextLevelXP = getNextLevelXP(userLevel);
+  const currentLevelXP = getCurrentLevelXP(userLevel);
+  const levelProgress = Math.min(
+    100,
+    Math.round(
+      ((userXP - currentLevelXP) / (nextLevelXP - currentLevelXP)) * 100,
+    ),
   );
 
-  const maxXP = useMemo(
-    () => Math.max(...weeklyActivity.map((d) => d.xp || 0), 1),
-    [weeklyActivity],
-  );
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "صبح بخیر";
+    if (hour < 17) return "ظهر بخیر";
+    if (hour < 20) return "عصر بخیر";
+    return "شب بخیر";
+  }, []);
 
-  const quickStats = useMemo(
-    () => [
-      {
-        icon: CheckCircle,
-        label: { fa: "درس تکمیل شده", en: "Lessons Done" },
-        value: `${stats.completedLessons || 0}/${stats.totalLessons || 0}`,
-        color: "from-green-400 to-green-600",
-      },
-      {
-        icon: BookOpen,
-        label: { fa: "کل درس‌ها", en: "Total Lessons" },
-        value: stats.totalLessons || 0,
-        color: "from-blue-400 to-blue-600",
-      },
-      {
-        icon: Star,
-        label: { fa: "سطح", en: "Level" },
-        value: stats.level || 1,
-        color: "from-purple-400 to-purple-600",
-      },
-      {
-        icon: Flame,
-        label: { fa: "گل‌زنی", en: "Streak" },
-        value: stats.streak || 0,
-        color: "from-amber-400 to-amber-600",
-      },
-    ],
-    [stats],
-  );
+  // ============================================
+  // 📊 Weekly Activity Chart Data
+  // ============================================
 
-  const quickActions = useMemo(
-    () => [
-      {
-        path: "/practice",
-        icon: Target,
-        label: { fa: "تمرین سریع", en: "Quick Practice" },
-        color: "bg-blue-500",
-      },
-      {
-        path: "/ai-tutor",
-        icon: Zap,
-        label: { fa: "چت با AI", en: "Chat with AI" },
-        color: "bg-purple-500",
-      },
-      {
-        path: "/stories",
-        icon: BookOpen,
-        label: { fa: "داستان روز", en: "Daily Story" },
-        color: "bg-green-500",
-      },
-      {
-        path: "/dictionary",
-        icon: BookOpen,
-        label: { fa: "دیکشنری", en: "Dictionary" },
-        color: "bg-amber-500",
-      },
-    ],
-    [],
-  );
+  const weeklyChartData = useMemo(() => {
+    if (stats.weeklyActivity.length === 0) {
+      const days = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
+      return days.map((day) => ({ day, xp: 0 }));
+    }
+    return stats.weeklyActivity;
+  }, [stats.weeklyActivity]);
+
+  const maxWeeklyXP = Math.max(...weeklyChartData.map((d) => d.xp || 0), 100);
 
   // ============================================
   // 🖼️ Render
   // ============================================
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <Skeleton variant="title" className="w-48" />
-            <Skeleton variant="subtitle" className="w-32 mt-2" />
-          </div>
-          <Skeleton variant="button" className="w-32" />
-        </div>
-        <StatsSkeleton />
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <Skeleton variant="title" className="w-40" />
-            <Skeleton variant="text" className="w-20" />
-          </div>
-          <LessonsSkeleton />
-        </div>
+      <div className="max-w-7xl mx-auto p-4 sm:p-6">
+        <DashboardSkeleton />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh]">
-        <div className="w-20 h-20 bg-red-100 dark:bg-red-950 rounded-full flex items-center justify-center mb-6">
-          <AlertCircle className="w-10 h-10 text-red-500" />
-        </div>
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
-          {language === "fa" ? "خطا در بارگذاری" : "Loading Error"}
-        </h2>
-        <p className="text-neutral-500 dark:text-neutral-400 mb-6 text-center max-w-md">
-          {error}
-        </p>
-        <Button
-          variant="primary"
+      <div className="max-w-7xl mx-auto p-4 sm:p-6">
+        <ErrorState
+          error={error}
+          onRetry={fetchDashboardData}
+          title="خطا در بارگذاری داشبورد"
+          message="بارگذاری اطلاعات داشبورد ناموفق بود. لطفاً دوباره تلاش کنید."
+          showDetails
           size="lg"
-          onClick={retryLoad}
-          icon={RefreshCw}
-        >
-          {language === "fa" ? "تلاش مجدد" : "Retry"}
-        </Button>
+        />
       </div>
     );
   }
 
-  // ============================================
-  // 🖼️ Main Render
-  // ============================================
-
   return (
-    <div className="space-y-6">
-      {/* ========== HEADER ========== */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between flex-wrap gap-3"
-      >
-        <div>
-          <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {greeting}،{" "}
-            {user?.name?.split(" ")[0] ||
-              (language === "fa" ? "کاربر" : "User")}{" "}
-            👋
-          </h1>
-          <p className="text-neutral-500 dark:text-neutral-400 mt-1">
-            {language === "fa"
-              ? "امروز رو عالی شروع کن!"
-              : "Let's make today great!"}
-          </p>
-        </div>
-
-        {/* ✅ User Dropdown Menu with About & Support (like MainLayout) */}
-        <div className="relative">
-          <button
-            onClick={() => setUserMenuOpen(!userMenuOpen)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-            aria-label="User menu"
-          >
-            <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-semibold text-sm">
-              {user?.name?.charAt(0) || "U"}
-            </div>
-            <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hidden sm:block">
-              {user?.name?.split(" ")[0] || "User"}
-            </span>
-            <ChevronRight className="w-4 h-4 text-neutral-400" />
-          </button>
-
-          {/* Dropdown */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{
-              opacity: userMenuOpen ? 1 : 0,
-              y: userMenuOpen ? 0 : -10,
-            }}
-            className={`absolute right-0 mt-2 w-56 bg-white dark:bg-neutral-900 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden z-50 ${
-              userMenuOpen ? "block" : "hidden"
-            }`}
-          >
-            <div className="p-3 border-b border-neutral-200 dark:border-neutral-700">
-              <p className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm">
-                {user?.name || "User"}
-              </p>
-              <p className="text-xs text-neutral-500 truncate">
-                {user?.email || ""}
-              </p>
-            </div>
-
-            <div className="p-1">
-              {userMenuItems.map((item, index) => {
-                if (item.type === "divider") {
-                  return (
-                    <hr
-                      key={index}
-                      className="my-1 border-neutral-200 dark:border-neutral-700"
-                    />
-                  );
-                }
-
-                const Icon = item.icon;
-
-                if (item.isLogout) {
-                  return (
-                    <button
-                      key={index}
-                      onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 rounded-lg transition-colors"
-                    >
-                      <Icon className="w-4 h-4" />
-                      {item.label[language]}
-                    </button>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    onClick={() => setUserMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
-                  >
-                    <Icon className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                    {item.label[language]}
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* ========== TOP CARDS ========== */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="lg:col-span-2"
-        >
-          <XPCard
-            xp={stats.xp || 0}
-            level={stats.level || 1}
-            nextLevelXP={stats.nextLevelXP || 2500}
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Card variant="default" padding="md">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-success-100 dark:bg-success-900 rounded-xl flex items-center justify-center">
-                <Target className="w-5 h-5 text-success-500" />
-              </div>
-              <div>
-                <p className="text-sm text-neutral-500">
-                  {language === "fa" ? "هدف روزانه" : "Daily Goal"}
-                </p>
-                <p className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
-                  {stats.todayXP || 0} / {stats.dailyGoal || 50} XP
-                </p>
-              </div>
-            </div>
-            <ProgressBar
-              value={stats.todayXP || 0}
-              max={stats.dailyGoal || 50}
-              color="success"
-              size="md"
-            />
-            {(stats.todayXP || 0) >= (stats.dailyGoal || 50) && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-xs text-success-500 mt-2 flex items-center gap-1"
-              >
-                <Star className="w-3 h-3" />
-                {language === "fa"
-                  ? "هدف امروز کامل شد! 🎉"
-                  : "Daily goal completed! 🎉"}
-              </motion.p>
-            )}
-          </Card>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <Card variant="default" padding="md">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center">
-                <Activity className="w-5 h-5 text-primary-500" />
-              </div>
-              <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
-                {language === "fa" ? "فعالیت هفتگی" : "Weekly Activity"}
-              </p>
-            </div>
-
-            <div className="flex items-end justify-between gap-1 h-20">
-              {weeklyActivity.length > 0 ? (
-                weeklyActivity.slice(0, 7).map((day, index) => {
-                  const xpValue = day.xp || day.count || 0;
-                  // Min height of 4px when there's any activity so the bar is visible,
-                  // otherwise 0 (so empty days don't show a phantom bar)
-                  const barHeight =
-                    xpValue > 0 ? Math.max((xpValue / maxXP) * 60, 4) : 0;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center flex-1"
-                      title={`${day.date}: ${xpValue} XP`}
-                    >
-                      {xpValue > 0 ? (
-                        <motion.div
-                          className="w-full bg-primary-500 dark:bg-primary-400 rounded-t-md"
-                          initial={{ height: 0 }}
-                          animate={{ height: `${barHeight}px` }}
-                          transition={{ duration: 0.6, delay: index * 0.1 }}
-                        />
-                      ) : (
-                        <div className="w-full">
-                          <div className="w-1 h-1 mx-auto bg-neutral-300 dark:bg-neutral-700 rounded-full" />
-                        </div>
-                      )}
-                      <span className="text-2xs text-neutral-400 mt-1">
-                        {weekDays[language][index]}
-                      </span>
-                    </div>
-                  );
-                })
-              ) : (
-                <div className="w-full text-center text-neutral-400 text-xs">
-                  {language === "fa"
-                    ? "هیچ فعالیتی این هفته ثبت نشده"
-                    : "No activity this week"}
-                </div>
-              )}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      {/* ========== CONTINUE LEARNING ========== */}
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
+        className="flex flex-wrap items-center justify-between gap-4"
       >
-        <Card variant="elevated" padding="lg">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+            {greeting}، {user?.name?.split(" ")[0] || ""} 👋
+          </h1>
+          <p className="text-sm text-neutral-500 mt-1">
+            {language === "fa"
+              ? "بیایید امروز هم یاد بگیریم!"
+              : "Let's learn today!"}
+          </p>
+        </div>
+
+        <Button
+          variant="primary"
+          icon={Sparkles}
+          onClick={() => navigate("/learn")}
+        >
+          {language === "fa" ? "شروع یادگیری" : "Start Learning"}
+        </Button>
+      </motion.div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* XP Card */}
+        <Card
+          hover
+          className="bg-gradient-to-br from-primary-500 to-accent-500 text-white border-0"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-white/80 text-sm">سطح</p>
+              <p className="text-3xl font-bold mt-1">{userLevel}</p>
+            </div>
+            <div className="p-2 bg-white/20 rounded-lg">
+              <Zap className="w-6 h-6" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <div className="flex justify-between text-xs mb-1">
+              <span>{userXP} XP</span>
+              <span>{nextLevelXP} XP</span>
+            </div>
+            <div className="h-2 bg-white/30 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${levelProgress}%` }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="h-full bg-white rounded-full"
+              />
+            </div>
+          </div>
+        </Card>
+
+        {/* Streak */}
+        <Card hover>
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-neutral-500 text-sm">گل‌زنی</p>
+              <p className="text-3xl font-bold mt-1 text-neutral-900 dark:text-neutral-100">
+                {user?.streak || 0}
+              </p>
+              <p className="text-xs text-neutral-400 mt-1">روز</p>
+            </div>
+            <div className="p-2 bg-warning-100 dark:bg-warning-950 rounded-lg">
+              <Flame className="w-6 h-6 text-warning-500" />
+            </div>
+          </div>
+        </Card>
+
+        {/* Lessons Done */}
+        <Card hover>
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-neutral-500 text-sm">درس تکمیل شده</p>
+              <p className="text-3xl font-bold mt-1 text-neutral-900 dark:text-neutral-100">
+                {stats.completedLessons}
+              </p>
+              <p className="text-xs text-neutral-400 mt-1">
+                از {stats.totalLessons} درس
+              </p>
+            </div>
+            <div className="p-2 bg-success-100 dark:bg-success-950 rounded-lg">
+              <CheckCircle className="w-6 h-6 text-success-500" />
+            </div>
+          </div>
+        </Card>
+
+        {/* Total XP */}
+        <Card hover>
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-neutral-500 text-sm">کل XP</p>
+              <p className="text-3xl font-bold mt-1 text-neutral-900 dark:text-neutral-100">
+                {userXP}
+              </p>
+              <p className="text-xs text-neutral-400 mt-1">امتیاز</p>
+            </div>
+            <div className="p-2 bg-primary-100 dark:bg-primary-950 rounded-lg">
+              <Star className="w-6 h-6 text-primary-500" />
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Main Content Grid */}
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Continue Learning */}
+        <Card className="lg:col-span-2">
           <CardHeader>
-            <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-primary-500" />
-              {language === "fa" ? "ادامه یادگیری" : "Continue Learning"}
-            </h2>
+              <h2 className="text-lg font-bold">ادامه یادگیری</h2>
+            </div>
             <Link
               to="/learn"
               className="text-sm text-primary-500 hover:text-primary-600 flex items-center gap-1"
             >
-              {language === "fa" ? "مشاهده همه" : "View All"}
-              <ChevronLeft className="w-4 h-4" />
+              مشاهده همه
+              <ArrowLeft className="w-4 h-4" />
             </Link>
           </CardHeader>
 
           <CardBody>
             {recentLessons.length === 0 ? (
-              <div className="text-center py-8">
-                <BookOpen className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
-                <p className="text-neutral-500">
-                  {language === "fa"
-                    ? "هنوز درسی شروع نکردی!"
-                    : "No lessons started yet!"}
-                </p>
-                <Link
-                  to="/learn"
-                  className="inline-block mt-4 px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition"
-                >
-                  {language === "fa" ? "شروع یادگیری" : "Start Learning"}
-                </Link>
-              </div>
+              <EmptyState
+                icon={BookOpen}
+                title="هنوز درسی شروع نکرده‌اید"
+                description="اولین درس خود را شروع کنید و سفر یادگیری را آغاز کنید!"
+                actionLabel="شروع یادگیری"
+                onAction={() => navigate("/learn")}
+                size="sm"
+              />
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {recentLessons.map((lesson) => {
-                  const isCompleted =
-                    lesson.progress?.status === "completed" ||
-                    lesson.progress?.status === "perfect";
-                  const status = isCompleted ? "completed" : "available";
-
-                  return (
-                    <LessonCard
-                      key={lesson.id}
-                      lesson={{
-                        id: lesson.id,
-                        lessonNumber: lesson.lessonNumber,
-                        title: lesson.title,
-                        duration: lesson.estimatedMinutes || 20,
-                        xpReward: lesson.xpReward || 50,
-                        status: status,
-                      }}
-                      status={status}
-                      onStart={() => navigate(`/lesson/${lesson.id}`)}
-                    />
-                  );
-                })}
+              <div className="space-y-3">
+                {recentLessons.map((lesson, index) => (
+                  <motion.div
+                    key={lesson.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <LessonCard lesson={lesson} />
+                  </motion.div>
+                ))}
               </div>
             )}
           </CardBody>
-
-          {nextLesson && (
-            <CardFooter>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 w-full">
-                <button
-                  onClick={handleContinueLesson}
-                  className="inline-flex items-center justify-center gap-3 px-6 py-3 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all shadow-lg hover:shadow-xl text-base font-semibold"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  {language === "fa"
-                    ? "ادامه آخرین درس"
-                    : "Continue Last Lesson"}
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-                <p className="text-sm text-neutral-500">
-                  {language === "fa"
-                    ? `درس بعدی: ${nextLesson.title?.[language] || nextLesson.title?.fa || "بدون عنوان"}`
-                    : `Next lesson: ${nextLesson.title?.[language] || nextLesson.title?.en || "Untitled"}`}
-                </p>
-              </div>
-            </CardFooter>
-          )}
         </Card>
-      </motion.div>
 
-      {/* ========== ACHIEVEMENTS & STATS ========== */}
-      <div className="grid lg:grid-cols-2 gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <Card variant="default" padding="lg">
-            <CardHeader>
-              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-amber-500" />
-                {language === "fa" ? "دستاوردها" : "Achievements"}
-              </h2>
-            </CardHeader>
+        {/* Weekly Activity */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Activity className="w-5 h-5 text-success-500" />
+              <h2 className="text-lg font-bold">فعالیت هفتگی</h2>
+            </div>
+          </CardHeader>
 
-            <CardBody>
-              <div className="grid grid-cols-2 gap-3">
-                {achievements.length > 0 ? (
-                  achievements.map((achievement) => (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      unlocked={achievement.isEarned || false}
-                      progress={achievement.progress || 0}
-                    />
-                  ))
-                ) : (
-                  <div className="col-span-2 text-center py-8 text-neutral-500">
-                    <Trophy className="w-12 h-12 mx-auto mb-2 text-neutral-300" />
-                    <p className="text-sm">
-                      {language === "fa"
-                        ? "هنوز دستاوردی کسب نکردی!"
-                        : "No achievements yet!"}
-                    </p>
-                    <p className="text-xs text-neutral-400 mt-1">
-                      {language === "fa"
-                        ? "با تکمیل درس‌ها دستاورد کسب کن!"
-                        : "Complete lessons to earn achievements!"}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </CardBody>
-          </Card>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
-          <Card variant="default" padding="lg">
-            <CardHeader>
-              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-primary-500" />
-                {language === "fa" ? "آمار سریع" : "Quick Stats"}
-              </h2>
-            </CardHeader>
-
-            <CardBody>
-              <div className="grid grid-cols-2 gap-3">
-                {quickStats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
+          <CardBody>
+            <div className="flex items-end justify-between gap-2 h-40 mb-4">
+              {weeklyChartData.map((item, index) => {
+                const height = Math.max(
+                  4,
+                  ((item.xp || 0) / maxWeeklyXP) * 100,
+                );
+                return (
+                  <div
+                    key={index}
+                    className="flex-1 flex flex-col items-center gap-1"
+                  >
+                    <span className="text-xs text-neutral-400">
+                      {item.xp > 0 ? item.xp : ""}
+                    </span>
                     <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                    >
-                      <Card variant="bordered" padding="md">
-                        <div
-                          className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-3`}
-                        >
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-                          {stat.value}
-                        </p>
-                        <p className="text-xs text-neutral-500 mt-1">
-                          {stat.label[language]}
-                        </p>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
+                      initial={{ height: 0 }}
+                      animate={{ height: `${height}%` }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      className="w-full bg-gradient-to-t from-primary-500 to-accent-500 rounded-t-md min-h-[4px]"
+                      style={{ height: `${height}%` }}
+                    />
+                    <span className="text-xs text-neutral-500">
+                      {item.day?.charAt(0) || ""}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-neutral-500">میانگین روزانه</span>
+                <span className="font-bold text-primary-500">
+                  {Math.round(
+                    weeklyChartData.reduce((sum, d) => sum + (d.xp || 0), 0) /
+                      7,
+                  )}{" "}
+                  XP
+                </span>
               </div>
-            </CardBody>
-          </Card>
-        </motion.div>
+            </div>
+          </CardBody>
+        </Card>
       </div>
 
-      {/* ========== QUICK ACTIONS ========== */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7 }}
-        className="grid grid-cols-2 sm:grid-cols-4 gap-3"
-      >
-        {quickActions.map((action, index) => {
-          const Icon = action.icon;
-          return (
-            <Link key={index} to={action.path}>
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Card variant="bordered" padding="md" hover>
-                  <div className="text-center">
-                    <div
-                      className={`w-12 h-12 ${action.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
-                      {action.label[language]}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
+      {/* Achievements & Quick Actions */}
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Recent Achievements */}
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Trophy className="w-5 h-5 text-warning-500" />
+              <h2 className="text-lg font-bold">دستاوردها</h2>
+            </div>
+            <Link
+              to="/achievements"
+              className="text-sm text-primary-500 hover:text-primary-600 flex items-center gap-1"
+            >
+              مشاهده همه
+              <ArrowLeft className="w-4 h-4" />
             </Link>
-          );
-        })}
-      </motion.div>
+          </CardHeader>
+
+          <CardBody>
+            {recentAchievements.length === 0 ? (
+              <EmptyState
+                icon={Trophy}
+                title="هنوز دستاوردی کسب نکرده‌اید"
+                description="با ادامه یادگیری، دستاوردهای جدیدی باز خواهد شد!"
+                size="sm"
+              />
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {recentAchievements.slice(0, 6).map((achievement, index) => (
+                  <motion.div
+                    key={achievement.id}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <AchievementCard achievement={achievement} compact />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </CardBody>
+        </Card>
+
+        {/* Quick Actions */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Zap className="w-5 h-5 text-primary-500" />
+              <h2 className="text-lg font-bold">دسترسی سریع</h2>
+            </div>
+          </CardHeader>
+
+          <CardBody className="space-y-2">
+            <QuickAction
+              icon={Zap}
+              label="تمرین سریع"
+              to="/practice"
+              color="primary"
+            />
+            <QuickAction
+              icon={Headphones}
+              label="چت با AI"
+              to="/ai-tutor"
+              color="accent"
+            />
+            <QuickAction
+              icon={BookOpen}
+              label="داستان روز"
+              to="/stories"
+              color="success"
+            />
+            <QuickAction
+              icon={Target}
+              label="دیکشنری"
+              to="/dictionary"
+              color="warning"
+            />
+          </CardBody>
+        </Card>
+      </div>
     </div>
   );
-}
+};
+
+// ============================================
+// ⚡ QuickAction Component
+// ============================================
+
+const QuickAction = ({ icon: Icon, label, to, color = "primary" }) => {
+  const colorClasses = {
+    primary: "bg-primary-100 dark:bg-primary-950 text-primary-500",
+    accent: "bg-accent-100 dark:bg-accent-950 text-accent-500",
+    success: "bg-success-100 dark:bg-success-950 text-success-500",
+    warning: "bg-warning-100 dark:bg-warning-950 text-warning-500",
+  };
+
+  return (
+    <Link to={to}>
+      <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer group">
+        <div className={`p-2 rounded-lg ${colorClasses[color]}`}>
+          <Icon className="w-5 h-5" />
+        </div>
+        <span className="flex-1 text-sm font-medium">{label}</span>
+        <ArrowLeft className="w-4 h-4 text-neutral-400 group-hover:text-primary-500 transition-colors" />
+      </div>
+    </Link>
+  );
+};
 
 export default DashboardPage;

@@ -2,11 +2,18 @@
  * Input.jsx
  * Path: src/components/ui/Input.jsx
  * Description: Input component with label, error, icon, and password toggle
- * Version: 2.0 - Improved with more features
+ * Version: 3.0 - Improved with A11y, textarea support, and clear button
+ * Changes:
+ * - ✅ Added aria-invalid and aria-describedby for screen readers
+ * - ✅ Added clear button (X)
+ * - ✅ Better RTL support
+ * - ✅ Added character count for maxLength
+ * - ✅ Added multiline/textarea support
+ * - ✅ Added prefix/suffix slots
  */
 
-import { forwardRef, useState } from "react";
-import { Eye, EyeOff, AlertCircle, CheckCircle } from "lucide-react";
+import { forwardRef, useState, useId } from "react";
+import { Eye, EyeOff, AlertCircle, CheckCircle, X } from "lucide-react";
 import { cn } from "@utils/helpers";
 
 // ============================================
@@ -54,6 +61,26 @@ const Input = forwardRef(
       // ========== Password ==========
       showPasswordToggle = true,
 
+      // ========== Clear Button ==========
+      clearable = false,
+      onClear,
+
+      // ========== Character Count ==========
+      showCount = false,
+      maxLength,
+
+      // ========== Prefix/Suffix ==========
+      prefix,
+      suffix,
+
+      // ========== Multiline ==========
+      multiline = false,
+      rows = 4,
+
+      // ========== Value ==========
+      value,
+      defaultValue,
+
       // ========== Other ==========
       ...props
     },
@@ -64,7 +91,11 @@ const Input = forwardRef(
     // ============================================
 
     const [showPassword, setShowPassword] = useState(false);
-    const inputId = id || label?.replace(/\s+/g, "-").toLowerCase();
+    const reactId = useId();
+    const inputId = id || reactId;
+    const hintId = `${inputId}-hint`;
+    const errorId = `${inputId}-error`;
+
     const isPassword = type === "password";
     const inputType = isPassword ? (showPassword ? "text" : "password") : type;
 
@@ -75,8 +106,45 @@ const Input = forwardRef(
     const status = error ? "error" : success ? "success" : "default";
 
     // ============================================
+    // 📊 Character Count
+    // ============================================
+
+    const currentValue = value ?? defaultValue ?? "";
+    const charCount = String(currentValue).length;
+
+    // ============================================
     // 🖼️ Render
     // ============================================
+
+    const inputClasses = cn(
+      "w-full bg-white dark:bg-neutral-900 transition-all duration-200",
+      "focus:outline-none focus:ring-0",
+      "placeholder:text-neutral-400 dark:placeholder:text-neutral-500",
+      "disabled:opacity-50 disabled:cursor-not-allowed",
+      sizes[size] || sizes.md,
+      "border-2",
+      variants[status],
+      Icon && "pr-10",
+      isPassword && "pl-10",
+      clearable && "pl-10",
+      prefix && "pr-12",
+      suffix && "pl-12",
+      className,
+    );
+
+    const inputProps = {
+      ref,
+      id: inputId,
+      type: multiline ? undefined : inputType,
+      className: inputClasses,
+      "aria-invalid": status === "error",
+      "aria-describedby": cn(error && errorId, hint && hintId) || undefined,
+      "aria-required": required,
+      value,
+      defaultValue,
+      maxLength,
+      ...props,
+    };
 
     return (
       <div className="w-full">
@@ -93,41 +161,26 @@ const Input = forwardRef(
 
         {/* Input Wrapper */}
         <div className="relative">
-          {/* Left Icon */}
-          {Icon && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <Icon className="w-5 h-5 text-neutral-400" />
+          {/* Prefix */}
+          {prefix && (
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-neutral-500">
+              {prefix}
             </div>
           )}
 
-          {/* Input */}
-          <input
-            ref={ref}
-            id={inputId}
-            type={inputType}
-            className={cn(
-              // Base styles
-              "w-full bg-white dark:bg-neutral-900 transition-all duration-200",
-              "focus:outline-none focus:ring-0",
-              "placeholder:text-neutral-400 dark:placeholder:text-neutral-500",
-              "disabled:opacity-50 disabled:cursor-not-allowed",
+          {/* Left Icon */}
+          {Icon && !prefix && (
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <Icon className="w-5 h-5 text-neutral-400" aria-hidden="true" />
+            </div>
+          )}
 
-              // Size
-              sizes[size] || sizes.md,
-
-              // Status
-              "border-2",
-              variants[status],
-
-              // Icon spacing
-              Icon && "pr-10",
-              isPassword && "pl-10",
-
-              // Custom
-              className,
-            )}
-            {...props}
-          />
+          {/* Input or Textarea */}
+          {multiline ? (
+            <textarea ref={ref} rows={rows} {...inputProps} />
+          ) : (
+            <input {...inputProps} />
+          )}
 
           {/* Password Toggle */}
           {isPassword && showPasswordToggle && (
@@ -139,38 +192,71 @@ const Input = forwardRef(
               aria-label={showPassword ? "پنهان کردن رمز" : "نمایش رمز"}
             >
               {showPassword ? (
-                <EyeOff className="w-5 h-5" />
+                <EyeOff className="w-5 h-5" aria-hidden="true" />
               ) : (
-                <Eye className="w-5 h-5" />
+                <Eye className="w-5 h-5" aria-hidden="true" />
               )}
             </button>
           )}
 
+          {/* Clear Button */}
+          {clearable && currentValue && !isPassword && (
+            <button
+              type="button"
+              onClick={onClear}
+              className="absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 hover:text-danger-500 transition-colors"
+              tabIndex={-1}
+              aria-label="پاک کردن"
+            >
+              <X className="w-4 h-4" aria-hidden="true" />
+            </button>
+          )}
+
           {/* Status Icon */}
-          {!isPassword && status === "error" && (
+          {!isPassword && !clearable && status === "error" && (
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <AlertCircle className="w-5 h-5 text-danger-500" />
+              <AlertCircle className="w-5 h-5 text-danger-500" aria-hidden="true" />
             </div>
           )}
 
-          {!isPassword && status === "success" && (
+          {!isPassword && !clearable && status === "success" && (
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <CheckCircle className="w-5 h-5 text-success-500" />
+              <CheckCircle className="w-5 h-5 text-success-500" aria-hidden="true" />
+            </div>
+          )}
+
+          {/* Suffix */}
+          {suffix && (
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-neutral-500">
+              {suffix}
             </div>
           )}
         </div>
 
         {/* Error Message */}
         {error && (
-          <p className="mt-1.5 text-xs text-danger-500 flex items-center gap-1">
-            <AlertCircle className="w-3 h-3" />
+          <p
+            id={errorId}
+            role="alert"
+            className="mt-1.5 text-xs text-danger-500 flex items-center gap-1"
+          >
+            <AlertCircle className="w-3 h-3" aria-hidden="true" />
             {error}
           </p>
         )}
 
         {/* Hint */}
         {hint && !error && (
-          <p className="mt-1.5 text-xs text-neutral-400">{hint}</p>
+          <p id={hintId} className="mt-1.5 text-xs text-neutral-400">
+            {hint}
+          </p>
+        )}
+
+        {/* Character Count */}
+        {showCount && maxLength && (
+          <div className="mt-1 text-xs text-neutral-400 text-left">
+            {charCount} / {maxLength}
+          </div>
         )}
       </div>
     );

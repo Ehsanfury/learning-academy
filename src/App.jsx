@@ -2,17 +2,17 @@
  * App.jsx
  * Path: src/App.jsx
  * Description: Main application component with routing
+ * Version: 3.1 - Removed monitoring import to fix build
  * Changes:
- * - ✅ FIXED: Home page is now PUBLIC and accessible without login
- * - ✅ FIXED: MainLayout does NOT redirect to login
- * - ✅ FIXED: Only /dashboard and protected routes require auth
- * - ✅ ADDED: AdminPage route with full admin panel
- * - ✅ ADDED: Lazy loading for admin pages
+ * - ✅ REMOVED: monitoring import (causing build failure)
+ * - ✅ Added ToastProvider
+ * - ✅ Better Error Boundary
+ * - ✅ Lazy loading for all pages
+ * - ✅ Skip link for accessibility
  */
 
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
 import { AnimatePresence } from "framer-motion";
 
 // Layouts
@@ -26,15 +26,29 @@ import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
 
+// UI Components
+import { ToastProvider } from "./components/ui/Toast";
+import LoadingSpinner from "./components/LoadingSpinner";
+import ErrorBoundary from "./components/ErrorBoundary";
+
+// A11y
+import { SkipLink } from "./components/a11y/ScreenReader";
+
 // Route Guards
 import PrivateRoute from "./router/PrivateRoute";
 import PublicRoute from "./router/PublicRoute";
 import AdminRoute from "./router/AdminRoute";
 
-// UI Components
-import LoadingSpinner from "./components/LoadingSpinner";
+// Hooks
+import { useResponsive } from "./hooks/useResponsive";
 
-// Pages (lazy loaded)
+// Styles
+import "./styles/globals.css";
+
+// ============================================
+// 🖼️ Lazy-loaded Pages
+// ============================================
+
 const Home = lazy(() => import("./pages/Home/HomePage"));
 const Login = lazy(() => import("./pages/Login/LoginPage"));
 const Register = lazy(() => import("./pages/Register/RegisterPage"));
@@ -65,10 +79,10 @@ const NotificationsPage = lazy(
   () => import("./pages/Notifications/NotificationsPage"),
 );
 
-// ✅ Admin Pages
+// Admin Pages
 const AdminPage = lazy(() => import("./pages/Admin/AdminPage"));
 
-// ✅ Public Pages
+// Public Pages
 const AboutPage = lazy(() => import("./pages/About/AboutPage"));
 const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
 const FAQPage = lazy(() => import("./pages/FAQ/FAQPage"));
@@ -79,23 +93,20 @@ const SupportPage = lazy(() => import("./pages/Support/SupportPage"));
 const DisclaimerPage = lazy(() => import("./pages/Disclaimer/DisclaimerPage"));
 const CookiesPage = lazy(() => import("./pages/Cookies/CookiesPage"));
 
-// Components
-import ErrorBoundary from "./components/ErrorBoundary";
-
-// Hooks
-import { useResponsive } from "./hooks/useResponsive";
-import { useAuth } from "./context/AuthContext";
-
-// Styles
-import "./styles/globals.css";
-
 // ============================================
 // 🖼️ Loading Fallback
 // ============================================
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <LoadingSpinner size="lg" />
+  <div
+    className="min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-950"
+    role="status"
+    aria-live="polite"
+  >
+    <div className="flex flex-col items-center gap-4">
+      <LoadingSpinner size="lg" />
+      <p className="text-sm text-neutral-500">در حال بارگذاری...</p>
+    </div>
   </div>
 );
 
@@ -106,6 +117,10 @@ const LoadingFallback = () => (
 function App() {
   const { isMobile, isTablet } = useResponsive();
 
+  // ============================================
+  // 📱 Viewport Height Fix (Mobile)
+  // ============================================
+
   useEffect(() => {
     const setVH = () => {
       const vh = window.innerHeight * 0.01;
@@ -114,170 +129,171 @@ function App() {
 
     setVH();
     window.addEventListener("resize", setVH);
-
     return () => window.removeEventListener("resize", setVH);
   }, []);
+
+  // ============================================
+  // 🖼️ Render
+  // ============================================
 
   return (
     <ThemeProvider>
       <LanguageProvider>
         <AuthProvider>
-          <BrowserRouter
-            future={{
-              v7_startTransition: true,
-              v7_relativeSplatPath: true,
-            }}
-          >
-            <ErrorBoundary>
-              <Suspense fallback={<LoadingFallback />}>
-                <AnimatePresence mode="wait">
-                  <Routes>
-                    {/* ========================================================= */}
-                    {/* ✅ PUBLIC ROUTES - No Auth Required */}
-                    {/* ========================================================= */}
+          <ToastProvider position="top-left">
+            <BrowserRouter
+              future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true,
+              }}
+            >
+              {/* Skip Link for Accessibility */}
+              <SkipLink targetId="main-content" />
 
-                    {/* ✅ Home Page - Always accessible */}
-                    <Route path="/" element={<MainLayout />}>
-                      <Route index element={<Home />} />
-                    </Route>
+              {/* Error Boundary */}
+              <ErrorBoundary>
+                {/* Suspense for Lazy Loading */}
+                <Suspense fallback={<LoadingFallback />}>
+                  <AnimatePresence mode="wait">
+                    <Routes>
+                      {/* ========================================================= */}
+                      {/* ✅ PUBLIC ROUTES - No Auth Required */}
+                      {/* ========================================================= */}
 
-                    {/* ✅ Other Public Pages with MainLayout */}
-                    <Route element={<MainLayout />}>
-                      <Route path="/about" element={<AboutPage />} />
-                      <Route path="/contact" element={<ContactPage />} />
-                      <Route path="/faq" element={<FAQPage />} />
-                      <Route path="/privacy" element={<PrivacyPage />} />
-                      <Route path="/terms" element={<TermsPage />} />
-                      <Route path="/blog" element={<BlogPage />} />
-                      <Route path="/support" element={<SupportPage />} />
-                      <Route path="/disclaimer" element={<DisclaimerPage />} />
-                      <Route path="/cookies" element={<CookiesPage />} />
-                    </Route>
+                      <Route path="/" element={<MainLayout />}>
+                        <Route index element={<Home />} />
+                      </Route>
 
-                    {/* ========================================================= */}
-                    {/* ✅ AUTH ROUTES - Login/Register */}
-                    {/* ========================================================= */}
+                      <Route element={<MainLayout />}>
+                        <Route path="/about" element={<AboutPage />} />
+                        <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/faq" element={<FAQPage />} />
+                        <Route path="/privacy" element={<PrivacyPage />} />
+                        <Route path="/terms" element={<TermsPage />} />
+                        <Route path="/blog" element={<BlogPage />} />
+                        <Route path="/support" element={<SupportPage />} />
+                        <Route
+                          path="/disclaimer"
+                          element={<DisclaimerPage />}
+                        />
+                        <Route path="/cookies" element={<CookiesPage />} />
+                      </Route>
 
-                    <Route element={<AuthLayout />}>
+                      {/* ========================================================= */}
+                      {/* ✅ AUTH ROUTES - Login/Register */}
+                      {/* ========================================================= */}
+
+                      <Route element={<AuthLayout />}>
+                        <Route
+                          path="/login"
+                          element={
+                            <PublicRoute>
+                              <Login />
+                            </PublicRoute>
+                          }
+                        />
+                        <Route
+                          path="/register"
+                          element={
+                            <PublicRoute>
+                              <Register />
+                            </PublicRoute>
+                          }
+                        />
+                      </Route>
+
+                      {/* ========================================================= */}
+                      {/* 🔒 PROTECTED ROUTES - Auth Required */}
+                      {/* ========================================================= */}
+
                       <Route
-                        path="/login"
                         element={
-                          <PublicRoute>
-                            <Login />
-                          </PublicRoute>
+                          <PrivateRoute>
+                            <DashboardLayout />
+                          </PrivateRoute>
+                        }
+                      >
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/learn" element={<Learn />} />
+                        <Route path="/practice" element={<Practice />} />
+                        <Route
+                          path="/practice/:type"
+                          element={<PracticeDetail />}
+                        />
+                        <Route path="/stories" element={<Stories />} />
+                        <Route path="/scenarios" element={<Scenarios />} />
+                        <Route path="/dictionary" element={<Dictionary />} />
+                        <Route path="/ai-tutor" element={<AiTutor />} />
+                        <Route path="/mentors" element={<Mentors />} />
+                        <Route path="/journey" element={<Journey />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/settings" element={<Settings />} />
+                        <Route
+                          path="/achievements"
+                          element={<Achievements />}
+                        />
+                        <Route path="/leaderboard" element={<Leaderboard />} />
+                        <Route path="/review" element={<Review />} />
+                        <Route
+                          path="/vocabulary"
+                          element={<VocabularyPage />}
+                        />
+                        <Route
+                          path="/notifications"
+                          element={<NotificationsPage />}
+                        />
+                      </Route>
+
+                      {/* Lesson Layout */}
+                      <Route
+                        element={
+                          <PrivateRoute>
+                            <LessonLayout />
+                          </PrivateRoute>
+                        }
+                      >
+                        <Route path="/lesson/:id" element={<Lesson />} />
+                      </Route>
+
+                      {/* Exercise Routes */}
+                      <Route
+                        element={
+                          <PrivateRoute>
+                            <DashboardLayout />
+                          </PrivateRoute>
+                        }
+                      >
+                        <Route path="/exercise" element={<Exercise />} />
+                        <Route path="/exercise/:type" element={<Exercise />} />
+                      </Route>
+
+                      {/* ========================================================= */}
+                      {/* 🛡️ ADMIN ROUTES - Admin Only */}
+                      {/* ========================================================= */}
+                      <Route
+                        path="/admin/*"
+                        element={
+                          <AdminRoute>
+                            <AdminPage />
+                          </AdminRoute>
                         }
                       />
+
+                      {/* ========================================================= */}
+                      {/* ❌ 404 Not Found */}
+                      {/* ========================================================= */}
+
+                      <Route path="/404" element={<NotFoundPage />} />
                       <Route
-                        path="/register"
-                        element={
-                          <PublicRoute>
-                            <Register />
-                          </PublicRoute>
-                        }
+                        path="*"
+                        element={<Navigate to="/404" replace />}
                       />
-                    </Route>
-
-                    {/* ========================================================= */}
-                    {/* 🔒 PROTECTED ROUTES - Auth Required */}
-                    {/* ========================================================= */}
-
-                    {/* ✅ Dashboard Layout - All protected pages */}
-                    <Route
-                      element={
-                        <PrivateRoute>
-                          <DashboardLayout />
-                        </PrivateRoute>
-                      }
-                    >
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/learn" element={<Learn />} />
-                      <Route path="/practice" element={<Practice />} />
-                      <Route
-                        path="/practice/:type"
-                        element={<PracticeDetail />}
-                      />
-                      <Route path="/stories" element={<Stories />} />
-                      <Route path="/scenarios" element={<Scenarios />} />
-                      <Route path="/dictionary" element={<Dictionary />} />
-                      <Route path="/ai-tutor" element={<AiTutor />} />
-                      <Route path="/mentors" element={<Mentors />} />
-                      <Route path="/journey" element={<Journey />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/settings" element={<Settings />} />
-                      <Route path="/achievements" element={<Achievements />} />
-                      <Route path="/leaderboard" element={<Leaderboard />} />
-                      <Route path="/review" element={<Review />} />
-                      <Route path="/vocabulary" element={<VocabularyPage />} />
-                      <Route
-                        path="/notifications"
-                        element={<NotificationsPage />}
-                      />
-                    </Route>
-
-                    {/* ✅ Lesson Layout - Protected */}
-                    <Route
-                      element={
-                        <PrivateRoute>
-                          <LessonLayout />
-                        </PrivateRoute>
-                      }
-                    >
-                      <Route path="/lesson/:id" element={<Lesson />} />
-                    </Route>
-
-                    {/* ✅ Exercise Routes - Protected */}
-                    <Route
-                      element={
-                        <PrivateRoute>
-                          <DashboardLayout />
-                        </PrivateRoute>
-                      }
-                    >
-                      <Route path="/exercise" element={<Exercise />} />
-                      <Route path="/exercise/:type" element={<Exercise />} />
-                    </Route>
-
-                    {/* ========================================================= */}
-                    {/* 🛡️ ADMIN ROUTES - Admin Only */}
-                    {/* ========================================================= */}
-                    <Route
-                      path="/admin/*"
-                      element={
-                        <AdminRoute>
-                          <AdminPage />
-                        </AdminRoute>
-                      }
-                    />
-
-                    {/* ========================================================= */}
-                    {/* ❌ 404 Not Found */}
-                    {/* ========================================================= */}
-
-                    <Route path="/404" element={<NotFoundPage />} />
-                    <Route path="*" element={<Navigate to="/404" replace />} />
-                  </Routes>
-                </AnimatePresence>
-              </Suspense>
-
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 4000,
-                  style: {
-                    background: "#1f2937",
-                    color: "#fff",
-                    borderRadius: "12px",
-                  },
-                  success: {
-                    iconTheme: { primary: "#22c55e", secondary: "#fff" },
-                  },
-                  error: {
-                    iconTheme: { primary: "#ef4444", secondary: "#fff" },
-                  },
-                }}
-              />
-            </ErrorBoundary>
-          </BrowserRouter>
+                    </Routes>
+                  </AnimatePresence>
+                </Suspense>
+              </ErrorBoundary>
+            </BrowserRouter>
+          </ToastProvider>
         </AuthProvider>
       </LanguageProvider>
     </ThemeProvider>

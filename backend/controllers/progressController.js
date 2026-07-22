@@ -4,10 +4,10 @@
  * Description: Controller for user progress management
  * Changes:
  * - ✅ FIXED: getProgress now uses getAllProgress with proper params
+ * - ✅ NEW: getDashboard for dashboard overview
+ * - ✅ NEW: getWeeklyActivity for weekly activity chart
  * - ✅ Using asyncHandler to remove repetitive try/catch
  * - ✅ Integrated custom Error Classes
- * - ✅ Cleaner error handling
- * - ✅ Added logging for all operations
  */
 
 import progressService from "../services/progressService.js";
@@ -19,12 +19,13 @@ import {
   validateUpdateProgress,
 } from "../validators/progress.validator.js";
 import { ValidationError } from "../errors/index.js";
+import { User } from "../models/index.js";
 
-/**
- * Get all progress for a user
- * GET /api/progress
- * ✅ FIXED: Uses getAllProgress with pagination
- */
+// ============================================
+// 📊 Get all progress for a user
+// GET /api/progress
+// ============================================
+
 export const getProgress = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { limit = 50, offset = 0 } = req.query;
@@ -48,10 +49,11 @@ export const getProgress = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get progress statistics for a user
- * GET /api/progress/stats
- */
+// ============================================
+// 📊 Get progress statistics for a user
+// GET /api/progress/stats
+// ============================================
+
 export const getStats = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -71,10 +73,11 @@ export const getStats = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Update progress for a lesson
- * POST /api/progress
- */
+// ============================================
+// 📝 Update progress for a lesson
+// POST /api/progress
+// ============================================
+
 export const updateProgress = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -83,7 +86,6 @@ export const updateProgress = asyncHandler(async (req, res) => {
     body: req.body,
   });
 
-  // Validate input
   const validation = validateUpdateProgress(req.body);
   if (!validation.valid) {
     throw new ValidationError({
@@ -107,10 +109,11 @@ export const updateProgress = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get progress for a specific lesson
- * GET /api/progress/lesson/:lessonId
- */
+// ============================================
+// 📖 Get progress for a specific lesson
+// GET /api/progress/lesson/:lessonId
+// ============================================
+
 export const getLessonProgress = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { lessonId } = req.params;
@@ -142,10 +145,11 @@ export const getLessonProgress = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get in-progress lessons for a user
- * GET /api/progress/in-progress
- */
+// ============================================
+// 📚 Get in-progress lessons for a user
+// GET /api/progress/in-progress
+// ============================================
+
 export const getInProgressLessons = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { limit = 10 } = req.query;
@@ -155,7 +159,6 @@ export const getInProgressLessons = asyncHandler(async (req, res) => {
     limit,
   });
 
-  // Use getAllProgress with status filter
   const result = await progressService.getAllProgress(userId, parseInt(limit), 0);
 
   const inProgress = (result.progress || []).filter((p) => p.status === "in_progress");
@@ -172,10 +175,11 @@ export const getInProgressLessons = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get last completed lesson for a user
- * GET /api/progress/last-completed
- */
+// ============================================
+// 📚 Get last completed lesson for a user
+// GET /api/progress/last-completed
+// ============================================
+
 export const getLastCompletedLesson = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -200,10 +204,11 @@ export const getLastCompletedLesson = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get completed lessons for a user
- * GET /api/progress/completed
- */
+// ============================================
+// 📚 Get completed lessons for a user
+// GET /api/progress/completed
+// ============================================
+
 export const getCompletedLessons = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { limit = 20 } = req.query;
@@ -231,10 +236,11 @@ export const getCompletedLessons = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get level distribution of completed lessons
- * GET /api/progress/level-distribution
- */
+// ============================================
+// 📊 Get level distribution of completed lessons
+// GET /api/progress/level-distribution
+// ============================================
+
 export const getLevelDistribution = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
@@ -254,10 +260,11 @@ export const getLevelDistribution = asyncHandler(async (req, res) => {
   });
 });
 
-/**
- * Get daily statistics for a user
- * GET /api/progress/daily-stats
- */
+// ============================================
+// 📊 Get daily statistics for a user
+// GET /api/progress/daily-stats
+// ============================================
+
 export const getDailyStats = asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { days = 7 } = req.query;
@@ -281,6 +288,97 @@ export const getDailyStats = asyncHandler(async (req, res) => {
   });
 });
 
+// ============================================
+// ✅ NEW: Dashboard overview
+// GET /api/progress/dashboard
+// ============================================
+
+export const getDashboard = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+
+  logInfo("📊 [Controller] Getting dashboard data", { userId });
+
+  const stats = await progressService.getUserProgressSummary(userId);
+  const dailyStats = await progressService.getDailyActivity(userId, 7);
+  const user = await User.findByPk(userId);
+
+  // Format weekly activity
+  const weekDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
+  const today = new Date();
+  const todayDayIndex = today.getDay(); // 0=Sunday, 6=Saturday
+  const weekStartIndex = (todayDayIndex + 1) % 7; // Saturday start
+
+  const weeklyActivity = [];
+  for (let i = 0; i < 7; i++) {
+    const dayIndex = (weekStartIndex + i) % 7;
+    const date = new Date(today);
+    date.setDate(date.getDate() - (6 - i));
+    const dateStr = date.toISOString().split("T")[0];
+
+    const match = dailyStats.find((d) => d.date === dateStr);
+    weeklyActivity.push({
+      day: weekDays[dayIndex] || "",
+      xp: match ? parseInt(match.xp, 10) || 0 : 0,
+      count: match ? parseInt(match.count, 10) || 0 : 0,
+      date: dateStr,
+    });
+  }
+
+  res.json({
+    success: true,
+    data: {
+      totalLessons: stats.totalLessons || 0,
+      completedLessons: stats.completedLessons || 0,
+      totalXP: user?.xp || 0,
+      weeklyActivity,
+    },
+  });
+});
+
+// ============================================
+// ✅ NEW: Weekly activity
+// GET /api/progress/weekly-activity
+// ============================================
+
+export const getWeeklyActivity = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { days = 7 } = req.query;
+
+  logInfo("📊 [Controller] Getting weekly activity", { userId, days });
+
+  const stats = await progressService.getDailyActivity(userId, parseInt(days, 10));
+
+  const weekDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
+  const today = new Date();
+  const todayDayIndex = today.getDay();
+  const weekStartIndex = (todayDayIndex + 1) % 7;
+
+  const weeklyActivity = [];
+  for (let i = 0; i < 7; i++) {
+    const dayIndex = (weekStartIndex + i) % 7;
+    const date = new Date(today);
+    date.setDate(date.getDate() - (6 - i));
+    const dateStr = date.toISOString().split("T")[0];
+
+    const match = stats.find((d) => d.date === dateStr);
+    weeklyActivity.push({
+      day: weekDays[dayIndex] || "",
+      xp: match ? parseInt(match.xp, 10) || 0 : 0,
+      count: match ? parseInt(match.count, 10) || 0 : 0,
+      date: dateStr,
+    });
+  }
+
+  res.json({
+    success: true,
+    data: weeklyActivity,
+  });
+});
+
+// ============================================
+// 📤 Export
+// ============================================
+
 export default {
   getProgress,
   getStats,
@@ -291,4 +389,6 @@ export default {
   getCompletedLessons,
   getLevelDistribution,
   getDailyStats,
+  getDashboard,
+  getWeeklyActivity,
 };

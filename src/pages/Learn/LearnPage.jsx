@@ -1,18 +1,11 @@
 /**
- * LearnPage.jsx - Version 5.0
+ * LearnPage.jsx - Version 5.1
  * Path: src/pages/Learn/LearnPage.jsx
  * Description: Learning path with full lesson structure support
  * Changes:
- * - ✅ Fixed: lessons.filter is not a function
- * - ✅ Using Card, CardHeader, CardBody components
- * - ✅ Using Badge component for status labels
- * - ✅ Using Skeleton for loading states
- * - ✅ Using Tabs for level navigation
- * - ✅ Using Button component
- * - ✅ Better error handling
- * - ✅ Performance optimizations
- * - ✅ Shows totalSections for each lesson
- * - ✅ Click on lesson navigates to LessonPage
+ * - ✅ FIXED: Using lessonApi instead of direct api
+ * - ✅ FIXED: Better error handling for 401
+ * - ✅ FIXED: lessons.filter is not a function
  */
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
@@ -20,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "@context/AuthContext";
 import { useLanguageContext } from "@context/LanguageContext";
-import api from "@services/api";
+import lessonApi from "@services/lessonApi";
 import {
   BookOpen,
   Lock,
@@ -58,7 +51,6 @@ import {
   Search,
   BookText,
 } from "lucide-react";
-import { useLanguage } from "@context/LanguageContext";
 import toast from "react-hot-toast";
 
 // ✅ استفاده از کامپوننت‌های جدید UI
@@ -191,7 +183,7 @@ const LessonsGridSkeleton = () => (
 // ============================================
 
 const LearnPage = () => {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const { language } = useLanguageContext();
   const navigate = useNavigate();
 
@@ -225,35 +217,30 @@ const LearnPage = () => {
       setLoading(true);
       setError(null);
 
-      const lessonsRes = await api.get("/lessons");
+      // ✅ Use lessonApi instead of direct api
+      const response = await lessonApi.getLessons();
 
-      // ✅ FIXED: نرمالایز کردن پاسخ API
+      // ✅ Normalize response
       let lessonsData = [];
-
-      // پشتیبانی از ساختارهای مختلف پاسخ API
-      if (lessonsRes?.data?.data?.lessons) {
-        lessonsData = lessonsRes.data.data.lessons;
-      } else if (lessonsRes?.data?.lessons) {
-        lessonsData = lessonsRes.data.lessons;
-      } else if (Array.isArray(lessonsRes?.data)) {
-        lessonsData = lessonsRes.data;
-      } else if (Array.isArray(lessonsRes)) {
-        lessonsData = lessonsRes;
-      } else if (
-        lessonsRes?.data?.data &&
-        Array.isArray(lessonsRes.data.data)
-      ) {
-        lessonsData = lessonsRes.data.data;
+      if (response?.data?.data?.lessons) {
+        lessonsData = response.data.data.lessons;
+      } else if (response?.data?.lessons) {
+        lessonsData = response.data.lessons;
+      } else if (Array.isArray(response?.data?.data)) {
+        lessonsData = response.data.data;
+      } else if (Array.isArray(response?.data)) {
+        lessonsData = response.data;
+      } else if (Array.isArray(response)) {
+        lessonsData = response;
       }
 
-      // ✅ اطمینان از اینکه آرایه است
       if (!Array.isArray(lessonsData)) {
         lessonsData = [];
       }
 
       setLessons(lessonsData);
 
-      // محاسبه آمار
+      // Calculate stats
       const total = lessonsData.length;
       const completed = lessonsData.filter(
         (l) =>
@@ -275,7 +262,7 @@ const LearnPage = () => {
         totalXP: user?.xp || 0,
       });
 
-      // دریافت لیست سطوح از درس‌ها
+      // Get levels from lessons
       const uniqueLevels = [
         ...new Set(lessonsData.map((l) => l.level).filter(Boolean)),
       ];
@@ -286,8 +273,16 @@ const LearnPage = () => {
       }
     } catch (error) {
       console.error("Error loading learning data:", error);
-      setError(error.message || "خطا در بارگذاری مسیر یادگیری");
-      toast.error("خطا در بارگذاری مسیر یادگیری");
+
+      // ✅ Better error handling for 401
+      if (error.response?.status === 401) {
+        setError("لطفاً دوباره وارد شوید");
+        toast.error("نشست شما منقضی شده است. لطفاً دوباره وارد شوید.");
+      } else {
+        setError(error.message || "خطا در بارگذاری مسیر یادگیری");
+        toast.error("خطا در بارگذاری مسیر یادگیری");
+      }
+
       setLevels(["A1", "A2", "B1", "B2", "C1", "C2"]);
     } finally {
       setLoading(false);
@@ -469,7 +464,6 @@ const LearnPage = () => {
   if (loading) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
-        {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <Skeleton variant="title" className="w-64" />
@@ -477,20 +471,12 @@ const LearnPage = () => {
           </div>
           <Skeleton variant="button" className="w-10 h-10" />
         </div>
-
-        {/* Stats */}
         <StatsSkeleton />
-
-        {/* Level Tabs */}
         <Skeleton variant="card" className="h-12" />
-
-        {/* Search */}
         <div className="flex gap-3">
           <Skeleton variant="text" className="h-10 flex-1" />
           <Skeleton variant="button" className="w-32" />
         </div>
-
-        {/* Lessons Grid */}
         <LessonsGridSkeleton />
       </div>
     );
@@ -749,7 +735,6 @@ const LearnPage = () => {
                     `}
                   >
                     <div className="space-y-3">
-                      {/* Header */}
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-2">
                           <span className="text-xs text-neutral-500">
@@ -772,12 +757,10 @@ const LearnPage = () => {
                         </div>
                       </div>
 
-                      {/* Title */}
                       <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-2">
                         {title}
                       </h3>
 
-                      {/* Meta */}
                       <div className="flex items-center gap-4 text-xs text-neutral-500">
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
@@ -799,7 +782,6 @@ const LearnPage = () => {
                         )}
                       </div>
 
-                      {/* CEFR Level */}
                       {lesson.cefr && (
                         <div className="mt-1">
                           <Badge variant="secondary" size="xs">
@@ -814,7 +796,6 @@ const LearnPage = () => {
             })}
           </div>
         ) : (
-          // List View
           <div className="space-y-3">
             {filteredLessons.map((lesson, index) => {
               const status = getLessonStatus(lesson);

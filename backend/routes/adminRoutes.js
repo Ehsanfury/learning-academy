@@ -3,9 +3,10 @@
  * Path: backend/routes/adminRoutes.js
  * Description: Admin routes - Complete
  * Changes:
+ * - ✅ FIXED: Added /top-users route
+ * - ✅ FIXED: Added /users/growth route
  * - ✅ FIXED: Added /activity route
  * - ✅ FIXED: Added /exercises route
- * - ✅ FIXED: All admin routes now work
  */
 
 import express from "express";
@@ -35,6 +36,13 @@ router.get("/stats/activity", adminController.getActivityStats);
 router.get("/activity", adminController.getActivityStats);
 
 // ============================================
+// 📊 Additional Admin Analytics
+// ============================================
+
+router.get("/top-users", adminController.getTopUsers);
+router.get("/users/growth", adminController.getUserGrowth);
+
+// ============================================
 // 📚 Lesson Management
 // ============================================
 
@@ -49,7 +57,6 @@ router.post("/lessons/:id/status", adminController.updateLessonStatus);
 // 🏋️ Exercise Management
 // ============================================
 
-// ✅ FIXED: Added /exercises routes
 router.get("/exercises", adminController.getExercises);
 router.get("/exercises/:id", adminController.getExerciseById);
 router.post("/exercises", adminController.createExercise);

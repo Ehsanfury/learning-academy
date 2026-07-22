@@ -3,23 +3,17 @@
  * Path: src/services/api.js
  * Description: Axios instance with authentication
  * Changes:
- * - ✅ FIXED: Removed double /api prefix from baseURL
- * - ✅ FIXED: Refresh token endpoint path
- * - ✅ Added withCredentials: true for httpOnly cookie support
+ * - ✅ ADDED: Debug logs for token
+ * - ✅ FIXED: Better 401 handling
  */
 
 import axios from "axios";
 import { storage } from "../utils/storage";
 import debug from "../utils/debug";
 
-// ============================================
-// 📦 Axios Instance
-// ============================================
-
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
-// ✅ baseURL already includes /api, so endpoints should not have /api prefix
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 30000,
@@ -28,16 +22,30 @@ const api = axios.create({
   },
   withCredentials: true,
 });
+
 // ============================================
-// 🔄 Request Interceptor
+// 🔄 Request Interceptor - ✅ ADDED DEBUG
 // ============================================
 
 api.interceptors.request.use(
   (config) => {
     const token = storage.getToken();
+
+    // ✅ Debug log
+    console.log("🔐 [API Request] URL:", config.url);
+    console.log("🔐 [API Request] Has Token:", !!token);
+    console.log(
+      "🔐 [API Request] Token:",
+      token ? token.substring(0, 20) + "..." : "null",
+    );
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      console.log("🔐 [API Request] Authorization header set");
+    } else {
+      console.warn("⚠️ [API Request] No token found!");
     }
+
     return config;
   },
   (error) => {
@@ -46,7 +54,7 @@ api.interceptors.request.use(
 );
 
 // ============================================
-// 🔄 Response Interceptor - Refresh Token
+// 🔄 Response Interceptor
 // ============================================
 
 let isRefreshing = false;
@@ -68,8 +76,15 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // ✅ Check for 401 Unauthorized
+    // ✅ Handle 401 Unauthorized
     if (error.response?.status === 401 && !originalRequest._retry) {
+      console.warn("⚠️ [API] 401 Unauthorized for:", originalRequest.url);
+
+      // ✅ Skip if already on login page
+      if (window.location.pathname === "/login") {
+        return Promise.reject(error);
+      }
+
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -85,37 +100,35 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        // ✅ FIXED: Try both endpoints
+        console.log("🔄 [API] Refreshing token...");
+
         const response = await axios.post(
           `${API_BASE_URL}/auth/refresh`,
           {},
-          {
-            withCredentials: true,
-          },
+          { withCredentials: true },
         );
 
         if (response.data?.success) {
           const { accessToken } = response.data.data || {};
           if (accessToken) {
             storage.setToken(accessToken);
+            console.log("✅ [API] Token refreshed successfully");
           }
-
           processQueue(null, accessToken);
-
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return api(originalRequest);
         }
 
         throw new Error("Refresh failed");
       } catch (refreshError) {
+        console.error("❌ [API] Refresh failed:", refreshError);
         processQueue(refreshError, null);
         storage.clearAuth();
 
-        // ✅ Only redirect if not already on login page
+        // ✅ Redirect to login
         if (window.location.pathname !== "/login") {
           window.location.href = "/login";
         }
-
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

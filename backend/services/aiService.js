@@ -1,410 +1,329 @@
 /**
  * aiService.js
  * Path: backend/services/aiService.js
- * Description: AI service with fallback support
- * Version: 8.0 - Fixed all AI issues
+ * Description: AI service with better error handling and fallback
+ * Version: 2.0 - Improved
  * Changes:
- * - ✅ FIXED: Conversation history now sent to AI using contents array
- * - ✅ FIXED: Gemini API key in both URL and header (redundant)
- * - ✅ FIXED: OpenRouter model from env (not hardcoded)
- * - ✅ FIXED: Mode support (tutor, free, conversation)
- * - ✅ FIXED: Better error handling
+ * - ✅ Multiple provider support (OpenAI, Anthropic, local)
+ * - ✅ Fallback to second provider on failure
+ * - ✅ Mock mode for development
+ * - ✅ Rate limiting per user
+ * - ✅ Response caching
+ * - ✅ Better error handling
+ * - ✅ Token usage tracking
  */
 
-import axios from "axios";
 import logger from "../config/logger.js";
 import config from "../config/env.js";
 
+// ============================================
+// ⚙️ Constants
+// ============================================
+
+const MAX_TOKENS_PER_USER_PER_DAY = 10000;
+const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+
+// In-memory caches (use Redis in production)
+const responseCache = new Map();
+const userTokenUsage = new Map();
+
 class AIService {
   constructor() {
-    this.geminiApiKey = process.env.GOOGLE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
-    this.openRouterApiKey = process.env.OPENROUTER_API_KEY;
-    this.defaultModel = process.env.DEFAULT_AI_MODEL || "gemini-2.0-flash";
-    // ✅ FIXED: OpenRouter model from env (not hardcoded)
-    this.fallbackModel = process.env.FALLBACK_AI_MODEL || "openrouter/gpt-4o-mini";
-    this.timeout = 30000;
+    this.providers = {
+      openai: this.callOpenAI.bind(this),
+      anthropic: this.callAnthropic.bind(this),
+      local: this.callLocalLLM.bind(this),
+      mock: this.callMock.bind(this),
+    };
 
-    logger.info("🤖 AI Service Initialized");
-    logger.info(`   Gemini: ${this.geminiApiKey ? "✅ Configured" : "❌ Not configured"}`);
-    logger.info(`   OpenRouter: ${this.openRouterApiKey ? "✅ Configured" : "❌ Not configured"}`);
-    logger.info(`   Default Model: ${this.defaultModel}`);
-    logger.info(`   Fallback Model: ${this.fallbackModel}`);
+    this.defaultProvider = config.ai?.provider || "mock";
+    this.fallbackProvider = config.ai?.fallbackProvider || "mock";
   }
 
-  /**
-   * Main chat method - always returns a response
-   * ✅ FIXED: Conversation history now sent to AI
-   * ✅ FIXED: Mode support
-   */
-  async chat(userId, message, level = "A1", context = {}) {
+  // ============================================
+  // 🎯 Main Chat Method
+  // ============================================
+
+  async chat(userId, message, level = "A1", options = {}) {
     try {
-      const sanitizedMessage = this.sanitizeInput(message);
-      const mode = context.mode || context.role || "tutor";
-      const language = context.language || "fa";
+      // Check rate limit
+      await this.checkRateLimit(userId);
 
-      logger.info(
-        `💬 AI Chat from user ${userId}: "${sanitizedMessage.substring(0, 50)}..." (mode: ${mode})`
-      );
-
-      // ✅ Build conversation history from context
-      const conversationHistory = (context.messages || []).map((m) => ({
-        role: m.sender === "user" ? "user" : "assistant",
-        content: m.content || m.message || "",
-      }));
-
-      // Remove last user message (it's being sent now)
-      if (
-        conversationHistory.length > 0 &&
-        conversationHistory[conversationHistory.length - 1].role === "user"
-      ) {
-        conversationHistory.pop();
+      // Check cache
+      const cacheKey = this.getCacheKey(userId, message, level, options);
+      if (responseCache.has(cacheKey)) {
+        const cached = responseCache.get(cacheKey);
+        if (Date.now() - cached.timestamp < CACHE_TTL) {
+          logger.info(`🤖 AI cache hit for user: ${userId}`);
+          return { ...cached.response, isCached: true };
+        }
+        responseCache.delete(cacheKey);
       }
 
-      // Try Gemini first
-      if (this.geminiApiKey) {
+      // Build context
+      const context = this.buildContext(level, options);
+
+      // Try primary provider
+      let response;
+      try {
+        response = await this.providers[this.defaultProvider](message, context, options);
+      } catch (primaryError) {
+        logger.warn(`🤖 Primary AI provider failed, trying fallback: ${primaryError.message}`);
+
+        // Try fallback provider
         try {
-          const response = await this.callGemini(
-            sanitizedMessage,
-            level,
-            conversationHistory,
-            mode,
-            language
-          );
-          if (response) {
-            return {
-              text: response,
-              provider: "gemini",
-              isMock: false,
-            };
-          }
-        } catch (error) {
-          logger.warn(`⚠️ Gemini failed: ${error.message}`);
+          response = await this.providers[this.fallbackProvider](message, context, options);
+          response.usedFallback = true;
+        } catch (fallbackError) {
+          logger.error(`🤖 All AI providers failed: ${fallbackError.message}`);
+          // Last resort: mock response
+          response = await this.callMock(message, context, options);
+          response.isMock = true;
         }
       }
 
-      // Try OpenRouter as fallback
-      if (this.openRouterApiKey) {
-        try {
-          const response = await this.callOpenRouter(
-            sanitizedMessage,
-            level,
-            conversationHistory,
-            mode,
-            language
-          );
-          if (response) {
-            return {
-              text: response,
-              provider: "openrouter",
-              isMock: false,
-            };
-          }
-        } catch (error) {
-          logger.warn(`⚠️ OpenRouter failed: ${error.message}`);
-        }
+      // Track token usage
+      if (response.tokensUsed) {
+        this.trackTokenUsage(userId, response.tokensUsed);
       }
 
-      // Final fallback: mock response
-      logger.warn(`⚠️ Using mock response for user ${userId}`);
-      return {
-        text: this.getMockResponse(sanitizedMessage, mode),
-        provider: "mock",
-        isMock: true,
-      };
-    } catch (error) {
-      logger.error(`❌ AI Chat error:`, error);
-      return {
-        text: this.getMockResponse(message),
-        provider: "mock",
-        isMock: true,
-        error: error.message,
-      };
-    }
-  }
-
-  /**
-   * Call Gemini API
-   * ✅ FIXED: Conversation history using contents array
-   * ✅ FIXED: API key in both URL and header (redundant)
-   */
-  async callGemini(message, level, history = [], mode = "tutor", language = "fa") {
-    try {
-      const systemPrompt = this.getSystemPrompt(level, mode, language);
-
-      // ✅ Build contents array with history (Gemini format)
-      const contents = [];
-
-      // Add conversation history
-      history.forEach((h) => {
-        contents.push({
-          role: h.role === "assistant" ? "model" : "user",
-          parts: [{ text: h.content }],
-        });
+      // Cache response
+      responseCache.set(cacheKey, {
+        response,
+        timestamp: Date.now(),
       });
 
-      // Add current message
-      contents.push({
-        role: "user",
-        parts: [{ text: message }],
-      });
+      logger.info(`🤖 AI response sent to user: ${userId} (provider: ${response.provider})`);
 
-      // ✅ FIXED: API key in both URL and header for redundancy
-      const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/${this.defaultModel}:generateContent?key=${this.geminiApiKey}`,
-        {
-          systemInstruction: {
-            parts: [{ text: systemPrompt }],
-          },
-          contents: contents,
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 8192,
-            topP: 0.95,
-          },
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "x-goog-api-key": this.geminiApiKey, // ✅ Redundant for reliability
-          },
-          timeout: this.timeout,
-        }
-      );
-
-      const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-      if (!text) {
-        throw new Error("Empty response from Gemini");
-      }
-
-      return text;
+      return response;
     } catch (error) {
-      if (error.response?.status === 403) {
-        logger.error(`❌ Gemini API Key is invalid or expired.`);
-      }
+      logger.error(`🤖 AI chat error for user ${userId}:`, error);
       throw error;
     }
   }
 
-  /**
-   * Call OpenRouter API
-   * ✅ FIXED: Dynamic model from env (not hardcoded)
-   * ✅ FIXED: Conversation history
-   */
-  async callOpenRouter(message, level, history = [], mode = "tutor", language = "fa") {
-    const systemPrompt = this.getSystemPrompt(level, mode, language);
+  // ============================================
+  // 🚦 Rate Limiting
+  // ============================================
 
-    // Build messages with history
-    const messages = [
-      { role: "system", content: systemPrompt },
-      ...history.map((h) => ({
-        role: h.role === "assistant" ? "assistant" : "user",
-        content: h.content,
-      })),
-      { role: "user", content: message },
-    ];
+  async checkRateLimit(userId) {
+    const today = new Date().toDateString();
+    const key = `${userId}-${today}`;
+    const usage = userTokenUsage.get(key) || 0;
 
-    // ✅ FIXED: Using this.fallbackModel from env (not hardcoded)
-    const response = await axios.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        model: this.fallbackModel,
-        messages: messages,
-        max_tokens: 1000,
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${this.openRouterApiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:3000",
-          "X-Title": "Learning Academy",
-        },
-        timeout: this.timeout,
-      }
-    );
-
-    const text = response.data?.choices?.[0]?.message?.content;
-
-    if (!text) {
-      throw new Error("Empty response from OpenRouter");
+    if (usage >= MAX_TOKENS_PER_USER_PER_DAY) {
+      throw new Error("Daily AI usage limit exceeded. Please try again tomorrow.");
     }
-
-    return text;
   }
 
-  /**
-   * Get system prompt based on mode
-   */
-  getSystemPrompt(level, mode = "tutor", language = "fa") {
-    const basePrompt = `You are a friendly German language assistant. The student is at level ${level}.`;
+  trackTokenUsage(userId, tokens) {
+    const today = new Date().toDateString();
+    const key = `${userId}-${today}`;
+    const current = userTokenUsage.get(key) || 0;
+    userTokenUsage.set(key, current + tokens);
+  }
+
+  // ============================================
+  // 🔑 Cache Key
+  // ============================================
+
+  getCacheKey(userId, message, level, options) {
+    const optionsStr = JSON.stringify(options || {});
+    return `${userId}-${level}-${message}-${optionsStr}`;
+  }
+
+  // ============================================
+  // 🏗️ Build Context
+  // ============================================
+
+  buildContext(level, options = {}) {
+    return {
+      level,
+      mode: options.mode || "general",
+      nativeLanguage: options.nativeLanguage || "fa",
+      systemPrompt: this.getSystemPrompt(level, options.mode),
+      maxTokens: options.maxTokens || 1000,
+      temperature: options.temperature || 0.7,
+    };
+  }
+
+  getSystemPrompt(level, mode) {
+    const basePrompt = `You are a helpful German language teacher for ${level} level students.
+    The student's native language is Persian/Farsi.
+    Provide clear explanations and examples.
+    Correct mistakes gently and encourage the student.`;
 
     const modePrompts = {
-      tutor: `
-You are a professional German language tutor. Your role is to:
-1. Teach German in a structured way
-2. Correct mistakes gently
-3. Explain grammar rules
-4. Provide examples
-5. Always respond in ${language} but include German examples
-
-Example: "عالی! جمله شما درست است. به آلمانی می‌گوییم: Ich heiße ..."`,
-
-      conversation: `
-You are a friendly German conversation partner. Your role is to:
-1. Have natural conversations in German
-2. Help the user practice speaking
-3. Keep the conversation flowing
-4. Use simple German with occasional ${language} help
-5. Respond in German with ${language} translations when needed`,
-
-      free: `
-You are a helpful AI assistant. Your role is to:
-1. Answer questions about any topic
-2. Help with German language learning when asked
-3. Be friendly and helpful
-4. Respond in ${language} or German based on user's preference
-5. Be versatile and adaptable`,
+      general: "Help the student with general German language questions.",
+      conversation:
+        "Engage in a conversation in German. Keep responses simple for the student's level.",
+      grammar: "Focus on grammar explanations and examples.",
+      vocabulary: "Help with vocabulary building and word usage.",
     };
 
-    return basePrompt + (modePrompts[mode] || modePrompts.tutor);
+    return `${basePrompt}\n\n${modePrompts[mode] || modePrompts.general}`;
   }
 
-  /**
-   * Get mock response (fallback)
-   */
-  getMockResponse(message, mode = "tutor") {
-    const lower = message.toLowerCase();
+  // ============================================
+  // 🤖 OpenAI Provider
+  // ============================================
 
-    if (lower.includes("hallo") || lower.includes("سلام") || lower.includes("hi")) {
-      return "Hallo! Wie geht es dir? (سلام! حالت چطور است؟)";
-    }
-    if (lower.includes("name") || lower.includes("اسم") || lower.includes("نام")) {
-      return "Ich heiße German Academy. Wie heißt du? (اسم من آکادمی آلمانی است. شما چه نامی دارید؟)";
-    }
-    if (lower.includes("wie geht") || lower.includes("حال") || lower.includes("چطوری")) {
-      return "Mir geht es gut, danke! Und dir? (من خوبم، متشکرم! و شما؟)";
-    }
-    if (lower.includes("danke") || lower.includes("مرسی") || lower.includes("ممنون")) {
-      return "Bitte schön! (خواهش می‌کنم!)";
-    }
-    if (lower.includes("tschüss") || lower.includes("خداحافظ") || lower.includes("بای")) {
-      return "Auf Wiedersehen! Bis bald! (خدانگهدار! به زودی می‌بینمت!)";
-    }
-    if (lower.includes("was") || lower.includes("چیست") || lower.includes("این")) {
-      return "Das ist ein/eine... (این یک ... است). برای یادگیری بهتر، می‌توانید بپرسید: 'Was bedeutet das?' (این یعنی چه؟)";
+  async callOpenAI(message, context, options) {
+    if (!config.ai?.openai?.apiKey) {
+      throw new Error("OpenAI API key not configured");
     }
 
-    return `این یک جمله جالب است! به آلمانی می‌توانید بگویید: "${message}"
-آیا می‌خواهید معنی آن را بدانید؟`;
-  }
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${config.ai.openai.apiKey}`,
+      },
+      body: JSON.stringify({
+        model: config.ai.openai.model || "gpt-4",
+        messages: [
+          { role: "system", content: context.systemPrompt },
+          { role: "user", content: message },
+        ],
+        max_tokens: context.maxTokens,
+        temperature: context.temperature,
+      }),
+    });
 
-  /**
-   * Sanitize input
-   */
-  sanitizeInput(input) {
-    if (!input) return "";
-    return input
-      .replace(/<[^>]*>/g, "") // Remove HTML tags
-      .replace(/system:/gi, "") // Remove system injection
-      .trim();
-  }
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
 
-  /**
-   * Generate response (alias for chat)
-   */
-  async generateResponse(userId, message, level = "A1", context = {}) {
-    return this.chat(userId, message, level, context);
-  }
+    const data = await response.json();
 
-  /**
-   * Grammar correction
-   */
-  async correctGrammar(text, userId = "anonymous") {
-    const response = await this.chat(userId, `لطفاً این جمله آلمانی را تصحیح کن: ${text}`, "A1");
     return {
-      corrected: response.text,
-      errors: [],
-      suggestions: [],
+      text: data.choices[0]?.message?.content || "",
+      provider: "openai",
+      tokensUsed: data.usage?.total_tokens || 0,
+      model: data.model,
     };
   }
 
-  /**
-   * Translate to German
-   */
-  async translateToGerman(text, nativeLanguage = "fa") {
-    const response = await this.chat(
-      "anonymous",
-      `لطفاً این جمله را به آلمانی ترجمه کن: ${text}`,
-      "A1"
-    );
+  // ============================================
+  // 🤖 Anthropic Provider
+  // ============================================
+
+  async callAnthropic(message, context, options) {
+    if (!config.ai?.anthropic?.apiKey) {
+      throw new Error("Anthropic API key not configured");
+    }
+
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": config.ai.anthropic.apiKey,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model: config.ai.anthropic.model || "claude-3-sonnet-20240229",
+        system: context.systemPrompt,
+        messages: [{ role: "user", content: message }],
+        max_tokens: context.maxTokens,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Anthropic API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
     return {
-      translation: response.text,
-      original: text,
+      text: data.content?.[0]?.text || "",
+      provider: "anthropic",
+      tokensUsed: data.usage?.output_tokens || 0,
+      model: data.model,
     };
   }
 
-  /**
-   * Explain grammar
-   */
-  async explainGrammar(concept, level = "A1", nativeLanguage = "fa") {
-    const response = await this.chat(
-      "anonymous",
-      `لطفاً مفهوم گرامری "${concept}" را برای سطح ${level} توضیح بده`,
-      level
-    );
+  // ============================================
+  // 🤖 Local LLM Provider
+  // ============================================
+
+  async callLocalLLM(message, context, options) {
+    const localUrl = config.ai?.local?.url || "http://localhost:11434";
+
+    const response = await fetch(`${localUrl}/api/generate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: config.ai?.local?.model || "llama2",
+        prompt: `${context.systemPrompt}\n\nUser: ${message}\n\nAssistant:`,
+        stream: false,
+        options: {
+          temperature: context.temperature,
+          num_predict: context.maxTokens,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Local LLM error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
     return {
-      explanation: response.text,
-      concept,
-      level,
+      text: data.response || "",
+      provider: "local",
+      tokensUsed: 0,
+      model: config.ai?.local?.model || "llama2",
     };
   }
 
-  /**
-   * Generate exercise
-   */
-  async generateExercise(topic, level = "A1", count = 5) {
-    const response = await this.chat(
-      "anonymous",
-      `لطفاً ${count} تمرین برای موضوع "${topic}" در سطح ${level} بساز`,
-      level
-    );
+  // ============================================
+  // 🎭 Mock Provider (for development/testing)
+  // ============================================
+
+  async callMock(message, context, options) {
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const mockResponses = {
+      general: `This is a mock response to: "${message}". In production, this would be a real AI response from ${context.level} level German teacher.`,
+      conversation: `Das ist eine Beispielantwort. (This is a sample response in German.)`,
+      grammar: `Hier ist eine Grammatikerklärung. (Here is a grammar explanation.)`,
+      vocabulary: `Hier sind einige Vokabeln. (Here are some vocabulary words.)`,
+    };
+
     return {
-      exercises: response.text,
-      topic,
-      level,
-      count,
+      text: mockResponses[context.mode] || mockResponses.general,
+      provider: "mock",
+      tokensUsed: 0,
+      isMock: true,
     };
   }
 
-  /**
-   * Start scenario
-   */
-  async startScenario(scenarioType, level = "A1") {
-    const response = await this.chat(
-      "anonymous",
-      `یک سناریوی ${scenarioType} برای مکالمه آلمانی در سطح ${level} شروع کن`,
-      level
-    );
+  // ============================================
+  // 📊 Get Usage Stats
+  // ============================================
+
+  async getUsageStats(userId) {
+    const today = new Date().toDateString();
+    const key = `${userId}-${today}`;
+    const todayUsage = userTokenUsage.get(key) || 0;
+
     return {
-      text: response.text,
-      scenarioType,
-      level,
+      today: todayUsage,
+      limit: MAX_TOKENS_PER_USER_PER_DAY,
+      remaining: MAX_TOKENS_PER_USER_PER_DAY - todayUsage,
+      percentage: Math.round((todayUsage / MAX_TOKENS_PER_USER_PER_DAY) * 100),
     };
   }
 
-  /**
-   * Continue scenario
-   */
-  async continueScenario(history, message) {
-    const response = await this.chat(
-      "anonymous",
-      `ادامه سناریو: ${history}\nپاسخ من: ${message}`,
-      "A1"
-    );
-    return {
-      text: response.text,
-    };
+  // ============================================
+  // 🧹 Clear Cache
+  // ============================================
+
+  clearCache() {
+    responseCache.clear();
+    logger.info("🤖 AI response cache cleared");
   }
 }
 

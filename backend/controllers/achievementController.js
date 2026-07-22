@@ -4,6 +4,7 @@
  * Achievements controller
  * Changes:
  * - ✅ FIXED H15: Removed manual check endpoint (XP farming)
+ * - ✅ ADDED: getRecentAchievements endpoint
  * - ✅ Achievements are now checked automatically
  * - ✅ All endpoints use asyncHandler for consistency
  * - ✅ Added proper error handling
@@ -43,6 +44,25 @@ export const getUserAchievements = asyncHandler(async (req, res) => {
   logInfo("🏆 [Achievement] Getting user achievements", { userId });
 
   const achievements = await achievementService.getUserAchievements(userId);
+
+  res.json({
+    success: true,
+    data: achievements,
+    count: achievements.length,
+  });
+});
+
+/**
+ * ✅ NEW: Get recent achievements
+ * GET /api/achievements/recent
+ */
+export const getRecentAchievements = asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const limit = parseInt(req.query.limit) || 5;
+
+  logInfo("🏆 [Achievement] Getting recent achievements", { userId, limit });
+
+  const achievements = await achievementService.getRecentAchievements(userId, limit);
 
   res.json({
     success: true,
@@ -131,6 +151,7 @@ export const getAchievementStats = asyncHandler(async (req, res) => {
 export default {
   getAllAchievements,
   getUserAchievements,
+  getRecentAchievements,
   getUnviewedAchievements,
   markAchievementAsViewed,
   getAchievementStats,

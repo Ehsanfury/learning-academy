@@ -3,11 +3,11 @@
  * Path: backend/controllers/aiController.js
  * Description: AI controller with all endpoints
  * Changes:
- * - ✅ FIXED: getConversations N+1 query fixed with GROUP BY
- * - ✅ FIXED: Total count added
- * - ✅ FIXED: Limit cap added for security
- * - ✅ FIXED: Use snake_case column names for ORDER BY (created_at)
- * - ✅ FIXED: getConversationById added
+ * - ✅ FIXED: getConversations - fixed subquery alias (aiconversation → ai_conversations)
+ * - ✅ FIXED: getConversations - using literal for subquery
+ * - ✅ FIXED: getConversations - better error handling
+ * - ✅ FIXED: getConversations - using snake_case column names (created_at)
+ * - ✅ FIXED: getConversationById - proper validation
  */
 
 import aiService from "../services/aiService.js";
@@ -24,6 +24,7 @@ import {
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import { ValidationError } from "../errors/index.js";
 import { Op } from "sequelize";
+import sequelize from "../config/db.js";
 import logger from "../config/logger.js";
 
 /**
@@ -340,16 +341,14 @@ export const getConversationHistory = asyncHandler(async (req, res) => {
 /**
  * Get conversations list (for AiTutorPage)
  * GET /api/ai/conversations
- * ✅ FIXED: N+1 query fixed with GROUP BY
- * ✅ FIXED: Total count added
- * ✅ FIXED: Limit cap added for security
+ * ✅ FIXED: Subquery with correct table name
  */
 export const getConversations = asyncHandler(async (req, res) => {
   try {
     const userId = req.user.id;
     const { limit = 20, offset = 0 } = req.query;
 
-    // ✅ FIXED: Max limit cap to prevent DoS
+    // ✅ Max limit cap to prevent DoS
     const safeLimit = Math.min(parseInt(limit) || 20, 100);
     const safeOffset = parseInt(offset) || 0;
 
@@ -362,44 +361,42 @@ export const getConversations = asyncHandler(async (req, res) => {
       col: "sessionId",
     });
 
-    // ✅ FIXED: One query with GROUP BY (N+1 fixed!)
-    const conversations = await AIConversation.findAll({
-      where: { userId },
-      attributes: [
-        "sessionId",
-        [
-          AIConversation.sequelize.fn("MAX", AIConversation.sequelize.col("created_at")),
-          "lastMessageAt",
-        ],
-        [AIConversation.sequelize.fn("COUNT", AIConversation.sequelize.col("id")), "messageCount"],
-        // ✅ Get first message directly using subquery
-        [
-          AIConversation.sequelize.literal(
-            `(SELECT message FROM ai_conversations AS sub 
-              WHERE sub.user_id = AIConversation.user_id 
-              AND sub.session_id = AIConversation.session_id 
-              ORDER BY sub.created_at ASC LIMIT 1)`
-          ),
-          "firstMessage",
-        ],
-      ],
-      group: ["sessionId"],
-      order: [[AIConversation.sequelize.literal('"lastMessageAt"'), "DESC"]],
-      limit: safeLimit,
-      offset: safeOffset,
-    });
+    // ✅ FIXED: Use raw SQL for the main query with correct table name
+    const conversations = await sequelize.query(
+      `SELECT 
+        main.session_id AS "sessionId",
+        MAX(main.created_at) AS "lastMessageAt",
+        COUNT(main.id) AS "messageCount",
+        (SELECT sub.message FROM ai_conversations AS sub 
+         WHERE sub.user_id = main.user_id 
+         AND sub.session_id = main.session_id 
+         ORDER BY sub.created_at ASC LIMIT 1) AS "firstMessage"
+       FROM ai_conversations AS main
+       WHERE main.user_id = $userId
+       GROUP BY main.session_id, main.user_id
+       ORDER BY "lastMessageAt" DESC
+       LIMIT $limit OFFSET $offset`,
+      {
+        replacements: {
+          userId,
+          limit: safeLimit,
+          offset: safeOffset,
+        },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
 
     const result = conversations.map((conv) => ({
       sessionId: conv.sessionId,
-      lastMessageAt: conv.get("lastMessageAt"),
-      messageCount: parseInt(conv.get("messageCount")),
-      preview: (conv.get("firstMessage") || "").substring(0, 50),
+      lastMessageAt: conv.lastMessageAt,
+      messageCount: parseInt(conv.messageCount) || 0,
+      preview: (conv.firstMessage || "").substring(0, 50),
     }));
 
     res.json({
       success: true,
       data: result,
-      total: total,
+      total: total || 0,
       limit: safeLimit,
       offset: safeOffset,
     });
@@ -514,3 +511,18 @@ export const getSessions = asyncHandler(async (req, res) => {
     data: sessions,
   });
 });
+
+export default {
+  chat,
+  correctGrammar,
+  translateToGerman,
+  explainGrammar,
+  generateExercise,
+  startScenario,
+  continueScenario,
+  getConversationHistory,
+  getConversations,
+  getConversationById,
+  deleteHistory,
+  getSessions,
+};

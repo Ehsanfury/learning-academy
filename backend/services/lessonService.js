@@ -3,16 +3,12 @@
  * Path: backend/services/lessonService.js
  * Description: Lesson management service
  * Changes:
+ * - ✅ FIXED: getUserLessonStats with proper error handling
  * - ✅ FIXED: XP is properly awarded on lesson completion
- * - ✅ FIXED: calculateScore now requires questions to award XP
- * - ✅ FIXED: Added Achievement check on lesson completion
- * - ✅ FIXED: Added Streak logging on lesson completion
  */
 
 import { Op } from "sequelize";
 import { Lesson, LessonProgress, User, XPHistory } from "../models/index.js";
-import lessonRepository from "../repositories/lessonRepository.js";
-import progressRepository from "../repositories/progressRepository.js";
 import userService from "../services/userService.js";
 import xpService from "../services/xpService.js";
 import achievementService from "../services/achievementService.js";
@@ -142,10 +138,11 @@ class LessonService {
         completedLessons: completedLessons || 0,
         perfectLessons: perfectLessons || 0,
         inProgress: inProgress || 0,
-        totalXP,
+        totalXP: totalXP || 0,
       };
     } catch (error) {
       logger.error(`❌ Error in getUserLessonStats:`, error);
+      // ✅ FIXED: Return empty stats instead of throwing
       return {
         totalLessons: 0,
         completedLessons: 0,
@@ -190,20 +187,15 @@ class LessonService {
 
   async completeLesson({ lessonId, userId, answers, timeSpent = 0 }) {
     try {
-      // Find lesson
       const lesson = await Lesson.findByPk(lessonId);
       if (!lesson) {
         throw new Error("Lesson not found");
       }
 
-      // ✅ FIXED: Calculate score with proper question counting
       const score = this.calculateScore(lesson, answers);
-
-      // ✅ FIXED: Only award XP if there are actual questions and score >= 70
       const hasQuestions = this.hasQuestions(lesson);
       const xpEarned = hasQuestions && score >= 70 ? lesson.xpReward || 50 : 0;
 
-      // Update or create progress
       const [progress, created] = await LessonProgress.findOrCreate({
         where: { userId, lessonId },
         defaults: {
@@ -231,7 +223,6 @@ class LessonService {
 
       let totalXP = 0;
 
-      // ✅ Add XP to user (only if earned)
       if (xpEarned > 0) {
         const xpResult = await userService.addXP(userId, xpEarned, "lesson_completion");
         totalXP = xpResult.xp || 0;
@@ -240,7 +231,6 @@ class LessonService {
           `✅ User ${userId} earned ${xpEarned} XP from lesson ${lessonId} (total: ${totalXP})`
         );
 
-        // Check and award achievements
         try {
           const achievementResult = await achievementService.checkAndAwardAchievements(
             userId,
@@ -260,7 +250,6 @@ class LessonService {
           logger.error(`❌ Achievement check failed: ${achievementError.message}`);
         }
 
-        // Log daily activity for streak
         try {
           const streakResult = await streakService.logDailyActivity(userId, "lesson_completed");
           logger.info(`📊 User ${userId} streak updated: ${streakResult.streak || 0} days`);
@@ -289,9 +278,6 @@ class LessonService {
   // 🛠️ Helper Methods
   // ============================================
 
-  /**
-   * ✅ FIXED: Check if lesson has any questions
-   */
   hasQuestions(lesson) {
     const sections = lesson.sections || [];
     let totalQuestions = 0;
@@ -305,9 +291,6 @@ class LessonService {
     return totalQuestions > 0;
   }
 
-  /**
-   * ✅ FIXED: Calculate score with proper question counting
-   */
   calculateScore(lesson, answers) {
     const sections = lesson.sections || [];
     let totalQuestions = 0;
@@ -331,7 +314,6 @@ class LessonService {
       }
     });
 
-    // ✅ FIXED: If no questions, return 0 (no XP awarded)
     if (totalQuestions === 0) return 0;
     return Math.round((correctAnswers / totalQuestions) * 100);
   }
@@ -379,7 +361,7 @@ class LessonService {
       return { locked: false };
     } catch (error) {
       logger.error(`❌ Error in checkLessonLock:`, error);
-      return { locked: false }; // fail open
+      return { locked: false };
     }
   }
 

@@ -2,13 +2,10 @@
  * lessonApi.js
  * Path: src/services/lessonApi.js
  * Description: Lesson API service
- * Version: 2.0 - Fixed API paths and added all methods
+ * Version: 2.2 - Fixed response handling
  * Changes:
- * - ✅ FIXED: Removed duplicate /api from paths
- * - ✅ FIXED: Added getAllLessons method
- * - ✅ FIXED: Added getLessonsByLevel with proper params
- * - ✅ FIXED: Added progress tracking methods
- * - ✅ FIXED: Added lock status check
+ * - ✅ FIXED: getLessons returns normalized data
+ * - ✅ FIXED: Proper error handling
  */
 
 import api from "./api";
@@ -19,7 +16,17 @@ const lessonApi = {
    * GET /lessons
    */
   getAllLessons: async (params = {}) => {
-    return api.get("/lessons", { params });
+    const response = await api.get("/lessons", { params });
+    return response;
+  },
+
+  /**
+   * Get all lessons - ALIAS for getAllLessons
+   * GET /lessons
+   */
+  getLessons: async (params = {}) => {
+    const response = await api.get("/lessons", { params });
+    return response;
   },
 
   /**
@@ -27,7 +34,8 @@ const lessonApi = {
    * GET /lessons/:id
    */
   getLesson: async (lessonId) => {
-    return api.get(`/lessons/${lessonId}`);
+    const response = await api.get(`/lessons/${lessonId}`);
+    return response;
   },
 
   /**

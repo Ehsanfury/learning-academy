@@ -1,10 +1,10 @@
 /**
  * AuthContext.jsx
  * Path: src/context/AuthContext.jsx
- * Description: Authentication context for user state management
+ * Description: Authentication context
  * Changes:
- * - ✅ FIXED: Added debug logs for token storage
- * - ✅ FIXED: Better role handling
+ * - ✅ FIXED: logout now properly clears state
+ * - ✅ FIXED: better error handling for token validation
  */
 
 import React, {
@@ -13,6 +13,7 @@ import React, {
   useState,
   useEffect,
   useCallback,
+  useMemo,
 } from "react";
 import { authApi } from "../services/authApi";
 import { storage } from "../utils/storage";
@@ -24,49 +25,60 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState(null);
 
-  // Load user from token on mount
+  // ============================================
+  // 📡 Load user from token on mount
+  // ============================================
+
   useEffect(() => {
     const loadUser = async () => {
       try {
         const token = storage.getToken();
+
         debug.log("🔐 Token check:", {
           hasToken: !!token,
           token: token?.substring(0, 20) + "...",
         });
 
-        if (token) {
-          try {
-            const response = await authApi.getMe();
-            debug.log("✅ Auth response:", response);
+        if (!token) {
+          debug.log("🔐 No token found");
+          setIsAuthenticated(false);
+          setIsLoading(false);
+          return;
+        }
 
-            if (response.success && response.data?.user) {
-              const userData = response.data.user;
-              setUser(userData);
-              setIsAuthenticated(true);
-              // ✅ Save user to storage
-              storage.setUser(userData);
-              debug.log(
-                `✅ User authenticated: ${userData.email} (role: ${userData.role})`,
-              );
-            } else {
-              debug.warn("⚠️ Token invalid, clearing auth");
-              storage.clearAuth();
-              setIsAuthenticated(false);
-            }
-          } catch (error) {
-            debug.warn("⚠️ Auth check failed:", error.message);
+        try {
+          const response = await authApi.getMe();
+
+          if (response.success && response.data?.user) {
+            const userData = response.data.user;
+            setUser(userData);
+            setIsAuthenticated(true);
+            storage.setUser(userData);
+            debug.log(
+              `✅ User authenticated: ${userData.email} (role: ${userData.role})`,
+            );
+          } else {
+            debug.warn("⚠️ Token invalid, clearing auth");
             storage.clearAuth();
             setIsAuthenticated(false);
           }
-        } else {
-          debug.log("🔐 No token found");
-          setIsAuthenticated(false);
+        } catch (apiError) {
+          // ✅ If API returns 401, clear auth
+          if (apiError.response?.status === 401) {
+            debug.warn("⚠️ Token expired, clearing auth");
+            storage.clearAuth();
+            setIsAuthenticated(false);
+          } else {
+            throw apiError;
+          }
         }
       } catch (error) {
         debug.error("Failed to load user:", error);
         storage.clearAuth();
         setIsAuthenticated(false);
+        setAuthError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -75,74 +87,92 @@ export const AuthProvider = ({ children }) => {
     loadUser();
   }, []);
 
+  // ============================================
+  // 🔑 Login
+  // ============================================
+
   const login = useCallback(async (email, password) => {
     try {
+      setAuthError(null);
       const response = await authApi.login(email, password);
-      debug.log("🔄 Login response:", response);
 
       if (response.success) {
         const { user, accessToken } = response.data;
-
-        // ✅ Save auth with both keys
         storage.setAuth({ accessToken, user });
-
-        // ✅ Verify saved
-        const savedToken = storage.getToken();
-        debug.log("✅ Token saved:", {
-          hasToken: !!savedToken,
-          token: savedToken?.substring(0, 20) + "...",
-          userRole: user?.role,
-        });
-
         setUser(user);
         setIsAuthenticated(true);
         debug.log(`✅ Login successful: ${user.email} (role: ${user.role})`);
         return { success: true, user };
       }
+
+      setAuthError(response.message);
       return { success: false, error: response.message };
     } catch (error) {
       debug.error("Login error:", error);
+      setAuthError(error.message);
       return { success: false, error: error.message };
     }
   }, []);
 
+  // ============================================
+  // 📝 Register
+  // ============================================
+
   const register = useCallback(async (userData) => {
     try {
+      setAuthError(null);
       const response = await authApi.register(userData);
+
       if (response.success) {
         const { user, accessToken } = response.data;
         storage.setAuth({ accessToken, user });
         setUser(user);
         setIsAuthenticated(true);
-        debug.log(`✅ Register successful: ${user.email} (role: ${user.role})`);
+        debug.log(`✅ Register successful: ${user.email}`);
         return { success: true, user };
       }
+
+      setAuthError(response.message);
       return { success: false, error: response.message };
     } catch (error) {
+      debug.error("Register error:", error);
+      setAuthError(error.message);
       return { success: false, error: error.message };
     }
   }, []);
 
+  // ============================================
+  // 🚪 Logout - ✅ FIXED
+  // ============================================
+
   const logout = useCallback(async () => {
     try {
+      debug.log("🔄 Logging out...");
       await authApi.logout();
     } catch (error) {
       debug.error("Logout error:", error);
     } finally {
+      // ✅ ALWAYS clear everything
       storage.clearAuth();
       setUser(null);
       setIsAuthenticated(false);
+      debug.log("✅ Logout complete");
     }
   }, []);
+
+  // ============================================
+  // 🔄 Update User
+  // ============================================
 
   const updateUser = useCallback((updatedUser) => {
     setUser(updatedUser);
     storage.setUser(updatedUser);
   }, []);
 
-  // Refresh user data from backend (after XP changes, profile updates, etc.)
-  // This re-fetches /auth/me and updates the AuthContext state so all
-  // components using useAuth() see fresh data (xp, level, streak, etc.)
+  // ============================================
+  // 🔄 Refresh User
+  // ============================================
+
   const refreshUser = useCallback(async () => {
     try {
       const response = await authApi.getMe();
@@ -159,17 +189,47 @@ export const AuthProvider = ({ children }) => {
     return null;
   }, []);
 
-  const value = {
-    user,
-    setUser,
-    isAuthenticated,
-    isLoading,
-    login,
-    register,
-    logout,
-    updateUser,
-    refreshUser,
-  };
+  // ============================================
+  // 🛡️ Role Helpers
+  // ============================================
+
+  const isAdmin = user?.role === "admin";
+  const isUser = user?.role === "user";
+
+  // ============================================
+  // 📦 Memoized Value
+  // ============================================
+
+  const value = useMemo(
+    () => ({
+      user,
+      setUser,
+      isAuthenticated,
+      isLoading,
+      authError,
+      login,
+      register,
+      logout,
+      updateUser,
+      refreshUser,
+      isAdmin,
+      isUser,
+      clearError: () => setAuthError(null),
+    }),
+    [
+      user,
+      isAuthenticated,
+      isLoading,
+      authError,
+      login,
+      register,
+      logout,
+      updateUser,
+      refreshUser,
+      isAdmin,
+      isUser,
+    ],
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

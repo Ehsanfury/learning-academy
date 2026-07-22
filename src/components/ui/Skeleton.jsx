@@ -2,7 +2,13 @@
  * Skeleton.jsx
  * Path: src/components/ui/Skeleton.jsx
  * Description: Skeleton loading component with multiple variants
- * Version: 2.0 - Improved with more variants and animations
+ * Version: 3.0 - Improved with more variants and better shimmer
+ * Changes:
+ * - ✅ Added more variants (table, list, profile)
+ * - ✅ Better shimmer animation
+ * - ✅ ARIA labels for screen readers
+ * - ✅ Reduced motion support
+ * - ✅ Custom width/height via style
  */
 
 import { cn } from "@utils/helpers";
@@ -37,6 +43,16 @@ const variants = {
   button: "h-10 w-24 rounded-full",
   buttonSm: "h-8 w-20 rounded-full",
   buttonLg: "h-12 w-32 rounded-full",
+
+  // Table
+  tableRow: "h-12 w-full rounded-lg",
+  tableHeader: "h-8 w-full rounded",
+
+  // List
+  listItem: "h-16 w-full rounded-xl",
+
+  // Profile
+  profileHeader: "h-32 w-full rounded-2xl",
 
   // Other
   circle: "h-16 w-16 rounded-full",
@@ -84,6 +100,9 @@ function Skeleton({
   direction = "vertical",
   gap = "sm",
 
+  // ========== A11y ==========
+  ariaLabel = "در حال بارگذاری...",
+
   ...props
 }) {
   // ============================================
@@ -99,7 +118,7 @@ function Skeleton({
     accent: "bg-accent-200 dark:bg-accent-800",
   };
 
-  const roundedClasses = {
+  const roundedMap = {
     none: "rounded-none",
     sm: "rounded-sm",
     md: "rounded-md",
@@ -121,21 +140,12 @@ function Skeleton({
     horizontal: "flex flex-row",
   };
 
-  // Get base variant class
   const variantClass = variants[variant] || variants.text;
-
-  // Custom style
   const style = {};
   if (width) style.width = width;
   if (height) style.height = height;
-
-  // Rounded override
-  const roundedClass = rounded ? roundedClasses[rounded] : "";
-
-  // Color class
+  const roundedClass = rounded ? roundedMap[rounded] : "";
   const colorClass = colorClasses[color] || colorClasses.neutral;
-
-  // Animation class
   const animationClass =
     animationVariants[animation] || animationVariants.pulse;
 
@@ -146,23 +156,14 @@ function Skeleton({
   const items = Array.from({ length: count }, (_, i) => (
     <div
       key={i}
+      role="status"
+      aria-label={ariaLabel}
       className={cn(
-        // Base
-        "relative overflow-hidden",
-
-        // Variant
+        "relative overflow-hidden motion-reduce:animate-none",
         variantClass,
-
-        // Color
         colorClass,
-
-        // Animation
         animationClass,
-
-        // Rounded
         roundedClass,
-
-        // Custom
         className,
       )}
       style={style}
@@ -170,10 +171,13 @@ function Skeleton({
     >
       {/* Shimmer Effect */}
       {animation === "shimmer" && (
-        <div className="absolute inset-0 -translate-x-full animate-shimmer">
+        <div className="absolute inset-0 -translate-x-full animate-shimmer motion-reduce:animate-none">
           <div className="h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
       )}
+
+      {/* Screen reader only */}
+      <span className="sr-only">{ariaLabel}</span>
     </div>
   ));
 

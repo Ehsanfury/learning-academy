@@ -3,10 +3,12 @@
  * Path: backend/controllers/adminController.js
  * Description: Admin controller - Complete CRUD operations
  * Changes:
+ * - ✅ FIXED: Changed createdAt to created_at in all queries
  * - ✅ FIXED: Added missing methods (getMentors, verifyMentor, getNotifications, createNotification, deleteNotification)
  * - ✅ FIXED: getAllAnalytics with proper error handling
  * - ✅ FIXED: updateFeatureFlags with findOrCreate
- * - ✅ FIXED: All exports now exist
+ * - ✅ NEW: getTopUsers method
+ * - ✅ NEW: getUserGrowth method
  */
 
 import adminService from "../services/adminService.js";
@@ -72,7 +74,7 @@ export const getActivityStats = asyncHandler(async (req, res) => {
 });
 
 // ============================================
-// 📊 Analytics (✅ FIXED: 500 error fixed)
+// 📊 Analytics (✅ FIXED: createdAt → created_at)
 // ============================================
 
 export const getAnalytics = asyncHandler(async (req, res) => {
@@ -82,16 +84,19 @@ export const getAnalytics = asyncHandler(async (req, res) => {
   startDate.setDate(startDate.getDate() - days);
 
   try {
-    const totalViews = await PageView.count({ where: { createdAt: { [Op.gte]: startDate } } });
+    // ✅ FIXED: Use created_at (snake_case) instead of createdAt (camelCase)
+    const totalViews = await PageView.count({
+      where: { created_at: { [Op.gte]: startDate } },
+    });
     const uniqueVisitors = await PageView.count({
       distinct: true,
       col: "ipAddress",
-      where: { createdAt: { [Op.gte]: startDate } },
+      where: { created_at: { [Op.gte]: startDate } },
     });
     const memberVisitors = await PageView.count({
       distinct: true,
       col: "userId",
-      where: { createdAt: { [Op.gte]: startDate }, userId: { [Op.ne]: null } },
+      where: { created_at: { [Op.gte]: startDate }, userId: { [Op.ne]: null } },
     });
 
     const dailyViewsRaw = await PageView.findAll({
@@ -100,7 +105,7 @@ export const getAnalytics = asyncHandler(async (req, res) => {
         [Sequelize.fn("COUNT", Sequelize.col("id")), "views"],
         [Sequelize.fn("COUNT", Sequelize.literal("DISTINCT ip_address")), "uniqueVisitors"],
       ],
-      where: { createdAt: { [Op.gte]: startDate } },
+      where: { created_at: { [Op.gte]: startDate } },
       group: [Sequelize.fn("DATE", Sequelize.col("created_at"))],
       order: [[Sequelize.fn("DATE", Sequelize.col("created_at")), "ASC"]],
       raw: true,
@@ -112,7 +117,6 @@ export const getAnalytics = asyncHandler(async (req, res) => {
       uniqueVisitors: parseInt(row.uniqueVisitors, 10) || 0,
     }));
 
-    // اگر دیتایی نباشد، روزهای اخیر را با مقدار ۰ پر کن
     if (dailyViews.length === 0) {
       dailyViews = [];
       for (let i = days - 1; i >= 0; i--) {
@@ -128,7 +132,7 @@ export const getAnalytics = asyncHandler(async (req, res) => {
 
     const topPagesRaw = await PageView.findAll({
       attributes: ["path", [Sequelize.fn("COUNT", Sequelize.col("id")), "count"]],
-      where: { createdAt: { [Op.gte]: startDate } },
+      where: { created_at: { [Op.gte]: startDate } },
       group: ["path"],
       order: [[Sequelize.fn("COUNT", Sequelize.col("id")), "DESC"]],
       limit: 10,
@@ -137,7 +141,7 @@ export const getAnalytics = asyncHandler(async (req, res) => {
 
     const deviceStatsRaw = await PageView.findAll({
       attributes: ["device", [Sequelize.fn("COUNT", Sequelize.col("id")), "count"]],
-      where: { createdAt: { [Op.gte]: startDate } },
+      where: { created_at: { [Op.gte]: startDate } },
       group: ["device"],
       raw: true,
     });
@@ -152,7 +156,7 @@ export const getAnalytics = asyncHandler(async (req, res) => {
 
     const browserStatsRaw = await PageView.findAll({
       attributes: ["browser", [Sequelize.fn("COUNT", Sequelize.col("id")), "count"]],
-      where: { createdAt: { [Op.gte]: startDate } },
+      where: { created_at: { [Op.gte]: startDate } },
       group: ["browser"],
       order: [[Sequelize.fn("COUNT", Sequelize.col("id")), "DESC"]],
       limit: 8,
@@ -183,7 +187,6 @@ export const getAnalytics = asyncHandler(async (req, res) => {
     });
   } catch (error) {
     logger.error("❌ Error in getAnalytics:", error);
-    // در صورت خطا، داده‌های خالی برگردان
     const emptyDailyViews = [];
     for (let i = days - 1; i >= 0; i--) {
       const date = new Date();
@@ -213,6 +216,56 @@ export const getAnalytics = asyncHandler(async (req, res) => {
       },
     });
   }
+});
+
+// ============================================
+// ✅ NEW: Get top users
+// GET /api/admin/top-users
+// ============================================
+
+export const getTopUsers = asyncHandler(async (req, res) => {
+  const { limit = 10 } = req.query;
+
+  const users = await User.findAll({
+    attributes: ["id", "name", "email", "xp", "level", "streak"],
+    where: { isActive: true },
+    order: [["xp", "DESC"]],
+    limit: parseInt(limit, 10),
+  });
+
+  res.json({
+    success: true,
+    data: users,
+  });
+});
+
+// ============================================
+// ✅ NEW: Get user growth over time
+// GET /api/admin/users/growth
+// ============================================
+
+export const getUserGrowth = asyncHandler(async (req, res) => {
+  const { days = 30 } = req.query;
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - parseInt(days, 10));
+
+  const growth = await User.findAll({
+    attributes: [
+      [Sequelize.fn("DATE", Sequelize.col("created_at")), "date"],
+      [Sequelize.fn("COUNT", Sequelize.col("id")), "count"],
+    ],
+    where: {
+      created_at: { [Op.gte]: startDate },
+    },
+    group: [Sequelize.fn("DATE", Sequelize.col("created_at"))],
+    order: [[Sequelize.fn("DATE", Sequelize.col("created_at")), "ASC"]],
+    raw: true,
+  });
+
+  res.json({
+    success: true,
+    data: growth,
+  });
 });
 
 // ============================================
@@ -320,7 +373,6 @@ export const replyToTicket = asyncHandler(async (req, res) => {
     status: status || "answered",
   });
 
-  // Notify the user
   try {
     const notification = await Notification.create({
       type: "info",
@@ -697,7 +749,7 @@ export const updateUserStatus = asyncHandler(async (req, res) => {
 });
 
 // ============================================
-// 👨‍🏫 Mentor Management (✅ FIXED: Added missing methods)
+// 👨‍🏫 Mentor Management
 // ============================================
 
 export const getMentors = asyncHandler(async (req, res) => {
@@ -745,7 +797,7 @@ export const verifyMentor = asyncHandler(async (req, res) => {
 });
 
 // ============================================
-// 🔔 Notifications (Broadcast) (✅ FIXED: Added missing methods)
+// 🔔 Notifications (Broadcast)
 // ============================================
 
 export const getNotifications = asyncHandler(async (req, res) => {
@@ -926,6 +978,8 @@ export default {
 
   // Analytics
   getAnalytics,
+  getTopUsers,
+  getUserGrowth,
 
   // Tickets
   getAllTickets,
@@ -969,11 +1023,11 @@ export default {
   updateUserStatus,
   deleteUser,
 
-  // Mentors (✅ FIXED: Added)
+  // Mentors
   getMentors,
   verifyMentor,
 
-  // Notifications (✅ FIXED: Added)
+  // Notifications
   getNotifications,
   createNotification,
   deleteNotification,

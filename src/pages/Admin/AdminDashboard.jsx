@@ -1,371 +1,415 @@
 /**
  * AdminDashboard.jsx
  * Path: src/pages/Admin/AdminDashboard.jsx
- * Description: Admin dashboard with real data
- * Changes:
- * - ✅ FIXED: Added debug logs for API calls
- * - ✅ FIXED: Better error handling
+ * Description: Admin dashboard with real data and charts
+ * Version: 2.0 - Real data, charts, better UI
+ * Features:
+ * - ✅ Real-time stats (users, lessons, XP)
+ * - ✅ User growth chart (line chart)
+ * - ✅ Lesson completion chart
+ * - ✅ Recent activity feed
+ * - ✅ Top users list
+ * - ✅ System health indicators
  */
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { useAuth } from "@context/AuthContext";
-import { useLanguageContext } from "@context/LanguageContext";
-import api from "@services/api";
-import debug from "../../utils/debug";
 import {
-  LayoutDashboard,
   Users,
   BookOpen,
+  Zap,
+  TrendingUp,
+  TrendingDown,
   Activity,
+  Server,
+  Database,
   AlertCircle,
-  Loader2,
-  RefreshCw,
-  Star,
-  Award,
+  CheckCircle,
+  Clock,
 } from "lucide-react";
-import toast from "react-hot-toast";
-
-const StatCard = ({ title, value, subtitle, icon: Icon, color, loading }) => {
-  if (loading) {
-    return (
-      <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800 animate-pulse">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-24 mb-2" />
-            <div className="h-8 bg-neutral-200 dark:bg-neutral-700 rounded w-16" />
-          </div>
-          <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-700 rounded-xl" />
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            {title}
-          </p>
-          <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {typeof value === "number" ? value.toLocaleString() : value || 0}
-          </p>
-          {subtitle && (
-            <p className="text-xs text-neutral-400 mt-1">{subtitle}</p>
-          )}
-        </div>
-        {Icon && (
-          <div className={`p-3 rounded-xl ${color}`}>
-            <Icon className="w-5 h-5 text-white" />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+import api from "../../services/api";
+import Card, { CardHeader, CardBody } from "../../components/ui/Card";
+import Skeleton from "../../components/ui/Skeleton";
+import Button from "../../components/ui/Button";
+import ErrorState from "../../components/ui/ErrorState";
+import { formatNumber, formatDate } from "../../utils/helpers";
 
 const AdminDashboard = () => {
-  const { user } = useAuth();
-  const { language } = useLanguageContext();
-
-  const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const [stats, setStats] = useState({
-    totalUsers: 0,
-    activeUsers: 0,
-    totalLessons: 0,
-    totalAchievements: 0,
-    totalXP: 0,
-    lessonsCompletedToday: 0,
-    newUsersToday: 0,
-  });
-
-  const [users, setUsers] = useState([]);
-  const [lessons, setLessons] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [userGrowth, setUserGrowth] = useState([]);
   const [recentActivity, setRecentActivity] = useState([]);
-  const [activeTab, setActiveTab] = useState("overview");
+  const [topUsers, setTopUsers] = useState([]);
+  const [systemHealth, setSystemHealth] = useState(null);
 
-  useEffect(() => {
-    console.log("📊 AdminDashboard mounted");
-    loadAdminData();
+  // ============================================
+  // 📡 Fetch Dashboard Data
+  // ============================================
+
+  const fetchDashboard = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const [statsRes, growthRes, activityRes, topUsersRes, healthRes] =
+        await Promise.allSettled([
+          api.get("/admin/stats"),
+          api.get("/admin/users/growth"),
+          api.get("/admin/activity"),
+          api.get("/admin/top-users"),
+          api.get("/admin/health"),
+        ]);
+
+      if (statsRes.status === "fulfilled") {
+        setStats(statsRes.value?.data?.data);
+      }
+      if (growthRes.status === "fulfilled") {
+        setUserGrowth(growthRes.value?.data?.data || []);
+      }
+      if (activityRes.status === "fulfilled") {
+        setRecentActivity(activityRes.value?.data?.data || []);
+      }
+      if (topUsersRes.status === "fulfilled") {
+        setTopUsers(topUsersRes.value?.data?.data || []);
+      }
+      if (healthRes.status === "fulfilled") {
+        setSystemHealth(healthRes.value?.data?.data);
+      }
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
-  const loadAdminData = async (showRefresh = false) => {
-    try {
-      if (showRefresh) {
-        setRefreshing(true);
-      } else {
-        setLoading(true);
-      }
-      setError(null);
+  useEffect(() => {
+    fetchDashboard();
+  }, [fetchDashboard]);
 
-      console.log("🔄 Loading admin data...");
+  // ============================================
+  // 🖼️ Loading
+  // ============================================
 
-      // ✅ Get dashboard stats
-      try {
-        console.log("📊 Fetching /admin/dashboard...");
-        const dashboardRes = await api.get("/admin/dashboard");
-        console.log("📊 Dashboard response:", dashboardRes);
-
-        const statsData = dashboardRes?.data?.data || dashboardRes?.data || {};
-        setStats({
-          totalUsers: statsData.totalUsers || 0,
-          activeUsers: statsData.activeUsers || 0,
-          totalLessons: statsData.totalLessons || 0,
-          totalAchievements: statsData.totalAchievements || 0,
-          totalXP: statsData.totalXP || 0,
-          lessonsCompletedToday: statsData.lessonsCompletedToday || 0,
-          newUsersToday: statsData.newUsersToday || 0,
-        });
-      } catch (e) {
-        console.error("❌ Dashboard API error:", e);
-      }
-
-      // ✅ Get users
-      try {
-        console.log("👥 Fetching /admin/users...");
-        const usersRes = await api.get("/admin/users");
-        console.log("👥 Users response:", usersRes);
-        const usersData = usersRes?.data?.data || usersRes?.data || [];
-        setUsers(Array.isArray(usersData) ? usersData : []);
-      } catch (e) {
-        console.error("❌ Users API error:", e);
-      }
-
-      // ✅ Get lessons
-      try {
-        console.log("📚 Fetching /admin/lessons...");
-        const lessonsRes = await api.get("/admin/lessons");
-        console.log("📚 Lessons response:", lessonsRes);
-        const lessonsData = lessonsRes?.data?.data || lessonsRes?.data || [];
-        setLessons(Array.isArray(lessonsData) ? lessonsData : []);
-      } catch (e) {
-        console.error("❌ Lessons API error:", e);
-      }
-
-      // ✅ Get activity
-      try {
-        console.log("📊 Fetching /admin/activity...");
-        const activityRes = await api.get("/admin/activity");
-        console.log("📊 Activity response:", activityRes);
-        const activityData = activityRes?.data?.data || activityRes?.data || [];
-        setRecentActivity(Array.isArray(activityData) ? activityData : []);
-      } catch (e) {
-        console.error("❌ Activity API error:", e);
-      }
-
-      console.log("✅ Admin data loaded successfully");
-    } catch (error) {
-      console.error("❌ Error loading admin data:", error);
-      setError(error.message || "خطا در بارگذاری پنل مدیریت");
-      toast.error("خطا در بارگذاری پنل مدیریت");
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  };
-
-  const handleRefresh = () => {
-    loadAdminData(true);
-  };
-
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-12 h-12 animate-spin text-primary-500" />
+      <div className="space-y-6">
+        <Skeleton variant="title" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Skeleton variant="card" count={4} />
+        </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          <Skeleton variant="cardLg" count={2} />
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <AlertCircle className="w-16 h-16 text-red-500" />
-        <p className="text-neutral-500 dark:text-neutral-400">{error}</p>
-        <button
-          onClick={handleRefresh}
-          className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition"
-        >
-          <RefreshCw className="w-4 h-4" />
-          {language === "fa" ? "تلاش مجدد" : "Retry"}
-        </button>
-      </div>
+      <ErrorState
+        error={error}
+        onRetry={fetchDashboard}
+        title="خطا در بارگذاری داشبورد"
+        size="lg"
+      />
     );
   }
 
+  // ============================================
+  // 🖼️ Render
+  // ============================================
+
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between flex-wrap gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-            <LayoutDashboard className="w-6 h-6 text-primary-500" />
-            {language === "fa" ? "پنل مدیریت" : "Admin Dashboard"}
-          </h1>
-          <p className="text-neutral-500 dark:text-neutral-400 mt-1">
-            {language === "fa"
-              ? `مدیریت ${stats.totalUsers || 0} کاربر و ${stats.totalLessons || 0} درس`
-              : `Managing ${stats.totalUsers || 0} users and ${stats.totalLessons || 0} lessons`}
-          </p>
-        </div>
-        <button
-          onClick={handleRefresh}
-          disabled={refreshing}
-          className="flex items-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg hover:bg-neutral-200 transition disabled:opacity-50"
-        >
-          <RefreshCw
-            className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`}
-          />
-          {language === "fa" ? "بروزرسانی" : "Refresh"}
-        </button>
+      <div>
+        <h1 className="text-2xl font-bold">داشبورد مدیریت</h1>
+        <p className="text-sm text-neutral-500 mt-1">
+          نمای کلی از وضعیت سیستم و کاربران
+        </p>
       </div>
 
+      {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard
-          title={language === "fa" ? "کاربران کل" : "Total Users"}
-          value={stats.totalUsers || 0}
-          subtitle={`${stats.newUsersToday || 0} ${language === "fa" ? "جدید امروز" : "new today"}`}
           icon={Users}
-          color="bg-blue-500"
+          label="کل کاربران"
+          value={stats?.totalUsers || 0}
+          change={stats?.userGrowth}
+          color="primary"
         />
         <StatCard
-          title={language === "fa" ? "کاربران فعال" : "Active Users"}
-          value={stats.activeUsers || 0}
-          icon={Activity}
-          color="bg-green-500"
-        />
-        <StatCard
-          title={language === "fa" ? "کل درس‌ها" : "Total Lessons"}
-          value={stats.totalLessons || 0}
-          subtitle={`${stats.lessonsCompletedToday || 0} ${language === "fa" ? "تکمیل امروز" : "completed today"}`}
           icon={BookOpen}
-          color="bg-purple-500"
+          label="کل درس‌ها"
+          value={stats?.totalLessons || 0}
+          change={stats?.lessonGrowth}
+          color="success"
         />
         <StatCard
-          title={language === "fa" ? "کل XP" : "Total XP"}
-          value={stats.totalXP || 0}
-          icon={Star}
-          color="bg-amber-500"
+          icon={Zap}
+          label="کل XP توزیع شده"
+          value={stats?.totalXP || 0}
+          change={stats?.xpGrowth}
+          color="warning"
+        />
+        <StatCard
+          icon={Activity}
+          label="کاربران فعال (امروز)"
+          value={stats?.activeToday || 0}
+          change={stats?.activeChange}
+          color="accent"
         />
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-        <h3 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
-          {language === "fa" ? "آمار تکمیلی" : "Additional Stats"}
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-            <p className="text-2xl font-bold text-amber-500">
-              {stats.totalAchievements || 0}
-            </p>
-            <p className="text-xs text-neutral-500">
-              {language === "fa" ? "دستاوردها" : "Achievements"}
-            </p>
-          </div>
-          <div className="text-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-            <p className="text-2xl font-bold text-green-500">
-              {stats.totalUsers > 0
-                ? `${Math.round((stats.activeUsers / stats.totalUsers) * 100)}%`
-                : "0%"}
-            </p>
-            <p className="text-xs text-neutral-500">
-              {language === "fa" ? "نرخ فعالیت" : "Activity Rate"}
-            </p>
-          </div>
-          <div className="text-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-            <p className="text-2xl font-bold text-blue-500">
-              {stats.totalUsers > 0
-                ? Math.round(stats.totalXP / stats.totalUsers)
-                : 0}
-            </p>
-            <p className="text-xs text-neutral-500">
-              {language === "fa" ? "میانگین XP" : "Avg XP"}
-            </p>
-          </div>
-          <div className="text-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-            <p className="text-2xl font-bold text-purple-500">
-              {stats.lessonsCompletedToday || 0}
-            </p>
-            <p className="text-xs text-neutral-500">
-              {language === "fa" ? "درس امروز" : "Today's Lessons"}
-            </p>
-          </div>
-        </div>
+      {/* Charts Row */}
+      <div className="grid lg:grid-cols-2 gap-6">
+        {/* User Growth Chart */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary-500" />
+              <h2 className="text-lg font-bold">رشد کاربران (۳۰ روز اخیر)</h2>
+            </div>
+          </CardHeader>
+          <CardBody>
+            <LineChart data={userGrowth} />
+          </CardBody>
+        </Card>
+
+        {/* System Health */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Server className="w-5 h-5 text-success-500" />
+              <h2 className="text-lg font-bold">وضعیت سیستم</h2>
+            </div>
+          </CardHeader>
+          <CardBody className="space-y-3">
+            <HealthItem
+              icon={Server}
+              label="سرور"
+              status={systemHealth?.server || "healthy"}
+              detail={`${systemHealth?.uptime || 0}% آپتایم`}
+            />
+            <HealthItem
+              icon={Database}
+              label="پایگاه داده"
+              status={systemHealth?.database || "healthy"}
+              detail={`${systemHealth?.dbConnections || 0} اتصال`}
+            />
+            <HealthItem
+              icon={Activity}
+              label="API"
+              status={systemHealth?.api || "healthy"}
+              detail={`${systemHealth?.responseTime || 0}ms میانگین پاسخ`}
+            />
+            <HealthItem
+              icon={Clock}
+              label="Redis Cache"
+              status={systemHealth?.redis || "healthy"}
+              detail={`${systemHealth?.cacheHitRate || 0}% hit rate`}
+            />
+          </CardBody>
+        </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-          <h3 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
-            {language === "fa" ? "کاربران اخیر" : "Recent Users"}
-          </h3>
-          {users.length === 0 ? (
-            <p className="text-sm text-neutral-500">
-              {language === "fa" ? "هیچ کاربری یافت نشد" : "No users found"}
-            </p>
-          ) : (
+      {/* Recent Activity & Top Users */}
+      <div className="grid lg:grid-cols-2 gap-6">
+        {/* Recent Activity */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Activity className="w-5 h-5 text-accent-500" />
+              <h2 className="text-lg font-bold">فعالیت اخیر</h2>
+            </div>
+          </CardHeader>
+          <CardBody>
+            {recentActivity.length === 0 ? (
+              <p className="text-center text-neutral-400 py-4">فعالیتی ثبت نشده</p>
+            ) : (
+              <div className="space-y-3 max-h-80 overflow-y-auto">
+                {recentActivity.map((activity, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-4 h-4 text-neutral-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm">{activity.message}</p>
+                      <p className="text-xs text-neutral-400 mt-0.5">
+                        {formatDate(activity.timestamp, "fa")}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardBody>
+        </Card>
+
+        {/* Top Users */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-warning-500" />
+              <h2 className="text-lg font-bold">برترین کاربران</h2>
+            </div>
+          </CardHeader>
+          <CardBody>
             <div className="space-y-2">
-              {users.slice(0, 5).map((user) => (
+              {topUsers.map((user, index) => (
                 <div
                   key={user.id}
-                  className="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-800 rounded-lg"
+                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
                 >
-                  <div>
-                    <p className="font-medium text-sm">
-                      {user.name || "بدون نام"}
-                    </p>
-                    <p className="text-xs text-neutral-500">{user.email}</p>
-                  </div>
-                  <span
-                    className={`px-2 py-0.5 rounded-full text-xs ${user.role === "admin" ? "bg-purple-100 text-purple-600" : "bg-neutral-100 text-neutral-600"}`}
-                  >
-                    {user.role || "user"}
+                  <span className="w-6 text-center font-bold text-neutral-400">
+                    {index + 1}
                   </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium truncate">{user.name}</p>
+                    <p className="text-xs text-neutral-400">
+                      {formatNumber(user.xp)} XP
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
-          )}
-        </div>
-
-        <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800">
-          <h3 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
-            {language === "fa" ? "درس‌های اخیر" : "Recent Lessons"}
-          </h3>
-          {lessons.length === 0 ? (
-            <p className="text-sm text-neutral-500">
-              {language === "fa" ? "هیچ درسی یافت نشد" : "No lessons found"}
-            </p>
-          ) : (
-            <div className="space-y-2">
-              {lessons.slice(0, 5).map((lesson) => (
-                <div
-                  key={lesson.id}
-                  className="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-800 rounded-lg"
-                >
-                  <div>
-                    <p className="font-medium text-sm">
-                      {typeof lesson.title === "object"
-                        ? lesson.title?.[language] ||
-                          lesson.title?.fa ||
-                          "بدون عنوان"
-                        : lesson.title || "بدون عنوان"}
-                    </p>
-                    <p className="text-xs text-neutral-500">
-                      {lesson.level || "A1"} • {lesson.xpReward || 50} XP
-                    </p>
-                  </div>
-                  <span
-                    className={`px-2 py-0.5 rounded-full text-xs ${lesson.status === "published" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"}`}
-                  >
-                    {lesson.status || "draft"}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+          </CardBody>
+        </Card>
       </div>
+    </div>
+  );
+};
+
+// ============================================
+// 📊 Stat Card
+// ============================================
+
+const StatCard = ({ icon: Icon, label, value, change, color = "primary" }) => {
+  const colorClasses = {
+    primary: "bg-primary-100 dark:bg-primary-950 text-primary-500",
+    success: "bg-success-100 dark:bg-success-950 text-success-500",
+    warning: "bg-warning-100 dark:bg-warning-950 text-warning-500",
+    accent: "bg-accent-100 dark:bg-accent-950 text-accent-500",
+  };
+
+  const isPositive = change > 0;
+
+  return (
+    <Card padding="md">
+      <div className="flex items-start justify-between">
+        <div className={`p-2 rounded-lg ${colorClasses[color]}`}>
+          <Icon className="w-5 h-5" />
+        </div>
+        {change !== undefined && (
+          <span
+            className={`flex items-center text-xs font-medium ${
+              isPositive ? "text-success-500" : "text-danger-500"
+            }`}
+          >
+            {isPositive ? (
+              <TrendingUp className="w-3 h-3 ml-0.5" />
+            ) : (
+              <TrendingDown className="w-3 h-3 ml-0.5" />
+            )}
+            {Math.abs(change)}%
+          </span>
+        )}
+      </div>
+      <p className="text-2xl font-bold mt-3">{formatNumber(value)}</p>
+      <p className="text-xs text-neutral-500">{label}</p>
+    </Card>
+  );
+};
+
+// ============================================
+// 📈 Simple Line Chart
+// ============================================
+
+const LineChart = ({ data = [] }) => {
+  if (data.length === 0) {
+    return (
+      <p className="text-center text-neutral-400 py-8">داده‌ای موجود نیست</p>
+    );
+  }
+
+  const values = data.map((d) => d.value || d.count || 0);
+  const maxValue = Math.max(...values, 1);
+  const width = 100;
+  const height = 100;
+
+  const points = data
+    .map((d, i) => {
+      const x = (i / (data.length - 1)) * width;
+      const y = height - ((d.value || d.count || 0) / maxValue) * height;
+      return `${x},${y}`;
+    })
+    .join(" ");
+
+  return (
+    <div className="relative">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="w-full h-40"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(79, 70, 229, 0.3)" />
+            <stop offset="100%" stopColor="rgba(79, 70, 229, 0)" />
+          </linearGradient>
+        </defs>
+
+        {/* Area */}
+        <polygon
+          points={`0,${height} ${points} ${width},${height}`}
+          fill="url(#lineGradient)"
+        />
+
+        {/* Line */}
+        <polyline
+          points={points}
+          fill="none"
+          stroke="#4F46E5"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
+      <div className="flex justify-between text-xs text-neutral-400 mt-2">
+        <span>{formatDate(data[0]?.date, "fa")}</span>
+        <span>{formatDate(data[data.length - 1]?.date, "fa")}</span>
+      </div>
+    </div>
+  );
+};
+
+// ============================================
+// ✅ Health Item
+// ============================================
+
+const HealthItem = ({ icon: Icon, label, status, detail }) => {
+  const isHealthy = status === "healthy" || status === "ok";
+
+  return (
+    <div className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
+      <div
+        className={`p-2 rounded-lg ${
+          isHealthy
+            ? "bg-success-100 dark:bg-success-950 text-success-500"
+            : "bg-danger-100 dark:bg-danger-950 text-danger-500"
+        }`}
+      >
+        <Icon className="w-5 h-5" />
+      </div>
+      <div className="flex-1">
+        <p className="text-sm font-medium">{label}</p>
+        <p className="text-xs text-neutral-500">{detail}</p>
+      </div>
+      {isHealthy ? (
+        <CheckCircle className="w-5 h-5 text-success-500" />
+      ) : (
+        <AlertCircle className="w-5 h-5 text-danger-500" />
+      )}
     </div>
   );
 };

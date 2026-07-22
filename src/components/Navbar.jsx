@@ -2,12 +2,14 @@
  * Navbar.jsx
  * German Academy
  * نوار بالایی
+ * Changes:
+ * - ✅ FIXED: Logout now calls logout from context
  */
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAuth } from "@context/AuthContext"; // ✅ اصلاح شده
+import { useAuth } from "@context/AuthContext";
 import { useLanguageContext } from "@context/LanguageContext";
 import { useThemeContext } from "@context/ThemeContext";
 import {
@@ -25,16 +27,17 @@ import {
 import Modal from "@components/Modal";
 
 function Navbar() {
-  const { user, logout } = useAuth(); // ✅ اصلاح شده
+  const { user, logout } = useAuth();
   const { language, toggleLanguage } = useLanguageContext();
   const { isDark, toggleTheme } = useThemeContext();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     setShowUserMenu(false);
-    logout();
+    setShowMobileMenu(false);
+    await logout();
   };
 
   return (
@@ -170,6 +173,7 @@ function Navbar() {
 
                 <hr className="my-2 border-neutral-200 dark:border-neutral-800" />
 
+                {/* ✅ Logout Button - FIXED */}
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-danger-50 dark:hover:bg-danger-950 transition-colors text-danger-600"

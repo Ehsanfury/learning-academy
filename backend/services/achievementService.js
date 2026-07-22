@@ -2,7 +2,10 @@
  * achievementService.js
  * Path: backend/services/achievementService.js
  * Description: Achievement management service
- * Version: 2.3 - FIXED: Achievement awarding
+ * Version: 2.4 - ADDED: getRecentAchievements method
+ * Changes:
+ * - ✅ ADDED: getRecentAchievements method
+ * - ✅ FIXED: Achievement awarding
  */
 
 import { Achievement, UserAchievement, User } from "../models/index.js";
@@ -77,6 +80,43 @@ class AchievementService {
     } catch (error) {
       logger.error("❌ Error in getUserAchievements:", error);
       throw error;
+    }
+  }
+
+  /**
+   * ✅ NEW: Get recent achievements for user
+   */
+  async getRecentAchievements(userId, limit = 5) {
+    try {
+      const userAchievements = await UserAchievement.findAll({
+        where: { userId },
+        include: [
+          {
+            model: Achievement,
+            as: "achievement",
+            where: { isActive: true },
+          },
+        ],
+        order: [["earnedAt", "DESC"]],
+        limit: limit,
+      });
+
+      return userAchievements.map((ua) => {
+        const data = ua.toJSON();
+        return {
+          id: ua.achievementId,
+          name: data.achievement?.name || "Unknown",
+          title: data.achievement?.title || { fa: "دستاورد", en: "Achievement" },
+          icon: data.achievement?.icon || "🏆",
+          color: data.achievement?.color || "#6366f1",
+          earnedAt: data.earnedAt,
+          isViewed: data.isViewed || false,
+          userAchievementId: data.id,
+        };
+      });
+    } catch (error) {
+      logger.error("❌ Error in getRecentAchievements:", error);
+      return [];
     }
   }
 

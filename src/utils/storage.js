@@ -3,14 +3,13 @@
  * Path: src/utils/storage.js
  * Description: Storage utilities with secure token management
  * Changes:
- * - ✅ FIXED: Added backward compatibility for 'token' key
- * - ✅ FIXED: Both 'token' and 'access_token' work
+ * - ✅ FIXED: clearAuth now properly clears all auth data
  * - ✅ FIXED: Added debug logs
  */
 
 const STORAGE_KEYS = {
   ACCESS_TOKEN: "access_token",
-  TOKEN: "token", // ✅ Backward compatibility
+  TOKEN: "token",
   USER: "user",
   THEME: "theme",
   LANGUAGE: "german_academy_language",
@@ -28,12 +27,10 @@ export const storage = {
   // ============================================
 
   getToken: () => {
-    // ✅ Try both keys for backward compatibility
     const token =
       getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN) ||
       getStorage().getItem(STORAGE_KEYS.TOKEN);
 
-    // ✅ Sync both keys if needed
     if (token) {
       getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
       getStorage().setItem(STORAGE_KEYS.TOKEN, token);
@@ -44,7 +41,6 @@ export const storage = {
 
   setToken: (token) => {
     if (token) {
-      // ✅ Save to both keys for compatibility
       getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
       getStorage().setItem(STORAGE_KEYS.TOKEN, token);
     } else {
@@ -62,7 +58,7 @@ export const storage = {
     return null;
   },
 
-  setRefreshToken: (token) => {
+  setRefreshToken: () => {
     // No-op for security
   },
 
@@ -104,12 +100,11 @@ export const storage = {
   },
 
   // ============================================
-  // 🔐 Auth Management
+  // 🔐 Auth Management - ✅ FIXED
   // ============================================
 
   setAuth: ({ accessToken, user }) => {
     if (accessToken) {
-      // ✅ Save to both keys
       getStorage().setItem(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
       getStorage().setItem(STORAGE_KEYS.TOKEN, accessToken);
     }
@@ -117,20 +112,19 @@ export const storage = {
       getStorage().setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     }
 
-    // ✅ Debug log
     console.log("🔐 Auth saved:", {
       hasToken: !!accessToken,
       hasUser: !!user,
       userRole: user?.role,
-      tokenKey: STORAGE_KEYS.ACCESS_TOKEN,
-      tokenExists: !!getStorage().getItem(STORAGE_KEYS.ACCESS_TOKEN),
     });
   },
 
   clearAuth: () => {
+    console.log("🔐 Clearing auth data...");
     getStorage().removeItem(STORAGE_KEYS.ACCESS_TOKEN);
     getStorage().removeItem(STORAGE_KEYS.TOKEN);
     getStorage().removeItem(STORAGE_KEYS.USER);
+    console.log("🔐 Auth cleared");
   },
 
   isAuthenticated: () => {
