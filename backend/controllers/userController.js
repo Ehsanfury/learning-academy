@@ -5,6 +5,7 @@
  */
 
 import userService from "../services/userService.js";
+import achievementService from "../services/achievementService.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 import { validateUpdateProfile } from "../validators/user.validator.js";
 import { NotFoundError, ValidationError, UnauthorizedError } from "../errors/index.js";
@@ -21,7 +22,7 @@ export const getProfile = asyncHandler(async (req, res) => {
     throw new UnauthorizedError("Not authenticated");
   }
 
-  const profile = await userService.getUserProfile(userId);
+  const profile = await userService.getProfile(userId);
 
   res.json({
     success: true,
@@ -71,7 +72,7 @@ export const getStreak = asyncHandler(async (req, res) => {
     throw new UnauthorizedError("Not authenticated");
   }
 
-  const user = await userService.getUserProfile(userId);
+  const user = await userService.getProfile(userId);
 
   res.json({
     success: true,
@@ -90,7 +91,7 @@ export const getAchievements = asyncHandler(async (req, res) => {
     throw new UnauthorizedError("Not authenticated");
   }
 
-  const achievements = await userService.getUserAchievements(userId);
+  const achievements = await achievementService.getUserAchievements(userId);
 
   res.json({
     success: true,
@@ -115,12 +116,11 @@ export const getRecentActivity = asyncHandler(async (req, res) => {
 });
 
 export const getLeaderboard = asyncHandler(async (req, res) => {
-  const { type = "xp", limit = 10, page = 1 } = req.query;
+  const { period = "all-time", limit = 10 } = req.query;
 
-  const offset = (parseInt(page) - 1) * parseInt(limit);
-  const safeLimit = Math.min(parseInt(limit), 100);
+  const safeLimit = Math.min(parseInt(limit) || 10, 100);
 
-  const leaderboard = await userService.getLeaderboard(type, safeLimit, offset);
+  const leaderboard = await userService.getLeaderboard({ period, limit: safeLimit });
 
   res.json({
     success: true,
@@ -169,7 +169,7 @@ export const getSettings = asyncHandler(async (req, res) => {
     throw new UnauthorizedError("Not authenticated");
   }
 
-  const user = await userService.getUserProfile(userId);
+  const user = await userService.getProfile(userId);
 
   const settings = {
     language: user.language || "fa",
@@ -228,12 +228,20 @@ export const updateSettings = asyncHandler(async (req, res) => {
 
 export const deleteAccount = asyncHandler(async (req, res) => {
   const userId = req.user?.id;
+  const { password } = req.body;
 
   if (!userId) {
     throw new UnauthorizedError("Not authenticated");
   }
 
-  await userService.deleteUser(userId);
+  if (!password) {
+    throw new ValidationError({
+      message: "Password is required to delete account",
+      details: [{ field: "password", message: "Password is required" }],
+    });
+  }
+
+  await userService.deleteAccount(userId, password);
 
   logger.info(`User account deleted: ${userId}`);
 

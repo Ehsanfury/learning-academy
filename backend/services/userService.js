@@ -12,7 +12,7 @@
  */
 
 import { Op } from "sequelize";
-import { User, LessonProgress, XPHistory, Achievement } from "../models/index.js";
+import { User, LessonProgress, XPHistory, Achievement, UserAchievement } from "../models/index.js";
 import { NotFoundError, ValidationError, AppError } from "../errors/index.js";
 import logger from "../config/logger.js";
 import { uploadImage, deleteImage } from "./imageService.js";
@@ -28,7 +28,8 @@ class UserService {
       include: [
         {
           model: Achievement,
-          through: { attributes: ["unlockedAt"] },
+          as: "achievements",
+          through: { attributes: ["earnedAt", "isEarned"] },
           required: false,
         },
       ],
@@ -172,12 +173,11 @@ class UserService {
     }
 
     const [completedLessons, totalXP, achievementsCount] = await Promise.all([
-      LessonProgress.count({ where: { userId, completed: true } }),
-      XPHistory.sum("amount", { where: { userId } }),
-      Achievement.count({
-        through: { where: { unlocked: true } },
-        where: {},
+      LessonProgress.count({
+        where: { userId, status: { [Op.in]: ["completed", "perfect"] } },
       }),
+      XPHistory.sum("amount", { where: { userId } }),
+      UserAchievement.count({ where: { userId, isEarned: true } }),
     ]);
 
     return {
@@ -188,6 +188,20 @@ class UserService {
       streak: user.streak,
       rank: await this.getUserRank(userId),
     };
+  }
+
+  // ============================================
+  // 🕒 Get Recent Activity
+  // ============================================
+
+  async getRecentActivity(userId, limit = 10) {
+    const activities = await XPHistory.findAll({
+      where: { userId },
+      order: [["createdAt", "DESC"]],
+      limit,
+    });
+
+    return activities.map((a) => a.toJSON());
   }
 
   // ============================================

@@ -6,7 +6,7 @@
 
 import { Scenario, ScenarioSession } from "../models/index.js";
 import logger from "../config/logger.js";
-import userService from "./userService.js";
+import xpService from "./xpService.js";
 
 class ScenarioService {
   async getScenarios(filters = {}) {
@@ -48,6 +48,34 @@ class ScenarioService {
       return scenario;
     } catch (error) {
       logger.error(`Error in createScenario:`, error);
+      throw error;
+    }
+  }
+
+  async updateScenario(scenarioId, data) {
+    try {
+      const scenario = await Scenario.findByPk(scenarioId);
+      if (!scenario) return null;
+
+      await scenario.update(data);
+      logger.info(`✅ Scenario updated: ${scenarioId}`);
+      return scenario;
+    } catch (error) {
+      logger.error(`Error in updateScenario:`, error);
+      throw error;
+    }
+  }
+
+  async deleteScenario(scenarioId) {
+    try {
+      const scenario = await Scenario.findByPk(scenarioId);
+      if (!scenario) return null;
+
+      await scenario.destroy();
+      logger.info(`✅ Scenario deleted: ${scenarioId}`);
+      return true;
+    } catch (error) {
+      logger.error(`Error in deleteScenario:`, error);
       throw error;
     }
   }
@@ -119,7 +147,7 @@ class ScenarioService {
           completedAt: new Date(),
           xpEarned: xpEarned,
         });
-        await userService.addXP(userId, xpEarned, "scenario_completion");
+        await xpService.addXP(userId, xpEarned, "scenario_completion");
       } else if (isCorrect) {
         const metadata = session.metadata || {};
         if (!metadata.completedSteps) metadata.completedSteps = [];

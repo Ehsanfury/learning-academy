@@ -5,9 +5,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
-    "start:prod": "NODE_ENV=production node app.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "start:prod": "NODE_ENV=production node server.js",
     "load-lessons": "node scripts/loadLessonContent.js",
     "load-seeders": "node scripts/runSeeders.js",
     "lint": "eslint . --ext .js",

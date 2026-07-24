@@ -94,7 +94,11 @@ export const updateProgress = asyncHandler(async (req, res) => {
     });
   }
 
-  const progress = await progressService.updateProgress(userId, validation.data);
+  const progress = await progressService.updateProgress(
+    userId,
+    validation.data.lessonId,
+    validation.data
+  );
 
   logInfo("✅ [Controller] Progress updated successfully", {
     userId,

@@ -3,6 +3,7 @@
  * Path: backend/controllers/journeyController.js
  */
 
+import { Op } from "sequelize";
 import { Lesson, LessonProgress } from "../models/index.js";
 import { asyncHandler } from "../middlewares/errorHandler.js";
 

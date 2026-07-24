@@ -301,6 +301,94 @@ class AIService {
   }
 
   // ============================================
+  // 💬 Generate Response (alias used by chat controller)
+  // ============================================
+
+  async generateResponse(userId, message, level = "A1", context = {}) {
+    return this.chat(userId, message, level, context);
+  }
+
+  // ============================================
+  // ✏️ Grammar Correction
+  // ============================================
+
+  async correctGrammar(text, userId = "anonymous") {
+    const prompt = `Please correct the grammar of this German text and briefly explain the main mistake(s) in Persian. Reply with the corrected sentence first, then a short explanation.\n\nText: "${text}"`;
+    const response = await this.chat(userId, prompt, "A1", { mode: "grammar" });
+    return {
+      original: text,
+      corrected: response.text,
+      provider: response.provider,
+      isMock: response.isMock || false,
+    };
+  }
+
+  // ============================================
+  // 🌍 Translate to German
+  // ============================================
+
+  async translateToGerman(text, nativeLanguage = "fa", userId = "anonymous") {
+    const prompt = `Translate the following text from ${nativeLanguage} to German. Reply with only the German translation, nothing else.\n\nText: "${text}"`;
+    const response = await this.chat(userId, prompt, "A1", { mode: "general" });
+    return {
+      original: text,
+      translated: response.text,
+      provider: response.provider,
+      isMock: response.isMock || false,
+    };
+  }
+
+  // ============================================
+  // 📖 Explain Grammar Concept
+  // ============================================
+
+  async explainGrammar(concept, level = "A1", nativeLanguage = "fa", userId = "anonymous") {
+    const prompt = `Explain the German grammar concept "${concept}" for a ${level} level student whose native language is ${nativeLanguage}. Include 2-3 simple examples.`;
+    const response = await this.chat(userId, prompt, level, { mode: "grammar" });
+    return {
+      concept,
+      explanation: response.text,
+      provider: response.provider,
+      isMock: response.isMock || false,
+    };
+  }
+
+  // ============================================
+  // 📝 Generate Exercise
+  // ============================================
+
+  async generateExercise(topic, level = "A1", count = 5, userId = "anonymous") {
+    const prompt = `Create ${count} short German language practice exercises about "${topic}" for a ${level} level student. Number each exercise and include the answer.`;
+    const response = await this.chat(userId, prompt, level, { mode: "vocabulary" });
+    return {
+      topic,
+      level,
+      count,
+      exercises: response.text,
+      provider: response.provider,
+      isMock: response.isMock || false,
+    };
+  }
+
+  // ============================================
+  // 🎭 Start Role-play Scenario
+  // ============================================
+
+  async startScenario(scenarioType, level = "A1", userId = "anonymous") {
+    const prompt = `Start a German role-play conversation scenario: "${scenarioType}". You play the other role (e.g. waiter, shopkeeper, doctor). Begin the conversation in simple German suitable for ${level} level, followed by a short Persian translation in parentheses.`;
+    return this.chat(userId, prompt, level, { mode: "conversation" });
+  }
+
+  // ============================================
+  // 🎭 Continue Role-play Scenario
+  // ============================================
+
+  async continueScenario(conversationHistory, message, userId = "anonymous", level = "A1") {
+    const prompt = `Continue this German role-play conversation naturally, staying in character.\n\nConversation so far:\n${conversationHistory}\n\nUser: ${message}`;
+    return this.chat(userId, prompt, level, { mode: "conversation" });
+  }
+
+  // ============================================
   // 📊 Get Usage Stats
   // ============================================
 
